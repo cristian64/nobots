@@ -29,10 +29,32 @@ namespace Nobots
         {
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
-            Elements.Add(new Platform(Game, this));
+
+            Platform platform1 = new Platform(Game, this);
+            Elements.Add(platform1);
+            Platform platform2 = new Platform(Game, this);
+            Elements.Add(platform2);
+            Platform platform3 = new Platform(Game, this);
+            Elements.Add(platform3);
+            Platform platform4 = new Platform(Game, this);
+            Elements.Add(platform4);
+            Platform platform5 = new Platform(Game, this);
+            Elements.Add(platform5);
+            Platform platform6 = new Platform(Game, this);
+            Elements.Add(platform6);
+            Platform platform7 = new Platform(Game, this);
+            Elements.Add(platform7);
 
             foreach (Element i in Elements)
                 i.Initialize();
+
+            platform1.Position = new Vector2(1.8f, 5f);
+            platform2.Position = new Vector2(2.8f, 6.5f);
+            platform3.Position = new Vector2(3.8f, 8f);
+            platform4.Position = new Vector2(10.8f, 6.5f);
+            platform5.Position = new Vector2(15.8f, 6.5f);
+            platform6.Position = new Vector2(19.8f, 6.5f);
+            platform7.Position = new Vector2(21.8f, 6.5f);
 
             base.Initialize();
         }

@@ -23,8 +23,13 @@ namespace Nobots
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-        //    graphics.IsFullScreen = true;
             IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = (int)(0.8 * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
+            graphics.PreferredBackBufferHeight = (int)(0.8 * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+            //graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //graphics.IsFullScreen = true;
+            graphics.PreferMultiSampling = true;
         }
 
         /// <summary>
