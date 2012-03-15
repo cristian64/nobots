@@ -33,7 +33,7 @@ namespace Nobots
 
         protected override void LoadContent()
         {
-            texture = Game.Content.Load<Texture2D>("wooden-box");
+            texture = Game.Content.Load<Texture2D>("box");
             body = BodyFactory.CreateRectangle(scene.World, 0.01f * texture.Width, 0.01f * texture.Height, 1.0f);
             body.Position = new Vector2(5.812996f, 4.583698f);
             body.BodyType = BodyType.Dynamic;
@@ -47,7 +47,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, 50.0f * body.Position, null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, 100.0f * body.Position, null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
