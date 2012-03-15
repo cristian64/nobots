@@ -8,6 +8,7 @@ namespace Nobots
 {
     public class Camera : GameComponent
     {
+        public Element Target;
         public Vector2 Position;
         public float Zoom;
 
@@ -20,6 +21,8 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
+            if (Target != null)
+                Position = Target.Position;
             base.Update(gameTime);
         }
     }
