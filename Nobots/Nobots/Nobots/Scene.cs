@@ -57,9 +57,10 @@ namespace Nobots
 
         public override void Draw(GameTime gameTime)
         {
+            drawBackground();
             foreach (Element i in Elements)
                 i.Draw(gameTime);
-            drawBackground();
+            
             base.Update(gameTime);
         }
 
