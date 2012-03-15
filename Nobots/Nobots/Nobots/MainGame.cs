@@ -23,6 +23,7 @@ namespace Nobots
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -34,6 +35,7 @@ namespace Nobots
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            Components.Add(new Scene(this));
 
             base.Initialize();
         }
