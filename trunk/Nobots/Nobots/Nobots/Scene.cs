@@ -15,7 +15,7 @@ namespace Nobots
         public World World;
         public List<Element> Elements;
         public Texture2D BackgroundTexture;
-        public int ScreenHeight;
+        private int screenWidth;
 
         public Scene(Game game)
             : base(game)
@@ -27,8 +27,10 @@ namespace Nobots
 
         public override void Initialize()
         {
+            Elements.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
+            Camera.Target = Elements[2];
 
             Platform platform1 = new Platform(Game, this);
             Elements.Add(platform1);
@@ -49,13 +51,13 @@ namespace Nobots
             foreach (Element i in Elements)
                 i.Initialize();
 
-            platform1.Position = new Vector2(1.8f, 5f);
-            platform2.Position = new Vector2(2.8f, 6.5f);
-            platform3.Position = new Vector2(3.8f, 8f);
-            platform4.Position = new Vector2(10.8f, 6.5f);
-            platform5.Position = new Vector2(15.8f, 6.5f);
-            platform6.Position = new Vector2(19.8f, 6.5f);
-            platform7.Position = new Vector2(21.8f, 6.5f);
+            platform1.Position = new Vector2(1.85f, 2.5f);
+            platform2.Position = new Vector2(3.8f, 3.75f);
+            platform3.Position = new Vector2(5.0f, 5f);
+            platform4.Position = new Vector2(9.7f, 4.4f);
+            platform5.Position = new Vector2(13.8f, 3.5f);
+            platform6.Position = new Vector2(17.8f, 3.25f);
+            platform7.Position = new Vector2(21.8f, 3.25f);
 
             base.Initialize();
         }
@@ -64,7 +66,7 @@ namespace Nobots
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             BackgroundTexture = Game.Content.Load<Texture2D>("background");
-            ScreenHeight = GraphicsDevice.PresentationParameters.BackBufferHeight;
+            screenWidth = GraphicsDevice.PresentationParameters.BackBufferWidth;
 
             base.LoadContent();
         }
@@ -80,20 +82,19 @@ namespace Nobots
 
         public override void Draw(GameTime gameTime)
         {
-            drawBackground();
             foreach (Element i in Elements)
                 i.Draw(gameTime);
             
             base.Update(gameTime);
         }
 
-        private void drawBackground()
+    /*    private void drawBackground()
         {
             SpriteBatch.Begin();
             SpriteBatch.Draw(BackgroundTexture, new Rectangle(0, ScreenHeight, BackgroundTexture.Width, ScreenHeight * 2),
                 new Rectangle(0,0, BackgroundTexture.Width, BackgroundTexture.Height), Color.White, 0.0f, 
                 new Vector2(0, BackgroundTexture.Height), SpriteEffects.None, 1);
             SpriteBatch.End();       
-        }
+        }*/
     }
 }
