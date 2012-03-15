@@ -36,12 +36,10 @@ namespace Nobots
         protected override void LoadContent()
         {
             texture = Game.Content.Load<Texture2D>("girl");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1.0f);
+            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 4.0f), 1.0f);
             body.Position = new Vector2(2.812996f, 2.083698f);
             body.BodyType = BodyType.Dynamic;
-            body.FixedRotation = true;
-         //   body.Mass = 50.0f;
-            body.Friction = 10000.0f;
+            body.Friction = 1000.0f;
 
             base.LoadContent();
         }
@@ -55,7 +53,8 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
+            //scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height - texture.Width / 4), 1.0f, Effect, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
@@ -65,27 +64,28 @@ namespace Nobots
         private void processKeyboard()
         {
             KeyboardState keybState = Keyboard.GetState();
-
             if (keybState.IsKeyDown(Keys.Left))
             {
-                body.LinearVelocity = new Vector2(-9, body.LinearVelocity.Y);
+                body.FixedRotation = false;
                 Effect = SpriteEffects.FlipHorizontally;
-               /* body.FixedRotation = false;
-                body.AngularVelocity = -20.0f;*/
+                body.AngularVelocity = -20.0f;
             }
             else if (keybState.IsKeyDown(Keys.Right))
             {
-                body.LinearVelocity = new Vector2(9, body.LinearVelocity.Y);
+                body.FixedRotation = false;
                 Effect = SpriteEffects.None;
-               /* body.FixedRotation = false;
-                body.AngularVelocity = 20.0f;*/
+                body.AngularVelocity = 20.0f;
             }
-            
+            else
+            {
+                body.FixedRotation = true;
+                body.AngularVelocity = 0.0f;
+            }
+
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
             {
-                body.ApplyForce(new Vector2(0, -100));
+                body.ApplyForce(new Vector2(0, -8));
             }
-            
 
             previousState = keybState;
         }
