@@ -9,7 +9,7 @@ using FarseerPhysics.Factories;
 
 namespace Nobots
 {
-    public class Box : Element
+    public class Character : Element
     {
         Body body;
         Texture2D texture;
@@ -26,19 +26,18 @@ namespace Nobots
             }
         }
 
-        public Box(Game game, Scene scene)
+        public Character(Game game, Scene scene)
             : base(game, scene)
         {
         }
 
         protected override void LoadContent()
         {
-            texture = Game.Content.Load<Texture2D>("box");
+            texture = Game.Content.Load<Texture2D>("girl");
             body = BodyFactory.CreateRectangle(scene.World, 0.01f * texture.Width, 0.01f * texture.Height, 1.0f);
-            body.Position = new Vector2(0.812996f, 0.583698f);
+            body.Position = new Vector2(2.812996f, 3.583698f);
             body.BodyType = BodyType.Dynamic;
-            body.Rotation = -2.236696f;
-            body.ApplyAngularImpulse(0.1f);
+            body.FixedRotation = true;
             body.Mass = 50.0f;
             body.Friction = 100.0f;
 

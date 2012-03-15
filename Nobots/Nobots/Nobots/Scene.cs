@@ -26,6 +26,7 @@ namespace Nobots
         public override void Initialize()
         {
             Elements.Add(new Box(Game, this));
+            Elements.Add(new Character(Game, this));
 
             foreach (Element i in Elements)
                 i.Initialize();
