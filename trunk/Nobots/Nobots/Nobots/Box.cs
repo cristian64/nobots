@@ -34,12 +34,11 @@ namespace Nobots
         protected override void LoadContent()
         {
             texture = Game.Content.Load<Texture2D>("box");
-            body = BodyFactory.CreateRectangle(scene.World, 0.01f * texture.Width, 0.01f * texture.Height, 1.0f);
+            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1.0f);
             body.Position = new Vector2(0.812996f, 0.583698f);
             body.BodyType = BodyType.Dynamic;
             body.Rotation = -2.236696f;
             body.ApplyAngularImpulse(0.1f);
-            body.Mass = 50.0f;
             body.Friction = 100.0f;
 
             base.LoadContent();
@@ -48,7 +47,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, 100.0f * (body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);

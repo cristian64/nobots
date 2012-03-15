@@ -29,6 +29,7 @@ namespace Nobots
         {
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
+            Elements.Add(new Platform(Game, this));
 
             foreach (Element i in Elements)
                 i.Initialize();
