@@ -45,6 +45,7 @@ namespace Nobots
             Platform platform7 = new Platform(Game, this);
             Elements.Add(platform7);
 
+            Camera.Initialize();
             foreach (Element i in Elements)
                 i.Initialize();
 

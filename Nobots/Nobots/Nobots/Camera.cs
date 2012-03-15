@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Nobots
 {
-    public class Camera : GameComponent
+    public class Camera : DrawableGameComponent
     {
         public Element Target;
         public Vector2 Position;
@@ -22,7 +22,10 @@ namespace Nobots
         public override void Update(GameTime gameTime)
         {
             if (Target != null)
+            {
                 Position = Target.Position;
+                Position -= new Vector2(Conversion.ToWorld(GraphicsDevice.PresentationParameters.BackBufferWidth / 2), Conversion.ToWorld(GraphicsDevice.PresentationParameters.BackBufferHeight / 2));
+            }
             base.Update(gameTime);
         }
     }
