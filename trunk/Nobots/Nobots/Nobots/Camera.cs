@@ -16,7 +16,7 @@ namespace Nobots
             : base(game)
         {
             Position = Vector2.Zero;
-            Zoom = 50;
+            Zoom = 100;
         }
 
         public override void Update(GameTime gameTime)

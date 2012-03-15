@@ -6,8 +6,19 @@ using Microsoft.Xna.Framework;
 
 namespace Nobots
 {
-    public interface Element : DrawableGameComponent
+    public abstract class Element : DrawableGameComponent
     {
-        public virtual Vector2 Position;
+        public abstract Vector2 Position
+        {
+            get; set;   
+        }
+
+        protected Scene scene;
+
+        public Element(Game game, Scene scene)
+            : base(game)
+        {
+            this.scene = scene;
+        }
     }
 }
