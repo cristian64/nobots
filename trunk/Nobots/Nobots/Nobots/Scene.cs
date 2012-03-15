@@ -14,6 +14,8 @@ namespace Nobots
         public Camera Camera;
         public World World;
         public List<Element> Elements;
+        public Texture2D BackgroundTexture;
+        public int ScreenHeight;
 
         public Scene(Game game)
             : base(game)
@@ -30,12 +32,16 @@ namespace Nobots
 
             foreach (Element i in Elements)
                 i.Initialize();
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
+            BackgroundTexture = Game.Content.Load<Texture2D>("background");
+            ScreenHeight = GraphicsDevice.PresentationParameters.BackBufferHeight;
+
             base.LoadContent();
         }
 
@@ -52,7 +58,17 @@ namespace Nobots
         {
             foreach (Element i in Elements)
                 i.Draw(gameTime);
+            drawBackground();
             base.Update(gameTime);
+        }
+
+        private void drawBackground()
+        {
+            SpriteBatch.Begin();
+            SpriteBatch.Draw(BackgroundTexture, new Rectangle(0, ScreenHeight, BackgroundTexture.Width, ScreenHeight * 2),
+                new Rectangle(0,0, BackgroundTexture.Width, BackgroundTexture.Height), Color.White, 0.0f, 
+                new Vector2(0, BackgroundTexture.Height), SpriteEffects.None, 1);
+            SpriteBatch.End();       
         }
     }
 }
