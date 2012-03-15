@@ -10,9 +10,9 @@ namespace Nobots
 {
     public class Scene : DrawableGameComponent
     {
+        public SpriteBatch SpriteBatch;
         public Camera Camera;
         public World World;
-        public SpriteBatch SpriteBatch;
         public List<Element> Elements;
 
         public Scene(Game game)
@@ -20,10 +20,13 @@ namespace Nobots
         {
             Camera = new Camera(Game);
             Elements = new List<Element>();
+            World = new World(new Vector2(0, 9.81f));
         }
 
         public override void Initialize()
         {
+            Elements.Add(new Box(Game, this));
+
             foreach (Element i in Elements)
                 i.Initialize();
             base.Initialize();
@@ -37,6 +40,7 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
+            World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             foreach (Element i in Elements)
                 i.Update(gameTime);
