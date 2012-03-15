@@ -68,22 +68,17 @@ namespace Nobots
 
             if (keybState.IsKeyDown(Keys.Left))
             {
-                body.ApplyForce(new Vector2(-230, 0));
+                body.LinearVelocity = new Vector2(-9, body.LinearVelocity.Y);
                 Effect = SpriteEffects.FlipHorizontally;
                /* body.FixedRotation = false;
                 body.AngularVelocity = -20.0f;*/
             }
             else if (keybState.IsKeyDown(Keys.Right))
             {
-                body.ApplyForce(new Vector2(230, 0));
+                body.LinearVelocity = new Vector2(9, body.LinearVelocity.Y);
                 Effect = SpriteEffects.None;
                /* body.FixedRotation = false;
                 body.AngularVelocity = 20.0f;*/
-            }
-            else
-            {
-                body.FixedRotation = true;
-                body.AngularVelocity = 0.0f;
             }
             
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
