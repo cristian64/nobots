@@ -5,11 +5,14 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework.Graphics;
+using Nobots.ParticleSystem;
+using Microsoft.Xna.Framework.Input;
 
 namespace Nobots
 {
     public class Scene : DrawableGameComponent
     {
+        public ExplosionSmokeParticleSystem ExplosionSmokeParticleSystem;
         public SpriteBatch SpriteBatch;
         public Camera Camera;
         public World World;
@@ -23,10 +26,13 @@ namespace Nobots
             Camera = new Camera(Game);
             Elements = new List<Element>();
             World = new World(new Vector2(0, 9.81f));
+            ExplosionSmokeParticleSystem = new ExplosionSmokeParticleSystem(Game, this);
         }
 
         public override void Initialize()
         {
+            ExplosionSmokeParticleSystem.Initialize();
+
             Elements.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
@@ -71,8 +77,16 @@ namespace Nobots
             base.LoadContent();
         }
 
+        Random random = new Random();
         public override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            {
+                ExplosionSmokeParticleSystem.AddParticle(new Vector3(random.Next(75), random.Next(50), 0), Vector3.Zero);
+                ExplosionSmokeParticleSystem.AddParticle(new Vector3(random.Next(40), random.Next(45), 0), Vector3.Zero);
+            }
+
+            ExplosionSmokeParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             foreach (Element i in Elements)
@@ -84,17 +98,10 @@ namespace Nobots
         {
             foreach (Element i in Elements)
                 i.Draw(gameTime);
+
+            ExplosionSmokeParticleSystem.Draw(gameTime);
             
             base.Update(gameTime);
         }
-
-    /*    private void drawBackground()
-        {
-            SpriteBatch.Begin();
-            SpriteBatch.Draw(BackgroundTexture, new Rectangle(0, ScreenHeight, BackgroundTexture.Width, ScreenHeight * 2),
-                new Rectangle(0,0, BackgroundTexture.Width, BackgroundTexture.Height), Color.White, 0.0f, 
-                new Vector2(0, BackgroundTexture.Height), SpriteEffects.None, 1);
-            SpriteBatch.End();       
-        }*/
     }
 }
