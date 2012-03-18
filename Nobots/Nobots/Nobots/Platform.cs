@@ -26,6 +26,18 @@ namespace Nobots
             }
         }
 
+        public override float Rotation
+        {
+            get
+            {
+                return body.Rotation;
+            }
+            set
+            {
+                body.Rotation = value;
+            }
+        }
+
         public Platform(Game game, Scene scene)
             : base(game, scene)
         {

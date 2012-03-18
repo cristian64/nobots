@@ -26,6 +26,17 @@ namespace Nobots
             }
         }
 
+        public override float Rotation
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         public Background(Game game, Scene scene)
             : base(game, scene)
