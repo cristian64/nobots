@@ -11,7 +11,7 @@ namespace Nobots
 {
     public class Box : Element
     {
-        public Body body;
+        Body body;
         Texture2D texture;
 
         public override Vector2 Position
@@ -52,6 +52,8 @@ namespace Nobots
             body.Rotation = -2.236696f;
             body.ApplyAngularImpulse(0.1f);
             body.Friction = 100.0f;
+
+            body.UserData = this;
 
             base.LoadContent();
         }
