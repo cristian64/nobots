@@ -18,7 +18,7 @@ namespace Nobots.ParticleSystem
     /// <summary>
     /// Custom vertex structure for drawing particles.
     /// </summary>
-    struct ParticleVertex
+    public struct ParticleVertex
     {
         // Stores which corner of the particle quad this vertex represents.
         public Short2 Corner;

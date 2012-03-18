@@ -19,7 +19,7 @@ namespace Nobots.ParticleSystem
     /// <summary>
     /// Custom particle system for leaving smoke trails behind the rocket projectiles.
     /// </summary>
-    class ProjectileTrailParticleSystem : ParticleSystem
+    public class ProjectileTrailParticleSystem : ParticleSystem
     {
         public static ProjectileTrailParticleSystem LastInstance = null;
 

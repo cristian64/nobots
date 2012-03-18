@@ -19,7 +19,7 @@ namespace Nobots.ParticleSystem
     /// <summary>
     /// Custom particle system for creating the fiery part of the explosions.
     /// </summary>
-    class PlasmaParticleSystem : ParticleSystem
+    public class PlasmaParticleSystem : ParticleSystem
     {
         public static PlasmaParticleSystem LastInstance = null;
 
