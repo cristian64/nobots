@@ -111,7 +111,7 @@ namespace Nobots
             foreach (Element i in Elements)
                 i.Draw(gameTime);
 
-            ExplosionSmokeParticleSystem.Draw(gameTime);
+            PlasmaExplosionParticleSystem.Draw(gameTime);
 
             physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             
