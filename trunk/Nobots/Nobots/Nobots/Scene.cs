@@ -7,6 +7,7 @@ using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework.Graphics;
 using Nobots.ParticleSystem;
 using Microsoft.Xna.Framework.Input;
+using FarseerPhysics;
 
 namespace Nobots
 {
@@ -16,16 +17,19 @@ namespace Nobots
         public SpriteBatch SpriteBatch;
         public Camera Camera;
         public World World;
+        public DebugViewXNA physicsDebug;
         public List<Element> Elements;
-        public Texture2D BackgroundTexture;
-        private int screenWidth;
+        public List<Background> Backgrounds;
 
         public Scene(Game game)
             : base(game)
         {
             Camera = new Camera(Game);
             Elements = new List<Element>();
+            Backgrounds = new List<Background>();
             World = new World(new Vector2(0, 9.81f));
+            physicsDebug = new DebugViewXNA(World);
+
             ExplosionSmokeParticleSystem = new ExplosionSmokeParticleSystem(Game, this);
         }
 
@@ -33,10 +37,10 @@ namespace Nobots
         {
             ExplosionSmokeParticleSystem.Initialize();
 
-            Elements.Add(new Background(Game, this));
+            Backgrounds.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
-            Camera.Target = Elements[2];
+            Camera.Target = Elements[1];
 
             Platform platform1 = new Platform(Game, this);
             Elements.Add(platform1);
@@ -54,6 +58,8 @@ namespace Nobots
             Elements.Add(platform7);
 
             Camera.Initialize();
+            foreach (Background i in Backgrounds)
+                i.Initialize();
             foreach (Element i in Elements)
                 i.Initialize();
 
@@ -71,8 +77,10 @@ namespace Nobots
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            BackgroundTexture = Game.Content.Load<Texture2D>("background");
-            screenWidth = GraphicsDevice.PresentationParameters.BackBufferWidth;
+
+            physicsDebug.LoadContent(GraphicsDevice, Game.Content);
+            physicsDebug.AppendFlags(DebugViewFlags.Shape);
+            physicsDebug.AppendFlags(DebugViewFlags.PolygonPoints);
 
             base.LoadContent();
         }
@@ -89,6 +97,8 @@ namespace Nobots
             ExplosionSmokeParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
+            foreach (Background i in Backgrounds)
+                i.Update(gameTime);
             foreach (Element i in Elements)
                 i.Update(gameTime);
             base.Update(gameTime);
@@ -96,10 +106,14 @@ namespace Nobots
 
         public override void Draw(GameTime gameTime)
         {
+            foreach (Background i in Backgrounds)
+                i.Draw(gameTime);
             foreach (Element i in Elements)
                 i.Draw(gameTime);
 
             ExplosionSmokeParticleSystem.Draw(gameTime);
+
+            physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             
             base.Update(gameTime);
         }
