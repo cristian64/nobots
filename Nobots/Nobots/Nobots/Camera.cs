@@ -29,7 +29,7 @@ namespace Nobots
         {
             if (Target != null)
             {
-                Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.PresentationParameters.BackBufferWidth / 2), Conversion.ToWorld(GraphicsDevice.PresentationParameters.BackBufferHeight / 2));
+                Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f));
                 float distance = Vector2.Distance(centeredPosition, Position);
                 if (distance > Margin)
                 {
