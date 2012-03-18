@@ -17,21 +17,33 @@ namespace Nobots
         Body body;
         Body torso;
         Texture2D texture;
-        Box box;
         RevoluteJoint revoluteJoint;
         SliderJoint sliderJoint;
         public SpriteEffects Effect;
         bool touchingBox;
+        Body touchedBox;
 
         public override Vector2 Position
         {
             get
             {
-                return body.Position;
+                return torso.Position + Vector2.UnitY * body.FixtureList[0].Shape.Radius;
             }
             set
             {
-                body.Position = value;
+                torso.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius;
+            }
+        }
+
+        public override float Rotation
+        {
+            get
+            {
+                return body.Rotation;
+            }
+            set
+            {
+                body.Rotation = value;
             }
         }
 
@@ -42,46 +54,43 @@ namespace Nobots
 
         protected override void LoadContent()
         {
-            
             texture = Game.Content.Load<Texture2D>("girl");
 
-            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width/2), Conversion.ToWorld(texture.Height - texture.Width/8),
-                1.0f);
-            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 3.0f), 1.0f);
-           // body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), Conversion.ToWorld(texture.Width / 2.0f), 1.0f);
+            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 1);
             body.Position = new Vector2(2.812996f, 2.083698f);
-            torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2),
-                body.Position.Y + Conversion.ToWorld(texture.Width / 4 - texture.Height));
+            body.BodyType = BodyType.Dynamic;
+            body.Friction = float.MaxValue;
+            body.Mass = 10000.0f;
+            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
+            body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
+            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width), 1.0f);
+            torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
             torso.BodyType = BodyType.Dynamic;
             torso.Mass = 20;
             torso.FixedRotation = true;
 
-            body.BodyType = BodyType.Dynamic;
-            body.Friction = 1000.0f;
-            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-            body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
+            revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2)), Vector2.Zero);
+            scene.World.AddJoint(revoluteJoint);
 
-            revoluteJoint = new RevoluteJoint(torso, body, new Vector2(0, 
-                Conversion.ToWorld(texture.Height/(2.2f))), Vector2.Zero);
-           scene.World.AddJoint(revoluteJoint);
-           
             base.LoadContent();
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
-            if (fixtureB.Body == ((Box)scene.Elements[0]).body)
+            if (fixtureB.Body == touchedBox)
                 touchingBox = false;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            if (fixtureB.Body == ((Box)scene.Elements[0]).body)
+            if (fixtureB.Body.UserData as Box != null)
+            {
                 touchingBox = true;
+                touchedBox = fixtureB.Body;
+            }
             return true;
         }
-
 
         public override void Update(GameTime gameTime)
         {
@@ -92,8 +101,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            //scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(torso.Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height * 5/11), 1.0f, Effect, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
@@ -105,28 +113,44 @@ namespace Nobots
             KeyboardState keybState = Keyboard.GetState();
             if (keybState.IsKeyDown(Keys.Left))
             {
-                body.FixedRotation = false;
                 Effect = SpriteEffects.FlipHorizontally;
-                body.AngularVelocity = -20.0f;
+                if (body.ContactList != null)
+                {
+                    body.FixedRotation = false;
+                    body.AngularVelocity = -20.0f;
+                }
+                else
+                {
+                    body.LinearVelocity = new Vector2(-Math.Abs(body.LinearVelocity.X), body.LinearVelocity.Y);
+                    torso.LinearVelocity = new Vector2(-Math.Abs(torso.LinearVelocity.X), torso.LinearVelocity.Y);
+                }
 
                 if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
                 {
-                    ((Box)scene.Elements[0]).body.Friction = 0.0f;
-                    sliderJoint = new SliderJoint(torso, ((Box)scene.Elements[0]).body, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
+                    touchedBox.Friction = 0.0f;
+                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
                     sliderJoint.CollideConnected = true;
                     scene.World.AddJoint(sliderJoint);
                 }
             }
             else if (keybState.IsKeyDown(Keys.Right))
             {
-                body.FixedRotation = false;
                 Effect = SpriteEffects.None;
-                body.AngularVelocity = 20.0f;
+                if (body.ContactList != null)
+                {
+                    body.FixedRotation = false;
+                    body.AngularVelocity = 20.0f;
+                }
+                else
+                {
+                    body.LinearVelocity = new Vector2(Math.Abs(body.LinearVelocity.X), body.LinearVelocity.Y);
+                    torso.LinearVelocity = new Vector2(Math.Abs(torso.LinearVelocity.X), torso.LinearVelocity.Y);
+                }
 
                 if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
                 {
-                    ((Box)scene.Elements[0]).body.Friction = 0.0f;
-                    sliderJoint = new SliderJoint(torso, ((Box)scene.Elements[0]).body, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
+                    touchedBox.Friction = 0.0f;
+                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
                     sliderJoint.CollideConnected = true;
                     scene.World.AddJoint(sliderJoint);
                 }
@@ -139,8 +163,7 @@ namespace Nobots
 
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
             {
-                body.ApplyForce(new Vector2(0, -75));
-              //  torso.ApplyForce(new Vector2(0, -60));
+                torso.ApplyForce(new Vector2(0, -130));
             }
 
             if (previousState.IsKeyDown(Keys.LeftControl) && keybState.IsKeyUp(Keys.LeftControl))
@@ -148,7 +171,7 @@ namespace Nobots
                 if (scene.World.JointList.Contains(sliderJoint))
                 {
                     scene.World.RemoveJoint(sliderJoint);
-                    ((Box)scene.Elements[0]).body.Friction = 100.0f;
+                    touchedBox.Friction = 100.0f;
                 }
             }
 
