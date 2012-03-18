@@ -41,6 +41,12 @@ namespace Nobots
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
             Camera.Target = Elements[1];
+            Elements.Add(new Box(Game, this));
+            Elements.Add(new Box(Game, this));
+            Elements.Add(new Box(Game, this));
+            Elements.Add(new Box(Game, this));
+            Elements.Add(new Box(Game, this));
+            Elements.Add(new Box(Game, this));
 
             Platform platform1 = new Platform(Game, this);
             Elements.Add(platform1);
@@ -63,7 +69,8 @@ namespace Nobots
             foreach (Element i in Elements)
                 i.Initialize();
 
-            platform1.Position = new Vector2(1.85f, 2.5f);
+            platform1.Position = new Vector2(0.7f, 3f);
+            platform1.Rotation = 1.0f;
             platform2.Position = new Vector2(3.8f, 3.75f);
             platform3.Position = new Vector2(5.0f, 5f);
             platform4.Position = new Vector2(9.7f, 4.4f);

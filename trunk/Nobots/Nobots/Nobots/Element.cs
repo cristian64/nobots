@@ -13,6 +13,12 @@ namespace Nobots
             get; set;   
         }
 
+        public abstract float Rotation
+        {
+            get;
+            set;
+        }
+
         protected Scene scene;
 
         public Element(Game game, Scene scene)
