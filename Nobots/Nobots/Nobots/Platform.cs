@@ -11,7 +11,7 @@ namespace Nobots
 {
     public class Platform : Element
     {
-        Body body;
+        public Body body;
         Texture2D texture;
 
         public override Vector2 Position
