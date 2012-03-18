@@ -11,7 +11,7 @@ namespace Nobots
 {
     public class Box : Element
     {
-        Body body;
+        public Body body;
         Texture2D texture;
 
         public override Vector2 Position
@@ -34,7 +34,7 @@ namespace Nobots
         protected override void LoadContent()
         {
             texture = Game.Content.Load<Texture2D>("box");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1.0f);
+            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 0.5f);
             body.Position = new Vector2(0.812996f, 0.583698f);
             body.BodyType = BodyType.Dynamic;
             body.Rotation = -2.236696f;
