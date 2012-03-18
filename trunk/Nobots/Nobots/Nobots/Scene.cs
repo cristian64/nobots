@@ -13,7 +13,7 @@ namespace Nobots
 {
     public class Scene : DrawableGameComponent
     {
-        public ExplosionSmokeParticleSystem ExplosionSmokeParticleSystem;
+        public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
         public SpriteBatch SpriteBatch;
         public Camera Camera;
         public World World;
@@ -30,12 +30,12 @@ namespace Nobots
             World = new World(new Vector2(0, 9.81f));
             physicsDebug = new DebugViewXNA(World);
 
-            ExplosionSmokeParticleSystem = new ExplosionSmokeParticleSystem(Game, this);
+            PlasmaExplosionParticleSystem = new PlasmaExplosionParticleSystem(Game, this);
         }
 
         public override void Initialize()
         {
-            ExplosionSmokeParticleSystem.Initialize();
+            PlasmaExplosionParticleSystem.Initialize();
 
             Backgrounds.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
@@ -90,11 +90,11 @@ namespace Nobots
         {
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
-                ExplosionSmokeParticleSystem.AddParticle(new Vector3(random.Next(75), random.Next(50), 0), Vector3.Zero);
-                ExplosionSmokeParticleSystem.AddParticle(new Vector3(random.Next(40), random.Next(45), 0), Vector3.Zero);
+                PlasmaExplosionParticleSystem.AddParticle(new Vector3(random.Next(75), random.Next(50), 0), Vector3.Zero);
+                PlasmaExplosionParticleSystem.AddParticle(new Vector3(random.Next(40), random.Next(45), 0), Vector3.Zero);
             }
 
-            ExplosionSmokeParticleSystem.Update(gameTime);
+            PlasmaExplosionParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             foreach (Background i in Backgrounds)

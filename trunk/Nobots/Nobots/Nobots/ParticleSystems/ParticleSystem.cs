@@ -393,7 +393,7 @@ namespace Nobots.ParticleSystem
                 device.DepthStencilState = DepthStencilState.DepthRead;
 
                 // Set the current status of the camera.
-                effectViewParameter.SetValue(scene.Camera.View);
+                effectViewParameter.SetValue(scene.Camera.ViewNonScaled);
                 effectProjectionParameter.SetValue(scene.Camera.Projection);
 
                 // Set an effect parameter describing the viewport size. This is
