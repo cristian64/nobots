@@ -17,6 +17,7 @@ namespace Nobots
         Body body;
         Body torso;
         Texture2D texture;
+        Box box;
         RevoluteJoint revoluteJoint;
         SliderJoint sliderJoint;
         public SpriteEffects Effect;
@@ -64,7 +65,7 @@ namespace Nobots
             revoluteJoint = new RevoluteJoint(torso, body, new Vector2(0, 
                 Conversion.ToWorld(texture.Height/(2.2f))), Vector2.Zero);
            scene.World.AddJoint(revoluteJoint);
-
+           
             base.LoadContent();
         }
 
@@ -107,6 +108,14 @@ namespace Nobots
                 body.FixedRotation = false;
                 Effect = SpriteEffects.FlipHorizontally;
                 body.AngularVelocity = -20.0f;
+
+                if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
+                {
+                    ((Box)scene.Elements[0]).body.Friction = 0.0f;
+                    sliderJoint = new SliderJoint(torso, ((Box)scene.Elements[0]).body, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
+                    sliderJoint.CollideConnected = true;
+                    scene.World.AddJoint(sliderJoint);
+                }
             }
             else if (keybState.IsKeyDown(Keys.Right))
             {
@@ -114,13 +123,12 @@ namespace Nobots
                 Effect = SpriteEffects.None;
                 body.AngularVelocity = 20.0f;
 
-                if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox)
+                if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
                 {
                     ((Box)scene.Elements[0]).body.Friction = 0.0f;
-                    sliderJoint = JointFactory.CreateSliderJoint(scene.World, torso, ((Box)scene.Elements[0]).body, Vector2.Zero,
-                      Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3/2));
+                    sliderJoint = new SliderJoint(torso, ((Box)scene.Elements[0]).body, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
                     sliderJoint.CollideConnected = true;
-
+                    scene.World.AddJoint(sliderJoint);
                 }
             }
             else
@@ -133,6 +141,15 @@ namespace Nobots
             {
                 body.ApplyForce(new Vector2(0, -75));
               //  torso.ApplyForce(new Vector2(0, -60));
+            }
+
+            if (previousState.IsKeyDown(Keys.LeftControl) && keybState.IsKeyUp(Keys.LeftControl))
+            {
+                if (scene.World.JointList.Contains(sliderJoint))
+                {
+                    scene.World.RemoveJoint(sliderJoint);
+                    ((Box)scene.Elements[0]).body.Friction = 100.0f;
+                }
             }
 
             previousState = keybState;
