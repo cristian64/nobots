@@ -16,12 +16,13 @@ namespace Nobots
     {
         Body body;
         Body torso;
-        Texture2D texture;
+        public Texture2D texture;
         RevoluteJoint revoluteJoint;
         SliderJoint sliderJoint;
         public SpriteEffects Effect;
         bool touchingBox;
         Body touchedBox;
+        public CharacterState State;
 
         public override Vector2 Position
         {
@@ -55,6 +56,7 @@ namespace Nobots
         protected override void LoadContent()
         {
             texture = Game.Content.Load<Texture2D>("girl");
+            State = new IdleCharacterState(scene, this);
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 1);
             body.Position = new Vector2(2.812996f, 2.083698f);
@@ -94,6 +96,7 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
+            State.Update();
             processKeyboard();
             base.Update(gameTime);
         }
@@ -101,7 +104,10 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(Position - scene.Camera.Position),
+                new Rectangle(State.textureXmin, State.textureYmin, State.characterWidth, State.characterHeight),
+                Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
+            //scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
@@ -113,6 +119,9 @@ namespace Nobots
             KeyboardState keybState = Keyboard.GetState();
             if (keybState.IsKeyDown(Keys.Left))
             {
+                if(previousState.IsKeyUp(Keys.Left))
+                    State = new RunningCharacterState(scene, this);
+
                 Effect = SpriteEffects.FlipHorizontally;
                 if (body.ContactList != null)
                 {
@@ -135,6 +144,9 @@ namespace Nobots
             }
             else if (keybState.IsKeyDown(Keys.Right))
             {
+                if (previousState.IsKeyUp(Keys.Right))
+                    State = new RunningCharacterState(scene, this);
+
                 Effect = SpriteEffects.None;
                 if (body.ContactList != null)
                 {
@@ -157,6 +169,8 @@ namespace Nobots
             }
             else
             {
+                if (previousState.IsKeyDown(Keys.Right) || previousState.IsKeyDown(Keys.Left))
+                    State = new IdleCharacterState(scene, this);
                 body.FixedRotation = true;
                 body.AngularVelocity = 0.0f;
             }
