@@ -6,16 +6,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Nobots
 {
-    public class IdleCharacterState : CharacterState
+    class JumpingCharacterState : CharacterState
     {
-        public IdleCharacterState(Scene scene, Character character) 
+        public JumpingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("girl");
+            texture = scene.Game.Content.Load<Texture2D>("girl_moving");
+            characterWidth = texture.Width/8;
+            characterHeight = texture.Height/5;
             character.texture = texture;
-            characterWidth = texture.Width;
-            characterHeight = texture.Height;
-            textureXmin = 0;
+            textureXmin = (texture.Width * 3) / 8;
             textureYmin = 0;
         }
 

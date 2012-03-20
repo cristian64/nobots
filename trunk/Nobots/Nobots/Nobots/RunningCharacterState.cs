@@ -9,7 +9,6 @@ namespace Nobots
 {
     public class RunningCharacterState : CharacterState
     {
-
         public RunningCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
@@ -19,7 +18,6 @@ namespace Nobots
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;
-            Console.WriteLine(textureXmin + ", " + textureYmin);
         }
 
         public override void Update()
@@ -30,6 +28,8 @@ namespace Nobots
 
         private Vector2 changeRunningTextures()
         {
+            textureXmin += texture.Width / 8;
+
             if (textureXmin == (texture.Width/8)*5 && textureYmin == (texture.Height/5)*4)
             {
                 textureXmin = 0;
@@ -40,13 +40,6 @@ namespace Nobots
                 textureXmin = 0;
                 textureYmin += texture.Height / 5;
             }
-            else
-            {
-                textureXmin += texture.Width / 8;
-               // textureYmin += texture.Height / 5;
-            }
-            Console.WriteLine("X: " + textureXmin + ", Y: " + textureYmin + ", Width: " + characterWidth +
-                ", Height: " + characterHeight);
 
             return new Vector2(textureXmin, textureYmin);
         }
