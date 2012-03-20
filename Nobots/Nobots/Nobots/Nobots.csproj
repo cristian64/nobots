@@ -113,6 +113,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="IdleCharacterState.cs" />
+    <Compile Include="JumpingCharacterState.cs" />
     <Compile Include="ParticleSystems\ExplosionParticleSystem.cs" />
     <Compile Include="ParticleSystems\ExplosionSmokeParticleSystem.cs" />
     <Compile Include="ParticleSystems\FireParticleSystem.cs" />

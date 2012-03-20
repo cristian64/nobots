@@ -91,6 +91,7 @@ namespace Nobots
                 touchingBox = true;
                 touchedBox = fixtureB.Body;
             }
+
             return true;
         }
 
@@ -106,7 +107,7 @@ namespace Nobots
             scene.SpriteBatch.Begin();
             scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(Position - scene.Camera.Position),
                 new Rectangle(State.textureXmin, State.textureYmin, State.characterWidth, State.characterHeight),
-                Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
+                Color.White, 0.0f, new Vector2(State.characterWidth/2, State.characterHeight / 2), 1.0f, Effect, 0);
             //scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
             scene.SpriteBatch.End();
 
@@ -119,7 +120,7 @@ namespace Nobots
             KeyboardState keybState = Keyboard.GetState();
             if (keybState.IsKeyDown(Keys.Left))
             {
-                if(previousState.IsKeyUp(Keys.Left))
+                if (previousState.IsKeyUp(Keys.Left))
                     State = new RunningCharacterState(scene, this);
 
                 Effect = SpriteEffects.FlipHorizontally;
@@ -137,7 +138,7 @@ namespace Nobots
                 if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
                 {
                     touchedBox.Friction = 0.0f;
-                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
+                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(torso.Position, touchedBox.Position));
                     sliderJoint.CollideConnected = true;
                     scene.World.AddJoint(sliderJoint);
                 }
@@ -162,7 +163,7 @@ namespace Nobots
                 if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
                 {
                     touchedBox.Friction = 0.0f;
-                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Conversion.ToWorld(texture.Width * 3 / 2));
+                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(torso.Position, touchedBox.Position));
                     sliderJoint.CollideConnected = true;
                     scene.World.AddJoint(sliderJoint);
                 }
@@ -177,6 +178,7 @@ namespace Nobots
 
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
             {
+               // State = new JumpingCharacterState(scene, this);
                 torso.ApplyForce(new Vector2(0, -130));
             }
 
