@@ -30,6 +30,7 @@ namespace Nobots
             //graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             //graphics.IsFullScreen = true;
             graphics.PreferMultiSampling = true;
+            Window.AllowUserResizing = true;
         }
 
         /// <summary>
