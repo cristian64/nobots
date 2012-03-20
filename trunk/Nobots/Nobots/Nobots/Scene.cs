@@ -20,6 +20,7 @@ namespace Nobots
         public DebugViewXNA physicsDebug;
         public List<Element> Elements;
         public List<Background> Backgrounds;
+        public List<Background> Foregrounds;
 
         public Scene(Game game)
             : base(game)
@@ -27,6 +28,7 @@ namespace Nobots
             Camera = new Camera(Game);
             Elements = new List<Element>();
             Backgrounds = new List<Background>();
+            Foregrounds = new List<Background>();
             World = new World(new Vector2(0, 9.81f));
             physicsDebug = new DebugViewXNA(World);
 
@@ -38,6 +40,7 @@ namespace Nobots
             PlasmaExplosionParticleSystem.Initialize();
 
             Backgrounds.Add(new Background(Game, this));
+            Foregrounds.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
             Camera.Target = Elements[1];
@@ -68,6 +71,12 @@ namespace Nobots
                 i.Initialize();
             foreach (Element i in Elements)
                 i.Initialize();
+            foreach (Background i in Foregrounds)
+                i.Initialize();
+
+            Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
+            Foregrounds[0].Speed = 1.5f * Vector2.One;
+            Foregrounds[0].Position = new Vector2(5.0f, 0.0f);
 
             platform1.Position = new Vector2(0.7f, 3f);
             platform1.Rotation = 1.0f;
@@ -117,10 +126,12 @@ namespace Nobots
                 i.Draw(gameTime);
             foreach (Element i in Elements)
                 i.Draw(gameTime);
-
             PlasmaExplosionParticleSystem.Draw(gameTime);
 
+
             physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
+            foreach (Background i in Foregrounds)
+                i.Draw(gameTime);
             
             base.Update(gameTime);
         }
