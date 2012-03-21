@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Collision.Shapes;
+using FarseerPhysics.Common;
 
 namespace Nobots
 {
@@ -69,7 +70,7 @@ namespace Nobots
             body.CreateFixture(ceiling);
 
             body.Position = new Vector2(-2.5f, 1.583698f);
-            body.BodyType = BodyType.Static;
+            body.BodyType = BodyType.Kinematic;
 
             InitialPosition = body.Position;
             FinalPosition = body.Position - Vector2.UnitY * 3;
@@ -83,7 +84,7 @@ namespace Nobots
             if (Vector2.DistanceSquared(targetPosition, Position) > Speed * Speed * gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)
             {
                 Vector2 direction = Vector2.Normalize(targetPosition - Position);
-                Position += Speed * (float)gameTime.ElapsedGameTime.TotalSeconds * direction;
+                body.LinearVelocity = Speed * direction;
             }
             else
             {
@@ -97,7 +98,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
