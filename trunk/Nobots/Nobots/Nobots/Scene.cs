@@ -51,6 +51,8 @@ namespace Nobots
             Elements.Add(new Box(Game, this));
             Elements.Add(new Box(Game, this));
 
+            Elements.Add(new Elevator(Game, this));
+
             Platform platform1 = new Platform(Game, this);
             Elements.Add(platform1);
             Platform platform2 = new Platform(Game, this);

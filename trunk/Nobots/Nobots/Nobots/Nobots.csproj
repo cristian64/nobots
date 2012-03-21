@@ -115,6 +115,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Element.cs" />
+    <Compile Include="Elevator.cs" />
     <Compile Include="IdleCharacterState.cs" />
     <Compile Include="JumpingCharacterState.cs" />
     <Compile Include="ParticleSystems\ExplosionParticleSystem.cs" />
