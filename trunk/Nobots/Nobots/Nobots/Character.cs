@@ -58,18 +58,16 @@ namespace Nobots
             texture = Game.Content.Load<Texture2D>("girl");
             State = new IdleCharacterState(scene, this);
 
-            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 1);
+            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 30);
             body.Position = new Vector2(2.812996f, 2.083698f);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
-            body.Mass = 10000.0f;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
-            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width), 1.0f);
+            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width), 30);
             torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
             torso.BodyType = BodyType.Dynamic;
-            torso.Mass = 20;
             torso.FixedRotation = true;
 
             revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2)), Vector2.Zero);
@@ -179,7 +177,7 @@ namespace Nobots
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
             {
                // State = new JumpingCharacterState(scene, this);
-                torso.ApplyForce(new Vector2(0, -130));
+                torso.ApplyForce(new Vector2(0, -4500));
             }
 
             if (previousState.IsKeyDown(Keys.LeftControl) && keybState.IsKeyUp(Keys.LeftControl))

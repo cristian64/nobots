@@ -29,7 +29,7 @@ namespace Nobots
             Elements = new List<Element>();
             Backgrounds = new List<Background>();
             Foregrounds = new List<Background>();
-            World = new World(new Vector2(0, 9.81f));
+            World = new World(new Vector2(0, 13));
             physicsDebug = new DebugViewXNA(World);
 
             PlasmaExplosionParticleSystem = new PlasmaExplosionParticleSystem(Game, this);
