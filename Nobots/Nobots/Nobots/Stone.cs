@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Common;
 using FarseerPhysics.Common.Decomposition;
+using FarseerPhysics.Common.PolygonManipulation;
 
 namespace Nobots
 {
@@ -68,21 +69,36 @@ namespace Nobots
             : base(game, scene)
         {
             texture = Game.Content.Load<Texture2D>("stone");
+
+            //Create an array to hold the data from the texture
             uint[] data = new uint[texture.Width * texture.Height];
+
+            //Transfer the texture data to the array
             texture.GetData(data);
-            Vertices verts = PolygonTools.CreatePolygon(data, texture.Width, false);
-            Vector2 scale = new Vector2(Conversion.WorldUnitsToDisplayUnitsRatio, Conversion.WorldUnitsToDisplayUnitsRatio);
 
-            verts.Scale(ref scale);
-            
-            List<Fixture> compound = FixtureFactory.AttachCompoundPolygon(BayazitDecomposer.ConvexPartition(verts), 1, body);
+            //Find the vertices that makes up the outline of the shape in the texture
+            Vertices textureVertices = PolygonTools.CreatePolygon(data, texture.Width, false);
+            textureVertices.Translate(new Vector2(-texture.Width / 2, -texture.Height / 2));
 
-            compound[0].Body.BodyType = BodyType.Dynamic;
-           // body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 150f);
-            body.Position = new Vector2(7.812996f, 0.583698f);
+            //We simplify the vertices found in the texture.
+            textureVertices = SimplifyTools.ReduceByDistance(textureVertices, 4f);
+
+            //Since it is a concave polygon, we need to partition it into several smaller convex polygons
+            List<Vertices> list = BayazitDecomposer.ConvexPartition(textureVertices);
+
+            //scale the vertices from graphics space to sim space
+            Vector2 vertScale = new Vector2(Conversion.WorldUnitsToDisplayUnitsRatio);
+            foreach (Vertices vertices in list)
+            {
+                vertices.Scale(ref vertScale);
+            }
+
+            //Create a single body with multiple fixtures
+            body = BodyFactory.CreateCompoundPolygon(scene.World, list, 500f, BodyType.Dynamic);
             body.BodyType = BodyType.Dynamic;
-            body.Friction = 5.0f;
-            body.Mass = 10;
+
+            body.Position = new Vector2(7.812996f, 0f);
+            body.Friction = 1000.0f;
 
             body.UserData = this;
         }

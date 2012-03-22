@@ -44,6 +44,7 @@ namespace Nobots
             Backgrounds.Add(new Background(Game, this));
             Foregrounds.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
+            Elements.Add(new Stone(Game, this));
             Elements.Add(new Circuit(Game, this, Conversion.ToWorld(new Vector2(1000, 300)), Conversion.ToWorld(new Vector2(1100, 500))));
 
 
