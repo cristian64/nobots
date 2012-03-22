@@ -44,26 +44,21 @@ namespace Nobots
             Backgrounds.Add(new Background(Game, this));
             Foregrounds.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
-            Elements.Add(new Character(Game, this));
-            Camera.Target = Elements[1];
-          /*  Elements.Add(new Box(Game, this));
-            Elements.Add(new Box(Game, this));
-            Elements.Add(new Box(Game, this));
-            Elements.Add(new Box(Game, this));
-            Elements.Add(new Box(Game, this));
-            Elements.Add(new Box(Game, this));
-*/
+            Elements.Add(new Circuit(Game, this, Conversion.ToWorld(new Vector2(1000, 300)), Conversion.ToWorld(new Vector2(1100, 500))));
 
-            Platform platform1 = new Platform(Game, this, Conversion.ToWorld(new Vector2(0, GraphicsDevice.PresentationParameters.BackBufferHeight)));
+
+            Elements.Add(Camera.Target = new Character(Game, this));
+
+            Platform platform1 = new Platform(Game, this, Conversion.ToWorld(new Vector2(0, 400)));
             Elements.Add(platform1);
             Platform platform2 = new Platform(Game, this, new Vector2(platform1.Position.X + Conversion.ToWorld(platform1.Width), platform1.Position.Y));
             Elements.Add(platform2);
-            Platform platform3 = new Platform(Game, this, new Vector2(platform2.Position.X, platform2.Position.Y/3));
+            Platform platform3 = new Platform(Game, this, new Vector2(platform2.Position.X, platform2.Position.Y - Conversion.ToWorld(300)));
             Elements.Add(platform3);
             Platform platform4 = new Platform(Game, this, new Vector2(platform3.Position.X + Conversion.ToWorld(platform3.Width), platform3.Position.Y));
             Elements.Add(platform4);
 
-            Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + Conversion.ToWorld(platform4.Width * 3/2), platform4.Position.Y));
+            Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + Conversion.ToWorld(platform4.Width + 150), platform4.Position.Y));
             Elements.Add(platform5);
             Platform platform6 = new Platform(Game, this, new Vector2(platform5.Position.X + Conversion.ToWorld(platform5.Width), platform5.Position.Y));
             Elements.Add(platform6);

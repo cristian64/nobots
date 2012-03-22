@@ -114,6 +114,7 @@
     <Compile Include="Box.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Circuit.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="Elevator.cs" />
     <Compile Include="IdleCharacterState.cs" />
