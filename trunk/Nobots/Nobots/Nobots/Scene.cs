@@ -59,9 +59,9 @@ namespace Nobots
             Platform platform4 = new Platform(Game, this, new Vector2(platform3.Position.X + Conversion.ToWorld(platform3.Width), platform3.Position.Y));
             Elements.Add(platform4);
 
-            Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + Conversion.ToWorld(platform4.Width + 150), platform4.Position.Y));
+            Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + Conversion.ToWorld(platform4.Width + 300), platform4.Position.Y));
             Elements.Add(platform5);
-            Platform platform6 = new Platform(Game, this, new Vector2(17.42001f, 1));
+            Platform platform6 = new Platform(Game, this, new Vector2(18.92004f, 1));
             Elements.Add(platform6);
 
             Platform platform7 = new Platform(Game, this, new Vector2(platform6.Position.X - Conversion.ToWorld(platform6.Width/2), platform2.Position.Y));
@@ -85,7 +85,7 @@ namespace Nobots
 
             Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(1.640002f, 1.360001f));
             Elements.Add(ladder1);
-            Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(15.22003f, 1.360001f));
+            Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(16.71999f, 1.360001f));
             Elements.Add(ladder2);
             Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(32.09013f, -1.309999f));
             Elements.Add(ladder3);

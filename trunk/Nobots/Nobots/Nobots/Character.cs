@@ -22,6 +22,9 @@ namespace Nobots
         public SpriteEffects Effect;
         bool touchingBox;
         Body touchedBox;
+        float touchedBoxMass;
+        float touchedBoxFriction;
+
         public CharacterState State;
 
         public override int Height
@@ -83,13 +86,14 @@ namespace Nobots
             body.Position = new Vector2(0, 0);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
-            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-            body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
             torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width), 30);
             torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
+
+            torso.OnCollision += new OnCollisionEventHandler(body_OnCollision);
+            torso.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
             body.CollisionCategories = Category.Cat1;
             torso.CollisionCategories = Category.Cat1;
@@ -107,7 +111,7 @@ namespace Nobots
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            if (fixtureB.Body.UserData as Box != null)
+            if (fixtureB.Body.UserData as Box != null || fixtureB.Body.UserData as Stone != null)
             {
                 touchingBox = true;
                 touchedBox = fixtureB.Body;
@@ -160,7 +164,10 @@ namespace Nobots
 
                 if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
                 {
+                    touchedBoxFriction = touchedBox.Friction;
+                    touchedBoxMass = touchedBox.Mass;
                     touchedBox.Friction = 0.0f;
+                    touchedBox.Mass = 0.0f;
                     sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(torso.Position, touchedBox.Position));
                     sliderJoint.CollideConnected = true;
                     scene.World.AddJoint(sliderJoint);
@@ -187,7 +194,10 @@ namespace Nobots
 
                 if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
                 {
+                    touchedBoxFriction = touchedBox.Friction;
+                    touchedBoxMass = touchedBox.Mass;
                     touchedBox.Friction = 0.0f;
+                    touchedBox.Mass = 0.0f;
                     sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(torso.Position, touchedBox.Position));
                     sliderJoint.CollideConnected = true;
                     scene.World.AddJoint(sliderJoint);
@@ -213,7 +223,8 @@ namespace Nobots
                 if (scene.World.JointList.Contains(sliderJoint))
                 {
                     scene.World.RemoveJoint(sliderJoint);
-                    touchedBox.Friction = 100.0f;
+                    touchedBox.Friction = touchedBoxFriction;
+                    touchedBox.Mass = touchedBoxMass;
                 }
             }
 
