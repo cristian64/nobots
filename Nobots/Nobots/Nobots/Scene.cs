@@ -61,7 +61,7 @@ namespace Nobots
 
             Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + Conversion.ToWorld(platform4.Width + 150), platform4.Position.Y));
             Elements.Add(platform5);
-            Platform platform6 = new Platform(Game, this, new Vector2(platform5.Position.X + Conversion.ToWorld(platform5.Width), platform5.Position.Y));
+            Platform platform6 = new Platform(Game, this, new Vector2(17.42001f, 1));
             Elements.Add(platform6);
 
             Platform platform7 = new Platform(Game, this, new Vector2(platform6.Position.X - Conversion.ToWorld(platform6.Width/2), platform2.Position.Y));
@@ -78,16 +78,16 @@ namespace Nobots
             Platform platform12 = new Platform(Game, this, new Vector2(platform11.Position.X, platform11.Position.Y/3));
             Elements.Add(platform12);
 
-            Platform platform13 = new Platform(Game, this, new Vector2(platform12.Position.X - Conversion.ToWorld(platform12.Width), platform12.Position.Y - (platform11.Position.Y - platform12.Position.Y)));
+            Platform platform13 = new Platform(Game, this, new Vector2(29.89003f, -1.333333f));
             Elements.Add(platform13);
-            Platform platform14 = new Platform(Game, this, new Vector2(platform12.Position.X, platform13.Position.Y));
+            Platform platform14 = new Platform(Game, this, new Vector2(34.28976f, -1.333333f));
             Elements.Add(platform14);
 
-            Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(platform2.Position.X, (platform2.Position.Y + platform3.Position.Y) / 2 - Conversion.ToWorld(platform2.Height)));
+            Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(1.640002f, 1.360001f));
             Elements.Add(ladder1);
-            Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(platform7.Position.X - Conversion.ToWorld(platform7.Width / 3), (platform7.Position.Y + platform6.Position.Y) / 2 - Conversion.ToWorld(platform9.Height)));
+            Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(15.22003f, 1.360001f));
             Elements.Add(ladder2);
-            Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(platform14.Position.X, (platform14.Position.Y + platform12.Position.Y) / 2 - Conversion.ToWorld(platform12.Height)));
+            Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(32.09013f, -1.309999f));
             Elements.Add(ladder3);
             Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + Conversion.ToWorld(platform10.Width/2), platform10.Position.Y - Conversion.ToWorld(platform10.Height*4)));
             Elements.Add(elevator1);
@@ -110,20 +110,39 @@ namespace Nobots
         }
 
         Random random = new Random();
+        Element selection = null;
         public override void Update(GameTime gameTime)
         {
-            //Console.WriteLine(Camera.WorldToScreen(Elements[3].Position));
-
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
-            {
-                Console.WriteLine(Camera.ScreenToWorld(Mouse.GetState()));
-                Console.WriteLine(Elements[3].Position);
-            }
-
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
                 PlasmaExplosionParticleSystem.AddParticle(new Vector3(random.Next(75), random.Next(50), 0), Vector3.Zero);
                 PlasmaExplosionParticleSystem.AddParticle(new Vector3(random.Next(40), random.Next(45), 0), Vector3.Zero);
+            }
+
+            if (selection != null)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                    selection.Position = selection.Position - Vector2.UnitY * Conversion.ToWorld(1);
+                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                    selection.Position = selection.Position + Vector2.UnitY * Conversion.ToWorld(1);
+                if (Keyboard.GetState().IsKeyDown(Keys.A))
+                    selection.Position = selection.Position - Vector2.UnitX * Conversion.ToWorld(1);
+                if (Keyboard.GetState().IsKeyDown(Keys.D))
+                    selection.Position = selection.Position + Vector2.UnitX * Conversion.ToWorld(1);
+            }
+
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                selection = null;
+                foreach (Element i in Elements)
+                {
+                    if (Vector2.Distance(i.Position, Camera.ScreenToWorld(Mouse.GetState())) < Conversion.ToWorld(10))
+                    {
+                        selection = i;
+                        Console.WriteLine("Selected one at " + i.Position);
+                        break;
+                    }
+                }
             }
 
             PlasmaExplosionParticleSystem.Update(gameTime);
