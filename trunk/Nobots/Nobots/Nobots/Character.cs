@@ -24,6 +24,30 @@ namespace Nobots
         Body touchedBox;
         public CharacterState State;
 
+        public override int Height
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public override int Width
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public override Vector2 Position
         {
             get
@@ -55,7 +79,8 @@ namespace Nobots
             State = new IdleCharacterState(scene, this);
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 30);
-            body.Position = new Vector2(2.812996f, 2.083698f);
+            body.Position = Conversion.ToWorld(new Vector2(-50, GraphicsDevice.PresentationParameters.BackBufferHeight));
+            //body.Position = new Vector2(2.812996f, 2.083698f);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
@@ -66,8 +91,12 @@ namespace Nobots
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
 
+            body.CollisionCategories = Category.Cat1;
+            torso.CollisionCategories = Category.Cat1;
+
             revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2)), Vector2.Zero);
             scene.World.AddJoint(revoluteJoint);
+
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
@@ -115,6 +144,8 @@ namespace Nobots
                 if (previousState.IsKeyUp(Keys.Left))
                     State = new RunningCharacterState(scene, this);
 
+                torso.ApplyForce(new Vector2(-10.0f, 0));
+
                 Effect = SpriteEffects.FlipHorizontally;
                 if (body.ContactList != null)
                 {
@@ -139,6 +170,8 @@ namespace Nobots
             {
                 if (previousState.IsKeyUp(Keys.Right))
                     State = new RunningCharacterState(scene, this);
+
+                torso.ApplyForce(new Vector2(10.0f, 0));
 
                 Effect = SpriteEffects.None;
                 if (body.ContactList != null)
@@ -166,6 +199,7 @@ namespace Nobots
                     State = new IdleCharacterState(scene, this);
                 body.FixedRotation = true;
                 body.AngularVelocity = 0.0f;
+                torso.LinearVelocity = new Vector2(0, torso.LinearVelocity.Y);
             }
 
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))

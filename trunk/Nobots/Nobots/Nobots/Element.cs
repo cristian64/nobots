@@ -19,6 +19,18 @@ namespace Nobots
             set;
         }
 
+        public abstract int Width
+        {
+            get;
+            set;
+        }
+
+        public abstract int Height
+        {
+            get;
+            set;
+        }
+
         protected Scene scene;
 
         public Element(Game game, Scene scene)
