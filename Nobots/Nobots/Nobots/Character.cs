@@ -79,8 +79,8 @@ namespace Nobots
             State = new IdleCharacterState(scene, this);
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 30);
-            body.Position = Conversion.ToWorld(new Vector2(-50, GraphicsDevice.PresentationParameters.BackBufferHeight));
-            //body.Position = new Vector2(2.812996f, 2.083698f);
+            //body.Position = Conversion.ToWorld(new Vector2(-50, GraphicsDevice.PresentationParameters.BackBufferHeight));
+            body.Position = new Vector2(0, 0);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
