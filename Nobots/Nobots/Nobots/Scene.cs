@@ -83,34 +83,18 @@ namespace Nobots
             Platform platform14 = new Platform(Game, this, new Vector2(platform12.Position.X, platform13.Position.Y));
             Elements.Add(platform14);
 
-            Ladder ladder1 = new Ladder(Game, this, 9, new Vector2(platform2.Position.X, (platform2.Position.Y + platform3.Position.Y)/2 - Conversion.ToWorld(platform2.Height)));
+            Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(platform2.Position.X, (platform2.Position.Y + platform3.Position.Y) / 2 - Conversion.ToWorld(platform2.Height)));
             Elements.Add(ladder1);
-            Ladder ladder2 = new Ladder(Game, this, 9, new Vector2(platform7.Position.X - Conversion.ToWorld(platform7.Width/3), (platform7.Position.Y + platform6.Position.Y)/2 - Conversion.ToWorld(platform9.Height)));
+            Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(platform7.Position.X - Conversion.ToWorld(platform7.Width / 3), (platform7.Position.Y + platform6.Position.Y) / 2 - Conversion.ToWorld(platform9.Height)));
             Elements.Add(ladder2);
-            Ladder ladder3 = new Ladder(Game, this, 9, new Vector2(platform14.Position.X, (platform14.Position.Y + platform12.Position.Y) / 2 - Conversion.ToWorld(platform12.Height)));
+            Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(platform14.Position.X, (platform14.Position.Y + platform12.Position.Y) / 2 - Conversion.ToWorld(platform12.Height)));
             Elements.Add(ladder3);
             Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + Conversion.ToWorld(platform10.Width/2), platform10.Position.Y - Conversion.ToWorld(platform10.Height*4)));
             Elements.Add(elevator1);
 
-
-          /*  Platform platform1 = new Platform(Game, this, new Vector2(0.7f, 3f));
-            Platform platform2 = new Platform(Game, this, new Vector2(3.8f, 3.75f));
-            Elements.Add(platform2);
-            Platform platform3 = new Platform(Game, this, new Vector2(5.0f, 5f));
-            Elements.Add(platform3);
-            Platform platform4 = new Platform(Game, this, new Vector2(9.7f, 4.4f));
-            Elements.Add(platform4);
-            Platform platform5 = new Platform(Game, this, new Vector2(13.8f, 3.5f));
-            Elements.Add(platform5);
-            Platform platform6 = new Platform(Game, this, new Vector2(17.8f, 3.25f));
-            Elements.Add(platform6);
-            Platform platform7 = new Platform(Game, this, new Vector2(21.8f, 3.25f));
-            Elements.Add(platform7);
-            */
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;
             Foregrounds[0].Position = new Vector2(5.0f, 0.0f);
-
         }
 
         protected override void LoadContent()
@@ -128,6 +112,14 @@ namespace Nobots
         Random random = new Random();
         public override void Update(GameTime gameTime)
         {
+            //Console.WriteLine(Camera.WorldToScreen(Elements[3].Position));
+
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                Console.WriteLine(Camera.ScreenToWorld(Mouse.GetState()));
+                Console.WriteLine(Elements[3].Position);
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
                 PlasmaExplosionParticleSystem.AddParticle(new Vector3(random.Next(75), random.Next(50), 0), Vector3.Zero);
@@ -140,6 +132,8 @@ namespace Nobots
             foreach (Background i in Backgrounds)
                 i.Update(gameTime);
             foreach (Element i in Elements)
+                i.Update(gameTime);
+            foreach (Background i in Foregrounds)
                 i.Update(gameTime);
             base.Update(gameTime);
         }

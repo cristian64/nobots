@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Nobots
 {
@@ -54,6 +55,27 @@ namespace Nobots
             Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0, 1);
 
             base.Update(gameTime);
+        }
+
+        public Vector2 WorldToScreen(Vector2 worldPosition)
+        {
+            Vector3 position = Game.GraphicsDevice.Viewport.Project(new Vector3(worldPosition.X, worldPosition.Y, 0), Projection, View, Matrix.Identity);
+            return new Vector2(position.X, position.Y);
+        }
+
+        public Vector2 ScreenToWorld(Vector2 screenPosition)
+        {
+            return Conversion.ToWorld(screenPosition) + Position;
+        }
+
+        public Vector2 ScreenToWorld(int x, int y)
+        {
+            return ScreenToWorld(new Vector2(x, y));
+        }
+
+        public Vector2 ScreenToWorld(MouseState mouseState)
+        {
+            return ScreenToWorld(mouseState.X, mouseState.Y);
         }
     }
 }
