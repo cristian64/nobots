@@ -60,10 +60,7 @@ namespace Nobots
             : base(game, scene)
         {
             Active = true;
-        }
 
-        protected override void LoadContent()
-        {
             texture = Game.Content.Load<Texture2D>("elevator");
             body = BodyFactory.CreateEdge(scene.World, Vector2.Zero, new Vector2(Conversion.ToWorld(texture.Width), 0));
             EdgeShape ceiling = new EdgeShape(new Vector2(0, Conversion.ToWorld(texture.Height)), new Vector2(Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height)));
@@ -74,8 +71,6 @@ namespace Nobots
 
             InitialPosition = body.Position;
             FinalPosition = body.Position - Vector2.UnitY * 3;
-
-            base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)

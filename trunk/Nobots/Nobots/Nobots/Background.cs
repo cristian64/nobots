@@ -40,12 +40,7 @@ namespace Nobots
             : base(game, scene)
         {
             Speed = new Vector2(0.1f, 0.01f);
-        }
-
-        protected override void LoadContent()
-        {
             Texture = Game.Content.Load<Texture2D>("background");
-            base.LoadContent();
         }
 
         public override void Draw(GameTime gameTime)

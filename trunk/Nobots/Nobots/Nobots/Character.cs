@@ -51,10 +51,6 @@ namespace Nobots
         public Character(Game game, Scene scene)
             : base(game, scene)
         {
-        }
-
-        protected override void LoadContent()
-        {
             texture = Game.Content.Load<Texture2D>("girl");
             State = new IdleCharacterState(scene, this);
 
@@ -72,8 +68,6 @@ namespace Nobots
 
             revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2)), Vector2.Zero);
             scene.World.AddJoint(revoluteJoint);
-
-            base.LoadContent();
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
@@ -95,7 +89,7 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
-            State.Update();
+            State.Update(gameTime);
             processKeyboard();
             base.Update(gameTime);
         }
@@ -176,7 +170,7 @@ namespace Nobots
 
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
             {
-               // State = new JumpingCharacterState(scene, this);
+                // State = new JumpingCharacterState(scene, this);
                 torso.ApplyForce(new Vector2(0, -4500));
             }
 
