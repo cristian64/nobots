@@ -118,6 +118,7 @@
     <Compile Include="Elevator.cs" />
     <Compile Include="IdleCharacterState.cs" />
     <Compile Include="JumpingCharacterState.cs" />
+    <Compile Include="Ladder.cs" />
     <Compile Include="ParticleSystems\ExplosionParticleSystem.cs" />
     <Compile Include="ParticleSystems\ExplosionSmokeParticleSystem.cs" />
     <Compile Include="ParticleSystems\FireParticleSystem.cs" />
