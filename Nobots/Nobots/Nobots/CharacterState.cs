@@ -23,16 +23,12 @@ namespace Nobots
             this.scene = scene;
         }
 
-        public void LoadContent()
-        {
-        }
-
         public void ChangeState(CharacterState newState)
         {
             character.State = newState;
         }
 
-        public virtual void Update()
+        public virtual void Update(GameTime gameTime)
         {
         }
 

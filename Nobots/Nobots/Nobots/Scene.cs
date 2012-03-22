@@ -37,6 +37,8 @@ namespace Nobots
 
         public override void Initialize()
         {
+            base.Initialize();
+
             PlasmaExplosionParticleSystem.Initialize();
 
             Backgrounds.Add(new Background(Game, this));
@@ -68,14 +70,6 @@ namespace Nobots
             Platform platform7 = new Platform(Game, this);
             Elements.Add(platform7);
 
-            Camera.Initialize();
-            foreach (Background i in Backgrounds)
-                i.Initialize();
-            foreach (Element i in Elements)
-                i.Initialize();
-            foreach (Background i in Foregrounds)
-                i.Initialize();
-
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;
             Foregrounds[0].Position = new Vector2(5.0f, 0.0f);
@@ -88,8 +82,6 @@ namespace Nobots
             platform5.Position = new Vector2(13.8f, 3.5f);
             platform6.Position = new Vector2(17.8f, 3.25f);
             platform7.Position = new Vector2(21.8f, 3.25f);
-
-            base.Initialize();
         }
 
         protected override void LoadContent()
@@ -99,6 +91,7 @@ namespace Nobots
             physicsDebug.LoadContent(GraphicsDevice, Game.Content);
             physicsDebug.AppendFlags(DebugViewFlags.Shape);
             physicsDebug.AppendFlags(DebugViewFlags.PolygonPoints);
+            physicsDebug.AppendFlags(DebugViewFlags.CenterOfMass);
 
             base.LoadContent();
         }
