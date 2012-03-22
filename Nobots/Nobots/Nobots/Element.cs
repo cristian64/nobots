@@ -25,6 +25,7 @@ namespace Nobots
             : base(game)
         {
             this.scene = scene;
+            Initialize();
         }
     }
 }

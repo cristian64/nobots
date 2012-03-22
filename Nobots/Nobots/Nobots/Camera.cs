@@ -23,6 +23,7 @@ namespace Nobots
             Position = Vector2.Zero;
             Speed = Conversion.ToWorld(100);
             Margin = Conversion.ToWorld(50);
+            Initialize();
         }
 
         public override void Update(GameTime gameTime)
