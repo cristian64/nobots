@@ -46,42 +46,75 @@ namespace Nobots
             Elements.Add(new Box(Game, this));
             Elements.Add(new Character(Game, this));
             Camera.Target = Elements[1];
+          /*  Elements.Add(new Box(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Box(Game, this));
-            Elements.Add(new Box(Game, this));
+*/
 
-            Elements.Add(new Elevator(Game, this));
-
-            Platform platform1 = new Platform(Game, this);
+            Platform platform1 = new Platform(Game, this, Conversion.ToWorld(new Vector2(0, GraphicsDevice.PresentationParameters.BackBufferHeight)));
             Elements.Add(platform1);
-            Platform platform2 = new Platform(Game, this);
+            Platform platform2 = new Platform(Game, this, new Vector2(platform1.Position.X + Conversion.ToWorld(platform1.Width), platform1.Position.Y));
             Elements.Add(platform2);
-            Platform platform3 = new Platform(Game, this);
+            Platform platform3 = new Platform(Game, this, new Vector2(platform2.Position.X, platform2.Position.Y/3));
             Elements.Add(platform3);
-            Platform platform4 = new Platform(Game, this);
+            Platform platform4 = new Platform(Game, this, new Vector2(platform3.Position.X + Conversion.ToWorld(platform3.Width), platform3.Position.Y));
             Elements.Add(platform4);
-            Platform platform5 = new Platform(Game, this);
-            Elements.Add(platform5);
-            Platform platform6 = new Platform(Game, this);
-            Elements.Add(platform6);
-            Platform platform7 = new Platform(Game, this);
-            Elements.Add(platform7);
 
+            Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + Conversion.ToWorld(platform4.Width * 3/2), platform4.Position.Y));
+            Elements.Add(platform5);
+            Platform platform6 = new Platform(Game, this, new Vector2(platform5.Position.X + Conversion.ToWorld(platform5.Width), platform5.Position.Y));
+            Elements.Add(platform6);
+
+            Platform platform7 = new Platform(Game, this, new Vector2(platform6.Position.X - Conversion.ToWorld(platform6.Width/2), platform2.Position.Y));
+            Elements.Add(platform7);
+            Platform platform8 = new Platform(Game, this, new Vector2(platform7.Position.X + Conversion.ToWorld(platform7.Width), platform7.Position.Y));
+            Elements.Add(platform8);
+            Platform platform9 = new Platform(Game, this, new Vector2(platform8.Position.X + Conversion.ToWorld(platform8.Width), platform8.Position.Y));
+            Elements.Add(platform9);
+            Platform platform10 = new Platform(Game, this, new Vector2(platform9.Position.X + Conversion.ToWorld(platform9.Width), platform9.Position.Y));
+            Elements.Add(platform10);
+
+            Platform platform11 = new Platform(Game, this, new Vector2(platform10.Position.X + Conversion.ToWorld(platform10.Width*3/2), platform10.Position.Y));
+            Elements.Add(platform11);
+            Platform platform12 = new Platform(Game, this, new Vector2(platform11.Position.X, platform11.Position.Y/3));
+            Elements.Add(platform12);
+
+            Platform platform13 = new Platform(Game, this, new Vector2(platform12.Position.X - Conversion.ToWorld(platform12.Width), platform12.Position.Y - (platform11.Position.Y - platform12.Position.Y)));
+            Elements.Add(platform13);
+            Platform platform14 = new Platform(Game, this, new Vector2(platform12.Position.X, platform13.Position.Y));
+            Elements.Add(platform14);
+
+            Ladder ladder1 = new Ladder(Game, this, 9, new Vector2(platform2.Position.X, (platform2.Position.Y + platform3.Position.Y)/2 - Conversion.ToWorld(platform2.Height)));
+            Elements.Add(ladder1);
+            Ladder ladder2 = new Ladder(Game, this, 9, new Vector2(platform7.Position.X - Conversion.ToWorld(platform7.Width/3), (platform7.Position.Y + platform6.Position.Y)/2 - Conversion.ToWorld(platform9.Height)));
+            Elements.Add(ladder2);
+            Ladder ladder3 = new Ladder(Game, this, 9, new Vector2(platform14.Position.X, (platform14.Position.Y + platform12.Position.Y) / 2 - Conversion.ToWorld(platform12.Height)));
+            Elements.Add(ladder3);
+            Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + Conversion.ToWorld(platform10.Width/2), platform10.Position.Y - Conversion.ToWorld(platform10.Height*4)));
+            Elements.Add(elevator1);
+
+
+          /*  Platform platform1 = new Platform(Game, this, new Vector2(0.7f, 3f));
+            Platform platform2 = new Platform(Game, this, new Vector2(3.8f, 3.75f));
+            Elements.Add(platform2);
+            Platform platform3 = new Platform(Game, this, new Vector2(5.0f, 5f));
+            Elements.Add(platform3);
+            Platform platform4 = new Platform(Game, this, new Vector2(9.7f, 4.4f));
+            Elements.Add(platform4);
+            Platform platform5 = new Platform(Game, this, new Vector2(13.8f, 3.5f));
+            Elements.Add(platform5);
+            Platform platform6 = new Platform(Game, this, new Vector2(17.8f, 3.25f));
+            Elements.Add(platform6);
+            Platform platform7 = new Platform(Game, this, new Vector2(21.8f, 3.25f));
+            Elements.Add(platform7);
+            */
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;
             Foregrounds[0].Position = new Vector2(5.0f, 0.0f);
 
-            platform1.Position = new Vector2(0.7f, 3f);
-            platform1.Rotation = 1.0f;
-            platform2.Position = new Vector2(3.8f, 3.75f);
-            platform3.Position = new Vector2(5.0f, 5f);
-            platform4.Position = new Vector2(9.7f, 4.4f);
-            platform5.Position = new Vector2(13.8f, 3.5f);
-            platform6.Position = new Vector2(17.8f, 3.25f);
-            platform7.Position = new Vector2(21.8f, 3.25f);
         }
 
         protected override void LoadContent()

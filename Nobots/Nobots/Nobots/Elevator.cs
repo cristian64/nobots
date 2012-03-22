@@ -32,6 +32,30 @@ namespace Nobots
         Body body;
         Texture2D texture;
 
+        public override int Height
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public override int Width
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public override Vector2 Position
         {
             get
@@ -56,7 +80,7 @@ namespace Nobots
             }
         }
 
-        public Elevator(Game game, Scene scene)
+        public Elevator(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
             Active = true;
@@ -66,7 +90,8 @@ namespace Nobots
             EdgeShape ceiling = new EdgeShape(new Vector2(0, Conversion.ToWorld(texture.Height)), new Vector2(Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height)));
             body.CreateFixture(ceiling);
 
-            body.Position = new Vector2(-2.5f, 1.583698f);
+            body.Position = position;
+            //body.Position = new Vector2(-2.5f, 1.583698f);
             body.BodyType = BodyType.Kinematic;
 
             InitialPosition = body.Position;

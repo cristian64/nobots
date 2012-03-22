@@ -14,6 +14,30 @@ namespace Nobots
         Body body;
         Texture2D texture;
 
+        public override int Width
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public override int Height
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public override Vector2 Position
         {
             get

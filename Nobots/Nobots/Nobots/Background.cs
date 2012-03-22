@@ -13,6 +13,30 @@ namespace Nobots
         public Vector2 Speed = Vector2.One;
         private Vector2 position;
 
+        public override int Width
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public override int Height
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public override Vector2 Position
         {
             get
