@@ -45,10 +45,6 @@ namespace Nobots
             Foregrounds.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
             Elements.Add(new Stone(Game, this));
-            Elements.Add(new Circuit(Game, this, Conversion.ToWorld(new Vector2(1000, 300)), Conversion.ToWorld(new Vector2(1100, 500))));
-
-
-            Elements.Add(Camera.Target = new Character(Game, this));
 
             Platform platform1 = new Platform(Game, this, Conversion.ToWorld(new Vector2(0, 400)));
             Elements.Add(platform1);
@@ -89,8 +85,15 @@ namespace Nobots
             Elements.Add(ladder2);
             Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(32.09013f, -1.309999f));
             Elements.Add(ladder3);
+
+            Elements.Add(Camera.Target = new Character(Game, this));
+
             Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + Conversion.ToWorld(platform10.Width/2), platform10.Position.Y - Conversion.ToWorld(platform10.Height*4)));
             Elements.Add(elevator1);
+
+            Elevator elevator2 = new Elevator(Game, this, new Vector2(-1.5f, 1.870001f));
+            elevator2.FinalPosition = new Vector2(-1.5f, -1.569997f);
+            Elements.Add(elevator2);
 
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;

@@ -14,6 +14,7 @@ namespace Nobots
 {
     public class Character : Element
     {
+        int contactsNumber = 0;
         Body body;
         Body torso;
         public Texture2D texture;
@@ -82,34 +83,46 @@ namespace Nobots
             State = new IdleCharacterState(scene, this);
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 30);
-            //body.Position = Conversion.ToWorld(new Vector2(-50, GraphicsDevice.PresentationParameters.BackBufferHeight));
-            body.Position = new Vector2(0, 0);
+            body.Position = new Vector2(1f, 0);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
+
+            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
+            body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
             torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width), 30);
             torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
 
-            torso.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-            torso.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
+            torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
+            torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);
 
             body.CollisionCategories = Category.Cat1;
             torso.CollisionCategories = Category.Cat1;
 
             revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2)), Vector2.Zero);
             scene.World.AddJoint(revoluteJoint);
-
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
+        {
+            contactsNumber--;
+        }
+
+        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            contactsNumber++;
+            return true;
+        }
+
+        void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             if (fixtureB.Body == touchedBox)
                 touchingBox = false;
         }
 
-        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (fixtureB.Body.UserData as Box != null || fixtureB.Body.UserData as Stone != null)
             {
@@ -209,13 +222,14 @@ namespace Nobots
                     State = new IdleCharacterState(scene, this);
                 body.FixedRotation = true;
                 body.AngularVelocity = 0.0f;
-                torso.LinearVelocity = new Vector2(0, torso.LinearVelocity.Y);
+                //torso.LinearVelocity = new Vector2(0, torso.LinearVelocity.Y);
             }
 
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
             {
                 // State = new JumpingCharacterState(scene, this);
-                torso.ApplyForce(new Vector2(0, -4500));
+                if (contactsNumber > 0)
+                    torso.ApplyForce(new Vector2(0, -4500));
             }
 
             if (previousState.IsKeyDown(Keys.LeftControl) && keybState.IsKeyUp(Keys.LeftControl))
