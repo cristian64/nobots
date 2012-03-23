@@ -87,7 +87,7 @@ namespace Nobots
             for (int i = 0; i < stepsNumber; i++)
             {
                 scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position) + new Vector2(0, currentElementPosition),
-                    null, Color.Yellow, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+                    null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
                 currentElementPosition -= texture.Height;
             }
             scene.SpriteBatch.End();

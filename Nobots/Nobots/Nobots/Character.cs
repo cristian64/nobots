@@ -26,7 +26,18 @@ namespace Nobots
         float touchedBoxMass;
         float touchedBoxFriction;
 
-        public CharacterState State;
+        private CharacterState state;
+        public CharacterState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+            }
+        }
 
         public override int Height
         {
@@ -152,6 +163,46 @@ namespace Nobots
             base.Draw(gameTime);
         }
 
+        private void AAction()
+        {
+            State.AAction();
+        }
+
+        private void BAction()
+        {
+            State.BAction();
+        }
+
+        private void XAction()
+        {
+            State.XAction();
+        }
+
+        private void YAction()
+        {
+            State.YAction();
+        }
+
+        private void RightAction()
+        {
+            State.RightAction();
+        }
+
+        private void LeftAction()
+        {
+            State.LeftAction();
+        }
+
+        private void UpAction()
+        {
+            State.UpAction();
+        }
+
+        private void DownAction()
+        {
+            State.DownAction();
+        }
+
         KeyboardState previousState;
         private void processKeyboard()
         {
@@ -228,7 +279,7 @@ namespace Nobots
             if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
             {
                 // State = new JumpingCharacterState(scene, this);
-                if (contactsNumber > 0)
+               // if (contactsNumber > 0)
                     torso.ApplyForce(new Vector2(0, -4500));
             }
 

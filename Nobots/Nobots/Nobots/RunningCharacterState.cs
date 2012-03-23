@@ -43,5 +43,10 @@ namespace Nobots
 
             return new Vector2(textureXmin, textureYmin);
         }
+
+        public override void RightAction()
+        {
+            
+        }
     }
 }

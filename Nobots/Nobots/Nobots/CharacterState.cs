@@ -35,5 +35,37 @@ namespace Nobots
         public virtual void Draw(GameTime gameTime)
         {
         }
+
+        public virtual void AAction()
+        {
+        }
+
+        public virtual void BAction()
+        {
+        }
+
+        public virtual void XAction()
+        {
+        }
+
+        public virtual void YAction()
+        {
+        }
+
+        public virtual void RightAction()
+        {
+        }
+
+        public virtual void LeftAction()
+        {
+        }
+
+        public virtual void UpAction()
+        {
+        }
+
+        public virtual void DownAction()
+        {
+        }
     }
 }
