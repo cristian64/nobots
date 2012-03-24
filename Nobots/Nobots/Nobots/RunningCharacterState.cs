@@ -49,7 +49,7 @@ namespace Nobots
             character.body.AngularVelocity = 0;
         }
 
-        public override void AAction()
+        public override void AActionStart()
         {
             character.State = new JumpingCharacterState(scene, character);
         }

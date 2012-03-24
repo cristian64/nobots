@@ -115,6 +115,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Circuit.cs" />
+    <Compile Include="ClimbingCharacterState.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="Elevator.cs" />
     <Compile Include="GrabbingCharacterState.cs" />
