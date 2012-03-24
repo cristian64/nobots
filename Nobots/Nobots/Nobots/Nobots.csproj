@@ -117,6 +117,7 @@
     <Compile Include="Circuit.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="Elevator.cs" />
+    <Compile Include="GrabbingCharacterState.cs" />
     <Compile Include="IdleCharacterState.cs" />
     <Compile Include="JumpingCharacterState.cs" />
     <Compile Include="Ladder.cs" />

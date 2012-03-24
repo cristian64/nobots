@@ -33,6 +33,12 @@ namespace Nobots
             character.State = new JumpingCharacterState(scene, character);
         }
 
+        public override void  BActionStart()
+        {
+            character.State = new GrabbingCharacterState(scene, character);
+            character.State.BActionStart();
+        }
+
         public override void RightAction()
         {
             character.State = new RunningCharacterState(scene, character);
