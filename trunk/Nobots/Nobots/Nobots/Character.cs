@@ -21,6 +21,12 @@ namespace Nobots
         public RevoluteJoint revoluteJoint;
         public SpriteEffects Effect;
 
+        public bool touchingBox;
+        public Body touchedBox;
+        public float touchedBoxMass;
+        public float touchedBoxFriction;
+        public SliderJoint sliderJoint;
+
         private CharacterState state;
         public CharacterState State
         {
@@ -34,7 +40,6 @@ namespace Nobots
                     state.Exit();
                 state = value;
                 state.Enter();
-                Console.WriteLine(state.GetType().Name);
             }
         }
 
@@ -105,6 +110,9 @@ namespace Nobots
             torso.FixedRotation = true;
             torso.Friction = 0.0f;
 
+            torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
+            torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);
+
             body.CollisionCategories = Category.Cat1;
             torso.CollisionCategories = Category.Cat1;
 
@@ -124,6 +132,24 @@ namespace Nobots
             contactsNumber++;
             return true;
         }
+
+        void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
+        {
+            if (fixtureB.Body == touchedBox)
+                touchingBox = false;
+        }
+
+        bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            if (fixtureB.Body.UserData as Box != null || fixtureB.Body.UserData as Stone != null)
+            {
+                touchingBox = true;
+                touchedBox = fixtureB.Body;
+            }
+
+            return true;
+        }
+
 
         public override void Update(GameTime gameTime)
         {
@@ -276,8 +302,8 @@ namespace Nobots
             {
                 AActionStart();
             }
-            else if ((currentGamepadState.Buttons.B == ButtonState.Pressed && previosGamepadState.Buttons.B == ButtonState.Released) ||
-                (currentKeyboardState.IsKeyDown(Keys.B) && previousKeyboardState.IsKeyUp(Keys.B)))
+            else if (((currentGamepadState.Buttons.B == ButtonState.Pressed && previosGamepadState.Buttons.B == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.B) && previousKeyboardState.IsKeyUp(Keys.B))) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
             {
                 BActionStart();
             }
@@ -316,8 +342,8 @@ namespace Nobots
             {
                 AActionStop();
             }
-            else if ((currentGamepadState.Buttons.B == ButtonState.Released && previosGamepadState.Buttons.B == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyUp(Keys.B) && previousKeyboardState.IsKeyDown(Keys.B)))
+            else if (((currentGamepadState.Buttons.B == ButtonState.Released && previosGamepadState.Buttons.B == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.B) && previousKeyboardState.IsKeyDown(Keys.B))) && scene.World.JointList.Contains(sliderJoint))
             {
                 BActionStop();
             }
@@ -356,8 +382,8 @@ namespace Nobots
             {
                 AAction();
             }
-            else if ((currentGamepadState.Buttons.B == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyDown(Keys.B)))
+            else if (((currentGamepadState.Buttons.B == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.B))) && scene.World.JointList.Contains(sliderJoint))
             {
                 BAction();
             }

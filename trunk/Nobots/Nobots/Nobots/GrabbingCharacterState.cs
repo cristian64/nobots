@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FarseerPhysics.Dynamics;
+using FarseerPhysics.Dynamics.Joints;
+using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
-    public class RunningCharacterState : CharacterState
+    class GrabbingCharacterState : CharacterState
     {
-        public RunningCharacterState(Scene scene, Character character)
+        public GrabbingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
             texture = scene.Game.Content.Load<Texture2D>("girl_moving");
@@ -22,6 +25,7 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
             changeRunningTextures();
         }
 
@@ -43,19 +47,47 @@ namespace Nobots
             return new Vector2(textureXmin, textureYmin);
         }
 
-        public override void Exit()
-        {
-            character.body.FixedRotation = true;
-            character.body.AngularVelocity = 0;
-        }
-
         public override void AAction()
         {
             character.State = new JumpingCharacterState(scene, character);
         }
 
+        public override void Enter()
+        {
+            Console.WriteLine("Enter");
+        }
+
+        public override void Exit()
+        {
+            Console.WriteLine("Exit");
+            scene.World.RemoveJoint(character.sliderJoint);
+            character.touchedBox.Friction = character.touchedBoxFriction;
+            character.touchedBox.Mass = character.touchedBoxMass;
+        }
+
+        public override void BActionStart()
+        {
+            character.touchedBoxFriction = character.touchedBox.Friction;
+            character.touchedBoxMass = character.touchedBox.Mass;
+            character.touchedBox.Friction = 0.0f;
+            character.touchedBox.Mass = 0.0f;
+            character.sliderJoint = new SliderJoint(character.torso, character.touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBox.Position));
+            character.sliderJoint.CollideConnected = true;
+            scene.World.AddJoint(character.sliderJoint);
+        }
+
+        public override void BAction()
+        {
+        }
+
+        public override void BActionStop()
+        {
+            character.State = new IdleCharacterState(scene, character);
+        }
+
         public override void RightAction()
         {
+            Console.WriteLine("RightAction");
             character.body.FixedRotation = false;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.AngularVelocity = +100;
@@ -75,7 +107,6 @@ namespace Nobots
             character.body.FixedRotation = true;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.AngularVelocity = 0;
-            character.State = new IdleCharacterState(scene, character);
         }
 
         public override void LeftActionStop()
@@ -83,7 +114,6 @@ namespace Nobots
             character.body.FixedRotation = true;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.AngularVelocity = 0;
-            character.State = new IdleCharacterState(scene, character);
         }
     }
 }
