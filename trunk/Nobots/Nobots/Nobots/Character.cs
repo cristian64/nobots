@@ -302,77 +302,77 @@ namespace Nobots
             {
                 AActionStart();
             }
-            else if (((currentGamepadState.Buttons.B == ButtonState.Pressed && previosGamepadState.Buttons.B == ButtonState.Released) ||
+            if (((currentGamepadState.Buttons.B == ButtonState.Pressed && previosGamepadState.Buttons.B == ButtonState.Released) ||
                 (currentKeyboardState.IsKeyDown(Keys.B) && previousKeyboardState.IsKeyUp(Keys.B))) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
             {
                 BActionStart();
             }
-            else if ((currentGamepadState.Buttons.X == ButtonState.Pressed && previosGamepadState.Buttons.X == ButtonState.Released) ||
+            if ((currentGamepadState.Buttons.X == ButtonState.Pressed && previosGamepadState.Buttons.X == ButtonState.Released) ||
                 (currentKeyboardState.IsKeyDown(Keys.X) && previousKeyboardState.IsKeyUp(Keys.X)))
             {
                 XActionStart();
             }
-            else if ((currentGamepadState.Buttons.Y == ButtonState.Pressed && previosGamepadState.Buttons.Y == ButtonState.Released) ||
+            if ((currentGamepadState.Buttons.Y == ButtonState.Pressed && previosGamepadState.Buttons.Y == ButtonState.Released) ||
                 (currentKeyboardState.IsKeyDown(Keys.Y) && previousKeyboardState.IsKeyUp(Keys.Y)))
             {
                 YActionStart();
             }
-            else if ((currentGamepadState.DPad.Left == ButtonState.Pressed && previosGamepadState.DPad.Left == ButtonState.Released) ||
+            if ((currentGamepadState.DPad.Left == ButtonState.Pressed && previosGamepadState.DPad.Left == ButtonState.Released) ||
                 (currentKeyboardState.IsKeyDown(Keys.Left) && previousKeyboardState.IsKeyUp(Keys.Left)))
             {
                 LeftActionStart();
             }
-            else if ((currentGamepadState.DPad.Right == ButtonState.Pressed && previosGamepadState.DPad.Right == ButtonState.Released) ||
+            if ((currentGamepadState.DPad.Right == ButtonState.Pressed && previosGamepadState.DPad.Right == ButtonState.Released) ||
                 (currentKeyboardState.IsKeyDown(Keys.Right) && previousKeyboardState.IsKeyUp(Keys.Right)))
             {
                 RightActionStart();
             }
-            else if ((currentGamepadState.DPad.Up == ButtonState.Pressed && previosGamepadState.DPad.Up == ButtonState.Released) ||
+            if ((currentGamepadState.DPad.Up == ButtonState.Pressed && previosGamepadState.DPad.Up == ButtonState.Released) ||
                 (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)))
             {
                 UpActionStart();
             }
-            else if ((currentGamepadState.DPad.Down == ButtonState.Pressed && previosGamepadState.DPad.Down == ButtonState.Released) ||
+            if ((currentGamepadState.DPad.Down == ButtonState.Pressed && previosGamepadState.DPad.Down == ButtonState.Released) ||
                 (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)))
             {
                 DownActionStart();
             }
-            else if ((currentGamepadState.Buttons.A == ButtonState.Released && previosGamepadState.Buttons.A == ButtonState.Pressed) ||
+            if ((currentGamepadState.Buttons.A == ButtonState.Released && previosGamepadState.Buttons.A == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.A) && previousKeyboardState.IsKeyDown(Keys.A)))
             {
                 AActionStop();
             }
-            else if (((currentGamepadState.Buttons.B == ButtonState.Released && previosGamepadState.Buttons.B == ButtonState.Pressed) ||
+            if (((currentGamepadState.Buttons.B == ButtonState.Released && previosGamepadState.Buttons.B == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.B) && previousKeyboardState.IsKeyDown(Keys.B))) && scene.World.JointList.Contains(sliderJoint))
             {
                 BActionStop();
             }
-            else if ((currentGamepadState.Buttons.X == ButtonState.Released && previosGamepadState.Buttons.X == ButtonState.Pressed) ||
+            if ((currentGamepadState.Buttons.X == ButtonState.Released && previosGamepadState.Buttons.X == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.X) && previousKeyboardState.IsKeyDown(Keys.X)))
             {
                 XActionStop();
             }
-            else if ((currentGamepadState.Buttons.Y == ButtonState.Released && previosGamepadState.Buttons.Y == ButtonState.Pressed) ||
+            if ((currentGamepadState.Buttons.Y == ButtonState.Released && previosGamepadState.Buttons.Y == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.Y) && previousKeyboardState.IsKeyDown(Keys.Y)))
             {
                 YActionStop();
             }
-            else if ((currentGamepadState.DPad.Left == ButtonState.Released && previosGamepadState.DPad.Left == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Left == ButtonState.Released && previosGamepadState.DPad.Left == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.Left) && previousKeyboardState.IsKeyDown(Keys.Left)))
             {
                 LeftActionStop();
             }
-            else if ((currentGamepadState.DPad.Right == ButtonState.Released && previosGamepadState.DPad.Right == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Right == ButtonState.Released && previosGamepadState.DPad.Right == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.Right) && previousKeyboardState.IsKeyDown(Keys.Right)))
             {
                 RightActionStop();
             }
-            else if ((currentGamepadState.DPad.Up == ButtonState.Released && previosGamepadState.DPad.Up == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Up == ButtonState.Released && previosGamepadState.DPad.Up == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.Up) && previousKeyboardState.IsKeyDown(Keys.Up)))
             {
                 UpActionStop();
             }
-            else if ((currentGamepadState.DPad.Down == ButtonState.Released && previosGamepadState.DPad.Down == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Down == ButtonState.Released && previosGamepadState.DPad.Down == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyUp(Keys.Down) && previousKeyboardState.IsKeyDown(Keys.Down)))
             {
                 DownActionStop();
@@ -382,37 +382,37 @@ namespace Nobots
             {
                 AAction();
             }
-            else if (((currentGamepadState.Buttons.B == ButtonState.Pressed) ||
+            if (((currentGamepadState.Buttons.B == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyDown(Keys.B))) && scene.World.JointList.Contains(sliderJoint))
             {
                 BAction();
             }
-            else if ((currentGamepadState.Buttons.X == ButtonState.Pressed) ||
+            if ((currentGamepadState.Buttons.X == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyDown(Keys.X)))
             {
                 XAction();
             }
-            else if ((currentGamepadState.Buttons.Y == ButtonState.Pressed) ||
+            if ((currentGamepadState.Buttons.Y == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyDown(Keys.Y)))
             {
                 YAction();
             }
-            else if ((currentGamepadState.DPad.Left == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Left == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyDown(Keys.Left)))
             {
                 LeftAction();
             }
-            else if ((currentGamepadState.DPad.Right == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Right == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyDown(Keys.Right)))
             {
                 RightAction();
             }
-            else if ((currentGamepadState.DPad.Up == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Up == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyDown(Keys.Up)))
             {
                 UpAction();
             }
-            else if ((currentGamepadState.DPad.Down == ButtonState.Pressed) ||
+            if ((currentGamepadState.DPad.Down == ButtonState.Pressed) ||
                 (currentKeyboardState.IsKeyDown(Keys.Down)))
             {
                 DownAction();
