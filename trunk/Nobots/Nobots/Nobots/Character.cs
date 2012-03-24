@@ -27,6 +27,8 @@ namespace Nobots
         public float touchedBoxFriction;
         public SliderJoint sliderJoint;
 
+        public Ladder Ladder;
+
         private CharacterState state;
         public CharacterState State
         {
@@ -40,10 +42,11 @@ namespace Nobots
                     state.Exit();
                 state = value;
                 state.Enter();
+                Console.WriteLine(state.GetType().Name);
             }
         }
 
-        public override int Height
+        public override float Height
         {
             get
             {
@@ -55,7 +58,7 @@ namespace Nobots
             }
         }
 
-        public override int Width
+        public override float Width
         {
             get
             {
@@ -150,12 +153,47 @@ namespace Nobots
             return true;
         }
 
-
         public override void Update(GameTime gameTime)
         {
+            updateLadder();
             processKeyboard();
             State.Update(gameTime);
             base.Update(gameTime);
+        }
+
+        public bool IsLadderInRange(Ladder ladder)
+        {
+            Vector2 headPosition = torso.Position;
+
+            if (Math.Abs(headPosition.X - ladder.Position.X) < Conversion.ToWorld(15))
+            {
+                if (ladder.Position.Y - ladder.Height / 2 <= headPosition.Y && headPosition.Y <= ladder.Position.Y + ladder.Height / 2)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void updateLadder()
+        {
+            if (Ladder != null)
+                Console.WriteLine("I have Ladder!");
+
+            if (Ladder != null && !IsLadderInRange(Ladder))
+                Ladder = null;
+
+            if (Ladder == null)
+            {
+                foreach (Element i in scene.Elements)
+                {
+                    if (i as Ladder != null && IsLadderInRange((Ladder)i))
+                    {
+                        Ladder = (Ladder)i;
+                        break;
+                    }
+                }
+            }
         }
 
         public override void Draw(GameTime gameTime)

@@ -13,7 +13,7 @@ namespace Nobots
         public Vector2 Speed = Vector2.One;
         private Vector2 position;
 
-        public override int Width
+        public override float Width
         {
             get
             {
@@ -25,7 +25,7 @@ namespace Nobots
             }
         }
 
-        public override int Height
+        public override float Height
         {
             get
             {

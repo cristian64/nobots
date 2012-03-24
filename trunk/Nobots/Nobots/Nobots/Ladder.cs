@@ -17,11 +17,11 @@ namespace Nobots
         Texture2D texture;
         int currentElementPosition;
 
-        public override int Height
+        public override float Height
         {
             get
             {
-                return texture.Height * stepsNumber;
+                return Conversion.ToWorld(texture.Height) * stepsNumber;
             }
             set
             {
@@ -29,11 +29,11 @@ namespace Nobots
             }
         }
 
-        public override int Width
+        public override float Width
         {
             get
             {
-                return texture.Width;
+                return Conversion.ToWorld(texture.Width);
             }
             set
             {
