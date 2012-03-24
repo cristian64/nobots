@@ -54,19 +54,6 @@ namespace Nobots
 
         public override void Enter()
         {
-            Console.WriteLine("Enter");
-        }
-
-        public override void Exit()
-        {
-            Console.WriteLine("Exit");
-            scene.World.RemoveJoint(character.sliderJoint);
-            character.touchedBox.Friction = character.touchedBoxFriction;
-            character.touchedBox.Mass = character.touchedBoxMass;
-        }
-
-        public override void BActionStart()
-        {
             character.touchedBoxFriction = character.touchedBox.Friction;
             character.touchedBoxMass = character.touchedBox.Mass;
             character.touchedBox.Friction = 0.0f;
@@ -74,6 +61,17 @@ namespace Nobots
             character.sliderJoint = new SliderJoint(character.torso, character.touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBox.Position));
             character.sliderJoint.CollideConnected = true;
             scene.World.AddJoint(character.sliderJoint);
+        }
+
+        public override void Exit()
+        {
+            scene.World.RemoveJoint(character.sliderJoint);
+            character.touchedBox.Friction = character.touchedBoxFriction;
+            character.touchedBox.Mass = character.touchedBoxMass;
+        }
+
+        public override void BActionStart()
+        {
         }
 
         public override void BAction()
@@ -87,10 +85,9 @@ namespace Nobots
 
         public override void RightAction()
         {
-            Console.WriteLine("RightAction");
             character.body.FixedRotation = false;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = +100;
+            character.body.AngularVelocity = 50;
             character.Effect = SpriteEffects.None;
         }
 
@@ -98,7 +95,7 @@ namespace Nobots
         {
             character.body.FixedRotation = false;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = -100;
+            character.body.AngularVelocity = -50;
             character.Effect = SpriteEffects.FlipHorizontally;
         }
 
