@@ -17,7 +17,7 @@ namespace Nobots
         Body body;
         Texture2D texture;
 
-        public override int Width
+        public override float Width
         {
             get
             {
@@ -29,7 +29,7 @@ namespace Nobots
             }
         }
 
-        public override int Height
+        public override float Height
         {
             get
             {

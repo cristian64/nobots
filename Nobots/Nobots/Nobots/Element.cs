@@ -19,13 +19,13 @@ namespace Nobots
             set;
         }
 
-        public abstract int Width
+        public abstract float Width
         {
             get;
             set;
         }
 
-        public abstract int Height
+        public abstract float Height
         {
             get;
             set;

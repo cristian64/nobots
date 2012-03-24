@@ -14,11 +14,11 @@ namespace Nobots
         public Body body;
         Texture2D texture;
 
-        public override int Height
+        public override float Height
         {
             get
             {
-                return texture.Height;
+                return Conversion.ToWorld(texture.Height);
             }
             set
             {
@@ -26,11 +26,11 @@ namespace Nobots
             }
         }
 
-        public override int Width
+        public override float Width
         {
             get
             {
-                return texture.Width;
+                return Conversion.ToWorld(texture.Width);
             }
             set
             {

@@ -9,9 +9,9 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
-    class ClimbingState : CharacterState
+    class ClimbingCharacterState : CharacterState
     {
-        public ClimbingState(Scene scene, Character character)
+        public ClimbingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
             texture = scene.Game.Content.Load<Texture2D>("girl_moving");
@@ -24,8 +24,8 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
-/*            if (character.Ladder != null)
-                character.State = new IdleCharacterState(scene, character);*/
+            if (character.Ladder == null)
+                character.State = new IdleCharacterState(scene, character);
         }
 
         public override void Enter()
@@ -44,21 +44,25 @@ namespace Nobots
         public override void UpAction()
         {
             character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, -1);
+            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, -1);
         }
 
         public override void DownAction()
         {
             character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 1);
+            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, 1);
         }
 
         public override void UpActionStop()
         {
             character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 0);
+            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, 0);
         }
 
         public override void DownActionStop()
         {
             character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 0);
+            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, 0);
         }
 
         public override void AActionStart()
