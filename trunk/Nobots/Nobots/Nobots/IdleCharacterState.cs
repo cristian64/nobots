@@ -28,7 +28,7 @@ namespace Nobots
             character.body.LinearVelocity = Vector2.UnitY * character.body.LinearVelocity;
         }
 
-        public override void AAction()
+        public override void AActionStart()
         {
             character.State = new JumpingCharacterState(scene, character);
         }

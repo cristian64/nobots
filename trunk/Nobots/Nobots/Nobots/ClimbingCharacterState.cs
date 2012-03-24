@@ -24,13 +24,15 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+/*            if (character.Ladder != null)
+                character.State = new IdleCharacterState(scene, character);*/
         }
 
         public override void Enter()
         {
             character.body.IgnoreGravity = true;
             character.torso.IgnoreGravity = true;
+            character.torso.LinearVelocity = Vector2.Zero;
         }
 
         public override void Exit()
@@ -41,27 +43,27 @@ namespace Nobots
 
         public override void UpAction()
         {
-            character.torso.LinearVelocity = new Vector2(0, -1);
+            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, -1);
         }
 
         public override void DownAction()
         {
-            character.torso.LinearVelocity = new Vector2(0, 1);
-        }
-
-        public override void UpAction()
-        {
-            character.torso.LinearVelocity = new Vector2(0, -1);
+            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 1);
         }
 
         public override void UpActionStop()
         {
-            character.torso.LinearVelocity = new Vector2(0, 0);
+            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 0);
         }
 
         public override void DownActionStop()
         {
-            character.torso.LinearVelocity = new Vector2(0, 0);
+            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 0);
+        }
+
+        public override void AActionStart()
+        {
+            character.State = new JumpingCharacterState(scene, character);
         }
     }
 }
