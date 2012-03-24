@@ -43,26 +43,26 @@ namespace Nobots
 
         public override void UpAction()
         {
-            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, -1);
-            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, -1);
+            character.torso.LinearVelocity = new Vector2(0, -1);
+            character.body.LinearVelocity = new Vector2(0, -1);
         }
 
         public override void DownAction()
         {
-            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 1);
-            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, 1);
+            character.torso.LinearVelocity = new Vector2(0, 1);
+            character.body.LinearVelocity = new Vector2(0, 1);
         }
 
         public override void UpActionStop()
         {
-            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 0);
-            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, 0);
+            character.torso.LinearVelocity = new Vector2(0, 0);
+            character.body.LinearVelocity = new Vector2(0, 0);
         }
 
         public override void DownActionStop()
         {
-            character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 0);
-            character.body.LinearVelocity = new Vector2(character.body.LinearVelocity.X, 0);
+            character.torso.LinearVelocity = new Vector2(0, 0);
+            character.body.LinearVelocity = new Vector2(0, 0);
         }
 
         public override void AActionStart()
