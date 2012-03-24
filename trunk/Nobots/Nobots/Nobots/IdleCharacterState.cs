@@ -22,7 +22,7 @@ namespace Nobots
 
         public override void Enter()
         {
-            character.body.FixedRotation = false;
+            character.body.FixedRotation = true;
             character.body.AngularVelocity = 0;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.LinearVelocity = Vector2.UnitY * character.body.LinearVelocity;
