@@ -49,6 +49,24 @@ namespace Nobots
             character.body.AngularVelocity = 0;
         }
 
+        public override void UpAction()
+        {
+            if (character.Ladder != null)
+            {
+                character.State = new ClimbingCharacterState(scene, character);
+                character.State.UpAction();
+            }
+        }
+
+        public override void DownAction()
+        {
+            if (character.Ladder != null)
+            {
+                character.State = new ClimbingCharacterState(scene, character);
+                character.State.DownAction();
+            }
+        }
+
         public override void AActionStart()
         {
             character.State = new JumpingCharacterState(scene, character);
