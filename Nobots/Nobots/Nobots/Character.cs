@@ -177,9 +177,6 @@ namespace Nobots
 
         void updateLadder()
         {
-            if (Ladder != null)
-                Console.WriteLine("I have Ladder!");
-
             if (Ladder != null && !IsLadderInRange(Ladder))
                 Ladder = null;
 
