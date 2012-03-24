@@ -44,9 +44,57 @@ namespace Nobots
             return new Vector2(textureXmin, textureYmin);
         }
 
+        public override void AAction()
+        {
+            character.State = new JumpingCharacterState(scene, character);
+        }
+
+        public override void RightActionStart()
+        {
+            character.body.FixedRotation = false;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = +100;
+            character.Effect = SpriteEffects.None;
+        }
+
+        public override void LeftActionStart()
+        {
+            character.body.FixedRotation = false;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = -100;
+            character.Effect = SpriteEffects.FlipHorizontally;
+        }
+
         public override void RightAction()
         {
-            
+            character.body.FixedRotation = false;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = +100;
+            character.Effect = SpriteEffects.None;
+        }
+
+        public override void LeftAction()
+        {
+            character.body.FixedRotation = false;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = -100;
+            character.Effect = SpriteEffects.FlipHorizontally;
+        }
+
+        public override void RightActionStop()
+        {
+            character.body.FixedRotation = true;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = 0;
+            character.State = new IdleCharacterState(scene, character);
+        }
+
+        public override void LeftActionStop()
+        {
+            character.body.FixedRotation = true;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = 0;
+            character.State = new IdleCharacterState(scene, character);
         }
     }
 }
