@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FarseerPhysics.Dynamics;
+using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
@@ -20,9 +22,35 @@ namespace Nobots
             textureYmin = 0;
         }
 
-        public override void Update(GameTime gameTime)
+        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            base.Update(gameTime);
+            if (character.contactsNumber > 0)
+                character.State = new IdleCharacterState(scene, character);
+            return true;
+        }
+
+        public override void Enter()
+        {
+            character.body.OnCollision += body_OnCollision;
+            if (character.contactsNumber > 0)
+                character.torso.ApplyForce(new Vector2(0, -4500));
+        }
+
+        public override void Exit()
+        {
+            character.body.OnCollision -= body_OnCollision;
+        }
+
+        public override void RightAction()
+        {
+            character.torso.LinearVelocity = new Vector2(4, character.torso.LinearVelocity.Y);
+            character.Effect = SpriteEffects.None;
+        }
+
+        public override void LeftAction()
+        {
+            character.torso.LinearVelocity = new Vector2(-4, character.torso.LinearVelocity.Y);
+            character.Effect = SpriteEffects.FlipHorizontally;
         }
     }
 }

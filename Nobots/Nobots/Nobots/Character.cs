@@ -14,17 +14,12 @@ namespace Nobots
 {
     public class Character : Element
     {
-        int contactsNumber = 0;
-        Body body;
-        Body torso;
+        public int contactsNumber = 0;
+        public Body body;
+        public Body torso;
         public Texture2D texture;
-        RevoluteJoint revoluteJoint;
-        SliderJoint sliderJoint;
+        public RevoluteJoint revoluteJoint;
         public SpriteEffects Effect;
-        bool touchingBox;
-        Body touchedBox;
-        float touchedBoxMass;
-        float touchedBoxFriction;
 
         private CharacterState state;
         public CharacterState State
@@ -35,7 +30,11 @@ namespace Nobots
             }
             set
             {
+                if (state != null)
+                    state.Exit();
                 state = value;
+                state.Enter();
+                Console.WriteLine(state.GetType().Name);
             }
         }
 
@@ -91,7 +90,6 @@ namespace Nobots
             : base(game, scene)
         {
             texture = Game.Content.Load<Texture2D>("girl");
-            State = new IdleCharacterState(scene, this);
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 30);
             body.Position = new Vector2(1f, 0);
@@ -105,15 +103,15 @@ namespace Nobots
             torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
-
-            torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
-            torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);
+            torso.Friction = 0.0f;
 
             body.CollisionCategories = Category.Cat1;
             torso.CollisionCategories = Category.Cat1;
 
             revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2)), Vector2.Zero);
             scene.World.AddJoint(revoluteJoint);
+
+            State = new IdleCharacterState(scene, this);
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
@@ -127,27 +125,10 @@ namespace Nobots
             return true;
         }
 
-        void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
-        {
-            if (fixtureB.Body == touchedBox)
-                touchingBox = false;
-        }
-
-        bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
-        {
-            if (fixtureB.Body.UserData as Box != null || fixtureB.Body.UserData as Stone != null)
-            {
-                touchingBox = true;
-                touchedBox = fixtureB.Body;
-            }
-
-            return true;
-        }
-
         public override void Update(GameTime gameTime)
         {
-            State.Update(gameTime);
             processKeyboard();
+            State.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -163,9 +144,24 @@ namespace Nobots
             base.Draw(gameTime);
         }
 
+        private void AActionStart()
+        {
+            State.AActionStart();
+        }
+
         private void AAction()
         {
             State.AAction();
+        }
+
+        private void AActionStop()
+        {
+            State.AActionStop();
+        }
+
+        private void BActionStart()
+        {
+            State.BActionStart();
         }
 
         private void BAction()
@@ -173,9 +169,29 @@ namespace Nobots
             State.BAction();
         }
 
+        private void BActionStop()
+        {
+            State.BActionStop();
+        }
+
+        private void XActionStart()
+        {
+            State.XActionStart();
+        }
+
         private void XAction()
         {
             State.XAction();
+        }
+
+        private void XActionStop()
+        {
+            State.XActionStop();
+        }
+
+        private void YActionStart()
+        {
+            State.YActionStart();
         }
 
         private void YAction()
@@ -183,9 +199,29 @@ namespace Nobots
             State.YAction();
         }
 
+        private void YActionStop()
+        {
+            State.YActionStop();
+        }
+
+        private void RightActionStart()
+        {
+            State.RightActionStart();
+        }
+
         private void RightAction()
         {
             State.RightAction();
+        }
+
+        private void RightActionStop()
+        {
+            State.RightActionStop();
+        }
+
+        private void LeftActionStart()
+        {
+            State.LeftActionStart();
         }
 
         private void LeftAction()
@@ -193,9 +229,29 @@ namespace Nobots
             State.LeftAction();
         }
 
+        private void LeftActionStop()
+        {
+            State.LeftActionStop();
+        }
+
+        private void UpActionStart()
+        {
+            State.UpActionStart();
+        }
+
         private void UpAction()
         {
             State.UpAction();
+        }
+
+        private void UpActionStop()
+        {
+            State.UpActionStop();
+        }
+
+        private void DownActionStart()
+        {
+            State.DownActionStart();
         }
 
         private void DownAction()
@@ -203,97 +259,141 @@ namespace Nobots
             State.DownAction();
         }
 
-        KeyboardState previousState;
+        private void DownActionStop()
+        {
+            State.DownActionStop();
+        }
+
+        KeyboardState previousKeyboardState;
+        GamePadState previosGamepadState;
         private void processKeyboard()
         {
-            KeyboardState keybState = Keyboard.GetState();
-            if (keybState.IsKeyDown(Keys.Left))
+            KeyboardState currentKeyboardState = Keyboard.GetState();
+            GamePadState currentGamepadState = GamePad.GetState(PlayerIndex.One);
+
+            if ((currentGamepadState.Buttons.A == ButtonState.Pressed && previosGamepadState.Buttons.A == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.A) && previousKeyboardState.IsKeyUp(Keys.A)))
             {
-                if (previousState.IsKeyUp(Keys.Left))
-                    State = new RunningCharacterState(scene, this);
-
-                torso.ApplyForce(new Vector2(-10.0f, 0));
-
-                Effect = SpriteEffects.FlipHorizontally;
-                if (body.ContactList != null)
-                {
-                    body.FixedRotation = false;
-                    body.AngularVelocity = -20.0f;
-                }
-                else
-                {
-                    body.LinearVelocity = new Vector2(-Math.Abs(body.LinearVelocity.X), body.LinearVelocity.Y);
-                    torso.LinearVelocity = new Vector2(-Math.Abs(torso.LinearVelocity.X), torso.LinearVelocity.Y);
-                }
-
-                if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
-                {
-                    touchedBoxFriction = touchedBox.Friction;
-                    touchedBoxMass = touchedBox.Mass;
-                    touchedBox.Friction = 0.0f;
-                    touchedBox.Mass = 0.0f;
-                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(torso.Position, touchedBox.Position));
-                    sliderJoint.CollideConnected = true;
-                    scene.World.AddJoint(sliderJoint);
-                }
+                AActionStart();
             }
-            else if (keybState.IsKeyDown(Keys.Right))
+            else if ((currentGamepadState.Buttons.B == ButtonState.Pressed && previosGamepadState.Buttons.B == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.B) && previousKeyboardState.IsKeyUp(Keys.B)))
             {
-                if (previousState.IsKeyUp(Keys.Right))
-                    State = new RunningCharacterState(scene, this);
-
-                torso.ApplyForce(new Vector2(10.0f, 0));
-
-                Effect = SpriteEffects.None;
-                if (body.ContactList != null)
-                {
-                    body.FixedRotation = false;
-                    body.AngularVelocity = 20.0f;
-                }
-                else
-                {
-                    body.LinearVelocity = new Vector2(Math.Abs(body.LinearVelocity.X), body.LinearVelocity.Y);
-                    torso.LinearVelocity = new Vector2(Math.Abs(torso.LinearVelocity.X), torso.LinearVelocity.Y);
-                }
-
-                if (keybState.IsKeyDown(Keys.LeftControl) && touchingBox && !scene.World.JointList.Contains(sliderJoint))
-                {
-                    touchedBoxFriction = touchedBox.Friction;
-                    touchedBoxMass = touchedBox.Mass;
-                    touchedBox.Friction = 0.0f;
-                    touchedBox.Mass = 0.0f;
-                    sliderJoint = new SliderJoint(torso, touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(torso.Position, touchedBox.Position));
-                    sliderJoint.CollideConnected = true;
-                    scene.World.AddJoint(sliderJoint);
-                }
+                BActionStart();
             }
-            else
+            else if ((currentGamepadState.Buttons.X == ButtonState.Pressed && previosGamepadState.Buttons.X == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.X) && previousKeyboardState.IsKeyUp(Keys.X)))
             {
-                if (previousState.IsKeyDown(Keys.Right) || previousState.IsKeyDown(Keys.Left))
-                    State = new IdleCharacterState(scene, this);
-                body.FixedRotation = true;
-                body.AngularVelocity = 0.0f;
-                //torso.LinearVelocity = new Vector2(0, torso.LinearVelocity.Y);
+                XActionStart();
             }
-
-            if (keybState.IsKeyDown(Keys.Up) && previousState.IsKeyUp(Keys.Up))
+            else if ((currentGamepadState.Buttons.Y == ButtonState.Pressed && previosGamepadState.Buttons.Y == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.Y) && previousKeyboardState.IsKeyUp(Keys.Y)))
             {
-                // State = new JumpingCharacterState(scene, this);
-               // if (contactsNumber > 0)
-                    torso.ApplyForce(new Vector2(0, -4500));
+                YActionStart();
             }
-
-            if (previousState.IsKeyDown(Keys.LeftControl) && keybState.IsKeyUp(Keys.LeftControl))
+            else if ((currentGamepadState.DPad.Left == ButtonState.Pressed && previosGamepadState.DPad.Left == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.Left) && previousKeyboardState.IsKeyUp(Keys.Left)))
             {
-                if (scene.World.JointList.Contains(sliderJoint))
-                {
-                    scene.World.RemoveJoint(sliderJoint);
-                    touchedBox.Friction = touchedBoxFriction;
-                    touchedBox.Mass = touchedBoxMass;
-                }
+                LeftActionStart();
+            }
+            else if ((currentGamepadState.DPad.Right == ButtonState.Pressed && previosGamepadState.DPad.Right == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.Right) && previousKeyboardState.IsKeyUp(Keys.Right)))
+            {
+                RightActionStart();
+            }
+            else if ((currentGamepadState.DPad.Up == ButtonState.Pressed && previosGamepadState.DPad.Up == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)))
+            {
+                UpActionStart();
+            }
+            else if ((currentGamepadState.DPad.Down == ButtonState.Pressed && previosGamepadState.DPad.Down == ButtonState.Released) ||
+                (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)))
+            {
+                DownActionStart();
+            }
+            else if ((currentGamepadState.Buttons.A == ButtonState.Released && previosGamepadState.Buttons.A == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.A) && previousKeyboardState.IsKeyDown(Keys.A)))
+            {
+                AActionStop();
+            }
+            else if ((currentGamepadState.Buttons.B == ButtonState.Released && previosGamepadState.Buttons.B == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.B) && previousKeyboardState.IsKeyDown(Keys.B)))
+            {
+                BActionStop();
+            }
+            else if ((currentGamepadState.Buttons.X == ButtonState.Released && previosGamepadState.Buttons.X == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.X) && previousKeyboardState.IsKeyDown(Keys.X)))
+            {
+                XActionStop();
+            }
+            else if ((currentGamepadState.Buttons.Y == ButtonState.Released && previosGamepadState.Buttons.Y == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.Y) && previousKeyboardState.IsKeyDown(Keys.Y)))
+            {
+                YActionStop();
+            }
+            else if ((currentGamepadState.DPad.Left == ButtonState.Released && previosGamepadState.DPad.Left == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.Left) && previousKeyboardState.IsKeyDown(Keys.Left)))
+            {
+                LeftActionStop();
+            }
+            else if ((currentGamepadState.DPad.Right == ButtonState.Released && previosGamepadState.DPad.Right == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.Right) && previousKeyboardState.IsKeyDown(Keys.Right)))
+            {
+                RightActionStop();
+            }
+            else if ((currentGamepadState.DPad.Up == ButtonState.Released && previosGamepadState.DPad.Up == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.Up) && previousKeyboardState.IsKeyDown(Keys.Up)))
+            {
+                UpActionStop();
+            }
+            else if ((currentGamepadState.DPad.Down == ButtonState.Released && previosGamepadState.DPad.Down == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyUp(Keys.Down) && previousKeyboardState.IsKeyDown(Keys.Down)))
+            {
+                DownActionStop();
+            }
+            if ((currentGamepadState.Buttons.A == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.A)))
+            {
+                AAction();
+            }
+            else if ((currentGamepadState.Buttons.B == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.B)))
+            {
+                BAction();
+            }
+            else if ((currentGamepadState.Buttons.X == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.X)))
+            {
+                XAction();
+            }
+            else if ((currentGamepadState.Buttons.Y == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.Y)))
+            {
+                YAction();
+            }
+            else if ((currentGamepadState.DPad.Left == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.Left)))
+            {
+                LeftAction();
+            }
+            else if ((currentGamepadState.DPad.Right == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.Right)))
+            {
+                RightAction();
+            }
+            else if ((currentGamepadState.DPad.Up == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.Up)))
+            {
+                UpAction();
+            }
+            else if ((currentGamepadState.DPad.Down == ButtonState.Pressed) ||
+                (currentKeyboardState.IsKeyDown(Keys.Down)))
+            {
+                DownAction();
             }
 
-            previousState = keybState;
+            previousKeyboardState = currentKeyboardState;
+            previosGamepadState = currentGamepadState;
         }
     }
 }

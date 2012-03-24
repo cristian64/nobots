@@ -20,9 +20,41 @@ namespace Nobots
             textureYmin = 0;
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Enter()
         {
-            base.Update(gameTime);
+            character.body.FixedRotation = false;
+            character.body.AngularVelocity = 0;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.LinearVelocity = Vector2.UnitY * character.body.LinearVelocity;
+        }
+
+        public override void AAction()
+        {
+            character.State = new JumpingCharacterState(scene, character);
+        }
+
+        public override void RightAction()
+        {
+            character.State = new RunningCharacterState(scene, character);
+            character.State.RightAction();
+        }
+
+        public override void LeftAction()
+        {
+            character.State = new RunningCharacterState(scene, character);
+            character.State.LeftAction();
+        }
+
+        public override void RightActionStart()
+        {
+            character.State = new RunningCharacterState(scene, character);
+            character.State.RightActionStart();
+        }
+
+        public override void LeftActionStart()
+        {
+            character.State = new RunningCharacterState(scene, character);
+            character.State.LeftActionStart();
         }
     }
 }

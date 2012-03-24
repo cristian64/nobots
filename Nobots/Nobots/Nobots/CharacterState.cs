@@ -23,9 +23,12 @@ namespace Nobots
             this.scene = scene;
         }
 
-        public void ChangeState(CharacterState newState)
+        public virtual void Enter()
         {
-            character.State = newState;
+        }
+
+        public virtual void Exit()
+        {
         }
 
         public virtual void Update(GameTime gameTime)
@@ -36,7 +39,19 @@ namespace Nobots
         {
         }
 
+        public virtual void AActionStart()
+        {
+        }
+
         public virtual void AAction()
+        {
+        }
+
+        public virtual void AActionStop()
+        {
+        }
+
+        public virtual void BActionStart()
         {
         }
 
@@ -44,7 +59,23 @@ namespace Nobots
         {
         }
 
+        public virtual void BActionStop()
+        {
+        }
+
+        public virtual void XActionStart()
+        {
+        }
+
         public virtual void XAction()
+        {
+        }
+
+        public virtual void XActionStop()
+        {
+        }
+
+        public virtual void YActionStart()
         {
         }
 
@@ -52,7 +83,23 @@ namespace Nobots
         {
         }
 
+        public virtual void YActionStop()
+        {
+        }
+
+        public virtual void RightActionStart()
+        {
+        }
+
         public virtual void RightAction()
+        {
+        }
+
+        public virtual void RightActionStop()
+        {
+        }
+
+        public virtual void LeftActionStart()
         {
         }
 
@@ -60,11 +107,31 @@ namespace Nobots
         {
         }
 
+        public virtual void LeftActionStop()
+        {
+        }
+
+        public virtual void UpActionStart()
+        {
+        }
+
         public virtual void UpAction()
         {
         }
 
+        public virtual void UpActionStop()
+        {
+        }
+
+        public virtual void DownActionStart()
+        {
+        }
+
         public virtual void DownAction()
+        {
+        }
+
+        public virtual void DownActionStop()
         {
         }
     }
