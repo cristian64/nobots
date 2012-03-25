@@ -33,7 +33,7 @@ namespace Nobots
         {
             character.body.OnCollision += body_OnCollision;
             if (character.contactsNumber > 0 || character.Ladder != null)
-                character.torso.ApplyForce(new Vector2(0, -4500));
+                character.torso.ApplyForce(new Vector2(0, -5000));
         }
 
         public override void Exit()
@@ -43,13 +43,13 @@ namespace Nobots
 
         public override void RightAction()
         {
-            character.torso.LinearVelocity = new Vector2(4, character.torso.LinearVelocity.Y);
+            character.torso.LinearVelocity = new Vector2(2.5f, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.None;
         }
 
         public override void LeftAction()
         {
-            character.torso.LinearVelocity = new Vector2(-4, character.torso.LinearVelocity.Y);
+            character.torso.LinearVelocity = new Vector2(-2.5f, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.FlipHorizontally;
         }
 

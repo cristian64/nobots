@@ -74,11 +74,11 @@ namespace Nobots
         {
             get
             {
-                return torso.Position + Vector2.UnitY * body.FixtureList[0].Shape.Radius;
+                return torso.Position + Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2;
             }
             set
             {
-                torso.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius;
+                torso.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2;
             }
         }
 
@@ -99,7 +99,7 @@ namespace Nobots
         {
             texture = Game.Content.Load<Texture2D>("girl");
 
-            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2.0f), 30);
+            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 30);
             body.Position = new Vector2(1f, 0);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
@@ -107,7 +107,7 @@ namespace Nobots
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
-            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width), 30);
+            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2), 30);
             torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
@@ -116,10 +116,7 @@ namespace Nobots
             torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
             torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);
 
-            body.CollisionCategories = Category.Cat1;
-            torso.CollisionCategories = Category.Cat1;
-
-            revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2)), Vector2.Zero);
+            revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2 - texture.Width / 4)), Vector2.Zero);
             scene.World.AddJoint(revoluteJoint);
 
             State = new IdleCharacterState(scene, this);

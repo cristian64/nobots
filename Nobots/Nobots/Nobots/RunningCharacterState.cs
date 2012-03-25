@@ -76,7 +76,7 @@ namespace Nobots
         {
             character.body.FixedRotation = false;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = +100;
+            character.body.AngularVelocity = +80;
             character.Effect = SpriteEffects.None;
         }
 
@@ -84,7 +84,7 @@ namespace Nobots
         {
             character.body.FixedRotation = false;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = -100;
+            character.body.AngularVelocity = -80;
             character.Effect = SpriteEffects.FlipHorizontally;
         }
 

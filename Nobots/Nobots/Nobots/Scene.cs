@@ -171,7 +171,7 @@ namespace Nobots
             PlasmaExplosionParticleSystem.Draw(gameTime);
 
 
-            //physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
+            physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             foreach (Background i in Foregrounds)
                 i.Draw(gameTime);
             
