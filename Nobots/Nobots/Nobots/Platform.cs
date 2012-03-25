@@ -70,6 +70,7 @@ namespace Nobots
            // body.Position = new Vector2(1.812996f, 3.583698f);
             body.Position = position;
             body.BodyType = BodyType.Static;
+            body.CollisionCategories = Category.Cat11;
         }
 
         public override void Draw(GameTime gameTime)
