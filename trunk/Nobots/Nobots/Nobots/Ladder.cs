@@ -74,8 +74,8 @@ namespace Nobots
             body.Position = position;
             //body.Position = new Vector2(5.812996f, 0.583698f);
             body.BodyType = BodyType.Static;
-            body.CollisionCategories = Category.Cat10;
-            body.CollidesWith = Category.All & ~Category.Cat1;
+            body.CollisionCategories = Category.None;
+            body.CollidesWith = Category.None;
 
             body.UserData = this;
         }
