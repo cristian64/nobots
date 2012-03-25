@@ -50,6 +50,8 @@ namespace Nobots
             Elements.Add(platform1);
             Platform platform2 = new Platform(Game, this, new Vector2(platform1.Position.X + platform1.Width, platform1.Position.Y));
             Elements.Add(platform2);
+            PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(3.84f, 3.689996f));
+            Elements.Add(pressurePlate1);
             Platform platform3 = new Platform(Game, this, new Vector2(platform2.Position.X, platform2.Position.Y - Conversion.ToWorld(300)));
             Elements.Add(platform3);
             Platform platform4 = new Platform(Game, this, new Vector2(platform3.Position.X + platform3.Width, platform3.Position.Y));
@@ -169,7 +171,7 @@ namespace Nobots
             PlasmaExplosionParticleSystem.Draw(gameTime);
 
 
-            physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
+            //physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             foreach (Background i in Foregrounds)
                 i.Draw(gameTime);
             
