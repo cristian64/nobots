@@ -100,9 +100,11 @@ namespace Nobots
             texture = Game.Content.Load<Texture2D>("girl");
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 30);
-            body.Position = new Vector2(1f, 0);
+           // body.Position = new Vector2(1f, 0);
+            body.Position = new Vector2(34.60955f, -2.803332f);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
+            //body.UserData = this;
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
@@ -112,6 +114,7 @@ namespace Nobots
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
             torso.Friction = 0.0f;
+            torso.UserData = this;
 
             torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
             torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);

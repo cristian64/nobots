@@ -44,7 +44,7 @@ namespace Nobots
             Backgrounds.Add(new Background(Game, this));
             Foregrounds.Add(new Background(Game, this));
             Elements.Add(new Box(Game, this));
-            Elements.Add(new Stone(Game, this));
+            Elements.Add(new Stone(Game, this, new Vector2(7.812996f, 0f)));
 
             Platform platform1 = new Platform(Game, this, Conversion.ToWorld(new Vector2(0, 400)));
             Elements.Add(platform1);
@@ -76,17 +76,31 @@ namespace Nobots
             Platform platform12 = new Platform(Game, this, new Vector2(platform11.Position.X, platform11.Position.Y/3));
             Elements.Add(platform12);
 
-            Platform platform13 = new Platform(Game, this, new Vector2(29.89003f, -1.333333f));
+            Platform platform13 = new Platform(Game, this, new Vector2(31.2f, -1.333333f));
             Elements.Add(platform13);
-            Platform platform14 = new Platform(Game, this, new Vector2(34.28976f, -1.333333f));
+            Platform platform14 = new Platform(Game, this, new Vector2(35.60955f, -1.333333f));
             Elements.Add(platform14);
+            Platform platform15 = new Platform(Game, this, new Vector2(platform14.Position.X + platform14.Width, platform14.Position.Y));
+            Elements.Add(platform15);
+            Platform platform16 = new Platform(Game, this, new Vector2(platform15.Position.X + platform15.Width/2, platform1.Position.Y));
+            Elements.Add(platform16);
+            Platform platform17 = new Platform(Game, this, new Vector2(platform16.Position.X + platform16.Width, platform16.Position.Y));
+            Elements.Add(platform17);
+            Platform platform18 = new Platform(Game, this, new Vector2(platform17.Position.X + platform17.Width, platform17.Position.Y));
+            Elements.Add(platform18);
+            Platform platform19 = new Platform(Game, this, new Vector2(platform18.Position.X + platform18.Width, platform18.Position.Y));
+            Elements.Add(platform19);
+
+            Elements.Add(new Stone(Game, this, new Vector2(49.04955f, 3.5f)));
 
             Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(1.640002f, 1.360001f));
             Elements.Add(ladder1);
             Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(16.71999f, 1.360001f));
             Elements.Add(ladder2);
-            Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(32.09013f, -1.309999f));
+            Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(33.39991f, -1.309999f));
             Elements.Add(ladder3);
+            Ladder ladder4 = new Ladder(Game, this, 26, new Vector2(41.70982f, 0.6433345f));
+            Elements.Add(ladder4);
 
             Elements.Add(Camera.Target = new Character(Game, this));
 
@@ -96,6 +110,8 @@ namespace Nobots
             Elevator elevator2 = new Elevator(Game, this, new Vector2(-1.5f, 1.870001f));
             elevator2.FinalPosition = new Vector2(-1.5f, -1.569997f);
             Elements.Add(elevator2);
+            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(35.60955f, -2.803332f));
+            Elements.Add(laserBarrier1);
 
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;
