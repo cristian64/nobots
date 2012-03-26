@@ -65,7 +65,7 @@ namespace Nobots
             }
         }
 
-        public Stone(Game game, Scene scene)
+        public Stone(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
             texture = Game.Content.Load<Texture2D>("stone");
@@ -97,7 +97,7 @@ namespace Nobots
             body = BodyFactory.CreateCompoundPolygon(scene.World, list, 500f, BodyType.Dynamic);
             body.BodyType = BodyType.Dynamic;
 
-            body.Position = new Vector2(7.812996f, 0f);
+            body.Position = position;
             body.Friction = 1000.0f;
 
             body.UserData = this;
