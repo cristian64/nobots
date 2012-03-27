@@ -16,6 +16,7 @@ namespace Nobots
     {
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
         public LaserParticleSystem LaserParticleSystem;
+        public VortexParticleSystem VortexParticleSystem;
         public SpriteBatch SpriteBatch;
         public Camera Camera;
         public World World;
@@ -41,6 +42,7 @@ namespace Nobots
 
             PlasmaExplosionParticleSystem = new PlasmaExplosionParticleSystem(Game, this);
             LaserParticleSystem = new LaserParticleSystem(Game, this);
+            VortexParticleSystem = new VortexParticleSystem(Game, this);
 
             Backgrounds.Add(new Background(Game, this));
             Foregrounds.Add(new Background(Game, this));
@@ -121,6 +123,9 @@ namespace Nobots
             Box box2 = new Box(Game, this, new Vector2(19.70855f, 0.4243353f));
             Elements.Add(box2);
 
+            Socket socket = new Socket(Game, this, new Vector2(30.60955f, -2.223332f));
+            Elements.Add(socket);
+
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;
             Foregrounds[0].Position = new Vector2(5.0f, 0.0f);
@@ -175,6 +180,7 @@ namespace Nobots
 
             PlasmaExplosionParticleSystem.Update(gameTime);
             LaserParticleSystem.Update(gameTime);
+            VortexParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             foreach (Background i in Backgrounds)
@@ -194,6 +200,7 @@ namespace Nobots
                 i.Draw(gameTime);
             PlasmaExplosionParticleSystem.Draw(gameTime);
             LaserParticleSystem.Draw(gameTime);
+            VortexParticleSystem.Draw(gameTime);
 
             physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             foreach (Background i in Foregrounds)

@@ -20,31 +20,28 @@ namespace Nobots
         {
         }
 
-        protected void UpActionStart()
+        protected override void UpActionStart()
         {
         }
 
-        protected void UpAction()
+        protected override void UpAction()
         {
         }
 
-        protected void UpActionStop()
+        protected override void UpActionStop()
         {
         }
 
-        protected void BActionStart()
+        protected override void BActionStart()
         {
-            State.BActionStart();
         }
 
-        protected void BAction()
+        protected override void BAction()
         {
-            State.BAction();
         }
 
-        protected void BActionStop()
+        protected override void BActionStop()
         {
-            State.BActionStop();
         }
     }
 }

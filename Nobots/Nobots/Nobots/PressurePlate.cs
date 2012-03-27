@@ -14,7 +14,6 @@ namespace Nobots
     {
         Body body;
         Texture2D texture;
-        float initialPositionY;
         float offset;
         public IActivable activableElement;
 

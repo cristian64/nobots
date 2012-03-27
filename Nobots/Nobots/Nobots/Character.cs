@@ -208,122 +208,122 @@ namespace Nobots
             base.Draw(gameTime);
         }
 
-        protected void AActionStart()
+        protected virtual void AActionStart()
         {
             State.AActionStart();
         }
 
-        protected void AAction()
+        protected virtual void AAction()
         {
             State.AAction();
         }
 
-        protected void AActionStop()
+        protected virtual void AActionStop()
         {
             State.AActionStop();
         }
 
-        protected void BActionStart()
+        protected virtual void BActionStart()
         {
             State.BActionStart();
         }
 
-        protected void BAction()
+        protected virtual void BAction()
         {
             State.BAction();
         }
 
-        protected void BActionStop()
+        protected virtual void BActionStop()
         {
             State.BActionStop();
         }
 
-        protected void XActionStart()
+        protected virtual void XActionStart()
         {
             State.XActionStart();
         }
 
-        protected void XAction()
+        protected virtual void XAction()
         {
             State.XAction();
         }
 
-        protected void XActionStop()
+        protected virtual void XActionStop()
         {
             State.XActionStop();
         }
 
-        protected void YActionStart()
+        protected virtual void YActionStart()
         {
             State.YActionStart();
         }
 
-        protected void YAction()
+        protected virtual void YAction()
         {
             State.YAction();
         }
 
-        protected void YActionStop()
+        protected virtual void YActionStop()
         {
             State.YActionStop();
         }
 
-        protected void RightActionStart()
+        protected virtual void RightActionStart()
         {
             State.RightActionStart();
         }
 
-        protected void RightAction()
+        protected virtual void RightAction()
         {
             State.RightAction();
         }
 
-        protected void RightActionStop()
+        protected virtual void RightActionStop()
         {
             State.RightActionStop();
         }
 
-        protected void LeftActionStart()
+        protected virtual void LeftActionStart()
         {
             State.LeftActionStart();
         }
 
-        protected void LeftAction()
+        protected virtual void LeftAction()
         {
             State.LeftAction();
         }
 
-        protected void LeftActionStop()
+        protected virtual void LeftActionStop()
         {
             State.LeftActionStop();
         }
 
-        protected void UpActionStart()
+        protected virtual void UpActionStart()
         {
             State.UpActionStart();
         }
 
-        protected void UpAction()
+        protected virtual void UpAction()
         {
             State.UpAction();
         }
 
-        protected void UpActionStop()
+        protected virtual void UpActionStop()
         {
             State.UpActionStop();
         }
 
-        protected void DownActionStart()
+        protected virtual void DownActionStart()
         {
             State.DownActionStart();
         }
 
-        protected void DownAction()
+        protected virtual void DownAction()
         {
             State.DownAction();
         }
 
-        protected void DownActionStop()
+        protected virtual void DownActionStop()
         {
             State.DownActionStop();
         }
