@@ -7,48 +7,38 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
+using FarseerPhysics.Collision.Shapes;
 
 namespace Nobots
 {
     class LaserBarrier : Element, IActivable
     {
+        float height = Conversion.ToWorld(250);
+        float width = Conversion.ToWorld(15);
         Body body;
-        Texture2D emitterTexture;
-        Texture2D laserTexture;
-        bool isActive;
 
-        void IActivable.Activate()
+        public bool Active;
+
+        public void Activate()
         {
-            isActive = true;
+            Active = true;
         }
 
-        void IActivable.Deactivate()
+        public void Deactivate()
         {
-            isActive = false;
+            Active = false;
         }
 
         public override float Width
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return width; }
+            set { }
         }
 
         public override float Height
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return height; }
+            set { }
         }
 
         public override Vector2 Position
@@ -79,13 +69,11 @@ namespace Nobots
             : base(game, scene)
         {
             ZBuffer = 10f;
-            emitterTexture = Game.Content.Load<Texture2D>("laserEmitter");
-            laserTexture = Game.Content.Load<Texture2D>("laser");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(laserTexture.Width/4), Conversion.ToWorld(laserTexture.Height/2), 150f);
+            body = BodyFactory.CreateRectangle(scene.World, width, height, 0);
             body.Position = position;
             body.BodyType = BodyType.Static;
-            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-            body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
+            body.OnCollision += body_OnCollision;
+            body.OnSeparation += body_OnSeparation;
             body.UserData = this;
             body.IsSensor = true;
         }
@@ -96,17 +84,29 @@ namespace Nobots
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            if (fixtureB.Body.UserData as Character != null)
+            Console.WriteLine("pollaca! ");
+            if (Active && fixtureB.Body.UserData as Character != null)
             {
                 ((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
                 //TODO: change character state to "dying..."
             }
-            return true;
+            return false;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            Vector2 velocity = new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
+            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), velocity);
+            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -velocity);
+            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), velocity);
+            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -velocity);
+
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Begin();
+            /*scene.SpriteBatch.Begin();
             scene.SpriteBatch.Draw(emitterTexture, new Rectangle((int)Conversion.ToDisplay(body.Position.X - scene.Camera.Position.X), 
                 (int)Conversion.ToDisplay(body.Position.Y - scene.Camera.Position.Y) - laserTexture.Height/4 - emitterTexture.Height/2,
                 emitterTexture.Width/2, emitterTexture.Height), null, Color.White, body.Rotation, new Vector2(emitterTexture.Width / 2, emitterTexture.Height / 2), SpriteEffects.None, 0);
@@ -115,7 +115,7 @@ namespace Nobots
                 (int)Conversion.ToDisplay(body.Position.Y - scene.Camera.Position.Y), laserTexture.Width / 4, laserTexture.Height/2), 
                 null, Color.White, body.Rotation, new Vector2(laserTexture.Width / 2, laserTexture.Height / 2), SpriteEffects.None, 0);
 
-            scene.SpriteBatch.End();
+            scene.SpriteBatch.End();*/
 
             base.Draw(gameTime);
         }

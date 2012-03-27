@@ -33,13 +33,13 @@ namespace Nobots.ParticleSystem
         {
             settings.TextureName = "laser";
 
-            settings.MaxParticles = 3000;
+            settings.MaxParticles = 10000;
 
-            settings.Duration = TimeSpan.FromSeconds(0.5f);
+            settings.Duration = TimeSpan.FromSeconds(3f);
             settings.DurationRandomness = 0;
 
-            settings.MinHorizontalVelocity = 0.01f;
-            settings.MaxHorizontalVelocity = 0.05f;
+            settings.MinHorizontalVelocity = -0.1f;
+            settings.MaxHorizontalVelocity = 0.1f;
 
             settings.MinVerticalVelocity = -0.1f;
             settings.MaxVerticalVelocity = 0.1f;
@@ -49,14 +49,14 @@ namespace Nobots.ParticleSystem
             settings.MinColor = Color.White;
             settings.MaxColor = Color.White;
 
-            settings.MinRotateSpeed = -0.5f;
-            settings.MaxRotateSpeed = 0.5f;
+            settings.MinRotateSpeed = -5f;
+            settings.MaxRotateSpeed = 5f;
 
-            settings.MinStartSize = 0.4f;
-            settings.MaxStartSize = 0.4f;
+            settings.MinStartSize = 15;
+            settings.MaxStartSize = 20;
 
-            settings.MinEndSize = 0.6f;
-            settings.MaxEndSize = 0.6f;
+            settings.MinEndSize = 25;
+            settings.MaxEndSize = 30;
 
             // Use additive blending.
             settings.BlendState = BlendState.Additive;
