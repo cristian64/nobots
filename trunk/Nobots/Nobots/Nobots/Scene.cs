@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -18,7 +19,7 @@ namespace Nobots
         public Camera Camera;
         public World World;
         public DebugViewXNA physicsDebug;
-        public List<Element> Elements;
+        public SortedList<Element> Elements;
         public List<Background> Backgrounds;
         public List<Background> Foregrounds;
 
@@ -26,7 +27,7 @@ namespace Nobots
             : base(game)
         {
             Camera = new Camera(Game);
-            Elements = new List<Element>();
+            Elements = new SortedList<Element>();
             Backgrounds = new List<Background>();
             Foregrounds = new List<Background>();
             World = new World(new Vector2(0, 13));

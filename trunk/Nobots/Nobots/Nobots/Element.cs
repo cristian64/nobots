@@ -6,9 +6,14 @@ using Microsoft.Xna.Framework;
 
 namespace Nobots
 {
-    public abstract class Element : DrawableGameComponent
+    public abstract class Element : DrawableGameComponent, IComparable<Element>
     {
         public float ZBuffer;
+
+        public int CompareTo(Element element)
+        {
+            return ZBuffer > element.ZBuffer ? 1 : -1;
+        }
 
         public abstract Vector2 Position
         {
