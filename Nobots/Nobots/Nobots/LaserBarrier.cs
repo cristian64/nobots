@@ -75,7 +75,7 @@ namespace Nobots
             body.OnCollision += body_OnCollision;
             body.OnSeparation += body_OnSeparation;
             body.UserData = this;
-            body.IsSensor = true;
+            body.CollidesWith = Category.None | ElementCategory.CHARACTER;
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
