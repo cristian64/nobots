@@ -65,6 +65,7 @@ namespace Nobots
         public Platform(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
+            ZBuffer = 5f;
             texture = Game.Content.Load<Texture2D>("platform");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1.0f);
            // body.Position = new Vector2(1.812996f, 3.583698f);
