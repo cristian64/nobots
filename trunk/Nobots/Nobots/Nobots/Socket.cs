@@ -9,8 +9,10 @@ using FarseerPhysics.Factories;
 
 namespace Nobots
 {
-    public class Circuit : Element
+    public class Socket : Element
     {
+        public Socket Socket;
+
         Body body1;
         Body body2;
         Texture2D texture;
@@ -86,7 +88,7 @@ namespace Nobots
             }
         }
 
-        public Circuit(Game game, Scene scene, Vector2 startPosition, Vector2 endPosition)
+        public Socket(Game game, Scene scene, Vector2 startPosition, Vector2 endPosition)
             : base(game, scene)
         {
             ZBuffer = -6f;
