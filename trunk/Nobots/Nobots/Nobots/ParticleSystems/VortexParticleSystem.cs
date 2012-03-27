@@ -33,16 +33,16 @@ namespace Nobots.ParticleSystem
         {
             settings.TextureName = "vortex";
 
-            settings.MaxParticles = 100;
+            settings.MaxParticles = 10000;
 
             settings.Duration = TimeSpan.FromSeconds(2);
             settings.DurationRandomness = 1;
 
-            settings.MinHorizontalVelocity = 0.01f;
-            settings.MaxHorizontalVelocity = 0.05f;
+            settings.MinHorizontalVelocity = 0.00f;
+            settings.MaxHorizontalVelocity = 0.00f;
 
-            settings.MinVerticalVelocity = -0.1f;
-            settings.MaxVerticalVelocity = 0.1f;
+            settings.MinVerticalVelocity = -0.0f;
+            settings.MaxVerticalVelocity = 0.0f;
 
             settings.EndVelocity = 0;
 
@@ -52,14 +52,14 @@ namespace Nobots.ParticleSystem
             settings.MinColor = Color.White;
             settings.MaxColor = Color.White;
 
-            settings.MinRotateSpeed = -1;
-            settings.MaxRotateSpeed = 1;
+            settings.MinRotateSpeed = -20;
+            settings.MaxRotateSpeed = 20;
 
-            settings.MinStartSize = 0.5f;
-            settings.MaxStartSize = 0.5f;
+            settings.MinStartSize = 200f;
+            settings.MaxStartSize = 200f;
 
-            settings.MinEndSize = 2;
-            settings.MaxEndSize = 2.5f;
+            settings.MinEndSize = 0;
+            settings.MaxEndSize = 0f;
 
             // Use additive blending.
             settings.BlendState = BlendState.Additive;

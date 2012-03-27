@@ -6,12 +6,13 @@ using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Factories;
+using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
     public class Socket : Element
     {
-        public Socket Socket;
+        public Socket OtherSocket;
 
         Body body;
         Texture2D texture;
@@ -63,17 +64,28 @@ namespace Nobots
             }
         }
 
-        public Socket(Game game, Scene scene, Vector2 startPosition, Vector2 endPosition)
+        public Socket(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
             ZBuffer = -6f;
             texture = Game.Content.Load<Texture2D>("socket");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 20f);
-            body.Position = startPosition;
+            body.Position = position;
             body.BodyType = BodyType.Static;
-            body.CollidesWith = Category.None | ElementCategory.ENERGY;
+            body.IsSensor = true;
+            //body.CollidesWith = Category.None | ElementCategory.ENERGY;
+            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
             body.UserData = this;
+        }
+
+        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+            scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+            scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+            scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+            return true;
         }
 
         public override void Draw(GameTime gameTime)
