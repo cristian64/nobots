@@ -163,6 +163,8 @@ namespace Nobots.ParticleSystem
         {
             this.content = Game.Content;
             this.scene = scene;
+
+            Initialize();
         }
 
 
@@ -393,7 +395,7 @@ namespace Nobots.ParticleSystem
                 device.DepthStencilState = DepthStencilState.DepthRead;
 
                 // Set the current status of the camera.
-                effectViewParameter.SetValue(scene.Camera.ViewNonScaled);
+                effectViewParameter.SetValue(scene.Camera.View);
                 effectProjectionParameter.SetValue(scene.Camera.Projection);
 
                 // Set an effect parameter describing the viewport size. This is
@@ -543,6 +545,10 @@ namespace Nobots.ParticleSystem
             firstFreeParticle = nextFreeParticle;
         }
 
+        public void AddParticle(Vector2 position, Vector2 velocity)
+        {
+            AddParticle(new Vector3(position.X, position.Y, 0), new Vector3(velocity.X, velocity.Y, 0));
+        }
 
         #endregion
     }
