@@ -74,7 +74,7 @@ namespace Nobots
             texture = Game.Content.Load<Texture2D>("button");
             Height = Conversion.ToWorld(texture.Height);
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Height, 150f);
-            body.Position = position + new Vector2(0, Height * 3/4);
+            body.Position = position;// +new Vector2(0, Height * 3 / 4);
             body.BodyType = BodyType.Static;
             body.Rotation = 0.0f;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
@@ -87,14 +87,16 @@ namespace Nobots
         {
             Height = Conversion.ToWorld(texture.Height);
             offset = Height * 3 / 4;
-            activableElement.Deactivate();
+            if (activableElement != null)
+                activableElement.Deactivate();
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             Height = Conversion.ToWorld(texture.Height / 4);    
             offset = Height * 3 / 2;
-            activableElement.Activate();
+            if(activableElement != null)
+                activableElement.Activate();
 
             return true;
         }

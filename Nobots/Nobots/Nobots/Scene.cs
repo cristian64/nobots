@@ -44,14 +44,15 @@ namespace Nobots
 
             Backgrounds.Add(new Background(Game, this));
             Foregrounds.Add(new Background(Game, this));
-            Elements.Add(new Box(Game, this));
+            Box box1 = new Box(Game, this, new Vector2(5.812996f, 0.583698f));
+            Elements.Add(box1);
             Elements.Add(new Stone(Game, this, new Vector2(7.812996f, 0f)));
 
             Platform platform1 = new Platform(Game, this, Conversion.ToWorld(new Vector2(0, 400)));
             Elements.Add(platform1);
             Platform platform2 = new Platform(Game, this, new Vector2(platform1.Position.X + platform1.Width, platform1.Position.Y));
             Elements.Add(platform2);
-            PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(3.84f, 3.689996f));
+            PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(3.84f, 3.809996f));
             Elements.Add(pressurePlate1);
             Platform platform3 = new Platform(Game, this, new Vector2(platform2.Position.X, platform2.Position.Y - Conversion.ToWorld(300)));
             Elements.Add(platform3);
@@ -115,6 +116,10 @@ namespace Nobots
             LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(35.60955f, -2.803332f));
             Elements.Add(laserBarrier1);
             pressurePlate1.activableElement = elevator2;
+            PressurePlate pressurePlate2 = new PressurePlate(Game, this, new Vector2(17.78031f, 0.7999996f));
+            Elements.Add(pressurePlate2);
+            Box box2 = new Box(Game, this, new Vector2(19.70855f, 0.4243353f));
+            Elements.Add(box2);
 
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;
