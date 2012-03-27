@@ -92,7 +92,8 @@ namespace Nobots
             Platform platform19 = new Platform(Game, this, new Vector2(platform18.Position.X + platform18.Width, platform18.Position.Y));
             Elements.Add(platform19);
 
-            Elements.Add(new Stone(Game, this, new Vector2(49.04955f, 3.5f)));
+            Elements.Add(new Forklift(Game, this, new Vector2(49.04955f, 0f)));
+            //Elements.Add(new Stone(Game, this, new Vector2(49.04955f, 3.5f)));
 
             Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(1.640002f, 1.360001f));
             Elements.Add(ladder1);
