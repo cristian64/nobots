@@ -10,11 +10,22 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
-    class LaserBarrier : Element
+    class LaserBarrier : Element, IActivable
     {
         Body body;
         Texture2D emitterTexture;
         Texture2D laserTexture;
+        bool isActive;
+
+        void IActivable.Activate()
+        {
+            isActive = true;
+        }
+
+        void IActivable.Deactivate()
+        {
+            isActive = false;
+        }
 
         public override float Width
         {
