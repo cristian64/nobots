@@ -113,6 +113,7 @@ namespace Nobots
             Elements.Add(elevator2);
             LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(35.60955f, -2.803332f));
             Elements.Add(laserBarrier1);
+            pressurePlate1.activableElement = elevator2;
 
             Foregrounds[0].Texture = Game.Content.Load<Texture2D>("tree");
             Foregrounds[0].Speed = 1.5f * Vector2.One;
