@@ -13,43 +13,18 @@ namespace Nobots
     {
         public Socket Socket;
 
-        Body body1;
-        Body body2;
+        Body body;
         Texture2D texture;
 
         public override Vector2 Position
         {
             get
             {
-                return body1.Position;
+                return body.Position;
             }
             set
             {
-                body1.Position = value;
-            }
-        }
-
-        public Vector2 StartPosition
-        {
-            get
-            {
-                return body1.Position;
-            }
-            set
-            {
-                body1.Position = value;
-            }
-        }
-
-        public Vector2 EndPosition
-        {
-            get
-            {
-                return body1.Position;
-            }
-            set
-            {
-                body1.Position = value;
+                body.Position = value;
             }
         }
 
@@ -93,26 +68,18 @@ namespace Nobots
         {
             ZBuffer = -6f;
             texture = Game.Content.Load<Texture2D>("socket");
-            body1 = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 20f);
-            body1.Position = startPosition;
-            body1.BodyType = BodyType.Static;
-            body1.CollisionCategories = Category.None;
-            body1.CollidesWith = Category.None;
+            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 20f);
+            body.Position = startPosition;
+            body.BodyType = BodyType.Static;
+            body.CollidesWith = Category.None | ElementCategory.ENERGY;
 
-            body2 = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 20f);
-            body2.Position = endPosition;
-            body2.BodyType = BodyType.Static;
-            body2.CollisionCategories = Category.None;
-            body2.CollidesWith = Category.None;
-
-            body1.UserData = this;
+            body.UserData = this;
         }
 
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body1.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body2.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
             base.Draw(gameTime);
         }
