@@ -68,6 +68,7 @@ namespace Nobots
         public Ladder(Game game, Scene scene, int stepsNumber, Vector2 position)
             : base(game, scene)
         {
+            ZBuffer = -5f;
             this.stepsNumber = stepsNumber;
             texture = Game.Content.Load<Texture2D>("ladder");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height) * stepsNumber, 20f);

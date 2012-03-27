@@ -67,6 +67,7 @@ namespace Nobots
         public LaserBarrier(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
+            ZBuffer = 10f;
             emitterTexture = Game.Content.Load<Texture2D>("laserEmitter");
             laserTexture = Game.Content.Load<Texture2D>("laser");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(laserTexture.Width/4), Conversion.ToWorld(laserTexture.Height/2), 150f);

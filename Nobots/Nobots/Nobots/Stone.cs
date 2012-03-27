@@ -68,6 +68,7 @@ namespace Nobots
         public Stone(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
+            ZBuffer = 0f;
             texture = Game.Content.Load<Texture2D>("stone");
 
             //Create an array to hold the data from the texture

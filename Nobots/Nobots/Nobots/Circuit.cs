@@ -89,6 +89,7 @@ namespace Nobots
         public Circuit(Game game, Scene scene, Vector2 startPosition, Vector2 endPosition)
             : base(game, scene)
         {
+            ZBuffer = -6f;
             texture = Game.Content.Load<Texture2D>("socket");
             body1 = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 20f);
             body1.Position = startPosition;

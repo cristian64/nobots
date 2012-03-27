@@ -84,7 +84,7 @@ namespace Nobots
             : base(game, scene)
         {
             Active = true;
-
+            ZBuffer = 6f;
             texture = Game.Content.Load<Texture2D>("elevator");
             body = BodyFactory.CreateEdge(scene.World, Vector2.Zero, new Vector2(Conversion.ToWorld(texture.Width), 0));
             EdgeShape ceiling = new EdgeShape(new Vector2(0, Conversion.ToWorld(texture.Height)), new Vector2(Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height)));

@@ -8,6 +8,8 @@ namespace Nobots
 {
     public abstract class Element : DrawableGameComponent
     {
+        public float ZBuffer;
+
         public abstract Vector2 Position
         {
             get; set;   
