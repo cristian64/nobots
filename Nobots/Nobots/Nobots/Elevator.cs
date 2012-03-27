@@ -11,7 +11,7 @@ using FarseerPhysics.Common;
 
 namespace Nobots
 {
-    public class Elevator : Element
+    public class Elevator : Element, IActivable
     {
         public bool Active = false;
 
@@ -27,7 +27,7 @@ namespace Nobots
 
         public Vector2 InitialPosition;
         public Vector2 FinalPosition;
-        public float Speed = 0.5f;
+        public float Speed = 1f;
 
         Body body;
         Texture2D texture;
@@ -83,7 +83,6 @@ namespace Nobots
         public Elevator(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            Active = true;
             ZBuffer = 6f;
             texture = Game.Content.Load<Texture2D>("elevator");
             body = BodyFactory.CreateEdge(scene.World, Vector2.Zero, new Vector2(Conversion.ToWorld(texture.Width), 0));
@@ -110,8 +109,6 @@ namespace Nobots
             {
                 Position = targetPosition;
             }
-            if (targetPosition == Position)
-                Active = !Active;
             base.Update(gameTime);
         }
 
