@@ -76,6 +76,7 @@ namespace Nobots
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
             body.UserData = this;
+            body.IsSensor = true;
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
@@ -84,6 +85,11 @@ namespace Nobots
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
+            if (fixtureB.Body.UserData as Character != null)
+            {
+                ((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
+                //TODO: change character state to "dying..."
+            }
             return true;
         }
 
@@ -93,9 +99,11 @@ namespace Nobots
             scene.SpriteBatch.Draw(emitterTexture, new Rectangle((int)Conversion.ToDisplay(body.Position.X - scene.Camera.Position.X), 
                 (int)Conversion.ToDisplay(body.Position.Y - scene.Camera.Position.Y) - laserTexture.Height/4 - emitterTexture.Height/2,
                 emitterTexture.Width/2, emitterTexture.Height), null, Color.White, body.Rotation, new Vector2(emitterTexture.Width / 2, emitterTexture.Height / 2), SpriteEffects.None, 0);
+
             scene.SpriteBatch.Draw(laserTexture, new Rectangle((int)Conversion.ToDisplay(body.Position.X - scene.Camera.Position.X),
                 (int)Conversion.ToDisplay(body.Position.Y - scene.Camera.Position.Y), laserTexture.Width / 4, laserTexture.Height/2), 
                 null, Color.White, body.Rotation, new Vector2(laserTexture.Width / 2, laserTexture.Height / 2), SpriteEffects.None, 0);
+
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
