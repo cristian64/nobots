@@ -29,7 +29,7 @@ namespace Nobots
 
         public Ladder Ladder;
 
-        private CharacterState state;
+        protected CharacterState state;
         public CharacterState State
         {
             get
@@ -128,24 +128,24 @@ namespace Nobots
             State = new IdleCharacterState(scene, this);
         }
 
-        void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
+        protected void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             contactsNumber--;
         }
 
-        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             contactsNumber++;
             return true;
         }
 
-        void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
+        protected void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             if (fixtureB.Body == touchedBox)
                 touchingBox = false;
         }
 
-        bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        protected bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (fixtureB.Body.UserData as Box != null || fixtureB.Body.UserData as Stone != null)
             {
@@ -178,7 +178,7 @@ namespace Nobots
             return false;
         }
 
-        void updateLadder()
+        protected void updateLadder()
         {
             if (Ladder != null && !IsLadderInRange(Ladder))
                 Ladder = null;
@@ -208,129 +208,129 @@ namespace Nobots
             base.Draw(gameTime);
         }
 
-        private void AActionStart()
+        protected void AActionStart()
         {
             State.AActionStart();
         }
 
-        private void AAction()
+        protected void AAction()
         {
             State.AAction();
         }
 
-        private void AActionStop()
+        protected void AActionStop()
         {
             State.AActionStop();
         }
 
-        private void BActionStart()
+        protected void BActionStart()
         {
             State.BActionStart();
         }
 
-        private void BAction()
+        protected void BAction()
         {
             State.BAction();
         }
 
-        private void BActionStop()
+        protected void BActionStop()
         {
             State.BActionStop();
         }
 
-        private void XActionStart()
+        protected void XActionStart()
         {
             State.XActionStart();
         }
 
-        private void XAction()
+        protected void XAction()
         {
             State.XAction();
         }
 
-        private void XActionStop()
+        protected void XActionStop()
         {
             State.XActionStop();
         }
 
-        private void YActionStart()
+        protected void YActionStart()
         {
             State.YActionStart();
         }
 
-        private void YAction()
+        protected void YAction()
         {
             State.YAction();
         }
 
-        private void YActionStop()
+        protected void YActionStop()
         {
             State.YActionStop();
         }
 
-        private void RightActionStart()
+        protected void RightActionStart()
         {
             State.RightActionStart();
         }
 
-        private void RightAction()
+        protected void RightAction()
         {
             State.RightAction();
         }
 
-        private void RightActionStop()
+        protected void RightActionStop()
         {
             State.RightActionStop();
         }
 
-        private void LeftActionStart()
+        protected void LeftActionStart()
         {
             State.LeftActionStart();
         }
 
-        private void LeftAction()
+        protected void LeftAction()
         {
             State.LeftAction();
         }
 
-        private void LeftActionStop()
+        protected void LeftActionStop()
         {
             State.LeftActionStop();
         }
 
-        private void UpActionStart()
+        protected void UpActionStart()
         {
             State.UpActionStart();
         }
 
-        private void UpAction()
+        protected void UpAction()
         {
             State.UpAction();
         }
 
-        private void UpActionStop()
+        protected void UpActionStop()
         {
             State.UpActionStop();
         }
 
-        private void DownActionStart()
+        protected void DownActionStart()
         {
             State.DownActionStart();
         }
 
-        private void DownAction()
+        protected void DownAction()
         {
             State.DownAction();
         }
 
-        private void DownActionStop()
+        protected void DownActionStop()
         {
             State.DownActionStop();
         }
 
-        KeyboardState previousKeyboardState;
-        GamePadState previosGamepadState;
-        private void processKeyboard()
+        protected KeyboardState previousKeyboardState;
+        protected GamePadState previosGamepadState;
+        protected void processKeyboard()
         {
             KeyboardState currentKeyboardState = Keyboard.GetState();
             GamePadState currentGamepadState = GamePad.GetState(PlayerIndex.One);

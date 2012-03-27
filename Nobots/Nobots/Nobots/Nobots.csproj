@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ElementCategory.cs" />
+    <Compile Include="Energy.cs" />
     <Compile Include="Forklift.cs" />
     <Compile Include="IActivable.cs" />
     <Compile Include="Background.cs" />
