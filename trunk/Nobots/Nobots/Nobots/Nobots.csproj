@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forklift.cs" />
     <Compile Include="IActivable.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="Box.cs" />
