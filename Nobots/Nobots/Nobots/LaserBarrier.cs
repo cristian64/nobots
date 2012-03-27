@@ -84,13 +84,12 @@ namespace Nobots
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            Console.WriteLine("pollaca! ");
             if (Active && fixtureB.Body.UserData as Character != null)
             {
                 ((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
                 //TODO: change character state to "dying..."
             }
-            return false;
+            return true;
         }
 
         public override void Update(GameTime gameTime)
