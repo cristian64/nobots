@@ -105,7 +105,7 @@ namespace Nobots
             body.Position = new Vector2(34.60955f, -2.803332f);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
-            //body.UserData = this;
+            body.UserData = this;
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);

@@ -15,6 +15,7 @@ namespace Nobots
     public class Scene : DrawableGameComponent
     {
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
+        public LaserParticleSystem LaserParticleSystem;
         public SpriteBatch SpriteBatch;
         public Camera Camera;
         public World World;
@@ -32,15 +33,14 @@ namespace Nobots
             Foregrounds = new List<Background>();
             World = new World(new Vector2(0, 13));
             physicsDebug = new DebugViewXNA(World);
-
-            PlasmaExplosionParticleSystem = new PlasmaExplosionParticleSystem(Game, this);
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            PlasmaExplosionParticleSystem.Initialize();
+            PlasmaExplosionParticleSystem = new PlasmaExplosionParticleSystem(Game, this);
+            LaserParticleSystem = new LaserParticleSystem(Game, this);
 
             Backgrounds.Add(new Background(Game, this));
             Foregrounds.Add(new Background(Game, this));
@@ -113,7 +113,7 @@ namespace Nobots
             Elevator elevator2 = new Elevator(Game, this, new Vector2(-1.5f, 1.870001f));
             elevator2.FinalPosition = new Vector2(-1.5f, -1.569997f);
             Elements.Add(elevator2);
-            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(35.60955f, -2.803332f));
+            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(35.60955f, -2.823332f));
             Elements.Add(laserBarrier1);
             pressurePlate1.activableElement = elevator2;
             PressurePlate pressurePlate2 = new PressurePlate(Game, this, new Vector2(17.78031f, 0.7999996f));
@@ -144,8 +144,7 @@ namespace Nobots
         {
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
-                PlasmaExplosionParticleSystem.AddParticle(new Vector3(random.Next(75), random.Next(50), 0), Vector3.Zero);
-                PlasmaExplosionParticleSystem.AddParticle(new Vector3(random.Next(40), random.Next(45), 0), Vector3.Zero);
+                LaserParticleSystem.AddParticle(new Vector3(35.60955f, -2.823332f, 0), Vector3.Zero);
             }
 
             if (selection != null)
@@ -175,6 +174,7 @@ namespace Nobots
             }
 
             PlasmaExplosionParticleSystem.Update(gameTime);
+            LaserParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             foreach (Background i in Backgrounds)
@@ -193,7 +193,7 @@ namespace Nobots
             foreach (Element i in Elements)
                 i.Draw(gameTime);
             PlasmaExplosionParticleSystem.Draw(gameTime);
-
+            LaserParticleSystem.Draw(gameTime);
 
             physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             foreach (Background i in Foregrounds)
