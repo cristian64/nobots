@@ -108,6 +108,7 @@ namespace Nobots
             Elements.Add(ladder4);
 
             Elements.Add(Camera.Target = new Character(Game, this));
+            Elements.Add(new Energy(Game, this));
 
             Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + platform10.Width/2, platform10.Position.Y - platform10.Height*4));
             Elements.Add(elevator1);
