@@ -116,8 +116,9 @@ namespace Nobots
             Elements.Add(Camera.Target = InputManager.Character = new Character(Game, this));
             //Elements.Add(new Energy(Game, this));
 
-            Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + platform10.Width/2, platform10.Position.Y - platform10.Height*4));
+            Elevator elevator1 = new Elevator(Game, this, new Vector2(30.440044f, 2.08f));
             Elements.Add(elevator1);
+            elevator1.FinalPosition = new Vector2(elevator1.Position.X, 0f);
 
             Elevator elevator2 = new Elevator(Game, this, new Vector2(-1.5f, 1.870001f));
             elevator2.FinalPosition = new Vector2(-1.5f, -1.569997f);

@@ -20,9 +20,22 @@ namespace Nobots
             textureYmin = 0;
         }
 
+        public override void Exit()
+        {
+            character.torso.Position = character.body.Position - new Vector2(0, character.Height / 2 - character.body.FixtureList[0].Shape.Radius / 2);
+            character.torso.Rotation = 0;
+            character.torso.FixedRotation = true;
+        }
+
         public override void Enter()
         {
             Energy energy = new Energy(scene.Game, scene);
+            character.torso.FixedRotation = false;
+            if(character.Effect == SpriteEffects.None)
+                character.torso.ApplyForce(new Vector2(-10, 0));
+            else
+                character.torso.ApplyForce(new Vector2(10, 0));
+            character.torso.Friction = 100f;
             energy.Position = character.Position;
             scene.InputManager.Character = energy;
             scene.Camera.Target = energy;
