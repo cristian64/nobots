@@ -49,6 +49,20 @@ namespace Nobots
                     }
                 }
             }
+            else
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
+                    Position = Position + Conversion.ToWorld(-Vector2.UnitX * 5);
+                if (Keyboard.GetState().IsKeyDown(Keys.NumPad8))
+                    Position = Position + Conversion.ToWorld(-Vector2.UnitY * 5);
+                if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
+                    Position = Position + Conversion.ToWorld(Vector2.UnitX * 5);
+                if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
+                    Position = Position + Conversion.ToWorld(Vector2.UnitY * 5);
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
+                Target = null;
 
             ViewNonScaled = Matrix.CreateLookAt(new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 1), new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 0), new Vector3(0, 1, 0));
             View = Matrix.CreateScale(Conversion.DisplayUnitsToWorldUnitsRatio) * ViewNonScaled;
