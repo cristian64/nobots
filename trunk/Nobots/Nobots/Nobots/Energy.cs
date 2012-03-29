@@ -71,6 +71,17 @@ namespace Nobots
                         break;
                     }
                 }
+
+                ElectricityBox eBox = i as ElectricityBox;
+                if (eBox != null)
+                {
+                    if (IsTouchingElement(i))
+                    {
+                        Console.WriteLine("LOOP");
+                        eBox.activableElement.Activate();
+                        break;
+                    }
+                }
             }
         }
 
