@@ -67,7 +67,7 @@ namespace Nobots
             Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background4")));
             Backgrounds[3].Position = Backgrounds[2].Position + new Vector2(Backgrounds[2].Width, 0);
             Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("wires")));
-            Backgrounds[4].Position = new Vector2(44.5f, 10.3f);
+            Backgrounds[4].Position = new Vector2(44.4f, 10.3f);
 
             Box box1 = new Box(Game, this, new Vector2(13.22069f, 1.436227f));
             Elements.Add(box1);
