@@ -31,37 +31,20 @@ namespace Nobots
 
         public override float Rotation
         {
-            get
-            {
-                return 0;
-            }
-            set
-            {
-            }
+            get { return 0; }
+            set { }
         }
 
         public override float Width
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return Conversion.ToWorld(texture.Width); }
+            set { }
         }
 
         public override float Height
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return Conversion.ToWorld(texture.Height); }
+            set { }
         }
 
         public Socket(Game game, Scene scene, Vector2 position)
@@ -73,7 +56,7 @@ namespace Nobots
             body.Position = position;
             body.BodyType = BodyType.Static;
             body.IsSensor = true;
-            //body.CollidesWith = Category.None | ElementCategory.ENERGY;
+            body.CollidesWith = Category.None | ElementCategory.ENERGY;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
             body.UserData = this;
