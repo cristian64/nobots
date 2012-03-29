@@ -68,7 +68,7 @@ namespace Nobots
             : base(game, scene)
         {
             ZBuffer = -6f;
-            texture = Game.Content.Load<Texture2D>("electricity");
+            texture = Game.Content.Load<Texture2D>("electricitybox");
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 20f);
             body.Position = position;
             body.BodyType = BodyType.Static;

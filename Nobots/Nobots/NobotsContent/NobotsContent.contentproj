@@ -218,13 +218,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="electricity.png">
-      <Name>electricity</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="background1.png">
       <Name>background1</Name>
       <Importer>TextureImporter</Importer>
@@ -249,6 +242,13 @@
   <ItemGroup>
     <Compile Include="platform.png">
       <Name>platform</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="electricitybox.png">
+      <Name>electricitybox</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
