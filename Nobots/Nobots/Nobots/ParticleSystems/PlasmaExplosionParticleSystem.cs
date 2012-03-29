@@ -35,7 +35,7 @@ namespace Nobots.ParticleSystem
 
             settings.MaxParticles = 50000;
 
-            settings.Duration = TimeSpan.FromSeconds(2);
+            settings.Duration = TimeSpan.FromSeconds(0.5f);
             settings.DurationRandomness = 1;
 
             settings.MinHorizontalVelocity = 0.01f;
@@ -52,11 +52,11 @@ namespace Nobots.ParticleSystem
             settings.MinRotateSpeed = -5;
             settings.MaxRotateSpeed = 5;
 
-            settings.MinStartSize = 70f;
-            settings.MaxStartSize = 80f;
+            settings.MinStartSize = 90f;
+            settings.MaxStartSize = 120f;
 
-            settings.MinEndSize = 85f;
-            settings.MaxEndSize = 100f;
+            settings.MinEndSize = 140f;
+            settings.MaxEndSize = 170;
 
             // Use additive blending.
             settings.BlendState = BlendState.Additive;

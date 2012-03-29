@@ -27,6 +27,12 @@ namespace Nobots
             scene.InputManager.Character = energy;
             scene.Camera.Target = energy;
             scene.RespawnElements.Add(energy);
+            Random random = new Random();
+            for (int j = 0; j < 50; j++)
+            {
+                scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+            }
         }
     }
 }
