@@ -52,13 +52,13 @@ namespace Nobots
             else
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
-                    Position = Position + Conversion.ToWorld(-Vector2.UnitX * 5);
+                    Position = Position + Conversion.ToWorld(-Vector2.UnitX * 15);
                 if (Keyboard.GetState().IsKeyDown(Keys.NumPad8))
-                    Position = Position + Conversion.ToWorld(-Vector2.UnitY * 5);
+                    Position = Position + Conversion.ToWorld(-Vector2.UnitY * 15);
                 if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
-                    Position = Position + Conversion.ToWorld(Vector2.UnitX * 5);
+                    Position = Position + Conversion.ToWorld(Vector2.UnitX * 15);
                 if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
-                    Position = Position + Conversion.ToWorld(Vector2.UnitY * 5);
+                    Position = Position + Conversion.ToWorld(Vector2.UnitY * 15);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))

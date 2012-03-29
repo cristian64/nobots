@@ -18,7 +18,7 @@ namespace Nobots
         {
             get
             {
-                throw new NotImplementedException();
+                return Conversion.ToWorld(texture.Width);
             }
             set
             {
@@ -30,7 +30,7 @@ namespace Nobots
         {
             get
             {
-                throw new NotImplementedException();
+                return Conversion.ToWorld(texture.Height);
             }
             set
             {
