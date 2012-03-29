@@ -57,8 +57,15 @@ namespace Nobots
             LaserParticleSystem = new LaserParticleSystem(Game, this);
             VortexParticleSystem = new VortexParticleSystem(Game, this);
 
-            Backgrounds.Add(new Background(Game, this));
-            Foregrounds.Add(new Background(Game, this));
+            Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background1")));
+            Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background2")));
+            Backgrounds[1].Position = Backgrounds[0].Position + new Vector2(Backgrounds[0].Width, 0);
+            Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background3")));
+            Backgrounds[2].Position = Backgrounds[1].Position + new Vector2(Backgrounds[1].Width, 0);
+            Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background4")));
+            Backgrounds[3].Position = Backgrounds[2].Position + new Vector2(Backgrounds[2].Width, 0);
+
+            Foregrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("tree")));
             Box box1 = new Box(Game, this, new Vector2(5.812996f, 0.583698f));
             Elements.Add(box1);
             Elements.Add(new Stone(Game, this, new Vector2(7.812996f, 0f)));
