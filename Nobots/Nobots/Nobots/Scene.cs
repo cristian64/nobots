@@ -120,6 +120,9 @@ namespace Nobots
             Elevator elevator2 = new Elevator(Game, this, new Vector2(-1.5f, 1.870001f));
             elevator2.FinalPosition = new Vector2(-1.5f, -1.569997f);
             Elements.Add(elevator2);
+            ElectricityBox eBox1 = new ElectricityBox(Game, this, new Vector2(34.36966f, 2.999999f));
+            Elements.Add(eBox1);
+            eBox1.activableElement = elevator1;
             LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(35.60955f, -2.823332f));
             Elements.Add(laserBarrier1);
             pressurePlate1.activableElement = elevator2;

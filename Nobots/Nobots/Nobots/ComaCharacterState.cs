@@ -22,6 +22,7 @@ namespace Nobots
 
         public override void Enter()
         {
+
             Energy energy = new Energy(scene.Game, scene);
             energy.Position = character.Position;
             scene.RespawnElements.Add(energy);

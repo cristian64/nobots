@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComaCharacterState.cs" />
+    <Compile Include="ElectricityBox.cs" />
     <Compile Include="ElementCategory.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="Forklift.cs" />
