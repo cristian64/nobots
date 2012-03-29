@@ -58,8 +58,11 @@ namespace Nobots
 
         public override void  BActionStart()
         {
-            character.State = new GrabbingCharacterState(scene, character);
-            character.State.BActionStart();
+            if (character.touchingBox && !scene.World.JointList.Contains(character.sliderJoint))
+            {
+                character.State = new GrabbingCharacterState(scene, character);
+                character.State.BActionStart();
+            }
         }
 
         public override void RightAction()

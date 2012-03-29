@@ -120,6 +120,7 @@
     <Compile Include="Box.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="InputManager.cs" />
     <Compile Include="ParticleSystems\VortexOutParticleSystem.cs" />
     <Compile Include="Socket.cs" />
     <Compile Include="ClimbingCharacterState.cs" />

@@ -22,9 +22,10 @@ namespace Nobots
 
         public override void Enter()
         {
-
             Energy energy = new Energy(scene.Game, scene);
             energy.Position = character.Position;
+            scene.InputManager.Character = energy;
+            scene.Camera.Target = energy;
             scene.RespawnElements.Add(energy);
         }
     }

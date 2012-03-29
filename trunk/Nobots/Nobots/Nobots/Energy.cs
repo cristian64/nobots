@@ -30,31 +30,31 @@ namespace Nobots
             effect = Game.Content.Load<Effect>("energy");
         }
 
-        protected override void UpActionStart()
+        public override void UpActionStart()
         {
         }
 
-        protected override void UpAction()
+        public override void UpAction()
         {
         }
 
-        protected override void UpActionStop()
+        public override void UpActionStop()
         {
         }
 
-        protected override void BActionStart()
+        public override void BActionStart()
         {
         }
 
-        protected override void BAction()
+        public override void BAction()
         {
         }
 
-        protected override void BActionStop()
+        public override void BActionStop()
         {
         }
 
-        protected override void XActionStart()
+        public override void XActionStart()
         {
             foreach (Element i in scene.Elements)
             {
@@ -85,7 +85,7 @@ namespace Nobots
             }
         }
 
-        protected override void YActionStart()
+        public override void YActionStart()
         {
             foreach (Element i in scene.Elements)
             {
@@ -103,6 +103,8 @@ namespace Nobots
                         scene.World.RemoveBody(torso);
                         scene.World.RemoveJoint(revoluteJoint);
                         scene.GarbageElements.Add(this);
+                        scene.InputManager.Character = character;
+                        scene.Camera.Target = character;
                     }
                     break;
                 }
