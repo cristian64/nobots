@@ -122,15 +122,15 @@ namespace Nobots
             Platform platform21 = new Platform(Game, this, new Vector2(52.07965f, 5.760039f), new Vector2(1.400001f, 0.4500005f));
             Elements.Add(platform21);
 
-            Elements.Add(new Forklift(Game, this, new Vector2(49.04955f, 0f)));
+            Elements.Add(new Forklift(Game, this, new Vector2(62.23187f, 12.77028f)));
 
-            Ladder ladder1 = new Ladder(Game, this, 11, new Vector2(4.610013f, 6.490053f));
+            Ladder ladder1 = new Ladder(Game, this, 14, new Vector2(4.610013f, 5.320026f));
             Elements.Add(ladder1);
-            Ladder ladder2 = new Ladder(Game, this, 11, new Vector2(21.93991f, 6.510056f));
+            Ladder ladder2 = new Ladder(Game, this, 14, new Vector2(21.93991f, 5.300028f));
             Elements.Add(ladder2);
-            Ladder ladder3 = new Ladder(Game, this, 19, new Vector2(50.83699f, 11.41017f));
+            Ladder ladder3 = new Ladder(Game, this, 22, new Vector2(50.83699f, 10.43015f));
             Elements.Add(ladder3);
-            Ladder ladder4 = new Ladder(Game, this, 12, new Vector2(41.70982f, 9.233451f));
+            Ladder ladder4 = new Ladder(Game, this, 15, new Vector2(41.70982f, 7.90342f));
             Elements.Add(ladder4);
 
             Elements.Add(Camera.Target = InputManager.Character = new Character(Game, this));
