@@ -19,6 +19,7 @@ namespace Nobots
         public Energy(Game game, Scene scene)
             : base(game, scene)
         {
+            ZBuffer = 1.0f;
             body.Position = new Vector2(32.60955f, -2.803332f);
 
             body.CollisionCategories = ElementCategory.ENERGY;
@@ -75,8 +76,7 @@ namespace Nobots
 
         protected override void YActionStart()
         {
-            Console.WriteLine("Y action");
-            /*foreach (Element i in scene.Elements)
+            foreach (Element i in scene.Elements)
             {
                 Character character = i as Character;
                 if (character != null && character != this)
@@ -88,11 +88,14 @@ namespace Nobots
                         scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
                         scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
                         scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
+                        scene.World.RemoveBody(body);
+                        scene.World.RemoveBody(torso);
+                        scene.World.RemoveJoint(revoluteJoint);
                         scene.GarbageElements.Add(this);
                     }
                     break;
                 }
-            }*/
+            }
         }
 
         public override void Draw(GameTime gameTime)
