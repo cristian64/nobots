@@ -65,11 +65,15 @@ namespace Nobots
             }
         }
 
-        public LaserBarrier(Game game, Scene scene, Vector2 position)
+        public LaserBarrier(Game game, Scene scene, Vector2 position, float? height = null)
             : base(game, scene)
         {
             ZBuffer = 10f;
-            body = BodyFactory.CreateRectangle(scene.World, width, height, 0);
+            if (height != null)
+            {
+                this.height = height.Value;
+            }
+            body = BodyFactory.CreateRectangle(scene.World, width, this.height, 0);
             body.Position = position;
             body.BodyType = BodyType.Static;
             body.OnCollision += body_OnCollision;
@@ -95,10 +99,11 @@ namespace Nobots
         public override void Update(GameTime gameTime)
         {
             Vector2 velocity = new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
-            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), velocity);
-            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -velocity);
-            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), velocity);
-            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -velocity);
+            //velocity = (velocity / 2) * height;
+            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
+            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
+            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
+            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
 
             base.Update(gameTime);
         }
