@@ -76,7 +76,7 @@ namespace Nobots
             height = size.Y;
             width = size.X;
             this.position = position;
-            texture = Game.Content.Load<Texture2D>("platform");
+            texture = Game.Content.Load<Texture2D>("floor_3");
             createBody();
         }
 
