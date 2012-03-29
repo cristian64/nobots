@@ -72,15 +72,15 @@ namespace Nobots
             Elements.Add(box1);
             Elements.Add(new Stone(Game, this, new Vector2(7.812996f, 0f)));
 
-            Platform platform1 = new Platform(Game, this, Conversion.ToWorld(new Vector2(0, 400)), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform1 = new Platform(Game, this, new Vector2(1.879999f, 10.60015f), Conversion.ToWorld(new Vector2(384, 48)));
             Elements.Add(platform1);
-            Platform platform2 = new Platform(Game, this, new Vector2(platform1.Position.X + platform1.Width, platform1.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform2 = new Platform(Game, this, new Vector2(5.189986f, 10.17014f), new Vector2(3.9f, 1.389999f));
             Elements.Add(platform2);
             PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(3.84f, 3.809996f));
             Elements.Add(pressurePlate1);
-            Platform platform3 = new Platform(Game, this, new Vector2(platform2.Position.X, platform2.Position.Y - Conversion.ToWorld(300)), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform3 = new Platform(Game, this, new Vector2(6.930026f, 6.500125f), new Vector2(0.4000032f, 6.090044f));
             Elements.Add(platform3);
-            Platform platform4 = new Platform(Game, this, new Vector2(platform3.Position.X + platform3.Width, platform3.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform4 = new Platform(Game, this, new Vector2(5.819913f, 3.390068f), new Vector2(6.020046f, 0.3200001f));
             Elements.Add(platform4);
 
             Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + platform4.Width + Conversion.ToWorld(300), platform4.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
@@ -120,7 +120,7 @@ namespace Nobots
             Elements.Add(new Forklift(Game, this, new Vector2(49.04955f, 0f)));
             //Elements.Add(new Stone(Game, this, new Vector2(49.04955f, 3.5f)));
 
-            Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(1.640002f, 1.360001f));
+            Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(4.590013f, 7.090069f));
             Elements.Add(ladder1);
             Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(16.71999f, 1.360001f));
             Elements.Add(ladder2);
