@@ -75,10 +75,11 @@ namespace Nobots
 
         protected override void YActionStart()
         {
-            foreach (Element i in scene.Elements)
+            Console.WriteLine("Y action");
+            /*foreach (Element i in scene.Elements)
             {
                 Character character = i as Character;
-                if (character != null)
+                if (character != null && character != this)
                 {
                     if (IsTouchingElement(i))
                     {
@@ -88,10 +89,10 @@ namespace Nobots
                         scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
                         scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
                         scene.GarbageElements.Add(this);
-                        break;
                     }
+                    break;
                 }
-            }
+            }*/
         }
 
         public override void Draw(GameTime gameTime)

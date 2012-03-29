@@ -188,6 +188,14 @@ namespace Nobots
                 }
             }
 
+            foreach (Element i in GarbageElements)
+                Elements.Remove(i);
+            GarbageElements.Clear();
+
+            foreach (Element i in RespawnElements)
+                Elements.Add(i);
+            RespawnElements.Clear();
+
             PlasmaExplosionParticleSystem.Update(gameTime);
             LaserParticleSystem.Update(gameTime);
             VortexParticleSystem.Update(gameTime);
@@ -199,12 +207,6 @@ namespace Nobots
                 i.Update(gameTime);
             foreach (Background i in Foregrounds)
                 i.Update(gameTime);
-
-            foreach (Element i in GarbageElements)
-                Elements.Remove(i);
-
-            foreach (Element i in RespawnElements)
-                Elements.Add(i);
 
             base.Update(gameTime);
         }

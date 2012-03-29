@@ -30,6 +30,7 @@ namespace Nobots
 
         public override void YActionStart()
         {
+            Console.WriteLine("Y action in IdleState");
             character.State = new ComaCharacterState(scene, character);
 
             base.YActionStart();
