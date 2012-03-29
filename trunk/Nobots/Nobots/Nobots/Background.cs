@@ -17,7 +17,7 @@ namespace Nobots
         {
             get
             {
-                throw new NotImplementedException();
+                return Texture.Width;
             }
             set
             {
@@ -29,7 +29,7 @@ namespace Nobots
         {
             get
             {
-                throw new NotImplementedException();
+                return Texture.Height;
             }
             set
             {
@@ -60,11 +60,11 @@ namespace Nobots
             }
         }
 
-        public Background(Game game, Scene scene)
+        public Background(Game game, Scene scene, Texture2D texture)
             : base(game, scene)
         {
-            Speed = new Vector2(0.1f, 0.01f);
-            Texture = Game.Content.Load<Texture2D>("background");
+            Speed = Vector2.One;
+            Texture = texture;
         }
 
         public override void Draw(GameTime gameTime)
