@@ -71,12 +71,25 @@ namespace Nobots
             }
         }
 
-        protected override void XAction()
+        protected override void YActionStart()
         {
-        }
-
-        protected override void XActionStop()
-        {
+            foreach (Element i in scene.Elements)
+            {
+                Character character = i as Character;
+                if (character != null)
+                {
+                    if (IsTouchingElement(i))
+                    {
+                        character.State = new IdleCharacterState(scene, character);
+                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
+                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
+                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
+                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
+                        scene.GarbageElements.Add(this);
+                        break;
+                    }
+                }
+            }
         }
 
         public override void Draw(GameTime gameTime)

@@ -21,6 +21,7 @@ namespace Nobots
         public Camera Camera;
         public World World;
         public DebugViewXNA physicsDebug;
+        public SortedList<Element> GarbageElements;
         public SortedList<Element> Elements;
         public List<Background> Backgrounds;
         public List<Background> Foregrounds;
@@ -29,6 +30,7 @@ namespace Nobots
             : base(game)
         {
             Camera = new Camera(Game);
+            GarbageElements = new SortedList<Element>();
             Elements = new SortedList<Element>();
             Backgrounds = new List<Background>();
             Foregrounds = new List<Background>();
@@ -195,6 +197,10 @@ namespace Nobots
                 i.Update(gameTime);
             foreach (Background i in Foregrounds)
                 i.Update(gameTime);
+
+            foreach (Element i in GarbageElements)
+                Elements.Remove(i);
+
             base.Update(gameTime);
         }
 
