@@ -70,8 +70,8 @@ namespace Nobots
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 150f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
-            body.Rotation = -2.236696f;
-            body.ApplyAngularImpulse(0.1f);
+            /*body.Rotation = -2.236696f;
+            body.ApplyAngularImpulse(0.1f);*/
             body.Friction = 100.0f;
 
             body.UserData = this;
