@@ -76,8 +76,14 @@ namespace Nobots
             Elements.Add(platform1);
             Platform platform2 = new Platform(Game, this, new Vector2(5.189986f, 10.17014f), new Vector2(3.9f, 1.389999f));
             Elements.Add(platform2);
+
             PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(25.9805f, 3.159997f));
             Elements.Add(pressurePlate1);
+            LaserBarrier laserBarrier3 = new LaserBarrier(Game, this, new Vector2(21.94052f, 3.189997f), 1);
+            laserBarrier3.Rotation = MathHelper.PiOver2;
+            laserBarrier3.Height = 1.0f;
+            Elements.Add(laserBarrier3);
+
             Platform platform3 = new Platform(Game, this, new Vector2(6.930026f, 6.500125f), new Vector2(0.4000032f, 6.090044f));
             Elements.Add(platform3);
             Platform platform4 = new Platform(Game, this, new Vector2(10.07001f, 3.320068f), new Vector2(9.810133f, 0.44f));
