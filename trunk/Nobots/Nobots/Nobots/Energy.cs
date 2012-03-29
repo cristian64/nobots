@@ -23,6 +23,8 @@ namespace Nobots
 
             body.CollisionCategories = ElementCategory.ENERGY;
             torso.CollisionCategories = ElementCategory.ENERGY;
+            body.CollidesWith = Category.All & ~ElementCategory.CHARACTER;
+            torso.CollidesWith = Category.All & ~ElementCategory.CHARACTER;
 
             effect = Game.Content.Load<Effect>("energy");
         }
