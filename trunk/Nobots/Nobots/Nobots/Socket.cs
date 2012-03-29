@@ -51,7 +51,7 @@ namespace Nobots
             : base(game, scene)
         {
             ZBuffer = -6f;
-            texture = Game.Content.Load<Texture2D>("socket");
+            texture = Game.Content.Load<Texture2D>("wires_end");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 20f);
             body.Position = position;
             body.BodyType = BodyType.Static;

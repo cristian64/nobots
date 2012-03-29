@@ -104,11 +104,11 @@ namespace Nobots
 
             Platform platform13 = new Platform(Game, this, new Vector2(44.33905f, 11.49017f), new Vector2(0.7400029f, 11.01016f));
             Elements.Add(platform13);
-            Platform platform14 = new Platform(Game, this, new Vector2(47.38854f, 5.78004f), new Vector2(10.77015f, 0.48f));
+            Platform platform14 = new Platform(Game, this, new Vector2(46.27872f, 5.77004f), new Vector2(8.060088f, 0.48f));
             Elements.Add(platform14);
             Platform platform15 = new Platform(Game, this, new Vector2(34.07142f, 3.43f), new Vector2(0.560003f, 7.010066f));
             Elements.Add(platform15);
-            Platform platform16 = new Platform(Game, this, new Vector2(37.87143f, 5.77004f), new Vector2(7.08007f, 0.48f));
+            Platform platform16 = new Platform(Game, this, new Vector2(37.74145f, 5.77004f), new Vector2(6.870065f, 0.48f));
             Elements.Add(platform16);
             Platform platform17 = new Platform(Game, this, new Vector2(52.40963f, 2.76f), new Vector2(0.7400029f, 5.610034f));
             Elements.Add(platform17);
@@ -119,6 +119,8 @@ namespace Nobots
             Elements.Add(platform19);
             Platform platform20 = new Platform(Game, this, new Vector2(26.44006f, 3.34f), new Vector2(7.930088f, 0.4500005f));
             Elements.Add(platform20);
+            Platform platform21 = new Platform(Game, this, new Vector2(52.07965f, 5.760039f), new Vector2(1.400001f, 0.4500005f));
+            Elements.Add(platform21);
 
             Elements.Add(new Forklift(Game, this, new Vector2(49.04955f, 0f)));
             //Elements.Add(new Stone(Game, this, new Vector2(49.04955f, 3.5f)));
@@ -127,9 +129,9 @@ namespace Nobots
             Elements.Add(ladder1);
             Ladder ladder2 = new Ladder(Game, this, 11, new Vector2(21.93991f, 6.510056f));
             Elements.Add(ladder2);
-            Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(33.39991f, -1.309999f));
+            Ladder ladder3 = new Ladder(Game, this, 19, new Vector2(50.83699f, 11.41017f));
             Elements.Add(ladder3);
-            Ladder ladder4 = new Ladder(Game, this, 26, new Vector2(41.70982f, 9.253451f));
+            Ladder ladder4 = new Ladder(Game, this, 12, new Vector2(41.70982f, 9.233451f));
             Elements.Add(ladder4);
 
             Elements.Add(Camera.Target = InputManager.Character = new Character(Game, this));
