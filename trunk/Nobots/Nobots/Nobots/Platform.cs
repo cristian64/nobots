@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
+using Microsoft.Xna.Framework.Input;
 
 namespace Nobots
 {
@@ -13,28 +14,33 @@ namespace Nobots
     {
         public Body body;
         Texture2D texture;
+        Vector2 position;
 
+        private float height;
         public override float Height
         {
             get
             {
-                return Conversion.ToWorld(texture.Height);
+                return height;
             }
             set
             {
-                throw new NotImplementedException();
+                height = value;
+                createBody();
             }
         }
 
+        private float width;
         public override float Width
         {
             get
             {
-                return Conversion.ToWorld(texture.Width);
+                return width;
             }
             set
             {
-                throw new NotImplementedException();
+                width = value;
+                createBody();
             }
         }
 
@@ -47,6 +53,7 @@ namespace Nobots
             set
             {
                 body.Position = value;
+                position = value;
             }
         }
 
@@ -62,25 +69,41 @@ namespace Nobots
             }
         }
 
-        public Platform(Game game, Scene scene, Vector2 position)
+        public Platform(Game game, Scene scene, Vector2 position, Vector2 size)
             : base(game, scene)
         {
             ZBuffer = 5f;
+            height = size.Y;
+            width = size.X;
+            this.position = position;
             texture = Game.Content.Load<Texture2D>("platform");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1.0f);
-           // body.Position = new Vector2(1.812996f, 3.583698f);
-            body.Position = position;
-            body.BodyType = BodyType.Static;
-            body.CollisionCategories = Category.Cat11;
+            createBody();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, new Rectangle( (int)Conversion.ToDisplay(body.Position.X - scene.Camera.Position.X), (int)Conversion.ToDisplay(body.Position.Y - scene.Camera.Position.Y), 
+                (int)Conversion.ToDisplay(Width), (int)Conversion.ToDisplay(Height)), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void createBody()
+        {
+            if(body != null)
+                body.Dispose();
+            body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
+            // body.Position = new Vector2(1.812996f, 3.583698f);
+            body.Position = position;
+            body.BodyType = BodyType.Static;
+            body.CollisionCategories = Category.Cat11;
         }
     }
 }
