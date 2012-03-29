@@ -100,6 +100,8 @@ namespace Nobots
             body.Friction = float.MaxValue;
             body.UserData = this;
             body.CollisionCategories = ElementCategory.CHARACTER;
+            body.CollidesWith = Category.All & ~ElementCategory.ENERGY;
+
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
@@ -111,6 +113,7 @@ namespace Nobots
             torso.Friction = 0.0f;
             torso.UserData = this;
             torso.CollisionCategories = ElementCategory.CHARACTER;
+            torso.CollidesWith = Category.All & ~ElementCategory.ENERGY;
 
             torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
             torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);

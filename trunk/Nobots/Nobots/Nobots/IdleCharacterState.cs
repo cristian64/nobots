@@ -28,6 +28,13 @@ namespace Nobots
             character.body.LinearVelocity = Vector2.UnitY * character.body.LinearVelocity;
         }
 
+        public override void YActionStart()
+        {
+            character.State = new ComaCharacterState(scene, character);
+
+            base.YActionStart();
+        }
+
         public override void UpAction()
         {
             if (character.Ladder != null)
