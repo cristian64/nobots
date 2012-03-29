@@ -36,7 +36,7 @@ namespace Nobots
         {
             get
             {
-                return texture.Height;
+                return Conversion.ToWorld(texture.Height);
             }
             set
             {
@@ -48,7 +48,7 @@ namespace Nobots
         {
             get
             {
-                return texture.Width;
+                return Conversion.ToWorld(texture.Width);
             }
             set
             {
@@ -85,9 +85,7 @@ namespace Nobots
         {
             ZBuffer = 6f;
             texture = Game.Content.Load<Texture2D>("elevator");
-            body = BodyFactory.CreateEdge(scene.World, Vector2.Zero, new Vector2(Conversion.ToWorld(texture.Width), 0));
-            EdgeShape ceiling = new EdgeShape(new Vector2(0, Conversion.ToWorld(texture.Height)), new Vector2(Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height)));
-            body.CreateFixture(ceiling);
+            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width - 30), Conversion.ToWorld(texture.Height - 15), 150f);
 
             body.Position = position;
             //body.Position = new Vector2(-2.5f, 1.583698f);
@@ -115,7 +113,8 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            //scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2 - 3, texture.Height / 2 + 7), 1.0f, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
