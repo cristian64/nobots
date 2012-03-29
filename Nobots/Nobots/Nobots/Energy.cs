@@ -51,6 +51,34 @@ namespace Nobots
         {
         }
 
+        protected override void XActionStart()
+        {
+            foreach (Element i in scene.Elements)
+            {
+                Socket socket = i as Socket;
+                if (socket != null)
+                {
+                    if (IsTouchingElement(i))
+                    {
+                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
+                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
+                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
+                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
+                        Position = socket.OtherSocket.Position;
+                        break;
+                    }
+                }
+            }
+        }
+
+        protected override void XAction()
+        {
+        }
+
+        protected override void XActionStop()
+        {
+        }
+
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, effect);
