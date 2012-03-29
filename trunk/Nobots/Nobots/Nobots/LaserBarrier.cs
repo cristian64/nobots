@@ -13,7 +13,7 @@ namespace Nobots
 {
     class LaserBarrier : Element, IActivable
     {
-        float height = Conversion.ToWorld(250);
+        float height = Conversion.ToWorld(550);
         float width = Conversion.ToWorld(15);
         Body body;
 

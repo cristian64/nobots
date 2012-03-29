@@ -95,7 +95,7 @@ namespace Nobots
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 30);
             body.Position = new Vector2(1f, 0);
-            //body.Position = new Vector2(34.60955f, -2.803332f);
+            body.Position = new Vector2(34.60955f, 16f);
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
             body.UserData = this;

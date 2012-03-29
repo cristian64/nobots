@@ -66,6 +66,8 @@ namespace Nobots
             Backgrounds[2].Position = Backgrounds[1].Position + new Vector2(Backgrounds[1].Width, 0);
             Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background4")));
             Backgrounds[3].Position = Backgrounds[2].Position + new Vector2(Backgrounds[2].Width, 0);
+            Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("wires")));
+            Backgrounds[4].Position = new Vector2(44.5f, 10.3f);
 
             Foregrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("tree")));
             Box box1 = new Box(Game, this, new Vector2(5.812996f, 0.583698f));
@@ -143,7 +145,12 @@ namespace Nobots
             ElectricityBox eBox1 = new ElectricityBox(Game, this, new Vector2(46.83757f, 3.989998f));
             Elements.Add(eBox1);
             eBox1.activableElement = elevator1;
-            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.806664f));
+            ElectricityBox eBox2 = new ElectricityBox(Game, this, new Vector2(47.83757f, 3.989998f));
+            Elements.Add(eBox2);
+            ElectricityBox eBox3 = new ElectricityBox(Game, this, new Vector2(45.83757f, 3.989998f));
+            Elements.Add(eBox3);
+            eBox3.activableElement = elevator1;
+            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.756664f));
             Elements.Add(laserBarrier1);
             PressurePlate pressurePlate2 = new PressurePlate(Game, this, new Vector2(17.78031f, 0.7999996f));
             Elements.Add(pressurePlate2);
@@ -153,7 +160,7 @@ namespace Nobots
             Socket socket = new Socket(Game, this, new Vector2(43.70762f, 15.29692f));
             Elements.Add(socket);
 
-            Socket socket2 = new Socket(Game, this, new Vector2(43.73852f, 10.73682f));
+            Socket socket2 = new Socket(Game, this, new Vector2(43.73852f, 10.47681f));
             Elements.Add(socket2);
             socket.OtherSocket = socket2;
             socket2.OtherSocket = socket;
