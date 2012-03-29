@@ -195,6 +195,15 @@ namespace Nobots
                     selection.Position = selection.Position - Vector2.UnitX * Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
                     selection.Position = selection.Position + Vector2.UnitX * Conversion.ToWorld(1);
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Add) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
+                    selection.Height = selection.Height + Conversion.ToWorld(1);
+                else if (Keyboard.GetState().IsKeyDown(Keys.Add))
+                    selection.Width = selection.Width + Conversion.ToWorld(1);
+                if (Keyboard.GetState().IsKeyDown(Keys.Subtract) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
+                    selection.Height = selection.Height - Conversion.ToWorld(1);
+                else if (Keyboard.GetState().IsKeyDown(Keys.Subtract))
+                    selection.Width = selection.Width - Conversion.ToWorld(1);
             }
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
