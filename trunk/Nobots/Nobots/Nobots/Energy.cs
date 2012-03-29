@@ -95,10 +95,12 @@ namespace Nobots
                     if (IsTouchingElement(i))
                     {
                         character.State = new IdleCharacterState(scene, character);
-                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
-                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
-                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
-                        scene.PlasmaExplosionParticleSystem.AddParticle(Position, Vector2.Zero);
+                        Random random = new Random();
+                        for (int j = 0; j < 50; j++)
+                        {
+                            scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                            scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                        }
                         scene.World.RemoveBody(body);
                         scene.World.RemoveBody(torso);
                         scene.World.RemoveJoint(revoluteJoint);
