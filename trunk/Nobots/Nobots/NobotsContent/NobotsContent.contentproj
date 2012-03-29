@@ -63,13 +63,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="platform.png">
-      <Name>platform</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="particlesystem\explosion.png">
       <Name>explosion</Name>
       <Importer>TextureImporter</Importer>
@@ -254,8 +247,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="floor_3.png">
-      <Name>floor_3</Name>
+    <Compile Include="platform.png">
+      <Name>platform</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

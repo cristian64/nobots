@@ -24,6 +24,7 @@ namespace Nobots
         {
             character.torso.Position = character.body.Position - new Vector2(0, character.Height / 2 - character.body.FixtureList[0].Shape.Radius / 2);
             character.torso.Rotation = 0;
+            character.torso.AngularVelocity = 0;
             character.torso.FixedRotation = true;
         }
 
