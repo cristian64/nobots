@@ -66,7 +66,7 @@ namespace Nobots
             : base(game, scene)
         {
             ZBuffer = 0f;
-            texture = Game.Content.Load<Texture2D>("box");
+            texture = Game.Content.Load<Texture2D>("closet");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 150f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
