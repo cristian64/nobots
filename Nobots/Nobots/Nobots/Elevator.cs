@@ -31,6 +31,7 @@ namespace Nobots
 
         Body body;
         Texture2D texture;
+        Texture2D chainsTexture;
 
         public override float Height
         {
@@ -84,11 +85,12 @@ namespace Nobots
             : base(game, scene)
         {
             ZBuffer = 6f;
+            chainsTexture = Game.Content.Load<Texture2D>("elevator_chains");
             texture = Game.Content.Load<Texture2D>("elevator");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width - 30), Conversion.ToWorld(texture.Height - 15), 150f);
 
             body.Position = position;
-            //body.Position = new Vector2(-2.5f, 1.583698f);
+            body.Position = new Vector2(1.5f, 2.583698f);
             body.BodyType = BodyType.Kinematic;
 
             InitialPosition = body.Position;
@@ -113,7 +115,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            //scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(chainsTexture, Conversion.ToDisplay(body.Position - scene.Camera.Position) - new Vector2(-6, chainsTexture.Height + 30), null, Color.White, 0, new Vector2(texture.Width / 2, 0), 1.0f, SpriteEffects.None, 0);
             scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2 - 3, texture.Height / 2 + 7), 1.0f, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
