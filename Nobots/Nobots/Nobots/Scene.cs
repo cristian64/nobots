@@ -80,17 +80,17 @@ namespace Nobots
             Elements.Add(pressurePlate1);
             Platform platform3 = new Platform(Game, this, new Vector2(6.930026f, 6.500125f), new Vector2(0.4000032f, 6.090044f));
             Elements.Add(platform3);
-            Platform platform4 = new Platform(Game, this, new Vector2(5.819913f, 3.390068f), new Vector2(6.020046f, 0.3200001f));
+            Platform platform4 = new Platform(Game, this, new Vector2(9.039987f, 3.350068f), new Vector2(13.18021f, 0.42f));
             Elements.Add(platform4);
 
-            Platform platform5 = new Platform(Game, this, new Vector2(platform4.Position.X + platform4.Width + Conversion.ToWorld(300), platform4.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform5 = new Platform(Game, this, new Vector2(24.28016f, 3.349998f), new Vector2(12.26019f, 0.43f));
             Elements.Add(platform5);
-            Platform platform6 = new Platform(Game, this, new Vector2(18.92004f, 1), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform6 = new Platform(Game, this, new Vector2(30.07031f, 1.59007f), new Vector2(0.6900029f, 3.329997f));
             Elements.Add(platform6);
 
-            Platform platform7 = new Platform(Game, this, new Vector2(platform6.Position.X - platform6.Width / 2, platform2.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform7 = new Platform(Game, this, new Vector2(20.39012f, 6.540057f), new Vector2(0.570003f, 6.040043f));
             Elements.Add(platform7);
-            Platform platform8 = new Platform(Game, this, new Vector2(platform7.Position.X + platform7.Width, platform7.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
+            Platform platform8 = new Platform(Game, this, new Vector2(22.05007f, 10.17014f), new Vector2(3.88f, 1.399999f));
             Elements.Add(platform8);
             Platform platform9 = new Platform(Game, this, new Vector2(platform8.Position.X + platform8.Width, platform8.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
             Elements.Add(platform9);
