@@ -80,10 +80,10 @@ namespace Nobots
             Elements.Add(pressurePlate1);
             Platform platform3 = new Platform(Game, this, new Vector2(6.930026f, 6.500125f), new Vector2(0.4000032f, 6.090044f));
             Elements.Add(platform3);
-            Platform platform4 = new Platform(Game, this, new Vector2(9.039987f, 3.350068f), new Vector2(13.18021f, 0.42f));
+            Platform platform4 = new Platform(Game, this, new Vector2(10.07001f, 3.320068f), new Vector2(9.810133f, 0.44f));
             Elements.Add(platform4);
 
-            Platform platform5 = new Platform(Game, this, new Vector2(24.28016f, 3.349998f), new Vector2(12.26019f, 0.43f));
+            Platform platform5 = new Platform(Game, this, new Vector2(19.78006f, 3.329998f), new Vector2(3.230002f, 0.43f));
             Elements.Add(platform5);
             Platform platform6 = new Platform(Game, this, new Vector2(30.07031f, 1.59007f), new Vector2(0.6900029f, 3.329997f));
             Elements.Add(platform6);
@@ -114,15 +114,18 @@ namespace Nobots
             Elements.Add(platform17);
             Platform platform18 = new Platform(Game, this, new Vector2(49.7602f, 11.44017f), new Vector2(0.7800028f, 11.17016f));
             Elements.Add(platform18);
-            Platform platform19 = new Platform(Game, this, new Vector2(platform18.Position.X + platform18.Width, platform18.Position.Y), Conversion.ToWorld(new Vector2(384, 48)));
+
+            Platform platform19 = new Platform(Game, this, new Vector2(1.999999f, 3.319997f), new Vector2(4.120001f, 0.4300005f));
             Elements.Add(platform19);
+            Platform platform20 = new Platform(Game, this, new Vector2(26.44006f, 3.34f), new Vector2(7.930088f, 0.4500005f));
+            Elements.Add(platform20);
 
             Elements.Add(new Forklift(Game, this, new Vector2(49.04955f, 0f)));
             //Elements.Add(new Stone(Game, this, new Vector2(49.04955f, 3.5f)));
 
-            Ladder ladder1 = new Ladder(Game, this, 20, new Vector2(4.590013f, 7.090069f));
+            Ladder ladder1 = new Ladder(Game, this, 11, new Vector2(4.610013f, 6.490053f));
             Elements.Add(ladder1);
-            Ladder ladder2 = new Ladder(Game, this, 20, new Vector2(16.71999f, 1.360001f));
+            Ladder ladder2 = new Ladder(Game, this, 11, new Vector2(21.93991f, 6.510056f));
             Elements.Add(ladder2);
             Ladder ladder3 = new Ladder(Game, this, 20, new Vector2(33.39991f, -1.309999f));
             Elements.Add(ladder3);
@@ -142,7 +145,7 @@ namespace Nobots
             ElectricityBox eBox1 = new ElectricityBox(Game, this, new Vector2(46.83757f, 3.989998f));
             Elements.Add(eBox1);
             eBox1.activableElement = elevator1;
-            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(35.60955f, -2.823332f));
+            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.806664f));
             Elements.Add(laserBarrier1);
             pressurePlate1.activableElement = elevator2;
             PressurePlate pressurePlate2 = new PressurePlate(Game, this, new Vector2(17.78031f, 0.7999996f));
@@ -150,10 +153,10 @@ namespace Nobots
             Box box2 = new Box(Game, this, new Vector2(19.70855f, 0.4243353f));
             Elements.Add(box2);
 
-            Socket socket = new Socket(Game, this, new Vector2(30.60955f, -2.223332f));
+            Socket socket = new Socket(Game, this, new Vector2(43.70762f, 15.29692f));
             Elements.Add(socket);
 
-            Socket socket2 = new Socket(Game, this, new Vector2(37.60955f, -2.223332f));
+            Socket socket2 = new Socket(Game, this, new Vector2(43.73852f, 10.73682f));
             Elements.Add(socket2);
             socket.OtherSocket = socket2;
             socket2.OtherSocket = socket;
