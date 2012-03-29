@@ -17,6 +17,7 @@ namespace Nobots
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
         public LaserParticleSystem LaserParticleSystem;
         public VortexParticleSystem VortexParticleSystem;
+        public VortexOutParticleSystem VortexOutParticleSystem;
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
         public Camera Camera;
@@ -56,6 +57,7 @@ namespace Nobots
             PlasmaExplosionParticleSystem = new PlasmaExplosionParticleSystem(Game, this);
             LaserParticleSystem = new LaserParticleSystem(Game, this);
             VortexParticleSystem = new VortexParticleSystem(Game, this);
+            VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
 
             Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background1")));
             Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background2")));
@@ -234,6 +236,7 @@ namespace Nobots
             PlasmaExplosionParticleSystem.Update(gameTime);
             LaserParticleSystem.Update(gameTime);
             VortexParticleSystem.Update(gameTime);
+            VortexOutParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             InputManager.Update(gameTime);
@@ -307,6 +310,7 @@ namespace Nobots
             PlasmaExplosionParticleSystem.Draw(gameTime);
             LaserParticleSystem.Draw(gameTime);
             VortexParticleSystem.Draw(gameTime);
+            VortexOutParticleSystem.Draw(gameTime);
             foreach (Background i in Foregrounds)
                 i.Draw(gameTime);
         }
