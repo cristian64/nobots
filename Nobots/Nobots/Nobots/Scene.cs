@@ -18,6 +18,7 @@ namespace Nobots
         public LaserParticleSystem LaserParticleSystem;
         public VortexParticleSystem VortexParticleSystem;
         public SpriteBatch SpriteBatch;
+        public InputManager InputManager;
         public Camera Camera;
         public World World;
         public DebugViewXNA physicsDebug;
@@ -30,6 +31,7 @@ namespace Nobots
         public Scene(Game game)
             : base(game)
         {
+            InputManager = new InputManager(Game);
             Camera = new Camera(Game);
             GarbageElements = new SortedList<Element>();
             RespawnElements = new SortedList<Element>();
@@ -111,7 +113,7 @@ namespace Nobots
             Ladder ladder4 = new Ladder(Game, this, 26, new Vector2(41.70982f, 0.6433345f));
             Elements.Add(ladder4);
 
-            Elements.Add(Camera.Target = new Character(Game, this));
+            Elements.Add(Camera.Target = InputManager.Character = new Character(Game, this));
             //Elements.Add(new Energy(Game, this));
 
             Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + platform10.Width/2, platform10.Position.Y - platform10.Height*4));
@@ -200,6 +202,7 @@ namespace Nobots
             VortexParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
+            InputManager.Update(gameTime);
             foreach (Background i in Backgrounds)
                 i.Update(gameTime);
             foreach (Element i in Elements)
