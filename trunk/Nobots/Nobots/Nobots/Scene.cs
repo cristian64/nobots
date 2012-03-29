@@ -133,21 +133,16 @@ namespace Nobots
             Elements.Add(ladder4);
 
             Elements.Add(Camera.Target = InputManager.Character = new Character(Game, this));
-            //Elements.Add(new Energy(Game, this));
 
-            Elevator elevator1 = new Elevator(Game, this, new Vector2(30.440044f, 2.08f));
+            Elevator elevator1 = new Elevator(Game, this, new Vector2(37.08941f, 16.08384f));
             Elements.Add(elevator1);
-            elevator1.FinalPosition = new Vector2(elevator1.Position.X, 0f);
+            elevator1.FinalPosition = new Vector2(37.08941f, 12.55374f);
 
-            Elevator elevator2 = new Elevator(Game, this, new Vector2(-1.5f, 1.870001f));
-            elevator2.FinalPosition = new Vector2(-1.5f, -1.569997f);
-            Elements.Add(elevator2);
             ElectricityBox eBox1 = new ElectricityBox(Game, this, new Vector2(46.83757f, 3.989998f));
             Elements.Add(eBox1);
             eBox1.activableElement = elevator1;
             LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.806664f));
             Elements.Add(laserBarrier1);
-            pressurePlate1.activableElement = elevator2;
             PressurePlate pressurePlate2 = new PressurePlate(Game, this, new Vector2(17.78031f, 0.7999996f));
             Elements.Add(pressurePlate2);
             Box box2 = new Box(Game, this, new Vector2(19.70855f, 0.4243353f));
