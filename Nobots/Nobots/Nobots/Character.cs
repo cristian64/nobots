@@ -68,7 +68,7 @@ namespace Nobots
             set
             {
                 torso.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2;
-                body.Position = value + Vector2.UnitY * height / 2;
+                body.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2 + Vector2.UnitY * height / 2;
             }
         }
 

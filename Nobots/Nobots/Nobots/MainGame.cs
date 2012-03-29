@@ -22,6 +22,7 @@ namespace Nobots
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreparingDeviceSettings += preparingDeviceSettings;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = (int)(0.8 * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
@@ -32,6 +33,11 @@ namespace Nobots
             graphics.PreferMultiSampling = true;
             Window.AllowUserResizing = true;
         }
+
+        private void preparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
+        {
+            e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+        } 
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
