@@ -64,10 +64,10 @@ namespace Nobots
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
+            /*scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
             scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
             scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
-            scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
-            scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+            scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);*/
             return true;
         }
 

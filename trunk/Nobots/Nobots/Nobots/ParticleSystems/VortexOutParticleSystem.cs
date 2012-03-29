@@ -19,11 +19,11 @@ namespace Nobots.ParticleSystem
     /// <summary>
     /// Custom particle system for creating the fiery part of the explosions.
     /// </summary>
-    public class VortexParticleSystem : ParticleSystem
+    public class VortexOutParticleSystem : ParticleSystem
     {
-        public static VortexParticleSystem LastInstance = null;
+        public static VortexOutParticleSystem LastInstance = null;
 
-        public VortexParticleSystem(Game game, Scene scene)
+        public VortexOutParticleSystem(Game game, Scene scene)
             : base(game, scene)
         {
             LastInstance = this;
@@ -52,11 +52,11 @@ namespace Nobots.ParticleSystem
             settings.MinRotateSpeed = -10;
             settings.MaxRotateSpeed = 10;
 
-            settings.MinStartSize = 150f;
-            settings.MaxStartSize = 150f;
+            settings.MinStartSize = 0;
+            settings.MaxStartSize = 0;
 
-            settings.MinEndSize = 0;
-            settings.MaxEndSize = 0f;
+            settings.MinEndSize = 150;
+            settings.MaxEndSize = 150;
 
             // Use additive blending.
             settings.BlendState = BlendState.Additive;

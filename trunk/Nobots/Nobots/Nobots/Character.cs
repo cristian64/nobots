@@ -28,6 +28,7 @@ namespace Nobots
         public SliderJoint sliderJoint;
 
         public Ladder Ladder;
+        float height, width;
 
         protected CharacterState state;
         public CharacterState State
@@ -48,26 +49,14 @@ namespace Nobots
 
         public override float Height
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return height; }
+            set { }
         }
 
         public override float Width
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return width; }
+            set { }
         }
 
         public override Vector2 Position
@@ -79,6 +68,7 @@ namespace Nobots
             set
             {
                 torso.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2;
+                body.Position = value + Vector2.UnitY * height / 2;
             }
         }
 
@@ -99,6 +89,9 @@ namespace Nobots
         {
             texture = Game.Content.Load<Texture2D>("girl");
             ZBuffer = 0f;
+
+            width = Conversion.ToWorld(texture.Width);
+            height = Conversion.ToWorld(texture.Height);
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 30);
             body.Position = new Vector2(1f, 0);
@@ -176,6 +169,12 @@ namespace Nobots
                 }
             }
             return false;
+        }
+
+        public bool IsTouchingElement(Element o)
+        {
+            return Math.Abs(Position.X - o.Position.X) <= 0.5 * (Width + o.Width) &&
+                   Math.Abs(Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height);
         }
 
         protected void updateLadder()
