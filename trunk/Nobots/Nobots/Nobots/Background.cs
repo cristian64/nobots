@@ -17,7 +17,7 @@ namespace Nobots
         {
             get
             {
-                return Texture.Width;
+                return Conversion.ToWorld(Texture.Width);
             }
             set
             {
@@ -29,7 +29,7 @@ namespace Nobots
         {
             get
             {
-                return Texture.Height;
+                return Conversion.ToWorld(Texture.Height);
             }
             set
             {
