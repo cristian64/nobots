@@ -36,7 +36,7 @@ namespace Nobots
         {
             get
             {
-                throw new NotImplementedException();
+                return texture.Height;
             }
             set
             {
@@ -48,7 +48,7 @@ namespace Nobots
         {
             get
             {
-                throw new NotImplementedException();
+                return texture.Width;
             }
             set
             {
