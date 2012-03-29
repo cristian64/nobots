@@ -173,20 +173,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="laser.png">
-      <Name>laser</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="laserEmitter.png">
-      <Name>laserEmitter</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="forklift.png">
       <Name>forklift</Name>
       <Importer>TextureImporter</Importer>
@@ -249,6 +235,18 @@
   <ItemGroup>
     <Compile Include="electricitybox.png">
       <Name>electricitybox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="elevator_chains.png">
+      <Name>elevator_chains</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elevator_upperthing.png">
+      <Name>elevator_upperthing</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
