@@ -22,6 +22,7 @@ namespace Nobots
         public World World;
         public DebugViewXNA physicsDebug;
         public SortedList<Element> GarbageElements;
+        public SortedList<Element> RespawnElements;
         public SortedList<Element> Elements;
         public List<Background> Backgrounds;
         public List<Background> Foregrounds;
@@ -31,6 +32,7 @@ namespace Nobots
         {
             Camera = new Camera(Game);
             GarbageElements = new SortedList<Element>();
+            RespawnElements = new SortedList<Element>();
             Elements = new SortedList<Element>();
             Backgrounds = new List<Background>();
             Foregrounds = new List<Background>();
@@ -110,7 +112,7 @@ namespace Nobots
             Elements.Add(ladder4);
 
             Elements.Add(Camera.Target = new Character(Game, this));
-            Elements.Add(new Energy(Game, this));
+            //Elements.Add(new Energy(Game, this));
 
             Elevator elevator1 = new Elevator(Game, this, new Vector2(platform10.Position.X + platform10.Width/2, platform10.Position.Y - platform10.Height*4));
             Elements.Add(elevator1);
@@ -200,6 +202,9 @@ namespace Nobots
 
             foreach (Element i in GarbageElements)
                 Elements.Remove(i);
+
+            foreach (Element i in RespawnElements)
+                Elements.Add(i);
 
             base.Update(gameTime);
         }
