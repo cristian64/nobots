@@ -18,14 +18,10 @@ namespace Nobots
         Vector2 finalPosition;
         float speed;
 
-        public void Activate()
+        public bool Active
         {
-            isActive = true;
-        }
-
-        public void Deactivate()
-        {
-            isActive = false;
+            get { return isActive; }
+            set { isActive = false; }
         }
 
         public override float Width
@@ -97,7 +93,7 @@ namespace Nobots
         public override void Update(GameTime gameTime)
         {
             if (!isActive && Keyboard.GetState().IsKeyDown(Keys.LeftControl) && prev.IsKeyUp(Keys.LeftControl))
-                Activate();
+                Active = true;
 
             if (isActive)
             {

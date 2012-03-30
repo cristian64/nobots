@@ -13,16 +13,18 @@ namespace Nobots
 {
     public class Elevator : Element, IActivable
     {
-        public bool Active = false;
-
-        public void Activate()
+        private bool isActive = false;
+        public bool Active
         {
-            Active = true;
-        }
+            get
+            {
+                return isActive;
+            }
 
-        public void Deactivate()
-        {
-            Active = false;
+            set
+            {
+                isActive = value;
+            }
         }
 
         public Vector2 InitialPosition;

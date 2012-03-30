@@ -7,7 +7,10 @@ namespace Nobots
 {
     interface IActivable
     {
-        void Activate();
-        void Deactivate();
+        bool Active
+        {
+            get;
+            set;
+        }
     }
 }

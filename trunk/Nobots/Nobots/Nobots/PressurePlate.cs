@@ -87,7 +87,7 @@ namespace Nobots
             Height = Conversion.ToWorld(texture.Height);
             offset = Height * 3 / 4;
             if (activableElement != null)
-                activableElement.Deactivate();
+                activableElement.Active = true;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
@@ -95,7 +95,7 @@ namespace Nobots
             Height = Conversion.ToWorld(texture.Height / 4);    
             offset = Height * 3 / 2;
             if(activableElement != null)
-                activableElement.Activate();
+                activableElement.Active = false;
 
             return true;
         }

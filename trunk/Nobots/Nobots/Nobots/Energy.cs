@@ -81,8 +81,7 @@ namespace Nobots
                 {
                     if (IsTouchingElement(i))
                     {
-                        Console.WriteLine("LOOP");
-                        eBox.activableElement.Activate();
+                        eBox.activableElement.Active = !eBox.activableElement.Active;
                         break;
                     }
                 }
