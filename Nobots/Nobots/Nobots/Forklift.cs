@@ -21,7 +21,7 @@ namespace Nobots
         public bool Active
         {
             get { return isActive; }
-            set { isActive = false; }
+            set { isActive = value; Console.WriteLine("pollaca " + value); }
         }
 
         public override float Width
@@ -77,13 +77,13 @@ namespace Nobots
         {
             isActive = false;
             ZBuffer = 0f;
-            texture = Game.Content.Load<Texture2D>("forklift");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width/2), Conversion.ToWorld(texture.Height/2), 150f);
+            texture = Game.Content.Load<Texture2D>("forklift2");
+            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(744), Conversion.ToWorld(texture.Height), 150f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
             body.Friction = 100.0f;
             body.Mass = 1000f;
-            finalPosition = body.Position - new Vector2(0, 3);
+            finalPosition = body.Position - new Vector2(0, 3f);
             speed = 0.01f;
 
             body.UserData = this;
@@ -92,11 +92,9 @@ namespace Nobots
         KeyboardState prev;
         public override void Update(GameTime gameTime)
         {
-            if (!isActive && Keyboard.GetState().IsKeyDown(Keys.LeftControl) && prev.IsKeyUp(Keys.LeftControl))
-                Active = true;
-
             if (isActive)
             {
+                body.BodyType = BodyType.Static;
                 if (body.Position.Y > finalPosition.Y)
                     body.Position -= speed * Vector2.UnitY;
                 else
@@ -110,7 +108,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 0.5f, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
