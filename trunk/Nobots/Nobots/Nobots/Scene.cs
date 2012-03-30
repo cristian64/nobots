@@ -79,9 +79,8 @@ namespace Nobots
             PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(25.9805f, 3.179997f));
 
             Elements.Add(pressurePlate1);
-            LaserBarrier laserBarrier3 = new LaserBarrier(Game, this, new Vector2(21.94052f, 3.189997f), 1);
+            LaserBarrier laserBarrier3 = new LaserBarrier(Game, this, new Vector2(21.94052f, 3.189997f), 1.1f);
             laserBarrier3.Rotation = MathHelper.PiOver2;
-            laserBarrier3.Height = 1.0f;
             Elements.Add(laserBarrier3);
             pressurePlate1.activableElement = laserBarrier3;
 
@@ -128,6 +127,15 @@ namespace Nobots
             Elements.Add(platform20);
             Platform platform21 = new Platform(Game, this, new Vector2(52.07965f, 5.760039f), new Vector2(1.400001f, 0.4500005f));
             Elements.Add(platform21);
+
+            Platform platform22 = new Platform(Game, this, new Vector2(-0.09255317f, 5.400352f), new Vector2(0.4800005f, 11.05016f));
+            Elements.Add(platform22);
+            Platform platform23 = new Platform(Game, this, new Vector2(37.06137f, -0.3222811f), new Vector2(74.81757f, 0.6700003f));
+            Elements.Add(platform23);
+            Platform platform24 = new Platform(Game, this, new Vector2(33.8574f, 13.9004f), new Vector2(0.5400004f, 7.000066f));
+            Elements.Add(platform24);
+            Platform platform25 = new Platform(Game, this, new Vector2(16.89746f, 6.550418f), new Vector2(7.010066f, 0.4400005f));
+            Elements.Add(platform25);
 
             Forklift forklift1 = new Forklift(Game, this, new Vector2(64.23187f, 8.605165f));
             Elements.Add(forklift1);
@@ -194,11 +202,14 @@ namespace Nobots
 
         Random random = new Random();
         Element selection = null;
+        MouseState previous;
         public override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            if (sceneTarget.Width != GraphicsDevice.Viewport.Width || sceneTarget.Height != GraphicsDevice.Viewport.Height)
             {
-                LaserParticleSystem.AddParticle(new Vector3(35.60955f, -2.823332f, 0), Vector3.Zero);
+                sceneTarget = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.Depth24);
+                renderTarget1 = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.None);
+                renderTarget2 = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.None);
             }
 
             if (selection != null)
@@ -222,7 +233,7 @@ namespace Nobots
                     selection.Width = selection.Width - Conversion.ToWorld(1);
             }
 
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released)
             {
                 selection = null;
                 foreach (Element i in Elements)
@@ -235,6 +246,14 @@ namespace Nobots
                     }
                 }
             }
+
+            if (Mouse.GetState().RightButton == ButtonState.Pressed && previous.RightButton == ButtonState.Released)
+            {
+                Platform platform = new Platform(Game, this, Camera.ScreenToWorld(previous), Vector2.One);
+                Elements.Add(platform);
+            }
+
+            previous = Mouse.GetState();
 
             foreach (Element i in GarbageElements)
                 Elements.Remove(i);
@@ -294,7 +313,7 @@ namespace Nobots
                 // Finally draw the last pass on the screen.
                 GraphicsDevice.Textures[1] = sceneTarget;
                 SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, bloomCombineEffect);
-                SpriteBatch.Draw(renderTarget1, Vector2.Zero, Color.White);
+                SpriteBatch.Draw(renderTarget1, new Rectangle(0, 0, GraphicsDevice.Viewport.Width,  GraphicsDevice.Viewport.Height), Color.White);
                 SpriteBatch.End();
             }
             else
