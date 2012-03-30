@@ -96,7 +96,7 @@ namespace Nobots
         {
             if (Active && fixtureB.Body.UserData as Character != null)
             {
-                ((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
+                //((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
                 //TODO: change character state to "dying..."
             }
             return true;

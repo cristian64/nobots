@@ -163,7 +163,7 @@ namespace Nobots
         {
             Vector2 headPosition = torso.Position;
 
-            if (Math.Abs(headPosition.X - ladder.Position.X) < Conversion.ToWorld(15))
+            if (Math.Abs(headPosition.X - ladder.Position.X) < Conversion.ToWorld(40))
             {
                 if (ladder.Position.Y - ladder.Height / 2 <= headPosition.Y && headPosition.Y <= ladder.Position.Y + ladder.Height / 2)
                 {
