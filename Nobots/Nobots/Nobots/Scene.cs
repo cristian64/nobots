@@ -83,6 +83,7 @@ namespace Nobots
             laserBarrier3.Rotation = MathHelper.PiOver2;
             laserBarrier3.Height = 1.0f;
             Elements.Add(laserBarrier3);
+            pressurePlate1.activableElement = laserBarrier3;
 
             Platform platform3 = new Platform(Game, this, new Vector2(6.930026f, 6.500125f), new Vector2(0.4000032f, 6.090044f));
             Elements.Add(platform3);
