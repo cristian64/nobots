@@ -67,7 +67,7 @@ namespace Nobots
             Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("background4")));
             Backgrounds[3].Position = Backgrounds[2].Position + new Vector2(Backgrounds[2].Width, 0);
             Backgrounds.Add(new Background(Game, this, Game.Content.Load<Texture2D>("wires")));
-            Backgrounds[4].Position = new Vector2(44.4f, 10.3f);
+            Backgrounds[4].Position = new Vector2(44.4f, 11);
 
             Box box1 = new Box(Game, this, new Vector2(13.22069f, 1.436227f));
             Elements.Add(box1);
@@ -169,10 +169,10 @@ namespace Nobots
             Box box2 = new Box(Game, this, new Vector2(28.55241f, 1.9716f));
             Elements.Add(box2);
 
-            Socket socket = new Socket(Game, this, new Vector2(43.70762f, 15.29692f));
+            Socket socket = new Socket(Game, this, new Vector2(43.70762f, 15.96693f));
             Elements.Add(socket);
 
-            Socket socket2 = new Socket(Game, this, new Vector2(43.73852f, 10.47681f));
+            Socket socket2 = new Socket(Game, this, new Vector2(43.73852f, 11.32683f));
             Elements.Add(socket2);
             socket.OtherSocket = socket2;
             socket2.OtherSocket = socket;

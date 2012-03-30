@@ -33,12 +33,14 @@ namespace Nobots
             {
                 Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f));
                 float distance = Vector2.Distance(centeredPosition, Position);
+                float Speed = this.Speed;
                 if (distance > Margin)
                 {
-                    Position = centeredPosition + Vector2.Normalize(Position - centeredPosition) * Margin;
+                    Speed *= 2;
+                    //Position = centeredPosition + Vector2.Normalize(Position - centeredPosition) * Margin;
                 }
-                else
-                {
+                /*else
+                {*/
                     if (distance < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
                     {
                         Position = centeredPosition;
@@ -47,7 +49,7 @@ namespace Nobots
                     {
                         Position += Vector2.Normalize(centeredPosition - Position) * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                     }
-                }
+                //}
             }
             else
             {
