@@ -76,8 +76,8 @@ namespace Nobots
             Elements.Add(platform1);
             Platform platform2 = new Platform(Game, this, new Vector2(5.189986f, 10.17014f), new Vector2(3.9f, 1.389999f));
             Elements.Add(platform2);
+            PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(25.9805f, 3.179997f));
 
-            PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(25.9805f, 3.159997f));
             Elements.Add(pressurePlate1);
             LaserBarrier laserBarrier3 = new LaserBarrier(Game, this, new Vector2(21.94052f, 3.189997f), 1);
             laserBarrier3.Rotation = MathHelper.PiOver2;
@@ -129,7 +129,8 @@ namespace Nobots
             Platform platform21 = new Platform(Game, this, new Vector2(52.07965f, 5.760039f), new Vector2(1.400001f, 0.4500005f));
             Elements.Add(platform21);
 
-            Elements.Add(new Forklift(Game, this, new Vector2(62.23187f, 12.77028f)));
+            Forklift forklift1 = new Forklift(Game, this, new Vector2(64.23187f, 8.605165f));
+            Elements.Add(forklift1);
 
             Ladder ladder1 = new Ladder(Game, this, 14, new Vector2(4.610013f, 5.320026f));
             Elements.Add(ladder1);
@@ -150,6 +151,7 @@ namespace Nobots
             Elements.Add(eBox1);
             ElectricityBox eBox2 = new ElectricityBox(Game, this, new Vector2(56.67609f, 15.20025f));
             Elements.Add(eBox2);
+            eBox2.activableElement = forklift1;
             ElectricityBox eBox3 = new ElectricityBox(Game, this, new Vector2(41.38832f, 15.66026f));
             Elements.Add(eBox3);
             eBox3.activableElement = elevator1;
