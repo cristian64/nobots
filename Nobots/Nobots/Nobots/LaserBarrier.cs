@@ -17,16 +17,22 @@ namespace Nobots
         float width = Conversion.ToWorld(15);
         Body body;
 
-        public bool Active;
+        private bool isActive = true;
 
-        public void Activate()
+        public bool Active
         {
-            Active = true;
-        }
+            get 
+            {
+                return isActive;
+            }
 
-        public void Deactivate()
-        {
-            Active = false;
+            set
+            {
+                isActive = value;
+                body.CollidesWith = Category.None;
+                if (isActive)
+                    body.CollidesWith = Category.None | ElementCategory.CHARACTER;
+            }
         }
 
         public override float Width
@@ -98,12 +104,15 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
-            Vector2 velocity = new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
-            //velocity = (velocity / 2) * height;
-            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
-            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
-            scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
-            scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
+            if (Active)
+            {
+                Vector2 velocity = new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
+                //velocity = (velocity / 2) * height;
+                scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
+                scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
+                scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
+                scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
+            }
 
             base.Update(gameTime);
         }

@@ -148,7 +148,6 @@ namespace Nobots
 
             ElectricityBox eBox1 = new ElectricityBox(Game, this, new Vector2(46.83757f, 3.989998f));
             Elements.Add(eBox1);
-            eBox1.activableElement = elevator1;
             ElectricityBox eBox2 = new ElectricityBox(Game, this, new Vector2(56.67609f, 15.20025f));
             Elements.Add(eBox2);
             ElectricityBox eBox3 = new ElectricityBox(Game, this, new Vector2(41.38832f, 15.66026f));
@@ -156,6 +155,7 @@ namespace Nobots
             eBox3.activableElement = elevator1;
             LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.756664f));
             Elements.Add(laserBarrier1);
+            eBox1.activableElement = laserBarrier1;
             Box box2 = new Box(Game, this, new Vector2(28.55241f, 1.9716f));
             Elements.Add(box2);
 
