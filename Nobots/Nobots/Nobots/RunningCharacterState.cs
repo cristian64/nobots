@@ -75,16 +75,18 @@ namespace Nobots
         public override void RightAction()
         {
             character.body.FixedRotation = false;
-            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = +80;
+            character.torso.LinearVelocity = new Vector2(3, character.torso.LinearVelocity.Y);
+            /*character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = +80;*/
             character.Effect = SpriteEffects.None;
         }
 
         public override void LeftAction()
         {
             character.body.FixedRotation = false;
-            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = -80;
+            character.torso.LinearVelocity = new Vector2(-3, character.torso.LinearVelocity.Y);
+            /*character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = -80;*/
             character.Effect = SpriteEffects.FlipHorizontally;
         }
 
