@@ -42,40 +42,41 @@ namespace Nobots
         MouseState previous;
         public override void Update(GameTime gameTime)
         {
-            if (selection != null)
+            if (Selection != null)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
-                    selection.Position = selection.Position - Vector2.UnitY * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position - Vector2.UnitY * Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
-                    selection.Position = selection.Position + Vector2.UnitY * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position + Vector2.UnitY * Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.A))
-                    selection.Position = selection.Position - Vector2.UnitX * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position - Vector2.UnitX * Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
-                    selection.Position = selection.Position + Vector2.UnitX * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position + Vector2.UnitX * Conversion.ToWorld(1);
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Add) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-                    selection.Height = selection.Height + Conversion.ToWorld(1);
+                    Selection.Height = Selection.Height + Conversion.ToWorld(1);
                 else if (Keyboard.GetState().IsKeyDown(Keys.Add))
-                    selection.Width = selection.Width + Conversion.ToWorld(1);
+                    Selection.Width = Selection.Width + Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.Subtract) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-                    selection.Height = selection.Height - Conversion.ToWorld(1);
+                    Selection.Height = Selection.Height - Conversion.ToWorld(1);
                 else if (Keyboard.GetState().IsKeyDown(Keys.Subtract))
-                    selection.Width = selection.Width - Conversion.ToWorld(1);
+                    Selection.Width = Selection.Width - Conversion.ToWorld(1);
             }
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released)
             {
                 Console.WriteLine(scene.Camera.ScreenToWorld(Mouse.GetState()));
-                selection = null;
+                Element newSelection = null;
                 foreach (Element i in scene.Elements)
                 {
                     if (Vector2.Distance(i.Position, scene.Camera.ScreenToWorld(Mouse.GetState())) < Conversion.ToWorld(10))
                     {
-                        selection = i;
+                        newSelection = i;
                         Console.WriteLine("Selected one at " + i.Position + ", Width " + i.Width + ", Height " + i.Height);
                         break;
                     }
                 }
+                Selection = newSelection;
             }
 
             if (Mouse.GetState().RightButton == ButtonState.Pressed && previous.RightButton == ButtonState.Released)
