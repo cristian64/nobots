@@ -70,7 +70,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            scene.SpriteBatch.Draw(Texture, Conversion.ToDisplay(Position - Speed * scene.Camera.Position), Color.White);
+            scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - Speed * scene.Camera.Position), null, Color.White, 0, Vector2.Zero, scene.Camera.Scale, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);

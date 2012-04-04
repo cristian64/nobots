@@ -102,9 +102,10 @@ namespace Nobots
 
         public override void Draw(GameTime gameTime)
         {
+            float scale = scene.Camera.Scale;
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(body.Position.X - scene.Camera.Position.X),
-                (int)Conversion.ToDisplay(body.Position.Y - offset - scene.Camera.Position.Y), texture.Width, (int)Conversion.ToDisplay(Height)), null, Color.White, 
+            scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)),
+                (int)Conversion.ToDisplay(scale * (body.Position.Y - offset - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Height)), null, Color.White, 
                 body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 

@@ -30,5 +30,23 @@ namespace Nobots
         {
             return u * WorldUnitsToDisplayUnitsRatio;
         }
+
+        public static Rectangle ToDisplay(Rectangle u)
+        {
+            u.X = (int)(u.X * DisplayUnitsToWorldUnitsRatio);
+            u.Y = (int)(u.X * DisplayUnitsToWorldUnitsRatio);
+            u.Width = (int)(u.Width * DisplayUnitsToWorldUnitsRatio);
+            u.Height = (int)(u.Height * DisplayUnitsToWorldUnitsRatio);
+            return u;
+        }
+
+        public static Rectangle ToWorld(Rectangle u)
+        {
+            u.X = (int)(u.X * WorldUnitsToDisplayUnitsRatio);
+            u.Y = (int)(u.X * WorldUnitsToDisplayUnitsRatio);
+            u.Width = (int)(u.Width * WorldUnitsToDisplayUnitsRatio);
+            u.Height = (int)(u.Height * WorldUnitsToDisplayUnitsRatio);
+            return u;
+        }
     }
 }
