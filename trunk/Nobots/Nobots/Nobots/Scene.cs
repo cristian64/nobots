@@ -20,6 +20,7 @@ namespace Nobots
         public VortexOutParticleSystem VortexOutParticleSystem;
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
+        public SelectionManager SelectionManager;
         public Camera Camera;
         public World World;
         public DebugViewXNA physicsDebug;
@@ -40,6 +41,7 @@ namespace Nobots
             : base(game)
         {
             InputManager = new InputManager(Game);
+            SelectionManager = new SelectionManager(Game, this);
             Camera = new Camera(Game);
             GarbageElements = new SortedList<Element>();
             RespawnElements = new SortedList<Element>();
@@ -200,9 +202,6 @@ namespace Nobots
             base.LoadContent();
         }
 
-        Random random = new Random();
-        Element selection = null;
-        MouseState previous;
         public override void Update(GameTime gameTime)
         {
             if (sceneTarget.Width != GraphicsDevice.Viewport.Width || sceneTarget.Height != GraphicsDevice.Viewport.Height)
@@ -212,48 +211,7 @@ namespace Nobots
                 renderTarget2 = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.None);
             }
 
-            if (selection != null)
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
-                    selection.Position = selection.Position - Vector2.UnitY * Conversion.ToWorld(1);
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
-                    selection.Position = selection.Position + Vector2.UnitY * Conversion.ToWorld(1);
-                if (Keyboard.GetState().IsKeyDown(Keys.A))
-                    selection.Position = selection.Position - Vector2.UnitX * Conversion.ToWorld(1);
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
-                    selection.Position = selection.Position + Vector2.UnitX * Conversion.ToWorld(1);
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Add) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-                    selection.Height = selection.Height + Conversion.ToWorld(1);
-                else if (Keyboard.GetState().IsKeyDown(Keys.Add))
-                    selection.Width = selection.Width + Conversion.ToWorld(1);
-                if (Keyboard.GetState().IsKeyDown(Keys.Subtract) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-                    selection.Height = selection.Height - Conversion.ToWorld(1);
-                else if (Keyboard.GetState().IsKeyDown(Keys.Subtract))
-                    selection.Width = selection.Width - Conversion.ToWorld(1);
-            }
-
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released)
-            {
-                selection = null;
-                foreach (Element i in Elements)
-                {
-                    if (Vector2.Distance(i.Position, Camera.ScreenToWorld(Mouse.GetState())) < Conversion.ToWorld(10))
-                    {
-                        selection = i;
-                        Console.WriteLine("Selected one at " + i.Position + ", Width " + i.Width + ", Height " + i.Height);
-                        break;
-                    }
-                }
-            }
-
-            if (Mouse.GetState().RightButton == ButtonState.Pressed && previous.RightButton == ButtonState.Released)
-            {
-                Platform platform = new Platform(Game, this, Camera.ScreenToWorld(previous), Vector2.One);
-                Elements.Add(platform);
-            }
-
-            previous = Mouse.GetState();
+            SelectionManager.Update(gameTime);
 
             foreach (Element i in GarbageElements)
                 Elements.Remove(i);
