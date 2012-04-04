@@ -16,7 +16,7 @@ namespace Nobots
         public Matrix View;
         public Matrix ViewNonScaled;
         public Matrix Projection;
-
+        public float Scale = 0.5f;
 
         public Camera(Game game)
             : base(game)
@@ -31,10 +31,10 @@ namespace Nobots
         {
             if (Target != null)
             {
-                Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f));
+                Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
                 float distance = Vector2.Distance(centeredPosition, Position);
-                float Speed = this.Speed;
-                if (distance > Margin)
+                float Speed = Scale * this.Speed;
+                if (distance > Margin * Scale)
                 {
                     Speed *= 2;
                     //Position = centeredPosition + Vector2.Normalize(Position - centeredPosition) * Margin;
@@ -68,7 +68,7 @@ namespace Nobots
 
             ViewNonScaled = Matrix.CreateLookAt(new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 1), new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 0), new Vector3(0, 1, 0));
             View = Matrix.CreateScale(Conversion.DisplayUnitsToWorldUnitsRatio) * ViewNonScaled;
-            Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0, 1);
+            Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width / Scale, GraphicsDevice.Viewport.Height / Scale, 0, 0, 1);
 
             base.Update(gameTime);
         }
@@ -81,7 +81,7 @@ namespace Nobots
 
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
-            return Conversion.ToWorld(screenPosition) + Position;
+            return Conversion.ToWorld(screenPosition) / Scale + Position;
         }
 
         public Vector2 ScreenToWorld(int x, int y)
