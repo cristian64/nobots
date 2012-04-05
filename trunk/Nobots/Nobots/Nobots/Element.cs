@@ -39,6 +39,7 @@ namespace Nobots
         }
 
         protected Scene scene;
+        public String Id;
 
         public Element(Game game, Scene scene)
             : base(game)
