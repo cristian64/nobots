@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Nobots
 {
-    interface IActivable
+    public interface IActivable
     {
         bool Active
         {

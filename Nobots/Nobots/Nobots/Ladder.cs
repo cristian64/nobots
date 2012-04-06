@@ -13,6 +13,19 @@ namespace Nobots
     {
         private int stepsNumber;
 
+        public int StepsNumber
+        {
+            get
+            {
+                return stepsNumber;
+            }
+            set
+            {
+                stepsNumber = value;
+                //TODO: recalculate size of the body
+            }
+        }
+
         Body body;
         Texture2D texture;
         int currentElementPosition;

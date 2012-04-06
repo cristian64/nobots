@@ -10,7 +10,7 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
-    class PressurePlate : Element
+    public class PressurePlate : Element
     {
         Body body;
         Texture2D texture;

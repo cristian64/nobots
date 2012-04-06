@@ -180,6 +180,7 @@ namespace Nobots
             socket2.OtherSocket = socket;
 
             SceneLoader sl = new SceneLoader();
+            //System.IO.File.WriteAllText(@"C:\Users\Cristian\Desktop\level1.xml", sl.SceneToXml(this));
             sl.SceneToXml(this);
         }
 

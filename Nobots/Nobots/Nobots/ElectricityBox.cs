@@ -10,7 +10,7 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
-    class ElectricityBox : Element
+    public class ElectricityBox : Element
     {
         Body body;
         Texture2D texture;

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Nobots
 {
-    class Forklift : Element, IActivable
+    public class Forklift : Element, IActivable
     {
         Body body;
         Texture2D texture;
