@@ -17,35 +17,55 @@ namespace Nobots
         public String SceneToXml(Scene scene)
         {
             String xml = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n";
-            xml += "<Elements>\n";
+            xml += "<Scene>\n";
+            xml += "    <Backgrounds>\n";
+            foreach (Background i in scene.Backgrounds)
+            {
+                xml += "        " + ElementToXml(i) + "\n";
+            }
+            xml += "    </Backgrounds>\n";
+            xml += "    <Elements>\n";
             foreach (Element i in scene.Elements)
             {
                 if (i as Platform != null)
-                    xml += "    " + ElementToXml((Platform)i) + "\n";
+                    xml += "        " + ElementToXml((Platform)i) + "\n";
                 else if (i as Box != null)
-                    xml += "    " + ElementToXml((Box)i) + "\n";
+                    xml += "        " + ElementToXml((Box)i) + "\n";
                 else if (i as Ladder != null)
-                    xml += "    " + ElementToXml((Ladder)i) + "\n";
+                    xml += "        " + ElementToXml((Ladder)i) + "\n";
                 else if (i as LaserBarrier != null)
-                    xml += "    " + ElementToXml((LaserBarrier)i) + "\n";
+                    xml += "        " + ElementToXml((LaserBarrier)i) + "\n";
                 else if (i as PressurePlate != null)
-                    xml += "    " + ElementToXml((PressurePlate)i) + "\n";
+                    xml += "        " + ElementToXml((PressurePlate)i) + "\n";
                 else if (i as Socket != null)
-                    xml += "    " + ElementToXml((Socket)i) + "\n";
+                    xml += "        " + ElementToXml((Socket)i) + "\n";
                 else if (i as Elevator != null)
-                    xml += "    " + ElementToXml((Elevator)i) + "\n";
+                    xml += "        " + ElementToXml((Elevator)i) + "\n";
                 else if (i as ElectricityBox != null)
-                    xml += "    " + ElementToXml((ElectricityBox)i) + "\n";
+                    xml += "        " + ElementToXml((ElectricityBox)i) + "\n";
                 else if (i as Character != null)
-                    xml += "    " + ElementToXml((Character)i) + "\n";
+                    xml += "        " + ElementToXml((Character)i) + "\n";
                 else if (i as Forklift != null)
-                    xml += "    " + ElementToXml((Forklift)i) + "\n";
+                    xml += "        " + ElementToXml((Forklift)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
-            xml += "</Elements>\n";
+            xml += "    </Elements>\n";
+            xml += "    <Foregrounds>\n";
+            foreach (Background i in scene.Foregrounds)
+            {
+                xml += "        " + ElementToXml(i) + "\n";
+            }
+            xml += "    </Foregrounds>\n";
+            xml += "</Scene>\n";
 
             Console.WriteLine(xml);
+            return xml;
+        }
+
+        public String ElementToXml(Background background)
+        {
+            String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\"  Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" />";
             return xml;
         }
 
@@ -76,7 +96,7 @@ namespace Nobots
 
         public String ElementToXml(Elevator elevator)
         {
-            String xml = "<Elevator Id=\"" + elevator.Id + "\" Position=\"" + elevator.Position.X + "," + elevator.Position.Y + "\" FinalPosition=\"" + elevator.FinalPosition + "\" Active=\"" + elevator.Active + "\" />";
+            String xml = "<Elevator Id=\"" + elevator.Id + "\" Position=\"" + elevator.Position.X + "," + elevator.Position.Y + "\" FinalPosition=\"" + elevator.FinalPosition.X + "," + elevator.FinalPosition.Y + "\" Active=\"" + elevator.Active + "\" />";
             return xml;
         }
 

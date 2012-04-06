@@ -9,6 +9,18 @@ namespace Nobots
 {
     public class Background : Element
     {
+        public String TextureName
+        {
+            get
+            {
+                return (Texture != null) ? Texture.Name : "";
+            }
+            set
+            {
+                Texture = Game.Content.Load<Texture2D>(value);
+            }
+        }
+
         public Texture2D Texture;
         public Vector2 Speed = Vector2.One;
         private Vector2 position;
