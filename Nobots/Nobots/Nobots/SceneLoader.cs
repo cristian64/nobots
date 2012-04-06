@@ -22,49 +22,73 @@ namespace Nobots
             navigator = document.CreateNavigator();
             //node = navigator.Select("xml/entry");
         }
-        public string ElementToXML(Platform platform)
+
+        public String SceneToXml(Scene scene)
         {
-            navigator.MoveToFirstChild();
-            navigator.MoveToFirstChild();
-            navigator.MoveToNext();
-            navigator.MoveToFirstAttribute();
-           
-            Console.WriteLine("platform " + navigator.Value);
-           
-            return "<platform id=\"" + platform.Id + "\" x=\"" + platform.Position.X + "\" y=\"" + platform.Position.Y + "\" width=\"" + platform.Width + "\" height=\"" + platform.Height + "\" rotation=\"" + platform.Rotation + "\"/>"; 
-        }
-/*
-        public string ElementToXML(Box box)
-        {
+            String xml = "<Scene>\n";
+            foreach (Element i in scene.Elements)
+            {
+                if (i as Platform != null)
+                    xml += "    " + ElementToXml((Platform)i) + "\n";
+            }
+            xml += "</Scene>\n";
+
+            Console.WriteLine(xml);
+            return xml;
         }
 
-        public string ElementToXML(ElectricityBox eBox)
-        {
+        public String ElementToXml(Platform platform)
+        {           
+            String xml = "<Platform Id=\"" + platform.Id + "\" Position=\"" + platform.Position.X + "," + platform.Position.X + "\" Width=\"" + platform.Width + "\" Height=\"" + platform.Height + "\" Rotation=\"" + platform.Rotation + " \"/>";
+            return xml;
         }
 
-        public string ElementToXML(Elevator elevator)
+        public String ElementToXml(Box box)
         {
+            String xml = "";
+            return xml;
         }
 
-        public string ElementToXML(Forklift forklift)
+        public String ElementToXml(ElectricityBox eBox)
         {
+            String xml = "";
+            return xml;
         }
 
-        public string ElementToXML(Ladder ladder)
+        public String ElementToXml(Elevator elevator)
         {
+            String xml = "";
+            return xml;
         }
 
-        public string ElementToXML(LaserBarrier laserBarrier)
+        public String ElementToXml(Forklift forklift)
         {
+            String xml = "";
+            return xml;
         }
 
-        public string ElementToXML(PressurePlate pressurePlate)
+        public String ElementToXml(Ladder ladder)
         {
+            String xml = "";
+            return xml;
         }
 
-        public string ElementToXML(Socket socket)
+        public String ElementToXml(LaserBarrier laserBarrier)
         {
+            String xml = "";
+            return xml;
         }
- **/
+
+        public String ElementToXml(PressurePlate pressurePlate)
+        {
+            String xml = "";
+            return xml;
+        }
+
+        public String ElementToXml(Socket socket)
+        {
+            String xml = "";
+            return xml;
+        }
     }
 }

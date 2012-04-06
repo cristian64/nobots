@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<elements>
-  <platform id="platform1" x="" y="" width="" height="" rotation="" />
-  <platform id="platform2" x="" y="" width="" height="" rotation="" />
-  <platform id="platform3" x="" y="" width="" height="" rotation="" />
-</elements>
+<Scene>
+  <Platform Id="platform1" Position="1.5,2.4" Rotation="0" Width="5" Height="1" />
+  <Platform Id="platform2" Position="6.5,2.4" Rotation="0" Width="5" Height="1" />
+</Scene>

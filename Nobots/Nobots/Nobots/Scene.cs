@@ -50,12 +50,6 @@ namespace Nobots
             Foregrounds = new List<Background>();
             World = new World(new Vector2(0, 13));
             physicsDebug = new DebugViewXNA(World);
-
-            // some code for texting the SceneLoader
-            SceneLoader sl = new SceneLoader();
-            Platform pl = new Platform(Game, this, new Vector2(2, 2), new Vector2(2,3));
-            pl.Id = "fff";
-            sl.ElementToXML(pl);
         }
 
         public override void Initialize()
@@ -184,6 +178,9 @@ namespace Nobots
             Elements.Add(socket2);
             socket.OtherSocket = socket2;
             socket2.OtherSocket = socket;
+
+            SceneLoader sl = new SceneLoader();
+            sl.SceneToXml(this);
         }
 
         protected override void LoadContent()
