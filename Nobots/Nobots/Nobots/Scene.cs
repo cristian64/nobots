@@ -50,6 +50,12 @@ namespace Nobots
             Foregrounds = new List<Background>();
             World = new World(new Vector2(0, 13));
             physicsDebug = new DebugViewXNA(World);
+
+            // some code for texting the SceneLoader
+            SceneLoader sl = new SceneLoader();
+            Platform pl = new Platform(Game, this, new Vector2(2, 2), new Vector2(2,3));
+            pl.Id = "fff";
+            sl.ElementToXML(pl);
         }
 
         public override void Initialize()
@@ -279,7 +285,7 @@ namespace Nobots
                 drawScene(gameTime);
             }
 
-            physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
+            //physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
 
             base.Update(gameTime);
         }

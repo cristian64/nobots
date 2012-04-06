@@ -122,6 +122,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="ParticleSystems\VortexOutParticleSystem.cs" />
+    <Compile Include="SceneLoader.cs" />
     <Compile Include="SelectionManager.cs" />
     <Compile Include="Socket.cs" />
     <Compile Include="ClimbingCharacterState.cs" />
