@@ -11,7 +11,7 @@ using FarseerPhysics.Collision.Shapes;
 
 namespace Nobots
 {
-    class LaserBarrier : Element, IActivable
+    public class LaserBarrier : Element, IActivable
     {
         float height = Conversion.ToWorld(550);
         float width = Conversion.ToWorld(15);
