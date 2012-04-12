@@ -10,11 +10,11 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
-    public class ElectricityBox : Element
+    public class ElectricityBox : Activator
     {
         Body body;
         Texture2D texture;
-        public IActivable activableElement;
+        //public IActivable activableElement;
 
         public override float Width
         {
