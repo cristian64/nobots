@@ -9,14 +9,16 @@ namespace Nobots
 {
     public class Background : Element
     {
+        private String textureName;
         public String TextureName
         {
             get
             {
-                return (Texture != null) ? Texture.Name : "";
+                return textureName;
             }
             set
             {
+                textureName = value;
                 Texture = Game.Content.Load<Texture2D>(value);
             }
         }
@@ -72,11 +74,17 @@ namespace Nobots
             }
         }
 
-        public Background(Game game, Scene scene, Texture2D texture)
+        public Background(Game game, Scene scene)
             : base(game, scene)
         {
             Speed = Vector2.One;
-            Texture = texture;
+        }
+
+        public Background(Game game, Scene scene, String textureName)
+            : base(game, scene)
+        {
+            Speed = Vector2.One;
+            TextureName = textureName;
         }
 
         public override void Draw(GameTime gameTime)
