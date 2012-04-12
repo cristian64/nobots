@@ -27,8 +27,16 @@ namespace Nobots
             Initialize();
         }
 
+        MouseState previousMouseState;
         public override void Update(GameTime gameTime)
         {
+            MouseState currentMouseState = Mouse.GetState();
+            if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue > 0)
+                Scale *= 1.1f;
+            else if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue < 0)
+                Scale *= 0.9f;
+            previousMouseState = currentMouseState;
+
             if (Target != null)
             {
                 Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
@@ -50,6 +58,8 @@ namespace Nobots
                         Position += Vector2.Normalize(centeredPosition - Position) * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                     }
                 //}
+
+                    Position = centeredPosition;
             }
             else
             {
