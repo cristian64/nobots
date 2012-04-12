@@ -21,7 +21,7 @@ namespace Nobots
         public bool Active
         {
             get { return isActive; }
-            set { isActive = value; Console.WriteLine("pollaca " + value); }
+            set { isActive = value; }
         }
 
         public override float Width

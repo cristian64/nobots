@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml.XPath;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using System.Globalization;
 
 namespace Nobots
 {
@@ -69,7 +70,7 @@ namespace Nobots
 
         public Vector2 PositionFromString(String xml)
         {
-            return new Vector2(float.Parse(xml.Split(',')[0]), float.Parse(xml.Split(',')[1]));
+            return new Vector2(float.Parse(xml.Split(',')[0], CultureInfo.InvariantCulture), float.Parse(xml.Split(',')[1], CultureInfo.InvariantCulture));
         }
 
         public Background BackgroundFromXml(XmlTextReader reader)
