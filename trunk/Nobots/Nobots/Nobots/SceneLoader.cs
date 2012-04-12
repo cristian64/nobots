@@ -18,8 +18,6 @@ namespace Nobots
             this.scene = scene;
         }
 
-
-
         #region FromXml
 
         public void SceneFromXml(String filename, Scene scene)
@@ -77,7 +75,6 @@ namespace Nobots
         public Background BackgroundFromXml(XmlTextReader reader)
         {
             Background e = new Background(Game, scene);
-
             if (reader.MoveToAttribute("Id"))
                 e.Id = reader.Value;
             if (reader.MoveToAttribute("TextureName"))
@@ -86,7 +83,6 @@ namespace Nobots
                 e.Position = PositionFromString(reader.Value);
             if (reader.MoveToAttribute("Speed"))
                 e.Speed = PositionFromString(reader.Value);
-
             return e;
         }
 
@@ -100,6 +96,18 @@ namespace Nobots
                     break;
                 case "Box":
                     e = new Box(Game, scene, Vector2.Zero);
+                    break;
+                case "Forklift":
+                    e = new Forklift(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("Active"))
+                        ((IActivable)e).Active = reader.Value == "True";
+                    break;
+                case "Elevator":
+                    e = new Elevator(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("FinalPosition"))
+                        ((Elevator)e).FinalPosition = PositionFromString(reader.Value);
+                    if (reader.MoveToAttribute("Active"))
+                        ((IActivable)e).Active = reader.Value == "True";
                     break;
                 case "Character":
                     e = new Character(Game, scene);

@@ -57,6 +57,7 @@ namespace Nobots
             set
             {
                 body.Position = value;
+                finalPosition = body.Position - new Vector2(0, 3f);
             }
         }
 

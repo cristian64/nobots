@@ -20,7 +20,7 @@
     <Character Id="" Position="0.85,8.785" />
     <Box Id="" Position="13.22069,1.436227" Rotation="0" />
     <Box Id="" Position="28.55241,1.9716" Rotation="0" />
-    <Forklift Id="" Position="64.23187,8.605165" Active="False" />
+    <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
     <PressurePlate Id="" Position="25.9805,3.179997" ActivableElement="" />
     <Platform Id="" Position="1.879999,10.60015" Width="3.84" Height="0.48" Rotation="0" />
     <Platform Id="" Position="5.189986,10.17014" Width="3.9" Height="1.389999" Rotation="0" />
@@ -47,7 +47,7 @@
     <Platform Id="" Position="37.06137,-0.3222811" Width="74.81757" Height="0.6700003" Rotation="0" />
     <Platform Id="" Position="33.8574,13.9004" Width="0.5400004" Height="7.000066" Rotation="0" />
     <Platform Id="" Position="16.89746,6.550418" Width="7.010066" Height="0.4400005" Rotation="0" />
-    <Elevator Id="" Position="37.08941,16.08384" FinalPosition="37.08941,12.55374" Active="False" />
+    <Elevator Id="elevator1" Position="37.08941,16.08384" FinalPosition="37.08941,12.55374" Active="False" />
     <LaserBarrier Id="" Position="44.35808,2.756664" Rotation="0" Width="0.15" Height="5.5" Active="True" />
     <LaserBarrier Id="" Position="21.94052,3.189997" Rotation="1.570796" Width="0.15" Height="1.1" Active="True" />
   </Elements>
