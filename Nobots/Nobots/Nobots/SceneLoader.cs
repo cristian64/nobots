@@ -7,6 +7,8 @@ using System.Xml.XPath;
 using System.Xml;
 using Microsoft.Xna.Framework;
 using System.Globalization;
+using Microsoft.Xna.Framework.Input;
+using System.Windows.Forms;
 
 namespace Nobots
 {
@@ -254,5 +256,21 @@ namespace Nobots
         }
 
         #endregion ToXml
+
+        public override void Update(GameTime gameTime)
+        {
+            KeyboardState keybState = Keyboard.GetState();
+            if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.S))
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "XML file|*.xml";
+                saveFileDialog1.Title = "Save an XML File";
+                DialogResult dr = saveFileDialog1.ShowDialog();
+                Console.WriteLine(saveFileDialog1.FileName);
+                if(dr == DialogResult.OK)
+                    System.IO.File.WriteAllText(saveFileDialog1.FileName, SceneToXml(scene));
+            }
+            base.Update(gameTime);
+        }
     }
 }

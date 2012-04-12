@@ -21,6 +21,7 @@ namespace Nobots
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
         public SelectionManager SelectionManager;
+        public SceneLoader SceneLoader;
         public Camera Camera;
         public World World;
         public DebugViewXNA physicsDebug;
@@ -42,6 +43,7 @@ namespace Nobots
         {
             InputManager = new InputManager(Game);
             SelectionManager = new SelectionManager(Game, this);
+            SceneLoader = new SceneLoader(Game, this);
             Camera = new Camera(Game);
             GarbageElements = new SortedList<Element>();
             RespawnElements = new SortedList<Element>();
@@ -60,6 +62,7 @@ namespace Nobots
             LaserParticleSystem = new LaserParticleSystem(Game, this);
             VortexParticleSystem = new VortexParticleSystem(Game, this);
             VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
+
 
             /*Backgrounds.Add(new Background(Game, this, "background1"));
             Backgrounds.Add(new Background(Game, this, "background2"));
@@ -221,6 +224,7 @@ namespace Nobots
             }
 
             SelectionManager.Update(gameTime);
+            SceneLoader.Update(gameTime);
 
             foreach (Element i in GarbageElements)
                 Elements.Remove(i);
