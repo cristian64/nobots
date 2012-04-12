@@ -68,7 +68,7 @@ namespace Nobots
             }
             set
             {
-                body.Position = value;
+                InitialPosition = body.Position = value;
             }
         }
 

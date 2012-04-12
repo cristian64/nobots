@@ -139,8 +139,8 @@ namespace Nobots
             Platform platform25 = new Platform(Game, this, new Vector2(16.89746f, 6.550418f), new Vector2(7.010066f, 0.4400005f));
             Elements.Add(platform25);*/
 
-            Forklift forklift1 = new Forklift(Game, this, new Vector2(64.23187f, 8.605165f));
-            Elements.Add(forklift1);
+            /*Forklift forklift1 = new Forklift(Game, this, new Vector2(64.23187f, 8.605165f));
+            Elements.Add(forklift1);*/
 
             Ladder ladder1 = new Ladder(Game, this, 14, new Vector2(4.610013f, 5.320026f));
             Elements.Add(ladder1);
@@ -153,18 +153,18 @@ namespace Nobots
 
             //Elements.Add(Camera.Target = InputManager.Character = new Character(Game, this));
 
-            Elevator elevator1 = new Elevator(Game, this, new Vector2(37.08941f, 16.08384f));
+            /*Elevator elevator1 = new Elevator(Game, this, new Vector2(37.08941f, 16.08384f));
             Elements.Add(elevator1);
-            elevator1.FinalPosition = new Vector2(37.08941f, 12.55374f);
+            elevator1.FinalPosition = new Vector2(37.08941f, 12.55374f);*/
 
             ElectricityBox eBox1 = new ElectricityBox(Game, this, new Vector2(46.83757f, 3.989998f));
             Elements.Add(eBox1);
             ElectricityBox eBox2 = new ElectricityBox(Game, this, new Vector2(56.67609f, 15.20025f));
             Elements.Add(eBox2);
-            eBox2.activableElement = forklift1;
+            //eBox2.activableElement = forklift1;
             ElectricityBox eBox3 = new ElectricityBox(Game, this, new Vector2(41.38832f, 15.66026f));
             Elements.Add(eBox3);
-            eBox3.activableElement = elevator1;
+            //eBox3.activableElement = elevator1;
             LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.756664f));
             Elements.Add(laserBarrier1);
             eBox1.activableElement = laserBarrier1;
