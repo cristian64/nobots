@@ -211,7 +211,7 @@ namespace Nobots
 
         public String ElementToXml(ElectricityBox eBox)
         {
-            Element e = eBox.activableElement as Element;
+            Element e = eBox.ActivableElement as Element;
             String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" ActivableElement=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
@@ -242,7 +242,7 @@ namespace Nobots
 
         public String ElementToXml(PressurePlate pressurePlate)
         {
-            Element e = pressurePlate.activableElement as Element;
+            Element e = pressurePlate.ActivableElement as Element;
             String xml = "<PressurePlate Id=\"" + pressurePlate.Id + "\" Position=\"" + pressurePlate.Position.X + "," + pressurePlate.Position.Y + "\" ActivableElement=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }

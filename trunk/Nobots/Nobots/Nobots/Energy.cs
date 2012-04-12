@@ -81,7 +81,7 @@ namespace Nobots
                 {
                     if (IsTouchingElement(i))
                     {
-                        eBox.activableElement.Active = !eBox.activableElement.Active;
+                        eBox.ActivableElement.Active = !eBox.ActivableElement.Active;
                         break;
                     }
                 }

@@ -14,7 +14,6 @@ namespace Nobots
     {
         Body body;
         Texture2D texture;
-        //public IActivable activableElement;
 
         public override float Width
         {

@@ -83,8 +83,10 @@ namespace Nobots
             Elements.Add(pressurePlate1);
             LaserBarrier laserBarrier3 = new LaserBarrier(Game, this, new Vector2(21.94052f, 3.189997f), 1.1f);
             laserBarrier3.Rotation = MathHelper.PiOver2;
+            laserBarrier3.Id = "Pollaca";
+
             Elements.Add(laserBarrier3);
-            pressurePlate1.activableElement = laserBarrier3;
+            pressurePlate1.ActivableElementId = laserBarrier3.Id;
 
             /*Platform platform3 = new Platform(Game, this, new Vector2(6.930026f, 6.500125f), new Vector2(0.4000032f, 6.090044f));
             Elements.Add(platform3);
@@ -167,7 +169,8 @@ namespace Nobots
             //eBox3.activableElement = elevator1;
             LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.756664f));
             Elements.Add(laserBarrier1);
-            eBox1.activableElement = laserBarrier1;
+            laserBarrier1.Id = "pollica";
+            eBox1.ActivableElementId = laserBarrier1.Id;
             /*Box box2 = new Box(Game, this, new Vector2(28.55241f, 1.9716f));
             Elements.Add(box2);*/
 

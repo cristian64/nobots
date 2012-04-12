@@ -15,7 +15,6 @@ namespace Nobots
         Body body;
         Texture2D texture;
         float offset;
-        //public IActivable activableElement;
 
         public override float Width
         {
@@ -86,16 +85,16 @@ namespace Nobots
         {
             Height = Conversion.ToWorld(texture.Height);
             offset = Height * 3 / 4;
-            if (activableElement != null)
-                activableElement.Active = true;
+            if (ActivableElement != null)
+                ActivableElement.Active = true;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             Height = Conversion.ToWorld(texture.Height / 4);    
             offset = Height * 3 / 2;
-            if(activableElement != null)
-                activableElement.Active = false;
+            if(ActivableElement != null)
+                ActivableElement.Active = false;
 
             return true;
         }
