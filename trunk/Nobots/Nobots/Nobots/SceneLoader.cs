@@ -14,18 +14,15 @@ namespace Nobots
 {
     public class SceneLoader : DrawableGameComponent
     {
-        Scene scene;
-        public SceneLoader(Game game, Scene scene)
+        public SceneLoader(Game game)
             : base(game)
         {
-            this.scene = scene;
         }
 
         #region FromXml
 
         public void SceneFromXml(String filename, Scene scene)
         {
-            this.scene = scene;
             XmlTextReader reader = new XmlTextReader(filename);
             while (reader.Read())
             {
@@ -36,7 +33,7 @@ namespace Nobots
                     while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Backgrounds"))
                     {
                         if (reader.NodeType == XmlNodeType.Element)
-                            scene.Backgrounds.Add(BackgroundFromXml(reader));
+                            scene.Backgrounds.Add(BackgroundFromXml(reader, scene));
                     }
                 }
 
@@ -47,7 +44,7 @@ namespace Nobots
                     while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Foregrounds"))
                     {
                         if (reader.NodeType == XmlNodeType.Element)
-                            scene.Foregrounds.Add(BackgroundFromXml(reader));
+                            scene.Foregrounds.Add(BackgroundFromXml(reader, scene));
                     }
                 }
 
@@ -59,7 +56,7 @@ namespace Nobots
                     {
                         if (reader.NodeType == XmlNodeType.Element)
                         {
-                            Element e = ElementFromXml(reader);
+                            Element e = ElementFromXml(reader, scene);
                             if (e != null)
                                 scene.Elements.Add(e);
                         }
@@ -75,7 +72,7 @@ namespace Nobots
             return new Vector2(float.Parse(xml.Split(',')[0], CultureInfo.InvariantCulture), float.Parse(xml.Split(',')[1], CultureInfo.InvariantCulture));
         }
 
-        public Background BackgroundFromXml(XmlTextReader reader)
+        public Background BackgroundFromXml(XmlTextReader reader, Scene scene)
         {
             Background e = new Background(Game, scene);
             if (reader.MoveToAttribute("Id"))
@@ -89,7 +86,7 @@ namespace Nobots
             return e;
         }
 
-        public Element ElementFromXml(XmlTextReader reader)
+        public Element ElementFromXml(XmlTextReader reader, Scene scene)
         {
             Element e = null;
             switch (reader.Name)
@@ -111,6 +108,32 @@ namespace Nobots
                         ((Elevator)e).FinalPosition = PositionFromString(reader.Value);
                     if (reader.MoveToAttribute("Active"))
                         ((IActivable)e).Active = reader.Value == "True";
+                    break;
+                case "LaserBarrier":
+                    e = new LaserBarrier(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("Active"))
+                        ((IActivable)e).Active = reader.Value == "True";
+                    break;
+                case "PressurePlate":
+                    e = new PressurePlate(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("ActivableElementId"))
+                        ((Activator)e).ActivableElementId = reader.Value;
+                    break;
+                case "ElectricityBox":
+                    e = new ElectricityBox(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("ActivableElementId"))
+                        ((Activator)e).ActivableElementId = reader.Value;
+                    break;
+                case "Socket":
+                    e = new Socket(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("OtherSocketId"))
+                        ((Socket)e).OtherSocketId = reader.Value;
+                    break;
+                case "Ladder":
+                    int stepsNumber = 1;
+                    if (reader.MoveToAttribute("StepsNumber"))
+                        stepsNumber = int.Parse(reader.Value);
+                    e = new Ladder(Game, scene, stepsNumber, Vector2.Zero);
                     break;
                 case "Character":
                     e = new Character(Game, scene);
@@ -257,7 +280,7 @@ namespace Nobots
 
         #endregion ToXml
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Scene scene)
         {
             KeyboardState keybState = Keyboard.GetState();
             if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.S))

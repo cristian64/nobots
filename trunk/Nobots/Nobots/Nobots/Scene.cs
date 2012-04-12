@@ -43,7 +43,7 @@ namespace Nobots
         {
             InputManager = new InputManager(Game);
             SelectionManager = new SelectionManager(Game, this);
-            SceneLoader = new SceneLoader(Game, this);
+            SceneLoader = new SceneLoader(Game);
             Camera = new Camera(Game);
             GarbageElements = new SortedList<Element>();
             RespawnElements = new SortedList<Element>();
@@ -63,133 +63,7 @@ namespace Nobots
             VortexParticleSystem = new VortexParticleSystem(Game, this);
             VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
 
-
-            /*Backgrounds.Add(new Background(Game, this, "background1"));
-            Backgrounds.Add(new Background(Game, this, "background2"));
-            Backgrounds[1].Position = Backgrounds[0].Position + new Vector2(Backgrounds[0].Width, 0);
-            Backgrounds.Add(new Background(Game, this, "background3"));
-            Backgrounds[2].Position = Backgrounds[1].Position + new Vector2(Backgrounds[1].Width, 0);
-            Backgrounds.Add(new Background(Game, this, "background4"));
-            Backgrounds[3].Position = Backgrounds[2].Position + new Vector2(Backgrounds[2].Width, 0);
-            Backgrounds.Add(new Background(Game, this, "wires"));
-            Backgrounds[4].Position = new Vector2(44.4f, 11);*/
-
-            /*Box box1 = new Box(Game, this, new Vector2(13.22069f, 1.436227f));
-            Elements.Add(box1);*/
-
-            /*Platform platform1 = new Platform(Game, this, new Vector2(1.879999f, 10.60015f), Conversion.ToWorld(new Vector2(384, 48)));
-            Elements.Add(platform1);
-            Platform platform2 = new Platform(Game, this, new Vector2(5.189986f, 10.17014f), new Vector2(3.9f, 1.389999f));
-            Elements.Add(platform2);*/
-            PressurePlate pressurePlate1 = new PressurePlate(Game, this, new Vector2(25.9805f, 3.179997f));
-
-            Elements.Add(pressurePlate1);
-            LaserBarrier laserBarrier3 = new LaserBarrier(Game, this, new Vector2(21.94052f, 3.189997f), 1.1f);
-            laserBarrier3.Rotation = MathHelper.PiOver2;
-            laserBarrier3.Id = "Pollaca";
-
-            Elements.Add(laserBarrier3);
-            pressurePlate1.ActivableElementId = laserBarrier3.Id;
-
-            /*Platform platform3 = new Platform(Game, this, new Vector2(6.930026f, 6.500125f), new Vector2(0.4000032f, 6.090044f));
-            Elements.Add(platform3);
-            Platform platform4 = new Platform(Game, this, new Vector2(10.07001f, 3.320068f), new Vector2(9.810133f, 0.44f));
-            Elements.Add(platform4);
-
-            Platform platform5 = new Platform(Game, this, new Vector2(19.78006f, 3.329998f), new Vector2(3.230002f, 0.43f));
-            Elements.Add(platform5);
-            Platform platform6 = new Platform(Game, this, new Vector2(30.07031f, 1.59007f), new Vector2(0.6900029f, 3.329997f));
-            Elements.Add(platform6);
-
-            Platform platform7 = new Platform(Game, this, new Vector2(20.39012f, 6.540057f), new Vector2(0.570003f, 6.040043f));
-            Elements.Add(platform7);
-            Platform platform8 = new Platform(Game, this, new Vector2(22.05007f, 10.17014f), new Vector2(3.88f, 1.399999f));
-            Elements.Add(platform8);
-            Platform platform9 = new Platform(Game, this, new Vector2(28.98014f, 10.64015f), new Vector2(10.17014f, 0.48f));
-            Elements.Add(platform9);
-            Platform platform10 = new Platform(Game, this, new Vector2(40.83918f, 17.21028f), new Vector2(13.65022f, 0.48f));
-            Elements.Add(platform10);
-
-            Platform platform11 = new Platform(Game, this, new Vector2(58.21865f, 17.2103f), new Vector2(21.22039f, 0.48f));
-            Elements.Add(platform11);
-            Platform platform12 = new Platform(Game, this, new Vector2(41.81847f, 12.5902f), new Vector2(4.380008f, 0.48f));
-            Elements.Add(platform12);
-
-            Platform platform13 = new Platform(Game, this, new Vector2(44.33905f, 11.49017f), new Vector2(0.7400029f, 11.01016f));
-            Elements.Add(platform13);
-            Platform platform14 = new Platform(Game, this, new Vector2(46.27872f, 5.77004f), new Vector2(8.060088f, 0.48f));
-            Elements.Add(platform14);
-            Platform platform15 = new Platform(Game, this, new Vector2(34.07142f, 3.43f), new Vector2(0.560003f, 7.010066f));
-            Elements.Add(platform15);
-            Platform platform16 = new Platform(Game, this, new Vector2(37.74145f, 5.77004f), new Vector2(6.870065f, 0.48f));
-            Elements.Add(platform16);
-            Platform platform17 = new Platform(Game, this, new Vector2(52.40963f, 2.76f), new Vector2(0.7400029f, 5.610034f));
-            Elements.Add(platform17);
-            Platform platform18 = new Platform(Game, this, new Vector2(49.7602f, 11.44017f), new Vector2(0.7800028f, 11.17016f));
-            Elements.Add(platform18);
-
-            Platform platform19 = new Platform(Game, this, new Vector2(1.999999f, 3.319997f), new Vector2(4.120001f, 0.4300005f));
-            Elements.Add(platform19);
-            Platform platform20 = new Platform(Game, this, new Vector2(26.44006f, 3.34f), new Vector2(7.930088f, 0.4500005f));
-            Elements.Add(platform20);
-            Platform platform21 = new Platform(Game, this, new Vector2(52.07965f, 5.760039f), new Vector2(1.400001f, 0.4500005f));
-            Elements.Add(platform21);
-
-            Platform platform22 = new Platform(Game, this, new Vector2(-0.09255317f, 5.400352f), new Vector2(0.4800005f, 11.05016f));
-            Elements.Add(platform22);
-            Platform platform23 = new Platform(Game, this, new Vector2(37.06137f, -0.3222811f), new Vector2(74.81757f, 0.6700003f));
-            Elements.Add(platform23);
-            Platform platform24 = new Platform(Game, this, new Vector2(33.8574f, 13.9004f), new Vector2(0.5400004f, 7.000066f));
-            Elements.Add(platform24);
-            Platform platform25 = new Platform(Game, this, new Vector2(16.89746f, 6.550418f), new Vector2(7.010066f, 0.4400005f));
-            Elements.Add(platform25);*/
-
-            /*Forklift forklift1 = new Forklift(Game, this, new Vector2(64.23187f, 8.605165f));
-            Elements.Add(forklift1);*/
-
-            Ladder ladder1 = new Ladder(Game, this, 14, new Vector2(4.610013f, 5.320026f));
-            Elements.Add(ladder1);
-            Ladder ladder2 = new Ladder(Game, this, 14, new Vector2(21.93991f, 5.300028f));
-            Elements.Add(ladder2);
-            Ladder ladder3 = new Ladder(Game, this, 22, new Vector2(50.83699f, 10.43015f));
-            Elements.Add(ladder3);
-            Ladder ladder4 = new Ladder(Game, this, 15, new Vector2(41.70982f, 7.90342f));
-            Elements.Add(ladder4);
-
-            //Elements.Add(Camera.Target = InputManager.Character = new Character(Game, this));
-
-            /*Elevator elevator1 = new Elevator(Game, this, new Vector2(37.08941f, 16.08384f));
-            Elements.Add(elevator1);
-            elevator1.FinalPosition = new Vector2(37.08941f, 12.55374f);*/
-
-            ElectricityBox eBox1 = new ElectricityBox(Game, this, new Vector2(46.83757f, 3.989998f));
-            Elements.Add(eBox1);
-            ElectricityBox eBox2 = new ElectricityBox(Game, this, new Vector2(56.67609f, 15.20025f));
-            Elements.Add(eBox2);
-            //eBox2.activableElement = forklift1;
-            ElectricityBox eBox3 = new ElectricityBox(Game, this, new Vector2(41.38832f, 15.66026f));
-            Elements.Add(eBox3);
-            //eBox3.activableElement = elevator1;
-            LaserBarrier laserBarrier1 = new LaserBarrier(Game, this, new Vector2(44.35808f, 2.756664f));
-            Elements.Add(laserBarrier1);
-            laserBarrier1.Id = "pollica";
-            eBox1.ActivableElementId = laserBarrier1.Id;
-            /*Box box2 = new Box(Game, this, new Vector2(28.55241f, 1.9716f));
-            Elements.Add(box2);*/
-
-            Socket socket = new Socket(Game, this, new Vector2(43.70762f, 15.96693f));
-            Elements.Add(socket);
-
-            Socket socket2 = new Socket(Game, this, new Vector2(43.73852f, 11.32683f));
-            Elements.Add(socket2);
-            socket.OtherSocket = socket2;
-            socket2.OtherSocket = socket;
-
-            SceneLoader sl = new SceneLoader(Game, this);
-
-            sl.SceneFromXml(@"Content\levels\level1.xml", this);
-
-            //System.IO.File.WriteAllText(@"C:\Users\Cristian\Desktop\level1.xml", sl.SceneToXml(this));
+            SceneLoader.SceneFromXml(@"Content\levels\level1.xml", this);
         }
 
         protected override void LoadContent()
@@ -224,7 +98,7 @@ namespace Nobots
             }
 
             SelectionManager.Update(gameTime);
-            SceneLoader.Update(gameTime);
+            SceneLoader.Update(gameTime, this);
 
             foreach (Element i in GarbageElements)
                 Elements.Remove(i);

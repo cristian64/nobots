@@ -7,12 +7,37 @@ using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
+using System.Diagnostics;
 
 namespace Nobots
 {
     public class Socket : Element
     {
-        public Socket OtherSocket;
+        private Socket otherSocket;
+        public Socket OtherSocket
+        {
+            get
+            {
+                if (otherSocket == null)
+                    foreach (Element e in scene.Elements)
+                    {
+                        if (e as Socket != null && e.Id == otherSocketId)
+                        {
+                            otherSocket = (Socket)e;
+                            break;
+                        }
+                    }
+                Debug.Assert(otherSocket == null, "The socket " + Id + " looked for " + otherSocketId + " but that ID wasn't in the list.");
+                return otherSocket;
+            }
+        }
+
+        private String otherSocketId;
+        public String OtherSocketId
+        {
+            get { return OtherSocketId; }
+            set { otherSocketId = value; otherSocket = null; }
+        }
 
         Body body;
         Texture2D texture;
