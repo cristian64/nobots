@@ -10,12 +10,12 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots
 {
-    public class PressurePlate : Element
+    public class PressurePlate : Activator
     {
         Body body;
         Texture2D texture;
         float offset;
-        public IActivable activableElement;
+        //public IActivable activableElement;
 
         public override float Width
         {

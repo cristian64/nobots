@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activator.cs" />
     <Compile Include="ComaCharacterState.cs" />
     <Compile Include="ElectricityBox.cs" />
     <Compile Include="ElementCategory.cs" />

@@ -68,7 +68,7 @@ namespace Nobots
             reader.Close();
         }
 
-        public Vector2 PositionFromString(String xml)
+        public Vector2 PositionFromString(string xml)
         {
             return new Vector2(float.Parse(xml.Split(',')[0], CultureInfo.InvariantCulture), float.Parse(xml.Split(',')[1], CultureInfo.InvariantCulture));
         }
@@ -123,11 +123,11 @@ namespace Nobots
             if (reader.MoveToAttribute("Position"))
                 e.Position = PositionFromString(reader.Value);
             if (reader.MoveToAttribute("Width"))
-                e.Width = float.Parse(reader.Value);
+                e.Width = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             if (reader.MoveToAttribute("Height"))
-                e.Height = float.Parse(reader.Value);
+                e.Height = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             if (reader.MoveToAttribute("Rotation"))
-                e.Rotation = float.Parse(reader.Value);
+                e.Rotation = float.Parse(reader.Value, CultureInfo.InvariantCulture);
 
             return e;
         }

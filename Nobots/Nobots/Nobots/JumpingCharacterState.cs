@@ -33,7 +33,7 @@ namespace Nobots
         {
             character.body.OnCollision += body_OnCollision;
             if (character.contactsNumber > 0 || character.Ladder != null)
-                character.torso.ApplyForce(new Vector2(0, -10000));
+                character.torso.ApplyForce(new Vector2(0, -14000));
         }
 
         public override void Exit()

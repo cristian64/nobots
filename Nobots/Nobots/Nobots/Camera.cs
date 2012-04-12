@@ -36,7 +36,7 @@ namespace Nobots
                 float Speed = Scale * this.Speed;
                 if (distance > Margin * Scale)
                 {
-                    Speed *= 2;
+                    Speed *= 3;
                     //Position = centeredPosition + Vector2.Normalize(Position - centeredPosition) * Margin;
                 }
                 /*else
