@@ -5,14 +5,127 @@ using System.Text;
 using System.IO;
 using System.Xml.XPath;
 using System.Xml;
+using Microsoft.Xna.Framework;
 
 namespace Nobots
 {
-    public class SceneLoader
+    public class SceneLoader : DrawableGameComponent
     {
-        public SceneLoader()
+        Scene scene;
+        public SceneLoader(Game game, Scene scene)
+            : base(game)
         {
+            this.scene = scene;
         }
+
+
+
+        #region FromXml
+
+        public void SceneFromXml(String filename, Scene scene)
+        {
+            this.scene = scene;
+            XmlTextReader reader = new XmlTextReader(filename);
+            while (reader.Read())
+            {
+                // Once we find the Backgrounds tag, we start a particular loop for all of them.
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "Backgrounds")
+                {
+                    // We'll stay in this local loop until we find the end of the Backgrounds tag.
+                    while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Backgrounds"))
+                    {
+                        if (reader.NodeType == XmlNodeType.Element)
+                            scene.Backgrounds.Add(BackgroundFromXml(reader));
+                    }
+                }
+
+                // Once we find the Foregrounds tag, we start a particular loop for all of them.
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "Foregrounds")
+                {
+                    // We'll stay in this local loop until we find the end of the Foregrouds tag.
+                    while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Foregrounds"))
+                    {
+                        if (reader.NodeType == XmlNodeType.Element)
+                            scene.Foregrounds.Add(BackgroundFromXml(reader));
+                    }
+                }
+
+                // Once we find the Elements tag, we start a particular loop for all of them.
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "Elements")
+                {
+                    // We'll stay in this local loop until we find the end of the Elements tag.
+                    while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Elements"))
+                    {
+                        if (reader.NodeType == XmlNodeType.Element)
+                        {
+                            Element e = ElementFromXml(reader);
+                            if (e != null)
+                                scene.Elements.Add(e);
+                        }
+                    }
+                }
+            }
+
+            reader.Close();
+        }
+
+        public Vector2 PositionFromString(String xml)
+        {
+            return new Vector2(float.Parse(xml.Split(',')[0]), float.Parse(xml.Split(',')[1]));
+        }
+
+        public Background BackgroundFromXml(XmlTextReader reader)
+        {
+            Background e = new Background(Game, scene);
+
+            if (reader.MoveToAttribute("Id"))
+                e.Id = reader.Value;
+            if (reader.MoveToAttribute("TextureName"))
+                e.TextureName = reader.Value;
+            if (reader.MoveToAttribute("Position"))
+                e.Position = PositionFromString(reader.Value);
+            if (reader.MoveToAttribute("Speed"))
+                e.Speed = PositionFromString(reader.Value);
+
+            return e;
+        }
+
+        public Element ElementFromXml(XmlTextReader reader)
+        {
+            Element e = null;
+            switch (reader.Name)
+            {
+                case "Platform":
+                    e = new Platform(Game, scene, Vector2.Zero, Vector2.One);
+                    break;
+                case "Box":
+                    e = new Box(Game, scene, Vector2.Zero);
+                    break;
+                case "Character":
+                    e = new Character(Game, scene);
+                    scene.Camera.Target = scene.InputManager.Character = (Character)e;
+                    break;
+                default:
+                    return null;
+            }
+
+            if (reader.MoveToAttribute("Id"))
+                e.Id = reader.Value;
+            if (reader.MoveToAttribute("Position"))
+                e.Position = PositionFromString(reader.Value);
+            if (reader.MoveToAttribute("Width"))
+                e.Width = float.Parse(reader.Value);
+            if (reader.MoveToAttribute("Height"))
+                e.Height = float.Parse(reader.Value);
+            if (reader.MoveToAttribute("Rotation"))
+                e.Rotation = float.Parse(reader.Value);
+
+            return e;
+        }
+
+        #endregion FromXml
+
+        #region ToXml
 
         public String SceneToXml(Scene scene)
         {
@@ -130,5 +243,7 @@ namespace Nobots
             String xml = "<Socket Id=\"" + socket.Id + "\" Position=\"" + socket.Position.X + "," + socket.Position.Y + "\" OtherSocket=\"" + (socket.OtherSocket != null ? socket.OtherSocket.Id : "") + "\" />";
             return xml;
         }
+
+        #endregion ToXml
     }
 }
