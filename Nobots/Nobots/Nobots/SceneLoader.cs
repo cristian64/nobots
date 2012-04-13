@@ -104,6 +104,8 @@ namespace Nobots
                     break;
                 case "Elevator":
                     e = new Elevator(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("InitialPosition"))
+                        ((Elevator)e).InitialPosition = PositionFromString(reader.Value);
                     if (reader.MoveToAttribute("FinalPosition"))
                         ((Elevator)e).FinalPosition = PositionFromString(reader.Value);
                     if (reader.MoveToAttribute("Active"))
@@ -237,13 +239,13 @@ namespace Nobots
         public String ElementToXml(ElectricityBox eBox)
         {
             Element e = eBox.ActivableElement as Element;
-            String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" ActivableElement=\"" + (e != null ? e.Id : "") + "\" />";
+            String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
 
         public String ElementToXml(Elevator elevator)
         {
-            String xml = "<Elevator Id=\"" + elevator.Id + "\" Position=\"" + elevator.Position.X + "," + elevator.Position.Y + "\" FinalPosition=\"" + elevator.FinalPosition.X + "," + elevator.FinalPosition.Y + "\" Active=\"" + elevator.Active + "\" />";
+            String xml = "<Elevator Id=\"" + elevator.Id + "\" Position=\"" + elevator.Position.X + "," + elevator.Position.Y + "\" InitialPosition=\"" + elevator.InitialPosition.X + "," + elevator.InitialPosition.Y + "\" FinalPosition=\"" + elevator.FinalPosition.X + "," + elevator.FinalPosition.Y + "\" Active=\"" + elevator.Active + "\" />";
             return xml;
         }
 
@@ -268,13 +270,13 @@ namespace Nobots
         public String ElementToXml(PressurePlate pressurePlate)
         {
             Element e = pressurePlate.ActivableElement as Element;
-            String xml = "<PressurePlate Id=\"" + pressurePlate.Id + "\" Position=\"" + pressurePlate.Position.X + "," + pressurePlate.Position.Y + "\" ActivableElement=\"" + (e != null ? e.Id : "") + "\" />";
+            String xml = "<PressurePlate Id=\"" + pressurePlate.Id + "\" Position=\"" + pressurePlate.Position.X + "," + pressurePlate.Position.Y + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
 
         public String ElementToXml(Socket socket)
         {
-            String xml = "<Socket Id=\"" + socket.Id + "\" Position=\"" + socket.Position.X + "," + socket.Position.Y + "\" OtherSocket=\"" + (socket.OtherSocket != null ? socket.OtherSocket.Id : "") + "\" />";
+            String xml = "<Socket Id=\"" + socket.Id + "\" Position=\"" + socket.Position.X + "," + socket.Position.Y + "\" OtherSocketId=\"" + (socket.OtherSocket != null ? socket.OtherSocket.Id : "") + "\" />";
             return xml;
         }
 
