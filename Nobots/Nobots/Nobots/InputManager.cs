@@ -10,6 +10,10 @@ namespace Nobots
     public class InputManager : DrawableGameComponent
     {
         public Character Character;
+        Keys keyboardJump = Keys.Space;
+        Keys keyboardChangeForm = Keys.Enter;
+        Keys keyboardPush = Keys.LeftAlt;
+        Keys keyboardAction = Keys.LeftControl;
 
         public InputManager(Game game)
             : base(game)
@@ -32,22 +36,22 @@ namespace Nobots
             GamePadState currentGamepadState = GamePad.GetState(PlayerIndex.One);
 
             if ((currentGamepadState.Buttons.A == ButtonState.Pressed && previosGamepadState.Buttons.A == ButtonState.Released) ||
-                (currentKeyboardState.IsKeyDown(Keys.A) && previousKeyboardState.IsKeyUp(Keys.A)))
+                (currentKeyboardState.IsKeyDown(keyboardJump) && previousKeyboardState.IsKeyUp(keyboardJump)))
             {
                 Character.AActionStart();
             }
             if (((currentGamepadState.Buttons.B == ButtonState.Pressed && previosGamepadState.Buttons.B == ButtonState.Released) ||
-                (currentKeyboardState.IsKeyDown(Keys.B) && previousKeyboardState.IsKeyUp(Keys.B))))
+                (currentKeyboardState.IsKeyDown(keyboardPush) && previousKeyboardState.IsKeyUp(keyboardPush))))
             {
                 Character.BActionStart();
             }
             if ((currentGamepadState.Buttons.X == ButtonState.Pressed && previosGamepadState.Buttons.X == ButtonState.Released) ||
-                (currentKeyboardState.IsKeyDown(Keys.X) && previousKeyboardState.IsKeyUp(Keys.X)))
+                (currentKeyboardState.IsKeyDown(keyboardAction) && previousKeyboardState.IsKeyUp(keyboardAction)))
             {
                 Character.XActionStart();
             }
             if ((currentGamepadState.Buttons.Y == ButtonState.Pressed && previosGamepadState.Buttons.Y == ButtonState.Released) ||
-                (currentKeyboardState.IsKeyDown(Keys.Y) && previousKeyboardState.IsKeyUp(Keys.Y)))
+                (currentKeyboardState.IsKeyDown(keyboardChangeForm) && previousKeyboardState.IsKeyUp(keyboardChangeForm)))
             {
                 Character.YActionStart();
             }
@@ -72,22 +76,22 @@ namespace Nobots
                 Character.DownActionStart();
             }
             if ((currentGamepadState.Buttons.A == ButtonState.Released && previosGamepadState.Buttons.A == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyUp(Keys.A) && previousKeyboardState.IsKeyDown(Keys.A)))
+                (currentKeyboardState.IsKeyUp(keyboardJump) && previousKeyboardState.IsKeyDown(keyboardJump)))
             {
                 Character.AActionStop();
             }
             if (((currentGamepadState.Buttons.B == ButtonState.Released && previosGamepadState.Buttons.B == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyUp(Keys.B) && previousKeyboardState.IsKeyDown(Keys.B))))
+                (currentKeyboardState.IsKeyUp(keyboardPush) && previousKeyboardState.IsKeyDown(keyboardPush))))
             {
                 Character.BActionStop();
             }
             if ((currentGamepadState.Buttons.X == ButtonState.Released && previosGamepadState.Buttons.X == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyUp(Keys.X) && previousKeyboardState.IsKeyDown(Keys.X)))
+                (currentKeyboardState.IsKeyUp(keyboardAction) && previousKeyboardState.IsKeyDown(keyboardAction)))
             {
                 Character.XActionStop();
             }
             if ((currentGamepadState.Buttons.Y == ButtonState.Released && previosGamepadState.Buttons.Y == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyUp(Keys.Y) && previousKeyboardState.IsKeyDown(Keys.Y)))
+                (currentKeyboardState.IsKeyUp(keyboardChangeForm) && previousKeyboardState.IsKeyDown(keyboardChangeForm)))
             {
                 Character.YActionStop();
             }
@@ -112,22 +116,22 @@ namespace Nobots
                 Character.DownActionStop();
             }
             if ((currentGamepadState.Buttons.A == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyDown(Keys.A)))
+                (currentKeyboardState.IsKeyDown(keyboardJump)))
             {
                 Character.AAction();
             }
             if (((currentGamepadState.Buttons.B == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyDown(Keys.B))))
+                (currentKeyboardState.IsKeyDown(keyboardPush))))
             {
                 Character.BAction();
             }
             if ((currentGamepadState.Buttons.X == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyDown(Keys.X)))
+                (currentKeyboardState.IsKeyDown(keyboardAction)))
             {
                 Character.XAction();
             }
             if ((currentGamepadState.Buttons.Y == ButtonState.Pressed) ||
-                (currentKeyboardState.IsKeyDown(Keys.Y)))
+                (currentKeyboardState.IsKeyDown(keyboardChangeForm)))
             {
                 Character.YAction();
             }
