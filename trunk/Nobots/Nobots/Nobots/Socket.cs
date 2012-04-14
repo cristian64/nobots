@@ -35,7 +35,7 @@ namespace Nobots
         private String otherSocketId;
         public String OtherSocketId
         {
-            get { return OtherSocketId; }
+            get { return otherSocketId; }
             set { otherSocketId = value; otherSocket = null; }
         }
 

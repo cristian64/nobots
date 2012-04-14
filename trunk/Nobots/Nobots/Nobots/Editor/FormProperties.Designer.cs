@@ -181,6 +181,7 @@
             // 
             // numericUpDownPosition_y
             // 
+            this.numericUpDownPosition_y.DecimalPlaces = 6;
             this.numericUpDownPosition_y.Location = new System.Drawing.Point(152, 3);
             this.numericUpDownPosition_y.Name = "numericUpDownPosition_y";
             this.numericUpDownPosition_y.Size = new System.Drawing.Size(77, 20);
@@ -207,6 +208,7 @@
             // 
             // numericUpDownWidth
             // 
+            this.numericUpDownWidth.DecimalPlaces = 6;
             this.numericUpDownWidth.Location = new System.Drawing.Point(68, 3);
             this.numericUpDownWidth.Name = "numericUpDownWidth";
             this.numericUpDownWidth.Size = new System.Drawing.Size(120, 20);
@@ -233,6 +235,7 @@
             // 
             // numericUpDownHeight
             // 
+            this.numericUpDownHeight.DecimalPlaces = 6;
             this.numericUpDownHeight.Location = new System.Drawing.Point(68, 3);
             this.numericUpDownHeight.Name = "numericUpDownHeight";
             this.numericUpDownHeight.Size = new System.Drawing.Size(120, 20);
@@ -259,6 +262,7 @@
             // 
             // numericUpDownRotation
             // 
+            this.numericUpDownRotation.DecimalPlaces = 6;
             this.numericUpDownRotation.Location = new System.Drawing.Point(68, 3);
             this.numericUpDownRotation.Name = "numericUpDownRotation";
             this.numericUpDownRotation.Size = new System.Drawing.Size(120, 20);
@@ -266,6 +270,7 @@
             // 
             // numericUpDownSpeed_y
             // 
+            this.numericUpDownSpeed_y.DecimalPlaces = 6;
             this.numericUpDownSpeed_y.Location = new System.Drawing.Point(152, 3);
             this.numericUpDownSpeed_y.Name = "numericUpDownSpeed_y";
             this.numericUpDownSpeed_y.Size = new System.Drawing.Size(78, 20);
@@ -273,6 +278,7 @@
             // 
             // numericUpDownSpeed_x
             // 
+            this.numericUpDownSpeed_x.DecimalPlaces = 6;
             this.numericUpDownSpeed_x.Location = new System.Drawing.Point(68, 3);
             this.numericUpDownSpeed_x.Name = "numericUpDownSpeed_x";
             this.numericUpDownSpeed_x.Size = new System.Drawing.Size(78, 20);
@@ -327,6 +333,7 @@
             this.flowLayoutPanelActivableElementId.Name = "flowLayoutPanelActivableElementId";
             this.flowLayoutPanelActivableElementId.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelActivableElementId.TabIndex = 8;
+            this.flowLayoutPanelActivableElementId.Visible = false;
             // 
             // labelActivableElementId
             // 
@@ -355,6 +362,7 @@
             this.flowLayoutPanelOtherSocketId.Name = "flowLayoutPanelOtherSocketId";
             this.flowLayoutPanelOtherSocketId.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelOtherSocketId.TabIndex = 9;
+            this.flowLayoutPanelOtherSocketId.Visible = false;
             // 
             // labelOtherSocketId
             // 
@@ -381,6 +389,7 @@
             this.flowLayoutPanelStepsNumber.Name = "flowLayoutPanelStepsNumber";
             this.flowLayoutPanelStepsNumber.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelStepsNumber.TabIndex = 10;
+            this.flowLayoutPanelStepsNumber.Visible = false;
             // 
             // labelStepsNumber
             // 
@@ -408,6 +417,7 @@
             this.flowLayoutPanelInitialPosition.Name = "flowLayoutPanelInitialPosition";
             this.flowLayoutPanelInitialPosition.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelInitialPosition.TabIndex = 11;
+            this.flowLayoutPanelInitialPosition.Visible = false;
             // 
             // labelInitialPosition
             // 
@@ -421,6 +431,7 @@
             // 
             // numericUpDownInitialPosition_x
             // 
+            this.numericUpDownInitialPosition_x.DecimalPlaces = 6;
             this.numericUpDownInitialPosition_x.Location = new System.Drawing.Point(137, 3);
             this.numericUpDownInitialPosition_x.Name = "numericUpDownInitialPosition_x";
             this.numericUpDownInitialPosition_x.Size = new System.Drawing.Size(78, 20);
@@ -428,6 +439,7 @@
             // 
             // numericUpDownInitialPosition_y
             // 
+            this.numericUpDownInitialPosition_y.DecimalPlaces = 6;
             this.numericUpDownInitialPosition_y.Location = new System.Drawing.Point(221, 3);
             this.numericUpDownInitialPosition_y.Name = "numericUpDownInitialPosition_y";
             this.numericUpDownInitialPosition_y.Size = new System.Drawing.Size(77, 20);
@@ -442,6 +454,7 @@
             this.flowLayoutPanelFinalPosition.Name = "flowLayoutPanelFinalPosition";
             this.flowLayoutPanelFinalPosition.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelFinalPosition.TabIndex = 12;
+            this.flowLayoutPanelFinalPosition.Visible = false;
             // 
             // labelFinalPosition
             // 
@@ -455,6 +468,7 @@
             // 
             // numericUpDownFinalPosition_x
             // 
+            this.numericUpDownFinalPosition_x.DecimalPlaces = 6;
             this.numericUpDownFinalPosition_x.Location = new System.Drawing.Point(137, 3);
             this.numericUpDownFinalPosition_x.Name = "numericUpDownFinalPosition_x";
             this.numericUpDownFinalPosition_x.Size = new System.Drawing.Size(78, 20);
@@ -462,6 +476,7 @@
             // 
             // numericUpDownFinalPosition_y
             // 
+            this.numericUpDownFinalPosition_y.DecimalPlaces = 6;
             this.numericUpDownFinalPosition_y.Location = new System.Drawing.Point(221, 3);
             this.numericUpDownFinalPosition_y.Name = "numericUpDownFinalPosition_y";
             this.numericUpDownFinalPosition_y.Size = new System.Drawing.Size(77, 20);
@@ -475,6 +490,7 @@
             this.flowLayoutPanelTextureName.Name = "flowLayoutPanelTextureName";
             this.flowLayoutPanelTextureName.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelTextureName.TabIndex = 13;
+            this.flowLayoutPanelTextureName.Visible = false;
             // 
             // flowLayoutPanelSpeed
             // 
@@ -485,6 +501,7 @@
             this.flowLayoutPanelSpeed.Name = "flowLayoutPanelSpeed";
             this.flowLayoutPanelSpeed.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelSpeed.TabIndex = 14;
+            this.flowLayoutPanelSpeed.Visible = false;
             // 
             // flowLayoutPanelActive
             // 
@@ -493,6 +510,7 @@
             this.flowLayoutPanelActive.Name = "flowLayoutPanelActive";
             this.flowLayoutPanelActive.Size = new System.Drawing.Size(321, 29);
             this.flowLayoutPanelActive.TabIndex = 15;
+            this.flowLayoutPanelActive.Visible = false;
             // 
             // FormProperties
             // 
@@ -502,6 +520,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FormProperties";
             this.Text = "Element Properties";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormProperties_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanelId.ResumeLayout(false);
