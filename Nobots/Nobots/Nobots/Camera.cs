@@ -18,6 +18,9 @@ namespace Nobots
         public Matrix Projection;
         public float Scale = 0.5f;
 
+        public bool Grabbing = false;
+        public Vector2 GrabbingPosition = Vector2.Zero;
+
         public Camera(Game game)
             : base(game)
         {
@@ -35,7 +38,6 @@ namespace Nobots
                 Scale *= 1.1f;
             else if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue < 0)
                 Scale *= 0.9f;
-            previousMouseState = currentMouseState;
 
             if (Target != null)
             {
@@ -76,9 +78,28 @@ namespace Nobots
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
                 Target = null;
 
+            // To grab the camera.
+            if (!Grabbing && IsMouseInWindow(currentMouseState) && currentMouseState.MiddleButton == ButtonState.Pressed && previousMouseState.MiddleButton == ButtonState.Released)
+            {
+                Target = null;
+                Grabbing = true;
+                GrabbingPosition = new Vector2(currentMouseState.X, currentMouseState.Y);
+            }
+            else if (currentMouseState.MiddleButton == ButtonState.Released)
+                Grabbing = false;
+            if (Grabbing && (currentMouseState.X != previousMouseState.X || currentMouseState.Y != previousMouseState.Y))
+            {
+                Vector2 currentPosition = ScreenToWorld(currentMouseState);
+                Vector2 previousPosition = ScreenToWorld(previousMouseState);
+                Position.X -= currentPosition.X - previousPosition.X;
+                Position.Y -= currentPosition.Y - previousPosition.Y;
+            }
+
             ViewNonScaled = Matrix.CreateLookAt(new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 1), new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 0), new Vector3(0, 1, 0));
             View = Matrix.CreateScale(Conversion.DisplayUnitsToWorldUnitsRatio) * ViewNonScaled;
             Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width / Scale, GraphicsDevice.Viewport.Height / Scale, 0, 0, 1);
+
+            previousMouseState = currentMouseState;
 
             base.Update(gameTime);
         }
@@ -102,6 +123,15 @@ namespace Nobots
         public Vector2 ScreenToWorld(MouseState mouseState)
         {
             return ScreenToWorld(mouseState.X, mouseState.Y);
+        }
+
+        public bool IsMouseInWindow(MouseState mouseState)
+        {
+            return Game.IsActive &&
+                mouseState.X >= 0 && mouseState.X < GraphicsDevice.Viewport.Width &&
+                mouseState.Y >= 0 && mouseState.Y < GraphicsDevice.Viewport.Height &&
+                System.Windows.Forms.Form.ActiveForm != null &&
+                System.Windows.Forms.Form.ActiveForm.Text.Equals(Game.Window.Title);
         }
     }
 }
