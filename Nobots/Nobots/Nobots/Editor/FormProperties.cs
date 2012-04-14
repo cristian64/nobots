@@ -227,7 +227,7 @@ namespace Nobots.Editor
                 elevator.FinalPosition = new Vector2((float)numericUpDownFinalPositionX.Value, elevator.FinalPosition.Y);
         }
 
-        private void numericUpDownInitialPositionY_ValueChanged(object sender, EventArgs e)
+        private void numericUpDownFinalPositionY_ValueChanged(object sender, EventArgs e)
         {
             Elevator elevator = selectionEvents as Elevator;
             if (elevator != null)
