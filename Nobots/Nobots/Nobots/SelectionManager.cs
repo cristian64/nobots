@@ -29,6 +29,8 @@ namespace Nobots
             : base(game)
         {
             this.scene = scene;
+
+            System.Windows.Forms.Application.EnableVisualStyles();
             this.form = new Editor.FormProperties();
             this.form.Show();
 
