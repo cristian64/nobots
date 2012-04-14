@@ -113,36 +113,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activator.cs" />
-    <Compile Include="ComaCharacterState.cs" />
+    <Compile Include="Elements\Activator.cs" />
+    <Compile Include="Elements\ComaCharacterState.cs" />
     <Compile Include="Editor\FormProperties.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Editor\FormProperties.Designer.cs">
       <DependentUpon>FormProperties.cs</DependentUpon>
     </Compile>
-    <Compile Include="ElectricityBox.cs" />
-    <Compile Include="ElementCategory.cs" />
-    <Compile Include="Energy.cs" />
-    <Compile Include="Forklift.cs" />
-    <Compile Include="IActivable.cs" />
-    <Compile Include="Background.cs" />
-    <Compile Include="Box.cs" />
+    <Compile Include="Elements\ElectricityBox.cs" />
+    <Compile Include="Elements\ElementCategory.cs" />
+    <Compile Include="Elements\Energy.cs" />
+    <Compile Include="Elements\Forklift.cs" />
+    <Compile Include="Elements\IActivable.cs" />
+    <Compile Include="Elements\Background.cs" />
+    <Compile Include="Elements\Box.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="Character.cs" />
+    <Compile Include="Elements\Character.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="ParticleSystems\VortexOutParticleSystem.cs" />
     <Compile Include="SceneLoader.cs" />
     <Compile Include="SelectionManager.cs" />
-    <Compile Include="Socket.cs" />
-    <Compile Include="ClimbingCharacterState.cs" />
-    <Compile Include="Element.cs" />
-    <Compile Include="Elevator.cs" />
-    <Compile Include="GrabbingCharacterState.cs" />
-    <Compile Include="IdleCharacterState.cs" />
-    <Compile Include="JumpingCharacterState.cs" />
-    <Compile Include="Ladder.cs" />
-    <Compile Include="LaserBarrier.cs" />
+    <Compile Include="Elements\Socket.cs" />
+    <Compile Include="Elements\ClimbingCharacterState.cs" />
+    <Compile Include="Elements\Element.cs" />
+    <Compile Include="Elements\Elevator.cs" />
+    <Compile Include="Elements\GrabbingCharacterState.cs" />
+    <Compile Include="Elements\IdleCharacterState.cs" />
+    <Compile Include="Elements\JumpingCharacterState.cs" />
+    <Compile Include="Elements\Ladder.cs" />
+    <Compile Include="Elements\LaserBarrier.cs" />
     <Compile Include="ParticleSystems\ExplosionParticleSystem.cs" />
     <Compile Include="ParticleSystems\ExplosionSmokeParticleSystem.cs" />
     <Compile Include="ParticleSystems\FireParticleSystem.cs" />
@@ -158,17 +158,17 @@
     <Compile Include="ParticleSystems\SmokePlumeParticleSystem.cs" />
     <Compile Include="ParticleSystems\VortexParticleSystem.cs" />
     <Compile Include="ParticleSystems\WhiteTrailParticleSystem.cs" />
-    <Compile Include="Platform.cs" />
-    <Compile Include="PressurePlate.cs" />
+    <Compile Include="Elements\Platform.cs" />
+    <Compile Include="Elements\PressurePlate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="SortedList.cs" />
-    <Compile Include="Stone.cs" />
-    <Compile Include="RunningCharacterState.cs" />
+    <Compile Include="Elements\Stone.cs" />
+    <Compile Include="Elements\RunningCharacterState.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="Conversion.cs" />
-    <Compile Include="CharacterState.cs" />
+    <Compile Include="Elements\CharacterState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
