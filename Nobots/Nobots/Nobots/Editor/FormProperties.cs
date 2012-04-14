@@ -11,19 +11,28 @@ namespace Nobots.Editor
 {
     public partial class FormProperties : Form
     {
+        private Element selectedElement;
+        public Element SelectedElement
+        {
+            get { return selectedElement; }
+            set 
+            {
+                selectedElement = value;
+                showElementInForm();
+            }
+        }
+
+        private void showElementInForm()
+        {
+            textBoxId.Text = selectedElement.Id;
+            numericUpDownPosition_x.Value = (decimal)selectedElement.Position.X;
+            numericUpDownPosition_y.Value = (decimal)selectedElement.Position.Y;
+            numericUpDownWidth.Value = (decimal)selectedElement.Width;
+        }
+
         public FormProperties()
         {
             InitializeComponent();
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void FormProperties_Load(object sender, EventArgs e)
