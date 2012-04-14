@@ -25,11 +25,13 @@ namespace Nobots
             graphics.PreparingDeviceSettings += preparingDeviceSettings;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            graphics.PreferredBackBufferWidth = (int)(0.8 * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
-            graphics.PreferredBackBufferHeight = (int)(0.8 * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+            graphics.PreferredBackBufferWidth = (int)(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - 365);
+            graphics.PreferredBackBufferHeight = (int)(0.7 * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+
             /*graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = true;*/
+
             graphics.PreferMultiSampling = true;
             Window.AllowUserResizing = true;
         }

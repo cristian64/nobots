@@ -712,6 +712,7 @@
             this.ClientSize = new System.Drawing.Size(330, 633);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FormProperties";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Element Properties";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormProperties_Load);

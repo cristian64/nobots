@@ -119,6 +119,9 @@ namespace Nobots.Editor
         public FormProperties()
         {
             InitializeComponent();
+            Top = 0;
+            Left = Screen.PrimaryScreen.WorkingArea.Size.Width - Size.Width;
+            Size = new Size(Size.Width, Screen.PrimaryScreen.WorkingArea.Size.Height);
         }
 
         private void FormProperties_Load(object sender, EventArgs e)
