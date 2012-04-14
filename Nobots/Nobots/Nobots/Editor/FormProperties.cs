@@ -6,21 +6,29 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Xna.Framework;
 
 namespace Nobots.Editor
 {
     public partial class FormProperties : Form
     {
-        private Element selectedElement;
-        public Element SelectedElement
+        // This variable is used for disable events while reseting and initializing controls.
+        private Element selectionEvents;
+
+        private Element selection;
+        public Element Selection
         {
-            get { return selectedElement; }
+            get { return selection; }
             set 
             {
-                selectedElement = value;
+                selection = value;
+                selectionEvents = null;
+
                 reset();
-                if(selectedElement != null)
+                if(selection != null)
                     showElementInForm();
+
+                selectionEvents = selection;
             }
         }
 
@@ -28,50 +36,50 @@ namespace Nobots.Editor
         {
             setInitialValues();
             
-            if (selectedElement is Background)
+            if (selection is Background)
             {
                 numericUpDownWidth.Enabled = false;
                 numericUpDownHeight.Enabled = false;
                 numericUpDownRotation.Enabled = false;
                 flowLayoutPanelTextureName.Visible = true;
-                textBoxTextureName.Text = ((Background)selectedElement).TextureName;
+                textBoxTextureName.Text = ((Background)selection).TextureName;
                 flowLayoutPanelSpeed.Visible = true;
-                numericUpDownSpeedX.Value = (decimal)((Background)selectedElement).Speed.X;
-                numericUpDownSpeedY.Value = (decimal)((Background)selectedElement).Speed.Y;
+                numericUpDownSpeedX.Value = (decimal)((Background)selection).Speed.X;
+                numericUpDownSpeedY.Value = (decimal)((Background)selection).Speed.Y;
             }
 
-            if (selectedElement is IActivable)
+            if (selection is IActivable)
             {
                 flowLayoutPanelActive.Visible = true;
-                checkBoxActive.Checked = ((IActivable)selectedElement).Active;
+                checkBoxActive.Checked = ((IActivable)selection).Active;
             }
 
-            if (selectedElement is Activator)
+            if (selection is Activator)
             {
                 flowLayoutPanelActivableElementId.Visible = true;
-                textBoxActivableElementId.Text = ((Activator)selectedElement).ActivableElementId;
+                textBoxActivableElementId.Text = ((Activator)selection).ActivableElementId;
             }
 
-            if (selectedElement is Elevator)
+            if (selection is Elevator)
             {
                 flowLayoutPanelInitialPosition.Visible = true;
                 flowLayoutPanelFinalPosition.Visible = true;
-                numericUpDownInitialPositionX.Value = (decimal)((Elevator)selectedElement).InitialPosition.X;
-                numericUpDownInitialPositionY.Value = (decimal)((Elevator)selectedElement).InitialPosition.Y;
-                numericUpDownFinalPositionX.Value = (decimal)((Elevator)selectedElement).FinalPosition.X;
-                numericUpDownFinalPositionY.Value = (decimal)((Elevator)selectedElement).FinalPosition.Y;
+                numericUpDownInitialPositionX.Value = (decimal)((Elevator)selection).InitialPosition.X;
+                numericUpDownInitialPositionY.Value = (decimal)((Elevator)selection).InitialPosition.Y;
+                numericUpDownFinalPositionX.Value = (decimal)((Elevator)selection).FinalPosition.X;
+                numericUpDownFinalPositionY.Value = (decimal)((Elevator)selection).FinalPosition.Y;
             }
 
-            if (selectedElement is Socket)
+            if (selection is Socket)
             {
                 flowLayoutPanelOtherSocketId.Visible = true;
-                textBoxOtherSocketId.Text = ((Socket)selectedElement).OtherSocketId;
+                textBoxOtherSocketId.Text = ((Socket)selection).OtherSocketId;
             }
             
-            if (selectedElement is Ladder)
+            if (selection is Ladder)
             {
                 flowLayoutPanelStepsNumber.Visible = true;
-                numericUpDownStepsNumber.Value = (decimal)((Ladder)selectedElement).StepsNumber;
+                numericUpDownStepsNumber.Value = (decimal)((Ladder)selection).StepsNumber;
             }
         }
 
@@ -99,13 +107,13 @@ namespace Nobots.Editor
         private void setInitialValues()
         {
             //values for every element
-            labelElementType.Text = selectedElement.GetType().Name;
-            textBoxId.Text = selectedElement.Id;
-            numericUpDownPositionX.Value = (decimal)selectedElement.Position.X;
-            numericUpDownPositionY.Value = (decimal)selectedElement.Position.Y;
-            numericUpDownWidth.Value = (decimal)selectedElement.Width;
-            numericUpDownHeight.Value = (decimal)selectedElement.Height;
-            numericUpDownRotation.Value = (decimal)selectedElement.Rotation;
+            labelElementType.Text = selection.GetType().Name;
+            textBoxId.Text = selection.Id;
+            numericUpDownPositionX.Value = (decimal)selection.Position.X;
+            numericUpDownPositionY.Value = (decimal)selection.Position.Y;
+            numericUpDownWidth.Value = (decimal)selection.Width;
+            numericUpDownHeight.Value = (decimal)selection.Height;
+            numericUpDownRotation.Value = (decimal)selection.Rotation;
         }
 
         public FormProperties()
@@ -116,6 +124,114 @@ namespace Nobots.Editor
         private void FormProperties_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxId_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                selectionEvents.Id = textBoxId.Text;
+        }
+
+        private void numericUpDownPositionX_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                selectionEvents.Position = new Vector2((float)numericUpDownPositionX.Value, selectionEvents.Position.Y);
+        }
+
+        private void numericUpDownPositionY_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                selectionEvents.Position = new Vector2(selectionEvents.Position.X, (float)numericUpDownPositionY.Value);
+        }
+
+        private void numericUpDownWidth_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                selectionEvents.Width = (float)numericUpDownWidth.Value;
+        }
+
+        private void numericUpDownHeight_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                selectionEvents.Height = (float)numericUpDownHeight.Value;
+        }
+
+        private void numericUpDownRotation_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                selectionEvents.Rotation = (float)numericUpDownRotation.Value;
+        }
+
+        private void textBoxTextureName_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Background)selectionEvents).TextureName = textBoxTextureName.Text;
+        }
+
+        private void numericUpDownSpeedX_ValueChanged(object sender, EventArgs e)
+        {
+            Background b = selectionEvents as Background;
+            if (b != null)
+                b.Speed = new Vector2((float)numericUpDownSpeedX.Value, b.Speed.Y);
+        }
+
+        private void numericUpDownSpeedY_ValueChanged(object sender, EventArgs e)
+        {
+            Background b = selectionEvents as Background;
+            if (b != null)
+                b.Speed = new Vector2(b.Speed.X, (float)numericUpDownSpeedY.Value);
+        }
+
+        private void checkBoxActive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((IActivable)selectionEvents).Active = checkBoxActive.Checked;
+        }
+
+        private void textBoxActivableElementId_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Activator)selectionEvents).ActivableElementId = textBoxActivableElementId.Text;
+        }
+
+        private void textBoxOtherSocketId_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Socket)selectionEvents).OtherSocketId = textBoxOtherSocketId.Text;
+        }
+
+        private void numericUpDownStepsNumber_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Ladder)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
+        }
+
+        private void numericUpDownInitialPositionX_ValueChanged(object sender, EventArgs e)
+        {
+            Elevator elevator = selectionEvents as Elevator;
+            if (elevator != null)
+                elevator.InitialPosition = new Vector2((float)numericUpDownInitialPositionX.Value, elevator.InitialPosition.Y);
+        }
+
+        private void numericUpDownInitialPositionY_ValueChanged(object sender, EventArgs e)
+        {
+            Elevator elevator = selectionEvents as Elevator;
+            if (elevator != null)
+                elevator.InitialPosition = new Vector2(elevator.InitialPosition.X, (float)numericUpDownInitialPositionY.Value);
+        }
+
+        private void numericUpDownFinalPositionX_ValueChanged(object sender, EventArgs e)
+        {
+            Elevator elevator = selectionEvents as Elevator;
+            if (elevator != null)
+                elevator.FinalPosition = new Vector2((float)numericUpDownFinalPositionX.Value, elevator.FinalPosition.Y);
+        }
+
+        private void numericUpDownInitialPositionY_ValueChanged(object sender, EventArgs e)
+        {
+            Elevator elevator = selectionEvents as Elevator;
+            if (elevator != null)
+                elevator.FinalPosition = new Vector2(elevator.FinalPosition.X, (float)numericUpDownFinalPositionY.Value);
         }
     }
 }
