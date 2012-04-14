@@ -15,5 +15,20 @@ namespace Nobots.Editor
         {
             InitializeComponent();
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FormProperties_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
