@@ -73,6 +73,7 @@ namespace Nobots.Editor
 
         private void reset()
         {
+            labelElementType.Text = "";
             textBoxId.Clear();
             numericUpDownPosition_x.ResetText();
             numericUpDownPosition_y.ResetText();
@@ -94,6 +95,7 @@ namespace Nobots.Editor
         private void setInitialValues()
         {
             //values for every element
+            labelElementType.Text = selectedElement.GetType().Name;
             textBoxId.Text = selectedElement.Id;
             numericUpDownPosition_x.Value = (decimal)selectedElement.Position.X;
             numericUpDownPosition_y.Value = (decimal)selectedElement.Position.Y;
