@@ -21,16 +21,7 @@ namespace Nobots
             set
             {
                 selection = value;
-
-                // TODO Dean&Martin: here you can know the selection changed.
-                // you need to know what kind of Element the selection is (Platform, Box, ElectricityBox, Socket, Elevator, Ladder, LaserBarrier, PressurePlate or Forklift)
-                // i suggest to just try to cast Element into any of those classes.
-                // for example: if (selection as Platform != null) { ... } then you know selection is a Platform
-
-                // afterwards, you can create a WindowsForm containing the
-                // controls to edit the Platform properties (i.e. Id(String), Position(Vector2), Width(float), Height(float), Rotation(float))
-
-                // i think it's okay only for Platforms for tomorrow
+                form.SelectedElement = selection;
             }
         }
 
@@ -39,23 +30,14 @@ namespace Nobots
         {
             this.scene = scene;
             this.form = new Editor.FormProperties();
+            this.form.Show();
         }
 
         MouseState previous;
-        KeyboardState keyboardState;
-        KeyboardState keyboardPreviousState;
         public override void Update(GameTime gameTime)
         {
-            keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.E))
-            {
-                this.form = new Editor.FormProperties();
-                form.Show();
-            }
             if (Selection != null)
             {
-                if (!form.IsDisposed)
-                    form.SelectedElement = Selection;
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
                     Selection.Position = Selection.Position - Vector2.UnitY * Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
@@ -75,7 +57,7 @@ namespace Nobots
                     Selection.Width = Selection.Width - Conversion.ToWorld(1);
             }
 
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released)
+            if (Game.IsActive && Game.Window.ClientBounds.Contains(Mouse.GetState().X, Mouse.GetState().Y) && Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released)
             {
                 Console.WriteLine(scene.Camera.ScreenToWorld(Mouse.GetState()));
                 Element newSelection = null;
@@ -98,7 +80,6 @@ namespace Nobots
             }
 
             previous = Mouse.GetState();
-            keyboardPreviousState = Keyboard.GetState();
 
             base.Update(gameTime);
         }
