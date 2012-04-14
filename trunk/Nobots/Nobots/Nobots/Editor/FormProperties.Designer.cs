@@ -171,6 +171,7 @@
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(228, 20);
             this.textBoxId.TabIndex = 1;
+            this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
             // flowLayoutPanelPosition
             // 
@@ -214,6 +215,7 @@
             this.numericUpDownPositionX.Name = "numericUpDownPositionX";
             this.numericUpDownPositionX.Size = new System.Drawing.Size(110, 20);
             this.numericUpDownPositionX.TabIndex = 4;
+            this.numericUpDownPositionX.ValueChanged += new System.EventHandler(this.numericUpDownPositionX_ValueChanged);
             // 
             // numericUpDownPositionY
             // 
@@ -237,6 +239,7 @@
             this.numericUpDownPositionY.Name = "numericUpDownPositionY";
             this.numericUpDownPositionY.Size = new System.Drawing.Size(112, 20);
             this.numericUpDownPositionY.TabIndex = 5;
+            this.numericUpDownPositionY.ValueChanged += new System.EventHandler(this.numericUpDownPositionY_ValueChanged);
             // 
             // flowLayoutPanelWidth
             // 
@@ -274,6 +277,7 @@
             this.numericUpDownWidth.Name = "numericUpDownWidth";
             this.numericUpDownWidth.Size = new System.Drawing.Size(110, 20);
             this.numericUpDownWidth.TabIndex = 1;
+            this.numericUpDownWidth.ValueChanged += new System.EventHandler(this.numericUpDownWidth_ValueChanged);
             // 
             // flowLayoutPanelHeight
             // 
@@ -311,6 +315,7 @@
             this.numericUpDownHeight.Name = "numericUpDownHeight";
             this.numericUpDownHeight.Size = new System.Drawing.Size(110, 20);
             this.numericUpDownHeight.TabIndex = 1;
+            this.numericUpDownHeight.ValueChanged += new System.EventHandler(this.numericUpDownHeight_ValueChanged);
             // 
             // flowLayoutPanelRotation
             // 
@@ -353,6 +358,7 @@
             this.numericUpDownRotation.Name = "numericUpDownRotation";
             this.numericUpDownRotation.Size = new System.Drawing.Size(110, 20);
             this.numericUpDownRotation.TabIndex = 4;
+            this.numericUpDownRotation.ValueChanged += new System.EventHandler(this.numericUpDownRotation_ValueChanged);
             // 
             // flowLayoutPanelTextureName
             // 
@@ -380,6 +386,7 @@
             this.textBoxTextureName.Name = "textBoxTextureName";
             this.textBoxTextureName.Size = new System.Drawing.Size(193, 20);
             this.textBoxTextureName.TabIndex = 1;
+            this.textBoxTextureName.TextChanged += new System.EventHandler(this.textBoxTextureName_TextChanged);
             // 
             // flowLayoutPanelSpeed
             // 
@@ -424,6 +431,7 @@
             this.numericUpDownSpeedX.Name = "numericUpDownSpeedX";
             this.numericUpDownSpeedX.Size = new System.Drawing.Size(110, 20);
             this.numericUpDownSpeedX.TabIndex = 6;
+            this.numericUpDownSpeedX.ValueChanged += new System.EventHandler(this.numericUpDownSpeedX_ValueChanged);
             // 
             // numericUpDownSpeedY
             // 
@@ -447,6 +455,7 @@
             this.numericUpDownSpeedY.Name = "numericUpDownSpeedY";
             this.numericUpDownSpeedY.Size = new System.Drawing.Size(112, 20);
             this.numericUpDownSpeedY.TabIndex = 7;
+            this.numericUpDownSpeedY.ValueChanged += new System.EventHandler(this.numericUpDownSpeedY_ValueChanged);
             // 
             // flowLayoutPanelActive
             // 
@@ -468,6 +477,7 @@
             this.checkBoxActive.TabIndex = 7;
             this.checkBoxActive.Text = "Active";
             this.checkBoxActive.UseVisualStyleBackColor = true;
+            this.checkBoxActive.CheckedChanged += new System.EventHandler(this.checkBoxActive_CheckedChanged);
             // 
             // flowLayoutPanelActivableElementId
             // 
@@ -497,6 +507,7 @@
             this.textBoxActivableElementId.Name = "textBoxActivableElementId";
             this.textBoxActivableElementId.Size = new System.Drawing.Size(159, 20);
             this.textBoxActivableElementId.TabIndex = 1;
+            this.textBoxActivableElementId.TextChanged += new System.EventHandler(this.textBoxActivableElementId_TextChanged);
             // 
             // flowLayoutPanelOtherSocketId
             // 
@@ -526,6 +537,7 @@
             this.textBoxOtherSocketId.Name = "textBoxOtherSocketId";
             this.textBoxOtherSocketId.Size = new System.Drawing.Size(159, 20);
             this.textBoxOtherSocketId.TabIndex = 1;
+            this.textBoxOtherSocketId.TextChanged += new System.EventHandler(this.textBoxOtherSocketId_TextChanged);
             // 
             // flowLayoutPanelStepsNumber
             // 
@@ -553,6 +565,7 @@
             this.numericUpDownStepsNumber.Name = "numericUpDownStepsNumber";
             this.numericUpDownStepsNumber.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownStepsNumber.TabIndex = 1;
+            this.numericUpDownStepsNumber.ValueChanged += new System.EventHandler(this.numericUpDownStepsNumber_ValueChanged);
             // 
             // flowLayoutPanelInitialPosition
             // 
@@ -597,6 +610,7 @@
             this.numericUpDownInitialPositionX.Name = "numericUpDownInitialPositionX";
             this.numericUpDownInitialPositionX.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownInitialPositionX.TabIndex = 4;
+            this.numericUpDownInitialPositionX.ValueChanged += new System.EventHandler(this.numericUpDownInitialPositionX_ValueChanged);
             // 
             // numericUpDownInitialPositionY
             // 
@@ -620,6 +634,7 @@
             this.numericUpDownInitialPositionY.Name = "numericUpDownInitialPositionY";
             this.numericUpDownInitialPositionY.Size = new System.Drawing.Size(75, 20);
             this.numericUpDownInitialPositionY.TabIndex = 5;
+            this.numericUpDownInitialPositionY.ValueChanged += new System.EventHandler(this.numericUpDownInitialPositionY_ValueChanged);
             // 
             // flowLayoutPanelFinalPosition
             // 
@@ -664,6 +679,7 @@
             this.numericUpDownFinalPositionX.Name = "numericUpDownFinalPositionX";
             this.numericUpDownFinalPositionX.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownFinalPositionX.TabIndex = 4;
+            this.numericUpDownFinalPositionX.ValueChanged += new System.EventHandler(this.numericUpDownFinalPositionX_ValueChanged);
             // 
             // numericUpDownFinalPositionY
             // 
@@ -687,6 +703,7 @@
             this.numericUpDownFinalPositionY.Name = "numericUpDownFinalPositionY";
             this.numericUpDownFinalPositionY.Size = new System.Drawing.Size(75, 20);
             this.numericUpDownFinalPositionY.TabIndex = 5;
+            this.numericUpDownFinalPositionY.ValueChanged += new System.EventHandler(this.numericUpDownFinalPositionY_ValueChanged);
             // 
             // FormProperties
             // 

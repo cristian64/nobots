@@ -21,7 +21,7 @@ namespace Nobots
             set
             {
                 selection = value;
-                form.SelectedElement = selection;
+                form.Selection = selection;
             }
         }
 
