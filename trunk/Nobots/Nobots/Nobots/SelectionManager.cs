@@ -9,6 +9,7 @@ namespace Nobots
 {
     public class SelectionManager : DrawableGameComponent
     {
+        private Editor.FormProperties form;
         private Scene scene;
         private Element selection = null;
         public Element Selection
@@ -37,13 +38,24 @@ namespace Nobots
             : base(game)
         {
             this.scene = scene;
+            this.form = new Editor.FormProperties();
         }
 
         MouseState previous;
+        KeyboardState keyboardState;
+        KeyboardState keyboardPreviousState;
         public override void Update(GameTime gameTime)
         {
+            keyboardState = Keyboard.GetState();
+            if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.E))
+            {
+                this.form = new Editor.FormProperties();
+                form.Show();
+            }
             if (Selection != null)
             {
+                if (!form.IsDisposed)
+                    form.SelectedElement = Selection;
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
                     Selection.Position = Selection.Position - Vector2.UnitY * Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
@@ -86,6 +98,7 @@ namespace Nobots
             }
 
             previous = Mouse.GetState();
+            keyboardPreviousState = Keyboard.GetState();
 
             base.Update(gameTime);
         }

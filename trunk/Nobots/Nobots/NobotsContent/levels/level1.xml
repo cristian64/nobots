@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Scene>
     <Backgrounds>
         <Background Id="b1" Position="0,0"  Speed="1,1" TextureName="background1" />
@@ -22,10 +22,10 @@
         <Box Id="" Position="28.55241,1.9716" Rotation="0" />
         <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
         <PressurePlate Id="" Position="25.9805,3.179997" ActivableElementId="laserbarrier1" />
-        <Platform Id="" Position="1.879999,10.60015" Width="3.84" Height="0.48" Rotation="0" />
-        <Platform Id="" Position="5.189986,10.17014" Width="3.9" Height="1.389999" Rotation="0" />
-        <Platform Id="" Position="6.930026,6.500125" Width="0.4000032" Height="6.090044" Rotation="0" />
-        <Platform Id="" Position="10.07001,3.320068" Width="9.810133" Height="0.44" Rotation="0" />
+        <Platform Id="platform1" Position="1.879999,10.60015" Width="3.84" Height="0.48" Rotation="0" />
+        <Platform Id="platform2" Position="5.189986,10.17014" Width="3.9" Height="1.389999" Rotation="0" />
+        <Platform Id="platform3" Position="6.930026,6.500125" Width="0.4000032" Height="6.090044" Rotation="0" />
+        <Platform Id="platform4" Position="10.07001,3.320068" Width="9.810133" Height="0.44" Rotation="0" />
         <Platform Id="" Position="19.78006,3.329998" Width="3.230002" Height="0.43" Rotation="0" />
         <Platform Id="" Position="30.07031,1.59007" Width="0.6900029" Height="3.329997" Rotation="0" />
         <Platform Id="" Position="20.39012,6.540057" Width="0.570003" Height="6.040043" Rotation="0" />
