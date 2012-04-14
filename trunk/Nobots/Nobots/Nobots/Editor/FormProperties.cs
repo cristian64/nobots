@@ -36,15 +36,17 @@ namespace Nobots.Editor
                 flowLayoutPanelTextureName.Visible = true;
                 textBoxTextureName.Text = ((Background)selectedElement).TextureName;
                 flowLayoutPanelSpeed.Visible = true;
-                numericUpDownSpeed_x.Value = (decimal)((Background)selectedElement).Speed.X;
-                numericUpDownSpeed_y.Value = (decimal)((Background)selectedElement).Speed.Y;
+                numericUpDownSpeedX.Value = (decimal)((Background)selectedElement).Speed.X;
+                numericUpDownSpeedY.Value = (decimal)((Background)selectedElement).Speed.Y;
             }
-            else if (selectedElement is IActivable)
+
+            if (selectedElement is IActivable)
             {
                 flowLayoutPanelActive.Visible = true;
                 checkBoxActive.Checked = ((IActivable)selectedElement).Active;
             }
-            else if (selectedElement is Activator)
+
+            if (selectedElement is Activator)
             {
                 flowLayoutPanelActivableElementId.Visible = true;
                 textBoxActivableElementId.Text = ((Activator)selectedElement).ActivableElementId;
@@ -54,17 +56,19 @@ namespace Nobots.Editor
             {
                 flowLayoutPanelInitialPosition.Visible = true;
                 flowLayoutPanelFinalPosition.Visible = true;
-                numericUpDownInitialPosition_x.Value = (decimal)((Elevator)selectedElement).InitialPosition.X;
-                numericUpDownInitialPosition_y.Value = (decimal)((Elevator)selectedElement).InitialPosition.Y;
-                numericUpDownFinalPosition_x.Value = (decimal)((Elevator)selectedElement).FinalPosition.X;
-                numericUpDownFinalPosition_y.Value = (decimal)((Elevator)selectedElement).FinalPosition.Y;
+                numericUpDownInitialPositionX.Value = (decimal)((Elevator)selectedElement).InitialPosition.X;
+                numericUpDownInitialPositionY.Value = (decimal)((Elevator)selectedElement).InitialPosition.Y;
+                numericUpDownFinalPositionX.Value = (decimal)((Elevator)selectedElement).FinalPosition.X;
+                numericUpDownFinalPositionY.Value = (decimal)((Elevator)selectedElement).FinalPosition.Y;
             }
-            else if (selectedElement is Socket)
+
+            if (selectedElement is Socket)
             {
                 flowLayoutPanelOtherSocketId.Visible = true;
                 textBoxOtherSocketId.Text = ((Socket)selectedElement).OtherSocketId;
             }
-            else if (selectedElement is Ladder)
+            
+            if (selectedElement is Ladder)
             {
                 flowLayoutPanelStepsNumber.Visible = true;
                 numericUpDownStepsNumber.Value = (decimal)((Ladder)selectedElement).StepsNumber;
@@ -73,10 +77,10 @@ namespace Nobots.Editor
 
         private void reset()
         {
-            labelElementType.Text = "";
-            textBoxId.Clear();
-            numericUpDownPosition_x.Value = 0;
-            numericUpDownPosition_y.Value = 0;
+            labelElementType.Text = "(no selection)";
+            textBoxId.Text = "";
+            numericUpDownPositionX.Value = 0;
+            numericUpDownPositionY.Value = 0;
             numericUpDownWidth.Value = 0;
             numericUpDownHeight.Value = 0;
             numericUpDownRotation.Value = 0;
@@ -97,8 +101,8 @@ namespace Nobots.Editor
             //values for every element
             labelElementType.Text = selectedElement.GetType().Name;
             textBoxId.Text = selectedElement.Id;
-            numericUpDownPosition_x.Value = (decimal)selectedElement.Position.X;
-            numericUpDownPosition_y.Value = (decimal)selectedElement.Position.Y;
+            numericUpDownPositionX.Value = (decimal)selectedElement.Position.X;
+            numericUpDownPositionY.Value = (decimal)selectedElement.Position.Y;
             numericUpDownWidth.Value = (decimal)selectedElement.Width;
             numericUpDownHeight.Value = (decimal)selectedElement.Height;
             numericUpDownRotation.Value = (decimal)selectedElement.Rotation;
