@@ -31,6 +31,8 @@ namespace Nobots
             this.scene = scene;
             this.form = new Editor.FormProperties();
             this.form.Show();
+
+            Initialize();
         }
 
         MouseState previous;
@@ -57,7 +59,7 @@ namespace Nobots
                     Selection.Width = Selection.Width - Conversion.ToWorld(1);
             }
 
-            if (Game.IsActive && Game.Window.ClientBounds.Contains(Mouse.GetState().X, Mouse.GetState().Y) && Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released)
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released && IsMouseInWindow(Mouse.GetState()))
             {
                 Console.WriteLine(scene.Camera.ScreenToWorld(Mouse.GetState()));
                 Element newSelection = null;
@@ -82,6 +84,15 @@ namespace Nobots
             previous = Mouse.GetState();
 
             base.Update(gameTime);
+        }
+
+        public bool IsMouseInWindow(MouseState mouseState)
+        {
+            return Game.IsActive &&
+                mouseState.X >= 0 && mouseState.X < GraphicsDevice.Viewport.Width &&
+                mouseState.Y >= 0 && mouseState.Y < GraphicsDevice.Viewport.Height &&
+                System.Windows.Forms.Form.ActiveForm != null &&
+                System.Windows.Forms.Form.ActiveForm.Text.Equals(Game.Window.Title);
         }
     }
 }
