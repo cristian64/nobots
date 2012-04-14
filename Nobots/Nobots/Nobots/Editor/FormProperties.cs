@@ -18,6 +18,7 @@ namespace Nobots.Editor
             set 
             {
                 selectedElement = value;
+                reset();
                 if(selectedElement != null)
                     showElementInForm();
             }
@@ -70,15 +71,14 @@ namespace Nobots.Editor
             }
         }
 
-        private void setInitialValues()
+        private void reset()
         {
-            //values for every element
-            textBoxId.Text = selectedElement.Id;
-            numericUpDownPosition_x.Value = (decimal)selectedElement.Position.X;
-            numericUpDownPosition_y.Value = (decimal)selectedElement.Position.Y;
-            numericUpDownWidth.Value = (decimal)selectedElement.Width;
-            numericUpDownHeight.Value = (decimal)selectedElement.Height;
-            numericUpDownRotation.Value = (decimal)selectedElement.Rotation;
+            textBoxId.Clear();
+            numericUpDownPosition_x.ResetText();
+            numericUpDownPosition_y.ResetText();
+            numericUpDownWidth.ResetText();
+            numericUpDownHeight.ResetText();
+            numericUpDownRotation.ResetText();
 
             //visibility
             flowLayoutPanelActivableElementId.Visible = false;
@@ -89,6 +89,17 @@ namespace Nobots.Editor
             flowLayoutPanelSpeed.Visible = false;
             flowLayoutPanelStepsNumber.Visible = false;
             flowLayoutPanelTextureName.Visible = false;
+        }
+
+        private void setInitialValues()
+        {
+            //values for every element
+            textBoxId.Text = selectedElement.Id;
+            numericUpDownPosition_x.Value = (decimal)selectedElement.Position.X;
+            numericUpDownPosition_y.Value = (decimal)selectedElement.Position.Y;
+            numericUpDownWidth.Value = (decimal)selectedElement.Width;
+            numericUpDownHeight.Value = (decimal)selectedElement.Height;
+            numericUpDownRotation.Value = (decimal)selectedElement.Rotation;
         }
 
         public FormProperties()

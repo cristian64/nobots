@@ -175,6 +175,11 @@
             // 
             this.numericUpDownPosition_x.DecimalPlaces = 6;
             this.numericUpDownPosition_x.Location = new System.Drawing.Point(68, 3);
+            this.numericUpDownPosition_x.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDownPosition_x.Name = "numericUpDownPosition_x";
             this.numericUpDownPosition_x.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownPosition_x.TabIndex = 4;
@@ -183,6 +188,11 @@
             // 
             this.numericUpDownPosition_y.DecimalPlaces = 6;
             this.numericUpDownPosition_y.Location = new System.Drawing.Point(152, 3);
+            this.numericUpDownPosition_y.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDownPosition_y.Name = "numericUpDownPosition_y";
             this.numericUpDownPosition_y.Size = new System.Drawing.Size(77, 20);
             this.numericUpDownPosition_y.TabIndex = 5;
@@ -210,6 +220,11 @@
             // 
             this.numericUpDownWidth.DecimalPlaces = 6;
             this.numericUpDownWidth.Location = new System.Drawing.Point(68, 3);
+            this.numericUpDownWidth.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
             this.numericUpDownWidth.Name = "numericUpDownWidth";
             this.numericUpDownWidth.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownWidth.TabIndex = 1;
@@ -237,6 +252,11 @@
             // 
             this.numericUpDownHeight.DecimalPlaces = 6;
             this.numericUpDownHeight.Location = new System.Drawing.Point(68, 3);
+            this.numericUpDownHeight.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
             this.numericUpDownHeight.Name = "numericUpDownHeight";
             this.numericUpDownHeight.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownHeight.TabIndex = 1;
@@ -433,6 +453,11 @@
             // 
             this.numericUpDownInitialPosition_x.DecimalPlaces = 6;
             this.numericUpDownInitialPosition_x.Location = new System.Drawing.Point(137, 3);
+            this.numericUpDownInitialPosition_x.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDownInitialPosition_x.Name = "numericUpDownInitialPosition_x";
             this.numericUpDownInitialPosition_x.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownInitialPosition_x.TabIndex = 4;
@@ -441,6 +466,11 @@
             // 
             this.numericUpDownInitialPosition_y.DecimalPlaces = 6;
             this.numericUpDownInitialPosition_y.Location = new System.Drawing.Point(221, 3);
+            this.numericUpDownInitialPosition_y.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDownInitialPosition_y.Name = "numericUpDownInitialPosition_y";
             this.numericUpDownInitialPosition_y.Size = new System.Drawing.Size(77, 20);
             this.numericUpDownInitialPosition_y.TabIndex = 5;
@@ -470,6 +500,11 @@
             // 
             this.numericUpDownFinalPosition_x.DecimalPlaces = 6;
             this.numericUpDownFinalPosition_x.Location = new System.Drawing.Point(137, 3);
+            this.numericUpDownFinalPosition_x.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDownFinalPosition_x.Name = "numericUpDownFinalPosition_x";
             this.numericUpDownFinalPosition_x.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownFinalPosition_x.TabIndex = 4;
@@ -478,6 +513,11 @@
             // 
             this.numericUpDownFinalPosition_y.DecimalPlaces = 6;
             this.numericUpDownFinalPosition_y.Location = new System.Drawing.Point(221, 3);
+            this.numericUpDownFinalPosition_y.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDownFinalPosition_y.Name = "numericUpDownFinalPosition_y";
             this.numericUpDownFinalPosition_y.Size = new System.Drawing.Size(77, 20);
             this.numericUpDownFinalPosition_y.TabIndex = 5;
