@@ -75,11 +75,11 @@ namespace Nobots.Editor
         {
             labelElementType.Text = "";
             textBoxId.Clear();
-            numericUpDownPosition_x.ResetText();
-            numericUpDownPosition_y.ResetText();
-            numericUpDownWidth.ResetText();
-            numericUpDownHeight.ResetText();
-            numericUpDownRotation.ResetText();
+            numericUpDownPosition_x.Value = 0;
+            numericUpDownPosition_y.Value = 0;
+            numericUpDownWidth.Value = 0;
+            numericUpDownHeight.Value = 0;
+            numericUpDownRotation.Value = 0;
 
             //visibility
             flowLayoutPanelActivableElementId.Visible = false;
