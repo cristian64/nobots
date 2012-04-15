@@ -15,6 +15,7 @@ namespace Nobots
         Body body;
         Texture2D texture;
         float offset;
+        int collisionsNumber = 0;
 
         public override float Width
         {
@@ -85,16 +86,18 @@ namespace Nobots
         {
            // Height = Conversion.ToWorld(texture.Height);
             //offset = Height * 3 / 4;
-            if (ActivableElement != null)
+            if (ActivableElement != null && collisionsNumber == 1)
                 ActivableElement.Active = true;
+            collisionsNumber--;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             //Height = Conversion.ToWorld(texture.Height / 4);    
             //offset = Height * 3 / 2;
-            if(ActivableElement != null)
+            if(ActivableElement != null && collisionsNumber == 0)
                 ActivableElement.Active = false;
+            collisionsNumber++;
 
             return true;
         }
@@ -102,7 +105,8 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;
-            scene.SpriteBatch.Begin();
+            scene.SpriteBatch.Begin(); 
+            texture = (ActivableElement.Active == true)?Game.Content.Load<Texture2D>("weight"):Game.Content.Load<Texture2D>("weight2");
             scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)),
                 (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Conversion.ToWorld(texture.Height))), null, Color.White, 
                 body.Rotation, new Vector2(texture.Width / 2, texture.Height - 19.0f/2.0f), SpriteEffects.None, 0);
