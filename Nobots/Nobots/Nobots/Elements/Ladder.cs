@@ -28,7 +28,6 @@ namespace Nobots
 
         Body body;
         Texture2D texture;
-        int currentElementPosition;
 
         public override float Height
         {
@@ -97,7 +96,7 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            currentElementPosition = texture.Height / 2 * (stepsNumber -1);
+            float currentElementPosition = texture.Height / 2.0f * (stepsNumber - 1);
             for (int i = 0; i < stepsNumber; i++)
             {
                 scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position) + new Vector2(0, scene.Camera.Scale * currentElementPosition),

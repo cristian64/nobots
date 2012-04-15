@@ -16,7 +16,7 @@
         <Ladder Id="" Position="41.70982,7.90342" StepsNumber="15" />
         <Ladder Id="" Position="50.83699,10.43015" StepsNumber="22" />
         <Ladder Id="" Position="21.93991,5.300028" StepsNumber="14" />
-        <Ladder Id="" Position="4.610013,5.320026" StepsNumber="20" />
+        <Ladder Id="" Position="4.610013,5.320026" StepsNumber="14" />
         <Character Id="" Position="0.85,8.785" />
         <Box Id="" Position="13.22069,1.436227" Rotation="0" />
         <Box Id="" Position="28.55241,1.9716" Rotation="0" />
