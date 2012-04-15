@@ -11,8 +11,10 @@ namespace Nobots
 {
     public class Ladder : Element
     {
-        private int stepsNumber;
+        Body body;
+        Texture2D texture;
 
+        private int stepsNumber;
         public int StepsNumber
         {
             get
@@ -22,12 +24,9 @@ namespace Nobots
             set
             {
                 stepsNumber = value;
-                //TODO: recalculate size of the body
+                createBody();
             }
         }
-
-        Body body;
-        Texture2D texture;
 
         public override float Height
         {
@@ -41,6 +40,7 @@ namespace Nobots
             }
         }
 
+        private float width;
         public override float Width
         {
             get
@@ -49,10 +49,12 @@ namespace Nobots
             }
             set
             {
-                throw new NotImplementedException();
+                width = value;
+                createBody();
             }
         }
 
+        Vector2 position;
         public override Vector2 Position
         {
             get
@@ -62,6 +64,7 @@ namespace Nobots
             set
             {
                 body.Position = value;
+                position = value;
             }
         }
 
@@ -83,14 +86,21 @@ namespace Nobots
             ZBuffer = -5f;
             this.stepsNumber = stepsNumber;
             texture = Game.Content.Load<Texture2D>("ladder");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height) * stepsNumber, 20f);
+            this.position = position;
+            createBody();
+
+            body.UserData = this;
+        }
+
+        private void createBody()
+        {
+            if (body != null)
+                body.Dispose();
+            body = BodyFactory.CreateRectangle(scene.World, Width, Height, 20f);
             body.Position = position;
-            //body.Position = new Vector2(5.812996f, 0.583698f);
             body.BodyType = BodyType.Static;
             body.CollisionCategories = Category.None;
             body.CollidesWith = Category.None;
-
-            body.UserData = this;
         }
 
         public override void Draw(GameTime gameTime)

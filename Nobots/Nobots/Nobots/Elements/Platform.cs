@@ -14,8 +14,7 @@ namespace Nobots
     {
         public Body body;
         Texture2D texture;
-        Vector2 position;
-
+        
         private float height;
         public override float Height
         {
@@ -43,7 +42,8 @@ namespace Nobots
                 createBody();
             }
         }
-
+        
+        Vector2 position;
         public override Vector2 Position
         {
             get
