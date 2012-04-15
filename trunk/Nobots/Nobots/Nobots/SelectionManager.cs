@@ -118,6 +118,9 @@ namespace Nobots
                     case "Socket":
                         element = new Socket(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "ConveyorBelt":
+                        element = new ConveyorBelt(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                 }
                 if (element != null)
                     scene.Elements.Add(element);

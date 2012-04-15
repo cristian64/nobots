@@ -122,6 +122,7 @@
     <Compile Include="Editor\FormProperties.Designer.cs">
       <DependentUpon>FormProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\ConveyorBelt.cs" />
     <Compile Include="Elements\ElectricityBox.cs" />
     <Compile Include="Elements\ElementCategory.cs" />
     <Compile Include="Elements\Energy.cs" />

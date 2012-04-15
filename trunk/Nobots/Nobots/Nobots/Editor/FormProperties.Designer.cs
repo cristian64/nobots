@@ -741,7 +741,8 @@
             "LaserBarrier",
             "Background",
             "Forklift",
-            "Stone"});
+            "Stone",
+            "ConveyorBelt"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 84);
             this.listBoxAvailableElements.Name = "listBoxAvailableElements";
             this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 303);
