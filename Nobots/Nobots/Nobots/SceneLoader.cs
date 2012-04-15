@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using System.Globalization;
 using Microsoft.Xna.Framework.Input;
 using System.Windows.Forms;
+using Nobots.Elements;
 
 namespace Nobots
 {
@@ -98,7 +99,7 @@ namespace Nobots
                     e = new Box(Game, scene, Vector2.Zero);
                     break;
                 case "Closet":
-                    e = new Nobots.Elements.Closet(Game, scene, Vector2.Zero);
+                    e = new Closet(Game, scene, Vector2.Zero);
                     break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
@@ -186,8 +187,10 @@ namespace Nobots
                     xml += "        " + ElementToXml((Platform)i) + "\n";
                 else if (i as Box != null)
                     xml += "        " + ElementToXml((Box)i) + "\n";
-                else if (i as Nobots.Elements.Closet != null)
-                    xml += "        " + ElementToXml((Nobots.Elements.Closet)i) + "\n";
+                else if (i as Stone != null)
+                    xml += "        " + ElementToXml((Stone)i) + "\n";
+                else if (i as Closet != null)
+                    xml += "        " + ElementToXml((Closet)i) + "\n";
                 else if (i as Ladder != null)
                     xml += "        " + ElementToXml((Ladder)i) + "\n";
                 else if (i as LaserBarrier != null)
@@ -238,7 +241,13 @@ namespace Nobots
             return xml;
         }
 
-        public String ElementToXml(Nobots.Elements.Closet closet)
+        public String ElementToXml(Stone stone)
+        {
+            String xml = "<Stone Id=\"" + stone.Id + "\" Position=\"" + stone.Position.X + "," + stone.Position.Y + "\" Rotation=\"" + stone.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Closet closet)
         {
             String xml = "<Closet Id=\"" + closet.Id + "\" Position=\"" + closet.Position.X + "," + closet.Position.Y + "\" Rotation=\"" + closet.Rotation + "\" />";
             return xml;

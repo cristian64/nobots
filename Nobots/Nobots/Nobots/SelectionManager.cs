@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Nobots.Elements;
 
 namespace Nobots
 {
@@ -104,7 +105,7 @@ namespace Nobots
                         element = new Box(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
                     case "Closet":
-                        element = new Nobots.Elements.Closet(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        element = new Closet(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
                     case "Elevator":
                         element = new Elevator(Game, scene, scene.Camera.ScreenToWorld(previous));
