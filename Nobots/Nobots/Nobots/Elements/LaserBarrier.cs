@@ -44,9 +44,14 @@ namespace Nobots
         public override float Height
         {
             get { return height; }
-            set { }
+            set 
+            {
+                height = value;
+                createBody();
+            }
         }
 
+        Vector2 position;
         public override Vector2 Position
         {
             get
@@ -56,9 +61,11 @@ namespace Nobots
             set
             {
                 body.Position = value;
+                position = value;
             }
         }
 
+        float rotation;
         public override float Rotation
         {
             get
@@ -68,6 +75,7 @@ namespace Nobots
             set
             {
                 body.Rotation = value;
+                rotation = value;
             }
         }
 
@@ -79,13 +87,22 @@ namespace Nobots
             {
                 this.height = height.Value;
             }
-            body = BodyFactory.CreateRectangle(scene.World, width, this.height, 0);
+            createBody();
+        }
+
+        private void createBody()
+        {
+            if (body != null)
+                body.Dispose();
+            body = BodyFactory.CreateRectangle(scene.World, Width, Height, 0);
             body.Position = position;
+            body.Rotation = rotation;
             body.BodyType = BodyType.Static;
             body.OnCollision += body_OnCollision;
             body.OnSeparation += body_OnSeparation;
             body.UserData = this;
             body.CollidesWith = Category.None | ElementCategory.CHARACTER;
+
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
