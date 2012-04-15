@@ -36,11 +36,9 @@ namespace Nobots
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
-        private float width;
         public override float Width
         {
             get
@@ -49,8 +47,6 @@ namespace Nobots
             }
             set
             {
-                width = value;
-                createBody();
             }
         }
 
