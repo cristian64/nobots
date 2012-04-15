@@ -16,8 +16,8 @@ namespace Nobots
     {
         Effect effect;
 
-        public Energy(Game game, Scene scene)
-            : base(game, scene)
+        public Energy(Game game, Scene scene, Vector2 position)
+            : base(game, scene, Vector2.Zero)
         {
             ZBuffer = 1.0f;
             body.Position = new Vector2(32.60955f, -2.803332f);
