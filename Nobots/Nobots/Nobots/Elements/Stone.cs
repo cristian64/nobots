@@ -10,7 +10,7 @@ using FarseerPhysics.Common;
 using FarseerPhysics.Common.Decomposition;
 using FarseerPhysics.Common.PolygonManipulation;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Stone : Element
     {

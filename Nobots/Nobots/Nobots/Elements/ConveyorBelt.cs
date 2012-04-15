@@ -10,7 +10,7 @@ using FarseerPhysics.Common;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Dynamics.Joints;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class ConveyorBelt : Element
     {

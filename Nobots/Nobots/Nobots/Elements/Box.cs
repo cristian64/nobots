@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Box : Element
     {

@@ -8,7 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class PressurePlate : Activator
     {
@@ -105,8 +105,8 @@ namespace Nobots
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;
-            scene.SpriteBatch.Begin(); 
-            texture = (ActivableElement.Active == true)?Game.Content.Load<Texture2D>("weight"):Game.Content.Load<Texture2D>("weight2");
+            scene.SpriteBatch.Begin();
+            texture = (collisionsNumber == 0) ? Game.Content.Load<Texture2D>("weight") : Game.Content.Load<Texture2D>("weight2");
             scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)),
                 (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Conversion.ToWorld(texture.Height))), null, Color.White, 
                 body.Rotation, new Vector2(texture.Width / 2, texture.Height - 19.0f/2.0f), SpriteEffects.None, 0);

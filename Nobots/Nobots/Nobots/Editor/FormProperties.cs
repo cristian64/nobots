@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
+using Nobots.Elements;
 
 namespace Nobots.Editor
 {
@@ -58,10 +59,10 @@ namespace Nobots.Editor
                 checkBoxActive.Checked = ((IActivable)selection).Active;
             }
 
-            if (selection is Activator)
+            if (selection is Nobots.Elements.Activator)
             {
                 flowLayoutPanelActivableElementId.Visible = true;
-                textBoxActivableElementId.Text = ((Activator)selection).ActivableElementId;
+                textBoxActivableElementId.Text = ((Nobots.Elements.Activator)selection).ActivableElementId;
             }
 
             if (selection is Elevator)
@@ -213,7 +214,7 @@ namespace Nobots.Editor
         private void textBoxActivableElementId_TextChanged(object sender, EventArgs e)
         {
             if (selectionEvents != null)
-                ((Activator)selectionEvents).ActivableElementId = textBoxActivableElementId.Text;
+                ((Nobots.Elements.Activator)selectionEvents).ActivableElementId = textBoxActivableElementId.Text;
         }
 
         private void textBoxOtherSocketId_TextChanged(object sender, EventArgs e)

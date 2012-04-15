@@ -123,12 +123,12 @@ namespace Nobots
                 case "PressurePlate":
                     e = new PressurePlate(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("ActivableElementId"))
-                        ((Activator)e).ActivableElementId = reader.Value;
+                        ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
                     break;
                 case "ElectricityBox":
                     e = new ElectricityBox(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("ActivableElementId"))
-                        ((Activator)e).ActivableElementId = reader.Value;
+                        ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
                     break;
                 case "Socket":
                     e = new Socket(Game, scene, Vector2.Zero);

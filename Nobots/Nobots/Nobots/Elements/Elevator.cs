@@ -9,7 +9,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Elevator : Element, IActivable
     {

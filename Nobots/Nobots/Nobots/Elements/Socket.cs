@@ -9,7 +9,7 @@ using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 using System.Diagnostics;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Socket : Element
     {

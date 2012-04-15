@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Activator : Element
     {

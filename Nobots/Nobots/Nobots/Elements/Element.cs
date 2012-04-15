@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public abstract class Element : DrawableGameComponent, IComparable<Element>
     {

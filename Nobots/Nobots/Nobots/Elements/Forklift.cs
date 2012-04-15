@@ -8,7 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework.Input;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Forklift : Element, IActivable
     {
