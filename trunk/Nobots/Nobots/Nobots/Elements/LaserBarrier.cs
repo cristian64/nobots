@@ -9,7 +9,7 @@ using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Collision.Shapes;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class LaserBarrier : Element, IActivable
     {

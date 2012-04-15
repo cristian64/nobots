@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using FarseerPhysics.Factories;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Ladder : Element
     {

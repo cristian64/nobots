@@ -10,7 +10,7 @@ using FarseerPhysics.Dynamics.Joints;
 using Microsoft.Xna.Framework.Input;
 using FarseerPhysics.Dynamics.Contacts;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class Character : Element
     {

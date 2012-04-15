@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Nobots.ParticleSystem;
 using Microsoft.Xna.Framework.Input;
 using FarseerPhysics;
+using Nobots.Elements;
 
 namespace Nobots
 {
@@ -64,7 +65,7 @@ namespace Nobots
             VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
 
 
-            Elements.Add(new ConveyorBelt(Game, this, new Vector2(12f, 9)));
+            //Elements.Add(new ConveyorBelt(Game, this, new Vector2(12f, 9)));
             SceneLoader.SceneFromXml(@"Content\levels\level1.xml", this);
         }
 

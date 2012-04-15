@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using FarseerPhysics.Dynamics;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public static class ElementCategory
     {

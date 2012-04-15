@@ -8,7 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     public class ElectricityBox : Activator
     {

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Contacts;
 
-namespace Nobots
+namespace Nobots.Elements
 {
     class ClimbingCharacterState : CharacterState
     {
