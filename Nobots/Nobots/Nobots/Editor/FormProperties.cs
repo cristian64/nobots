@@ -105,8 +105,8 @@ namespace Nobots.Editor
             textBoxId.Text = "";
             numericUpDownPositionX.Value = 0;
             numericUpDownPositionY.Value = 0;
-            numericUpDownWidth.Value = 0;
-            numericUpDownHeight.Value = 0;
+            numericUpDownWidth.Value = numericUpDownWidth.Minimum;
+            numericUpDownHeight.Value = numericUpDownHeight.Minimum;
             numericUpDownRotation.Value = 0;
 
             //visibility

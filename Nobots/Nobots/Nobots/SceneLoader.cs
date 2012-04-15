@@ -299,23 +299,27 @@ namespace Nobots
         public void Update(GameTime gameTime, Scene scene)
         {
             KeyboardState keybState = Keyboard.GetState();
-            if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.S))
+
+            if (Game.IsActive)
             {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "XML file|*.xml";
-                saveFileDialog1.Title = "Save an XML File";
-                DialogResult dr = saveFileDialog1.ShowDialog();
-                if(dr == DialogResult.OK)
-                    System.IO.File.WriteAllText(saveFileDialog1.FileName, SceneToXml(scene));
-            }
-            if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.O))
-            {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Filter = "XML file|*.xml";
-                openFileDialog1.Title = "Open an XML File";
-                DialogResult dr = openFileDialog1.ShowDialog();
-                if (dr == DialogResult.OK)
-                    SceneFromXml(openFileDialog1.FileName, scene);
+                if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.S))
+                {
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.Filter = "XML file|*.xml";
+                    saveFileDialog1.Title = "Save an XML File";
+                    DialogResult dr = saveFileDialog1.ShowDialog();
+                    if (dr == DialogResult.OK)
+                        System.IO.File.WriteAllText(saveFileDialog1.FileName, SceneToXml(scene));
+                }
+                if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.O))
+                {
+                    OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                    openFileDialog1.Filter = "XML file|*.xml";
+                    openFileDialog1.Title = "Open an XML File";
+                    DialogResult dr = openFileDialog1.ShowDialog();
+                    if (dr == DialogResult.OK)
+                        SceneFromXml(openFileDialog1.FileName, scene);
+                }
             }
             base.Update(gameTime);
         }
