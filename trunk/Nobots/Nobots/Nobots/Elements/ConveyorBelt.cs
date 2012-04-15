@@ -18,16 +18,68 @@ namespace Nobots
         Body rotor1;
         Body rotor2;
         Body rotor3;
-        public float Speed = 1;
+
+        private float radius = 0.5f;
+        private float width = 5.0f;
+        private float rotation = 0.0f;
+        private int linksNumber = 25;
+        private float linkWidth = 0.05f;
+        private float linkHeight = 0.25f;
+        private float angularSpeed = 1;
+
+        List<Body> chainLinks;
+        List<RevoluteJoint> joints;
+
+        public float LinkWidth
+        {
+            get { return linkWidth; }
+            set
+            {
+                linkWidth = value;
+                createBody(Position);
+            }
+        }
+
+        public float LinkHeight
+        {
+            get { return linkHeight; }
+            set
+            {
+                linkHeight = value;
+                createBody(Position);
+            }
+        }
+
+        public float AngularSpeed
+        {
+            get { return angularSpeed; }
+            set
+            {
+                angularSpeed = value;
+                rotor1.AngularVelocity = rotor2.AngularVelocity = rotor3.AngularVelocity = angularSpeed;
+            }
+        }
+
+        public int LinksNumber
+        {
+            get { return linksNumber; }
+            set
+            {
+                linksNumber = value;
+                createBody(Position);
+            }
+        }
 
         public override float Width
         {
             get
             {
-                return Vector2.Distance(rotor1.Position, rotor2.Position) + rotor1.FixtureList[0].Shape.Radius * 2;
+                return width + radius * 2;
             }
             set
             {
+                width = value - radius * 2;
+                createBody(Position);
             }
         }
 
@@ -35,10 +87,12 @@ namespace Nobots
         {
             get
             {
-                return rotor2.FixtureList[0].Shape.Radius * 2;
+                return radius * 2;
             }
             set
             {
+                radius = value / 2;
+                createBody(Position);
             }
         }
 
@@ -62,10 +116,12 @@ namespace Nobots
         {
             get
             {
-                return 0;
+                return rotation;
             }
             set
             {
+                rotation = value;
+                createBody(Position);
             }
         }
 
@@ -75,27 +131,7 @@ namespace Nobots
             ZBuffer = 0f;
             texture = Game.Content.Load<Texture2D>("closet");
 
-            rotor1 = BodyFactory.CreateCircle(scene.World, 0.5f, float.MaxValue);
-            rotor2 = BodyFactory.CreateCircle(scene.World, 0.5f, float.MaxValue);
-            rotor3 = BodyFactory.CreateCircle(scene.World, 0.5f, float.MaxValue);
-
-            rotor1.Position = position + new Vector2(-2.5f, 0);
-            rotor2.Position = position;
-            rotor3.Position = position + new Vector2(2.5f, 0);
-
-            rotor1.BodyType = BodyType.Kinematic;
-            rotor2.BodyType = BodyType.Kinematic;
-            rotor3.BodyType = BodyType.Kinematic;
-
-            rotor1.Friction = float.MaxValue;
-            rotor2.Friction = float.MaxValue;
-            rotor3.Friction = float.MaxValue;
-
-            rotor1.AngularVelocity = Speed;
-            rotor2.AngularVelocity = Speed;
-            rotor3.AngularVelocity = Speed;
-
-            createChain(scene.World, rotor1.Position + new Vector2(-2, -1.5f), rotor3.Position + new Vector2(2, -1.5f), 0.05f, 0.25f, 25, 5000.0f);
+            createBody(position);
         }
 
         public override void Draw(GameTime gameTime)
@@ -107,17 +143,51 @@ namespace Nobots
             base.Draw(gameTime);*/
         }
 
-        Path path;
-        List<Body> chainLinks;
-        List<RevoluteJoint> joints;
-        private void createChain(World world, Vector2 start, Vector2 end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity)
+        private void createBody(Vector2 position)
+        {
+            if (rotor1 != null)
+                scene.World.RemoveBody(rotor1);
+            if (rotor2 != null)
+                scene.World.RemoveBody(rotor2);
+            if (rotor3 != null)
+                scene.World.RemoveBody(rotor3);
+            if (chainLinks != null)
+                foreach (Body i in chainLinks)
+                    scene.World.RemoveBody(i);
+            if (joints != null)
+                foreach (Joint i in joints)
+                    scene.World.RemoveJoint(i);
+            rotor1 = rotor2 = rotor3 = null;
+            chainLinks = null;
+            joints = null;
+
+            rotor1 = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
+            rotor2 = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
+            rotor3 = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
+
+            rotor1.Position = position + new Vector2(-width / 2, 0);
+            rotor2.Position = position;
+            rotor3.Position = position + new Vector2(width / 2, 0);
+
+            rotor1.BodyType = rotor2.BodyType = rotor3.BodyType = BodyType.Kinematic;
+            rotor1.Friction = rotor2.Friction = rotor3.Friction = float.MaxValue;
+            rotor1.AngularVelocity = rotor2.AngularVelocity = rotor3.AngularVelocity = AngularSpeed;
+
+            createChain(scene.World, rotor1.Position + new Vector2(-1, -1f), rotor3.Position + new Vector2(1, -1f), position, rotation, linkWidth, linkHeight, linksNumber, 5000.0f);
+
+            rotor1.Position = RotateAboutOrigin(rotor1.Position, position, rotation);
+            rotor3.Position = RotateAboutOrigin(rotor3.Position, position, rotation); 
+        }
+
+        private void createChain(World world, Vector2 start, Vector2 end, Vector2 origin, float rotation, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity)
         {
             //Chain start / end
-            path = new Path();
-            path.Add(start);
-            path.Add(end);
-            path.Add(new Vector2(end.X, end.Y + 2.0f));
-            path.Add(new Vector2(start.X, start.Y + 2.0f));
+            Path path = new Path();
+            path.Add(RotateAboutOrigin(start, origin, rotation));
+            path.Add(RotateAboutOrigin(end, origin, rotation));
+            path.Add(RotateAboutOrigin(new Vector2(end.X, end.Y + 2.0f), origin, rotation));
+            path.Add(RotateAboutOrigin(new Vector2(start.X, start.Y + 2.0f), origin, rotation));
+            path.Add(RotateAboutOrigin(start, origin, rotation));
 
             //A single chainlink
             PolygonShape shape = new PolygonShape(PolygonTools.CreateRectangle(linkWidth, linkHeight), linkDensity);
@@ -128,5 +198,10 @@ namespace Nobots
             //Attach all the chainlinks together with a revolute joint
             joints = PathManager.AttachBodiesWithRevoluteJoint(world, chainLinks, new Vector2(0, -linkHeight), new Vector2(0, linkHeight), true, false);
         }
+
+        public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
+        {
+            return Vector2.Transform(point - origin, Matrix.CreateRotationZ(rotation)) + origin;
+        } 
     }
 }

@@ -85,6 +85,18 @@ namespace Nobots.Editor
                 flowLayoutPanelStepsNumber.Visible = true;
                 numericUpDownStepsNumber.Value = (decimal)((Ladder)selection).StepsNumber;
             }
+
+            if (selection is ConveyorBelt)
+            {
+                flowLayoutPanelAngularSpeed.Visible = true;
+                numericUpDownAngularSpeed.Value = (decimal)((ConveyorBelt)selection).AngularSpeed;
+                flowLayoutPanelLinksNumber.Visible = true;
+                numericUpDownLinksNumber.Value = (decimal)((ConveyorBelt)selection).LinksNumber;
+                flowLayoutPanelLinkWidth.Visible = true;
+                numericUpDownLinkWidth.Value = (decimal)((ConveyorBelt)selection).LinkWidth;
+                flowLayoutPanelLinkHeight.Visible = true;
+                numericUpDownLinkHeight.Value = (decimal)((ConveyorBelt)selection).LinkHeight;
+            }
         }
 
         private void reset()
@@ -105,6 +117,10 @@ namespace Nobots.Editor
             flowLayoutPanelOtherSocketId.Visible = false;
             flowLayoutPanelSpeed.Visible = false;
             flowLayoutPanelStepsNumber.Visible = false;
+            flowLayoutPanelLinksNumber.Visible = false;
+            flowLayoutPanelLinkWidth.Visible = false;
+            flowLayoutPanelLinkHeight.Visible = false;
+            flowLayoutPanelAngularSpeed.Visible = false;
             flowLayoutPanelTextureName.Visible = false;
         }
 
@@ -253,6 +269,30 @@ namespace Nobots.Editor
         private void listBoxAvailableElements_SelectedValueChanged(object sender, EventArgs e)
         {
             NewElementType = listBoxAvailableElements.Text;
+        }
+
+        private void numericUpDownLinksNumber_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((ConveyorBelt)selectionEvents).LinksNumber = (int)numericUpDownLinksNumber.Value;
+        }
+
+        private void numericUpDownAngularSpeed_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((ConveyorBelt)selectionEvents).AngularSpeed = (float)numericUpDownAngularSpeed.Value;
+        }
+
+        private void numericUpDownLinkWidth_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((ConveyorBelt)selectionEvents).LinkWidth = (float)numericUpDownLinkWidth.Value;
+        }
+
+        private void numericUpDownLinkHeight_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((ConveyorBelt)selectionEvents).LinkHeight = (float)numericUpDownLinkHeight.Value;
         }
     }
 }

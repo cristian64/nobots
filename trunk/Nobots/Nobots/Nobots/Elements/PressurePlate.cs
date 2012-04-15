@@ -69,7 +69,7 @@ namespace Nobots
         public PressurePlate(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 6f;
+            ZBuffer = -7f;
             texture = Game.Content.Load<Texture2D>("weight");
             Height = Conversion.ToWorld(19.0f);
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Height, 150f);
