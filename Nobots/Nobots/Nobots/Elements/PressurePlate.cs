@@ -68,9 +68,9 @@ namespace Nobots
         public PressurePlate(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 0f;
-            texture = Game.Content.Load<Texture2D>("button");
-            Height = Conversion.ToWorld(texture.Height);
+            ZBuffer = 6f;
+            texture = Game.Content.Load<Texture2D>("weight");
+            Height = Conversion.ToWorld(19.0f);
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Height, 150f);
             body.Position = position;// +new Vector2(0, Height * 3 / 4);
             body.BodyType = BodyType.Static;
@@ -83,16 +83,16 @@ namespace Nobots
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
-            Height = Conversion.ToWorld(texture.Height);
-            offset = Height * 3 / 4;
+           // Height = Conversion.ToWorld(texture.Height);
+            //offset = Height * 3 / 4;
             if (ActivableElement != null)
                 ActivableElement.Active = true;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            Height = Conversion.ToWorld(texture.Height / 4);    
-            offset = Height * 3 / 2;
+            //Height = Conversion.ToWorld(texture.Height / 4);    
+            //offset = Height * 3 / 2;
             if(ActivableElement != null)
                 ActivableElement.Active = false;
 
@@ -104,8 +104,8 @@ namespace Nobots
             float scale = scene.Camera.Scale;
             scene.SpriteBatch.Begin();
             scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)),
-                (int)Conversion.ToDisplay(scale * (body.Position.Y - offset - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Height)), null, Color.White, 
-                body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), SpriteEffects.None, 0);
+                (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Conversion.ToWorld(texture.Height))), null, Color.White, 
+                body.Rotation, new Vector2(texture.Width / 2, texture.Height - 19.0f/2.0f), SpriteEffects.None, 0);
             scene.SpriteBatch.End();
 
             base.Draw(gameTime);
