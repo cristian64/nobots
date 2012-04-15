@@ -97,6 +97,9 @@ namespace Nobots
                 case "Box":
                     e = new Box(Game, scene, Vector2.Zero);
                     break;
+                case "Closet":
+                    e = new Nobots.Elements.Closet(Game, scene, Vector2.Zero);
+                    break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("Active"))
@@ -183,6 +186,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Platform)i) + "\n";
                 else if (i as Box != null)
                     xml += "        " + ElementToXml((Box)i) + "\n";
+                else if (i as Nobots.Elements.Closet != null)
+                    xml += "        " + ElementToXml((Nobots.Elements.Closet)i) + "\n";
                 else if (i as Ladder != null)
                     xml += "        " + ElementToXml((Ladder)i) + "\n";
                 else if (i as LaserBarrier != null)
@@ -230,6 +235,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Nobots.Elements.Closet closet)
+        {
+            String xml = "<Closet Id=\"" + closet.Id + "\" Position=\"" + closet.Position.X + "," + closet.Position.Y + "\" Rotation=\"" + closet.Rotation + "\" />";
             return xml;
         }
 

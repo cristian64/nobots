@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 
-namespace Nobots
+namespace Nobots.Elements
 {
-    public class Box : Element
+    public class Closet : Element
     {
         Body body;
         Texture2D texture;
@@ -60,11 +60,11 @@ namespace Nobots
             }
         }
 
-        public Box(Game game, Scene scene, Vector2 position)
+        public Closet(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
             ZBuffer = 0f;
-            texture = Game.Content.Load<Texture2D>("box");
+            texture = Game.Content.Load<Texture2D>("closet");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 150f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;

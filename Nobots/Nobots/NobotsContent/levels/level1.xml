@@ -18,7 +18,7 @@
         <Ladder Id="" Position="21.93991,5.300028" StepsNumber="14" />
         <Ladder Id="" Position="4.610013,5.320026" StepsNumber="14" />
         <Character Id="" Position="0.85,8.785" />
-        <Box Id="" Position="13.22069,1.436227" Rotation="0" />
+        <Closet Id="" Position="13.22069,1.436227" Rotation="0" />
         <Box Id="" Position="28.55241,1.9716" Rotation="0" />
         <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
         <PressurePlate Id="" Position="25.9805,3.179997" ActivableElementId="laserbarrier1" />
