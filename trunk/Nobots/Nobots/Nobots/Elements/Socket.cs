@@ -56,7 +56,7 @@ namespace Nobots.Elements
 
         public override float Rotation
         {
-            get { return 0; }
+            get { return body.Rotation; }
             set 
             {
                 body.Rotation = value;
