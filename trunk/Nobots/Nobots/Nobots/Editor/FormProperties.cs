@@ -12,6 +12,10 @@ namespace Nobots.Editor
 {
     public partial class FormProperties : Form
     {
+        public String NewElementType;
+        public Game Game;
+        private Scene scene;
+
         // This variable is used for disable events while reseting and initializing controls.
         private Element selectionEvents;
 
@@ -116,17 +120,16 @@ namespace Nobots.Editor
             numericUpDownRotation.Value = (decimal)selection.Rotation;
         }
 
-        public FormProperties()
+        public FormProperties(Game game, Scene scene)
         {
+            this.Game = game;
+            this.scene = scene;
             InitializeComponent();
             Top = 0;
             Left = Screen.PrimaryScreen.WorkingArea.Size.Width - Size.Width;
             Size = new Size(Size.Width, Screen.PrimaryScreen.WorkingArea.Size.Height);
-        }
-
-        private void FormProperties_Load(object sender, EventArgs e)
-        {
-
+            checkBoxShowDebug.Checked = scene.PhysicsDebug.Enabled;
+            checkBoxPhysicsEngine.Checked = scene.World.Enabled;
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
@@ -235,6 +238,21 @@ namespace Nobots.Editor
             Elevator elevator = selectionEvents as Elevator;
             if (elevator != null)
                 elevator.FinalPosition = new Vector2(elevator.FinalPosition.X, (float)numericUpDownFinalPositionY.Value);
+        }
+
+        private void checkBoxShowDebug_CheckedChanged(object sender, EventArgs e)
+        {
+            scene.PhysicsDebug.Enabled = checkBoxShowDebug.Checked;
+        }
+
+        private void checkBoxPhysicsEngine_CheckedChanged(object sender, EventArgs e)
+        {
+            scene.World.Enabled = checkBoxPhysicsEngine.Checked;
+        }
+
+        private void listBoxAvailableElements_SelectedValueChanged(object sender, EventArgs e)
+        {
+            NewElementType = listBoxAvailableElements.Text;
         }
     }
 }

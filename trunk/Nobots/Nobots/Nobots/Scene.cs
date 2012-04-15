@@ -24,7 +24,7 @@ namespace Nobots
         public SceneLoader SceneLoader;
         public Camera Camera;
         public World World;
-        public DebugViewXNA physicsDebug;
+        public DebugViewXNA PhysicsDebug;
         public SortedList<Element> GarbageElements;
         public SortedList<Element> RespawnElements;
         public SortedList<Element> Elements;
@@ -41,6 +41,8 @@ namespace Nobots
         public Scene(Game game)
             : base(game)
         {
+            World = new World(new Vector2(0, 13));
+            PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);
             SelectionManager = new SelectionManager(Game, this);
             SceneLoader = new SceneLoader(Game);
@@ -50,8 +52,6 @@ namespace Nobots
             Elements = new SortedList<Element>();
             Backgrounds = new List<Background>();
             Foregrounds = new List<Background>();
-            World = new World(new Vector2(0, 13));
-            physicsDebug = new DebugViewXNA(World);
         }
 
         public override void Initialize()
@@ -70,10 +70,10 @@ namespace Nobots
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            physicsDebug.LoadContent(GraphicsDevice, Game.Content);
-            physicsDebug.AppendFlags(DebugViewFlags.Shape);
-            physicsDebug.AppendFlags(DebugViewFlags.PolygonPoints);
-            physicsDebug.AppendFlags(DebugViewFlags.CenterOfMass);
+            PhysicsDebug.LoadContent(GraphicsDevice, Game.Content);
+            PhysicsDebug.AppendFlags(DebugViewFlags.Shape);
+            PhysicsDebug.AppendFlags(DebugViewFlags.PolygonPoints);
+            PhysicsDebug.AppendFlags(DebugViewFlags.CenterOfMass);
 
             bloomExtractEffect = Game.Content.Load<Effect>("BloomExtract");
             bloomCombineEffect = Game.Content.Load<Effect>("BloomCombine");
@@ -166,7 +166,7 @@ namespace Nobots
                 drawScene(gameTime);
             }
 
-            physicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
+            PhysicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
 
             base.Update(gameTime);
         }

@@ -30,14 +30,13 @@ namespace Nobots
 
         public override void Enter()
         {
-            Energy energy = new Energy(scene.Game, scene);
+            Energy energy = new Energy(scene.Game, scene, character.Position);
             character.torso.FixedRotation = false;
             if(character.Effect == SpriteEffects.None)
                 character.torso.ApplyForce(new Vector2(-10, 0));
             else
                 character.torso.ApplyForce(new Vector2(10, 0));
             character.torso.Friction = 100f;
-            energy.Position = character.Position;
             scene.InputManager.Character = energy;
             scene.Camera.Target = energy;
             scene.RespawnElements.Add(energy);

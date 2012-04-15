@@ -31,7 +31,7 @@ namespace Nobots
             this.scene = scene;
 
             System.Windows.Forms.Application.EnableVisualStyles();
-            this.form = new Editor.FormProperties();
+            this.form = new Editor.FormProperties(Game, scene);
             this.form.Show();
 
             Initialize();
@@ -79,8 +79,45 @@ namespace Nobots
 
             if (Mouse.GetState().RightButton == ButtonState.Pressed && previous.RightButton == ButtonState.Released)
             {
-                Platform platform = new Platform(Game, scene, scene.Camera.ScreenToWorld(previous), Vector2.One);
-                scene.Elements.Add(platform);
+                Element element = null;
+                switch (form.NewElementType)
+                {
+                    case "Platform":
+                        element = new Platform(Game, scene, scene.Camera.ScreenToWorld(previous), Vector2.One);
+                        break;
+                    case "Ladder":
+                        element = new Ladder(Game, scene, 1, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "Stone":
+                        element = new Stone(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "ElectricityBox":
+                        element = new ElectricityBox(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "PressurePlate":
+                        element = new PressurePlate(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "Character":
+                        element = new Character(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "Box":
+                        element = new Box(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "Elevator":
+                        element = new Elevator(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "Forklift":
+                        element = new Forklift(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "LaserBarrier":
+                        element = new LaserBarrier(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "Socket":
+                        element = new Socket(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                }
+                if (element != null)
+                    scene.Elements.Add(element);
             }
 
             previous = Mouse.GetState();

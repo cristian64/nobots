@@ -138,8 +138,11 @@ namespace Nobots
                     e = new Ladder(Game, scene, stepsNumber, Vector2.Zero);
                     break;
                 case "Character":
-                    e = new Character(Game, scene);
+                    e = new Character(Game, scene, Vector2.Zero);
                     scene.Camera.Target = scene.InputManager.Character = (Character)e;
+                    break;
+                case "Stone":
+                    e = new Stone(Game, scene, Vector2.Zero);
                     break;
                 default:
                     return null;
