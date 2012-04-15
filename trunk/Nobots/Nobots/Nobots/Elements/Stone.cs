@@ -12,7 +12,7 @@ using FarseerPhysics.Common.PolygonManipulation;
 
 namespace Nobots
 {
-    class Stone : Element
+    public class Stone : Element
     {
         Body body;
         Texture2D texture;
