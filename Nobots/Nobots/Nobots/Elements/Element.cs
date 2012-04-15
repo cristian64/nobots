@@ -12,7 +12,7 @@ namespace Nobots.Elements
 
         public int CompareTo(Element element)
         {
-            return (int)(ZBuffer - element.ZBuffer);
+            return (ZBuffer >= element.ZBuffer) ? 1 : -1;
         }
 
         public abstract Vector2 Position
