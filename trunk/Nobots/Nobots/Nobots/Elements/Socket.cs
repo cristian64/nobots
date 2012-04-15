@@ -57,7 +57,10 @@ namespace Nobots.Elements
         public override float Rotation
         {
             get { return 0; }
-            set { }
+            set 
+            {
+                body.Rotation = value;
+            }
         }
 
         public override float Width
@@ -95,7 +98,7 @@ namespace Nobots.Elements
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Begin();
-            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
             scene.SpriteBatch.End();
             base.Draw(gameTime);
         }
