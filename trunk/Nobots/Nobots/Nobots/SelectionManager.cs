@@ -103,6 +103,9 @@ namespace Nobots
                     case "Box":
                         element = new Box(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Closet":
+                        element = new Nobots.Elements.Closet(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Elevator":
                         element = new Elevator(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

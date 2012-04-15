@@ -732,6 +732,7 @@
             "Platform",
             "Ladder",
             "Box",
+            "Closet",
             "PressurePlate",
             "ElectricityBox",
             "Elevator",
