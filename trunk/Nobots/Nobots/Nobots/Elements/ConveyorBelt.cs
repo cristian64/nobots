@@ -109,6 +109,8 @@ namespace Nobots.Elements
                 difference -= rotor2.Position;
                 rotor1.Position -= difference;
                 rotor3.Position -= difference;
+                foreach (Body i in chainLinks)
+                    i.Position -= difference;
             }
         }
 

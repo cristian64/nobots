@@ -148,6 +148,17 @@ namespace Nobots
                 case "Stone":
                     e = new Stone(Game, scene, Vector2.Zero);
                     break;
+                case "ConveyorBelt":
+                    e = new ConveyorBelt(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("AngularSpeed"))
+                        ((ConveyorBelt)e).AngularSpeed = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    if (reader.MoveToAttribute("LinksNumber"))
+                        ((ConveyorBelt)e).LinksNumber = int.Parse(reader.Value);
+                    if (reader.MoveToAttribute("LinkWidth"))
+                        ((ConveyorBelt)e).LinkWidth = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    if (reader.MoveToAttribute("LinkHeight"))
+                        ((ConveyorBelt)e).LinkHeight = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    break;
                 default:
                     return null;
             }
@@ -207,6 +218,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Character)i) + "\n";
                 else if (i as Forklift != null)
                     xml += "        " + ElementToXml((Forklift)i) + "\n";
+                else if (i as ConveyorBelt != null)
+                    xml += "        " + ElementToXml((ConveyorBelt)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -281,6 +294,12 @@ namespace Nobots
         public String ElementToXml(Ladder ladder)
         {
             String xml = "<Ladder Id=\"" + ladder.Id + "\" Position=\"" + ladder.Position.X + "," + ladder.Position.Y + "\" StepsNumber=\"" + ladder.StepsNumber + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(ConveyorBelt cBelt)
+        {
+            String xml = "<ConveyorBelt Id=\"" + cBelt.Id + "\" Position=\"" + cBelt.Position.X + "," + cBelt.Position.Y + "\" AngularSpeed=\"" + cBelt.AngularSpeed + "\" LinksNumber=\"" + cBelt.LinksNumber + "\" LinkWidth=\"" + cBelt.LinkWidth + "\" LinkHeight=\"" + cBelt.LinkHeight + "\" />";
             return xml;
         }
 

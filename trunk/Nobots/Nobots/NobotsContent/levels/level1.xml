@@ -1,57 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Scene>
-    <Backgrounds>
-        <Background Id="b1" Position="0,0"  Speed="1,1" TextureName="background1" />
-        <Background Id="b2" Position="17.49,0"  Speed="1,1" TextureName="background2" />
-        <Background Id="b3" Position="34.07,0"  Speed="1,1" TextureName="background3" />
-        <Background Id="b4" Position="54.46,0"  Speed="1,1" TextureName="background4" />
-        <Background Id="b5" Position="44.4,11"  Speed="1,1" TextureName="wires" />
-    </Backgrounds>
-    <Elements>
-        <PressurePlate Id="" Position="25.9805,3.179997" ActivableElementId="laserbarrier1" />
-        <ElectricityBox Id="" Position="41.38832,15.66026" ActivableElementId="elevator1" />
-        <ElectricityBox Id="" Position="46.83757,3.989998" ActivableElementId="laserbarrier2" />
-        <ElectricityBox Id="" Position="56.67609,15.20025" ActivableElementId="forklift1" />
-        <Socket Id="socket2" Position="43.70762,15.96693" OtherSocketId="socket1" />
-        <Socket Id="socket1" Position="43.73852,11.32683" OtherSocketId="socket2" />
-        <Ladder Id="" Position="4.610013,5.320026" StepsNumber="14" />
-        <Ladder Id="" Position="21.93991,5.300028" StepsNumber="14" />
-        <Ladder Id="" Position="50.83699,10.43015" StepsNumber="22" />
-        <Ladder Id="" Position="41.70982,7.90342" StepsNumber="15" />
-        <Stone Id="" Position="1.372115,2.099709" Rotation="-0.0009468403" />
-        <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
-        <Box Id="" Position="28.55241,2.100008" Rotation="5.531254E-07" />
-        <Closet Id="" Position="13.22068,1.900069" Rotation="7.718008E-08" />
-        <Character Id="" Position="0.85,9.381467" />
-        <Platform Id="" Position="52.40963,2.76" Width="0.7400029" Height="5.610034" Rotation="0" />
-        <Platform Id="" Position="1.999999,3.319997" Width="4.120001" Height="0.4300005" Rotation="0" />
-        <Platform Id="" Position="52.07965,5.760039" Width="1.400001" Height="0.4500005" Rotation="0" />
-        <Platform Id="" Position="37.06137,-0.3222811" Width="74.81757" Height="0.6700003" Rotation="0" />
-        <Platform Id="" Position="16.89746,6.550418" Width="7.010066" Height="0.4400005" Rotation="0" />
-        <Platform Id="" Position="33.8574,13.9004" Width="0.5400004" Height="7.000066" Rotation="0" />
-        <Platform Id="" Position="-0.09255317,5.400352" Width="0.4800005" Height="11.05016" Rotation="0" />
-        <Platform Id="" Position="26.44006,3.34" Width="7.930088" Height="0.4500005" Rotation="0" />
-        <Platform Id="" Position="49.7602,11.44017" Width="0.7800028" Height="11.17016" Rotation="0" />
-        <Platform Id="" Position="37.74145,5.77004" Width="6.870065" Height="0.48" Rotation="0" />
-        <Platform Id="" Position="20.39012,6.540057" Width="0.570003" Height="6.040043" Rotation="0" />
-        <Platform Id="" Position="28.98014,10.64015" Width="10.17014" Height="0.48" Rotation="0" />
-        <Platform Id="" Position="40.83918,17.21028" Width="13.65022" Height="0.48" Rotation="0" />
-        <Platform Id="" Position="58.21865,17.2103" Width="21.22039" Height="0.48" Rotation="0" />
-        <Platform Id="" Position="44.33905,11.49017" Width="0.7400029" Height="11.01016" Rotation="0" />
-        <Platform Id="" Position="46.27872,5.77004" Width="8.060088" Height="0.48" Rotation="0" />
-        <Platform Id="" Position="34.07142,3.43" Width="0.560003" Height="7.010066" Rotation="0" />
-        <Platform Id="" Position="41.81847,12.5902" Width="4.380008" Height="0.48" Rotation="0" />
-        <Platform Id="" Position="22.05007,10.17014" Width="3.88" Height="1.399999" Rotation="0" />
-        <Platform Id="" Position="19.78006,3.329998" Width="3.230002" Height="0.43" Rotation="0" />
-        <Platform Id="" Position="30.07031,1.59007" Width="0.6900029" Height="3.329997" Rotation="0" />
-        <Platform Id="platform4" Position="10.07001,3.320068" Width="9.810133" Height="0.44" Rotation="0" />
-        <Platform Id="platform3" Position="6.930026,6.500125" Width="0.4000032" Height="6.090044" Rotation="0" />
-        <Platform Id="platform2" Position="5.189986,10.17014" Width="3.9" Height="1.389999" Rotation="0" />
-        <Platform Id="platform1" Position="1.879999,10.60015" Width="3.84" Height="0.48" Rotation="0" />
-        <Elevator Id="elevator1" Position="37.08941,16.08384" InitialPosition="37.08941,16.08384" FinalPosition="37.08941,12.55374" Active="False" />
-        <LaserBarrier Id="laserbarrier1" Position="21.94052,3.189997" Rotation="1.570796" Width="0.15" Height="1.1" Active="True" />
-        <LaserBarrier Id="laserbarrier2" Position="44.35808,2.756664" Rotation="0" Width="0.15" Height="5.5" Active="True" />
-    </Elements>
-    <Foregrounds>
-    </Foregrounds>
+  <Backgrounds>
+    <Background Id="b1" Position="0,0"  Speed="1,1" TextureName="background1" />
+    <Background Id="b2" Position="17.49,0"  Speed="1,1" TextureName="background2" />
+    <Background Id="b3" Position="34.07,0"  Speed="1,1" TextureName="background3" />
+    <Background Id="b4" Position="54.46,0"  Speed="1,1" TextureName="background4" />
+    <Background Id="b5" Position="44.4,11"  Speed="1,1" TextureName="wires" />
+  </Backgrounds>
+  <Elements>
+    <PressurePlate Id="" Position="25.9805,3.179997" ActivableElementId="laserbarrier1" />
+    <Socket Id="socket2" Position="43.70762,15.96693" OtherSocketId="socket1" />
+    <Socket Id="socket1" Position="43.73852,11.32683" OtherSocketId="socket2" />
+    <ElectricityBox Id="" Position="56.67609,15.20025" ActivableElementId="forklift1" />
+    <ElectricityBox Id="" Position="46.83757,3.989998" ActivableElementId="laserbarrier2" />
+    <ElectricityBox Id="" Position="41.38832,15.66026" ActivableElementId="elevator1" />
+    <Ladder Id="" Position="41.70982,7.90342" StepsNumber="15" />
+    <Ladder Id="" Position="50.83699,10.43015" StepsNumber="22" />
+    <Ladder Id="" Position="21.93991,5.300028" StepsNumber="14" />
+    <Ladder Id="" Position="4.610013,5.320026" StepsNumber="14" />
+    <ConveyorBelt Id="" Position="11.96996,9.831818" AngularSpeed="1" LinksNumber="25" LinkWidth="0.05" LinkHeight="0.25" />
+    <Closet Id="" Position="13.22068,1.900069" Rotation="3.527968E-08" />
+    <Character Id="" Position="0.85,9.381819" />
+    <Box Id="" Position="28.55241,2.100001" Rotation="8.42534E-08" />
+    <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
+    <Stone Id="" Position="1.372115,2.099709" Rotation="-0.0009465588" />
+    <Platform Id="" Position="41.81847,12.5902" Width="4.380008" Height="0.48" Rotation="0" />
+    <Platform Id="" Position="19.78006,3.329998" Width="3.230002" Height="0.43" Rotation="0" />
+    <Platform Id="platform4" Position="10.07001,3.320068" Width="9.810133" Height="0.44" Rotation="0" />
+    <Platform Id="platform2" Position="5.189986,10.17014" Width="3.9" Height="1.389999" Rotation="0" />
+    <Platform Id="platform1" Position="1.879999,10.60015" Width="3.84" Height="0.48" Rotation="0" />
+    <Platform Id="platform3" Position="6.930026,6.500125" Width="0.4000032" Height="6.090044" Rotation="0" />
+    <Platform Id="" Position="30.07031,1.59007" Width="0.6900029" Height="3.329997" Rotation="0" />
+    <Platform Id="" Position="22.05007,10.17014" Width="3.88" Height="1.399999" Rotation="0" />
+    <Platform Id="" Position="34.07142,3.43" Width="0.560003" Height="7.010066" Rotation="0" />
+    <Platform Id="" Position="26.44006,3.34" Width="7.930088" Height="0.4500005" Rotation="0" />
+    <Platform Id="" Position="49.7602,11.44017" Width="0.7800028" Height="11.17016" Rotation="0" />
+    <Platform Id="" Position="37.74145,5.77004" Width="6.870065" Height="0.48" Rotation="0" />
+    <Platform Id="" Position="28.98014,10.64015" Width="10.17014" Height="0.48" Rotation="0" />
+    <Platform Id="" Position="40.83918,17.21028" Width="13.65022" Height="0.48" Rotation="0" />
+    <Platform Id="" Position="58.21865,17.2103" Width="21.22039" Height="0.48" Rotation="0" />
+    <Platform Id="" Position="46.27872,5.77004" Width="8.060088" Height="0.48" Rotation="0" />
+    <Platform Id="" Position="44.33905,11.49017" Width="0.7400029" Height="11.01016" Rotation="0" />
+    <Platform Id="" Position="20.39012,6.540057" Width="0.570003" Height="6.040043" Rotation="0" />
+    <Platform Id="" Position="-0.09255317,5.400352" Width="0.4800005" Height="11.05016" Rotation="0" />
+    <Platform Id="" Position="16.89746,6.550418" Width="7.010066" Height="0.4400005" Rotation="0" />
+    <Platform Id="" Position="33.8574,13.9004" Width="0.5400004" Height="7.000066" Rotation="0" />
+    <Platform Id="" Position="37.06137,-0.3222811" Width="74.81757" Height="0.6700003" Rotation="0" />
+    <Platform Id="" Position="52.07965,5.760039" Width="1.400001" Height="0.4500005" Rotation="0" />
+    <Platform Id="" Position="1.999999,3.319997" Width="4.120001" Height="0.4300005" Rotation="0" />
+    <Platform Id="" Position="52.40963,2.76" Width="0.7400029" Height="5.610034" Rotation="0" />
+    <Elevator Id="elevator1" Position="37.08941,16.08384" InitialPosition="37.08941,16.08384" FinalPosition="37.08941,12.55374" Active="False" />
+    <LaserBarrier Id="laserbarrier2" Position="44.35808,2.756664" Rotation="0" Width="0.15" Height="5.5" Active="True" />
+    <LaserBarrier Id="laserbarrier1" Position="21.94052,3.189997" Rotation="1.570796" Width="0.15" Height="1.1" Active="True" />
+  </Elements>
+  <Foregrounds>
+  </Foregrounds>
 </Scene>
