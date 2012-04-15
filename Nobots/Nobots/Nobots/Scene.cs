@@ -63,6 +63,8 @@ namespace Nobots
             VortexParticleSystem = new VortexParticleSystem(Game, this);
             VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
 
+
+            Elements.Add(new ConveyorBelt(Game, this, new Vector2(12f, 9)));
             SceneLoader.SceneFromXml(@"Content\levels\level1.xml", this);
         }
 
