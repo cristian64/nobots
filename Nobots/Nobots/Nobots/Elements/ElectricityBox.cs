@@ -23,7 +23,6 @@ namespace Nobots.Elements
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -35,7 +34,6 @@ namespace Nobots.Elements
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 

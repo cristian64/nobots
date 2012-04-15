@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Elements\Activator.cs" />
+    <Compile Include="Elements\Chandelier.cs" />
     <Compile Include="Elements\Closet.cs" />
     <Compile Include="Elements\ComaCharacterState.cs" />
     <Compile Include="Editor\FormProperties.cs">
