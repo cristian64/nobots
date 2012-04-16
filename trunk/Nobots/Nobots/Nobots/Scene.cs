@@ -175,6 +175,7 @@ namespace Nobots
         public void drawScene(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             foreach (Background i in Backgrounds)
                 i.Draw(gameTime);
             foreach (Element i in Elements)
@@ -185,6 +186,7 @@ namespace Nobots
             VortexOutParticleSystem.Draw(gameTime);
             foreach (Background i in Foregrounds)
                 i.Draw(gameTime);
+            SpriteBatch.End();
         }
 
         /// <summary>

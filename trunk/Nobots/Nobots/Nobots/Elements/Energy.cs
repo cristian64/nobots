@@ -117,11 +117,13 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
+            scene.SpriteBatch.End();
             scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, effect);
             scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(Position - scene.Camera.Position),
                 new Rectangle(State.textureXmin, State.textureYmin, State.characterWidth, State.characterHeight),
                 Color.White, 0.0f, new Vector2(State.characterWidth / 2, State.characterHeight / 2), scene.Camera.Scale, Effect, 0);
             scene.SpriteBatch.End();
+            scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
         }
     }
 }

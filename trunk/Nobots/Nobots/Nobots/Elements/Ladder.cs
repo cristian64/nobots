@@ -101,7 +101,6 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Begin();
             float currentElementPosition = texture.Height / 2.0f * (stepsNumber - 1);
             for (int i = 0; i < stepsNumber; i++)
             {
@@ -109,8 +108,6 @@ namespace Nobots.Elements
                     null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
                 currentElementPosition -= texture.Height;
             }
-            scene.SpriteBatch.End();
-            base.Draw(gameTime);
         }
     }
 }
