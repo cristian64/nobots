@@ -63,6 +63,7 @@ namespace Nobots
                 if (Keyboard.GetState().IsKeyDown(Keys.Delete))
                 {
                     scene.GarbageElements.Add(selection);
+                    selection.Dispose();
                     selection = null;
                 }
             }
