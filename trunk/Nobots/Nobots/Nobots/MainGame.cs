@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Diagnostics;
 
 namespace Nobots
 {
@@ -55,6 +56,8 @@ namespace Nobots
             base.Initialize();
         }
 
+        Texture2D texturilla = null;
+
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -63,6 +66,8 @@ namespace Nobots
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            texturilla = Content.Load<Texture2D>("socket");
 
             // TODO: use this.Content to load your game content here
         }
@@ -92,6 +97,9 @@ namespace Nobots
             base.Update(gameTime);
         }
 
+        Stopwatch sw = new Stopwatch();
+
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -101,6 +109,40 @@ namespace Nobots
             GraphicsDevice.Clear(Color.LightGray);
 
             // TODO: Add your drawing code here
+
+
+            /*
+
+            sw.Start();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            for (int i = 0; i < 500000; i++)
+            {
+                spriteBatch.Draw(texturilla, Vector2.Zero, Color.White);
+            }
+            spriteBatch.End();
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
+
+
+
+
+
+            sw.Start();
+            for (int i = 0; i < 500000; i++)
+            {
+                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                spriteBatch.Draw(texturilla, Vector2.Zero, Color.White);
+                spriteBatch.End();
+            }
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
+
+
+
+
+
+
+            Exit();*/
 
             base.Draw(gameTime);
         }
