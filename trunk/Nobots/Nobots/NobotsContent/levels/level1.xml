@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Scene>
     <Backgrounds>
-        <Background Id="b1" Position="0,0"  Speed="1,1" TextureName="background1" />
-        <Background Id="b2" Position="17.49,0"  Speed="1,1" TextureName="background2" />
-        <Background Id="b3" Position="34.07,0"  Speed="1,1" TextureName="background3" />
-        <Background Id="b4" Position="54.46,0"  Speed="1,1" TextureName="background4" />
-        <Background Id="b5" Position="44.4,11"  Speed="1,1" TextureName="wires" />
+        <Background Id="b1" Position="8.74,5.41"  Speed="1,1" TextureName="background1" />
+        <Background Id="b2" Position="25.78,5.41"  Speed="1,1" TextureName="background2" />
+        <Background Id="b3" Position="44.26,8.71"  Speed="1,1" TextureName="background3" />
+        <Background Id="b4" Position="64.28,8.71"  Speed="1,1" TextureName="background4" />
+        <Background Id="b5" Position="44.79,13.66"  Speed="1,1" TextureName="wires" />
     </Backgrounds>
     <Elements>
         <PressurePlate Id="" Position="25.9805,3.179997" ActivableElementId="laserbarrier1" />
