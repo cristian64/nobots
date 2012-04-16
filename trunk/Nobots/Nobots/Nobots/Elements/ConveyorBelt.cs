@@ -15,7 +15,8 @@ namespace Nobots.Elements
 {
     public class ConveyorBelt : Element
     {
-        Texture2D texture;
+        Texture2D circleTexture;
+        Texture2D chainTexture;
         List<Body> rotors;
         List<Body> chainLinks;
         List<RevoluteJoint> joints;
@@ -139,14 +140,22 @@ namespace Nobots.Elements
             : base(game, scene)
         {
             ZBuffer = 0f;
-            texture = Game.Content.Load<Texture2D>("closet");
+            circleTexture = Game.Content.Load<Texture2D>("circle");
+            chainTexture = Game.Content.Load<Texture2D>("chain");
 
             createBody(position);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            //scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+            foreach (Body b in rotors)
+                scene.SpriteBatch.Draw(circleTexture, new Rectangle((int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.X - scene.Camera.Position.X)),
+                    (int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.Y - scene.Camera.Position.Y)), (int)(scene.Camera.Scale * Conversion.ToDisplay(radius * 2)), (int)(scene.Camera.Scale * Conversion.ToDisplay(radius * 2))),
+                    null, Color.White, b.Rotation, new Vector2(circleTexture.Width / 2, circleTexture.Height / 2), SpriteEffects.None, 0);
+            foreach (Body b in chainLinks)
+                scene.SpriteBatch.Draw(chainTexture, new Rectangle((int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.X - scene.Camera.Position.X)),
+                    (int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.Y - scene.Camera.Position.Y)), (int)(scene.Camera.Scale * Conversion.ToDisplay(linkWidth*2)), (int)(scene.Camera.Scale * Conversion.ToDisplay(linkHeight*2))),
+                    null, Color.White, b.Rotation, new Vector2(chainTexture.Width/2, chainTexture.Height/2), SpriteEffects.None, 0);
         }
 
         private void createBody(Vector2 position)
