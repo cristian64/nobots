@@ -60,6 +60,11 @@ namespace Nobots
                     Selection.Height = Selection.Height - Conversion.ToWorld(1);
                 else if (Keyboard.GetState().IsKeyDown(Keys.Subtract))
                     Selection.Width = Selection.Width - Conversion.ToWorld(1);
+                if (Keyboard.GetState().IsKeyDown(Keys.Delete))
+                {
+                    scene.GarbageElements.Add(selection);
+                    selection = null;
+                }
             }
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released && IsMouseInWindow(Mouse.GetState()))
