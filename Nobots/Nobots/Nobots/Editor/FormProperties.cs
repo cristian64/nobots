@@ -28,7 +28,7 @@ namespace Nobots.Editor
             {
                 selection = value;
                 selectionEvents = null;
-
+                flowLayoutPanel1.Visible = (selection != null);
                 reset();
                 if(selection != null)
                     showElementInForm();
@@ -147,6 +147,7 @@ namespace Nobots.Editor
             Size = new Size(Size.Width, Screen.PrimaryScreen.WorkingArea.Size.Height);
             checkBoxShowDebug.Checked = scene.PhysicsDebug.Enabled;
             checkBoxPhysicsEngine.Checked = scene.World.Enabled;
+            flowLayoutPanel1.Visible = false;
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
