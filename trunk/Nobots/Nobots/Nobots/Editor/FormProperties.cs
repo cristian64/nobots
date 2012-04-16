@@ -50,6 +50,15 @@ namespace Nobots.Editor
                 numericUpDownSpeedY.Value = (decimal)((Background)selection).Speed.Y;
             }
 
+            if (selection is Foreground)
+            {
+                flowLayoutPanelTextureName.Visible = true;
+                textBoxTextureName.Text = ((Foreground)selection).TextureName;
+                flowLayoutPanelSpeed.Visible = true;
+                numericUpDownSpeedX.Value = (decimal)((Foreground)selection).Speed.X;
+                numericUpDownSpeedY.Value = (decimal)((Foreground)selection).Speed.Y;
+            }
+
             if (selection is IActivable)
             {
                 flowLayoutPanelActive.Visible = true;
@@ -189,8 +198,10 @@ namespace Nobots.Editor
 
         private void textBoxTextureName_TextChanged(object sender, EventArgs e)
         {
-            if (selectionEvents != null)
+            if (selectionEvents as Background != null)
                 ((Background)selectionEvents).TextureName = textBoxTextureName.Text;
+            if (selectionEvents as Foreground != null)
+                ((Foreground)selectionEvents).TextureName = textBoxTextureName.Text;
         }
 
         private void numericUpDownSpeedX_ValueChanged(object sender, EventArgs e)
@@ -198,6 +209,9 @@ namespace Nobots.Editor
             Background b = selectionEvents as Background;
             if (b != null)
                 b.Speed = new Vector2((float)numericUpDownSpeedX.Value, b.Speed.Y);
+            Foreground f = selectionEvents as Foreground;
+            if (f != null)
+                f.Speed = new Vector2((float)numericUpDownSpeedX.Value, f.Speed.Y);
         }
 
         private void numericUpDownSpeedY_ValueChanged(object sender, EventArgs e)
@@ -205,6 +219,9 @@ namespace Nobots.Editor
             Background b = selectionEvents as Background;
             if (b != null)
                 b.Speed = new Vector2(b.Speed.X, (float)numericUpDownSpeedY.Value);
+            Foreground f = selectionEvents as Foreground;
+            if (f != null)
+                f.Speed = new Vector2(f.Speed.X, (float)numericUpDownSpeedY.Value);
         }
 
         private void checkBoxActive_CheckedChanged(object sender, EventArgs e)

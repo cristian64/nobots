@@ -15,6 +15,7 @@ namespace Nobots
         Texture2D elementEmblem;
         Texture2D selectionEmblem;
         Texture2D backgroundEmblem;
+        Texture2D foregroundEmblem;
         public static bool ShowEmblems = true;
 
         private Editor.FormProperties form;
@@ -42,6 +43,7 @@ namespace Nobots
             elementEmblem = Game.Content.Load<Texture2D>("icons\\elementemblem");
             selectionEmblem = Game.Content.Load<Texture2D>("icons\\selectionemblem");
             backgroundEmblem = Game.Content.Load<Texture2D>("icons\\backgroundemblem");
+            foregroundEmblem = Game.Content.Load<Texture2D>("icons\\foregroundemblem");
 
             System.Windows.Forms.Application.EnableVisualStyles();
             this.form = new Editor.FormProperties(Game, scene);
@@ -108,6 +110,7 @@ namespace Nobots
             {
                 Element element = null;
                 Background background = null;
+                Foreground foreground = null;
                 switch (form.NewElementType)
                 {
                     case "Platform":
@@ -155,11 +158,16 @@ namespace Nobots
                     case "Background":
                         background = new Background(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Foreground":
+                        foreground = new Foreground(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                 }
                 if (element != null)
                     scene.Elements.Add(element);
                 if (background != null)
                     scene.Backgrounds.Add(background);
+                if (foreground != null)
+                    scene.Foregrounds.Add(foreground);
             }
 
             previous = Mouse.GetState();
@@ -176,8 +184,8 @@ namespace Nobots
                     scene.SpriteBatch.Draw(backgroundEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
                 foreach (Element i in scene.Elements)
                     scene.SpriteBatch.Draw(elementEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
-                foreach (Background i in scene.Foregrounds)
-                    scene.SpriteBatch.Draw(backgroundEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
+                foreach (Foreground i in scene.Foregrounds)
+                    scene.SpriteBatch.Draw(foregroundEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
 
                 if (selection != null)
                 {
