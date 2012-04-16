@@ -18,6 +18,7 @@ namespace Nobots
         public SceneLoader(Game game)
             : base(game)
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US"); 
         }
 
         #region FromXml

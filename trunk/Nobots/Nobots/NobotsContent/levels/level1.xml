@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Scene>
     <Backgrounds>
         <Background Id="b1" Position="0,0"  Speed="1,1" TextureName="background1" />
@@ -18,12 +18,13 @@
         <Ladder Id="" Position="21.93991,5.300028" StepsNumber="14" />
         <Ladder Id="" Position="50.83699,10.43015" StepsNumber="22" />
         <Ladder Id="" Position="41.70982,7.90342" StepsNumber="15" />
-        <Stone Id="" Position="1.372115,2.099709" Rotation="-0.0009465019" />
+        <Stone Id="" Position="1.371713,2.10616" Rotation="-0.006821467" />
         <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
-        <Box Id="" Position="28.55241,2.100001" Rotation="8.427595E-08" />
-        <Character Id="" Position="4.55951,8.494075" />
-        <Closet Id="" Position="13.22068,1.900069" Rotation="3.499645E-08" />
+        <Box Id="" Position="28.55241,2.100001" Rotation="8.424277E-08" />
+        <Character Id="" Position="4.55951,8.496689" />
+        <Closet Id="" Position="13.22068,1.900069" Rotation="3.497408E-08" />
         <ConveyorBelt Id="" Position="11.96996,9.831818" AngularSpeed="1" LinksNumber="25" LinkWidth="0.05" LinkHeight="0.25" />
+        <Chandelier Id="" Position="10.55573,7.699041" Rotation="0" />
         <Platform Id="" Position="52.40963,2.76" Width="0.7400029" Height="5.610034" Rotation="0" />
         <Platform Id="" Position="1.999999,3.319997" Width="4.120001" Height="0.4300005" Rotation="0" />
         <Platform Id="" Position="52.07965,5.760039" Width="1.400001" Height="0.4500005" Rotation="0" />
