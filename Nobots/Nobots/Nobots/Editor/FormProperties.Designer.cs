@@ -975,6 +975,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxAvailableElements.FormattingEnabled = true;
             this.listBoxAvailableElements.Items.AddRange(new object[] {
+            "Background",
+            "Foreground",
+            "---------------",
             "Platform",
             "Ladder",
             "Box",
@@ -985,7 +988,6 @@
             "Character",
             "Socket",
             "LaserBarrier",
-            "Background",
             "Forklift",
             "Stone",
             "ConveyorBelt",

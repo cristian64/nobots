@@ -30,7 +30,7 @@ namespace Nobots
         public SortedList<Element> RespawnElements;
         public SortedList<Element> Elements;
         public List<Background> Backgrounds;
-        public List<Background> Foregrounds;
+        public List<Foreground> Foregrounds;
 
         RenderTarget2D sceneTarget;
         RenderTarget2D renderTarget1;
@@ -52,7 +52,7 @@ namespace Nobots
             RespawnElements = new SortedList<Element>();
             Elements = new SortedList<Element>();
             Backgrounds = new List<Background>();
-            Foregrounds = new List<Background>();
+            Foregrounds = new List<Foreground>();
         }
 
         public override void Initialize()
@@ -116,7 +116,7 @@ namespace Nobots
                 i.Update(gameTime);
             foreach (Element i in Elements)
                 i.Update(gameTime);
-            foreach (Background i in Foregrounds)
+            foreach (Foreground i in Foregrounds)
                 i.Update(gameTime);
 
             foreach (Element i in RespawnElements)
@@ -185,9 +185,12 @@ namespace Nobots
             LaserParticleSystem.Draw(gameTime);
             VortexParticleSystem.Draw(gameTime);
             VortexOutParticleSystem.Draw(gameTime);
-            foreach (Background i in Foregrounds)
+            SpriteBatch.End();
+            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            foreach (Foreground i in Foregrounds)
                 i.Draw(gameTime);
             SpriteBatch.End();
+
         }
 
         /// <summary>

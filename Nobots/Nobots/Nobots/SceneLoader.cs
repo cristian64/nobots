@@ -46,7 +46,7 @@ namespace Nobots
                     while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Foregrounds"))
                     {
                         if (reader.NodeType == XmlNodeType.Element)
-                            scene.Foregrounds.Add(BackgroundFromXml(reader, scene));
+                            scene.Foregrounds.Add(ForegroundFromXml(reader, scene));
                     }
                 }
 
@@ -77,6 +77,20 @@ namespace Nobots
         public Background BackgroundFromXml(XmlTextReader reader, Scene scene)
         {
             Background e = new Background(Game, scene, Vector2.Zero);
+            if (reader.MoveToAttribute("Id"))
+                e.Id = reader.Value;
+            if (reader.MoveToAttribute("TextureName"))
+                e.TextureName = reader.Value;
+            if (reader.MoveToAttribute("Position"))
+                e.Position = PositionFromString(reader.Value);
+            if (reader.MoveToAttribute("Speed"))
+                e.Speed = PositionFromString(reader.Value);
+            return e;
+        }
+
+        public Foreground ForegroundFromXml(XmlTextReader reader, Scene scene)
+        {
+            Foreground e = new Foreground(Game, scene, Vector2.Zero);
             if (reader.MoveToAttribute("Id"))
                 e.Id = reader.Value;
             if (reader.MoveToAttribute("TextureName"))
@@ -233,7 +247,7 @@ namespace Nobots
             }
             xml += "    </Elements>\n";
             xml += "    <Foregrounds>\n";
-            foreach (Background i in scene.Foregrounds)
+            foreach (Foreground i in scene.Foregrounds)
             {
                 xml += "        " + ElementToXml(i) + "\n";
             }
@@ -247,6 +261,12 @@ namespace Nobots
         public String ElementToXml(Background background)
         {
             String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\" Rotation=\"" + background.Rotation + "\" Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Foreground foreground)
+        {
+            String xml = "<Foreground Id=\"" + foreground.Id + "\" Position=\"" + foreground.Position.X + "," + foreground.Position.Y + "\" Rotation=\"" + foreground.Rotation + "\" Speed=\"" + foreground.Speed.X + "," + foreground.Speed.Y + "\" TextureName=\"" + foreground.TextureName + "\" />";
             return xml;
         }
 
