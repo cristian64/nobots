@@ -88,6 +88,9 @@
             this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.flowLayoutPanelRotorsNumber = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelRotorsNumber = new System.Windows.Forms.Label();
+            this.numericUpDownRotorsNumber = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -122,6 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkWidth)).BeginInit();
             this.flowLayoutPanelLinkHeight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).BeginInit();
+            this.flowLayoutPanelRotorsNumber.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotorsNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -144,6 +149,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelInitialPosition);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelFinalPosition);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAngularSpeed);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelRotorsNumber);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinksNumber);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinkWidth);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinkHeight);
@@ -802,7 +808,7 @@
             // 
             this.flowLayoutPanelLinksNumber.Controls.Add(this.labelLinksNumber);
             this.flowLayoutPanelLinksNumber.Controls.Add(this.numericUpDownLinksNumber);
-            this.flowLayoutPanelLinksNumber.Location = new System.Drawing.Point(0, 430);
+            this.flowLayoutPanelLinksNumber.Location = new System.Drawing.Point(0, 459);
             this.flowLayoutPanelLinksNumber.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelLinksNumber.Name = "flowLayoutPanelLinksNumber";
             this.flowLayoutPanelLinksNumber.Size = new System.Drawing.Size(247, 29);
@@ -845,7 +851,7 @@
             // 
             this.flowLayoutPanelLinkWidth.Controls.Add(this.labelLinkWidth);
             this.flowLayoutPanelLinkWidth.Controls.Add(this.numericUpDownLinkWidth);
-            this.flowLayoutPanelLinkWidth.Location = new System.Drawing.Point(0, 459);
+            this.flowLayoutPanelLinkWidth.Location = new System.Drawing.Point(0, 488);
             this.flowLayoutPanelLinkWidth.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelLinkWidth.Name = "flowLayoutPanelLinkWidth";
             this.flowLayoutPanelLinkWidth.Size = new System.Drawing.Size(247, 29);
@@ -894,7 +900,7 @@
             // 
             this.flowLayoutPanelLinkHeight.Controls.Add(this.labelLinkHeight);
             this.flowLayoutPanelLinkHeight.Controls.Add(this.numericUpDownLinkHeight);
-            this.flowLayoutPanelLinkHeight.Location = new System.Drawing.Point(0, 488);
+            this.flowLayoutPanelLinkHeight.Location = new System.Drawing.Point(0, 517);
             this.flowLayoutPanelLinkHeight.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelLinkHeight.Name = "flowLayoutPanelLinkHeight";
             this.flowLayoutPanelLinkHeight.Size = new System.Drawing.Size(247, 29);
@@ -998,6 +1004,44 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Select the element you want to create:";
             // 
+            // flowLayoutPanelRotorsNumber
+            // 
+            this.flowLayoutPanelRotorsNumber.Controls.Add(this.labelRotorsNumber);
+            this.flowLayoutPanelRotorsNumber.Controls.Add(this.numericUpDownRotorsNumber);
+            this.flowLayoutPanelRotorsNumber.Location = new System.Drawing.Point(0, 430);
+            this.flowLayoutPanelRotorsNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelRotorsNumber.Name = "flowLayoutPanelRotorsNumber";
+            this.flowLayoutPanelRotorsNumber.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelRotorsNumber.TabIndex = 20;
+            this.flowLayoutPanelRotorsNumber.Visible = false;
+            // 
+            // labelRotorsNumber
+            // 
+            this.labelRotorsNumber.Location = new System.Drawing.Point(3, 0);
+            this.labelRotorsNumber.Name = "labelRotorsNumber";
+            this.labelRotorsNumber.Size = new System.Drawing.Size(80, 23);
+            this.labelRotorsNumber.TabIndex = 4;
+            this.labelRotorsNumber.Text = "RotorsNumber";
+            this.labelRotorsNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownRotorsNumber
+            // 
+            this.numericUpDownRotorsNumber.Location = new System.Drawing.Point(89, 3);
+            this.numericUpDownRotorsNumber.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownRotorsNumber.Name = "numericUpDownRotorsNumber";
+            this.numericUpDownRotorsNumber.Size = new System.Drawing.Size(153, 20);
+            this.numericUpDownRotorsNumber.TabIndex = 5;
+            this.numericUpDownRotorsNumber.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numericUpDownRotorsNumber.ValueChanged += new System.EventHandler(this.numericUpDownRotorsNumber_ValueChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1051,6 +1095,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkWidth)).EndInit();
             this.flowLayoutPanelLinkHeight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).EndInit();
+            this.flowLayoutPanelRotorsNumber.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotorsNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1118,6 +1164,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLinkHeight;
         private System.Windows.Forms.Label labelLinkHeight;
         private System.Windows.Forms.NumericUpDown numericUpDownLinkHeight;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRotorsNumber;
+        private System.Windows.Forms.Label labelRotorsNumber;
+        private System.Windows.Forms.NumericUpDown numericUpDownRotorsNumber;
 
 
     }

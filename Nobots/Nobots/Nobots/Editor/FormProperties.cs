@@ -91,6 +91,8 @@ namespace Nobots.Editor
             {
                 flowLayoutPanelAngularSpeed.Visible = true;
                 numericUpDownAngularSpeed.Value = (decimal)((ConveyorBelt)selection).AngularSpeed;
+                flowLayoutPanelRotorsNumber.Visible = true;
+                numericUpDownRotorsNumber.Value = (decimal)((ConveyorBelt)selection).RotorsNumber;
                 flowLayoutPanelLinksNumber.Visible = true;
                 numericUpDownLinksNumber.Value = (decimal)((ConveyorBelt)selection).LinksNumber;
                 flowLayoutPanelLinkWidth.Visible = true;
@@ -119,6 +121,7 @@ namespace Nobots.Editor
             flowLayoutPanelSpeed.Visible = false;
             flowLayoutPanelStepsNumber.Visible = false;
             flowLayoutPanelLinksNumber.Visible = false;
+            flowLayoutPanelRotorsNumber.Visible = false;
             flowLayoutPanelLinkWidth.Visible = false;
             flowLayoutPanelLinkHeight.Visible = false;
             flowLayoutPanelAngularSpeed.Visible = false;
@@ -295,6 +298,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((ConveyorBelt)selectionEvents).LinkHeight = (float)numericUpDownLinkHeight.Value;
+        }
+
+        private void numericUpDownRotorsNumber_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((ConveyorBelt)selectionEvents).RotorsNumber = (int)numericUpDownRotorsNumber.Value;
         }
     }
 }

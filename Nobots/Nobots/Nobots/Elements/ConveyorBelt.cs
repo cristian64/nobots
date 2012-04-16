@@ -9,16 +9,18 @@ using FarseerPhysics.Factories;
 using FarseerPhysics.Common;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Dynamics.Joints;
+using System.Collections;
 
 namespace Nobots.Elements
 {
     public class ConveyorBelt : Element
     {
         Texture2D texture;
-        Body rotor1;
-        Body rotor2;
-        Body rotor3;
+        List<Body> rotors;
+        List<Body> chainLinks;
+        List<RevoluteJoint> joints;
 
+        private int rotorsNumber = 3;
         private float radius = 0.5f;
         private float width = 5.0f;
         private float rotation = 0.0f;
@@ -26,9 +28,6 @@ namespace Nobots.Elements
         private float linkWidth = 0.05f;
         private float linkHeight = 0.25f;
         private float angularSpeed = 1;
-
-        List<Body> chainLinks;
-        List<RevoluteJoint> joints;
 
         public float LinkWidth
         {
@@ -56,7 +55,8 @@ namespace Nobots.Elements
             set
             {
                 angularSpeed = value;
-                rotor1.AngularVelocity = rotor2.AngularVelocity = rotor3.AngularVelocity = angularSpeed;
+                foreach (Body i in rotors)
+                    i.AngularVelocity = angularSpeed;
             }
         }
 
@@ -66,6 +66,16 @@ namespace Nobots.Elements
             set
             {
                 linksNumber = value;
+                createBody(Position);
+            }
+        }
+
+        public int RotorsNumber
+        {
+            get { return rotorsNumber; }
+            set
+            {
+                rotorsNumber = value;
                 createBody(Position);
             }
         }
@@ -100,15 +110,13 @@ namespace Nobots.Elements
         {
             get
             {
-                return rotor2.Position;
+                return (rotors[0].Position + rotors[rotors.Count - 1].Position) / 2;
             }
             set
             {
-                Vector2 difference = rotor2.Position;
-                rotor2.Position = value;
-                difference -= rotor2.Position;
-                rotor1.Position -= difference;
-                rotor3.Position -= difference;
+                Vector2 difference = (rotors[0].Position + rotors[rotors.Count() - 1].Position) / 2 - value;
+                foreach (Body i in rotors)
+                    i.Position -= difference;
                 foreach (Body i in chainLinks)
                     i.Position -= difference;
             }
@@ -143,38 +151,34 @@ namespace Nobots.Elements
 
         private void createBody(Vector2 position)
         {
-            if (rotor1 != null)
-                scene.World.RemoveBody(rotor1);
-            if (rotor2 != null)
-                scene.World.RemoveBody(rotor2);
-            if (rotor3 != null)
-                scene.World.RemoveBody(rotor3);
+            if (rotors != null)
+                foreach (Body i in rotors)
+                    scene.World.RemoveBody(i);
             if (chainLinks != null)
                 foreach (Body i in chainLinks)
                     scene.World.RemoveBody(i);
             if (joints != null)
                 foreach (Joint i in joints)
                     scene.World.RemoveJoint(i);
-            rotor1 = rotor2 = rotor3 = null;
+            rotors = null;
             chainLinks = null;
             joints = null;
 
-            rotor1 = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
-            rotor2 = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
-            rotor3 = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
+            rotors = new List<Body>(rotorsNumber);
+            for (int i = 0; i < rotorsNumber; i++)
+            {
+                Body rotor = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
+                rotor.BodyType = BodyType.Kinematic;
+                rotor.Friction = float.MaxValue;
+                rotor.AngularVelocity = AngularSpeed;
+                rotor.Position = position + new Vector2(-width / 2 + i * (width / (rotorsNumber - 1)), 0);
+                rotors.Add(rotor);
+            }
 
-            rotor1.Position = position + new Vector2(-width / 2, 0);
-            rotor2.Position = position;
-            rotor3.Position = position + new Vector2(width / 2, 0);
+            createChain(scene.World, rotors[0].Position + new Vector2(-1, -1f), rotors.Last<Body>().Position + new Vector2(1, -1f), position, rotation, linkWidth, linkHeight, linksNumber, 1000.0f);
 
-            rotor1.BodyType = rotor2.BodyType = rotor3.BodyType = BodyType.Kinematic;
-            rotor1.Friction = rotor2.Friction = rotor3.Friction = float.MaxValue;
-            rotor1.AngularVelocity = rotor2.AngularVelocity = rotor3.AngularVelocity = AngularSpeed;
-
-            createChain(scene.World, rotor1.Position + new Vector2(-1, -1f), rotor3.Position + new Vector2(1, -1f), position, rotation, linkWidth, linkHeight, linksNumber, 5000.0f);
-
-            rotor1.Position = RotateAboutOrigin(rotor1.Position, position, rotation);
-            rotor3.Position = RotateAboutOrigin(rotor3.Position, position, rotation); 
+            foreach (Body i in rotors)
+                i.Position = RotateAboutOrigin(i.Position, position, rotation);
         }
 
         private void createChain(World world, Vector2 start, Vector2 end, Vector2 origin, float rotation, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity)
@@ -200,6 +204,17 @@ namespace Nobots.Elements
         public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
         {
             return Vector2.Transform(point - origin, Matrix.CreateRotationZ(rotation)) + origin;
-        } 
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            foreach (Body i in rotors)
+                i.Dispose();
+            foreach (Body i in chainLinks)
+                i.Dispose();
+            foreach (Joint i in joints)
+                scene.World.RemoveJoint(i);
+            base.Dispose(disposing);
+        }
     }
 }
