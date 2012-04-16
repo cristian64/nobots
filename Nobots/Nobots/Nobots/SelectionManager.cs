@@ -80,7 +80,11 @@ namespace Nobots
                     Selection.Width = Selection.Width - Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.Delete))
                 {
-                    scene.GarbageElements.Add(selection);
+                    if (selection is Background)
+                        scene.Backgrounds.Remove((Background)selection);
+                    else if (selection is Foreground)
+                        scene.Foregrounds.Remove((Foreground)selection);
+                    else scene.Elements.Remove(selection);
                     selection.Dispose();
                     selection = null;
                 }
