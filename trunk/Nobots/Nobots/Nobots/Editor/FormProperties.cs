@@ -43,9 +43,6 @@ namespace Nobots.Editor
             
             if (selection is Background)
             {
-                numericUpDownWidth.Enabled = false;
-                numericUpDownHeight.Enabled = false;
-                numericUpDownRotation.Enabled = false;
                 flowLayoutPanelTextureName.Visible = true;
                 textBoxTextureName.Text = ((Background)selection).TextureName;
                 flowLayoutPanelSpeed.Visible = true;

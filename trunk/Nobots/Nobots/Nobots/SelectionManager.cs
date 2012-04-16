@@ -107,6 +107,7 @@ namespace Nobots
             if (Mouse.GetState().RightButton == ButtonState.Pressed && previous.RightButton == ButtonState.Released)
             {
                 Element element = null;
+                Background background = null;
                 switch (form.NewElementType)
                 {
                     case "Platform":
@@ -151,9 +152,14 @@ namespace Nobots
                     case "ConveyorBelt":
                         element = new ConveyorBelt(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Background":
+                        background = new Background(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                 }
                 if (element != null)
                     scene.Elements.Add(element);
+                if (background != null)
+                    scene.Backgrounds.Add(background);
             }
 
             previous = Mouse.GetState();
