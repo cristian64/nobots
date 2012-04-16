@@ -17,10 +17,9 @@ namespace Nobots.Elements
         Effect effect;
 
         public Energy(Game game, Scene scene, Vector2 position)
-            : base(game, scene, Vector2.Zero)
+            : base(game, scene, position)
         {
             ZBuffer = 1.0f;
-            body.Position = new Vector2(32.60955f, -2.803332f);
 
             body.CollisionCategories = ElementCategory.ENERGY;
             torso.CollisionCategories = ElementCategory.ENERGY;
