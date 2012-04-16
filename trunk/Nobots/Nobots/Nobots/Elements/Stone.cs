@@ -21,11 +21,10 @@ namespace Nobots.Elements
         {
             get
             {
-                throw new NotImplementedException();
+                return Conversion.ToWorld(texture.Width);
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -33,11 +32,10 @@ namespace Nobots.Elements
         {
             get
             {
-                throw new NotImplementedException();
+                return Conversion.ToWorld(texture.Height);
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -45,11 +43,11 @@ namespace Nobots.Elements
         {
             get
             {
-                return body.Position;
+                return body.Position + body.LocalCenter;
             }
             set
             {
-                body.Position = value;
+                body.Position = value - body.LocalCenter;
             }
         }
 

@@ -87,6 +87,7 @@ namespace Nobots.Elements
             {
                 this.height = height.Value;
             }
+            this.position = position;
             createBody();
         }
 
