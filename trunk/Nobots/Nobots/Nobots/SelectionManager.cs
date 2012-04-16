@@ -55,14 +55,18 @@ namespace Nobots
         {
             if (Selection != null)
             {
+                float speed = Conversion.ToWorld(1);
+                if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
+                    speed = Conversion.ToWorld(20);
+
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
-                    Selection.Position = Selection.Position - Vector2.UnitY * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position - Vector2.UnitY * speed;
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
-                    Selection.Position = Selection.Position + Vector2.UnitY * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position + Vector2.UnitY * speed;
                 if (Keyboard.GetState().IsKeyDown(Keys.A))
-                    Selection.Position = Selection.Position - Vector2.UnitX * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position - Vector2.UnitX * speed;
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
-                    Selection.Position = Selection.Position + Vector2.UnitX * Conversion.ToWorld(1);
+                    Selection.Position = Selection.Position + Vector2.UnitX * speed;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Add) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                     Selection.Height = Selection.Height + Conversion.ToWorld(1);
