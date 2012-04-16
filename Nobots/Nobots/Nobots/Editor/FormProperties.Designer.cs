@@ -91,6 +91,7 @@
             this.flowLayoutPanelRotorsNumber = new System.Windows.Forms.FlowLayoutPanel();
             this.labelRotorsNumber = new System.Windows.Forms.Label();
             this.numericUpDownRotorsNumber = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -959,7 +960,7 @@
             // checkBoxPhysicsEngine
             // 
             this.checkBoxPhysicsEngine.AutoSize = true;
-            this.checkBoxPhysicsEngine.Location = new System.Drawing.Point(12, 35);
+            this.checkBoxPhysicsEngine.Location = new System.Drawing.Point(12, 58);
             this.checkBoxPhysicsEngine.Name = "checkBoxPhysicsEngine";
             this.checkBoxPhysicsEngine.Size = new System.Drawing.Size(138, 17);
             this.checkBoxPhysicsEngine.TabIndex = 2;
@@ -989,16 +990,16 @@
             "Stone",
             "ConveyorBelt",
             "Chandelier"});
-            this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 84);
+            this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
             this.listBoxAvailableElements.Name = "listBoxAvailableElements";
-            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 238);
+            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 212);
             this.listBoxAvailableElements.TabIndex = 3;
             this.listBoxAvailableElements.SelectedValueChanged += new System.EventHandler(this.listBoxAvailableElements_SelectedValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 64);
+            this.label1.Location = new System.Drawing.Point(8, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 13);
             this.label1.TabIndex = 4;
@@ -1042,11 +1043,23 @@
             0});
             this.numericUpDownRotorsNumber.ValueChanged += new System.EventHandler(this.numericUpDownRotorsNumber_ValueChanged);
             // 
+            // checkBoxShowEmblems
+            // 
+            this.checkBoxShowEmblems.AutoSize = true;
+            this.checkBoxShowEmblems.Location = new System.Drawing.Point(12, 35);
+            this.checkBoxShowEmblems.Name = "checkBoxShowEmblems";
+            this.checkBoxShowEmblems.Size = new System.Drawing.Size(97, 17);
+            this.checkBoxShowEmblems.TabIndex = 5;
+            this.checkBoxShowEmblems.Text = "Show emblems";
+            this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
+            this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 671);
+            this.Controls.Add(this.checkBoxShowEmblems);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxAvailableElements);
             this.Controls.Add(this.checkBoxPhysicsEngine);
@@ -1167,6 +1180,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRotorsNumber;
         private System.Windows.Forms.Label labelRotorsNumber;
         private System.Windows.Forms.NumericUpDown numericUpDownRotorsNumber;
+        private System.Windows.Forms.CheckBox checkBoxShowEmblems;
 
 
     }

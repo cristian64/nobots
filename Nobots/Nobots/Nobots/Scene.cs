@@ -167,6 +167,7 @@ namespace Nobots
                 drawScene(gameTime);
             }
 
+            SelectionManager.Draw(gameTime);
             PhysicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
 
             base.Update(gameTime);
