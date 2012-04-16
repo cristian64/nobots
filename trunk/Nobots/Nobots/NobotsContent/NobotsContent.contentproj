@@ -316,6 +316,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="icons\backgroundemblem.png">
+      <Name>backgroundemblem</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="icons\elementemblem.png">
+      <Name>elementemblem</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="icons\selectionemblem.png">
+      <Name>selectionemblem</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="chain.png">
       <Name>chain</Name>
       <Importer>TextureImporter</Importer>

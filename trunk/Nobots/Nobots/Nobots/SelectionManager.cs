@@ -5,11 +5,18 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nobots.Elements;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Nobots
 {
     public class SelectionManager : DrawableGameComponent
     {
+        SpriteFont font;
+        Texture2D elementEmblem;
+        Texture2D selectionEmblem;
+        Texture2D backgroundEmblem;
+        public static bool ShowEmblems = true;
+
         private Editor.FormProperties form;
         private Scene scene;
         private Element selection = null;
@@ -30,6 +37,11 @@ namespace Nobots
             : base(game)
         {
             this.scene = scene;
+
+            font = Game.Content.Load<SpriteFont>("debugfont");
+            elementEmblem = Game.Content.Load<Texture2D>("icons\\elementemblem");
+            selectionEmblem = Game.Content.Load<Texture2D>("icons\\selectionemblem");
+            backgroundEmblem = Game.Content.Load<Texture2D>("icons\\backgroundemblem");
 
             System.Windows.Forms.Application.EnableVisualStyles();
             this.form = new Editor.FormProperties(Game, scene);
@@ -74,7 +86,7 @@ namespace Nobots
                 Element newSelection = null;
                 foreach (Element i in scene.Elements)
                 {
-                    if (Vector2.Distance(i.Position, scene.Camera.ScreenToWorld(Mouse.GetState())) < Conversion.ToWorld(10))
+                    if (Vector2.Distance(scene.Camera.WorldToScreen(i.Position), new Vector2(Mouse.GetState().X, Mouse.GetState().Y)) < 10)
                     {
                         newSelection = i;
                         Console.WriteLine("Selected one at " + i.Position + ", Width " + i.Width + ", Height " + i.Height);
@@ -139,6 +151,34 @@ namespace Nobots
             previous = Mouse.GetState();
 
             base.Update(gameTime);
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            if (ShowEmblems)
+            {
+                scene.SpriteBatch.Begin();
+                foreach (Background i in scene.Backgrounds)
+                    scene.SpriteBatch.Draw(backgroundEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
+                foreach (Element i in scene.Elements)
+                    scene.SpriteBatch.Draw(elementEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
+                foreach (Background i in scene.Foregrounds)
+                    scene.SpriteBatch.Draw(backgroundEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
+
+                if (selection != null)
+                {
+                    String selectionName = selection.GetType().Name;
+                    Vector2 selectionPosition = scene.Camera.WorldToScreen(selection.Position) - font.MeasureString(selectionName) / 2 + new Vector2(0, -20);
+                    scene.SpriteBatch.DrawString(font, selectionName, selectionPosition + Vector2.UnitX, Color.Black);
+                    scene.SpriteBatch.DrawString(font, selectionName, selectionPosition - Vector2.UnitX, Color.Black);
+                    scene.SpriteBatch.DrawString(font, selectionName, selectionPosition + Vector2.UnitY, Color.Black);
+                    scene.SpriteBatch.DrawString(font, selectionName, selectionPosition - Vector2.UnitY, Color.Black);
+                    scene.SpriteBatch.DrawString(font, selectionName, selectionPosition, Color.White);
+
+                    scene.SpriteBatch.Draw(selectionEmblem, scene.Camera.WorldToScreen(selection.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
+                }
+                scene.SpriteBatch.End();
+            }
         }
 
         public bool IsMouseInWindow(MouseState mouseState)

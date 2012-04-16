@@ -150,6 +150,7 @@ namespace Nobots.Editor
             Size = new Size(Size.Width, Screen.PrimaryScreen.WorkingArea.Size.Height);
             checkBoxShowDebug.Checked = scene.PhysicsDebug.Enabled;
             checkBoxPhysicsEngine.Checked = scene.World.Enabled;
+            checkBoxShowEmblems.Checked = SelectionManager.ShowEmblems;
             flowLayoutPanel1.Visible = false;
         }
 
@@ -304,6 +305,11 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((ConveyorBelt)selectionEvents).RotorsNumber = (int)numericUpDownRotorsNumber.Value;
+        }
+
+        private void checkBoxShowEmblems_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectionManager.ShowEmblems = checkBoxShowEmblems.Checked;
         }
     }
 }
