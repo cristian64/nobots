@@ -158,6 +158,8 @@ namespace Nobots
                         ((ConveyorBelt)e).AngularSpeed = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     if (reader.MoveToAttribute("LinksNumber"))
                         ((ConveyorBelt)e).LinksNumber = int.Parse(reader.Value);
+                    if (reader.MoveToAttribute("RotorsNumber"))
+                        ((ConveyorBelt)e).RotorsNumber = int.Parse(reader.Value);
                     if (reader.MoveToAttribute("LinkWidth"))
                         ((ConveyorBelt)e).LinkWidth = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     if (reader.MoveToAttribute("LinkHeight"))
@@ -311,7 +313,7 @@ namespace Nobots
 
         public String ElementToXml(ConveyorBelt cBelt)
         {
-            String xml = "<ConveyorBelt Id=\"" + cBelt.Id + "\" Position=\"" + cBelt.Position.X + "," + cBelt.Position.Y + "\" AngularSpeed=\"" + cBelt.AngularSpeed + "\" LinksNumber=\"" + cBelt.LinksNumber + "\" LinkWidth=\"" + cBelt.LinkWidth + "\" LinkHeight=\"" + cBelt.LinkHeight + "\" />";
+            String xml = "<ConveyorBelt Id=\"" + cBelt.Id + "\" Position=\"" + cBelt.Position.X + "," + cBelt.Position.Y + "\" Width=\"" + cBelt.Width + "\" Height=\"" + cBelt.Height + "\" AngularSpeed=\"" + cBelt.AngularSpeed + "\" RotorsNumber=\"" + cBelt.RotorsNumber + "\" LinksNumber=\"" + cBelt.LinksNumber + "\" LinkWidth=\"" + cBelt.LinkWidth + "\" LinkHeight=\"" + cBelt.LinkHeight + "\" />";
             return xml;
         }
 
