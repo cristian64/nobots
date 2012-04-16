@@ -37,6 +37,7 @@ namespace Nobots.Elements
             else
                 character.torso.ApplyForce(new Vector2(10, 0));
             character.torso.Friction = 100f;
+            energy.Position = character.Position;
             scene.InputManager.Character = energy;
             scene.Camera.Target = energy;
             scene.RespawnElements.Add(energy);
