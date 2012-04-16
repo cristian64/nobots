@@ -178,6 +178,15 @@ namespace Nobots.Elements
                    Math.Abs(Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            scene.Camera.Target = null;
+            scene.World.RemoveJoint(revoluteJoint);
+            torso.Dispose();
+            body.Dispose();
+            base.Dispose(disposing);
+        }
+
         protected void updateLadder()
         {
             if (Ladder != null && !IsLadderInRange(Ladder))
