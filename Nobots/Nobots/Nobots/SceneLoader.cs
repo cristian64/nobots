@@ -76,7 +76,7 @@ namespace Nobots
 
         public Background BackgroundFromXml(XmlTextReader reader, Scene scene)
         {
-            Background e = new Background(Game, scene);
+            Background e = new Background(Game, scene, Vector2.Zero);
             if (reader.MoveToAttribute("Id"))
                 e.Id = reader.Value;
             if (reader.MoveToAttribute("TextureName"))
@@ -246,7 +246,7 @@ namespace Nobots
 
         public String ElementToXml(Background background)
         {
-            String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\"  Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" />";
+            String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\" Rotation=\"" + background.Rotation + "\" Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" />";
             return xml;
         }
 
