@@ -147,5 +147,11 @@ namespace Nobots.Elements
                 null, Color.White, body.Rotation, new Vector2(laserTexture.Width / 2, laserTexture.Height / 2), SpriteEffects.None, 0);
             */
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            body.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }
