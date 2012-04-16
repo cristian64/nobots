@@ -19,10 +19,18 @@ namespace Nobots.Elements
             set
             {
                 textureName = value;
-                Texture = Game.Content.Load<Texture2D>(value);
+                try
+                {
+                    Texture = Game.Content.Load<Texture2D>(value);
+                }
+                catch (Exception)
+                {
+                    Texture = notexture;
+                }
             }
         }
 
+        private Texture2D notexture;
         public Texture2D Texture;
         public Vector2 Speed = Vector2.One;
         private Vector2 position;
@@ -35,7 +43,6 @@ namespace Nobots.Elements
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -47,7 +54,6 @@ namespace Nobots.Elements
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -60,7 +66,6 @@ namespace Nobots.Elements
             set
             {
                 position = value;
-                Console.WriteLine("Background (x,y): " + (position.X + Conversion.ToWorld(Texture.Width / 2)) + " " + (position.Y + Conversion.ToWorld(Texture.Height / 2)));
             }
         }
 
@@ -79,6 +84,7 @@ namespace Nobots.Elements
             : base(game, scene)
         {
             Speed = Vector2.One;
+            notexture = Game.Content.Load<Texture2D>("notexture");
         }
 
         public Background(Game game, Scene scene, String textureName)
@@ -90,7 +96,7 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - Speed * scene.Camera.Position), null, Color.White, 0, new Vector2(Texture.Width/2, Texture.Height/2), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - Speed * scene.Camera.Position), null, Color.White, 0, new Vector2(Texture.Width / 2, Texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
         }
     }
 }
