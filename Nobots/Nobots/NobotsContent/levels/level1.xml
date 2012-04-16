@@ -18,12 +18,12 @@
         <Ladder Id="" Position="21.93991,5.300028" StepsNumber="14" />
         <Ladder Id="" Position="50.83699,10.43015" StepsNumber="22" />
         <Ladder Id="" Position="41.70982,7.90342" StepsNumber="15" />
-        <Stone Id="" Position="1.371563,2.108147" Rotation="-0.009007711" />
+        <Stone Id="" Position="1.356397,2.18763" Rotation="-0.02649257" />
         <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
-        <Box Id="" Position="28.55241,2.100001" Rotation="8.426552E-08" />
-        <Character Id="" Position="1.499552,9.380012" />
-        <Closet Id="" Position="13.22068,1.900069" Rotation="3.495122E-08" />
-        <ConveyorBelt Id="" Position="11.96996,9.831818" AngularSpeed="1" LinksNumber="25" LinkWidth="0.05" LinkHeight="0.25" />
+        <Box Id="" Position="28.55241,2.100001" Rotation="8.425589E-08" />
+        <Character Id="" Position="1.499552,9.381863" />
+        <Closet Id="" Position="13.22068,1.900069" Rotation="3.495662E-08" />
+        <ConveyorBelt Id="" Position="11.96996,9.831818" Width="6" Height="1" AngularSpeed="1" RotorsNumber="3" LinksNumber="25" LinkWidth="0.05" LinkHeight="0.25" />
         <Chandelier Id="" Position="10.55573,7.699041" Rotation="0" />
         <Platform Id="" Position="52.40963,2.76" Width="0.7400029" Height="5.610034" Rotation="0" />
         <Platform Id="" Position="1.999999,3.319997" Width="4.120001" Height="0.4300005" Rotation="0" />
