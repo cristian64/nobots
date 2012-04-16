@@ -109,5 +109,11 @@ namespace Nobots.Elements
                 currentElementPosition -= texture.Height;
             }
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            body.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

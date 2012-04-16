@@ -102,5 +102,12 @@ namespace Nobots.Elements
             body.BodyType = BodyType.Static;
             body.CollisionCategories = Category.Cat11;
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            body.Dispose();
+            base.Dispose(disposing);
+        }
+
     }
 }

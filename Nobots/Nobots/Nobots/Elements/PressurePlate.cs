@@ -110,5 +110,11 @@ namespace Nobots.Elements
                 (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Conversion.ToWorld(texture.Height))), null, Color.White, 
                 body.Rotation, new Vector2(texture.Width / 2, texture.Height - 19.0f/2.0f), SpriteEffects.None, 0);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            body.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

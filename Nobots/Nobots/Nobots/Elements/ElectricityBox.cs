@@ -84,5 +84,11 @@ namespace Nobots.Elements
         {
             scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            body.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }
