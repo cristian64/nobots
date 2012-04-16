@@ -84,7 +84,11 @@ namespace Nobots
             {
                 Console.WriteLine(scene.Camera.ScreenToWorld(Mouse.GetState()));
                 Element newSelection = null;
-                foreach (Element i in scene.Elements)
+                List<Element> elements = new List<Element>();
+                elements.AddRange(scene.Elements);
+                elements.AddRange(scene.Backgrounds);
+                elements.AddRange(scene.Foregrounds);
+                foreach (Element i in elements)
                 {
                     if (Vector2.Distance(scene.Camera.WorldToScreen(i.Position), new Vector2(Mouse.GetState().X, Mouse.GetState().Y)) < 10)
                     {
