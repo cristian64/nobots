@@ -148,6 +148,11 @@ namespace Nobots
                     if (reader.MoveToAttribute("ActivableElementId"))
                         ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
                     break;
+                case "Lever":
+                    e = new Lever(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("ActivableElementId"))
+                        ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
+                    break;
                 case "Socket":
                     e = new Socket(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("OtherSocketId"))
@@ -236,6 +241,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Elevator)i) + "\n";
                 else if (i as ElectricityBox != null)
                     xml += "        " + ElementToXml((ElectricityBox)i) + "\n";
+                else if (i as Lever != null)
+                    xml += "        " + ElementToXml((Lever)i) + "\n";
                 else if (i as Character != null)
                     xml += "        " + ElementToXml((Character)i) + "\n";
                 else if (i as Forklift != null)
@@ -310,6 +317,13 @@ namespace Nobots
         {
             Element e = eBox.ActivableElement as Element;
             String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Lever lever)
+        {
+            Element e = lever.ActivableElement as Element;
+            String xml = "<Lever Id=\"" + lever.Id + "\" Position=\"" + lever.Position.X + "," + lever.Position.Y + "\" Rotation=\"" + lever.Rotation + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
 

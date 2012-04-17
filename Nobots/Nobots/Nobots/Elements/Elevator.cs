@@ -96,6 +96,7 @@ namespace Nobots.Elements
             body.Position = position;
             //body.Position = new Vector2(37.08941f, 16.78384f);
             body.BodyType = BodyType.Kinematic;
+            body.CollisionCategories = ElementCategory.FLOOR;
 
             InitialPosition = body.Position;
             FinalPosition = body.Position - Vector2.UnitY * 3;

@@ -9,7 +9,7 @@ namespace Nobots.Elements
 {
     public class Activator : Element
     {
-        protected IActivable activableElement;
+        private IActivable activableElement;
         public IActivable ActivableElement
         {
             get 
@@ -23,7 +23,7 @@ namespace Nobots.Elements
                             break;
                         }
                     }
-                Debug.Assert(activableElement == null, "The element " + Id + " looked for " + activableElementId + " but that ID wasn't in the list.");
+                Debug.Assert(activableElement == null, "Element " + Id + " looked for " + activableElementId + " but that ID wasn't in the list.");
                 return activableElement; 
             }
         }
@@ -35,6 +35,7 @@ namespace Nobots.Elements
             set
             {
                 activableElementId = value;
+                activableElement = null;
             }
         }
 
