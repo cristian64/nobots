@@ -136,6 +136,7 @@
     <Compile Include="Elements\Character.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="ParticleSystems\VortexOutParticleSystem.cs" />
+    <Compile Include="PrimitiveDrawings.cs" />
     <Compile Include="SceneLoader.cs" />
     <Compile Include="SelectionManager.cs" />
     <Compile Include="Elements\Socket.cs" />

@@ -39,6 +39,8 @@ namespace Nobots
         Effect bloomCombineEffect;
         Effect gaussianBlurEffect;
 
+        Texture2D blank;
+
         public Scene(Game game)
             : base(game)
         {
@@ -85,6 +87,9 @@ namespace Nobots
             sceneTarget = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.Depth24);
             renderTarget1 = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.None);
             renderTarget2 = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.None);
+
+            blank = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            blank.SetData(new[] { Color.White });
 
             base.LoadContent();
         }
@@ -169,6 +174,20 @@ namespace Nobots
 
             SelectionManager.Draw(gameTime);
             PhysicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
+            if (PhysicsDebug.Enabled)
+            {
+                SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                foreach (Element i in Elements)
+                {
+                    if (i is Stone) // TODO: ADD watedrops or things without physics body
+                        PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, new Color(0.5f, 0.9f, 0.5f));
+                }
+                foreach (Background i in Backgrounds)
+                    PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, i == SelectionManager.Selection ? Color.Yellow : Color.Blue);
+                foreach (Foreground i in Foregrounds)
+                    PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, i == SelectionManager.Selection ? Color.Yellow : Color.Green);
+                SpriteBatch.End();
+            }
 
             base.Update(gameTime);
         }
