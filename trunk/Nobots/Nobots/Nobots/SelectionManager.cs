@@ -162,6 +162,9 @@ namespace Nobots
                     case "ConveyorBelt":
                         element = new ConveyorBelt(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Lever":
+                        element = new Lever(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Background":
                         background = new Background(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

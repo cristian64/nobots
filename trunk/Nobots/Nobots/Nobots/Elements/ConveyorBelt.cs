@@ -186,6 +186,9 @@ namespace Nobots.Elements
 
             createChain(scene.World, rotors[0].Position + new Vector2(-1, -1f), rotors.Last<Body>().Position + new Vector2(1, -1f), position, rotation, linkWidth, linkHeight, linksNumber, 1000.0f);
 
+            foreach (Body i in chainLinks)
+                i.CollisionCategories = ElementCategory.FLOOR;
+
             foreach (Body i in rotors)
                 i.Position = RotateAboutOrigin(i.Position, position, rotation);
         }

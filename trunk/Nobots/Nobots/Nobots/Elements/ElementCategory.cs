@@ -10,5 +10,6 @@ namespace Nobots.Elements
     {
         public static Category CHARACTER = Category.Cat31;
         public static Category ENERGY = Category.Cat30;
+        public static Category FLOOR = Category.Cat29;
     }
 }

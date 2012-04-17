@@ -78,7 +78,6 @@ namespace Nobots.Elements
             body.Rotation = 0.0f;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
-            body.CollidesWith = Category.All & ~Category.Cat11;
             offset = Height * 3 / 4;
         }
 
@@ -86,7 +85,7 @@ namespace Nobots.Elements
         {
            // Height = Conversion.ToWorld(texture.Height);
             //offset = Height * 3 / 4;
-            if (ActivableElement != null && collisionsNumber == 1)
+            if (ActivableElement != null && collisionsNumber > 0)
                 ActivableElement.Active = true;
             collisionsNumber--;
         }
