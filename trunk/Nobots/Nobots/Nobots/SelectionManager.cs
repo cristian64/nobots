@@ -100,14 +100,17 @@ namespace Nobots
                 elements.AddRange(scene.Foregrounds);
                 foreach (Element i in elements)
                 {
-                    if (Vector2.Distance(scene.Camera.WorldToScreen(i.Position), new Vector2(Mouse.GetState().X, Mouse.GetState().Y)) < 10)
+                    if (Vector2.Distance(scene.Camera.WorldToScreen(i.Position), new Vector2(Mouse.GetState().X, Mouse.GetState().Y)) < 8)
                     {
                         newSelection = i;
                         Console.WriteLine("Selected one at " + i.Position + ", Width " + i.Width + ", Height " + i.Height);
                         break;
                     }
                 }
-                Selection = newSelection;
+                if (newSelection != Selection)
+                    Selection = newSelection;
+                else
+                    Selection = null;
             }
 
             if (Mouse.GetState().RightButton == ButtonState.Pressed && previous.RightButton == ButtonState.Released)
