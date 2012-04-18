@@ -85,7 +85,7 @@ namespace Nobots.Elements
         {
            // Height = Conversion.ToWorld(texture.Height);
             //offset = Height * 3 / 4;
-            if (ActivableElement != null && collisionsNumber > 0)
+            if (ActivableElement != null && collisionsNumber == 1)
                 ActivableElement.Active = true;
             collisionsNumber--;
         }

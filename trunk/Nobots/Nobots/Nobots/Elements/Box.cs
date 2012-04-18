@@ -9,7 +9,7 @@ using FarseerPhysics.Factories;
 
 namespace Nobots.Elements
 {
-    public class Box : Element
+    public class Box : Element, IPullable, IPushable
     {
         Body body;
         Texture2D texture;

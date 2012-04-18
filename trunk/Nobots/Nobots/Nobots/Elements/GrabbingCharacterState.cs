@@ -54,13 +54,13 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
-            character.touchedBoxFriction = character.touchedBox.Friction;
-            character.touchedBoxMass = character.touchedBox.Mass;
-            character.touchedBox.Friction = 0.0f;
-            character.touchedBox.Mass = 0.0f;
-            character.sliderJoint = new SliderJoint(character.torso, character.touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBox.Position));
-            character.sliderJoint.CollideConnected = true;
-            scene.World.AddJoint(character.sliderJoint);
+                character.touchedBoxFriction = character.touchedBox.Friction;
+                character.touchedBoxMass = character.touchedBox.Mass;
+                character.touchedBox.Friction = 0.0f;
+                character.touchedBox.Mass = 0.0f;
+                character.sliderJoint = new SliderJoint(character.torso, character.touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBox.Position));
+                character.sliderJoint.CollideConnected = true;
+                scene.World.AddJoint(character.sliderJoint);
         }
 
         public override void Exit()
@@ -85,18 +85,26 @@ namespace Nobots.Elements
 
         public override void RightAction()
         {
-            character.body.FixedRotation = false;
-            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = 50;
-            character.Effect = SpriteEffects.None;
+            if ((character.touchedBox.UserData is IPushable && character.Position.X < character.touchedBox.Position.X) ||
+                (character.touchedBox.UserData is IPullable && character.Position.X > character.touchedBox.Position.X))
+            {
+                character.body.FixedRotation = false;
+                character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+                character.body.AngularVelocity = 50;
+                character.Effect = SpriteEffects.None;
+            }
         }
 
         public override void LeftAction()
         {
-            character.body.FixedRotation = false;
-            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-            character.body.AngularVelocity = -50;
-            character.Effect = SpriteEffects.FlipHorizontally;
+            if ((character.touchedBox.UserData is IPushable && character.Position.X > character.touchedBox.Position.X) ||
+                (character.touchedBox.UserData is IPullable && character.Position.X < character.touchedBox.Position.X))
+            {
+                character.body.FixedRotation = false;
+                character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+                character.body.AngularVelocity = -50;
+                character.Effect = SpriteEffects.FlipHorizontally;
+            }
         }
 
         public override void RightActionStop()
