@@ -124,6 +124,7 @@
       <DependentUpon>FormProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\ConveyorBelt.cs" />
+    <Compile Include="Elements\ImpulsePlatform.cs" />
     <Compile Include="Elements\Lever.cs" />
     <Compile Include="Elements\Foreground.cs" />
     <Compile Include="Elements\ElectricityBox.cs" />

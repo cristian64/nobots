@@ -75,6 +75,9 @@
             this.flowLayoutPanelAngularSpeed = new System.Windows.Forms.FlowLayoutPanel();
             this.labelAngularSpeed = new System.Windows.Forms.Label();
             this.numericUpDownAngularSpeed = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanelRotorsNumber = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelRotorsNumber = new System.Windows.Forms.Label();
+            this.numericUpDownRotorsNumber = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanelLinksNumber = new System.Windows.Forms.FlowLayoutPanel();
             this.labelLinksNumber = new System.Windows.Forms.Label();
             this.numericUpDownLinksNumber = new System.Windows.Forms.NumericUpDown();
@@ -88,9 +91,6 @@
             this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanelRotorsNumber = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelRotorsNumber = new System.Windows.Forms.Label();
-            this.numericUpDownRotorsNumber = new System.Windows.Forms.NumericUpDown();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
@@ -120,14 +120,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFinalPositionY)).BeginInit();
             this.flowLayoutPanelAngularSpeed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAngularSpeed)).BeginInit();
+            this.flowLayoutPanelRotorsNumber.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotorsNumber)).BeginInit();
             this.flowLayoutPanelLinksNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinksNumber)).BeginInit();
             this.flowLayoutPanelLinkWidth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkWidth)).BeginInit();
             this.flowLayoutPanelLinkHeight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).BeginInit();
-            this.flowLayoutPanelRotorsNumber.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotorsNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -805,6 +805,44 @@
             this.numericUpDownAngularSpeed.TabIndex = 5;
             this.numericUpDownAngularSpeed.ValueChanged += new System.EventHandler(this.numericUpDownAngularSpeed_ValueChanged);
             // 
+            // flowLayoutPanelRotorsNumber
+            // 
+            this.flowLayoutPanelRotorsNumber.Controls.Add(this.labelRotorsNumber);
+            this.flowLayoutPanelRotorsNumber.Controls.Add(this.numericUpDownRotorsNumber);
+            this.flowLayoutPanelRotorsNumber.Location = new System.Drawing.Point(0, 430);
+            this.flowLayoutPanelRotorsNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelRotorsNumber.Name = "flowLayoutPanelRotorsNumber";
+            this.flowLayoutPanelRotorsNumber.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelRotorsNumber.TabIndex = 20;
+            this.flowLayoutPanelRotorsNumber.Visible = false;
+            // 
+            // labelRotorsNumber
+            // 
+            this.labelRotorsNumber.Location = new System.Drawing.Point(3, 0);
+            this.labelRotorsNumber.Name = "labelRotorsNumber";
+            this.labelRotorsNumber.Size = new System.Drawing.Size(80, 23);
+            this.labelRotorsNumber.TabIndex = 4;
+            this.labelRotorsNumber.Text = "RotorsNumber";
+            this.labelRotorsNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownRotorsNumber
+            // 
+            this.numericUpDownRotorsNumber.Location = new System.Drawing.Point(89, 3);
+            this.numericUpDownRotorsNumber.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownRotorsNumber.Name = "numericUpDownRotorsNumber";
+            this.numericUpDownRotorsNumber.Size = new System.Drawing.Size(153, 20);
+            this.numericUpDownRotorsNumber.TabIndex = 5;
+            this.numericUpDownRotorsNumber.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numericUpDownRotorsNumber.ValueChanged += new System.EventHandler(this.numericUpDownRotorsNumber_ValueChanged);
+            // 
             // flowLayoutPanelLinksNumber
             // 
             this.flowLayoutPanelLinksNumber.Controls.Add(this.labelLinksNumber);
@@ -992,7 +1030,8 @@
             "Stone",
             "ConveyorBelt",
             "Chandelier",
-            "Lever"});
+            "Lever",
+            "ImpulsePlatform"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
             this.listBoxAvailableElements.Name = "listBoxAvailableElements";
             this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 212);
@@ -1007,44 +1046,6 @@
             this.label1.Size = new System.Drawing.Size(189, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Select the element you want to create:";
-            // 
-            // flowLayoutPanelRotorsNumber
-            // 
-            this.flowLayoutPanelRotorsNumber.Controls.Add(this.labelRotorsNumber);
-            this.flowLayoutPanelRotorsNumber.Controls.Add(this.numericUpDownRotorsNumber);
-            this.flowLayoutPanelRotorsNumber.Location = new System.Drawing.Point(0, 430);
-            this.flowLayoutPanelRotorsNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelRotorsNumber.Name = "flowLayoutPanelRotorsNumber";
-            this.flowLayoutPanelRotorsNumber.Size = new System.Drawing.Size(247, 29);
-            this.flowLayoutPanelRotorsNumber.TabIndex = 20;
-            this.flowLayoutPanelRotorsNumber.Visible = false;
-            // 
-            // labelRotorsNumber
-            // 
-            this.labelRotorsNumber.Location = new System.Drawing.Point(3, 0);
-            this.labelRotorsNumber.Name = "labelRotorsNumber";
-            this.labelRotorsNumber.Size = new System.Drawing.Size(80, 23);
-            this.labelRotorsNumber.TabIndex = 4;
-            this.labelRotorsNumber.Text = "RotorsNumber";
-            this.labelRotorsNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // numericUpDownRotorsNumber
-            // 
-            this.numericUpDownRotorsNumber.Location = new System.Drawing.Point(89, 3);
-            this.numericUpDownRotorsNumber.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownRotorsNumber.Name = "numericUpDownRotorsNumber";
-            this.numericUpDownRotorsNumber.Size = new System.Drawing.Size(153, 20);
-            this.numericUpDownRotorsNumber.TabIndex = 5;
-            this.numericUpDownRotorsNumber.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.numericUpDownRotorsNumber.ValueChanged += new System.EventHandler(this.numericUpDownRotorsNumber_ValueChanged);
             // 
             // checkBoxShowEmblems
             // 
@@ -1105,14 +1106,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFinalPositionY)).EndInit();
             this.flowLayoutPanelAngularSpeed.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAngularSpeed)).EndInit();
+            this.flowLayoutPanelRotorsNumber.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotorsNumber)).EndInit();
             this.flowLayoutPanelLinksNumber.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinksNumber)).EndInit();
             this.flowLayoutPanelLinkWidth.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkWidth)).EndInit();
             this.flowLayoutPanelLinkHeight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).EndInit();
-            this.flowLayoutPanelRotorsNumber.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotorsNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
