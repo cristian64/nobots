@@ -93,7 +93,7 @@ namespace Nobots.Elements
         public ImpulsePlatform(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 0f;
+            ZBuffer = 6f;
             texture = Game.Content.Load<Texture2D>("impulseplatform");
             texture2 = Game.Content.Load<Texture2D>("impulseplatformactive");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1);
@@ -125,7 +125,7 @@ namespace Nobots.Elements
             return true;
         }
 
-        public float Force = 20;
+        public float Acceleration = 20;
 
         public override void Update(GameTime gameTime)
         {
@@ -134,7 +134,7 @@ namespace Nobots.Elements
             {
                 foreach (Body i in bodies)
                 {
-                    float forceToApply = Force * i.Mass / i.FixtureList.Count;
+                    float forceToApply = Acceleration * i.Mass / i.FixtureList.Count;
                     i.ApplyForce(direction * forceToApply);
                 }
             }

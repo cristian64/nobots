@@ -184,6 +184,11 @@ namespace Nobots
                     if (reader.MoveToAttribute("LinkHeight"))
                         ((ConveyorBelt)e).LinkHeight = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     break;
+                case "ImpulsePlatform":
+                    e = new ImpulsePlatform(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("Acceleration"))
+                        ((ImpulsePlatform)e).Acceleration = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    break;
                 default:
                     return null;
             }
@@ -249,6 +254,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Forklift)i) + "\n";
                 else if (i as ConveyorBelt != null)
                     xml += "        " + ElementToXml((ConveyorBelt)i) + "\n";
+                else if (i as ImpulsePlatform != null)
+                    xml += "        " + ElementToXml((ImpulsePlatform)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -348,6 +355,12 @@ namespace Nobots
         public String ElementToXml(ConveyorBelt cBelt)
         {
             String xml = "<ConveyorBelt Id=\"" + cBelt.Id + "\" Position=\"" + cBelt.Position.X + "," + cBelt.Position.Y + "\" Width=\"" + cBelt.Width + "\" Height=\"" + cBelt.Height + "\" AngularSpeed=\"" + cBelt.AngularSpeed + "\" RotorsNumber=\"" + cBelt.RotorsNumber + "\" LinksNumber=\"" + cBelt.LinksNumber + "\" LinkWidth=\"" + cBelt.LinkWidth + "\" LinkHeight=\"" + cBelt.LinkHeight + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(ImpulsePlatform ip)
+        {
+            String xml = "<ImpulsePlatform Id=\"" + ip.Id + "\" Position=\"" + ip.Position.X + "," + ip.Position.Y + "\" Width=\"" + ip.Width + "\" Height=\"" + ip.Height + "\" Acceleration=\"" + ip.Acceleration + "\" Active=\"" + ip.Active + "\" />";
             return xml;
         }
 
