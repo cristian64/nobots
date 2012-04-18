@@ -92,6 +92,9 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelAcceleration = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelAcceleration = new System.Windows.Forms.Label();
+            this.numericUpDownAcceleration = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -128,6 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkWidth)).BeginInit();
             this.flowLayoutPanelLinkHeight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).BeginInit();
+            this.flowLayoutPanelAcceleration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAcceleration)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -154,6 +159,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinksNumber);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinkWidth);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinkHeight);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAcceleration);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 341);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1058,6 +1064,55 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
+            // flowLayoutPanelAcceleration
+            // 
+            this.flowLayoutPanelAcceleration.Controls.Add(this.labelAcceleration);
+            this.flowLayoutPanelAcceleration.Controls.Add(this.numericUpDownAcceleration);
+            this.flowLayoutPanelAcceleration.Location = new System.Drawing.Point(0, 546);
+            this.flowLayoutPanelAcceleration.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelAcceleration.Name = "flowLayoutPanelAcceleration";
+            this.flowLayoutPanelAcceleration.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelAcceleration.TabIndex = 21;
+            this.flowLayoutPanelAcceleration.Visible = false;
+            // 
+            // labelAcceleration
+            // 
+            this.labelAcceleration.Location = new System.Drawing.Point(3, 0);
+            this.labelAcceleration.Name = "labelAcceleration";
+            this.labelAcceleration.Size = new System.Drawing.Size(72, 23);
+            this.labelAcceleration.TabIndex = 2;
+            this.labelAcceleration.Text = "Acceleration";
+            this.labelAcceleration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownAcceleration
+            // 
+            this.numericUpDownAcceleration.DecimalPlaces = 6;
+            this.numericUpDownAcceleration.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownAcceleration.Location = new System.Drawing.Point(81, 3);
+            this.numericUpDownAcceleration.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numericUpDownAcceleration.Minimum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            -2147483648});
+            this.numericUpDownAcceleration.Name = "numericUpDownAcceleration";
+            this.numericUpDownAcceleration.Size = new System.Drawing.Size(161, 20);
+            this.numericUpDownAcceleration.TabIndex = 1;
+            this.numericUpDownAcceleration.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.numericUpDownAcceleration.ValueChanged += new System.EventHandler(this.numericUpDownAcceleration_ValueChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1114,6 +1169,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkWidth)).EndInit();
             this.flowLayoutPanelLinkHeight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).EndInit();
+            this.flowLayoutPanelAcceleration.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAcceleration)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1185,6 +1242,9 @@
         private System.Windows.Forms.Label labelRotorsNumber;
         private System.Windows.Forms.NumericUpDown numericUpDownRotorsNumber;
         private System.Windows.Forms.CheckBox checkBoxShowEmblems;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAcceleration;
+        private System.Windows.Forms.Label labelAcceleration;
+        private System.Windows.Forms.NumericUpDown numericUpDownAcceleration;
 
 
     }

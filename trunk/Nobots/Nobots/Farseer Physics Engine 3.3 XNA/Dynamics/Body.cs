@@ -684,7 +684,7 @@ namespace FarseerPhysics.Dynamics
             if (!IsDisposed)
             {
                 ContactEdge contactEdge = ContactList;
-                Contact contact;
+                Contact contact = null;
                 while (contactEdge != null && (contact = contactEdge.Contact) != null)
                 {
                     //Report the separation to both participants:

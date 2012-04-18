@@ -106,6 +106,12 @@ namespace Nobots.Editor
                 flowLayoutPanelLinkHeight.Visible = true;
                 numericUpDownLinkHeight.Value = (decimal)((ConveyorBelt)selection).LinkHeight;
             }
+
+            if (selection is ImpulsePlatform)
+            {
+                flowLayoutPanelAcceleration.Visible = true;
+                numericUpDownAcceleration.Value = (decimal)((ImpulsePlatform)selection).Acceleration;
+            }
         }
 
         private void reset()
@@ -132,6 +138,7 @@ namespace Nobots.Editor
             flowLayoutPanelLinkHeight.Visible = false;
             flowLayoutPanelAngularSpeed.Visible = false;
             flowLayoutPanelTextureName.Visible = false;
+            flowLayoutPanelAcceleration.Visible = false;
         }
 
         private void setInitialValues()
@@ -324,6 +331,12 @@ namespace Nobots.Editor
         private void checkBoxShowEmblems_CheckedChanged(object sender, EventArgs e)
         {
             SelectionManager.ShowEmblems = checkBoxShowEmblems.Checked;
+        }
+
+        private void numericUpDownAcceleration_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((ImpulsePlatform)selectionEvents).Acceleration = (float)numericUpDownAcceleration.Value;
         }
     }
 }
