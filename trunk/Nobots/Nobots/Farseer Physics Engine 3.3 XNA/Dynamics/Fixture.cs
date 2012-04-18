@@ -1,12 +1,9 @@
 /*
 * Farseer Physics Engine based on Box2D.XNA port:
-* Copyright (c) 2010 Ian Qvist
+* Copyright (c) 2011 Ian Qvist
 * 
-* Box2D.XNA port of Box2D:
-* Copyright (c) 2009 Brandon Furtwangler, Nathan Furtwangler
-*
 * Original source Box2D:
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com 
+* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
 * 
 * This software is provided 'as-is', without any express or implied 
 * warranty.  In no event will the authors be held liable for any damages 
@@ -22,6 +19,7 @@
 * misrepresented as being the original software. 
 * 3. This notice may not be removed or altered from any source distribution. 
 */
+#define USE_IGNORE_CCD_CATEGORIES
 
 using System;
 using System.Collections.Generic;
@@ -123,6 +121,10 @@ namespace FarseerPhysics.Dynamics
         internal Category _collisionCategories;
         internal short _collisionGroup;
         internal Dictionary<int, bool> _collisionIgnores;
+
+#if USE_IGNORE_CCD_CATEGORIES
+        public Category IgnoreCCDWith;
+#endif
         private float _friction;
         private float _restitution;
 
@@ -137,21 +139,21 @@ namespace FarseerPhysics.Dynamics
 
         public Fixture(Body body, Shape shape, object userData)
         {
-            if (Settings.UseFPECollisionCategories)
-                _collisionCategories = Category.All;
-            else
-                _collisionCategories = Category.Cat1;
-
-            _collidesWith = Category.All;
+            _collisionCategories = Settings.DefaultFixtureCollisionCategories;
+            _collidesWith = Settings.DefaultFixtureCollidesWith;
             _collisionGroup = 0;
+
+#if USE_IGNORE_CCD_CATEGORIES
+            IgnoreCCDWith = Settings.DefaultFixtureIgnoreCCDWith;
+#endif
 
             //Fixture defaults
             Friction = 0.2f;
             Restitution = 0;
 
+            Body = body;
             IsSensor = false;
 
-            Body = body;
             UserData = userData;
 
             if (Settings.ConserveMemory)
@@ -246,11 +248,21 @@ namespace FarseerPhysics.Dynamics
         /// <value>The shape.</value>
         public Shape Shape { get; internal set; }
 
+        private bool _isSensor;
+
         /// <summary>
         /// Gets or sets a value indicating whether this fixture is a sensor.
         /// </summary>
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
-        public bool IsSensor { get; set; }
+        public bool IsSensor
+        {
+            get { return _isSensor; }
+            set
+            {
+                Body.Awake = true;
+                _isSensor = value;
+            }
+        }
 
         /// <summary>
         /// Get the parent body of this fixture. This is null if the fixture is not attached.
@@ -265,7 +277,14 @@ namespace FarseerPhysics.Dynamics
         public object UserData { get; set; }
 
         /// <summary>
-        /// Get or set the coefficient of friction.
+        /// User bits. Use this to store application flags or values specific to this fixture.
+        /// </summary>
+        /// <value>The user data.</value>
+        public long UserBits { get; set; }
+
+        /// <summary>
+        /// Set the coefficient of friction. This will _not_ change the friction of
+        /// existing contacts.
         /// </summary>
         /// <value>The friction.</value>
         public float Friction
@@ -280,7 +299,8 @@ namespace FarseerPhysics.Dynamics
         }
 
         /// <summary>
-        /// Get or set the coefficient of restitution.
+        /// Set the coefficient of restitution. This will _not_ change the restitution of
+        /// existing contacts.
         /// </summary>
         /// <value>The restitution.</value>
         public float Restitution
@@ -482,6 +502,7 @@ namespace FarseerPhysics.Dynamics
                 fixture.Shape = Shape.Clone();
 
             fixture.UserData = UserData;
+            fixture.UserBits = UserBits;
             fixture.Restitution = Restitution;
             fixture.Friction = Friction;
             fixture.IsSensor = IsSensor;
@@ -546,9 +567,10 @@ namespace FarseerPhysics.Dynamics
             {
                 FixtureProxy proxy = new FixtureProxy();
                 Shape.ComputeAABB(out proxy.AABB, ref xf, i);
-
                 proxy.Fixture = this;
                 proxy.ChildIndex = i;
+
+                //FPE note: This line needs to be after the previous two because FixtureProxy is a struct
                 proxy.ProxyId = broadPhase.AddProxy(ref proxy);
 
                 Proxies[i] = proxy;
@@ -585,7 +607,7 @@ namespace FarseerPhysics.Dynamics
 
                 proxy.AABB.Combine(ref aabb1, ref aabb2);
 
-                Vector2 displacement = transform2.Position - transform1.Position;
+                Vector2 displacement = transform2.p - transform1.p;
 
                 broadPhase.MoveProxy(proxy.ProxyId, ref proxy.AABB, displacement);
             }
@@ -601,7 +623,8 @@ namespace FarseerPhysics.Dynamics
                        IsSensor == fixture.IsSensor &&
                        Restitution == fixture.Restitution &&
                        Shape.CompareTo(fixture.Shape) &&
-                       UserData == fixture.UserData);
+                       UserData == fixture.UserData &&
+                       UserBits == fixture.UserBits);
         }
     }
 }
