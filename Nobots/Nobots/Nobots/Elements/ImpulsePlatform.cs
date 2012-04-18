@@ -125,7 +125,7 @@ namespace Nobots.Elements
             return true;
         }
 
-        public float Force = -1000000;
+        public float Force = -1000;
 
         public override void Update(GameTime gameTime)
         {
@@ -134,7 +134,7 @@ namespace Nobots.Elements
             {
                 foreach (Body i in bodies)
                 {
-                    float forceToApply = Force / i.Mass;
+                    float forceToApply = Force * i.Mass;
                     i.ApplyForce(direction * forceToApply * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 }
             }
