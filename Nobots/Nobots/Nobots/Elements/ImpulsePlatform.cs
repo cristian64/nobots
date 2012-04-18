@@ -134,7 +134,7 @@ namespace Nobots.Elements
             {
                 foreach (Body i in bodies)
                 {
-                    float forceToApply = Force * i.Mass;
+                    float forceToApply = Force * i.Mass / i.FixtureList.Count;
                     i.ApplyForce(direction * forceToApply);
                 }
             }
