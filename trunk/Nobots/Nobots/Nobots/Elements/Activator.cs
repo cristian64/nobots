@@ -17,13 +17,12 @@ namespace Nobots.Elements
                 if (activableElement == null)
                     foreach (Element e in scene.Elements)
                     {
-                        if (e as IActivable != null && e.Id == activableElementId)
+                        if (e as IActivable != null && e.Id.Length > 0 && e.Id == activableElementId)
                         {
                             activableElement = (IActivable)e;
                             break;
                         }
                     }
-                Debug.Assert(activableElement == null, "Element " + Id + " looked for " + activableElementId + " but that ID wasn't in the list.");
                 return activableElement; 
             }
         }
