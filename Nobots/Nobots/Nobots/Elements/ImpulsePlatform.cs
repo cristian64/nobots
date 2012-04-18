@@ -125,17 +125,17 @@ namespace Nobots.Elements
             return true;
         }
 
-        public float Force = -1000;
+        public float Force = 20;
 
         public override void Update(GameTime gameTime)
         {
-            Vector2 direction = Vector2.Normalize(body.Position - body2.Position);
+            Vector2 direction = Vector2.Normalize(body2.Position - body.Position);
             if (Active)
             {
                 foreach (Body i in bodies)
                 {
                     float forceToApply = Force * i.Mass;
-                    i.ApplyForce(direction * forceToApply * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                    i.ApplyForce(direction * forceToApply);
                 }
             }
         }

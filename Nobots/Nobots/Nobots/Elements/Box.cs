@@ -65,7 +65,7 @@ namespace Nobots.Elements
         {
             ZBuffer = 0f;
             texture = Game.Content.Load<Texture2D>("box");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 150f);
+            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 100f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
             /*body.Rotation = -2.236696f;
