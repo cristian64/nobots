@@ -137,6 +137,8 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Elements\Character.cs" />
     <Compile Include="InputManager.cs" />
+    <Compile Include="IPullable.cs" />
+    <Compile Include="IPushable.cs" />
     <Compile Include="ParticleSystems\VortexOutParticleSystem.cs" />
     <Compile Include="PrimitiveDrawings.cs" />
     <Compile Include="SceneLoader.cs" />
