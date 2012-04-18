@@ -10,6 +10,7 @@ using Nobots.ParticleSystem;
 using Microsoft.Xna.Framework.Input;
 using FarseerPhysics;
 using Nobots.Elements;
+using FarseerPhysics.DebugViews;
 
 namespace Nobots
 {
