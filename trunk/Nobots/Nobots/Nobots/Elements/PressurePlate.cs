@@ -25,7 +25,6 @@ namespace Nobots.Elements
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -86,7 +85,7 @@ namespace Nobots.Elements
            // Height = Conversion.ToWorld(texture.Height);
             //offset = Height * 3 / 4;
             if (ActivableElement != null && collisionsNumber == 1)
-                ActivableElement.Active = true;
+                ActivableElement.Active = false;
             collisionsNumber--;
         }
 
@@ -95,7 +94,7 @@ namespace Nobots.Elements
             //Height = Conversion.ToWorld(texture.Height / 4);    
             //offset = Height * 3 / 2;
             if(ActivableElement != null && collisionsNumber == 0)
-                ActivableElement.Active = false;
+                ActivableElement.Active = true;
             collisionsNumber++;
 
             return true;
