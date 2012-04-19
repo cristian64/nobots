@@ -20,7 +20,7 @@
         <Ladder Id="" Position="41.70982,7.90342" StepsNumber="15" />
         <Stone Id="" Position="1.356397,2.18763" Rotation="-0.0264925" />
         <Forklift Id="forklift1" Position="64.23187,8.605165" Active="False" />
-        <Box Id="" Position="28.55241,2.100001" Rotation="8.404366E-08" />
+        <Box Id="" Position="26.89877,2.068517" Rotation="8.404366E-08" />
         <Character Id="" Position="1.499552,9.381841" />
         <Closet Id="" Position="13.22068,1.900069" Rotation="3.496123E-08" />
         <ConveyorBelt Id="" Position="11.96996,9.831818" Width="6" Height="1" AngularSpeed="1" RotorsNumber="3" LinksNumber="25" LinkWidth="0.05" LinkHeight="0.25" />
