@@ -391,11 +391,9 @@ namespace FarseerPhysics.Common
         /// other tools in this section are used.
         /// </summary>
         /// <returns></returns>
-        public bool CheckPolygon(out int error, out string errorMessage)
+        public bool CheckPolygon()
         {
-            error = -1;
-			errorMessage = null;
-
+            int error = -1;
             if (Count < 3 || Count > Settings.MaxPolygonVertices)
             {
                 error = 0;
@@ -475,49 +473,38 @@ namespace FarseerPhysics.Common
 
             if (error != -1)
             {
+                Debug.WriteLine("Found invalid polygon, ");
                 switch (error)
                 {
                     case 0:
-                        errorMessage = string.Format("Polygon error: must have between 3 and {0} vertices.",
-                                                      Settings.MaxPolygonVertices);
+                        Debug.WriteLine(string.Format("must have between 3 and {0} vertices.\n",
+                                                      Settings.MaxPolygonVertices));
                         break;
                     case 1:
-                        errorMessage = "Polygon error: must be convex.";
+                        Debug.WriteLine("must be convex.\n");
                         break;
                     case 2:
-                        errorMessage = "Polygon error: must be simple (cannot intersect itself).";
+                        Debug.WriteLine("must be simple (cannot intersect itself).\n");
                         break;
                     case 3:
-                        errorMessage = "Polygon error: area is too small.";
+                        Debug.WriteLine("area is too small.\n");
                         break;
                     case 4:
-                        errorMessage = "Polygon error: sides are too close to parallel.";
+                        Debug.WriteLine("sides are too close to parallel.\n");
                         break;
                     case 5:
-                        errorMessage = "Polygon error: polygon is too thin.";
+                        Debug.WriteLine("polygon is too thin.\n");
                         break;
                     case 6:
-                        errorMessage = "Polygon error: core shape generation would move edge past centroid (too thin).";
+                        Debug.WriteLine("core shape generation would move edge past centroid (too thin).\n");
                         break;
                     default:
-                        errorMessage = "Polygon error: error " + error.ToString();
+                        Debug.WriteLine("don't know why.\n");
                         break;
                 }
             }
             return error != -1;
         }
-
-        public bool CheckPolygon()
-        {
-			string errorMessage;
-			int errorCode;
-			var result = CheckPolygon(out errorCode, out errorMessage);
-			if(!result && errorMessage != null)
-			{
-				Debug.WriteLine(errorMessage);
-			}
-			return result;
-		}
 
         // From Eric Jordan's convex decomposition library
 
@@ -719,56 +706,6 @@ namespace FarseerPhysics.Common
             }
 
             return new Vertices();
-        }
-
-        // Split up a vertices object with holes returned from the texture trace into
-        // several vertices objects (one for the outline and one for each hole
-        // outline and holes should have opposing winding orders (not fully tested, not efficient)
-        public List<Vertices> SplitAtHoles()
-        {
-            List<Vertices> result = new List<Vertices>();
-            List<Vector2> duplicate = new List<Vector2>();
-            int holeCount = 0;
-            int index = 0;
-            bool ignoreNext = false;
-
-            result.Add(new Vertices());
-
-            // search for duplicate points and trace the polygon
-            // point by point
-            for (int i = 0; i < Count; ++i)
-            {
-                for (int j = i + 1; j < Count; ++j)
-                {
-                    if (this[i] == this[j])
-                    {
-                        duplicate.Add(this[i]);
-                    }
-                }
-                if (ignoreNext)
-                {
-                    ignoreNext = false;
-                }
-                else
-                {
-                    result[index].Add(this[i]);
-                    if (duplicate.Contains(this[i]))
-                    {
-                        if (index == 0) // jump to new shape
-                        {
-                            holeCount++;
-                            index = holeCount;
-                            result.Add(new Vertices());
-                        }
-                        else // jump back to starting shape
-                        {
-                            index = 0;
-                        }
-                        ignoreNext = true;
-                    }
-                }
-            }
-            return result;
         }
 
         private class PolyNode

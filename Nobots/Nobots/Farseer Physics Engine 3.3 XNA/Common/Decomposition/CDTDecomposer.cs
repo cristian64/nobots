@@ -106,15 +106,5 @@ namespace FarseerPhysics.Common.Decomposition
 
             return results;
         }
-
-        public static List<Vertices> ConvexPartition(List<DetectedVertices> vertices)
-        {
-            List<Vertices> result = new List<Vertices>();
-
-            foreach (var e in vertices)
-                result.AddRange(ConvexPartition(e));
-
-            return result;
-        }
     }
 }

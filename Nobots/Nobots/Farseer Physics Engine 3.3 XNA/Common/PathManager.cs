@@ -39,8 +39,8 @@ namespace FarseerPhysics.Factories
 
             if (path.Closed)
             {
-                ChainShape chain = new ChainShape(verts);
-                body.CreateFixture(chain);
+                LoopShape loop = new LoopShape(verts);
+                body.CreateFixture(loop);
             }
             else
             {

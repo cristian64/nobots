@@ -35,13 +35,13 @@ namespace FarseerPhysics.Common
             Vertices vertices = CreateRectangle(hx, hy);
 
             Transform xf = new Transform();
-            xf.p = center;
-            xf.q.Set(angle);
+            xf.Position = center;
+            xf.R.Set(angle);
 
             // Transform vertices
             for (int i = 0; i < 4; ++i)
             {
-                vertices[i] = MathUtils.Mul(ref xf, vertices[i]);
+                vertices[i] = MathUtils.Multiply(ref xf, vertices[i]);
             }
 
             return vertices;

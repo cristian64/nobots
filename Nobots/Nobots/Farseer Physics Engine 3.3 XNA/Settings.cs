@@ -1,9 +1,12 @@
 ﻿/*
 * Farseer Physics Engine based on Box2D.XNA port:
-* Copyright (c) 2011 Ian Qvist
+* Copyright (c) 2010 Ian Qvist
 * 
+* Box2D.XNA port of Box2D:
+* Copyright (c) 2009 Brandon Furtwangler, Nathan Furtwangler
+*
 * Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com 
 * 
 * This software is provided 'as-is', without any express or implied 
 * warranty.  In no event will the authors be held liable for any damages 
@@ -21,7 +24,6 @@
 */
 
 using System;
-using FarseerPhysics.Dynamics;
 
 namespace FarseerPhysics
 {
@@ -70,7 +72,7 @@ namespace FarseerPhysics
         /// <summary>
         /// Maximum number of sub-steps per contact in continuous physics simulation.
         /// </summary>
-		public const int MaxSubSteps = 8;
+        public const int MaxSubSteps = 8;
 
         /// <summary>
         /// Enable/Disable warmstarting
@@ -90,30 +92,9 @@ namespace FarseerPhysics
         /// <summary>
         /// Farseer Physics Engine has a different way of filtering fixtures than Box2d.
         /// We have both FPE and Box2D filtering in the engine. If you are upgrading
-        /// from earlier versions of FPE, set this to true and DefaultFixtureCollisionCategories
-		/// to Category.All.
+        /// from earlier versions of FPE, set this to true.
         /// </summary>
         public static bool UseFPECollisionCategories;
-
-		/// <summary>
-		/// This is used by the Fixture constructor as the default value 
-		/// for Fixture.CollisionCategories member. Note that you may need to change this depending
-		/// on the setting of UseFPECollisionCategories, above.
-		/// </summary>
-		public static Category DefaultFixtureCollisionCategories = Category.Cat1;
-
-		/// <summary>
-		/// This is used by the Fixture constructor as the default value 
-		/// for Fixture.CollidesWith member.
-		/// </summary>
-		public static Category DefaultFixtureCollidesWith = Category.All;
-
-
-		/// <summary>
-		/// This is used by the Fixture constructor as the default value 
-		/// for Fixture.IgnoreCCDWith member.
-		/// </summary>
-		public static Category DefaultFixtureIgnoreCCDWith = Category.None;
 
         /// <summary>
         /// Conserve memory makes sure that objects are used by reference instead of cloned.
@@ -192,8 +173,7 @@ namespace FarseerPhysics
         /// that overlap is removed in one time step. However using values close to 1 often lead
         /// to overshoot.
         /// </summary>
-        public const float Baumgarte = 0.2f;
-        public const float TOIBaumgarte = 0.75f;
+        public const float ContactBaumgarte = 0.2f;
 
         // Sleep
 
