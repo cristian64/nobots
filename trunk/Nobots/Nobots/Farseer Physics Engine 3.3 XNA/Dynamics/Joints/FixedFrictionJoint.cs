@@ -23,6 +23,7 @@
 * 3. This notice may not be removed or altered from any source distribution. 
 */
 
+using System;
 using System.Diagnostics;
 using FarseerPhysics.Common;
 using Microsoft.Xna.Framework;
@@ -45,26 +46,39 @@ namespace FarseerPhysics.Dynamics.Joints
     /// Friction joint. This is used for top-down friction.
     /// It provides 2D translational friction and angular friction.
     /// </summary>
-    public class FrictionJoint : Joint
+    public class FixedFrictionJoint : Joint
     {
         public Vector2 LocalAnchorA;
-        public Vector2 LocalAnchorB;
+
+        /// <summary>
+        /// The maximum friction force in N.
+        /// </summary>
+        public float MaxForce;
+
+        /// <summary>
+        /// The maximum friction torque in N-m.
+        /// </summary>
+        public float MaxTorque;
+
         private float _angularImpulse;
         private float _angularMass;
         private Vector2 _linearImpulse;
         private Mat22 _linearMass;
 
-        internal FrictionJoint()
+        public FixedFrictionJoint(Body body, Vector2 localAnchorA)
+            : base(body)
         {
-            JointType = JointType.Friction;
-        }
-
-        public FrictionJoint(Body bodyA, Body bodyB, Vector2 localAnchorA, Vector2 localAnchorB)
-            : base(bodyA, bodyB)
-        {
-            JointType = JointType.Friction;
+            JointType = JointType.FixedFriction;
             LocalAnchorA = localAnchorA;
-            LocalAnchorB = localAnchorB;
+
+            //Setting default max force and max torque
+            const float gravity = 10.0f;
+
+            // For a circle: I = 0.5 * m * r * r ==> r = sqrt(2 * I / m)
+            float radius = (float)Math.Sqrt(2.0 * (body.Inertia / body.Mass));
+
+            MaxForce = body.Mass * gravity;
+            MaxTorque = body.Mass * radius * gravity;
         }
 
         public override Vector2 WorldAnchorA
@@ -74,42 +88,29 @@ namespace FarseerPhysics.Dynamics.Joints
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
+            get { return Vector2.Zero; }
             set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
         }
 
-        /// <summary>
-        /// The maximum friction force in N.
-        /// </summary>
-        public float MaxForce { get; set; }
-
-        /// <summary>
-        /// The maximum friction torque in N-m.
-        /// </summary>
-        public float MaxTorque { get; set; }
-
-        public override Vector2 GetReactionForce(float inv_dt)
+        public override Vector2 GetReactionForce(float invDT)
         {
-            return inv_dt * _linearImpulse;
+            return invDT * _linearImpulse;
         }
 
-        public override float GetReactionTorque(float inv_dt)
+        public override float GetReactionTorque(float invDT)
         {
-            return inv_dt * _angularImpulse;
+            return invDT * _angularImpulse;
         }
 
         internal override void InitVelocityConstraints(ref TimeStep step)
         {
             Body bA = BodyA;
-            Body bB = BodyB;
 
-            Transform xfA, xfB;
+            Transform xfA;
             bA.GetTransform(out xfA);
-            bB.GetTransform(out xfB);
 
             // Compute the effective mass matrix.
             Vector2 rA = MathUtils.Multiply(ref xfA.R, LocalAnchorA - bA.LocalCenter);
-            Vector2 rB = MathUtils.Multiply(ref xfB.R, LocalAnchorB - bB.LocalCenter);
 
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
@@ -120,14 +121,14 @@ namespace FarseerPhysics.Dynamics.Joints
             //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
-            float mA = bA.InvMass, mB = bB.InvMass;
-            float iA = bA.InvI, iB = bB.InvI;
+            float mA = bA.InvMass;
+            float iA = bA.InvI;
 
             Mat22 K1 = new Mat22();
-            K1.Col1.X = mA + mB;
+            K1.Col1.X = mA;
             K1.Col2.X = 0.0f;
             K1.Col1.Y = 0.0f;
-            K1.Col2.Y = mA + mB;
+            K1.Col2.Y = mA;
 
             Mat22 K2 = new Mat22();
             K2.Col1.X = iA * rA.Y * rA.Y;
@@ -135,21 +136,12 @@ namespace FarseerPhysics.Dynamics.Joints
             K2.Col1.Y = -iA * rA.X * rA.Y;
             K2.Col2.Y = iA * rA.X * rA.X;
 
-            Mat22 K3 = new Mat22();
-            K3.Col1.X = iB * rB.Y * rB.Y;
-            K3.Col2.X = -iB * rB.X * rB.Y;
-            K3.Col1.Y = -iB * rB.X * rB.Y;
-            K3.Col2.Y = iB * rB.X * rB.X;
-
             Mat22 K12;
             Mat22.Add(ref K1, ref K2, out K12);
 
-            Mat22 K;
-            Mat22.Add(ref K12, ref K3, out K);
+            _linearMass = K12.Inverse;
 
-            _linearMass = K.Inverse;
-
-            _angularMass = iA + iB;
+            _angularMass = iA;
             if (_angularMass > 0.0f)
             {
                 _angularMass = 1.0f / _angularMass;
@@ -165,9 +157,6 @@ namespace FarseerPhysics.Dynamics.Joints
 
                 bA.LinearVelocityInternal -= mA * P;
                 bA.AngularVelocityInternal -= iA * (MathUtils.Cross(rA, P) + _angularImpulse);
-
-                bB.LinearVelocityInternal += mB * P;
-                bB.AngularVelocityInternal += iB * (MathUtils.Cross(rB, P) + _angularImpulse);
             }
             else
             {
@@ -179,26 +168,21 @@ namespace FarseerPhysics.Dynamics.Joints
         internal override void SolveVelocityConstraints(ref TimeStep step)
         {
             Body bA = BodyA;
-            Body bB = BodyB;
 
             Vector2 vA = bA.LinearVelocityInternal;
             float wA = bA.AngularVelocityInternal;
-            Vector2 vB = bB.LinearVelocityInternal;
-            float wB = bB.AngularVelocityInternal;
 
-            float mA = bA.InvMass, mB = bB.InvMass;
-            float iA = bA.InvI, iB = bB.InvI;
+            float mA = bA.InvMass;
+            float iA = bA.InvI;
 
-            Transform xfA, xfB;
+            Transform xfA;
             bA.GetTransform(out xfA);
-            bB.GetTransform(out xfB);
 
             Vector2 rA = MathUtils.Multiply(ref xfA.R, LocalAnchorA - bA.LocalCenter);
-            Vector2 rB = MathUtils.Multiply(ref xfB.R, LocalAnchorB - bB.LocalCenter);
 
             // Solve angular friction
             {
-                float Cdot = wB - wA;
+                float Cdot = -wA;
                 float impulse = -_angularMass * Cdot;
 
                 float oldImpulse = _angularImpulse;
@@ -207,12 +191,11 @@ namespace FarseerPhysics.Dynamics.Joints
                 impulse = _angularImpulse - oldImpulse;
 
                 wA -= iA * impulse;
-                wB += iB * impulse;
             }
 
             // Solve linear friction
             {
-                Vector2 Cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
+                Vector2 Cdot = -vA - MathUtils.Cross(wA, rA);
 
                 Vector2 impulse = -MathUtils.Multiply(ref _linearMass, Cdot);
                 Vector2 oldImpulse = _linearImpulse;
@@ -230,15 +213,10 @@ namespace FarseerPhysics.Dynamics.Joints
 
                 vA -= mA * impulse;
                 wA -= iA * MathUtils.Cross(rA, impulse);
-
-                vB += mB * impulse;
-                wB += iB * MathUtils.Cross(rB, impulse);
             }
 
             bA.LinearVelocityInternal = vA;
             bA.AngularVelocityInternal = wA;
-            bB.LinearVelocityInternal = vB;
-            bB.AngularVelocityInternal = wB;
         }
 
         internal override bool SolvePositionConstraints()

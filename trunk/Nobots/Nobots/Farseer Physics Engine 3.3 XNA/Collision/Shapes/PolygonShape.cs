@@ -1,9 +1,12 @@
 /*
 * Farseer Physics Engine based on Box2D.XNA port:
-* Copyright (c) 2011 Ian Qvist
+* Copyright (c) 2010 Ian Qvist
 * 
+* Box2D.XNA port of Box2D:
+* Copyright (c) 2009 Brandon Furtwangler, Nathan Furtwangler
+*
 * Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com 
 * 
 * This software is provided 'as-is', without any express or implied 
 * warranty.  In no event will the authors be held liable for any damages 
@@ -22,7 +25,6 @@
 
 using System.Diagnostics;
 using FarseerPhysics.Common;
-using FarseerPhysics.Common.ConvexHull;
 using FarseerPhysics.Common.Decomposition;
 using Microsoft.Xna.Framework;
 
@@ -30,7 +32,8 @@ namespace FarseerPhysics.Collision.Shapes
 {
     /// <summary>
     /// Represents a simple non-selfintersecting convex polygon.
-    /// Create a convex hull from the given array of points.
+    /// If you want to have concave polygons, you will have to use the <see cref="BayazitDecomposer"/> or the <see cref="EarclipDecomposer"/>
+    /// to decompose the concave polygon into 2 or more convex polygons.
     /// </summary>
     public class PolygonShape : Shape
     {
@@ -56,8 +59,8 @@ namespace FarseerPhysics.Collision.Shapes
         {
             ShapeType = ShapeType.Polygon;
             _radius = Settings.PolygonRadius;
-            Normals = new Vertices(Settings.MaxPolygonVertices);
-            Vertices = new Vertices(Settings.MaxPolygonVertices);
+            Normals = new Vertices();
+            Vertices = new Vertices();
         }
 
         internal PolygonShape()
@@ -65,8 +68,8 @@ namespace FarseerPhysics.Collision.Shapes
         {
             ShapeType = ShapeType.Polygon;
             _radius = Settings.PolygonRadius;
-            Normals = new Vertices(Settings.MaxPolygonVertices);
-            Vertices = new Vertices(Settings.MaxPolygonVertices);
+            Normals = new Vertices();
+            Vertices = new Vertices();
         }
 
         public override int ChildCount
@@ -100,24 +103,24 @@ namespace FarseerPhysics.Collision.Shapes
         /// Copy vertices. This assumes the vertices define a convex polygon.
         /// It is assumed that the exterior is the the right of each edge.
         /// </summary>
-        /// @warning the points may be re-ordered, even if they form a convex polygon
-        /// @warning collinear points are handled but not removed. Collinear points
-        /// may lead to poor stacking behavior.
-        /// <param name="input">The vertices.</param>
-        public void Set(Vertices input)
+        /// <param name="vertices">The vertices.</param>
+        public void Set(Vertices vertices)
         {
-            Debug.Assert(input.Count >= 3 && input.Count <= Settings.MaxPolygonVertices);
+            Debug.Assert(vertices.Count >= 3 && vertices.Count <= Settings.MaxPolygonVertices);
 
-            //TODO: Uncomment and remove the other line
-            //Vertices = GiftWrap.GetConvexHull(input);
-            Vertices = new Vertices(input);
-            Normals = new Vertices(Vertices.Count);
+            if (Settings.ConserveMemory)
+                Vertices = vertices;
+            else
+                // Copy vertices.
+                Vertices = new Vertices(vertices);
+
+            Normals = new Vertices(vertices.Count);
 
             // Compute normals. Ensure the edges have non-zero length.
-            for (int i = 0; i < Vertices.Count; ++i)
+            for (int i = 0; i < vertices.Count; ++i)
             {
                 int i1 = i;
-                int i2 = i + 1 < Vertices.Count ? i + 1 : 0;
+                int i2 = i + 1 < vertices.Count ? i + 1 : 0;
                 Vector2 edge = Vertices[i2] - Vertices[i1];
                 Debug.Assert(edge.LengthSquared() > Settings.Epsilon * Settings.Epsilon);
 
@@ -125,6 +128,34 @@ namespace FarseerPhysics.Collision.Shapes
                 temp.Normalize();
                 Normals.Add(temp);
             }
+
+#if DEBUG
+            // Ensure the polygon is convex and the interior
+            // is to the left of each edge.
+            for (int i = 0; i < Vertices.Count; ++i)
+            {
+                int i1 = i;
+                int i2 = i + 1 < Vertices.Count ? i + 1 : 0;
+                Vector2 edge = Vertices[i2] - Vertices[i1];
+
+                for (int j = 0; j < vertices.Count; ++j)
+                {
+                    // Don't check vertices on the current edge.
+                    if (j == i1 || j == i2)
+                    {
+                        continue;
+                    }
+
+                    Vector2 r = Vertices[j] - Vertices[i1];
+
+                    // Your polygon is non-convex (it has an indentation) or
+                    // has colinear edges.
+                    float s = edge.X * r.Y - edge.Y * r.X;
+
+                    Debug.Assert(s > 0.0f);
+                }
+            }
+#endif
 
             // Compute the polygon mass data
             ComputeProperties();
@@ -134,7 +165,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// Compute the mass properties of this shape using its dimensions and density.
         /// The inertia tensor is computed about the local origin, not the centroid.
         /// </summary>
-        protected override void ComputeProperties()
+        public override void ComputeProperties()
         {
             // Polygon mass, centroid, and inertia.
             // Let rho be the polygon density in mass per unit area.
@@ -171,38 +202,48 @@ namespace FarseerPhysics.Collision.Shapes
 
             // pRef is the reference point for forming triangles.
             // It's location doesn't change the result (except for rounding error).
-            Vector2 s = Vector2.Zero;
+            Vector2 pRef = Vector2.Zero;
 
-            // This code would put the reference point inside the polygon.
-            for (int i = 0; i < Vertices.Count; ++i)
-            {
-                s += Vertices[i];
-            }
-            s *= 1.0f / Vertices.Count;
+#if false
+    // This code would put the reference point inside the polygon.
+	        for (int i = 0; i < count; ++i)
+	        {
+		        pRef += vs[i];
+	        }
+	        pRef *= 1.0f / count;
+#endif
 
-            const float k_inv3 = 1.0f / 3.0f;
+            const float inv3 = 1.0f / 3.0f;
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
                 // Triangle vertices.
-                Vector2 e1 = Vertices[i] - s;
-                Vector2 e2 = i + 1 < Vertices.Count ? Vertices[i + 1] - s : Vertices[0] - s;
+                Vector2 p1 = pRef;
+                Vector2 p2 = Vertices[i];
+                Vector2 p3 = i + 1 < Vertices.Count ? Vertices[i + 1] : Vertices[0];
 
-                float D = MathUtils.Cross(e1, e2);
+                Vector2 e1 = p2 - p1;
+                Vector2 e2 = p3 - p1;
 
-                float triangleArea = 0.5f * D;
+                float d;
+                MathUtils.Cross(ref e1, ref e2, out d);
+
+                float triangleArea = 0.5f * d;
                 area += triangleArea;
 
                 // Area weighted centroid
-                center += triangleArea * k_inv3 * (e1 + e2);
+                center += triangleArea * inv3 * (p1 + p2 + p3);
 
+                float px = p1.X, py = p1.Y;
                 float ex1 = e1.X, ey1 = e1.Y;
                 float ex2 = e2.X, ey2 = e2.Y;
 
-                float intx2 = ex1 * ex1 + ex2 * ex1 + ex2 * ex2;
-                float inty2 = ey1 * ey1 + ey2 * ey1 + ey2 * ey2;
+                float intx2 = inv3 * (0.25f * (ex1 * ex1 + ex2 * ex1 + ex2 * ex2) + (px * ex1 + px * ex2)) +
+                              0.5f * px * px;
+                float inty2 = inv3 * (0.25f * (ey1 * ey1 + ey2 * ey1 + ey2 * ey2) + (py * ey1 + py * ey2)) +
+                              0.5f * py * py;
 
-                I += (0.25f * k_inv3 * D) * (intx2 + inty2);
+                I += d * (intx2 + inty2);
             }
 
             //The area is too small for the engine to handle.
@@ -216,13 +257,10 @@ namespace FarseerPhysics.Collision.Shapes
 
             // Center of mass
             center *= 1.0f / area;
-            MassData.Centroid = center + s;
+            MassData.Centroid = center;
 
-            // Inertia tensor relative to the local origin (point s).
+            // Inertia tensor relative to the local origin.
             MassData.Inertia = _density * I;
-
-            // Shift to center of mass then to original body origin.
-            MassData.Inertia += MassData.Mass * (Vector2.Dot(MassData.Centroid, MassData.Centroid) - Vector2.Dot(center, center));
         }
 
         /// <summary>
@@ -255,7 +293,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// <returns>True if the point is inside the shape</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point)
         {
-            Vector2 pLocal = MathUtils.MulT(transform.q, point - transform.p);
+            Vector2 pLocal = MathUtils.MultiplyT(ref transform.R, point - transform.Position);
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
@@ -283,8 +321,8 @@ namespace FarseerPhysics.Collision.Shapes
             output = new RayCastOutput();
 
             // Put the ray into the polygon's frame of reference.
-            Vector2 p1 = MathUtils.MulT(transform.q, input.Point1 - transform.p);
-            Vector2 p2 = MathUtils.MulT(transform.q, input.Point2 - transform.p);
+            Vector2 p1 = MathUtils.MultiplyT(ref transform.R, input.Point1 - transform.Position);
+            Vector2 p2 = MathUtils.MultiplyT(ref transform.R, input.Point2 - transform.Position);
             Vector2 d = p2 - p1;
 
             float lower = 0.0f, upper = input.MaxFraction;
@@ -342,7 +380,7 @@ namespace FarseerPhysics.Collision.Shapes
             if (index >= 0)
             {
                 output.Fraction = lower;
-                output.Normal = MathUtils.Mul(transform.q, Normals[index]);
+                output.Normal = MathUtils.Multiply(ref transform.R, Normals[index]);
                 return true;
             }
 
@@ -357,12 +395,12 @@ namespace FarseerPhysics.Collision.Shapes
         /// <param name="childIndex">The child shape index.</param>
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
-            Vector2 lower = MathUtils.Mul(ref transform, Vertices[0]);
+            Vector2 lower = MathUtils.Multiply(ref transform, Vertices[0]);
             Vector2 upper = lower;
 
             for (int i = 1; i < Vertices.Count; ++i)
             {
-                Vector2 v = MathUtils.Mul(ref transform, Vertices[i]);
+                Vector2 v = MathUtils.Multiply(ref transform, Vertices[i]);
                 lower = Vector2.Min(lower, v);
                 upper = Vector2.Max(upper, v);
             }
@@ -392,8 +430,8 @@ namespace FarseerPhysics.Collision.Shapes
             sc = Vector2.Zero;
 
             //Transform plane into shape co-ordinates
-            Vector2 normalL = MathUtils.MulT(xf.q, normal);
-            float offsetL = offset - Vector2.Dot(normal, xf.p);
+            Vector2 normalL = MathUtils.MultiplyT(ref xf.R, normal);
+            float offsetL = offset - Vector2.Dot(normal, xf.Position);
 
             float[] depths = new float[Settings.MaxPolygonVertices];
             int diveCount = 0;
@@ -433,7 +471,7 @@ namespace FarseerPhysics.Collision.Shapes
                     if (lastSubmerged)
                     {
                         //Completely submerged
-                        sc = MathUtils.Mul(ref xf, MassData.Centroid);
+                        sc = MathUtils.Multiply(ref xf, MassData.Centroid);
                         return MassData.Mass / Density;
                     }
                     else
@@ -504,37 +542,9 @@ namespace FarseerPhysics.Collision.Shapes
             //Normalize and transform centroid
             center *= 1.0f / area;
 
-            sc = MathUtils.Mul(ref xf, center);
+            sc = MathUtils.Multiply(ref xf, center);
 
             return area;
-        }
-
-        public bool Validate()
-        {
-            for (int i = 0; i < Vertices.Count; ++i)
-            {
-                int i1 = i;
-                int i2 = i < Vertices.Count - 1 ? i1 + 1 : 0;
-                Vector2 p = Vertices[i1];
-                Vector2 e = Vertices[i2] - p;
-
-                for (int j = 0; j < Vertices.Count; ++j)
-                {
-                    if (j == i1 || j == i2)
-                    {
-                        continue;
-                    }
-
-                    Vector2 v = Vertices[j] - p;
-                    float c = MathUtils.Cross(e, v);
-                    if (c < 0.0f)
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
         }
     }
 }
