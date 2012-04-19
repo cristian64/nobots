@@ -54,20 +54,20 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
-                character.touchedBoxFriction = character.touchedBox.Friction;
-                character.touchedBoxMass = character.touchedBox.Mass;
-                character.touchedBox.Friction = 0.0f;
-                character.touchedBox.Mass = 0.0f;
-                character.sliderJoint = new SliderJoint(character.torso, character.touchedBox, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBox.Position));
-                character.sliderJoint.CollideConnected = true;
-                scene.World.AddJoint(character.sliderJoint);
+            character.touchedBoxFriction = character.touchedBody.Friction;
+            character.touchedBoxMass = character.touchedBody.Mass;
+            character.touchedBody.Friction = 0.0f;
+            character.touchedBody.Mass = 0.0f;
+            character.sliderJoint = new SliderJoint(character.torso, character.touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBody.Position));
+            character.sliderJoint.CollideConnected = true;
+            scene.World.AddJoint(character.sliderJoint);
         }
 
         public override void Exit()
         {
             scene.World.RemoveJoint(character.sliderJoint);
-            character.touchedBox.Friction = character.touchedBoxFriction;
-            character.touchedBox.Mass = character.touchedBoxMass;
+            character.touchedBody.Friction = character.touchedBoxFriction;
+            character.touchedBody.Mass = character.touchedBoxMass;
         }
 
         public override void BActionStart()
@@ -85,8 +85,8 @@ namespace Nobots.Elements
 
         public override void RightAction()
         {
-            if ((character.touchedBox.UserData is IPushable && character.Position.X < character.touchedBox.Position.X) ||
-                (character.touchedBox.UserData is IPullable && character.Position.X > character.touchedBox.Position.X))
+            if ((character.touchedBody.UserData is IPushable && character.Position.X < character.touchedBody.Position.X) ||
+                (character.touchedBody.UserData is IPullable && character.Position.X > character.touchedBody.Position.X))
             {
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
@@ -97,8 +97,8 @@ namespace Nobots.Elements
 
         public override void LeftAction()
         {
-            if ((character.touchedBox.UserData is IPushable && character.Position.X > character.touchedBox.Position.X) ||
-                (character.touchedBox.UserData is IPullable && character.Position.X < character.touchedBox.Position.X))
+            if ((character.touchedBody.UserData is IPushable && character.Position.X > character.touchedBody.Position.X) ||
+                (character.touchedBody.UserData is IPullable && character.Position.X < character.touchedBody.Position.X))
             {
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
