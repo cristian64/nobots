@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Nobots
+namespace Nobots.Elements
 {
-    interface IPullable
+    public interface IPullable
     {
     }
 }
