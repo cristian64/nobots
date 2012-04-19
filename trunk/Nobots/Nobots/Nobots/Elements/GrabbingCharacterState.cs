@@ -54,8 +54,8 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
-            character.touchedBoxFriction = character.touchedBody.Friction;
-            character.touchedBoxMass = character.touchedBody.Mass;
+            character.touchedBodyFriction = character.touchedBody.Friction;
+            character.touchedBodyMass = character.touchedBody.Mass;
             character.touchedBody.Friction = 0.0f;
             character.touchedBody.Mass = 0.0f;
             character.sliderJoint = new SliderJoint(character.torso, character.touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBody.Position));
@@ -68,8 +68,8 @@ namespace Nobots.Elements
             scene.World.RemoveJoint(character.sliderJoint);
             if (character.touchedBody != null)
             {
-                character.touchedBody.Friction = character.touchedBoxFriction;
-                character.touchedBody.Mass = character.touchedBoxMass;
+                character.touchedBody.Friction = character.touchedBodyFriction;
+                character.touchedBody.Mass = character.touchedBodyMass;
             }
         }
 
