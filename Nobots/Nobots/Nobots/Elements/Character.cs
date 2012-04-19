@@ -22,7 +22,7 @@ namespace Nobots.Elements
         public SpriteEffects Effect;
 
         public bool touchingBox;
-        public Body touchedBox;
+        public Body touchedBody;
         public float touchedBoxMass;
         public float touchedBoxFriction;
         public SliderJoint sliderJoint;
@@ -136,7 +136,7 @@ namespace Nobots.Elements
 
         protected void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
-            if (fixtureB.Body == touchedBox)
+            if (fixtureB.Body == touchedBody)
                 touchingBox = false;
         }
 
@@ -145,7 +145,7 @@ namespace Nobots.Elements
             if (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null)
             {
                 touchingBox = true;
-                touchedBox = fixtureB.Body;
+                touchedBody = fixtureB.Body;
             }
 
             return true;
