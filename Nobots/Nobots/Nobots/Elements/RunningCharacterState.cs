@@ -72,6 +72,15 @@ namespace Nobots.Elements
             character.State = new JumpingCharacterState(scene, character);
         }
 
+        public override void BActionStart()
+        {
+            if (character.touchingBox && !scene.World.JointList.Contains(character.sliderJoint))
+            {
+                character.State = new GrabbingCharacterState(scene, character);
+                character.State.BActionStart();
+            }
+        }
+
         public override void RightAction()
         {
             character.body.FixedRotation = false;
