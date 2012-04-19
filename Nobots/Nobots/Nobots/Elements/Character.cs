@@ -21,7 +21,6 @@ namespace Nobots.Elements
         public RevoluteJoint revoluteJoint;
         public SpriteEffects Effect;
 
-        public bool touchingBox;
         public Body touchedBody;
         public float touchedBoxMass;
         public float touchedBoxFriction;
@@ -137,14 +136,13 @@ namespace Nobots.Elements
         protected void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             if (fixtureB.Body == touchedBody)
-                touchingBox = false;
+                touchedBody = null;
         }
 
         protected bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null)
             {
-                touchingBox = true;
                 touchedBody = fixtureB.Body;
             }
 

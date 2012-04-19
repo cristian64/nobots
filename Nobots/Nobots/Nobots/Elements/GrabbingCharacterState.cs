@@ -66,8 +66,11 @@ namespace Nobots.Elements
         public override void Exit()
         {
             scene.World.RemoveJoint(character.sliderJoint);
-            character.touchedBody.Friction = character.touchedBoxFriction;
-            character.touchedBody.Mass = character.touchedBoxMass;
+            if (character.touchedBody != null)
+            {
+                character.touchedBody.Friction = character.touchedBoxFriction;
+                character.touchedBody.Mass = character.touchedBoxMass;
+            }
         }
 
         public override void BActionStart()
@@ -85,8 +88,8 @@ namespace Nobots.Elements
 
         public override void RightAction()
         {
-            if ((character.touchedBody.UserData is IPushable && character.Position.X < character.touchedBody.Position.X) ||
-                (character.touchedBody.UserData is IPullable && character.Position.X > character.touchedBody.Position.X))
+            if (character.touchedBody != null && ((character.touchedBody.UserData is IPushable && character.Position.X < character.touchedBody.Position.X) ||
+                (character.touchedBody.UserData is IPullable && character.Position.X > character.touchedBody.Position.X)))
             {
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
@@ -97,8 +100,8 @@ namespace Nobots.Elements
 
         public override void LeftAction()
         {
-            if ((character.touchedBody.UserData is IPushable && character.Position.X > character.touchedBody.Position.X) ||
-                (character.touchedBody.UserData is IPullable && character.Position.X < character.touchedBody.Position.X))
+            if (character.touchedBody != null && ((character.touchedBody.UserData is IPushable && character.Position.X > character.touchedBody.Position.X) ||
+                (character.touchedBody.UserData is IPullable && character.Position.X < character.touchedBody.Position.X)))
             {
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
