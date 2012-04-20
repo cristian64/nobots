@@ -69,7 +69,7 @@ namespace Nobots.Elements
             ZBuffer = -6f;
             texture = Game.Content.Load<Texture2D>("leverbase");
             texture2 = Game.Content.Load<Texture2D>("lever");
-            body = BodyFactory.CreateRectangle(scene.World, Width, Height, 20f);
+            body = BodyFactory.CreateRectangle(scene.World, Width, Height, 100f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
             body.CollidesWith = Category.None | ElementCategory.CHARACTER | ElementCategory.FLOOR;
