@@ -180,7 +180,7 @@ namespace Nobots
                 SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
                 foreach (Element i in Elements)
                 {
-                    if (i is Stone) // TODO: ADD watedrops or things without physics body
+                    if (i is Stone || i is Lamp) // TODO: ADD watedrops or things without physics body
                         PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, new Color(0.5f, 0.9f, 0.5f));
                 }
                 foreach (Background i in Backgrounds)

@@ -17,13 +17,13 @@ namespace Nobots.Elements
 
         public override float Width
         {
-            get { return texture.Width; }
+            get { return Conversion.ToWorld(texture.Width); }
             set { }
         }
 
         public override float Height
         {
-            get { return texture.Height; }
+            get { return Conversion.ToWorld(texture.Height); }
             set { }
         }
 
