@@ -44,7 +44,6 @@ namespace Nobots.Elements
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -56,7 +55,6 @@ namespace Nobots.Elements
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
@@ -94,7 +92,6 @@ namespace Nobots.Elements
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width - 30), Conversion.ToWorld(texture.Height - 15), 150f);
 
             body.Position = position;
-            //body.Position = new Vector2(37.08941f, 16.78384f);
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
 
@@ -105,14 +102,18 @@ namespace Nobots.Elements
         public override void Update(GameTime gameTime)
         {
             Vector2 targetPosition = Active ? FinalPosition : InitialPosition;
-            if (Vector2.DistanceSquared(targetPosition, Position) > Speed * Speed * gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)
+            if (targetPosition != Position)
             {
-                Vector2 direction = Vector2.Normalize(targetPosition - Position);
-                body.LinearVelocity = Speed * direction;
-            }
-            else
-            {
-                Position = targetPosition;
+                if (Vector2.DistanceSquared(targetPosition, Position) > Speed * Speed * gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)
+                {
+                    Vector2 direction = Vector2.Normalize(targetPosition - Position);
+                    body.LinearVelocity = Speed * direction;
+                }
+                else
+                {
+                    body.LinearVelocity = Vector2.Zero;
+                    Position = targetPosition;
+                }
             }
             base.Update(gameTime);
         }
