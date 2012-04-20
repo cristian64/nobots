@@ -112,6 +112,12 @@ namespace Nobots.Editor
                 flowLayoutPanelAcceleration.Visible = true;
                 numericUpDownAcceleration.Value = (decimal)((ImpulsePlatform)selection).Acceleration;
             }
+
+            if (selection is Endpoint)
+            {
+                flowLayoutPanelNextLevel.Visible = true;
+                textBoxNextLevel.Text = ((Endpoint)selection).NextLevel;
+            }
         }
 
         private void reset()
@@ -138,6 +144,7 @@ namespace Nobots.Editor
             flowLayoutPanelLinkHeight.Visible = false;
             flowLayoutPanelAngularSpeed.Visible = false;
             flowLayoutPanelTextureName.Visible = false;
+            flowLayoutPanelNextLevel.Visible = false;
             flowLayoutPanelAcceleration.Visible = false;
         }
 
@@ -337,6 +344,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((ImpulsePlatform)selectionEvents).Acceleration = (float)numericUpDownAcceleration.Value;
+        }
+
+        private void textBoxNextLevel_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Endpoint)selectionEvents).NextLevel = textBoxNextLevel.Text;
         }
     }
 }

@@ -177,6 +177,9 @@ namespace Nobots
                     case "Checkpoint":
                         element = new Checkpoint(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Endpoint":
+                        element = new Endpoint(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Background":
                         background = new Background(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
