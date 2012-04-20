@@ -383,6 +383,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="checkpoint.png">
+      <Name>checkpoint</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="checkpointon.png">
+      <Name>checkpointon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="lamp_off.png">
       <Name>lamp_off</Name>
       <Importer>TextureImporter</Importer>

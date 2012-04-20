@@ -1068,6 +1068,10 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxAvailableElements.FormattingEnabled = true;
             this.listBoxAvailableElements.Items.AddRange(new object[] {
+            "Startpoint",
+            "Checkpoint",
+            "Endpoint",
+            "---------------",
             "Background",
             "Foreground",
             "---------------",

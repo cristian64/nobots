@@ -127,8 +127,6 @@ namespace Nobots
                     break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
-                    if (reader.MoveToAttribute("Active"))
-                        ((IActivable)e).Active = reader.Value == "True";
                     break;
                 case "Elevator":
                     e = new Elevator(Game, scene, Vector2.Zero);
@@ -136,28 +134,21 @@ namespace Nobots
                         ((Elevator)e).InitialPosition = PositionFromString(reader.Value);
                     if (reader.MoveToAttribute("FinalPosition"))
                         ((Elevator)e).FinalPosition = PositionFromString(reader.Value);
-                    if (reader.MoveToAttribute("Active"))
-                        ((IActivable)e).Active = reader.Value == "True";
                     break;
                 case "LaserBarrier":
                     e = new LaserBarrier(Game, scene, Vector2.Zero);
-                    if (reader.MoveToAttribute("Active"))
-                        ((IActivable)e).Active = reader.Value == "True";
+                    break;
+                case "Checkpoint":
+                    e = new Checkpoint(Game, scene, Vector2.Zero);
                     break;
                 case "PressurePlate":
                     e = new PressurePlate(Game, scene, Vector2.Zero);
-                    if (reader.MoveToAttribute("ActivableElementId"))
-                        ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
                     break;
                 case "ElectricityBox":
                     e = new ElectricityBox(Game, scene, Vector2.Zero);
-                    if (reader.MoveToAttribute("ActivableElementId"))
-                        ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
                     break;
                 case "Lever":
                     e = new Lever(Game, scene, Vector2.Zero);
-                    if (reader.MoveToAttribute("ActivableElementId"))
-                        ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
                     break;
                 case "Socket":
                     e = new Socket(Game, scene, Vector2.Zero);
@@ -210,6 +201,12 @@ namespace Nobots
             if (reader.MoveToAttribute("Rotation"))
                 e.Rotation = float.Parse(reader.Value, CultureInfo.InvariantCulture);
 
+            if (e is IActivable && reader.MoveToAttribute("Active"))
+                ((IActivable)e).Active = reader.Value == "True";
+
+            if (e is Nobots.Elements.Activator && reader.MoveToAttribute("ActivableElementId"))
+                ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
+
             return e;
         }
 
@@ -258,6 +255,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((ElectricityBox)i) + "\n";
                 else if (i as Lever != null)
                     xml += "        " + ElementToXml((Lever)i) + "\n";
+                else if (i as Checkpoint != null)
+                    xml += "        " + ElementToXml((Checkpoint)i) + "\n";
                 else if (i as Character != null)
                     xml += "        " + ElementToXml((Character)i) + "\n";
                 else if (i as Forklift != null)
@@ -315,6 +314,12 @@ namespace Nobots
         public String ElementToXml(Lamp lamp)
         {
             String xml = "<Lamp Id=\"" + lamp.Id + "\" Position=\"" + lamp.Position.X + "," + lamp.Position.Y + "\" Rotation=\"" + lamp.Rotation + "\" Active=\"" + lamp.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Checkpoint checkpoint)
+        {
+            String xml = "<Checkpoint Id=\"" + checkpoint.Id + "\" Position=\"" + checkpoint.Position.X + "," + checkpoint.Position.Y + "\" Rotation=\"" + checkpoint.Rotation + "\" Active=\"" + checkpoint.Active + "\" />";
             return xml;
         }
 
