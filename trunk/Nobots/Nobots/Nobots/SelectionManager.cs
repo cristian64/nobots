@@ -174,6 +174,9 @@ namespace Nobots
                     case "ImpulsePlatform":
                         element = new ImpulsePlatform(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Checkpoint":
+                        element = new Checkpoint(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Background":
                         background = new Background(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
