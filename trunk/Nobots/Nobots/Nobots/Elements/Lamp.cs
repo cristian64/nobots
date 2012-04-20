@@ -73,7 +73,7 @@ namespace Nobots.Elements
         public Lamp(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 10f;
+            ZBuffer = -7f;
             this.position = position;
             texture = scene.Game.Content.Load<Texture2D>("lamp_on");
         }
