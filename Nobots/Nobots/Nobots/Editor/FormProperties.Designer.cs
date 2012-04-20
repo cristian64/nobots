@@ -95,6 +95,9 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelNextLevel = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelNextLevel = new System.Windows.Forms.Label();
+            this.textBoxNextLevel = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -133,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).BeginInit();
             this.flowLayoutPanelAcceleration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAcceleration)).BeginInit();
+            this.flowLayoutPanelNextLevel.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -160,6 +164,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinkWidth);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLinkHeight);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAcceleration);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelNextLevel);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 341);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1068,7 +1073,6 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxAvailableElements.FormattingEnabled = true;
             this.listBoxAvailableElements.Items.AddRange(new object[] {
-            "Startpoint",
             "Checkpoint",
             "Endpoint",
             "---------------",
@@ -1118,6 +1122,34 @@
             this.checkBoxShowEmblems.Text = "Show emblems";
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
+            // 
+            // flowLayoutPanelNextLevel
+            // 
+            this.flowLayoutPanelNextLevel.Controls.Add(this.labelNextLevel);
+            this.flowLayoutPanelNextLevel.Controls.Add(this.textBoxNextLevel);
+            this.flowLayoutPanelNextLevel.Location = new System.Drawing.Point(0, 575);
+            this.flowLayoutPanelNextLevel.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelNextLevel.Name = "flowLayoutPanelNextLevel";
+            this.flowLayoutPanelNextLevel.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelNextLevel.TabIndex = 22;
+            this.flowLayoutPanelNextLevel.Visible = false;
+            // 
+            // labelNextLevel
+            // 
+            this.labelNextLevel.Location = new System.Drawing.Point(3, 0);
+            this.labelNextLevel.Name = "labelNextLevel";
+            this.labelNextLevel.Size = new System.Drawing.Size(63, 23);
+            this.labelNextLevel.TabIndex = 4;
+            this.labelNextLevel.Text = "NextLevel";
+            this.labelNextLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxNextLevel
+            // 
+            this.textBoxNextLevel.Location = new System.Drawing.Point(72, 3);
+            this.textBoxNextLevel.Name = "textBoxNextLevel";
+            this.textBoxNextLevel.Size = new System.Drawing.Size(170, 20);
+            this.textBoxNextLevel.TabIndex = 1;
+            this.textBoxNextLevel.TextChanged += new System.EventHandler(this.textBoxNextLevel_TextChanged);
             // 
             // FormProperties
             // 
@@ -1177,6 +1209,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLinkHeight)).EndInit();
             this.flowLayoutPanelAcceleration.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAcceleration)).EndInit();
+            this.flowLayoutPanelNextLevel.ResumeLayout(false);
+            this.flowLayoutPanelNextLevel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1251,6 +1285,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAcceleration;
         private System.Windows.Forms.Label labelAcceleration;
         private System.Windows.Forms.NumericUpDown numericUpDownAcceleration;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNextLevel;
+        private System.Windows.Forms.Label labelNextLevel;
+        private System.Windows.Forms.TextBox textBoxNextLevel;
 
 
     }

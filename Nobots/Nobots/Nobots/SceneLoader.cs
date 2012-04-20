@@ -141,6 +141,11 @@ namespace Nobots
                 case "Checkpoint":
                     e = new Checkpoint(Game, scene, Vector2.Zero);
                     break;
+                case "Endpoint":
+                    e = new Endpoint(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("NextLevel"))
+                        ((Endpoint)e).NextLevel = reader.Value;
+                    break;
                 case "PressurePlate":
                     e = new PressurePlate(Game, scene, Vector2.Zero);
                     break;
