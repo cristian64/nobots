@@ -90,14 +90,14 @@
             this.flowLayoutPanelAcceleration = new System.Windows.Forms.FlowLayoutPanel();
             this.labelAcceleration = new System.Windows.Forms.Label();
             this.numericUpDownAcceleration = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanelNextLevel = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelNextLevel = new System.Windows.Forms.Label();
+            this.textBoxNextLevel = new System.Windows.Forms.TextBox();
             this.checkBoxShowDebug = new System.Windows.Forms.CheckBox();
             this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanelNextLevel = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelNextLevel = new System.Windows.Forms.Label();
-            this.textBoxNextLevel = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -1044,6 +1044,34 @@
             262144});
             this.numericUpDownAcceleration.ValueChanged += new System.EventHandler(this.numericUpDownAcceleration_ValueChanged);
             // 
+            // flowLayoutPanelNextLevel
+            // 
+            this.flowLayoutPanelNextLevel.Controls.Add(this.labelNextLevel);
+            this.flowLayoutPanelNextLevel.Controls.Add(this.textBoxNextLevel);
+            this.flowLayoutPanelNextLevel.Location = new System.Drawing.Point(0, 575);
+            this.flowLayoutPanelNextLevel.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelNextLevel.Name = "flowLayoutPanelNextLevel";
+            this.flowLayoutPanelNextLevel.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelNextLevel.TabIndex = 22;
+            this.flowLayoutPanelNextLevel.Visible = false;
+            // 
+            // labelNextLevel
+            // 
+            this.labelNextLevel.Location = new System.Drawing.Point(3, 0);
+            this.labelNextLevel.Name = "labelNextLevel";
+            this.labelNextLevel.Size = new System.Drawing.Size(63, 23);
+            this.labelNextLevel.TabIndex = 4;
+            this.labelNextLevel.Text = "NextLevel";
+            this.labelNextLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxNextLevel
+            // 
+            this.textBoxNextLevel.Location = new System.Drawing.Point(72, 3);
+            this.textBoxNextLevel.Name = "textBoxNextLevel";
+            this.textBoxNextLevel.Size = new System.Drawing.Size(170, 20);
+            this.textBoxNextLevel.TabIndex = 1;
+            this.textBoxNextLevel.TextChanged += new System.EventHandler(this.textBoxNextLevel_TextChanged);
+            // 
             // checkBoxShowDebug
             // 
             this.checkBoxShowDebug.AutoSize = true;
@@ -1122,34 +1150,6 @@
             this.checkBoxShowEmblems.Text = "Show emblems";
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
-            // 
-            // flowLayoutPanelNextLevel
-            // 
-            this.flowLayoutPanelNextLevel.Controls.Add(this.labelNextLevel);
-            this.flowLayoutPanelNextLevel.Controls.Add(this.textBoxNextLevel);
-            this.flowLayoutPanelNextLevel.Location = new System.Drawing.Point(0, 575);
-            this.flowLayoutPanelNextLevel.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelNextLevel.Name = "flowLayoutPanelNextLevel";
-            this.flowLayoutPanelNextLevel.Size = new System.Drawing.Size(247, 29);
-            this.flowLayoutPanelNextLevel.TabIndex = 22;
-            this.flowLayoutPanelNextLevel.Visible = false;
-            // 
-            // labelNextLevel
-            // 
-            this.labelNextLevel.Location = new System.Drawing.Point(3, 0);
-            this.labelNextLevel.Name = "labelNextLevel";
-            this.labelNextLevel.Size = new System.Drawing.Size(63, 23);
-            this.labelNextLevel.TabIndex = 4;
-            this.labelNextLevel.Text = "NextLevel";
-            this.labelNextLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxNextLevel
-            // 
-            this.textBoxNextLevel.Location = new System.Drawing.Point(72, 3);
-            this.textBoxNextLevel.Name = "textBoxNextLevel";
-            this.textBoxNextLevel.Size = new System.Drawing.Size(170, 20);
-            this.textBoxNextLevel.TabIndex = 1;
-            this.textBoxNextLevel.TextChanged += new System.EventHandler(this.textBoxNextLevel_TextChanged);
             // 
             // FormProperties
             // 
