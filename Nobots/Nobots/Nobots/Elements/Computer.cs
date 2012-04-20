@@ -6,48 +6,73 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
-using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots.Elements
 {
-    public class Chandelier : Element
+    public class Computer : Element
     {
         Body body;
         Texture2D texture;
 
         public override float Width
         {
-            get { return Conversion.ToWorld(texture.Width); }
-            set { }
+            get
+            {
+                return Conversion.ToWorld(texture.Width);
+            }
+            set
+            {
+            }
         }
 
         public override float Height
         {
-            get { return Conversion.ToWorld(texture.Height); }
-            set { }
+            get
+            {
+                return Conversion.ToWorld(texture.Height);
+            }
+            set
+            {
+            }
         }
 
         public override Vector2 Position
         {
-            get { return body.Position; }
-            set { body.Position = value; }
+            get
+            {
+                return body.Position;
+            }
+            set
+            {
+                body.Position = value;
+            }
         }
 
         public override float Rotation
         {
-            get { return body.Rotation; }
-            set { body.Rotation = value; }
+            get
+            {
+                return body.Rotation;
+            }
+            set
+            {
+                body.Rotation = value;
+            }
         }
 
-        public Chandelier(Game game, Scene scene, Vector2 position)
+        public Computer(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 1f;
-            texture = Game.Content.Load<Texture2D>("chandelier");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 150f);
+            ZBuffer = -6f;
+            texture = Game.Content.Load<Texture2D>("computer");
+            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 100f);
             body.Position = position;
+            body.IsSensor = true;
             body.BodyType = BodyType.Static;
-            body.CollidesWith = Category.None;
+            body.CollidesWith = ElementCategory.CHARACTER | ElementCategory.ENERGY;
+            /*body.Rotation = -2.236696f;
+            body.ApplyAngularImpulse(0.1f);*/
+            body.Friction = 100.0f;
 
             body.UserData = this;
         }
