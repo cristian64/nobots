@@ -113,6 +113,9 @@ namespace Nobots
                 case "Box":
                     e = new Box(Game, scene, Vector2.Zero);
                     break;
+                case "Lamp":
+                    e = new Lamp(Game, scene, Vector2.Zero);
+                    break;
                 case "Closet":
                     e = new Closet(Game, scene, Vector2.Zero);
                     break;
@@ -228,6 +231,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Platform)i) + "\n";
                 else if (i as Box != null)
                     xml += "        " + ElementToXml((Box)i) + "\n";
+                else if (i as Lamp != null)
+                    xml += "        " + ElementToXml((Lamp)i) + "\n";
                 else if (i as Chandelier != null)
                     xml += "        " + ElementToXml((Chandelier)i) + "\n";
                 else if (i as Stone != null)
@@ -293,6 +298,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Lamp lamp)
+        {
+            String xml = "<Lamp Id=\"" + lamp.Id + "\" Position=\"" + lamp.Position.X + "," + lamp.Position.Y + "\" Rotation=\"" + lamp.Rotation + "\" Active=\"" + lamp.Active + "\" />";
             return xml;
         }
 
