@@ -86,7 +86,7 @@ namespace Nobots
                         scene.Foregrounds.Remove((Foreground)selection);
                     else scene.Elements.Remove(selection);
                     selection.Dispose();
-                    selection = null;
+                    Selection = null;
                 }
             }
 
