@@ -15,6 +15,7 @@ namespace Nobots.Elements
         Body body2;
         Texture2D texture;
         Texture2D texture2;
+        Texture2D texture3;
         List<Body> bodies;
 
         private bool isActive = false;
@@ -96,6 +97,7 @@ namespace Nobots.Elements
             ZBuffer = 6f;
             texture = Game.Content.Load<Texture2D>("impulseplatform");
             texture2 = Game.Content.Load<Texture2D>("impulseplatformactive");
+            texture3 = Game.Content.Load<Texture2D>("impulseplatformsensor");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1);
             body.Position = position;
             body.BodyType = BodyType.Static;
@@ -125,6 +127,7 @@ namespace Nobots.Elements
             return true;
         }
 
+        private float alpha = 0.0f;
         public float Acceleration = 20;
 
         public override void Update(GameTime gameTime)
@@ -138,10 +141,23 @@ namespace Nobots.Elements
                     i.ApplyForce(direction * forceToApply);
                 }
             }
+
+            if (isActive && alpha < 1.0f)
+                alpha = (float)Math.Min(1.0f, alpha + gameTime.ElapsedGameTime.TotalSeconds);
+
+            if (!isActive && alpha > 0.0f)
+                alpha = (float)Math.Max(0.0f, alpha - gameTime.ElapsedGameTime.TotalSeconds);
         }
 
         public override void Draw(GameTime gameTime)
         {
+            if (alpha > 0)
+            {
+                float scale = scene.Camera.Scale;
+                Rectangle rectangle = new Rectangle((int)Conversion.ToDisplay(scale * (body2.Position.X - scene.Camera.Position.X)), (int)Conversion.ToDisplay(scale * (body2.Position.Y - scene.Camera.Position.Y)),
+                (int)Conversion.ToDisplay(Width * scale), (int)Conversion.ToDisplay(Height * scale));
+                scene.SpriteBatch.Draw(texture3, rectangle, null, Color.White * alpha, body2.Rotation, new Vector2(texture3.Width / 2, texture3.Height / 2), SpriteEffects.None, 0);
+            }
             scene.SpriteBatch.Draw(Active ? texture2 : texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
         }
 
