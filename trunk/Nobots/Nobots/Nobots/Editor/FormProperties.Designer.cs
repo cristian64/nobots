@@ -1155,6 +1155,7 @@
             "ElectricityBox",
             "Elevator",
             "Character",
+            "ExperimentalTube",
             "Socket",
             "LaserBarrier",
             "Forklift",

@@ -450,6 +450,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="experimental_tube.png">
+      <Name>experimental_tube</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="alarm.png">
       <Name>alarm</Name>
       <Importer>TextureImporter</Importer>

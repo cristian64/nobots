@@ -138,6 +138,9 @@ namespace Nobots
                     case "Character":
                         element = new Character(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "ExperimentalTube":
+                        element = new ExperimentalTube(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Box":
                         element = new Box(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
