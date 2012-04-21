@@ -118,6 +118,12 @@ namespace Nobots.Editor
                 flowLayoutPanelNextLevel.Visible = true;
                 textBoxNextLevel.Text = ((Endpoint)selection).NextLevel;
             }
+
+            if (selection is Crate)
+            {
+                flowLayoutPanelColor.Visible = true;
+                comboBoxColor.Text = ((Crate)selection).Color;
+            }
         }
 
         private void reset()
@@ -146,6 +152,7 @@ namespace Nobots.Editor
             flowLayoutPanelTextureName.Visible = false;
             flowLayoutPanelNextLevel.Visible = false;
             flowLayoutPanelAcceleration.Visible = false;
+            flowLayoutPanelColor.Visible = false;
         }
 
         private void setInitialValues()
@@ -350,6 +357,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((Endpoint)selectionEvents).NextLevel = textBoxNextLevel.Text;
+        }
+
+        private void comboBoxColor_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Crate)selectionEvents).Color = comboBoxColor.Text;
         }
     }
 }

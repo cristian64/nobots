@@ -126,6 +126,7 @@
     <Compile Include="Elements\Computer.cs" />
     <Compile Include="Elements\ConveyorBelt.cs" />
     <Compile Include="Elements\Checkpoint.cs" />
+    <Compile Include="Elements\Crate.cs" />
     <Compile Include="Elements\Endpoint.cs" />
     <Compile Include="Elements\ImpulsePlatform.cs" />
     <Compile Include="Elements\Lamp.cs" />
