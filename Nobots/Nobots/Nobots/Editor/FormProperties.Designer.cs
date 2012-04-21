@@ -93,14 +93,14 @@
             this.flowLayoutPanelNextLevel = new System.Windows.Forms.FlowLayoutPanel();
             this.labelNextLevel = new System.Windows.Forms.Label();
             this.textBoxNextLevel = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelColor = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelColor = new System.Windows.Forms.Label();
+            this.comboBoxColor = new System.Windows.Forms.ComboBox();
             this.checkBoxShowDebug = new System.Windows.Forms.CheckBox();
             this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanelColor = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelColor = new System.Windows.Forms.Label();
-            this.comboBoxColor = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -1077,6 +1077,41 @@
             this.textBoxNextLevel.TabIndex = 1;
             this.textBoxNextLevel.TextChanged += new System.EventHandler(this.textBoxNextLevel_TextChanged);
             // 
+            // flowLayoutPanelColor
+            // 
+            this.flowLayoutPanelColor.Controls.Add(this.labelColor);
+            this.flowLayoutPanelColor.Controls.Add(this.comboBoxColor);
+            this.flowLayoutPanelColor.Location = new System.Drawing.Point(0, 604);
+            this.flowLayoutPanelColor.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelColor.Name = "flowLayoutPanelColor";
+            this.flowLayoutPanelColor.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelColor.TabIndex = 23;
+            this.flowLayoutPanelColor.Visible = false;
+            // 
+            // labelColor
+            // 
+            this.labelColor.Location = new System.Drawing.Point(3, 0);
+            this.labelColor.Name = "labelColor";
+            this.labelColor.Size = new System.Drawing.Size(39, 23);
+            this.labelColor.TabIndex = 4;
+            this.labelColor.Text = "Color";
+            this.labelColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxColor
+            // 
+            this.comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxColor.FormattingEnabled = true;
+            this.comboBoxColor.Items.AddRange(new object[] {
+            "Blue",
+            "Orange",
+            "Pink",
+            "Red"});
+            this.comboBoxColor.Location = new System.Drawing.Point(48, 3);
+            this.comboBoxColor.Name = "comboBoxColor";
+            this.comboBoxColor.Size = new System.Drawing.Size(194, 21);
+            this.comboBoxColor.TabIndex = 5;
+            this.comboBoxColor.TextChanged += new System.EventHandler(this.comboBoxColor_TextChanged);
+            // 
             // checkBoxShowDebug
             // 
             this.checkBoxShowDebug.AutoSize = true;
@@ -1127,6 +1162,7 @@
             "ConveyorBelt",
             "Chandelier",
             "Lamp",
+            "Alarm",
             "Lever",
             "ImpulsePlatform",
             "Computer",
@@ -1156,41 +1192,6 @@
             this.checkBoxShowEmblems.Text = "Show emblems";
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
-            // 
-            // flowLayoutPanelColor
-            // 
-            this.flowLayoutPanelColor.Controls.Add(this.labelColor);
-            this.flowLayoutPanelColor.Controls.Add(this.comboBoxColor);
-            this.flowLayoutPanelColor.Location = new System.Drawing.Point(0, 604);
-            this.flowLayoutPanelColor.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelColor.Name = "flowLayoutPanelColor";
-            this.flowLayoutPanelColor.Size = new System.Drawing.Size(247, 29);
-            this.flowLayoutPanelColor.TabIndex = 23;
-            this.flowLayoutPanelColor.Visible = false;
-            // 
-            // labelColor
-            // 
-            this.labelColor.Location = new System.Drawing.Point(3, 0);
-            this.labelColor.Name = "labelColor";
-            this.labelColor.Size = new System.Drawing.Size(39, 23);
-            this.labelColor.TabIndex = 4;
-            this.labelColor.Text = "Color";
-            this.labelColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // comboBoxColor
-            // 
-            this.comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxColor.FormattingEnabled = true;
-            this.comboBoxColor.Items.AddRange(new object[] {
-            "Blue",
-            "Orange",
-            "Pink",
-            "Red"});
-            this.comboBoxColor.Location = new System.Drawing.Point(48, 3);
-            this.comboBoxColor.Name = "comboBoxColor";
-            this.comboBoxColor.Size = new System.Drawing.Size(194, 21);
-            this.comboBoxColor.TabIndex = 5;
-            this.comboBoxColor.TextChanged += new System.EventHandler(this.comboBoxColor_TextChanged);
             // 
             // FormProperties
             // 
