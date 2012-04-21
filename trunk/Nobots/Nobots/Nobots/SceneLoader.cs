@@ -113,6 +113,11 @@ namespace Nobots
                 case "Box":
                     e = new Box(Game, scene, Vector2.Zero);
                     break;
+                case "Crate":
+                    e = new Crate(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("Color"))
+                        ((Crate)e).Color = reader.Value;
+                    break;
                 case "Computer":
                     e = new Computer(Game, scene, Vector2.Zero);
                     break;
@@ -236,6 +241,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Platform)i) + "\n";
                 else if (i as Box != null)
                     xml += "        " + ElementToXml((Box)i) + "\n";
+                else if (i as Crate != null)
+                    xml += "        " + ElementToXml((Crate)i) + "\n";
                 else if (i as Computer != null)
                     xml += "        " + ElementToXml((Computer)i) + "\n";
                 else if (i as Lamp != null)
@@ -307,6 +314,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Crate crate)
+        {
+            String xml = "<Crate Id=\"" + crate.Id + "\" Position=\"" + crate.Position.X + "," + crate.Position.Y + "\" Rotation=\"" + crate.Rotation + "\" Color=\"" + crate.Color + "\" />";
             return xml;
         }
 
