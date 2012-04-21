@@ -133,6 +133,9 @@ namespace Nobots
                 case "Chandelier":
                     e = new Chandelier(Game, scene, Vector2.Zero);
                     break;
+                case "ExperimentalTube":
+                    e = new ExperimentalTube(Game, scene, Vector2.Zero);
+                    break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
                     break;
@@ -254,6 +257,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Alarm)i) + "\n";
                 else if (i as Chandelier != null)
                     xml += "        " + ElementToXml((Chandelier)i) + "\n";
+                else if (i as ExperimentalTube != null)
+                    xml += "        " + ElementToXml((ExperimentalTube)i) + "\n";
                 else if (i as Stone != null)
                     xml += "        " + ElementToXml((Stone)i) + "\n";
                 else if (i as Closet != null)
@@ -355,6 +360,12 @@ namespace Nobots
         public String ElementToXml(Chandelier chandelier)
         {
             String xml = "<Chandelier Id=\"" + chandelier.Id + "\" Position=\"" + chandelier.Position.X + "," + chandelier.Position.Y + "\" Rotation=\"" + chandelier.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(ExperimentalTube eTube)
+        {
+            String xml = "<ExperimentalTube Id=\"" + eTube.Id + "\" Position=\"" + eTube.Position.X + "," + eTube.Position.Y + "\" Rotation=\"" + eTube.Rotation + "\" />";
             return xml;
         }
 
