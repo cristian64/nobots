@@ -479,6 +479,8 @@ namespace Nobots
                         scene.Elements.Clear();
                         scene.Foregrounds.Clear();
                         scene.World.Clear();
+                        scene.Camera.Target = null;
+                        scene.InputManager.Character = null;
                         //TODO those Clear() are bullshit. it won't free any memory since there is no Dispose in DrawableElements...
                         SceneFromXml(openFileDialog1.FileName, scene);
                     }
