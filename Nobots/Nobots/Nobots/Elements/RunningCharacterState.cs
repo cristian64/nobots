@@ -39,7 +39,6 @@ namespace Nobots.Elements
                 textureXmin = 0;
                 textureYmin += texture.Height / 5;
             }
-
             return new Vector2(textureXmin, textureYmin);
         }
 

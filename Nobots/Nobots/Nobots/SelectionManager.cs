@@ -165,6 +165,9 @@ namespace Nobots
                     case "Elevator":
                         element = new Elevator(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "MovingPlatform":
+                        element = new MovingPlatform(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Forklift":
                         element = new Forklift(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

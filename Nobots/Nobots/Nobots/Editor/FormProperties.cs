@@ -81,6 +81,16 @@ namespace Nobots.Editor
                 numericUpDownFinalPositionY.Value = (decimal)((Elevator)selection).FinalPosition.Y;
             }
 
+            if (selection is MovingPlatform)
+            {
+                flowLayoutPanelInitialPosition.Visible = true;
+                flowLayoutPanelFinalPosition.Visible = true;
+                numericUpDownInitialPositionX.Value = (decimal)((MovingPlatform)selection).InitialPosition.X;
+                numericUpDownInitialPositionY.Value = (decimal)((MovingPlatform)selection).InitialPosition.Y;
+                numericUpDownFinalPositionX.Value = (decimal)((MovingPlatform)selection).FinalPosition.X;
+                numericUpDownFinalPositionY.Value = (decimal)((MovingPlatform)selection).FinalPosition.Y;
+            }
+
             if (selection is Socket)
             {
                 flowLayoutPanelOtherSocketId.Visible = true;
@@ -274,6 +284,10 @@ namespace Nobots.Editor
             Elevator elevator = selectionEvents as Elevator;
             if (elevator != null)
                 elevator.InitialPosition = new Vector2((float)numericUpDownInitialPositionX.Value, elevator.InitialPosition.Y);
+            MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
+            if (movingPlatform != null)
+                movingPlatform.InitialPosition = new Vector2((float)numericUpDownInitialPositionX.Value, movingPlatform.InitialPosition.Y);
+       
         }
 
         private void numericUpDownInitialPositionY_ValueChanged(object sender, EventArgs e)
@@ -281,6 +295,10 @@ namespace Nobots.Editor
             Elevator elevator = selectionEvents as Elevator;
             if (elevator != null)
                 elevator.InitialPosition = new Vector2(elevator.InitialPosition.X, (float)numericUpDownInitialPositionY.Value);
+            MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
+            if (movingPlatform != null)
+                movingPlatform.InitialPosition = new Vector2(movingPlatform.InitialPosition.X, (float)numericUpDownInitialPositionY.Value);
+       
         }
 
         private void numericUpDownFinalPositionX_ValueChanged(object sender, EventArgs e)
@@ -288,6 +306,10 @@ namespace Nobots.Editor
             Elevator elevator = selectionEvents as Elevator;
             if (elevator != null)
                 elevator.FinalPosition = new Vector2((float)numericUpDownFinalPositionX.Value, elevator.FinalPosition.Y);
+            MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
+            if (movingPlatform != null)
+                movingPlatform.FinalPosition = new Vector2((float)numericUpDownFinalPositionX.Value, movingPlatform.FinalPosition.Y);
+      
         }
 
         private void numericUpDownFinalPositionY_ValueChanged(object sender, EventArgs e)
@@ -295,6 +317,10 @@ namespace Nobots.Editor
             Elevator elevator = selectionEvents as Elevator;
             if (elevator != null)
                 elevator.FinalPosition = new Vector2(elevator.FinalPosition.X, (float)numericUpDownFinalPositionY.Value);
+            MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
+            if (movingPlatform != null)
+                movingPlatform.FinalPosition = new Vector2(movingPlatform.FinalPosition.X, (float)numericUpDownFinalPositionY.Value);
+        
         }
 
         private void checkBoxShowDebug_CheckedChanged(object sender, EventArgs e)
