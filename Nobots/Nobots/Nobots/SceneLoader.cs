@@ -113,6 +113,9 @@ namespace Nobots
                 case "Box":
                     e = new Box(Game, scene, Vector2.Zero);
                     break;
+                case "Stomper":
+                    e = new Stomper(Game, scene, Vector2.Zero);
+                    break;
                 case "Crate":
                     e = new Crate(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("Color"))
@@ -254,6 +257,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Platform)i) + "\n";
                 else if (i as Box != null)
                     xml += "        " + ElementToXml((Box)i) + "\n";
+                else if (i as Stomper != null)
+                    xml += "        " + ElementToXml((Stomper)i) + "\n";
                 else if (i as Crate != null)
                     xml += "        " + ElementToXml((Crate)i) + "\n";
                 else if (i as Computer != null)
@@ -333,6 +338,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Stomper stomper)
+        {
+            String xml = "<Stomper Id=\"" + stomper.Id + "\" Position=\"" + stomper.Position.X + "," + stomper.Position.Y + "\" Rotation=\"" + stomper.Rotation + "\" Active=\"" + stomper.Active + "\" />"; ;
             return xml;
         }
 
