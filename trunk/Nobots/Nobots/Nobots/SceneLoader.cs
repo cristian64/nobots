@@ -146,6 +146,13 @@ namespace Nobots
                     if (reader.MoveToAttribute("FinalPosition"))
                         ((Elevator)e).FinalPosition = PositionFromString(reader.Value);
                     break;
+                case "MovingPlatform":
+                    e = new MovingPlatform(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("InitialPosition"))
+                        ((MovingPlatform)e).InitialPosition = PositionFromString(reader.Value);
+                    if (reader.MoveToAttribute("FinalPosition"))
+                        ((MovingPlatform)e).FinalPosition = PositionFromString(reader.Value);
+                    break;
                 case "LaserBarrier":
                     e = new LaserBarrier(Game, scene, Vector2.Zero);
                     break;
@@ -273,6 +280,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Socket)i) + "\n";
                 else if (i as Elevator != null)
                     xml += "        " + ElementToXml((Elevator)i) + "\n";
+                else if (i as MovingPlatform != null)
+                    xml += "        " + ElementToXml((MovingPlatform)i) + "\n";
                 else if (i as ElectricityBox != null)
                     xml += "        " + ElementToXml((ElectricityBox)i) + "\n";
                 else if (i as Lever != null)
@@ -404,6 +413,12 @@ namespace Nobots
         public String ElementToXml(Elevator elevator)
         {
             String xml = "<Elevator Id=\"" + elevator.Id + "\" Position=\"" + elevator.Position.X + "," + elevator.Position.Y + "\" InitialPosition=\"" + elevator.InitialPosition.X + "," + elevator.InitialPosition.Y + "\" FinalPosition=\"" + elevator.FinalPosition.X + "," + elevator.FinalPosition.Y + "\" Active=\"" + elevator.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(MovingPlatform movingPlatform)
+        {
+            String xml = "<MovingPlatform Id=\"" + movingPlatform.Id + "\" Position=\"" + movingPlatform.Position.X + "," + movingPlatform.Position.Y + "\" InitialPosition=\"" + movingPlatform.InitialPosition.X + "," + movingPlatform.InitialPosition.Y + "\" FinalPosition=\"" + movingPlatform.FinalPosition.X + "," + movingPlatform.FinalPosition.Y + "\" Active=\"" + movingPlatform.Active + "\" />";
             return xml;
         }
 
