@@ -1168,7 +1168,8 @@
             "ImpulsePlatform",
             "Computer",
             "Crate",
-            "MovingPlatform"});
+            "MovingPlatform",
+            "Stomper"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
             this.listBoxAvailableElements.Name = "listBoxAvailableElements";
             this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 212);
