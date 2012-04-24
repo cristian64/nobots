@@ -12,12 +12,47 @@ namespace Nobots.Elements
         public IdleCharacterState(Scene scene, Character character) 
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("girl_moving");
+            texture = scene.Game.Content.Load<Texture2D>("idle");//("girl_moving");
+            characterWidth = texture.Width / 10;// 8;
+            characterHeight = texture.Height / 2;///5;
             character.texture = texture;
-            characterWidth = texture.Width / 8;
-            characterHeight = texture.Height / 5;
             textureXmin = 0;
             textureYmin = 0;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            changeRunningTextures(gameTime);
+        }
+
+        float seconds = 0;
+        private Vector2 changeRunningTextures(GameTime gameTime)
+        {
+            seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+       
+            if (seconds > 0.04f)
+            {
+                seconds -= 0.04f;
+                textureXmin += texture.Width / 10;
+
+                if (textureXmin == (texture.Width / 10) * 5 && textureYmin == texture.Height / 2)
+                {
+                    textureXmin = 0;
+                    textureYmin = 0;
+                }
+                else if (textureXmin == texture.Width)
+                {
+                    textureXmin = 0;
+                    textureYmin += texture.Height / 2;
+                }
+            }
+            if (textureYmin == 0 && textureXmin == texture.Width / 10)
+            {
+                seconds -= 4f; ;
+                textureXmin = (texture.Width / 10 * 2);
+            }
+
+            return new Vector2(textureXmin, textureYmin);
         }
 
         public override void Enter()
