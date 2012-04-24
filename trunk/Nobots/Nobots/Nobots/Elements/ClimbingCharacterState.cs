@@ -43,14 +43,14 @@ namespace Nobots.Elements
 
         public override void UpAction()
         {
-            character.torso.LinearVelocity = new Vector2(0, -1);
-            character.body.LinearVelocity = new Vector2(0, -1);
+            character.torso.LinearVelocity = new Vector2(0, -3);
+            character.body.LinearVelocity = new Vector2(0, -3);
         }
 
         public override void DownAction()
         {
-            character.torso.LinearVelocity = new Vector2(0, 1);
-            character.body.LinearVelocity = new Vector2(0, 1);
+            character.torso.LinearVelocity = new Vector2(0, 3);
+            character.body.LinearVelocity = new Vector2(0, 3);
         }
 
         public override void UpActionStop()
