@@ -10,6 +10,8 @@ namespace Nobots
 {
     public class Camera : DrawableGameComponent
     {
+        private Scene scene;
+
         public float Margin;
         public float Speed;
         public Element Target;
@@ -22,9 +24,10 @@ namespace Nobots
         public bool Grabbing = false;
         public Vector2 GrabbingPosition = Vector2.Zero;
 
-        public Camera(Game game)
+        public Camera(Game game, Scene scene)
             : base(game)
         {
+            this.scene = scene;
             Position = Vector2.Zero;
             Speed = Conversion.ToWorld(100);
             Margin = Conversion.ToWorld(50);
@@ -103,6 +106,14 @@ namespace Nobots
             previousMouseState = currentMouseState;
 
             base.Update(gameTime);
+
+            Vector2 listenerPosition;
+            if (Target != null)
+                listenerPosition = Target.Position;
+            else
+                listenerPosition = Position + new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
+
+            scene.ISoundEngine.SetListenerPosition(listenerPosition.X, listenerPosition.Y, 0.1f, 0, -1, 0);
         }
 
         public Vector2 WorldToScreen(Vector2 worldPosition)
