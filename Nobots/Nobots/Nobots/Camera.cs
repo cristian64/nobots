@@ -20,6 +20,7 @@ namespace Nobots
         public Matrix ViewNonScaled;
         public Matrix Projection;
         public float Scale = 0.5f;
+        public Vector2 ListenerPosition;
 
         public bool Grabbing = false;
         public Vector2 GrabbingPosition = Vector2.Zero;
@@ -103,17 +104,13 @@ namespace Nobots
             View = Matrix.CreateScale(Conversion.DisplayUnitsToWorldUnitsRatio) * ViewNonScaled;
             Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width / Scale, GraphicsDevice.Viewport.Height / Scale, 0, 0, 1);
 
-            previousMouseState = currentMouseState;
-
-            base.Update(gameTime);
-
-            Vector2 listenerPosition;
             if (Target != null)
-                listenerPosition = Target.Position;
+                ListenerPosition = Target.Position;
             else
-                listenerPosition = Position + new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
+                ListenerPosition = Position + new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
+            scene.ISoundEngine.SetListenerPosition(ListenerPosition.X, ListenerPosition.Y, 0.1f, 0, -1, 0);
 
-            scene.ISoundEngine.SetListenerPosition(listenerPosition.X, listenerPosition.Y, 0.1f, 0, -1, 0);
+            previousMouseState = currentMouseState;
         }
 
         public Vector2 WorldToScreen(Vector2 worldPosition)

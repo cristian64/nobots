@@ -48,7 +48,7 @@ namespace Nobots
             : base(game)
         {
             ISoundEngine = new ISoundEngine();
-            ISoundEngine.SetRolloffFactor(100);
+            ISoundEngine.SetRolloffFactor(0.5f);
             World = new World(new Vector2(0, 13));
             PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);
@@ -191,6 +191,9 @@ namespace Nobots
                     PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, i == SelectionManager.Selection ? Color.Yellow : Color.Blue);
                 foreach (Foreground i in Foregrounds)
                     PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, i == SelectionManager.Selection ? Color.Yellow : Color.Green);
+
+                PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(Camera.ListenerPosition), 30, 30, MathHelper.PiOver4, Color.White);
+
                 SpriteBatch.End();
             }
 
