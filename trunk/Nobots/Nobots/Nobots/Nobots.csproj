@@ -127,6 +127,7 @@
     <Compile Include="Elements\Computer.cs" />
     <Compile Include="Elements\ConveyorBelt.cs" />
     <Compile Include="Elements\Checkpoint.cs" />
+    <Compile Include="Elements\Sound.cs" />
     <Compile Include="Elements\Door.cs" />
     <Compile Include="Elements\ExperimentalTube.cs" />
     <Compile Include="Elements\Crate.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="ParticleSystems\VortexOutParticleSystem.cs" />
     <Compile Include="PrimitiveDrawings.cs" />
     <Compile Include="SceneLoader.cs" />
+    <Compile Include="SceneSound.cs" />
     <Compile Include="SelectionManager.cs" />
     <Compile Include="Elements\Socket.cs" />
     <Compile Include="Elements\ClimbingCharacterState.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="Scene.cs" />
     <Compile Include="Conversion.cs" />
     <Compile Include="Elements\CharacterState.cs" />
+    <Compile Include="Transitioner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
