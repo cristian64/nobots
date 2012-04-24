@@ -114,7 +114,11 @@ namespace Nobots.Elements
             if (isActive)
             {
                 if (isMovingDown)
+                {
                     body.LinearVelocity += Speed * new Vector2(0, 1);
+                    if (body.Position.Y - stomperBase.Position.Y > height * 0.9f)
+                        isMovingDown = false;
+                }
                 else
                 {
                     Vector2 targetPosition = stomperBase.Position;
@@ -137,7 +141,7 @@ namespace Nobots.Elements
                 }
             }
             else
-                body.Position = stomperBase.Position;
+                body.LinearVelocity = Vector2.Zero;
             base.Update(gameTime);
         }
 
