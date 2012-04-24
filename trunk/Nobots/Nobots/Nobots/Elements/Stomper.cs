@@ -14,11 +14,11 @@ namespace Nobots.Elements
     public class Stomper : Element, IActivable
     {
         Body stomperBase;
-        float stomperBaseHeight = 3;
         bool isMovingDown = true;
         public Body body;
         public float Speed = 0.8f;
         Texture2D texture;
+        Texture2D texture2;
 
         private bool isActive = true;
         public bool Active
@@ -45,6 +45,7 @@ namespace Nobots.Elements
             {
                 height = value;
                 createBody();
+                createBaseBody();
             }
         }
 
@@ -73,7 +74,7 @@ namespace Nobots.Elements
             set
             {
                 stomperBase.Position = value;
-                body.Position = stomperBase.Position + new Vector2(0, -stomperBaseHeight/2 + height / 2);
+                body.Position = stomperBase.Position;
                 position = value;
             }
         }
@@ -86,7 +87,6 @@ namespace Nobots.Elements
             }
             set
             {
-                body.Rotation = value;
             }
         }
 
@@ -95,21 +95,18 @@ namespace Nobots.Elements
         {
             ZBuffer = 5f;
             this.position = position;
-            height = stomperBaseHeight;
-            texture = Game.Content.Load<Texture2D>("platform");
+            texture = Game.Content.Load<Texture2D>("stomper1");
+            texture2 = Game.Content.Load<Texture2D>("stomper2");
+            width = Conversion.ToWorld(texture.Width);
+            height = Conversion.ToWorld(texture.Height);
             createBody();
             createBaseBody();
         }
-
 
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             isMovingDown = false;
             return true;
-        }
-
-        protected void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
-        {
         }
 
         public override void Update(GameTime gameTime)
@@ -120,7 +117,7 @@ namespace Nobots.Elements
                     body.LinearVelocity += Speed * new Vector2(0, 1);
                 else
                 {
-                    Vector2 targetPosition = stomperBase.Position + new Vector2(0, -stomperBaseHeight / 2 + height / 2);
+                    Vector2 targetPosition = stomperBase.Position;
                     if (targetPosition != body.Position)
                     {
                         if (Vector2.DistanceSquared(targetPosition, body.Position) > Speed * Speed * gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)
@@ -140,18 +137,17 @@ namespace Nobots.Elements
                 }
             }
             else
-                body.Position = stomperBase.Position + new Vector2(0, -stomperBaseHeight / 2 + height / 2);
+                body.Position = stomperBase.Position;
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;
-            scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)), (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)),
+            scene.SpriteBatch.Draw(texture2, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)), (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)),
                 (int)Conversion.ToDisplay(Width * scale), (int)Conversion.ToDisplay(Height * scale)), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), SpriteEffects.None, 0);
             scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (stomperBase.Position.X - scene.Camera.Position.X)), (int)Conversion.ToDisplay(scale * (stomperBase.Position.Y - scene.Camera.Position.Y)),
-                (int)Conversion.ToDisplay(Width * scale), (int)Conversion.ToDisplay(stomperBaseHeight * scale)), null, Color.White, stomperBase.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), SpriteEffects.None, 0);
-
+                (int)Conversion.ToDisplay(Width * scale), (int)Conversion.ToDisplay(height * scale)), null, Color.White, stomperBase.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), SpriteEffects.None, 0);
         }
 
         private void createBody()
@@ -159,20 +155,17 @@ namespace Nobots.Elements
             if(body != null)
                 body.Dispose();
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
-            // body.Position = new Vector2(1.812996f, 3.583698f);
-            body.Position = position + new Vector2(0,-stomperBaseHeight/2 + height/2);
+            body.Position = position + new Vector2(0, 0);
             body.BodyType = BodyType.Kinematic;
             body.CollidesWith = ElementCategory.FLOOR | ElementCategory.CHARACTER;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-            body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
         }
 
         private void createBaseBody()
         {
             if (stomperBase != null)
                 stomperBase.Dispose();
-            stomperBase = BodyFactory.CreateRectangle(scene.World, Width, stomperBaseHeight, 1.0f);
-            // body.Position = new Vector2(1.812996f, 3.583698f);
+            stomperBase = BodyFactory.CreateRectangle(scene.World, Width, height, 1.0f);
             stomperBase.Position = position;
             stomperBase.BodyType = BodyType.Static;
         }
