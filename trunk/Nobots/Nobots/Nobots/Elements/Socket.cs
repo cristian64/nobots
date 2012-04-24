@@ -27,7 +27,7 @@ namespace Nobots.Elements
                             break;
                         }
                     }
-                Debug.Assert(otherSocket == null, "Socket " + Id + " looked for " + otherSocketId + " but that ID wasn't in the list.");
+
                 return otherSocket;
             }
         }

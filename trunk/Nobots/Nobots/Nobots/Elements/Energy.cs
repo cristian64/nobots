@@ -66,11 +66,14 @@ namespace Nobots.Elements
                         scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
                         scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
                         scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
-                        Position = socket.OtherSocket.Position;
-                        scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
-                        scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
-                        scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
-                        scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
+                        if (socket.OtherSocket != null)
+                        {
+                            Position = socket.OtherSocket.Position;
+                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
+                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
+                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
+                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
+                        }
                         break;
                     }
                 }

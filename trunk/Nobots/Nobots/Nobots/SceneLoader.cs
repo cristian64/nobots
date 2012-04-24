@@ -483,7 +483,7 @@ namespace Nobots
 
         public String ElementToXml(Socket socket)
         {
-            String xml = "<Socket Id=\"" + socket.Id + "\" Position=\"" + socket.Position.X + "," + socket.Position.Y + "\" OtherSocketId=\"" + (socket.OtherSocket != null ? socket.OtherSocket.Id : "") + "\" />";
+            String xml = "<Socket Id=\"" + socket.Id + "\" Position=\"" + socket.Position.X + "," + socket.Position.Y + "\" Rotation=\"" + socket.Rotation + "\" OtherSocketId=\"" + (socket.OtherSocket != null ? socket.OtherSocket.Id : "") + "\" />";
             return xml;
         }
 
