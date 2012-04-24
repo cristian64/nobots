@@ -85,12 +85,7 @@ namespace Nobots.Elements
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
-            ISound sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f);
-            sound.Volume = body.AngularVelocity + body.LinearVelocity.LengthSquared();
-
-            Console.WriteLine(body.LinearVelocity.LengthSquared());
-            Console.WriteLine(body.AngularVelocity);
-
+            scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f);
             return true;
         }
 
