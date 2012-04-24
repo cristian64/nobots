@@ -22,11 +22,11 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
-            changeRunningTextures(gameTime);
+            changeIdleTextures(gameTime);
         }
 
         float seconds = 0;
-        private Vector2 changeRunningTextures(GameTime gameTime)
+        private Vector2 changeIdleTextures(GameTime gameTime)
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
        
