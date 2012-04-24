@@ -697,6 +697,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="stomper1.png">
+      <Name>stomper1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="stomper2.png">
+      <Name>stomper2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="jumpingAir.png">
       <Name>jumpingAir</Name>
       <Importer>TextureImporter</Importer>
