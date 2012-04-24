@@ -12,9 +12,9 @@ namespace Nobots.Elements
         public RunningCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("girl_moving");
-            characterWidth = texture.Width/8;
-            characterHeight = texture.Height/5;
+            texture = scene.Game.Content.Load<Texture2D>("running");//("girl_moving");
+            characterWidth = texture.Width / 10;// 8;
+            characterHeight = texture.Height / 2;///5;
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;
@@ -22,12 +22,13 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
-            changeRunningTextures();
+            changeRunningTextures(gameTime);
         }
 
-        private Vector2 changeRunningTextures()
+        float seconds = 0;
+        private Vector2 changeRunningTextures(GameTime gameTime)
         {
-            textureXmin += texture.Width / 8;
+           /* textureXmin += texture.Width / 8;
 
             if (textureXmin == (texture.Width/8)*5 && textureYmin == (texture.Height/5)*4)
             {
@@ -38,6 +39,24 @@ namespace Nobots.Elements
             {
                 textureXmin = 0;
                 textureYmin += texture.Height / 5;
+            }
+            */
+            seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (seconds > 0.04f)
+            {
+                seconds -= 0.04f;
+                textureXmin += texture.Width / 10;
+
+                if (textureXmin == (texture.Width / 10) * 4 && textureYmin == texture.Height / 2)
+                {
+                    textureXmin = 0;
+                    textureYmin = 0;
+                }
+                else if (textureXmin == texture.Width)
+                {
+                    textureXmin = 0;
+                    textureYmin += texture.Height / 2;
+                }
             }
             return new Vector2(textureXmin, textureYmin);
         }
