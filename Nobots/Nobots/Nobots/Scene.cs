@@ -11,11 +11,13 @@ using Microsoft.Xna.Framework.Input;
 using FarseerPhysics;
 using Nobots.Elements;
 using FarseerPhysics.DebugViews;
+using IrrKlang;
 
 namespace Nobots
 {
     public class Scene : DrawableGameComponent
     {
+        public ISoundEngine ISoundEngine;
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
         public LaserParticleSystem LaserParticleSystem;
         public VortexParticleSystem VortexParticleSystem;
@@ -45,12 +47,14 @@ namespace Nobots
         public Scene(Game game)
             : base(game)
         {
+            ISoundEngine = new ISoundEngine();
+            ISoundEngine.SetRolloffFactor(100);
             World = new World(new Vector2(0, 13));
             PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);
             SelectionManager = new SelectionManager(Game, this);
             SceneLoader = new SceneLoader(Game);
-            Camera = new Camera(Game);
+            Camera = new Camera(Game, this);
             GarbageElements = new SortedList<Element>();
             RespawnElements = new SortedList<Element>();
             Elements = new SortedList<Element>();
