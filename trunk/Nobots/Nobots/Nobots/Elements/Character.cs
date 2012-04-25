@@ -142,7 +142,7 @@ namespace Nobots.Elements
 
         protected bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            if (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null)
+            if (!isTouchingBody && (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null))
             {
                 isTouchingBody = true;
                 touchedBody = fixtureB.Body;
