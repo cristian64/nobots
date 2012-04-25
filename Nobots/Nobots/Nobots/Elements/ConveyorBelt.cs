@@ -227,7 +227,7 @@ namespace Nobots.Elements
             chainLinks = PathManager.EvenlyDistributeShapesAlongPath(world, path, shape, BodyType.Dynamic, numberOfLinks);
 
             //Attach all the chainlinks together with a revolute joint
-            joints = PathManager.AttachBodiesWithRevoluteJoint(world, chainLinks, new Vector2(0, -linkHeight + 0.05f), new Vector2(0, linkHeight - 0.05f), true, false);
+            joints = PathManager.AttachBodiesWithRevoluteJoint(world, chainLinks, new Vector2(0, -linkHeight), new Vector2(0, linkHeight), true, false);
         }
 
         public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
