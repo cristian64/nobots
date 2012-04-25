@@ -62,9 +62,9 @@ namespace Nobots.Elements
         {
             character.touchedBodyFriction = character.touchedBody.Friction;
             character.touchedBodyMass = character.touchedBody.Mass;
-            character.touchedBody.Friction = 0.0f;
-            character.touchedBody.Mass = 0.0f;
-            character.sliderJoint = new SliderJoint(character.torso, character.touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBody.Position));
+            character.touchedBody.Friction = 0;
+            character.touchedBody.Mass = 100;
+            character.sliderJoint = new SliderJoint(character.torso, character.touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBody.Position) + 0.2f);
             character.sliderJoint.CollideConnected = true;
             scene.World.AddJoint(character.sliderJoint);
         }
@@ -77,6 +77,10 @@ namespace Nobots.Elements
                 character.touchedBody.Friction = character.touchedBodyFriction;
                 character.touchedBody.Mass = character.touchedBodyMass;
             }
+
+            character.body.FixedRotation = true;
+            character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
+            character.body.AngularVelocity = 0;
         }
 
         public override void BActionStart()
@@ -98,8 +102,7 @@ namespace Nobots.Elements
                 (character.touchedBody.UserData is IPullable && character.Position.X > character.touchedBody.Position.X)))
             {
                 character.body.FixedRotation = false;
-                character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-                character.body.AngularVelocity = 50;
+                character.torso.LinearVelocity = new Vector2(2, character.torso.LinearVelocity.Y);
                 character.Effect = SpriteEffects.None;
             }
         }
@@ -110,8 +113,7 @@ namespace Nobots.Elements
                 (character.touchedBody.UserData is IPullable && character.Position.X < character.touchedBody.Position.X)))
             {
                 character.body.FixedRotation = false;
-                character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
-                character.body.AngularVelocity = -50;
+                character.torso.LinearVelocity = new Vector2(-2, character.torso.LinearVelocity.Y);
                 character.Effect = SpriteEffects.FlipHorizontally;
             }
         }
@@ -121,6 +123,8 @@ namespace Nobots.Elements
             character.body.FixedRotation = true;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.AngularVelocity = 0;
+            if (character.touchedBody != null)
+                character.touchedBody.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
         }
 
         public override void LeftActionStop()
@@ -128,6 +132,8 @@ namespace Nobots.Elements
             character.body.FixedRotation = true;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.AngularVelocity = 0;
+            if (character.touchedBody != null)
+                character.touchedBody.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
         }
     }
 }
