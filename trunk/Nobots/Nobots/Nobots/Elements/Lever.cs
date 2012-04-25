@@ -72,8 +72,7 @@ namespace Nobots.Elements
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 100f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
-            body.CollidesWith = Category.None | ElementCategory.CHARACTER | ElementCategory.FLOOR;
-            body.Mass = 50f;
+            body.CollidesWith = Category.None | ElementCategory.FLOOR;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.UserData = this;
         }
