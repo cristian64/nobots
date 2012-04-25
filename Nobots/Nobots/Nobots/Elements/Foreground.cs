@@ -21,7 +21,7 @@ namespace Nobots.Elements
                 textureName = value;
                 try
                 {
-                    Texture = Game.Content.Load<Texture2D>(value);
+                    Texture = Game.Content.Load<Texture2D>("backgrounds\\" + value);
                 }
                 catch (Exception)
                 {

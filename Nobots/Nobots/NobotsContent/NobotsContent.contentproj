@@ -42,7 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="background.png">
+    <Compile Include="backgrounds\background.png">
       <Name>background</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -131,7 +131,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tree.png">
+    <Compile Include="backgrounds\tree.png">
       <Name>tree</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -204,28 +204,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="background1.png">
-      <Name>background1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="background2.png">
-      <Name>background2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="background3.png">
-      <Name>background3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="background4.png">
-      <Name>background4</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="platform.png">
       <Name>platform</Name>
       <Importer>TextureImporter</Importer>
@@ -252,7 +230,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="wires.png">
+    <Compile Include="backgrounds\wires.png">
       <Name>wires</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -657,7 +635,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="backgrounds\" />
     <Folder Include="sounds\ui\" />
   </ItemGroup>
   <ItemGroup>
@@ -718,6 +695,28 @@
   <ItemGroup>
     <Compile Include="jumpingStart.png">
       <Name>jumpingStart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="backgrounds\background1.png">
+      <Name>background1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="backgrounds\background2.png">
+      <Name>background2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="backgrounds\background3.png">
+      <Name>background3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="backgrounds\background4.png">
+      <Name>background4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
