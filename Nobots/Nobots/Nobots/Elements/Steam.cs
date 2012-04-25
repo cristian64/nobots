@@ -17,7 +17,6 @@ namespace Nobots.Elements
         public Body body;
         public Vector2 InitialPosition;
         public Vector2 FinalPosition;
-        ExplosionSmokeParticleSystem explosionSmokeParticleSystem;
         public float Speed = 1f;
         float delay = 0f;
         Random random = new Random();
@@ -108,7 +107,7 @@ namespace Nobots.Elements
                     seconds -= delay;
                     for (int i = 0; i < 8; i++)
                     {
-                        scene.smoke.AddParticle(Position + new Vector2(0, height/2), -new Vector2(0,3));
+                        scene.SteamParticleSystem.AddParticle(Position + new Vector2(0, height/2), Vector2.Zero);
                     }
                 }
             }

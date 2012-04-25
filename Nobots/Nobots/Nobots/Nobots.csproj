@@ -151,6 +151,7 @@
     <Compile Include="InputManager.cs" />
     <Compile Include="Elements\IPullable.cs" />
     <Compile Include="Elements\IPushable.cs" />
+    <Compile Include="ParticleSystems\SteamParticleSystem.cs" />
     <Compile Include="ParticleSystems\VortexOutParticleSystem.cs" />
     <Compile Include="PrimitiveDrawings.cs" />
     <Compile Include="SceneLoader.cs" />
