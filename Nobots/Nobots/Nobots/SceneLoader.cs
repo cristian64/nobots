@@ -116,6 +116,9 @@ namespace Nobots
                 case "Stomper":
                     e = new Stomper(Game, scene, Vector2.Zero);
                     break;
+                case "Steam":
+                    e = new Steam(Game, scene, Vector2.Zero);
+                    break;
                 case "Door":
                     e = new Door(Game, scene, Vector2.Zero);
                     break;
@@ -262,6 +265,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Box)i) + "\n";
                 else if (i as Stomper != null)
                     xml += "        " + ElementToXml((Stomper)i) + "\n";
+                else if (i as Steam != null)
+                    xml += "        " + ElementToXml((Steam)i) + "\n";
                 else if (i as Door != null)
                     xml += "        " + ElementToXml((Door)i) + "\n";
                 else if (i as Crate != null)
@@ -343,6 +348,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Steam steam)
+        {
+            String xml = "<Steam Id=\"" + steam.Id + "\" Position=\"" + steam.Position.X + "," + steam.Position.Y + "\" Rotation=\"" + steam.Rotation + "\" />";
             return xml;
         }
 
