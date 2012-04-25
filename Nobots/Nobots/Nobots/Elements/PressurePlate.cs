@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
+using FarseerPhysics.Common;
 
 namespace Nobots.Elements
 {
@@ -70,8 +71,13 @@ namespace Nobots.Elements
         {
             ZBuffer = -7f;
             texture = Game.Content.Load<Texture2D>("weight");
-            Height = Conversion.ToWorld(19.0f);
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Height, 150f);
+            Height = Conversion.ToWorld(17f);
+            Vertices vertices = new Vertices(4);
+            vertices.Add(new Vector2(-Conversion.ToWorld(texture.Width) / 2 + 0.4f, -height / 2));
+            vertices.Add(new Vector2(Conversion.ToWorld(texture.Width) / 2 - 0.4f, -height / 2));
+            vertices.Add(new Vector2(Conversion.ToWorld(texture.Width) / 2, height / 2));
+            vertices.Add(new Vector2(-Conversion.ToWorld(texture.Width) / 2, height / 2));
+            body = BodyFactory.CreateLoopShape(scene.World, vertices);
             body.Position = position;// +new Vector2(0, Height * 3 / 4);
             body.BodyType = BodyType.Static;
             body.Rotation = 0.0f;
