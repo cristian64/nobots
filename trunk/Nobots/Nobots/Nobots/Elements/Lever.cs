@@ -73,6 +73,7 @@ namespace Nobots.Elements
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
             body.CollidesWith = Category.None | ElementCategory.CHARACTER | ElementCategory.FLOOR;
+            body.Mass = 50f;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.UserData = this;
         }

@@ -33,29 +33,29 @@ namespace Nobots.ParticleSystem
         {
             settings.TextureName = "smoke";
 
-            settings.MaxParticles = 600;
+            settings.MaxParticles = 10000;
 
-            settings.Duration = TimeSpan.FromSeconds(10);
+            settings.Duration = TimeSpan.FromSeconds(1);
 
             settings.MinHorizontalVelocity = 0;
-            settings.MaxHorizontalVelocity = 0.3f;
+            settings.MaxHorizontalVelocity = 0.1f;
 
-            settings.MinVerticalVelocity = 0.6f;
-            settings.MaxVerticalVelocity = 1;
+            settings.MinVerticalVelocity = -0.5f;
+            settings.MaxVerticalVelocity = -0.2f;
 
             // Create a wind effect by tilting the gravity vector sideways.
-            settings.Gravity = new Vector3(-1, -0.4f, 0);
+            settings.Gravity = Vector3.Zero;
 
             settings.EndVelocity = 0.75f;
 
             settings.MinRotateSpeed = -1;
             settings.MaxRotateSpeed = 1;
 
-            settings.MinStartSize = 0.1f;
-            settings.MaxStartSize = 0.5f;
+            settings.MinStartSize = 15f;
+            settings.MaxStartSize = 50f;
 
-            settings.MinEndSize = 1;
-            settings.MaxEndSize = 2;
+            settings.MinEndSize = 100f;
+            settings.MaxEndSize = 110;
         }
     }
 }
