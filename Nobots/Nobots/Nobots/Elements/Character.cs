@@ -245,7 +245,19 @@ namespace Nobots.Elements
 
         public virtual void XActionStart()
         {
-            State.XActionStart();
+            foreach (Element i in scene.Elements)
+            {
+                Lever lever = i as Lever;
+                if (lever != null)
+                {
+                    if (IsTouchingElement(i))
+                    {
+                        if (lever.ActivableElement != null)
+                            lever.ActivableElement.Active = !lever.ActivableElement.Active;
+                        break;
+                    }
+                }
+            }
         }
 
         public virtual void XAction()
