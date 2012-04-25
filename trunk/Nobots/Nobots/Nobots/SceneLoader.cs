@@ -458,7 +458,7 @@ namespace Nobots
 
         public String ElementToXml(ConveyorBelt cBelt)
         {
-            String xml = "<ConveyorBelt Id=\"" + cBelt.Id + "\" Position=\"" + cBelt.Position.X + "," + cBelt.Position.Y + "\" Width=\"" + cBelt.Width + "\" Height=\"" + cBelt.Height + "\" AngularSpeed=\"" + cBelt.AngularSpeed + "\" RotorsNumber=\"" + cBelt.RotorsNumber + "\" LinksNumber=\"" + cBelt.LinksNumber + "\" LinkWidth=\"" + cBelt.LinkWidth + "\" LinkHeight=\"" + cBelt.LinkHeight + "\" />";
+            String xml = "<ConveyorBelt Id=\"" + cBelt.Id + "\" Position=\"" + cBelt.Position.X + "," + cBelt.Position.Y + "\" Width=\"" + cBelt.Width + "\" Height=\"" + cBelt.Height + "\" AngularSpeed=\"" + cBelt.AngularSpeed + "\" RotorsNumber=\"" + cBelt.RotorsNumber + "\" LinksNumber=\"" + cBelt.LinksNumber + "\" LinkWidth=\"" + cBelt.LinkWidth + "\" LinkHeight=\"" + cBelt.LinkHeight + "\" Active=\"" + cBelt.Active + "\" />";
             return xml;
         }
 

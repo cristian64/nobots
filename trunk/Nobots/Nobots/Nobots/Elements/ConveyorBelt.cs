@@ -13,7 +13,7 @@ using System.Collections;
 
 namespace Nobots.Elements
 {
-    public class ConveyorBelt : Element
+    public class ConveyorBelt : Element, IActivable
     {
         Texture2D circleTexture;
         Texture2D chainTexture;
@@ -26,7 +26,7 @@ namespace Nobots.Elements
         private float width = 5.0f;
         private float rotation = 0.0f;
         private int linksNumber = 25;
-        private float linkWidth = 0.05f;
+        private float linkWidth = 0.15f;
         private float linkHeight = 0.25f;
         private float angularSpeed = 1;
 
@@ -56,8 +56,9 @@ namespace Nobots.Elements
             set
             {
                 angularSpeed = value;
-                foreach (Body i in rotors)
-                    i.AngularVelocity = angularSpeed;
+                if (isActive)
+                    foreach (Body i in rotors)
+                        i.AngularVelocity = angularSpeed;
             }
         }
 
@@ -78,6 +79,21 @@ namespace Nobots.Elements
             {
                 rotorsNumber = value;
                 createBody(Position);
+            }
+        }
+
+        private bool isActive = true;
+        public bool Active
+        {
+            get
+            {
+                return isActive;
+            }
+            set
+            {
+                isActive = value;
+                foreach (Body i in rotors)
+                    i.AngularVelocity = isActive ? angularSpeed : 0;
             }
         }
 
@@ -179,7 +195,8 @@ namespace Nobots.Elements
                 Body rotor = BodyFactory.CreateCircle(scene.World, radius, float.MaxValue);
                 rotor.BodyType = BodyType.Kinematic;
                 rotor.Friction = float.MaxValue;
-                rotor.AngularVelocity = AngularSpeed;
+                if (isActive)
+                    rotor.AngularVelocity = AngularSpeed;
                 rotor.Position = position + new Vector2(-width / 2 + i * (width / (rotorsNumber - 1)), 0);
                 rotors.Add(rotor);
             }
@@ -210,7 +227,7 @@ namespace Nobots.Elements
             chainLinks = PathManager.EvenlyDistributeShapesAlongPath(world, path, shape, BodyType.Dynamic, numberOfLinks);
 
             //Attach all the chainlinks together with a revolute joint
-            joints = PathManager.AttachBodiesWithRevoluteJoint(world, chainLinks, new Vector2(0, -linkHeight), new Vector2(0, linkHeight), true, false);
+            joints = PathManager.AttachBodiesWithRevoluteJoint(world, chainLinks, new Vector2(0, -linkHeight + 0.05f), new Vector2(0, linkHeight - 0.05f), true, false);
         }
 
         public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
