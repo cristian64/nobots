@@ -15,7 +15,6 @@ namespace Nobots.Elements
     {
         Body body;
         Texture2D texture;
-        float offset;
         int collisionsNumber = 0;
 
         public override float Width
@@ -77,19 +76,15 @@ namespace Nobots.Elements
             vertices.Add(new Vector2(Conversion.ToWorld(texture.Width) / 2 - 0.4f, -height / 2));
             vertices.Add(new Vector2(Conversion.ToWorld(texture.Width) / 2, height / 2));
             vertices.Add(new Vector2(-Conversion.ToWorld(texture.Width) / 2, height / 2));
-            body = BodyFactory.CreateLoopShape(scene.World, vertices);
-            body.Position = position;// +new Vector2(0, Height * 3 / 4);
+            body = BodyFactory.CreatePolygon(scene.World, vertices, 100.0f);
+            body.Position = position;
             body.BodyType = BodyType.Static;
-            body.Rotation = 0.0f;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
-            offset = Height * 3 / 4;
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
-           // Height = Conversion.ToWorld(texture.Height);
-            //offset = Height * 3 / 4;
             if (ActivableElement != null && collisionsNumber == 1)
                 ActivableElement.Active = false;
             collisionsNumber--;
@@ -97,8 +92,6 @@ namespace Nobots.Elements
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            //Height = Conversion.ToWorld(texture.Height / 4);    
-            //offset = Height * 3 / 2;
             if(ActivableElement != null && collisionsNumber == 0)
                 ActivableElement.Active = true;
             collisionsNumber++;

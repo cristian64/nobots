@@ -12,6 +12,10 @@ namespace Nobots.Elements
 {
     class GrabbingCharacterState : CharacterState
     {
+        private float touchedBodyMass;
+        private float touchedBodyFriction;
+        private SliderJoint sliderJoint;
+
         public GrabbingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
@@ -60,22 +64,22 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
-            character.touchedBodyFriction = character.touchedBody.Friction;
-            character.touchedBodyMass = character.touchedBody.Mass;
+            touchedBodyFriction = character.touchedBody.Friction;
+            touchedBodyMass = character.touchedBody.Mass;
             character.touchedBody.Friction = 0;
             character.touchedBody.Mass = 100;
-            character.sliderJoint = new SliderJoint(character.torso, character.touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBody.Position) + 0.2f);
-            character.sliderJoint.CollideConnected = true;
-            scene.World.AddJoint(character.sliderJoint);
+            sliderJoint = new SliderJoint(character.torso, character.touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, character.touchedBody.Position));
+            sliderJoint.CollideConnected = true;
+            scene.World.AddJoint(sliderJoint);
         }
 
         public override void Exit()
         {
-            scene.World.RemoveJoint(character.sliderJoint);
+            scene.World.RemoveJoint(sliderJoint);
             if (character.touchedBody != null)
             {
-                character.touchedBody.Friction = character.touchedBodyFriction;
-                character.touchedBody.Mass = character.touchedBodyMass;
+                character.touchedBody.Friction = touchedBodyFriction;
+                character.touchedBody.Mass = touchedBodyMass;
             }
 
             character.body.FixedRotation = true;

@@ -79,7 +79,7 @@ namespace Nobots.Elements
 
         public override void BActionStart()
         {
-            if (character.isTouchingBody && !scene.World.JointList.Contains(character.sliderJoint))
+            if (character.touchedBody != null)
             {
                 character.State = new GrabbingCharacterState(scene, character);
                 character.State.BActionStart();
