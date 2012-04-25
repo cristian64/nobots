@@ -19,7 +19,8 @@ namespace Nobots
     {
         public ISoundEngine ISoundEngine;
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
-        public SmokePlumeParticleSystem smoke;
+        public SmokePlumeParticleSystem SmokePlumeParticleSystem;
+        public SteamParticleSystem SteamParticleSystem;
         public LaserParticleSystem LaserParticleSystem;
         public VortexParticleSystem VortexParticleSystem;
         public VortexOutParticleSystem VortexOutParticleSystem;
@@ -68,7 +69,8 @@ namespace Nobots
             base.Initialize();
 
             PlasmaExplosionParticleSystem = new PlasmaExplosionParticleSystem(Game, this);
-            smoke = new SmokePlumeParticleSystem(Game, this);
+            SmokePlumeParticleSystem = new SmokePlumeParticleSystem(Game, this);
+            SteamParticleSystem = new SteamParticleSystem(Game, this);
             LaserParticleSystem = new LaserParticleSystem(Game, this);
             VortexParticleSystem = new VortexParticleSystem(Game, this);
             VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
@@ -118,7 +120,8 @@ namespace Nobots
             GarbageElements.Clear();
 
             PlasmaExplosionParticleSystem.Update(gameTime);
-            smoke.Update(gameTime);
+            SmokePlumeParticleSystem.Update(gameTime);
+            SteamParticleSystem.Update(gameTime);
             LaserParticleSystem.Update(gameTime);
             VortexParticleSystem.Update(gameTime);
             VortexOutParticleSystem.Update(gameTime);
@@ -212,7 +215,8 @@ namespace Nobots
             foreach (Element i in Elements)
                 i.Draw(gameTime);
             PlasmaExplosionParticleSystem.Draw(gameTime);
-            smoke.Draw(gameTime);
+            SmokePlumeParticleSystem.Draw(gameTime);
+            SteamParticleSystem.Draw(gameTime);
             LaserParticleSystem.Draw(gameTime);
             VortexParticleSystem.Draw(gameTime);
             VortexOutParticleSystem.Draw(gameTime);
