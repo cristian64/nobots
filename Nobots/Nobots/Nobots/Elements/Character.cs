@@ -21,11 +21,7 @@ namespace Nobots.Elements
         public RevoluteJoint revoluteJoint;
         public SpriteEffects Effect;
 
-        public bool isTouchingBody;
         public Body touchedBody;
-        public float touchedBodyMass;
-        public float touchedBodyFriction;
-        public SliderJoint sliderJoint;
 
         public Ladder Ladder;
         float height, width;
@@ -137,14 +133,16 @@ namespace Nobots.Elements
         protected void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             if (fixtureB.Body == touchedBody)
-                isTouchingBody = false;
+            {
+                State = new IdleCharacterState(scene, this);
+                touchedBody = null;
+            }
         }
 
         protected bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            if (!isTouchingBody && (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null))
+            if (touchedBody == null && (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null))
             {
-                isTouchingBody = true;
                 touchedBody = fixtureB.Body;
             }
 
