@@ -18,7 +18,7 @@ namespace Nobots.Elements
         public Vector2 InitialPosition;
         public Vector2 FinalPosition;
         public float Speed = 1f;
-        float delay = 0f;
+        float delay = 3f;
         Random random = new Random();
 
         private bool isActive = true;
@@ -104,11 +104,11 @@ namespace Nobots.Elements
                 seconds +=(float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (seconds > delay)
                 {
-                    seconds -= delay;
-                    for (int i = 0; i < 8; i++)
-                    {
-                        scene.SteamParticleSystem.AddParticle(Position + new Vector2(0, height/2), Vector2.Zero);
-                    }
+                    if (seconds < delay * 2)
+                        for (int i = 0; i < 8; i++)
+                            scene.SteamParticleSystem.AddParticle(Position + new Vector2(0, height / 2), Vector2.Zero);
+                    else
+                        seconds -= 2 * delay;
                 }
             }
             base.Update(gameTime);
