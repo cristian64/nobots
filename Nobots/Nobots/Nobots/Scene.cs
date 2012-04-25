@@ -18,6 +18,7 @@ namespace Nobots
     public class Scene : DrawableGameComponent
     {
         public ISoundEngine ISoundEngine;
+        public AmbienceSound AmbienceSound;
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
         public SmokePlumeParticleSystem SmokePlumeParticleSystem;
         public SteamParticleSystem SteamParticleSystem;
@@ -51,6 +52,7 @@ namespace Nobots
         {
             ISoundEngine = new ISoundEngine();
             ISoundEngine.SetRolloffFactor(0.5f);
+            AmbienceSound = new AmbienceSound(Game, this);
             World = new World(new Vector2(0, 13));
             PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);
@@ -128,6 +130,7 @@ namespace Nobots
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             InputManager.Update(gameTime);
+            AmbienceSound.Update(gameTime);
             foreach (Background i in Backgrounds)
                 i.Update(gameTime);
             foreach (Element i in Elements)
