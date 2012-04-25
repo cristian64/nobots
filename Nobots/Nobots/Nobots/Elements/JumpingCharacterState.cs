@@ -69,6 +69,7 @@ namespace Nobots.Elements
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
+            Console.WriteLine("ContactsNumber: " + character.contactsNumber);
             if (character.contactsNumber > 0)
                 character.State = new IdleCharacterState(scene, character);
             return true;

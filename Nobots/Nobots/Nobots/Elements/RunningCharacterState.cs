@@ -28,19 +28,6 @@ namespace Nobots.Elements
         float seconds = 0;
         private Vector2 changeRunningTextures(GameTime gameTime)
         {
-           /* textureXmin += texture.Width / 8;
-
-            if (textureXmin == (texture.Width/8)*5 && textureYmin == (texture.Height/5)*4)
-            {
-                textureXmin = 0;
-                textureYmin = 0;
-            }
-            else if (textureXmin == texture.Width)
-            {
-                textureXmin = 0;
-                textureYmin += texture.Height / 5;
-            }
-            */
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (seconds > 0.04f)
             {

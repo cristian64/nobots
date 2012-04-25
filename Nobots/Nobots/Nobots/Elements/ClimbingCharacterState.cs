@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Contacts;
+using Microsoft.Xna.Framework.Input;
 
 namespace Nobots.Elements
 {
@@ -14,9 +15,9 @@ namespace Nobots.Elements
         public ClimbingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("idle");
-            characterWidth = texture.Width / 10;
-            characterHeight = texture.Height / 2;
+            texture = scene.Game.Content.Load<Texture2D>("climbing");
+            characterWidth = texture.Width / 7;
+            characterHeight = texture.Height;
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;
@@ -32,26 +33,13 @@ namespace Nobots.Elements
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (seconds > 0.04f)
+            if (seconds > 0.08f  && (Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down)))
             {
-                seconds -= 0.04f;
-                textureXmin += texture.Width / 10;
+                seconds -= 0.08f;
+                textureXmin += texture.Width / 7;
 
-                if (textureXmin == (texture.Width / 10) * 5 && textureYmin == texture.Height / 2)
-                {
+                if (textureXmin == texture.Width)
                     textureXmin = 0;
-                    textureYmin = 0;
-                }
-                else if (textureXmin == texture.Width)
-                {
-                    textureXmin = 0;
-                    textureYmin += texture.Height / 2;
-                }
-            }
-            if (textureYmin == 0 && textureXmin == texture.Width / 10)
-            {
-                seconds -= 4f; ;
-                textureXmin = (texture.Width / 10 * 2);
             }
 
             return new Vector2(textureXmin, textureYmin);
