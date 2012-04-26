@@ -9,7 +9,8 @@ namespace Nobots.Elements
 {
     class ComaCharacterState : CharacterState
     {
-        public ComaCharacterState(Scene scene, Character character) 
+        Vector2? energyPosition = null;
+        public ComaCharacterState(Scene scene, Character character, Vector2? energyPosition = null) 
             : base(scene, character)
         {
             texture = scene.Game.Content.Load<Texture2D>("idle");
@@ -18,6 +19,8 @@ namespace Nobots.Elements
             characterHeight = texture.Height / 2;
             textureXmin = 0;
             textureYmin = characterHeight;
+
+            this.energyPosition = energyPosition;
         }
 
         public override void Exit()
@@ -31,14 +34,14 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
-            Energy energy = new Energy(scene.Game, scene, character.Position);
+            Energy energy = new Energy(scene.Game, scene, energyPosition != null ? (Vector2)energyPosition : character.Position);
             character.torso.FixedRotation = false;
             if(character.Effect == SpriteEffects.None)
                 character.torso.ApplyForce(new Vector2(-10, 0));
             else
                 character.torso.ApplyForce(new Vector2(10, 0));
             character.torso.Friction = 100f;
-            energy.Position = character.Position;
+            energy.Position = energyPosition != null ? (Vector2)energyPosition : character.Position;
             scene.InputManager.Character = energy;
             scene.Camera.Target = energy;
             scene.RespawnElements.Add(energy);
