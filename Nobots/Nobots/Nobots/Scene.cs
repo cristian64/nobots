@@ -137,7 +137,11 @@ namespace Nobots
             SceneLoader.Update(gameTime, this);
 
             foreach (Element i in GarbageElements)
+            {
                 Elements.Remove(i);
+                i.Dispose();
+            }
+            
             GarbageElements.Clear();
 
             PlasmaExplosionParticleSystem.Update(gameTime);
