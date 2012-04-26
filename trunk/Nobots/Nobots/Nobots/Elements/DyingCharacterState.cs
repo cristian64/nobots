@@ -10,13 +10,21 @@ namespace Nobots.Elements
     class DyingCharacterState : CharacterState
     {
         float totalSeconds = 0;
+        int columns = 0;
+        int rows = 0;
+        int framesInLastRow = 0;
+        bool dead = false;
+        bool animating = true;
 
         public DyingCharacterState(Scene scene, Character character) 
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("idle");
-            characterWidth = texture.Width / 10;
-            characterHeight = texture.Height / 2;
+            texture = scene.Game.Content.Load<Texture2D>("dying");
+            columns = 7;
+            rows = 2;
+            framesInLastRow = 5;
+            characterWidth = texture.Width / columns;
+            characterHeight = texture.Height / rows;
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;
@@ -25,11 +33,29 @@ namespace Nobots.Elements
         public override void Update(GameTime gameTime)
         {
             totalSeconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            changeIdleTextures(gameTime);
-            if(totalSeconds > 2)
-                character.State = new DeadCharacterState(scene, character);
-        }
+            if (animating)
+                changeIdleTextures(gameTime);
+            if (totalSeconds > 5 && !dead)
+            {
+                //TODO: this should be a method in Scene
+                //save the last checkpoint position in a Vector2
+                // reload everything in the scene
+                // move the character to that checkpoint position
 
+                foreach (Element i in scene.Elements)
+                {
+                    if (i is Checkpoint && ((Checkpoint)i).Active)
+                    {
+                        Character character = new Character(scene.Game, scene, i.Position);
+                        scene.RespawnElements.Add(character);
+                        scene.Camera.Target = scene.InputManager.Character = character;
+                        break;
+                    }
+                }
+
+                dead = true;
+            }
+        }
         float seconds = 0;
         private Vector2 changeIdleTextures(GameTime gameTime)
         {
@@ -38,23 +64,17 @@ namespace Nobots.Elements
             if (seconds > 0.04f)
             {
                 seconds -= 0.04f;
-                textureXmin += texture.Width / 10;
+                textureXmin += texture.Width / columns;
 
-                if (textureXmin == (texture.Width / 10) * 5 && textureYmin == texture.Height / 2)
+                if (textureXmin == (texture.Width / columns) * framesInLastRow && textureYmin == texture.Height / rows)
                 {
-                    textureXmin = 0;
-                    textureYmin = 0;
+                    animating = false;
                 }
                 else if (textureXmin == texture.Width)
                 {
                     textureXmin = 0;
-                    textureYmin += texture.Height / 2;
+                    textureYmin += texture.Height / rows;
                 }
-            }
-            if (textureYmin == 0 && textureXmin == texture.Width / 10)
-            {
-                seconds -= 4f; ;
-                textureXmin = (texture.Width / 10 * 2);
             }
 
             return new Vector2(textureXmin, textureYmin);
@@ -62,7 +82,7 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
-            Console.WriteLine("DyingCharacterState");
+            character.torso.IsSensor = true;
             character.body.FixedRotation = true;
             character.body.AngularVelocity = 0;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
