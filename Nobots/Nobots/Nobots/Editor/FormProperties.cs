@@ -145,6 +145,8 @@ namespace Nobots.Editor
             {
                 flowLayoutPanelSoundName.Visible = true;
                 textBoxSoundName.Text = ((Sound)selection).SoundName;
+                flowLayoutPanelVolume.Visible = true;
+                numericUpDownVolume.Value = (decimal)((Sound)selection).Volume;
             }
         }
 
@@ -174,6 +176,7 @@ namespace Nobots.Editor
             flowLayoutPanelTextureName.Visible = false;
             flowLayoutPanelNextLevel.Visible = false;
             flowLayoutPanelSoundName.Visible = false;
+            flowLayoutPanelVolume.Visible = false;
             flowLayoutPanelAcceleration.Visible = false;
             flowLayoutPanelColor.Visible = false;
         }
@@ -412,6 +415,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((Sound)selectionEvents).SoundName = textBoxSoundName.Text;
+        }
+
+        private void numericUpDownVolume_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Sound)selectionEvents).Volume = (float)numericUpDownVolume.Value;
         }
     }
 }
