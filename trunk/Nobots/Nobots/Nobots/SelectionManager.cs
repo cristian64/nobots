@@ -132,6 +132,9 @@ namespace Nobots
                     case "Steam":
                         element = new Steam(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Spikes":
+                        element = new Spikes(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Stomper":
                         element = new Stomper(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

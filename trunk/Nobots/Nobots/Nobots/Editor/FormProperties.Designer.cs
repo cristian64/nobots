@@ -49,6 +49,9 @@
             this.flowLayoutPanelTextureName = new System.Windows.Forms.FlowLayoutPanel();
             this.labelTextureName = new System.Windows.Forms.Label();
             this.textBoxTextureName = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelScale = new System.Windows.Forms.Label();
+            this.numericUpDownScale = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanelSpeed = new System.Windows.Forms.FlowLayoutPanel();
             this.labelSpeed = new System.Windows.Forms.Label();
             this.numericUpDownSpeedX = new System.Windows.Forms.NumericUpDown();
@@ -107,9 +110,6 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelScale = new System.Windows.Forms.Label();
-            this.numericUpDownScale = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -122,6 +122,8 @@
             this.flowLayoutPanelRotation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotation)).BeginInit();
             this.flowLayoutPanelTextureName.SuspendLayout();
+            this.flowLayoutPanelScale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScale)).BeginInit();
             this.flowLayoutPanelSpeed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedY)).BeginInit();
@@ -153,8 +155,6 @@
             this.flowLayoutPanelSoundName.SuspendLayout();
             this.flowLayoutPanelVolume.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVolume)).BeginInit();
-            this.flowLayoutPanelScale.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScale)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -466,6 +466,55 @@
             this.textBoxTextureName.Size = new System.Drawing.Size(160, 20);
             this.textBoxTextureName.TabIndex = 1;
             this.textBoxTextureName.TextChanged += new System.EventHandler(this.textBoxTextureName_TextChanged);
+            // 
+            // flowLayoutPanelScale
+            // 
+            this.flowLayoutPanelScale.Controls.Add(this.labelScale);
+            this.flowLayoutPanelScale.Controls.Add(this.numericUpDownScale);
+            this.flowLayoutPanelScale.Location = new System.Drawing.Point(0, 198);
+            this.flowLayoutPanelScale.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelScale.Name = "flowLayoutPanelScale";
+            this.flowLayoutPanelScale.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelScale.TabIndex = 26;
+            this.flowLayoutPanelScale.Visible = false;
+            // 
+            // labelScale
+            // 
+            this.labelScale.Location = new System.Drawing.Point(3, 0);
+            this.labelScale.Name = "labelScale";
+            this.labelScale.Size = new System.Drawing.Size(73, 23);
+            this.labelScale.TabIndex = 4;
+            this.labelScale.Text = "Scale";
+            this.labelScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownScale
+            // 
+            this.numericUpDownScale.DecimalPlaces = 6;
+            this.numericUpDownScale.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownScale.Location = new System.Drawing.Point(82, 3);
+            this.numericUpDownScale.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numericUpDownScale.Minimum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            -2147483648});
+            this.numericUpDownScale.Name = "numericUpDownScale";
+            this.numericUpDownScale.Size = new System.Drawing.Size(160, 20);
+            this.numericUpDownScale.TabIndex = 5;
+            this.numericUpDownScale.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownScale.ValueChanged += new System.EventHandler(this.numericUpDownScale_ValueChanged);
             // 
             // flowLayoutPanelSpeed
             // 
@@ -1256,6 +1305,7 @@
             "Stomper",
             "Door",
             "Steam",
+            "Spikes",
             "---------------",
             "Sound"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
@@ -1283,55 +1333,6 @@
             this.checkBoxShowEmblems.Text = "Show emblems";
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
-            // 
-            // flowLayoutPanelScale
-            // 
-            this.flowLayoutPanelScale.Controls.Add(this.labelScale);
-            this.flowLayoutPanelScale.Controls.Add(this.numericUpDownScale);
-            this.flowLayoutPanelScale.Location = new System.Drawing.Point(0, 198);
-            this.flowLayoutPanelScale.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelScale.Name = "flowLayoutPanelScale";
-            this.flowLayoutPanelScale.Size = new System.Drawing.Size(247, 29);
-            this.flowLayoutPanelScale.TabIndex = 26;
-            this.flowLayoutPanelScale.Visible = false;
-            // 
-            // labelScale
-            // 
-            this.labelScale.Location = new System.Drawing.Point(3, 0);
-            this.labelScale.Name = "labelScale";
-            this.labelScale.Size = new System.Drawing.Size(73, 23);
-            this.labelScale.TabIndex = 4;
-            this.labelScale.Text = "Scale";
-            this.labelScale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // numericUpDownScale
-            // 
-            this.numericUpDownScale.DecimalPlaces = 6;
-            this.numericUpDownScale.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDownScale.Location = new System.Drawing.Point(82, 3);
-            this.numericUpDownScale.Maximum = new decimal(new int[] {
-            -1981284353,
-            -1966660860,
-            0,
-            0});
-            this.numericUpDownScale.Minimum = new decimal(new int[] {
-            -1981284353,
-            -1966660860,
-            0,
-            -2147483648});
-            this.numericUpDownScale.Name = "numericUpDownScale";
-            this.numericUpDownScale.Size = new System.Drawing.Size(160, 20);
-            this.numericUpDownScale.TabIndex = 5;
-            this.numericUpDownScale.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownScale.ValueChanged += new System.EventHandler(this.numericUpDownScale_ValueChanged);
             // 
             // FormProperties
             // 
@@ -1362,6 +1363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotation)).EndInit();
             this.flowLayoutPanelTextureName.ResumeLayout(false);
             this.flowLayoutPanelTextureName.PerformLayout();
+            this.flowLayoutPanelScale.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScale)).EndInit();
             this.flowLayoutPanelSpeed.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedY)).EndInit();
@@ -1398,8 +1401,6 @@
             this.flowLayoutPanelSoundName.PerformLayout();
             this.flowLayoutPanelVolume.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVolume)).EndInit();
-            this.flowLayoutPanelScale.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

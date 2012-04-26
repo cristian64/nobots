@@ -127,6 +127,9 @@ namespace Nobots
                 case "Steam":
                     e = new Steam(Game, scene, Vector2.Zero);
                     break;
+                case "Spikes":
+                    e = new Spikes(Game, scene, Vector2.Zero);
+                    break;
                 case "Door":
                     e = new Door(Game, scene, Vector2.Zero);
                     break;
@@ -287,6 +290,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Box)i) + "\n";
                 else if (i as Stomper != null)
                     xml += "        " + ElementToXml((Stomper)i) + "\n";
+                else if (i as Spikes != null)
+                    xml += "        " + ElementToXml((Spikes)i) + "\n";
                 else if (i as Steam != null)
                     xml += "        " + ElementToXml((Steam)i) + "\n";
                 else if (i as Door != null)
@@ -385,7 +390,13 @@ namespace Nobots
 
         public String ElementToXml(Stomper stomper)
         {
-            String xml = "<Stomper Id=\"" + stomper.Id + "\" Position=\"" + stomper.Position.X + "," + stomper.Position.Y + "\" Rotation=\"" + stomper.Rotation + "\" Active=\"" + stomper.Active + "\" />"; ;
+            String xml = "<Stomper Id=\"" + stomper.Id + "\" Position=\"" + stomper.Position.X + "," + stomper.Position.Y + "\" Rotation=\"" + stomper.Rotation + "\" Active=\"" + stomper.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Spikes spikes)
+        {
+            String xml = "<Spikes Id=\"" + spikes.Id + "\" Position=\"" + spikes.Position.X + "," + spikes.Position.Y + "\" Rotation=\"" + spikes.Rotation + "\" />";
             return xml;
         }
 
