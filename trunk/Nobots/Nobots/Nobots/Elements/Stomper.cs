@@ -106,6 +106,8 @@ namespace Nobots.Elements
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             isMovingDown = false;
+            if (fixtureB.Body.UserData is Character)
+                ((Character)fixtureB.Body.UserData).State = new DyingCharacterState(scene, (Character)fixtureB.Body.UserData);
             return true;
         }
 
@@ -161,6 +163,7 @@ namespace Nobots.Elements
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
             body.Position = position + new Vector2(0, 0);
             body.BodyType = BodyType.Kinematic;
+            body.UserData = this;
             body.CollidesWith = ElementCategory.FLOOR | ElementCategory.CHARACTER;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
         }
@@ -170,6 +173,7 @@ namespace Nobots.Elements
             if (stomperBase != null)
                 stomperBase.Dispose();
             stomperBase = BodyFactory.CreateRectangle(scene.World, Width, height, 1.0f);
+            stomperBase.UserData = this;
             stomperBase.Position = position;
             stomperBase.BodyType = BodyType.Static;
         }
