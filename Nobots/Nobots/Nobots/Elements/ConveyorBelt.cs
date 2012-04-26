@@ -162,6 +162,27 @@ namespace Nobots.Elements
             createBody(position);
         }
 
+        public ConveyorBelt(Game game, Scene scene, Vector2 position, float? angularSpeed, int? linksNumber, int? rotorsNumber, float? linkWidth, float? linkHeight)
+            : base(game, scene)
+        {
+            ZBuffer = 0f;
+            circleTexture = Game.Content.Load<Texture2D>("circle");
+            chainTexture = Game.Content.Load<Texture2D>("chain");
+
+            if (angularSpeed != null)
+                this.angularSpeed = (float)angularSpeed;
+            if (linksNumber != null)
+                this.linksNumber = (int)linksNumber;
+            if (rotorsNumber != null)
+                this.rotorsNumber = (int)rotorsNumber;
+            if (linkWidth != null)
+                this.linkWidth = (float)linkWidth;
+            if (linkHeight != null)
+                this.linkHeight = (float)linkHeight;
+
+            createBody(position);
+        }
+
         public override void Draw(GameTime gameTime)
         {
             foreach (Body b in rotors)
