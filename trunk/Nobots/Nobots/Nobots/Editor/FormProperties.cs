@@ -29,6 +29,12 @@ namespace Nobots.Editor
                 selection = value;
                 selectionEvents = null;
                 flowLayoutPanel1.Visible = (selection != null);
+
+                if (flowLayoutPanel1.Visible)
+                    listBoxAvailableElements.Size = initialSize;
+                else
+                    listBoxAvailableElements.Size = new Size(initialSize.Width, initialSize.Height + flowLayoutPanel1.Size.Height);
+
                 reset();
                 if(selection != null)
                     showElementInForm();
@@ -177,6 +183,8 @@ namespace Nobots.Editor
             numericUpDownRotation.Value = (decimal)selection.Rotation;
         }
 
+        private Size initialSize;
+
         public FormProperties(Game game, Scene scene)
         {
             this.Game = game;
@@ -189,6 +197,8 @@ namespace Nobots.Editor
             checkBoxPhysicsEngine.Checked = scene.World.Enabled;
             checkBoxShowEmblems.Checked = SelectionManager.ShowEmblems;
             flowLayoutPanel1.Visible = false;
+            initialSize = listBoxAvailableElements.Size;
+            listBoxAvailableElements.Size = new Size(initialSize.Width, initialSize.Height + flowLayoutPanel1.Size.Height);
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)

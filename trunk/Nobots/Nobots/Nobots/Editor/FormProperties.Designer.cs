@@ -171,9 +171,9 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelNextLevel);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelColor);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 341);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 302);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(276, 318);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(276, 357);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -1171,10 +1171,12 @@
             "MovingPlatform",
             "Stomper",
             "Door",
-            "Steam"});
+            "Steam",
+            "---------------",
+            "Sound"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
             this.listBoxAvailableElements.Name = "listBoxAvailableElements";
-            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 212);
+            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 186);
             this.listBoxAvailableElements.TabIndex = 3;
             this.listBoxAvailableElements.SelectedValueChanged += new System.EventHandler(this.listBoxAvailableElements_SelectedValueChanged);
             // 
