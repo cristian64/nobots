@@ -9,6 +9,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using Nobots.ParticleSystem;
+using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots.Elements
 {
@@ -105,10 +106,15 @@ namespace Nobots.Elements
                 {
                     if (seconds < delay * 2)
                         for (int i = 0; i < 8; i++)
+                        {
+                            body.CollidesWith = Category.None | ElementCategory.CHARACTER;
                             scene.SteamParticleSystem.AddParticle(Position + new Vector2(0, height / 2), Vector2.Zero);
+                        }
                     else
                         seconds -= 2 * delay;
                 }
+                else if (seconds < delay && seconds > delay/5)
+                    body.CollidesWith = Category.None;
             }
             base.Update(gameTime);
         }
@@ -125,8 +131,16 @@ namespace Nobots.Elements
             body.Position = position;
             body.Friction = 0;
             body.BodyType = BodyType.Static;
-            body.IsSensor = true;
-            body.CollidesWith = ElementCategory.CHARACTER;
+           // body.IsSensor = true;
+            body.CollidesWith = Category.None | ElementCategory.CHARACTER;
+            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
+        }
+
+        protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            if(!(((Character)fixtureB.Body.UserData).State is DyingCharacterState))
+                ((Character)fixtureB.Body.UserData).State = new DyingCharacterState(scene, (Character)fixtureB.Body.UserData);
+            return true;
         }
 
         protected override void Dispose(bool disposing)
