@@ -181,7 +181,10 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
-            scene.Camera.Target = null;
+            if (scene.Camera.Target == this)
+                scene.Camera.Target = null;
+            if (scene.InputManager.Character == this)
+                scene.InputManager.Character = null;
             scene.World.RemoveJoint(revoluteJoint);
             torso.Dispose();
             body.Dispose();

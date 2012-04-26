@@ -155,6 +155,8 @@ namespace Nobots
                     break;
                 case "ExperimentalTube":
                     e = new ExperimentalTube(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("OtherTubeId"))
+                        ((ExperimentalTube)e).OtherTubeId = reader.Value;
                     break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
@@ -456,7 +458,7 @@ namespace Nobots
 
         public String ElementToXml(ExperimentalTube eTube)
         {
-            String xml = "<ExperimentalTube Id=\"" + eTube.Id + "\" Position=\"" + eTube.Position.X + "," + eTube.Position.Y + "\" Rotation=\"" + eTube.Rotation + "\" />";
+            String xml = "<ExperimentalTube Id=\"" + eTube.Id + "\" Position=\"" + eTube.Position.X + "," + eTube.Position.Y + "\" Rotation=\"" + eTube.Rotation + "\" OtherTubeId=\"" + eTube.OtherTubeId + "\" Active=\"" + eTube.Active + "\" />";
             return xml;
         }
 

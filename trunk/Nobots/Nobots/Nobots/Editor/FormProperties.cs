@@ -106,6 +106,12 @@ namespace Nobots.Editor
                 flowLayoutPanelOtherSocketId.Visible = true;
                 textBoxOtherSocketId.Text = ((Socket)selection).OtherSocketId;
             }
+
+            if (selection is ExperimentalTube)
+            {
+                flowLayoutPanelOtherTubeId.Visible = true;
+                textBoxOtherTubeId.Text = ((ExperimentalTube)selection).OtherTubeId;
+            }
             
             if (selection is Ladder)
             {
@@ -181,6 +187,7 @@ namespace Nobots.Editor
             flowLayoutPanelTextureName.Visible = false;
             flowLayoutPanelNextLevel.Visible = false;
             flowLayoutPanelSoundName.Visible = false;
+            flowLayoutPanelOtherTubeId.Visible = false;
             flowLayoutPanelVolume.Visible = false;
             flowLayoutPanelAcceleration.Visible = false;
             flowLayoutPanelColor.Visible = false;
@@ -430,6 +437,12 @@ namespace Nobots.Editor
                 ((Background)selectionEvents).Scale = (float)numericUpDownScale.Value;
             if (selectionEvents as Foreground != null)
                 ((Foreground)selectionEvents).Scale = (float)numericUpDownScale.Value;
+        }
+
+        private void textBoxOtherTubeId_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((ExperimentalTube)selectionEvents).OtherTubeId = textBoxOtherTubeId.Text;
         }
     }
 }
