@@ -16,6 +16,7 @@ namespace Nobots.Elements
         Texture2D texture;
         Texture2D texture2;
         float stickRotation = 0;
+        bool playSound = false;
 
         public override float Width
         {
@@ -75,6 +76,7 @@ namespace Nobots.Elements
             body.CollidesWith = Category.None | ElementCategory.FLOOR;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.UserData = this;
+         
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
@@ -86,13 +88,35 @@ namespace Nobots.Elements
         {
             if (ActivableElement != null && ActivableElement.Active)
             {
+
                 if (stickRotation < 0.9f)
+                {
+                    if (playSound)
+                    {
+                        scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, false);
+                        playSound = false;
+                    }
                     stickRotation += 0.1f;
+                }
+                else
+                    playSound = true;
+                    
             }
             else
             {
+
                 if (stickRotation > -0.9f)
+                {
+
+                    if (playSound)
+                    {
+                        scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, false);
+                        playSound = false;
+                    }
                     stickRotation -= 0.1f;
+                }
+                else
+                    playSound = true;
             }
         }
 

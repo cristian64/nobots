@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -71,6 +72,20 @@ namespace Nobots.Elements
             body.Friction = 1000.0f;
 
             body.UserData = this;
+        }
+
+        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
+        {
+
+            ISound aux;
+            float velocity = body.LinearVelocity.Length();
+
+            if (velocity > 1f)
+            {
+                aux = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f);
+                aux.Volume = velocity * 0.25f;
+            }
+            return true;
         }
 
         public override void Draw(GameTime gameTime)
