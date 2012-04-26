@@ -16,7 +16,8 @@ namespace Nobots.Elements
         Body stomperBase;
         bool isMovingDown = true;
         public Body body;
-        public float Speed = 0.8f;
+        public float SpeedUp = 1;
+        public float SpeedDown = 15;
         Texture2D texture;
         Texture2D texture2;
 
@@ -121,11 +122,11 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
-            if (isActive)
+            if (isActive && scene.World.Enabled)
             {
                 if (isMovingDown)
                 {
-                    body.LinearVelocity += Speed * new Vector2(0, 1);
+                    body.LinearVelocity = SpeedDown * new Vector2(0, 1);
                     if (body.Position.Y - stomperBase.Position.Y > height * 0.9f)
                         isMovingDown = false;
                 }
@@ -134,10 +135,10 @@ namespace Nobots.Elements
                     Vector2 targetPosition = stomperBase.Position;
                     if (targetPosition != body.Position)
                     {
-                        if (Vector2.DistanceSquared(targetPosition, body.Position) > Speed * Speed * gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)
+                        if (Vector2.DistanceSquared(targetPosition, body.Position) > SpeedUp * SpeedUp * gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)
                         {
                             Vector2 direction = Vector2.Normalize(targetPosition - body.Position);
-                            body.LinearVelocity = Speed * direction;
+                            body.LinearVelocity = SpeedUp * direction;
                         }
                         else
                         {
