@@ -5,11 +5,11 @@
 sampler BloomSampler : register(s0);
 sampler BaseSampler : register(s1);
 
-float BloomIntensity = 2;
+float BloomIntensity = 1;
 float BaseIntensity = 1;
 
-float BloomSaturation = 0.5f;
-float BaseSaturation = 0.5f;
+float BloomSaturation = 1;
+float BaseSaturation = 2;
 
 
 // Helper for modifying the saturation of a color.
