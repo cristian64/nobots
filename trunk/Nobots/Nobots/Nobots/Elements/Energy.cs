@@ -106,9 +106,6 @@ namespace Nobots.Elements
                             scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                             scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                         }
-                        scene.World.RemoveBody(body);
-                        scene.World.RemoveBody(torso);
-                        scene.World.RemoveJoint(revoluteJoint);
                         scene.GarbageElements.Add(this);
                         scene.InputManager.Character = character;
                         scene.Camera.Target = character;
