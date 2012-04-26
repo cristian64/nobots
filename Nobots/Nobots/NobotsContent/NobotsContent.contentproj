@@ -653,13 +653,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="door.png">
-      <Name>door</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="running.png">
       <Name>running</Name>
       <Importer>TextureImporter</Importer>
@@ -840,6 +833,13 @@
   <ItemGroup>
     <Compile Include="spikes.png">
       <Name>spikes</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="door.png">
+      <Name>door</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
