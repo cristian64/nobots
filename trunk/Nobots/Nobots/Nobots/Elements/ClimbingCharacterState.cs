@@ -12,6 +12,8 @@ namespace Nobots.Elements
 {
     class ClimbingCharacterState : CharacterState
     {
+        private bool moving = true;
+
         public ClimbingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
@@ -25,6 +27,11 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
+            if (!moving)
+            {
+                character.torso.LinearVelocity = new Vector2(0, 0);
+                character.body.LinearVelocity = new Vector2(0, 0);
+            }
             changeIdleTextures(gameTime);
         }
 
@@ -60,24 +67,28 @@ namespace Nobots.Elements
 
         public override void UpAction()
         {
+            moving = true;
             character.torso.LinearVelocity = new Vector2(0, -3);
             character.body.LinearVelocity = new Vector2(0, -3);
         }
 
         public override void DownAction()
         {
+            moving = true;
             character.torso.LinearVelocity = new Vector2(0, 3);
             character.body.LinearVelocity = new Vector2(0, 3);
         }
 
         public override void UpActionStop()
         {
+            moving = false;
             character.torso.LinearVelocity = new Vector2(0, 0);
             character.body.LinearVelocity = new Vector2(0, 0);
         }
 
         public override void DownActionStop()
         {
+            moving = false;
             character.torso.LinearVelocity = new Vector2(0, 0);
             character.body.LinearVelocity = new Vector2(0, 0);
         }
