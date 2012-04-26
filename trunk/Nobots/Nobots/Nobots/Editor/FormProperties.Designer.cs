@@ -104,6 +104,9 @@
             this.flowLayoutPanelSoundName = new System.Windows.Forms.FlowLayoutPanel();
             this.labelSoundName = new System.Windows.Forms.Label();
             this.textBoxSoundName = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelVolume = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelVolume = new System.Windows.Forms.Label();
+            this.numericUpDownVolume = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -145,6 +148,8 @@
             this.flowLayoutPanelNextLevel.SuspendLayout();
             this.flowLayoutPanelColor.SuspendLayout();
             this.flowLayoutPanelSoundName.SuspendLayout();
+            this.flowLayoutPanelVolume.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -175,6 +180,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelNextLevel);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelColor);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelSoundName);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelVolume);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 302);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1233,6 +1239,45 @@
             this.textBoxSoundName.TabIndex = 1;
             this.textBoxSoundName.TextChanged += new System.EventHandler(this.textBoxSoundName_TextChanged);
             // 
+            // flowLayoutPanelVolume
+            // 
+            this.flowLayoutPanelVolume.Controls.Add(this.labelVolume);
+            this.flowLayoutPanelVolume.Controls.Add(this.numericUpDownVolume);
+            this.flowLayoutPanelVolume.Location = new System.Drawing.Point(0, 662);
+            this.flowLayoutPanelVolume.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelVolume.Name = "flowLayoutPanelVolume";
+            this.flowLayoutPanelVolume.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelVolume.TabIndex = 25;
+            this.flowLayoutPanelVolume.Visible = false;
+            // 
+            // labelVolume
+            // 
+            this.labelVolume.Location = new System.Drawing.Point(3, 0);
+            this.labelVolume.Name = "labelVolume";
+            this.labelVolume.Size = new System.Drawing.Size(50, 23);
+            this.labelVolume.TabIndex = 4;
+            this.labelVolume.Text = "Volume";
+            this.labelVolume.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownVolume
+            // 
+            this.numericUpDownVolume.DecimalPlaces = 6;
+            this.numericUpDownVolume.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownVolume.Location = new System.Drawing.Point(59, 3);
+            this.numericUpDownVolume.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownVolume.Name = "numericUpDownVolume";
+            this.numericUpDownVolume.Size = new System.Drawing.Size(183, 20);
+            this.numericUpDownVolume.TabIndex = 5;
+            this.numericUpDownVolume.ValueChanged += new System.EventHandler(this.numericUpDownVolume_ValueChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1296,6 +1341,8 @@
             this.flowLayoutPanelColor.ResumeLayout(false);
             this.flowLayoutPanelSoundName.ResumeLayout(false);
             this.flowLayoutPanelSoundName.PerformLayout();
+            this.flowLayoutPanelVolume.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVolume)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1379,6 +1426,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSoundName;
         private System.Windows.Forms.Label labelSoundName;
         private System.Windows.Forms.TextBox textBoxSoundName;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelVolume;
+        private System.Windows.Forms.Label labelVolume;
+        private System.Windows.Forms.NumericUpDown numericUpDownVolume;
 
 
     }

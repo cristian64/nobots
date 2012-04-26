@@ -94,5 +94,15 @@ namespace Nobots.Elements
                 sound.Looped = true;
             }
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (sound != null)
+            {
+                sound.Stop();
+                sound.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
