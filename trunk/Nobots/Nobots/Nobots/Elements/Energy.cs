@@ -112,7 +112,6 @@ namespace Nobots.Elements
                         scene.GarbageElements.Add(this);
                         scene.InputManager.Character = character;
                         scene.Camera.Target = character;
-                        character.torso.Friction = 0;
                     }
                     break;
                 }

@@ -26,6 +26,7 @@ namespace Nobots.Elements
             character.torso.Rotation = 0;
             character.torso.AngularVelocity = 0;
             character.torso.FixedRotation = true;
+            character.torso.Friction = 0;
         }
 
         public override void Enter()
