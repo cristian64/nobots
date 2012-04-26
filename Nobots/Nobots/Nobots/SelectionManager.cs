@@ -202,6 +202,9 @@ namespace Nobots
                     case "Endpoint":
                         element = new Endpoint(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Sound":
+                        element = new Sound(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Background":
                         background = new Background(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

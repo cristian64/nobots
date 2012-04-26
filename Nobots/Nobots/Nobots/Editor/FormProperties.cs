@@ -140,6 +140,12 @@ namespace Nobots.Editor
                 flowLayoutPanelColor.Visible = true;
                 comboBoxColor.Text = ((Crate)selection).Color;
             }
+
+            if (selection is Sound)
+            {
+                flowLayoutPanelSoundName.Visible = true;
+                textBoxSoundName.Text = ((Sound)selection).SoundName;
+            }
         }
 
         private void reset()
@@ -167,6 +173,7 @@ namespace Nobots.Editor
             flowLayoutPanelAngularSpeed.Visible = false;
             flowLayoutPanelTextureName.Visible = false;
             flowLayoutPanelNextLevel.Visible = false;
+            flowLayoutPanelSoundName.Visible = false;
             flowLayoutPanelAcceleration.Visible = false;
             flowLayoutPanelColor.Visible = false;
         }
@@ -399,6 +406,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((Crate)selectionEvents).Color = comboBoxColor.Text;
+        }
+
+        private void textBoxSoundName_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Sound)selectionEvents).SoundName = textBoxSoundName.Text;
         }
     }
 }

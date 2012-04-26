@@ -101,6 +101,9 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelSoundName = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelSoundName = new System.Windows.Forms.Label();
+            this.textBoxSoundName = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -141,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAcceleration)).BeginInit();
             this.flowLayoutPanelNextLevel.SuspendLayout();
             this.flowLayoutPanelColor.SuspendLayout();
+            this.flowLayoutPanelSoundName.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -170,6 +174,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAcceleration);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelNextLevel);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelColor);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelSoundName);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 302);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1200,6 +1205,34 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
+            // flowLayoutPanelSoundName
+            // 
+            this.flowLayoutPanelSoundName.Controls.Add(this.labelSoundName);
+            this.flowLayoutPanelSoundName.Controls.Add(this.textBoxSoundName);
+            this.flowLayoutPanelSoundName.Location = new System.Drawing.Point(0, 633);
+            this.flowLayoutPanelSoundName.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelSoundName.Name = "flowLayoutPanelSoundName";
+            this.flowLayoutPanelSoundName.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelSoundName.TabIndex = 24;
+            this.flowLayoutPanelSoundName.Visible = false;
+            // 
+            // labelSoundName
+            // 
+            this.labelSoundName.Location = new System.Drawing.Point(3, 0);
+            this.labelSoundName.Name = "labelSoundName";
+            this.labelSoundName.Size = new System.Drawing.Size(72, 23);
+            this.labelSoundName.TabIndex = 4;
+            this.labelSoundName.Text = "SoundName";
+            this.labelSoundName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxSoundName
+            // 
+            this.textBoxSoundName.Location = new System.Drawing.Point(81, 3);
+            this.textBoxSoundName.Name = "textBoxSoundName";
+            this.textBoxSoundName.Size = new System.Drawing.Size(161, 20);
+            this.textBoxSoundName.TabIndex = 1;
+            this.textBoxSoundName.TextChanged += new System.EventHandler(this.textBoxSoundName_TextChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1261,6 +1294,8 @@
             this.flowLayoutPanelNextLevel.ResumeLayout(false);
             this.flowLayoutPanelNextLevel.PerformLayout();
             this.flowLayoutPanelColor.ResumeLayout(false);
+            this.flowLayoutPanelSoundName.ResumeLayout(false);
+            this.flowLayoutPanelSoundName.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1341,6 +1376,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColor;
         private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.ComboBox comboBoxColor;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSoundName;
+        private System.Windows.Forms.Label labelSoundName;
+        private System.Windows.Forms.TextBox textBoxSoundName;
 
 
     }

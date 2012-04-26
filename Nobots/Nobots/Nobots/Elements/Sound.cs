@@ -20,19 +20,19 @@ namespace Nobots.Elements
             {
                 volume = value;
                 if (sound != null)
-                    sound.Volume = 1;
+                    sound.Volume = volume;
             }
         }
 
         public override float Width
         {
-            get { return 0.1f; }
+            get { return 1f; }
             set { }
         }
 
         public override float Height
         {
-            get { return 0.1f; }
+            get { return 1f; }
             set { }
         }
 
@@ -83,11 +83,15 @@ namespace Nobots.Elements
         private void createSound()
         {
             if (sound != null)
+            {
+                sound.Stop();
                 sound.Dispose();
+            }
             sound = scene.ISoundEngine.Play3D(@"Content\sounds\" + soundName, position.X, position.Y, 0);
             if (sound != null)
             {
                 sound.Volume = volume;
+                sound.Looped = true;
             }
         }
     }
