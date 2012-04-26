@@ -121,12 +121,14 @@ namespace Nobots.Elements
 
         protected void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
-            contactsNumber--;
+            if (!fixtureB.IsSensor)
+                contactsNumber--;
         }
 
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            contactsNumber++;
+            if (!fixtureB.IsSensor)
+                contactsNumber++;
             return true;
         }
 
