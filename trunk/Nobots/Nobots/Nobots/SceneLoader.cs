@@ -173,6 +173,13 @@ namespace Nobots
                     if (reader.MoveToAttribute("NextLevel"))
                         ((Endpoint)e).NextLevel = reader.Value;
                     break;
+                case "Sound":
+                    e = new Sound(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("SoundName"))
+                        ((Sound)e).SoundName = reader.Value;
+                    if (reader.MoveToAttribute("Volume"))
+                        ((Sound)e).Volume = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    break;
                 case "PressurePlate":
                     e = new PressurePlate(Game, scene, Vector2.Zero);
                     break;
@@ -303,6 +310,10 @@ namespace Nobots
                     xml += "        " + ElementToXml((Lever)i) + "\n";
                 else if (i as Checkpoint != null)
                     xml += "        " + ElementToXml((Checkpoint)i) + "\n";
+                else if (i as Endpoint != null)
+                    xml += "        " + ElementToXml((Endpoint)i) + "\n";
+                else if (i as Sound != null)
+                    xml += "        " + ElementToXml((Sound)i) + "\n";
                 else if (i as Character != null)
                     xml += "        " + ElementToXml((Character)i) + "\n";
                 else if (i as Forklift != null)
@@ -396,6 +407,18 @@ namespace Nobots
         public String ElementToXml(Checkpoint checkpoint)
         {
             String xml = "<Checkpoint Id=\"" + checkpoint.Id + "\" Position=\"" + checkpoint.Position.X + "," + checkpoint.Position.Y + "\" Rotation=\"" + checkpoint.Rotation + "\" Active=\"" + checkpoint.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Endpoint endpoint)
+        {
+            String xml = "<Endpoint Id=\"" + endpoint.Id + "\" Position=\"" + endpoint.Position.X + "," + endpoint.Position.Y + "\" Rotation=\"" + endpoint.Rotation + "\" NextLevel=\"" + endpoint.NextLevel + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Sound sound)
+        {
+            String xml = "<Sound Id=\"" + sound.Id + "\" Position=\"" + sound.Position.X + "," + sound.Position.Y + "\" Rotation=\"" + sound.Rotation + "\" SoundName=\"" + sound.SoundName + "\" Volume=\"" + sound.Volume + "\" />";
             return xml;
         }
 
