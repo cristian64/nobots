@@ -105,9 +105,17 @@ namespace Nobots.Elements
 
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            isMovingDown = false;
-            if (fixtureB.Body.UserData is Character && body.LinearVelocity.Y > 0)
-                ((Character)fixtureB.Body.UserData).State = new DyingCharacterState(scene, (Character)fixtureB.Body.UserData);
+            if (!fixtureB.IsSensor)
+            {
+                isMovingDown = false;
+                if (fixtureB.Body.UserData is Character && body.LinearVelocity.Y > 0)
+                {
+                    if (!(((Character)fixtureB.Body.UserData).State is DyingCharacterState))
+                    {
+                        ((Character)fixtureB.Body.UserData).State = new DyingCharacterState(scene, (Character)fixtureB.Body.UserData);
+                    }
+                }
+            }
             return true;
         }
 
