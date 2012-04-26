@@ -89,7 +89,7 @@ namespace Nobots.Elements
             width = Conversion.ToWorld(texture.Width);
             height = Conversion.ToWorld(texture.Height);
 
-            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 50);
+            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 40);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
@@ -101,7 +101,7 @@ namespace Nobots.Elements
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
-            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2), 50);
+            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2), 40);
             torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
