@@ -211,10 +211,9 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(Position - scene.Camera.Position),
+            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * (Conversion.ToDisplay(Position - scene.Camera.Position) - Vector2.UnitY * 10), // this -10 is to make the character a bit up, not to be below the floor
                 new Rectangle(State.textureXmin, State.textureYmin, State.characterWidth, State.characterHeight),
                 Color.White, torso.Rotation, new Vector2(State.characterWidth/2, State.characterHeight / 2), scene.Camera.Scale, Effect, 0);
-            //scene.SpriteBatch.Draw(texture, Conversion.ToDisplay(Position - scene.Camera.Position), null, Color.White, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, Effect, 0);
         }
 
         public virtual void AActionStart()
