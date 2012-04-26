@@ -46,9 +46,11 @@ namespace Nobots.Elements
                 {
                     if (i is Checkpoint && ((Checkpoint)i).Active)
                     {
-                        Character character = new Character(scene.Game, scene, i.Position);
-                        scene.RespawnElements.Add(character);
-                        scene.Camera.Target = scene.InputManager.Character = character;
+                        
+                        scene.GarbageElements.Add(character);
+                        Character character2 = new Character(scene.Game, scene, i.Position);
+                        scene.RespawnElements.Add(character2);
+                        scene.Camera.Target = scene.InputManager.Character = character2;
                         break;
                     }
                 }
