@@ -148,6 +148,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Elements\Character.cs" />
     <Compile Include="Elements\MovingPlatform.cs" />
+    <Compile Include="Elements\Spikes.cs" />
     <Compile Include="Elements\Steam.cs" />
     <Compile Include="Elements\Stomper.cs" />
     <Compile Include="InputManager.cs" />
