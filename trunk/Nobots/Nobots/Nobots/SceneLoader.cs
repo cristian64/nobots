@@ -216,17 +216,24 @@ namespace Nobots
                     e = new Stone(Game, scene, Vector2.Zero);
                     break;
                 case "ConveyorBelt":
-                    e = new ConveyorBelt(Game, scene, Vector2.Zero);
+                    float? angularSpeed = null;
+                    int? linksNumber = null;
+                    int? rotorsNumber = null;
+                    float? linkWidth = null;
+                    float? linkHeight = null;
+
                     if (reader.MoveToAttribute("AngularSpeed"))
-                        ((ConveyorBelt)e).AngularSpeed = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                        angularSpeed = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     if (reader.MoveToAttribute("LinksNumber"))
-                        ((ConveyorBelt)e).LinksNumber = int.Parse(reader.Value);
+                        linksNumber = int.Parse(reader.Value);
                     if (reader.MoveToAttribute("RotorsNumber"))
-                        ((ConveyorBelt)e).RotorsNumber = int.Parse(reader.Value);
+                        rotorsNumber = int.Parse(reader.Value);
                     if (reader.MoveToAttribute("LinkWidth"))
-                        ((ConveyorBelt)e).LinkWidth = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                        linkWidth = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     if (reader.MoveToAttribute("LinkHeight"))
-                        ((ConveyorBelt)e).LinkHeight = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                        linkHeight = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+
+                    e = new ConveyorBelt(Game, scene, Vector2.Zero, angularSpeed, linksNumber, rotorsNumber, linkWidth, linkHeight);
                     break;
                 case "ImpulsePlatform":
                     e = new ImpulsePlatform(Game, scene, Vector2.Zero);
