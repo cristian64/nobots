@@ -15,6 +15,7 @@ namespace Nobots.Elements
         Body body;
         Texture2D texture;
         Texture2D texture2;
+        Texture2D shinyBallTexture;
 
         private bool isActive = false;
 
@@ -61,6 +62,7 @@ namespace Nobots.Elements
             ZBuffer = -6f;
             texture = Game.Content.Load<Texture2D>("checkpoint");
             texture2 = Game.Content.Load<Texture2D>("checkpointon");
+            shinyBallTexture = Game.Content.Load<Texture2D>("checkpointon2");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 150f);
             body.Position = position;
             body.BodyType = BodyType.Static;
@@ -92,6 +94,8 @@ namespace Nobots.Elements
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Draw(isActive ? texture2 : texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+            if(isActive)
+                scene.SpriteBatch.Draw(shinyBallTexture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position - new Vector2(0,0.8f)), null, Color.White, body.Rotation, new Vector2(shinyBallTexture.Width/2, shinyBallTexture.Height/2), scene.Camera.Scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)
