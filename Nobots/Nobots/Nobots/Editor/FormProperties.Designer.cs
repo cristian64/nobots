@@ -110,6 +110,9 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelOtherTubeId = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxOtherTubeId = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -155,6 +158,7 @@
             this.flowLayoutPanelSoundName.SuspendLayout();
             this.flowLayoutPanelVolume.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVolume)).BeginInit();
+            this.flowLayoutPanelOtherTubeId.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -187,6 +191,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelColor);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelSoundName);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelVolume);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelOtherTubeId);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 302);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1334,6 +1339,36 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
+            // flowLayoutPanelOtherTubeId
+            // 
+            this.flowLayoutPanelOtherTubeId.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.flowLayoutPanelOtherTubeId.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelOtherTubeId.Controls.Add(this.label2);
+            this.flowLayoutPanelOtherTubeId.Controls.Add(this.textBoxOtherTubeId);
+            this.flowLayoutPanelOtherTubeId.Location = new System.Drawing.Point(0, 720);
+            this.flowLayoutPanelOtherTubeId.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelOtherTubeId.Name = "flowLayoutPanelOtherTubeId";
+            this.flowLayoutPanelOtherTubeId.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelOtherTubeId.TabIndex = 27;
+            this.flowLayoutPanelOtherTubeId.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 23);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "OtherTubeId";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxOtherTubeId
+            // 
+            this.textBoxOtherTubeId.Location = new System.Drawing.Point(82, 3);
+            this.textBoxOtherTubeId.Name = "textBoxOtherTubeId";
+            this.textBoxOtherTubeId.Size = new System.Drawing.Size(160, 20);
+            this.textBoxOtherTubeId.TabIndex = 1;
+            this.textBoxOtherTubeId.TextChanged += new System.EventHandler(this.textBoxOtherTubeId_TextChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1401,6 +1436,8 @@
             this.flowLayoutPanelSoundName.PerformLayout();
             this.flowLayoutPanelVolume.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVolume)).EndInit();
+            this.flowLayoutPanelOtherTubeId.ResumeLayout(false);
+            this.flowLayoutPanelOtherTubeId.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1490,6 +1527,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScale;
         private System.Windows.Forms.Label labelScale;
         private System.Windows.Forms.NumericUpDown numericUpDownScale;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOtherTubeId;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxOtherTubeId;
 
 
     }
