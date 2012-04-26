@@ -63,8 +63,6 @@ namespace Nobots.Elements
         public override void Enter()
         {
             Console.WriteLine("DyingCharacterState");
-            character.torso.Enabled = false;
-            character.body.Enabled = false;
             character.body.FixedRotation = true;
             character.body.AngularVelocity = 0;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
