@@ -50,8 +50,27 @@ namespace Nobots
         public Scene(Game game)
             : base(game)
         {
-            ISoundEngine = new ISoundEngine();
-            ISoundEngine.SetRolloffFactor(0.5f);
+
+            
+
+    ISoundEngine = new ISoundEngine(
+     SoundOutputDriver.AutoDetect,
+             SoundEngineOptionFlag.DefaultOptions );
+
+    //ISoundEngine.SetRolloffFactor(10000000f);
+
+   
+    
+    //ISoundEngine.Default3DSoundMinDistance = 1f;
+    //ISoundEngine.Default3DSoundMaxDistance = 20f;
+
+            
+            
+            
+            
+            
+
+           
             AmbienceSound = new AmbienceSound(Game, this);
             World = new World(new Vector2(0, 13));
             PhysicsDebug = new DebugViewXNA(World);

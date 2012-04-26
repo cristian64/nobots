@@ -76,6 +76,7 @@ namespace Nobots.Elements
         {
             if (!isActive)
             {
+                scene.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f);
                 foreach (Element i in scene.Elements)
                 {
                     Checkpoint checkpoint = i as Checkpoint;
