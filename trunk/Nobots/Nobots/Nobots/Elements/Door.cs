@@ -115,7 +115,7 @@ namespace Nobots.Elements
             else
             {
                 if (body.Position.Y < InitialPosition.Y)
-                    body.LinearVelocity = Speed * Vector2.UnitY;
+                    body.LinearVelocity = 10 * Speed * Vector2.UnitY;
                 else
                     body.LinearVelocity = Vector2.Zero;
             }
