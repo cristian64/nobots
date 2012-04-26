@@ -62,7 +62,7 @@ namespace Nobots
    
     
     //ISoundEngine.Default3DSoundMinDistance = 1f;
-    //ISoundEngine.Default3DSoundMaxDistance = 20f;
+    ISoundEngine.Default3DSoundMaxDistance = 1000000f;
 
             
             
