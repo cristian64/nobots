@@ -138,7 +138,7 @@ namespace Nobots.Elements
             body.Friction = 0;
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
-            body.CollidesWith = ElementCategory.CHARACTER;
+            body.CollidesWith = Category.All & ~ElementCategory.FLOOR;
         }
 
         protected override void Dispose(bool disposing)
