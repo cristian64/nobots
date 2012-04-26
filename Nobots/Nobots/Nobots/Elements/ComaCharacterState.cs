@@ -35,12 +35,6 @@ namespace Nobots.Elements
         public override void Enter()
         {
             Energy energy = new Energy(scene.Game, scene, energyPosition != null ? (Vector2)energyPosition : character.Position);
-            character.torso.FixedRotation = false;
-            if(character.Effect == SpriteEffects.None)
-                character.torso.ApplyForce(new Vector2(-10, 0));
-            else
-                character.torso.ApplyForce(new Vector2(10, 0));
-            character.torso.Friction = 100f;
             energy.Position = energyPosition != null ? (Vector2)energyPosition : character.Position;
             scene.InputManager.Character = energy;
             scene.Camera.Target = energy;
