@@ -51,6 +51,8 @@ namespace Nobots.Editor
             {
                 flowLayoutPanelTextureName.Visible = true;
                 textBoxTextureName.Text = ((Background)selection).TextureName;
+                flowLayoutPanelScale.Visible = true;
+                numericUpDownScale.Value = (decimal)((Background)selection).Scale;
                 flowLayoutPanelSpeed.Visible = true;
                 numericUpDownSpeedX.Value = (decimal)((Background)selection).Speed.X;
                 numericUpDownSpeedY.Value = (decimal)((Background)selection).Speed.Y;
@@ -60,6 +62,8 @@ namespace Nobots.Editor
             {
                 flowLayoutPanelTextureName.Visible = true;
                 textBoxTextureName.Text = ((Foreground)selection).TextureName;
+                flowLayoutPanelScale.Visible = true;
+                numericUpDownScale.Value = (decimal)((Foreground)selection).Scale;
                 flowLayoutPanelSpeed.Visible = true;
                 numericUpDownSpeedX.Value = (decimal)((Foreground)selection).Speed.X;
                 numericUpDownSpeedY.Value = (decimal)((Foreground)selection).Speed.Y;
@@ -166,6 +170,7 @@ namespace Nobots.Editor
             flowLayoutPanelFinalPosition.Visible = false;
             flowLayoutPanelInitialPosition.Visible = false;
             flowLayoutPanelOtherSocketId.Visible = false;
+            flowLayoutPanelScale.Visible = false;
             flowLayoutPanelSpeed.Visible = false;
             flowLayoutPanelStepsNumber.Visible = false;
             flowLayoutPanelLinksNumber.Visible = false;
@@ -307,7 +312,6 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.InitialPosition = new Vector2((float)numericUpDownInitialPositionX.Value, movingPlatform.InitialPosition.Y);
-       
         }
 
         private void numericUpDownInitialPositionY_ValueChanged(object sender, EventArgs e)
@@ -318,7 +322,6 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.InitialPosition = new Vector2(movingPlatform.InitialPosition.X, (float)numericUpDownInitialPositionY.Value);
-       
         }
 
         private void numericUpDownFinalPositionX_ValueChanged(object sender, EventArgs e)
@@ -329,7 +332,6 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.FinalPosition = new Vector2((float)numericUpDownFinalPositionX.Value, movingPlatform.FinalPosition.Y);
-      
         }
 
         private void numericUpDownFinalPositionY_ValueChanged(object sender, EventArgs e)
@@ -340,7 +342,6 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.FinalPosition = new Vector2(movingPlatform.FinalPosition.X, (float)numericUpDownFinalPositionY.Value);
-        
         }
 
         private void checkBoxShowDebug_CheckedChanged(object sender, EventArgs e)
@@ -421,6 +422,14 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((Sound)selectionEvents).Volume = (float)numericUpDownVolume.Value;
+        }
+
+        private void numericUpDownScale_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents as Background != null)
+                ((Background)selectionEvents).Scale = (float)numericUpDownScale.Value;
+            if (selectionEvents as Foreground != null)
+                ((Foreground)selectionEvents).Scale = (float)numericUpDownScale.Value;
         }
     }
 }

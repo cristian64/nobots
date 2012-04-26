@@ -83,6 +83,10 @@ namespace Nobots
                 e.TextureName = reader.Value;
             if (reader.MoveToAttribute("Position"))
                 e.Position = PositionFromString(reader.Value);
+            if (reader.MoveToAttribute("Rotation"))
+                e.Rotation = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute("Scale"))
+                e.Scale = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             if (reader.MoveToAttribute("Speed"))
                 e.Speed = PositionFromString(reader.Value);
             return e;
@@ -97,6 +101,10 @@ namespace Nobots
                 e.TextureName = reader.Value;
             if (reader.MoveToAttribute("Position"))
                 e.Position = PositionFromString(reader.Value);
+            if (reader.MoveToAttribute("Rotation"))
+                e.Rotation = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute("Scale"))
+                e.Scale = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             if (reader.MoveToAttribute("Speed"))
                 e.Speed = PositionFromString(reader.Value);
             return e;
@@ -340,13 +348,13 @@ namespace Nobots
 
         public String ElementToXml(Background background)
         {
-            String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\" Rotation=\"" + background.Rotation + "\" Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" />";
+            String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\" Rotation=\"" + background.Rotation + "\" Scale=\"" + background.Scale + "\" Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" />";
             return xml;
         }
 
         public String ElementToXml(Foreground foreground)
         {
-            String xml = "<Foreground Id=\"" + foreground.Id + "\" Position=\"" + foreground.Position.X + "," + foreground.Position.Y + "\" Rotation=\"" + foreground.Rotation + "\" Speed=\"" + foreground.Speed.X + "," + foreground.Speed.Y + "\" TextureName=\"" + foreground.TextureName + "\" />";
+            String xml = "<Foreground Id=\"" + foreground.Id + "\" Position=\"" + foreground.Position.X + "," + foreground.Position.Y + "\" Rotation=\"" + foreground.Rotation + "\" Scale=\"" + foreground.Scale + "\" Speed=\"" + foreground.Speed.X + "," + foreground.Speed.Y + "\" TextureName=\"" + foreground.TextureName + "\" />";
             return xml;
         }
 
