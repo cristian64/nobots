@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -13,6 +14,7 @@ namespace Nobots.Elements
     {
         Body body;
         Texture2D texture;
+        ISound sound;
 
         public override float Width
         {
@@ -74,6 +76,15 @@ namespace Nobots.Elements
             body.ApplyAngularImpulse(0.1f);*/
             body.Friction = 100.0f;
 
+           
+
+            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\computerbleep.wav", body.Position.X, body.Position.Y, 0.0f,true);
+            sound.Volume = 0.25f;
+            //sound.MinDistance = 0f;
+            //sound.MaxDistance = 1000000f;
+            
+            
+                 
             body.UserData = this;
         }
 
@@ -84,6 +95,7 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
+            sound.Stop();
             body.Dispose();
             base.Dispose(disposing);
         }

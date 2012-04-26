@@ -92,7 +92,7 @@ namespace Nobots.Elements
             if (velocity > 1f)
             {
                 aux = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f);
-                aux.Volume = velocity * 0.25f;
+                aux.Volume = velocity * 0.5f;
             }
             return true;
         }
