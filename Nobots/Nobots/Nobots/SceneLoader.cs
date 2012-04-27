@@ -356,7 +356,6 @@ namespace Nobots
             xml += "    </Foregrounds>\n";
             xml += "</Scene>\n";
 
-            Console.WriteLine(xml);
             return xml;
         }
 
