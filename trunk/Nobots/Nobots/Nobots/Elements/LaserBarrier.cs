@@ -144,8 +144,6 @@ namespace Nobots.Elements
                 scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
                 scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
             }
-
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

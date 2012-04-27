@@ -224,8 +224,6 @@ namespace Nobots
             }
 
             previous = Mouse.GetState();
-
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

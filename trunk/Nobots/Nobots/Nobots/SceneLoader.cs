@@ -584,7 +584,6 @@ namespace Nobots
                     }
                 }
             }
-            base.Update(gameTime);
         }
     }
 }

@@ -95,7 +95,6 @@ namespace Nobots.Elements
                 else
                     increasing = true;
             }
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

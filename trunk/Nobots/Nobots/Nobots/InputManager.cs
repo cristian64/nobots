@@ -26,7 +26,6 @@ namespace Nobots
         {
             if (Character != null)
                 processKeyboard();
-            base.Update(gameTime);
         }
 
         protected KeyboardState previousKeyboardState;

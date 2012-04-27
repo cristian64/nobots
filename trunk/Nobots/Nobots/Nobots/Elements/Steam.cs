@@ -116,7 +116,6 @@ namespace Nobots.Elements
                 else if (seconds < delay && seconds > delay/5)
                     body.CollidesWith = Category.None;
             }
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
