@@ -25,9 +25,7 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
             changeJumpingTextures(gameTime);
-
         }
 
         float seconds = 0;
