@@ -90,7 +90,7 @@ namespace Nobots.Elements
             height = Conversion.ToWorld(texture.Height);
 
             body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 40);
-            body.Position = position;
+            body.Position = position - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2 + Vector2.UnitY * height / 2;
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
             body.UserData = this;
@@ -103,6 +103,7 @@ namespace Nobots.Elements
 
             torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2), 40);
             torso.Position = new Vector2(body.Position.X - Conversion.ToWorld(texture.Width / 2), body.Position.Y + Conversion.ToWorld(texture.Width / 2 - texture.Height));
+            torso.Position = position - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2;
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
             torso.Friction = 0.0f;
