@@ -14,6 +14,7 @@ namespace Nobots.Elements
     {
         Body body;
         Texture2D texture;
+        ISound sound;
 
         public override float Width
         {
@@ -72,18 +73,23 @@ namespace Nobots.Elements
             body.Friction = 1000.0f;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.UserData = this;
+
+            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
+            
+            
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
 
-            ISound aux;
+            
             float velocity = body.LinearVelocity.Length();
 
             if (velocity > 1f)
             {
-                aux = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f);
-                aux.Volume = velocity * 0.25f;
+                sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f,false,true);
+                sound.Volume = velocity * 0.15f;
+                sound.Paused = false;
             }
             return true;
         }

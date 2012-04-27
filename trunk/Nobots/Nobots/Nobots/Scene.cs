@@ -57,12 +57,13 @@ namespace Nobots
      SoundOutputDriver.AutoDetect,
              SoundEngineOptionFlag.DefaultOptions );
 
-    //ISoundEngine.SetRolloffFactor(10000000f);
+    //ISoundEngine.SetRolloffFactor(1f);
+            
 
    
     
     //ISoundEngine.Default3DSoundMinDistance = 1f;
-    ISoundEngine.Default3DSoundMaxDistance = 1000000f;
+    //ISoundEngine.Default3DSoundMaxDistance = float.MaxValue;
 
             
             

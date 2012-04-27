@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -16,6 +17,7 @@ namespace Nobots.Elements
         Texture2D texture;
         Texture2D texture2;
         Texture2D shinyBallTexture;
+        ISound sound;
 
         private bool isActive = false;
 
@@ -71,6 +73,8 @@ namespace Nobots.Elements
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
+            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f,false,true);
+            sound.Volume = 0.10f;
             body.UserData = this;
         }
 
@@ -78,7 +82,10 @@ namespace Nobots.Elements
         {
             if (!isActive)
             {
-                scene.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f);
+                sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
+                sound.Volume = 0.10f;
+                sound.Paused = false;
+                
                 foreach (Element i in scene.Elements)
                 {
                     Checkpoint checkpoint = i as Checkpoint;

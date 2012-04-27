@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -17,6 +18,7 @@ namespace Nobots.Elements
         Texture2D texture2;
         float stickRotation = 0;
         bool playSound = false;
+        ISound sound;
 
         public override float Width
         {
@@ -76,6 +78,9 @@ namespace Nobots.Elements
             body.CollidesWith = Category.None | ElementCategory.FLOOR;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.UserData = this;
+
+            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
+            sound.Volume = 0.15f;
          
         }
 
@@ -93,7 +98,9 @@ namespace Nobots.Elements
                 {
                     if (playSound)
                     {
-                        scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, false);
+                        sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false,true);
+                        sound.Volume = 0.15f;
+                        sound.Paused = false;
                         playSound = false;
                     }
                     stickRotation += 0.1f;
@@ -110,7 +117,9 @@ namespace Nobots.Elements
 
                     if (playSound)
                     {
-                        scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, false);
+                        sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
+                        sound.Volume = 0.15f;
+                        sound.Paused = false;
                         playSound = false;
                     }
                     stickRotation -= 0.1f;

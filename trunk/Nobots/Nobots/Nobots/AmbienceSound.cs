@@ -50,6 +50,8 @@ namespace Nobots
 
             ambienceLabNormal = scene.ISoundEngine.Play2D("Content\\sounds\\music\\ambiencelabnormal.mp3");
             ambienceLabNormal.Looped = true;
+            ambienceLabNormal.Volume = 0.3f;
+
 
             ambienceLabEnergy = scene.ISoundEngine.Play2D("Content\\sounds\\music\\ambiencelabenergy.mp3");
             ambienceLabEnergy.Looped = true;
@@ -83,12 +85,12 @@ namespace Nobots
                 if (!transitionPlayed)
                 {
                     ISound aux = scene.ISoundEngine.Play2D(toEnergy[rand.Next(6)], false, false);
-                    aux.Volume = 0.7f;
+                    aux.Volume = 0.2f;
                     transitionPlayed = true;
                 }
 
                 ambienceLabEnergy.Paused = false;
-                ambienceLabEnergy.Volume = Math.Min(1, ambienceLabEnergy.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                ambienceLabEnergy.Volume = Math.Min(0.3f, ambienceLabEnergy.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 ambienceLabNormal.Volume = Math.Max(0, ambienceLabNormal.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
                 if (ambienceLabNormal.Volume == 0)
@@ -107,13 +109,13 @@ namespace Nobots
 
                 if (!transitionPlayed){
                     ISound aux = scene.ISoundEngine.Play2D(toNormal[rand.Next(5)], false, false);
-                    aux.Volume = 0.7f;
+                    aux.Volume = 0.2f;
                     transitionPlayed = true;
                 }
 
                 ambienceLabNormal.Paused = false;
                 ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
-                ambienceLabNormal.Volume = Math.Min(1, ambienceLabNormal.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                ambienceLabNormal.Volume = Math.Min(0.3f, ambienceLabNormal.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
                 if (ambienceLabEnergy.Volume == 0)
                 {
