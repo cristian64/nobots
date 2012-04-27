@@ -84,8 +84,9 @@ namespace Nobots
 
                 if (!transitionPlayed)
                 {
-                    ISound aux = scene.ISoundEngine.Play2D(toEnergy[rand.Next(6)], false, false);
+                    ISound aux = scene.ISoundEngine.Play2D(toEnergy[rand.Next(6)], false, true);
                     aux.Volume = 0.2f;
+                    aux.Paused = false;
                     transitionPlayed = true;
                 }
 
@@ -108,8 +109,9 @@ namespace Nobots
             {
 
                 if (!transitionPlayed){
-                    ISound aux = scene.ISoundEngine.Play2D(toNormal[rand.Next(5)], false, false);
+                    ISound aux = scene.ISoundEngine.Play2D(toNormal[rand.Next(5)], false, true);
                     aux.Volume = 0.2f;
+                    aux.Paused = false;
                     transitionPlayed = true;
                 }
 
