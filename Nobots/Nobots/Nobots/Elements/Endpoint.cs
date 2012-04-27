@@ -61,12 +61,13 @@ namespace Nobots.Elements
         {
             if (NextLevel != "")
             {
-                scene.Backgrounds.Clear();
+                Game.Exit();
+                /*scene.Backgrounds.Clear();
                 scene.Elements.Clear();
                 scene.Foregrounds.Clear();
                 scene.World.Clear();
                 //TODO those Clear() are bullshit. it won't free any memory since there is no Dispose in DrawableElements...
-                scene.SceneLoader.SceneFromXml(@"Content\levels\" + NextLevel + ".xml", scene);
+                scene.SceneLoader.SceneFromXml(@"Content\levels\" + NextLevel + ".xml", scene);*/
             }
 
             return true;
