@@ -73,11 +73,6 @@ namespace Nobots.Elements
             createBody();
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;

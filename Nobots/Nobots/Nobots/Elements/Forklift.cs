@@ -100,8 +100,6 @@ namespace Nobots.Elements
                     isActive = false;
             }     
             prev = Keyboard.GetState();
-
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

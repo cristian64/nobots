@@ -157,7 +157,6 @@ namespace Nobots.Elements
         {
             updateLadder();
             State.Update(gameTime);
-            base.Update(gameTime);
         }
 
         public bool IsLadderInRange(Ladder ladder)

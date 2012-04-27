@@ -124,7 +124,6 @@ namespace Nobots.Elements
             }
             else
                 body.BodyType = BodyType.Static;
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

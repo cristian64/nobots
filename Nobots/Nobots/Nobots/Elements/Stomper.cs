@@ -153,7 +153,6 @@ namespace Nobots.Elements
             }
             else
                 body.LinearVelocity = Vector2.Zero;
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

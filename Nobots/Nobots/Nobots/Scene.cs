@@ -165,8 +165,6 @@ namespace Nobots
             foreach (Element i in RespawnElements)
                 Elements.Add(i);
             RespawnElements.Clear();
-
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
@@ -229,8 +227,6 @@ namespace Nobots
 
                 SpriteBatch.End();
             }
-
-            base.Update(gameTime);
         }
 
         public void drawScene(GameTime gameTime)
@@ -252,7 +248,6 @@ namespace Nobots
             foreach (Foreground i in Foregrounds)
                 i.Draw(gameTime);
             SpriteBatch.End();
-
         }
 
         /// <summary>
