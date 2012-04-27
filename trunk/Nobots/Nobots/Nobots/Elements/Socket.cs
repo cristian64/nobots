@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 using System.Diagnostics;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -18,6 +19,9 @@ namespace Nobots.Elements
         {
             get
             {
+                ISound aux = scene.ISoundEngine.Play2D(sounds[rand.Next(3)], false, true);
+                aux.Volume = 0.1f;
+                aux.Paused = false;
                 if (otherSocket == null)
                     foreach (Element e in scene.Elements)
                     {
@@ -41,6 +45,8 @@ namespace Nobots.Elements
 
         Body body;
         Texture2D texture;
+        private List<String> sounds = new List<String>();
+        Random rand = new Random();
 
         public override Vector2 Position
         {
@@ -86,6 +92,11 @@ namespace Nobots.Elements
             body.IsSensor = true;
             body.CollidesWith = Category.None | ElementCategory.ENERGY;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
+
+            sounds.Add("Content\\sounds\\effects\\travelcord1.wav");
+            sounds.Add("Content\\sounds\\effects\\travelcord2.wav");
+            sounds.Add("Content\\sounds\\effects\\travelcord3.wav");
+            
 
             body.UserData = this;
         }
