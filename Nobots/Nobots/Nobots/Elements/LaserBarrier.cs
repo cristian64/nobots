@@ -8,6 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Collision.Shapes;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -16,6 +17,7 @@ namespace Nobots.Elements
         float height = Conversion.ToWorld(550);
         float width = Conversion.ToWorld(15);
         Body body;
+        ISound sound;
 
         private bool isActive = true;
 
@@ -62,6 +64,12 @@ namespace Nobots.Elements
             {
                 body.Position = value;
                 position = value;
+
+                body.Position = value;
+                sound.Stop();
+                sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\electricbarrierloop.wav", body.Position.X, body.Position.Y, 0.0f, true, true);
+                sound.Volume = 0.3f;
+                sound.Paused = false;
             }
         }
 
@@ -88,6 +96,7 @@ namespace Nobots.Elements
                 this.height = height.Value;
             }
             this.position = position;
+
             createBody();
         }
 
@@ -103,6 +112,10 @@ namespace Nobots.Elements
             body.OnSeparation += body_OnSeparation;
             body.UserData = this;
             body.CollidesWith = Category.None | ElementCategory.CHARACTER;
+
+            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\electricbarrierloop.wav", body.Position.X, body.Position.Y, 0.0f, true, true);
+            sound.Volume = 0.15f;
+            sound.Paused = false;
 
         }
 
