@@ -32,7 +32,8 @@ namespace Nobots.Elements
                 character.torso.LinearVelocity = new Vector2(0, 0);
                 character.body.LinearVelocity = new Vector2(0, 0);
             }
-            changeIdleTextures(gameTime);
+            else
+                changeIdleTextures(gameTime);
         }
 
         float seconds = 0;
@@ -40,7 +41,7 @@ namespace Nobots.Elements
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (seconds > 0.08f  && (Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down)))
+            if (seconds > 0.08f)
             {
                 seconds -= 0.08f;
                 textureXmin += texture.Width / 7;
