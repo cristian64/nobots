@@ -49,7 +49,7 @@ namespace Nobots.Elements
                 body.Position = value;
                 sound.Stop();
                 sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\computerbleep.wav", body.Position.X, body.Position.Y, 0.0f, true,true);
-                sound.Volume = 0.05f;
+                sound.Volume = 0.15f;
                 sound.Paused = false;
             }
         }
@@ -81,7 +81,7 @@ namespace Nobots.Elements
             body.Friction = 100.0f;
             
             sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\computerbleep.wav", body.Position.X, body.Position.Y, 0.0f, true,true);
-            sound.Volume = 0.05f;
+            sound.Volume = 0.15f;
             sound.Paused = false;
                        
 
