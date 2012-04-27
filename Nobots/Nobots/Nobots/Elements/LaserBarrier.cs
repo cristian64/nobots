@@ -18,7 +18,7 @@ namespace Nobots.Elements
         float width = Conversion.ToWorld(15);
         Body body;
         ISound sound;
-        private List<String> shocks = new List<String>();
+        private List<String> sounds = new List<String>();
         Random rand = new Random();
 
         private bool isActive = true;
@@ -104,10 +104,10 @@ namespace Nobots.Elements
 
         private void createBody()
         {
-            shocks.Add("Content\\sounds\\effects\\electricbarriershock1.wav");
-            shocks.Add("Content\\sounds\\effects\\electricbarriershock2.wav");
-            shocks.Add("Content\\sounds\\effects\\electricbarriershock3.wav");
-            shocks.Add("Content\\sounds\\effects\\electricbarriershock4.wav");            
+            sounds.Add("Content\\sounds\\effects\\electricbarriershock1.wav");
+            sounds.Add("Content\\sounds\\effects\\electricbarriershock2.wav");
+            sounds.Add("Content\\sounds\\effects\\electricbarriershock3.wav");
+            sounds.Add("Content\\sounds\\effects\\electricbarriershock4.wav");            
 
 
             if (body != null)
@@ -140,7 +140,7 @@ namespace Nobots.Elements
             {
                 //((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
                 //TODO: change character state to "dying..."
-                ISound aux = scene.ISoundEngine.Play3D(shocks[rand.Next(4)], body.Position.X, body.Position.Y, 0.0f, false, true);
+                ISound aux = scene.ISoundEngine.Play3D(sounds[rand.Next(4)], body.Position.X, body.Position.Y, 0.0f, false, true);
                 aux.Volume = 0.2f;
                 aux.Paused = false;
             }
