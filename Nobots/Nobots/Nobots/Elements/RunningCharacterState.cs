@@ -89,14 +89,20 @@ namespace Nobots.Elements
         public override void RightAction()
         {
             character.body.FixedRotation = false;
-            character.torso.LinearVelocity = new Vector2(3, character.torso.LinearVelocity.Y);
+            if (character.lastContact != null)
+                character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X + 3, character.torso.LinearVelocity.Y);
+            else
+                character.torso.LinearVelocity = new Vector2(3, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.None;
         }
 
         public override void LeftAction()
         {
             character.body.FixedRotation = false;
-            character.torso.LinearVelocity = new Vector2(-3, character.torso.LinearVelocity.Y);
+            if (character.lastContact != null)
+                character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X - 3, character.torso.LinearVelocity.Y);
+            else
+                character.torso.LinearVelocity = new Vector2(-3, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.FlipHorizontally;
         }
 

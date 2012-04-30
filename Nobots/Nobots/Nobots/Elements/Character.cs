@@ -22,6 +22,7 @@ namespace Nobots.Elements
         public SpriteEffects Effect;
 
         public Body touchedBody;
+        public Body lastContact;
 
         public Ladder Ladder;
         float height, width;
@@ -123,13 +124,20 @@ namespace Nobots.Elements
         protected void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             if (!fixtureB.IsSensor)
+            {
                 contactsNumber--;
+                if (fixtureB.Body == lastContact)
+                    lastContact = null;
+            }
         }
 
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (!fixtureB.IsSensor)
+            {
                 contactsNumber++;
+                lastContact = fixtureB.Body;
+            }
             return true;
         }
 
