@@ -185,6 +185,8 @@ namespace Nobots.Elements
                 scene.Camera.Target = null;
             if (scene.InputManager.Character == this)
                 scene.InputManager.Character = null;
+            if (scene.SelectionManager.Selection == this)
+                scene.SelectionManager.Selection = null;
             scene.World.RemoveJoint(revoluteJoint);
             torso.Dispose();
             body.Dispose();
