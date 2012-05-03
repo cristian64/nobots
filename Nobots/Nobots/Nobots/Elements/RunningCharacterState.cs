@@ -54,6 +54,11 @@ namespace Nobots.Elements
             character.body.AngularVelocity = 0;
         }
 
+        public override void YActionStart()
+        {
+            character.State = new ComaCharacterState(scene, character);
+        }
+
         public override void UpAction()
         {
             if (character.Ladder != null)
