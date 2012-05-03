@@ -129,6 +129,9 @@ namespace Nobots
                     case "Stone":
                         element = new Stone(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Battery":
+                        element = new Battery(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Steam":
                         element = new Steam(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
