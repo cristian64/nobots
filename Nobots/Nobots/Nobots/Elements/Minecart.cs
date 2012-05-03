@@ -20,8 +20,8 @@ namespace Nobots.Elements
         Body rightWheel;
         Texture2D texture;
         Texture2D textureWheel;
-        RevoluteJoint leftJoint;
-        RevoluteJoint rightJoint;
+        LineJoint leftJoint;
+        LineJoint rightJoint;
         int collisionsNumber = 0;
 
         private bool isActive = true;
@@ -35,6 +35,10 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
+                leftWheel.FixedRotation = rightWheel.FixedRotation = !value;
+                if (!isActive)
+                    leftWheel.AngularVelocity = rightWheel.AngularVelocity = 0;
+                leftJoint.MotorEnabled = rightJoint.MotorEnabled = value;
             }
         }
 
@@ -125,29 +129,35 @@ namespace Nobots.Elements
             body.CollidesWith = Category.All & ~ElementCategory.ENERGY;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
+            body.Mass = 1000;
 
             //creating the left wheel
-            leftWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 10000);
+            leftWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 200);
             leftWheel.Position = Position + new Vector2(-Width / 3, Height / 2);
             leftWheel.BodyType = BodyType.Dynamic;
+            leftWheel.Friction = 1;
             leftWheel.CollidesWith = Category.All & ~ElementCategory.CHARACTER & ~ElementCategory.ENERGY;
-            leftJoint = new RevoluteJoint(body, leftWheel, new Vector2(-0.8f, 0.6f), Vector2.Zero);
-            leftWheel.Friction = 10000;
-            leftJoint.MotorEnabled = false;
-            leftJoint.MotorSpeed = 0f;
-            leftJoint.MaxMotorTorque = 0f;
+
+            leftJoint = new LineJoint(body, leftWheel, leftWheel.Position, new Vector2(0.8f, 0.6f));
+            leftJoint.MotorSpeed = 0.0f;
+            leftJoint.MaxMotorTorque = 20.0f;
+            leftJoint.MotorEnabled = true;
+            leftJoint.Frequency = 100;
             scene.World.AddJoint(leftJoint);
 
             //creating the right wheel
-            rightWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 10000);
+            rightWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 200);
             rightWheel.Position = Position + new Vector2(Width / 3, Height / 2);
             rightWheel.BodyType = BodyType.Dynamic;
+            rightWheel.Friction = 1;
+            Console.WriteLine(rightWheel.Mass);
             rightWheel.CollidesWith = Category.All & ~ElementCategory.CHARACTER & ~ElementCategory.ENERGY;
-            rightJoint = new RevoluteJoint(body, rightWheel, new Vector2(0.8f, 0.6f), Vector2.Zero);
-            rightWheel.Friction = 10000;
-            rightJoint.MotorEnabled = false;
-            rightJoint.MotorSpeed = 0f;
-            rightJoint.MaxMotorTorque = 0f;
+
+            rightJoint = new LineJoint(body, rightWheel, rightWheel.Position, new Vector2(0.8f, 0.6f));
+            rightJoint.MotorSpeed = 0.0f;
+            rightJoint.MaxMotorTorque = 20.0f;
+            rightJoint.MotorEnabled = true;
+            rightJoint.Frequency = 100;
             scene.World.AddJoint(rightJoint);
         }
 
@@ -175,7 +185,11 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
+            scene.World.RemoveJoint(rightJoint);
+            scene.World.RemoveJoint(leftJoint);
             body.Dispose();
+            leftWheel.Dispose();
+            rightWheel.Dispose();
             base.Dispose(disposing);
         }
     }
