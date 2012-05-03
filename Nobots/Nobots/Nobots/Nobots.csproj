@@ -130,6 +130,7 @@
     <Compile Include="Elements\Checkpoint.cs" />
     <Compile Include="Elements\DeadCharacterState.cs" />
     <Compile Include="Elements\DyingCharacterState.cs" />
+    <Compile Include="Elements\Minecart.cs" />
     <Compile Include="Elements\Sound.cs" />
     <Compile Include="Elements\Door.cs" />
     <Compile Include="Elements\ExperimentalTube.cs" />

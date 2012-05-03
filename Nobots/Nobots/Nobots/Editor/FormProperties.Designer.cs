@@ -1342,6 +1342,7 @@
             "Steam",
             "Spikes",
             "Battery",
+            "Minecart",
             "---------------",
             "Sound"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
