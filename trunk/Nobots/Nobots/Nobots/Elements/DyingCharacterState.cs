@@ -46,7 +46,6 @@ namespace Nobots.Elements
                 {
                     if (i is Checkpoint && ((Checkpoint)i).Active)
                     {
-                        
                         scene.GarbageElements.Add(character);
                         Character character2 = new Character(scene.Game, scene, i.Position);
                         scene.RespawnElements.Add(character2);

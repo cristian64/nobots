@@ -171,9 +171,43 @@ namespace Nobots
             RespawnElements.Clear();
 
             SceneLoader.Update(gameTime, this);
+
+            if (cleanAndLoad)
+            {
+                Clean();
+                Load(levelName, characterPosition);
+                cleanAndLoad = false;
+                levelName = "";
+                characterPosition = null;
+            }
         }
 
-        public bool NewSceneWaiting = false;
+        private bool cleanAndLoad = false;
+        private String levelName = "";
+        private Vector2? characterPosition = null;
+
+        public void CleanAndLoad(String levelName, Vector2? characterPosition = null)
+        {
+            cleanAndLoad = true;
+            this.levelName = levelName;
+            this.characterPosition = characterPosition;
+        }
+
+        public void Load(String levelName, Vector2? characterPosition = null)
+        {
+            SceneLoader.SceneFromXml(@"Content\levels\" + levelName + ".xml", this);
+            if (characterPosition != null)
+            {
+                foreach (Element i in Elements)
+                {
+                    if (i is Character)
+                        i.Position = (Vector2)characterPosition;
+                }
+            }
+            levelName = "";
+            characterPosition = null;
+        }
+
         public void Clean()
         {
             foreach (Background i in Backgrounds)
@@ -193,8 +227,7 @@ namespace Nobots
             InputManager.Character = null;
             SelectionManager.Selection = null;
             ISoundEngine.StopAllSounds();
-            ISoundEngine.Dispose();
-            ISoundEngine = new ISoundEngine();
+            ISoundEngine.RemoveAllSoundSources();
             World.Clear();
         }
 
