@@ -176,6 +176,7 @@ namespace Nobots.Elements
         protected override void Dispose(bool disposing)
         {
             body.Dispose();
+            sound.Dispose();
             base.Dispose(disposing);
         }
     }
