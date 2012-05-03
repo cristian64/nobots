@@ -9,6 +9,7 @@ using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Common;
 using FarseerPhysics.Dynamics.Joints;
+using FarseerPhysics.Collision.Shapes;
 
 namespace Nobots.Elements
 {
@@ -86,28 +87,49 @@ namespace Nobots.Elements
         public Minecart(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = -7f;
+            ZBuffer = 1f;
             texture = Game.Content.Load<Texture2D>("minecart");
             textureWheel = Game.Content.Load<Texture2D>("minecartwheel");
-            Height = Conversion.ToWorld(texture.Height);
-            Vertices vertices = new Vertices(8);
-            vertices.Add(new Vector2(-Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
-            vertices.Add(new Vector2(0.26f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
-            vertices.Add(new Vector2(2.24f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
-            vertices.Add(new Vector2(2.5f - Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
-            vertices.Add(new Vector2(2.3f - Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
-            vertices.Add(new Vector2(2.04f - Conversion.ToWorld(texture.Width / 2), 1.25f - Conversion.ToWorld(texture.Height / 2)));
+            body = new Body(scene.World);
+            
+            //adding the floor of the cart
+            Vertices vertices = new Vertices(4);
             vertices.Add(new Vector2(0.46f - Conversion.ToWorld(texture.Width / 2), 1.25f - Conversion.ToWorld(texture.Height / 2)));
-            vertices.Add(new Vector2(0.2f - Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
-            body = BodyFactory.CreatePolygon(scene.World, vertices, 100.0f);
+            vertices.Add(new Vector2(2.04f - Conversion.ToWorld(texture.Width / 2), 1.25f - Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(2.24f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(0.26f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
+            PolygonShape p = new PolygonShape(vertices, 100);
+            Fixture f1 = new Fixture(body, p);
+
+            //adding the left wall of the cart
+            vertices.Clear();
+            vertices.Add(new Vector2(0.46f - Conversion.ToWorld(texture.Width / 2), 1.25f - Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(0.26f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(-Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(0.46f - Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
+            p = new PolygonShape(vertices, 100);
+            Fixture f2 = new Fixture(body, p);
+
+            //adding the right wall of the cart
+            vertices.Clear();
+            vertices.Add(new Vector2(2.04f - Conversion.ToWorld(texture.Width / 2), 1.25f - Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(2.04f - Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(2.5f - Conversion.ToWorld(texture.Width / 2), -Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(2.24f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
+            p = new PolygonShape(vertices, 100);
+            Fixture f3 = new Fixture(body, p);
+
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
+            body.CollidesWith = Category.All & ~ElementCategory.ENERGY;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
-            leftWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 100);
+            //creating the left wheel
+            leftWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 10000);
             leftWheel.Position = Position + new Vector2(-Width / 3, Height / 2);
             leftWheel.BodyType = BodyType.Dynamic;
+            leftWheel.CollidesWith = Category.All & ~ElementCategory.CHARACTER & ~ElementCategory.ENERGY;
             leftJoint = new RevoluteJoint(body, leftWheel, new Vector2(-0.8f, 0.6f), Vector2.Zero);
             leftWheel.Friction = 10000;
             leftJoint.MotorEnabled = false;
@@ -115,9 +137,11 @@ namespace Nobots.Elements
             leftJoint.MaxMotorTorque = 0f;
             scene.World.AddJoint(leftJoint);
 
-            rightWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 100);
+            //creating the right wheel
+            rightWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 10000);
             rightWheel.Position = Position + new Vector2(Width / 3, Height / 2);
             rightWheel.BodyType = BodyType.Dynamic;
+            rightWheel.CollidesWith = Category.All & ~ElementCategory.CHARACTER & ~ElementCategory.ENERGY;
             rightJoint = new RevoluteJoint(body, rightWheel, new Vector2(0.8f, 0.6f), Vector2.Zero);
             rightWheel.Friction = 10000;
             rightJoint.MotorEnabled = false;
