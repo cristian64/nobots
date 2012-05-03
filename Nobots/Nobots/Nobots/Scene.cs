@@ -46,6 +46,7 @@ namespace Nobots
         Effect gaussianBlurEffect;
 
         Texture2D blank;
+        SpriteFont debugfont;
 
         public Scene(Game game)
             : base(game)
@@ -84,6 +85,10 @@ namespace Nobots
             Elements = new SortedList<Element>();
             Backgrounds = new List<Background>();
             Foregrounds = new List<Foreground>();
+
+            //PhysicsDebug.Enabled = false;
+            //SelectionManager.ShowEmblems = false;
+            //SelectionManager.ShowForm = false;
         }
 
         public override void Initialize()
@@ -121,6 +126,7 @@ namespace Nobots
 
             blank = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             blank.SetData(new[] { Color.White });
+            debugfont = Game.Content.Load<SpriteFont>("debugfont");
 
             base.LoadContent();
         }
@@ -135,14 +141,12 @@ namespace Nobots
             }
 
             SelectionManager.Update(gameTime);
-            SceneLoader.Update(gameTime, this);
 
             foreach (Element i in GarbageElements)
             {
                 Elements.Remove(i);
                 i.Dispose();
             }
-            
             GarbageElements.Clear();
 
             PlasmaExplosionParticleSystem.Update(gameTime);
@@ -165,10 +169,50 @@ namespace Nobots
             foreach (Element i in RespawnElements)
                 Elements.Add(i);
             RespawnElements.Clear();
+
+            SceneLoader.Update(gameTime, this);
         }
+
+        public bool NewSceneWaiting = false;
+        public void Clean()
+        {
+            foreach (Background i in Backgrounds)
+                i.Dispose();
+            foreach (Foreground i in Foregrounds)
+                i.Dispose();
+            foreach (Element i in Elements)
+                i.Dispose();
+            foreach (Element i in RespawnElements)
+                i.Dispose();
+            Backgrounds.Clear();
+            Foregrounds.Clear();
+            Elements.Clear();
+            RespawnElements.Clear();
+            GarbageElements.Clear();
+            Camera.Target = null;
+            InputManager.Character = null;
+            SelectionManager.Selection = null;
+            ISoundEngine.StopAllSounds();
+            ISoundEngine.Dispose();
+            ISoundEngine = new ISoundEngine();
+            World.Clear();
+        }
+
+        int frames = 0;
+        double seconds = 0;
+        double fps = 0;
 
         public override void Draw(GameTime gameTime)
         {
+            frames++;
+            seconds += gameTime.ElapsedGameTime.TotalSeconds;
+            if (seconds > 1)
+            {
+                fps = frames / seconds;
+                seconds = 0;
+                frames = 0;
+            }
+
             if (InputManager.Character as Energy != null)
             {
                 // Draw scene in a render target.
@@ -222,9 +266,11 @@ namespace Nobots
                     PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, i == SelectionManager.Selection ? Color.Yellow : Color.Blue);
                 foreach (Foreground i in Foregrounds)
                     PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(i.Position), Camera.Scale * Conversion.ToDisplay(i.Width), Camera.Scale * Conversion.ToDisplay(i.Height), i.Rotation, i == SelectionManager.Selection ? Color.Yellow : Color.Green);
-
                 PrimitiveDrawings.DrawBoundingBox(SpriteBatch, blank, Camera.WorldToScreen(Camera.ListenerPosition), 30, 30, MathHelper.PiOver4, Color.White);
+                SpriteBatch.End();
 
+                SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                SpriteBatch.DrawString(debugfont, fps.ToString().Substring(0, Math.Min(5, fps.ToString().Length)), Vector2.One * 10, Color.White);
                 SpriteBatch.End();
             }
         }
