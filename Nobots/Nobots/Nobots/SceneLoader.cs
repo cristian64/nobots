@@ -124,6 +124,9 @@ namespace Nobots
                 case "Stomper":
                     e = new Stomper(Game, scene, Vector2.Zero);
                     break;
+                case "Battery":
+                    e = new Battery(Game, scene, Vector2.Zero);
+                    break;
                 case "Steam":
                     e = new Steam(Game, scene, Vector2.Zero);
                     break;
@@ -292,6 +295,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Box)i) + "\n";
                 else if (i as Stomper != null)
                     xml += "        " + ElementToXml((Stomper)i) + "\n";
+                else if (i as Battery != null)
+                    xml += "        " + ElementToXml((Battery)i) + "\n";
                 else if (i as Spikes != null)
                     xml += "        " + ElementToXml((Spikes)i) + "\n";
                 else if (i as Steam != null)
@@ -392,6 +397,12 @@ namespace Nobots
         public String ElementToXml(Stomper stomper)
         {
             String xml = "<Stomper Id=\"" + stomper.Id + "\" Position=\"" + stomper.Position.X + "," + stomper.Position.Y + "\" Rotation=\"" + stomper.Rotation + "\" Active=\"" + stomper.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Battery battery)
+        {
+            String xml = "<Battery Id=\"" + battery.Id + "\" Position=\"" + battery.Position.X + "," + battery.Position.Y + "\" Rotation=\"" + battery.Rotation + "\" Active=\"" + battery.Active + "\" />";
             return xml;
         }
 

@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="Elements\Activator.cs" />
     <Compile Include="Elements\Alarm.cs" />
+    <Compile Include="Elements\Battery.cs" />
     <Compile Include="Elements\Chandelier.cs" />
     <Compile Include="Elements\Closet.cs" />
     <Compile Include="Elements\ComaCharacterState.cs" />
