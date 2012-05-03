@@ -69,6 +69,8 @@ namespace Nobots.Elements
             set
             {
                 body.Position = value;
+                leftWheel.Position = value + new Vector2(-Width / 3, Height / 2);
+                rightWheel.Position = value + new Vector2(Width / 3, Height / 2);
             }
         }
 
@@ -80,7 +82,6 @@ namespace Nobots.Elements
             }
             set
             {
-                body.Rotation = value;
             }
         }
 
