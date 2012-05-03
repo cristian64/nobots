@@ -12,7 +12,7 @@ namespace Nobots
         private Scene scene;
         private Texture2D blank;
 
-        private float duration = 1;
+        private float duration = 0.5f;
         private Color color = Color.Black;
         private float alpha = 1;
         public float AlphaTarget = 0;

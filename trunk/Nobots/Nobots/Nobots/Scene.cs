@@ -174,13 +174,14 @@ namespace Nobots
 
             SceneLoader.Update(gameTime, this);
 
-            if (cleanAndLoad)
+            if (cleanAndLoad && !Transitioner.InTransition)
             {
                 Clean();
                 Load(levelName, characterPosition);
                 cleanAndLoad = false;
                 levelName = "";
                 characterPosition = null;
+                Transitioner.AlphaTarget = 0;
             }
 
             Transitioner.Update(gameTime);
@@ -195,6 +196,7 @@ namespace Nobots
             cleanAndLoad = true;
             this.levelName = levelName;
             this.characterPosition = characterPosition;
+            Transitioner.AlphaTarget = 1;
         }
 
         public void Load(String levelName, Vector2? characterPosition = null)
