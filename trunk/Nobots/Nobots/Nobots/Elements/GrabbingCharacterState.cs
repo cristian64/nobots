@@ -16,32 +16,38 @@ namespace Nobots.Elements
         private float touchedBodyFriction;
         private SliderJoint sliderJoint;
 
+        private int rows = 2;
+        private int columns = 4;
+        private int framesInLastRow = 3;
+
         public GrabbingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("running");//("girl_moving");
-            characterWidth = texture.Width / 10;// 8;
-            characterHeight = texture.Height / 2;///5;
+            texture = scene.Game.Content.Load<Texture2D>("pushing");
+            characterWidth = texture.Width / columns;
+            characterHeight = texture.Height / rows;
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;
         }
 
+        bool moving = false;
         public override void Update(GameTime gameTime)
         {
-            changeRunningTextures(gameTime);
+            if (moving)
+                changeRunningTextures(gameTime);
         }
 
         float seconds = 0;
         private Vector2 changeRunningTextures(GameTime gameTime)
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (seconds > 0.04f)
+            if (seconds > 0.1f)
             {
-                seconds -= 0.04f;
-                textureXmin += texture.Width / 10;
+                seconds -= 0.1f;
+                textureXmin += texture.Width / columns;
 
-                if (textureXmin == (texture.Width / 10) * 4 && textureYmin == texture.Height / 2)
+                if (textureXmin == (texture.Width / columns) * framesInLastRow && textureYmin == texture.Height / rows)
                 {
                     textureXmin = 0;
                     textureYmin = 0;
@@ -49,7 +55,7 @@ namespace Nobots.Elements
                 else if (textureXmin == texture.Width)
                 {
                     textureXmin = 0;
-                    textureYmin += texture.Height / 2;
+                    textureYmin += texture.Height / rows;
                 }
             }
 
@@ -101,6 +107,7 @@ namespace Nobots.Elements
 
         public override void RightAction()
         {
+            moving = true;
             if (character.touchedBody != null && ((character.touchedBody.UserData is IPushable && character.Position.X < character.touchedBody.Position.X) ||
                 (character.touchedBody.UserData is IPullable && character.Position.X > character.touchedBody.Position.X)))
             {
@@ -112,6 +119,7 @@ namespace Nobots.Elements
 
         public override void LeftAction()
         {
+            moving = true;
             if (character.touchedBody != null && ((character.touchedBody.UserData is IPushable && character.Position.X > character.touchedBody.Position.X) ||
                 (character.touchedBody.UserData is IPullable && character.Position.X < character.touchedBody.Position.X)))
             {
@@ -123,6 +131,7 @@ namespace Nobots.Elements
 
         public override void RightActionStop()
         {
+            moving = false;
             character.body.FixedRotation = true;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.AngularVelocity = 0;
@@ -132,6 +141,7 @@ namespace Nobots.Elements
 
         public override void LeftActionStop()
         {
+            moving = false;
             character.body.FixedRotation = true;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.AngularVelocity = 0;
