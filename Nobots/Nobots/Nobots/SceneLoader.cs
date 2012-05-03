@@ -576,7 +576,7 @@ namespace Nobots
                     if (dr == DialogResult.OK)
                         System.IO.File.WriteAllText(saveFileDialog1.FileName, SceneToXml(scene));
                 }
-                if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.O))
+                else if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.O))
                 {
                     OpenFileDialog openFileDialog1 = new OpenFileDialog();
                     openFileDialog1.Filter = "XML file|*.xml";
@@ -584,14 +584,15 @@ namespace Nobots
                     DialogResult dr = openFileDialog1.ShowDialog();
                     if (dr == DialogResult.OK)
                     {
-                        scene.Backgrounds.Clear();
-                        scene.Elements.Clear();
-                        scene.Foregrounds.Clear();
-                        scene.World.Clear();
-                        scene.Camera.Target = null;
-                        scene.InputManager.Character = null;
-                        //TODO those Clear() are bullshit. it won't free any memory since there is no Dispose in DrawableElements...
+                        scene.Clean();
                         SceneFromXml(openFileDialog1.FileName, scene);
+                    }
+                }
+                else if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.N))
+                {
+                    if (MessageBox.Show("Are you sure you want to clean the scene?", "New scene", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        scene.Clean();
                     }
                 }
             }
