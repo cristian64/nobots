@@ -13,7 +13,7 @@ namespace Nobots.Elements
         int columns = 0;
         int rows = 0;
         int framesInLastRow = 0;
-        bool dead = false;
+        public bool dead = false;
         bool animating = true;
 
         public DyingCharacterState(Scene scene, Character character) 
