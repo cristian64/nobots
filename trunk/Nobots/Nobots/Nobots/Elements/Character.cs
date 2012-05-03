@@ -243,7 +243,25 @@ namespace Nobots.Elements
 
         public virtual void BActionStart()
         {
-            State.BActionStart();
+            bool worked = false;
+            foreach (Element i in scene.Elements)
+            {
+                Lever lever = i as Lever;
+                if (lever != null)
+                {
+                    if (IsTouchingElement(i))
+                    {
+                        if (lever.ActivableElement != null)
+                        {
+                            lever.ActivableElement.Active = !lever.ActivableElement.Active;
+                            worked = true;
+                        }
+                        break;
+                    }
+                }
+            }
+            if (!worked)
+                State.BActionStart();
         }
 
         public virtual void BAction()
@@ -258,19 +276,7 @@ namespace Nobots.Elements
 
         public virtual void XActionStart()
         {
-            foreach (Element i in scene.Elements)
-            {
-                Lever lever = i as Lever;
-                if (lever != null)
-                {
-                    if (IsTouchingElement(i))
-                    {
-                        if (lever.ActivableElement != null)
-                            lever.ActivableElement.Active = !lever.ActivableElement.Active;
-                        break;
-                    }
-                }
-            }
+            State.XActionStart();
         }
 
         public virtual void XAction()

@@ -43,18 +43,6 @@ namespace Nobots.Elements
 
         public override void BActionStart()
         {
-        }
-
-        public override void BAction()
-        {
-        }
-
-        public override void BActionStop()
-        {
-        }
-
-        public override void XActionStart()
-        {
             foreach (Element i in scene.Elements)
             {
                 Socket socket = i as Socket;
@@ -88,6 +76,14 @@ namespace Nobots.Elements
                     }
                 }
             }
+        }
+
+        public override void BAction()
+        {
+        }
+
+        public override void BActionStop()
+        {
         }
 
         public override void YActionStart()
