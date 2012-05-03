@@ -28,6 +28,7 @@ namespace Nobots
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
         public SelectionManager SelectionManager;
+        public Transitioner Transitioner;
         public SceneLoader SceneLoader;
         public Camera Camera;
         public World World;
@@ -77,6 +78,7 @@ namespace Nobots
             World = new World(new Vector2(0, 13));
             PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);
+            Transitioner = new Transitioner(Game, this);
             SelectionManager = new SelectionManager(Game, this);
             SceneLoader = new SceneLoader(Game);
             Camera = new Camera(Game, this);
@@ -180,6 +182,8 @@ namespace Nobots
                 levelName = "";
                 characterPosition = null;
             }
+
+            Transitioner.Update(gameTime);
         }
 
         private bool cleanAndLoad = false;
@@ -284,6 +288,8 @@ namespace Nobots
             {
                 drawScene(gameTime);
             }
+
+            Transitioner.Draw(gameTime);
 
             SelectionManager.Draw(gameTime);
             PhysicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
