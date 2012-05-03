@@ -121,6 +121,9 @@ namespace Nobots
                 case "Box":
                     e = new Box(Game, scene, Vector2.Zero);
                     break;
+                case "Minecart":
+                    e = new Minecart(Game, scene, Vector2.Zero);
+                    break;
                 case "Stomper":
                     e = new Stomper(Game, scene, Vector2.Zero);
                     break;
@@ -295,6 +298,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Box)i) + "\n";
                 else if (i as Stomper != null)
                     xml += "        " + ElementToXml((Stomper)i) + "\n";
+                else if (i as Minecart != null)
+                    xml += "        " + ElementToXml((Minecart)i) + "\n";
                 else if (i as Battery != null)
                     xml += "        " + ElementToXml((Battery)i) + "\n";
                 else if (i as Spikes != null)
@@ -385,6 +390,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Minecart minecart)
+        {
+            String xml = "<Minecart Id=\"" + minecart.Id + "\" Position=\"" + minecart.Position.X + "," + minecart.Position.Y + "\" Rotation=\"" + minecart.Rotation + "\" Active=\"" + minecart.Active + "\" />";
             return xml;
         }
 
