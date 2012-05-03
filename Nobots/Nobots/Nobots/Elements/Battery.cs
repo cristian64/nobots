@@ -16,6 +16,7 @@ namespace Nobots.Elements
          public Body body;
         Texture2D texture;
         Random random = new Random();
+        Character character;
 
         private bool isActive = true;
         public bool Active
@@ -88,6 +89,16 @@ namespace Nobots.Elements
             createBody();
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            if(character != null)
+                if (((DyingCharacterState)character.State).dead)
+                {
+                    texture = Game.Content.Load<Texture2D>("batteryempty");
+                    character = null;
+                }
+        }
+
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;
@@ -121,7 +132,10 @@ namespace Nobots.Elements
                 scene.GarbageElements.Add((Energy)fixtureB.Body.UserData);
                 foreach (Element el in scene.Elements)
                     if (el is Character && !(el is Energy))
+                    {
+                        character = (Character)el;
                         ((Character)el).State = new DyingCharacterState(scene, (Character)el);
+                    }
             }
             return true;
         }
