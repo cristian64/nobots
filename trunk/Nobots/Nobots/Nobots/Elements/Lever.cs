@@ -18,7 +18,6 @@ namespace Nobots.Elements
         Texture2D texture2;
         float stickRotation = 0;
         bool playSound = false;
-        ISound sound;
 
         public override float Width
         {
@@ -77,10 +76,7 @@ namespace Nobots.Elements
             body.BodyType = BodyType.Dynamic;
             body.CollidesWith = Category.None | ElementCategory.FLOOR;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-            body.UserData = this;
-
-            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
-            sound.Volume = 0.15f;         
+            body.UserData = this;       
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
@@ -97,9 +93,7 @@ namespace Nobots.Elements
                 {
                     if (playSound)
                     {
-                        sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false,true);
-                        sound.Volume = 0.15f;
-                        sound.Paused = false;
+                        scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Lever, body.Position.X, body.Position.Y, 0.0f, false, false, false);
                         playSound = false;
                     }
                     stickRotation += 0.1f;
@@ -116,9 +110,7 @@ namespace Nobots.Elements
 
                     if (playSound)
                     {
-                        sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
-                        sound.Volume = 0.15f;
-                        sound.Paused = false;
+                        scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Lever, body.Position.X, body.Position.Y, 0.0f, false, false, false);
                         playSound = false;
                     }
                     stickRotation -= 0.1f;
