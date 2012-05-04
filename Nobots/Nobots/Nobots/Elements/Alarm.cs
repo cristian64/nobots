@@ -99,9 +99,9 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), null, Color.White, rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), null, Color.White, rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
             if (isActive)
-                scene.SpriteBatch.Draw(textureOn, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), null, Color.White * alpha, rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+                scene.SpriteBatch.Draw(textureOn, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), null, Color.White * alpha, rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
         }
     }
 }
