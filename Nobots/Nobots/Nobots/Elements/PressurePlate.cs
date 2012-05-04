@@ -103,9 +103,7 @@ namespace Nobots.Elements
         {
             float scale = scene.Camera.Scale;
             texture = (collisionsNumber == 0) ? Game.Content.Load<Texture2D>("weight") : Game.Content.Load<Texture2D>("weight2");
-            scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)),
-                (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Conversion.ToWorld(texture.Height))), null, Color.White, 
-                body.Rotation, new Vector2(texture.Width / 2, texture.Height - 19.0f/2.0f), SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) - (Vector2.UnitY * (texture.Height - 17) / 2.0f)), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)

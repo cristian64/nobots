@@ -176,11 +176,9 @@ namespace Nobots.Elements
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;
-            scene.SpriteBatch.Draw(texture, new Rectangle((int)Conversion.ToDisplay(scale * (body.Position.X - scene.Camera.Position.X)),
-                (int)Conversion.ToDisplay(scale * (body.Position.Y - scene.Camera.Position.Y)), (int)Conversion.ToDisplay(scale * Width), (int)Conversion.ToDisplay(scale * Conversion.ToWorld(texture.Height))), null, Color.White, 
-                body.Rotation, new Vector2(texture.Width/2, texture.Height/2), SpriteEffects.None, 0);
-            scene.SpriteBatch.Draw(textureWheel, scene.Camera.Scale * Conversion.ToDisplay(leftWheel.Position - scene.Camera.Position), null, Color.White, leftWheel.Rotation, new Vector2(textureWheel.Width / 2, textureWheel.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
-            scene.SpriteBatch.Draw(textureWheel, scene.Camera.Scale * Conversion.ToDisplay(rightWheel.Position - scene.Camera.Position), null, Color.White, rightWheel.Rotation, new Vector2(textureWheel.Width / 2, textureWheel.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(textureWheel, scene.Camera.Scale * Conversion.ToDisplay(leftWheel.Position - scene.Camera.Position), null, Color.White, leftWheel.Rotation, new Vector2(textureWheel.Width / 2.0f, textureWheel.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(textureWheel, scene.Camera.Scale * Conversion.ToDisplay(rightWheel.Position - scene.Camera.Position), null, Color.White, rightWheel.Rotation, new Vector2(textureWheel.Width / 2.0f, textureWheel.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)

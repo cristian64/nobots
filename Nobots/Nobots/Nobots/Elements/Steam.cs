@@ -130,7 +130,7 @@ namespace Nobots.Elements
             body.Position = position;
             body.Friction = 0;
             body.BodyType = BodyType.Static;
-           // body.IsSensor = true;
+            body.IsSensor = true;
             body.CollidesWith = Category.None | ElementCategory.CHARACTER;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
         }
