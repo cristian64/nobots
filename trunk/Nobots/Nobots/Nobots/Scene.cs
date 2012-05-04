@@ -27,6 +27,7 @@ namespace Nobots
         public VortexOutParticleSystem VortexOutParticleSystem;
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
+        public SoundManager SoundManager;
         public SelectionManager SelectionManager;
         public Transitioner Transitioner;
         public SceneLoader SceneLoader;
@@ -78,6 +79,7 @@ namespace Nobots
             World = new World(new Vector2(0, 13));
             PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);
+            SoundManager = new SoundManager(Game, this);
             Transitioner = new Transitioner(Game, this);
             SelectionManager = new SelectionManager(Game, this);
             SceneLoader = new SceneLoader(Game);
@@ -160,6 +162,7 @@ namespace Nobots
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             InputManager.Update(gameTime);
+            SoundManager.Update(gameTime);
             AmbienceSound.Update(gameTime);
             foreach (Background i in Backgrounds)
                 i.Update(gameTime);

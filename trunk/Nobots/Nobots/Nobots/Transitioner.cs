@@ -16,7 +16,7 @@ namespace Nobots
         private Color color = Color.Black;
         private float alpha = 1;
         public float AlphaTarget = 0;
-        public float Delay = 0;
+        public float Delay = 1;
 
         public Transitioner(Game game, Scene scene)
             : base(game)
