@@ -80,8 +80,7 @@ namespace Nobots.Elements
             body.UserData = this;
 
             sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\lever.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
-            sound.Volume = 0.15f;
-         
+            sound.Volume = 0.15f;         
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
@@ -132,10 +131,10 @@ namespace Nobots.Elements
         public override void Draw(GameTime gameTime)
         {
             Vector2 position = scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position);
-            Vector2 stickPosition = position + (texture.Height / 4.0f) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
+            Vector2 stickPosition = position + scene.Camera.Scale * (texture.Height / 2.0f) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
 
-            scene.SpriteBatch.Draw(texture2, stickPosition, null, Color.White, body.Rotation + stickRotation, new Vector2(texture2.Width / 2, texture2.Height), scene.Camera.Scale, SpriteEffects.None, 0);
-            scene.SpriteBatch.Draw(texture, position, null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture2, stickPosition, null, Color.White, body.Rotation + stickRotation, new Vector2(texture2.Width / 2.0f, texture2.Height), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, position, null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)
