@@ -181,6 +181,7 @@ namespace Nobots
                 cleanAndLoad = false;
                 levelName = "";
                 characterPosition = null;
+                Transitioner.Delay = 1;
                 Transitioner.AlphaTarget = 0;
             }
 

@@ -16,6 +16,7 @@ namespace Nobots
         private Color color = Color.Black;
         private float alpha = 1;
         public float AlphaTarget = 0;
+        public float Delay = 0;
 
         public Transitioner(Game game, Scene scene)
             : base(game)
@@ -30,10 +31,17 @@ namespace Nobots
         {
             if (alpha != AlphaTarget)
             {
-                if (alpha < AlphaTarget)
-                    alpha = (float)Math.Min(1, alpha + gameTime.ElapsedGameTime.TotalSeconds / duration);
+                if (Delay > 0)
+                {
+                    Delay -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
                 else
-                    alpha = (float)Math.Max(0, alpha - gameTime.ElapsedGameTime.TotalSeconds / duration);
+                {
+                    if (alpha < AlphaTarget)
+                        alpha = (float)Math.Min(1, alpha + gameTime.ElapsedGameTime.TotalSeconds / duration);
+                    else
+                        alpha = (float)Math.Max(0, alpha - gameTime.ElapsedGameTime.TotalSeconds / duration);
+                }
             }
         }
 
