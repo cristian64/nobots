@@ -25,6 +25,8 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
+            if (character.body.LinearVelocity.Y > 0)
+                character.State = new FallingCharacterState(scene, character);
             changeJumpingTextures(gameTime);
         }
 

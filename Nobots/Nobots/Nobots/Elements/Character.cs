@@ -128,6 +128,8 @@ namespace Nobots.Elements
                 contactsNumber--;
                 if (fixtureB.Body == lastContact)
                     lastContact = null;
+                if (contactsNumber == 0 && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
+                    State = new FallingCharacterState(scene, this);
             }
         }
 
