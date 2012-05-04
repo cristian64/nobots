@@ -223,7 +223,7 @@ namespace Nobots.Elements
         {
             scene.SpriteBatch.Draw(texture, scene.Camera.Scale * (Conversion.ToDisplay(Position - scene.Camera.Position) - Vector2.UnitY * 10), // this -10 is to make the character a bit up, not to be below the floor
                 new Rectangle(State.textureXmin, State.textureYmin, State.characterWidth, State.characterHeight),
-                Color.White, torso.Rotation, new Vector2(State.characterWidth/2, State.characterHeight / 2), scene.Camera.Scale, Effect, 0);
+                Color.White, torso.Rotation, new Vector2(State.characterWidth / 2.0f, State.characterHeight / 2.0f), scene.Camera.Scale, Effect, 0);
         }
 
         public virtual void AActionStart()

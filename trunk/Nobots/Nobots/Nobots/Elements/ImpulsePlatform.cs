@@ -154,11 +154,11 @@ namespace Nobots.Elements
             if (alpha > 0)
             {
                 float scale = scene.Camera.Scale;
-                Rectangle rectangle = new Rectangle((int)Conversion.ToDisplay(scale * (body2.Position.X - scene.Camera.Position.X)), (int)Conversion.ToDisplay(scale * (body2.Position.Y - scene.Camera.Position.Y)),
-                (int)Conversion.ToDisplay(Width * scale), (int)Conversion.ToDisplay(Height * scale));
-                scene.SpriteBatch.Draw(texture3, rectangle, null, Color.White * alpha, body2.Rotation, new Vector2(texture3.Width / 2, texture3.Height / 2), SpriteEffects.None, 0);
+                Rectangle rectangle = new Rectangle((int)Math.Round(Conversion.ToDisplay(scale * (body2.Position.X - scene.Camera.Position.X))), (int)Math.Round(Conversion.ToDisplay(scale * (body2.Position.Y - scene.Camera.Position.Y))),
+                (int)Math.Round(Conversion.ToDisplay(Width * scale)), (int)Math.Round(Conversion.ToDisplay(Height * scale)));
+                scene.SpriteBatch.Draw(texture3, rectangle, null, Color.White * alpha, body2.Rotation, new Vector2(texture3.Width / 2.0f, texture3.Height / 2.0f), SpriteEffects.None, 0);
             }
-            scene.SpriteBatch.Draw(Active ? texture2 : texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2, texture.Height / 2), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(Active ? texture2 : texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)

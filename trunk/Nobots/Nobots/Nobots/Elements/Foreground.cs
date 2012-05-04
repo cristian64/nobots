@@ -94,7 +94,7 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - Speed * scene.Camera.Position), null, Color.White, rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), scene.Camera.Scale * Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - Speed * scene.Camera.Position), null, Color.White, rotation, new Vector2(Texture.Width / 2.0f, Texture.Height / 2.0f), scene.Camera.Scale * Scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)
