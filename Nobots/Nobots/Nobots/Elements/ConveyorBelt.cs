@@ -185,14 +185,11 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
+            float scale = scene.Camera.Scale;
             foreach (Body b in rotors)
-                scene.SpriteBatch.Draw(circleTexture, new Rectangle((int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.X - scene.Camera.Position.X)),
-                    (int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.Y - scene.Camera.Position.Y)), (int)(scene.Camera.Scale * Conversion.ToDisplay(radius * 2)), (int)(scene.Camera.Scale * Conversion.ToDisplay(radius * 2))),
-                    null, Color.White, b.Rotation, new Vector2(circleTexture.Width / 2, circleTexture.Height / 2), SpriteEffects.None, 0);
+                scene.SpriteBatch.Draw(circleTexture, scale * Conversion.ToDisplay(b.Position - scene.Camera.Position), null, Color.White, b.Rotation, new Vector2(circleTexture.Width / 2.0f, circleTexture.Height / 2.0f), scale * radius * 2, SpriteEffects.None, 0);
             foreach (Body b in chainLinks)
-                scene.SpriteBatch.Draw(chainTexture, new Rectangle((int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.X - scene.Camera.Position.X)),
-                    (int)(scene.Camera.Scale * Conversion.ToDisplay(b.Position.Y - scene.Camera.Position.Y)), (int)(scene.Camera.Scale * Conversion.ToDisplay(linkWidth*2)), (int)(scene.Camera.Scale * Conversion.ToDisplay(linkHeight*2))),
-                    null, Color.White, b.Rotation, new Vector2(chainTexture.Width/2, chainTexture.Height/2), SpriteEffects.None, 0);
+                scene.SpriteBatch.Draw(chainTexture, scale * Conversion.ToDisplay(b.Position - scene.Camera.Position), null, Color.White, b.Rotation, new Vector2(chainTexture.Width / 2.0f, chainTexture.Height / 2.0f), scale * (Vector2.UnitX * linkWidth + Vector2.UnitY * linkHeight) * 2, SpriteEffects.None, 0);
         }
 
         private void createBody(Vector2 position)
