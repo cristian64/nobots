@@ -65,6 +65,7 @@ namespace Nobots.Elements
 
         public override void Exit()
         {
+            character.LastLadder = character.Ladder;
             character.body.IgnoreGravity = false;
             character.torso.IgnoreGravity = false;
         }

@@ -61,12 +61,13 @@ namespace Nobots.Elements
 
         public override void Exit()
         {
+            character.LastLadder = null;
             character.body.OnCollision -= body_OnCollision;
         }
 
         public override void UpAction()
         {
-            if (character.Ladder != null)
+            if (character.Ladder != null && character.Ladder != character.LastLadder)
             {
                 character.State = new ClimbingCharacterState(scene, character);
                 character.State.UpAction();
@@ -75,7 +76,7 @@ namespace Nobots.Elements
 
         public override void DownAction()
         {
-            if (character.Ladder != null)
+            if (character.Ladder != null && character.Ladder != character.LastLadder)
             {
                 character.State = new ClimbingCharacterState(scene, character);
                 character.State.DownAction();
