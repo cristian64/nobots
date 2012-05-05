@@ -25,7 +25,7 @@ namespace Nobots.Elements
         public Body lastContact;
 
         public Ladder Ladder;
-        float height, width;
+        public Ladder LastLadder;
 
         protected CharacterState state;
         public CharacterState State
@@ -39,17 +39,19 @@ namespace Nobots.Elements
                 if (state != null)
                     state.Exit();
                 state = value;
-                state.Enter();
                 Console.WriteLine(state.GetType().Name);
+                state.Enter();
             }
         }
 
+        float height;
         public override float Height
         {
             get { return height; }
             set { }
         }
 
+        float width;
         public override float Width
         {
             get { return width; }
@@ -128,7 +130,7 @@ namespace Nobots.Elements
                 contactsNumber--;
                 if (fixtureB.Body == lastContact)
                     lastContact = null;
-                if (contactsNumber == 0 && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
+                if (contactsNumber == 0 && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && !(state is ClimbingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
                     State = new FallingCharacterState(scene, this);
             }
         }
@@ -178,7 +180,10 @@ namespace Nobots.Elements
         protected void updateLadder()
         {
             if (Ladder != null && !IsLadderInRange(Ladder))
+            {
                 Ladder = null;
+                LastLadder = null;
+            }
 
             if (Ladder == null)
             {
