@@ -34,6 +34,9 @@ namespace Nobots.Elements
             }
             else
                 changeIdleTextures(gameTime);
+
+            if (character.Ladder == null)
+                character.State = new FallingCharacterState(scene, character);
         }
 
         float seconds = 0;
@@ -68,16 +71,34 @@ namespace Nobots.Elements
 
         public override void UpAction()
         {
-            moving = true;
-            character.torso.LinearVelocity = new Vector2(0, -3);
-            character.body.LinearVelocity = new Vector2(0, -3);
+            if (character.IsLadderInRangeToGoUp(character.Ladder))
+            {
+                moving = true;
+                character.torso.LinearVelocity = new Vector2(0, -3);
+                character.body.LinearVelocity = new Vector2(0, -3);
+            }
+            else
+            {
+                moving = false;
+                character.torso.LinearVelocity = new Vector2(0, 0);
+                character.body.LinearVelocity = new Vector2(0, 0);
+            }
         }
 
         public override void DownAction()
         {
-            moving = true;
-            character.torso.LinearVelocity = new Vector2(0, 3);
-            character.body.LinearVelocity = new Vector2(0, 3);
+            if (character.IsLadderInRangeToGoDown(character.Ladder))
+            {
+                moving = true;
+                character.torso.LinearVelocity = new Vector2(0, 3);
+                character.body.LinearVelocity = new Vector2(0, 3);
+            }
+            else
+            {
+                moving = false;
+                character.torso.LinearVelocity = new Vector2(0, 0);
+                character.body.LinearVelocity = new Vector2(0, 0);
+            }
         }
 
         public override void UpActionStop()
@@ -97,6 +118,18 @@ namespace Nobots.Elements
         public override void AActionStart()
         {
             character.State = new JumpingCharacterState(scene, character);
+        }
+
+        public override void LeftAction()
+        {
+            character.State = new JumpingCharacterState(scene, character);
+            character.State.LeftAction();
+        }
+
+        public override void RightAction()
+        {
+            character.State = new JumpingCharacterState(scene, character);
+            character.State.RightAction();
         }
     }
 }

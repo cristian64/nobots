@@ -70,7 +70,6 @@ namespace Nobots.Elements
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            Console.WriteLine("Jumping OnCollision, ContactsNumber: " + character.contactsNumber);
             if (character.contactsNumber > 0)
                 character.State = new IdleCharacterState(scene, character);
             return true;
@@ -78,35 +77,32 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
-            Console.WriteLine("Jumping Enter");
             character.body.OnCollision += body_OnCollision;
             if (character.contactsNumber > 0 || character.Ladder != null)
                 character.torso.ApplyForce(new Vector2(0, -14000));
+            else
+                character.torso.Awake = character.body.Awake = true;
         }
 
         public override void Exit()
         {
-            Console.WriteLine("Jumping Exit");
             character.body.OnCollision -= body_OnCollision;
         }
 
         public override void RightAction()
         {
-            Console.WriteLine("Jumping Right Action");
             character.torso.LinearVelocity = new Vector2(2.5f, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.None;
         }
 
         public override void LeftAction()
         {
-            Console.WriteLine("Jumping Left Action");
             character.torso.LinearVelocity = new Vector2(-2.5f, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.FlipHorizontally;
         }
 
         public override void UpAction()
         {
-            Console.WriteLine("Jumping Up Action");
             if (character.Ladder != null)
             {
                 character.State = new ClimbingCharacterState(scene, character);
@@ -116,7 +112,6 @@ namespace Nobots.Elements
 
         public override void DownAction()
         {
-            Console.WriteLine("Jumping Down Action");
             if (character.Ladder != null)
             {
                 character.State = new ClimbingCharacterState(scene, character);

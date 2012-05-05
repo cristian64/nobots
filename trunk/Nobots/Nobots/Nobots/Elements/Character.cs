@@ -147,7 +147,7 @@ namespace Nobots.Elements
         {
             if (fixtureB.Body == touchedBody)
             {
-                if (GraphicsDevice != null) //this is fucking patch that will have to do in many places in OnSeparation...
+                if (GraphicsDevice != null) //TODO this is fucking patch that will have to do in many places in OnSeparation...
                     State = new IdleCharacterState(scene, this);
                 touchedBody = null;
             }
@@ -169,38 +169,10 @@ namespace Nobots.Elements
             State.Update(gameTime);
         }
 
-        public bool IsLadderInRange(Ladder ladder)
-        {
-            Vector2 headPosition = torso.Position;
-
-            if (Math.Abs(headPosition.X - ladder.Position.X) < Conversion.ToWorld(40))
-            {
-                if (ladder.Position.Y - ladder.Height / 2 <= headPosition.Y && headPosition.Y <= ladder.Position.Y + ladder.Height / 2)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         public bool IsTouchingElement(Element o)
         {
             return Math.Abs(Position.X - o.Position.X) <= 0.5 * (Width + o.Width) &&
                    Math.Abs(Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (scene.Camera.Target == this)
-                scene.Camera.Target = null;
-            if (scene.InputManager.Character == this)
-                scene.InputManager.Character = null;
-            if (scene.SelectionManager.Selection == this)
-                scene.SelectionManager.Selection = null;
-            scene.World.RemoveJoint(revoluteJoint);
-            torso.Dispose();
-            body.Dispose();
-            base.Dispose(disposing);
         }
 
         protected void updateLadder()
@@ -219,6 +191,52 @@ namespace Nobots.Elements
                     }
                 }
             }
+        }
+
+        public bool IsLadderInRange(Ladder ladder)
+        {
+            Vector2 headPosition = torso.Position;
+
+            if (Math.Abs(headPosition.X - ladder.Position.X) < Conversion.ToWorld(40))
+            {
+                if (ladder.Position.Y - ladder.Height / 2 <= headPosition.Y - Height / 2 + 0.5f && headPosition.Y - 0.5f <= ladder.Position.Y + ladder.Height / 2)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsLadderInRangeToGoUp(Ladder ladder)
+        {
+            Vector2 headPosition = torso.Position;
+            if (Math.Abs(headPosition.X - ladder.Position.X) < Conversion.ToWorld(40))
+                if (ladder.Position.Y - ladder.Height / 2 <= headPosition.Y - Height / 2)
+                    return true;
+            return false;
+        }
+
+        public bool IsLadderInRangeToGoDown(Ladder ladder)
+        {
+            Vector2 headPosition = torso.Position;
+            if (Math.Abs(headPosition.X - ladder.Position.X) < Conversion.ToWorld(40))
+                if (headPosition.Y <= ladder.Position.Y + ladder.Height / 2)
+                    return true;
+            return false;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (scene.Camera.Target == this)
+                scene.Camera.Target = null;
+            if (scene.InputManager.Character == this)
+                scene.InputManager.Character = null;
+            if (scene.SelectionManager.Selection == this)
+                scene.SelectionManager.Selection = null;
+            scene.World.RemoveJoint(revoluteJoint);
+            torso.Dispose();
+            body.Dispose();
+            base.Dispose(disposing);
         }
 
         public override void Draw(GameTime gameTime)
