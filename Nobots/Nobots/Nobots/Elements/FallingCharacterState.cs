@@ -13,7 +13,6 @@ namespace Nobots.Elements
     {
         int rows = 1;
         int columns = 3;
-        int framesInLastRow = 3;
 
         public FallingCharacterState(Scene scene, Character character)
             : base(scene, character)
@@ -45,7 +44,6 @@ namespace Nobots.Elements
             }
             return new Vector2(textureXmin, textureYmin);
         }
-
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
