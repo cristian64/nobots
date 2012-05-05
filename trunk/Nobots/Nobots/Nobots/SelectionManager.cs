@@ -55,7 +55,7 @@ namespace Nobots
         MouseState previous;
         public override void Update(GameTime gameTime)
         {
-            if (Selection != null)
+            if (Selection != null && IsFocusOnWindow())
             {
                 float speed = Conversion.ToWorld(1);
                 if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
@@ -71,14 +71,14 @@ namespace Nobots
                     Selection.Position = Selection.Position + Vector2.UnitX * speed;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Add) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-                    Selection.Height = Selection.Height + Conversion.ToWorld(1);
+                    Selection.Height = Selection.Height + speed;
                 else if (Keyboard.GetState().IsKeyDown(Keys.Add))
-                    Selection.Width = Selection.Width + Conversion.ToWorld(1);
+                    Selection.Width = Selection.Width + speed;
                 if (Keyboard.GetState().IsKeyDown(Keys.Subtract) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-                    Selection.Height = Selection.Height - Conversion.ToWorld(1);
+                    Selection.Height = Selection.Height - speed;
                 else if (Keyboard.GetState().IsKeyDown(Keys.Subtract))
-                    Selection.Width = Selection.Width - Conversion.ToWorld(1);
-                if (Keyboard.GetState().IsKeyDown(Keys.Delete))
+                    Selection.Width = Selection.Width - speed;
+                if (Keyboard.GetState().IsKeyDown(Keys.Delete) || Keyboard.GetState().IsKeyDown(Keys.Back))
                 {
                     if (selection is Background)
                         scene.Backgrounds.Remove((Background)selection);
@@ -265,6 +265,13 @@ namespace Nobots
             return Game.IsActive &&
                 mouseState.X >= 0 && mouseState.X < GraphicsDevice.Viewport.Width &&
                 mouseState.Y >= 0 && mouseState.Y < GraphicsDevice.Viewport.Height &&
+                System.Windows.Forms.Form.ActiveForm != null &&
+                System.Windows.Forms.Form.ActiveForm.Text.Equals(Game.Window.Title);
+        }
+
+        public bool IsFocusOnWindow()
+        {
+            return Game.IsActive &&
                 System.Windows.Forms.Form.ActiveForm != null &&
                 System.Windows.Forms.Form.ActiveForm.Text.Equals(Game.Window.Title);
         }
