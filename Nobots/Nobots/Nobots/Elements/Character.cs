@@ -272,32 +272,12 @@ namespace Nobots.Elements
             bool worked = false;
             foreach (Element i in scene.Elements)
             {
-                Lever lever = i as Lever;
-                if (lever != null)
+                Activator activator = i as Activator;
+                if (activator != null && !activator.EnergyElement && IsTouchingElement(i))
                 {
-                    if (IsTouchingElement(i))
-                    {
-                        if (lever.ActivableElement != null)
-                        {
-                            lever.ActivableElement.Active = !lever.ActivableElement.Active;
-                            worked = true;
-                        }
-                        break;
-                    }
-                }
-
-                Switch _switch = i as Switch;
-                if (_switch != null)
-                {
-                    if (IsTouchingElement(i))
-                    {
-                        if (_switch.ActivableElement != null)
-                        {
-                            _switch.ActivableElement.Active = !_switch.ActivableElement.Active;
-                            worked = true;
-                        }
-                        break;
-                    }
+                    activator.Activate();
+                    worked = true;
+                    break;
                 }
             }
             if (!worked)
