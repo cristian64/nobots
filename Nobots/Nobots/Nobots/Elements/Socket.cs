@@ -19,7 +19,7 @@ namespace Nobots.Elements
         {
             get
             {
-                ISound aux = scene.ISoundEngine.Play2D(sounds[rand.Next(3)], false, true);
+                ISound aux = scene.SoundManager.ISoundEngine.Play2D(sounds[rand.Next(3)], false, true);
                 aux.Volume = 0.05f;
                 aux.Paused = false;
                 if (otherSocket == null)

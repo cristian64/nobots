@@ -87,7 +87,7 @@ namespace Nobots.Elements
                 sound.Stop();
                 sound.Dispose();
             }
-            sound = scene.ISoundEngine.Play3D(@"Content\sounds\" + soundName, position.X, position.Y, 0);
+            sound = scene.SoundManager.ISoundEngine.Play3D(@"Content\sounds\" + soundName, position.X, position.Y, 0);
             if (sound != null)
             {
                 sound.Volume = volume;

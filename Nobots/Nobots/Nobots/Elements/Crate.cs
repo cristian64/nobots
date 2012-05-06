@@ -81,7 +81,7 @@ namespace Nobots.Elements
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
-            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
+          
             
 
             body.UserData = this;
@@ -95,9 +95,9 @@ namespace Nobots.Elements
 
             if (velocity > 1f)
             {
-                sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\woodencratefall.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
-                sound.Volume = velocity * 0.15f;
-                sound.Paused = false;
+                sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.woodenBox, body.Position.X, body.Position.Y, 0.0f, false, false, false);
+                sound.Volume = velocity * 0.15f * scene.SoundManager.woodenBox.DefaultVolume;
+
             }
             return true;
         }
@@ -109,7 +109,7 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
-            sound.Dispose();
+            
             body.Dispose();
             base.Dispose(disposing);
         }

@@ -73,7 +73,7 @@ namespace Nobots.Elements
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
-            sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f,false,true);
+            sound = scene.SoundManager.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f,false,true);
             sound.Volume = 0.10f;
             body.UserData = this;
         }
@@ -82,7 +82,7 @@ namespace Nobots.Elements
         {
             if (!isActive)
             {
-                sound = scene.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
+                sound = scene.SoundManager.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
                 sound.Volume = 0.10f;
                 sound.Paused = false;
                 

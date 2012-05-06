@@ -56,30 +56,11 @@ namespace Nobots
 
             
 
-    ISoundEngine = new ISoundEngine(
-     SoundOutputDriver.AutoDetect,
-             SoundEngineOptionFlag.DefaultOptions );
-
-    //ISoundEngine.SetRolloffFactor(1f);
-            
-
-   
-    
-    //ISoundEngine.Default3DSoundMinDistance = 1f;
-    //ISoundEngine.Default3DSoundMaxDistance = float.MaxValue;
-
-            
-            
-            
-            
-            
-
-           
+            SoundManager = new SoundManager(Game, this);
             AmbienceSound = new AmbienceSound(Game, this);
             World = new World(new Vector2(0, 13));
             PhysicsDebug = new DebugViewXNA(World);
-            InputManager = new InputManager(Game);
-            SoundManager = new SoundManager(Game, this);
+            InputManager = new InputManager(Game);            
             Transitioner = new Transitioner(Game, this);
             SelectionManager = new SelectionManager(Game, this);
             SceneLoader = new SceneLoader(Game);

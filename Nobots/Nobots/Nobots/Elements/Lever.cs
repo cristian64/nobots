@@ -18,6 +18,7 @@ namespace Nobots.Elements
         Texture2D texture2;
         float stickRotation = 0;
         bool playSound = false;
+        
 
         public override float Width
         {
