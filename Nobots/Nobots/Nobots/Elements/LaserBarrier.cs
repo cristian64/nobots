@@ -18,7 +18,7 @@ namespace Nobots.Elements
         float width = Conversion.ToWorld(15);
         Body body;
         ISound sound;
-        private List<String> sounds = new List<String>();
+        
         Random rand = new Random();
 
         private bool isActive = true;
@@ -69,9 +69,8 @@ namespace Nobots.Elements
 
                 body.Position = value;
                 sound.Stop();
-                sound = scene.SoundManager.ISoundEngine.Play3D("Content\\sounds\\effects\\electricbarrierloop.wav", body.Position.X, body.Position.Y, 0.0f, true, true);
-                sound.Volume = 0.3f;
-                sound.Paused = false;
+                sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.laserBarrierLoop, body.Position.X, body.Position.Y, 0.0f, true, false, false);
+               
             }
         }
 
@@ -104,10 +103,7 @@ namespace Nobots.Elements
 
         private void createBody()
         {
-            sounds.Add("Content\\sounds\\effects\\electricbarriershock1.wav");
-            sounds.Add("Content\\sounds\\effects\\electricbarriershock2.wav");
-            sounds.Add("Content\\sounds\\effects\\electricbarriershock3.wav");
-            sounds.Add("Content\\sounds\\effects\\electricbarriershock4.wav");            
+                     
 
 
             if (body != null)
@@ -121,13 +117,8 @@ namespace Nobots.Elements
             body.UserData = this;
             body.CollidesWith = Category.None | ElementCategory.CHARACTER;
 
-            sound = scene.SoundManager.ISoundEngine.Play3D("Content\\sounds\\effects\\electricbarrierloop.wav", body.Position.X, body.Position.Y, 0.0f, true, true);
-            sound.Volume = 0.15f;
-            sound.Paused = false;
-
-
-
-
+            sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.laserBarrierLoop, body.Position.X, body.Position.Y, 0.0f, true, false,false);
+           
         }
 
         void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
@@ -140,9 +131,8 @@ namespace Nobots.Elements
             {
                 //((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
                 //TODO: change character state to "dying..."
-                ISound aux = scene.SoundManager.ISoundEngine.Play3D(sounds[rand.Next(4)], body.Position.X, body.Position.Y, 0.0f, false, true);
-                aux.Volume = 0.2f;
-                aux.Paused = false;
+                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.laserBarrierShocks[rand.Next(scene.SoundManager.laserBarrierShocks.Count)], body.Position.X, body.Position.Y, 0.0f, false, false,false);
+               
             }
             return true;
         }
