@@ -108,7 +108,7 @@ namespace Nobots
                 ListenerPosition = Target.Position;
             else
                 ListenerPosition = Position + new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
-            scene.SoundManager.ISoundEngine.SetListenerPosition(ListenerPosition.X, ListenerPosition.Y, 0f, 0,0, 1);
+            
             scene.SoundManager.ISoundEngine.SetListenerPosition(ListenerPosition.X, ListenerPosition.Y, 0f, 0, 0, 1);
 
             previousMouseState = currentMouseState;
