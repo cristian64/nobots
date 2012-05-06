@@ -284,6 +284,20 @@ namespace Nobots.Elements
                         break;
                     }
                 }
+
+                Switch _switch = i as Switch;
+                if (_switch != null)
+                {
+                    if (IsTouchingElement(i))
+                    {
+                        if (_switch.ActivableElement != null)
+                        {
+                            _switch.ActivableElement.Active = !_switch.ActivableElement.Active;
+                            worked = true;
+                        }
+                        break;
+                    }
+                }
             }
             if (!worked)
                 State.BActionStart();

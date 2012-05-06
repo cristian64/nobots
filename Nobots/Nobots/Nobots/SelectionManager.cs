@@ -202,6 +202,9 @@ namespace Nobots
                     case "Lever":
                         element = new Lever(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Switch":
+                        element = new Switch(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "ImpulsePlatform":
                         element = new ImpulsePlatform(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
