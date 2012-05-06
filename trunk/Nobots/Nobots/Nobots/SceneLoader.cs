@@ -208,6 +208,9 @@ namespace Nobots
                 case "Lever":
                     e = new Lever(Game, scene, Vector2.Zero);
                     break;
+                case "Switch":
+                    e = new Switch(Game, scene, Vector2.Zero);
+                    break;
                 case "Socket":
                     e = new Socket(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("OtherSocketId"))
@@ -340,6 +343,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((ElectricityBox)i) + "\n";
                 else if (i as Lever != null)
                     xml += "        " + ElementToXml((Lever)i) + "\n";
+                else if (i as Switch != null)
+                    xml += "        " + ElementToXml((Switch)i) + "\n";
                 else if (i as Checkpoint != null)
                     xml += "        " + ElementToXml((Checkpoint)i) + "\n";
                 else if (i as Endpoint != null)
@@ -512,6 +517,13 @@ namespace Nobots
         {
             Element e = lever.ActivableElement as Element;
             String xml = "<Lever Id=\"" + lever.Id + "\" Position=\"" + lever.Position.X + "," + lever.Position.Y + "\" Rotation=\"" + lever.Rotation + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Switch _switch)
+        {
+            Element e = _switch.ActivableElement as Element;
+            String xml = "<Switch Id=\"" + _switch.Id + "\" Position=\"" + _switch.Position.X + "," + _switch.Position.Y + "\" Rotation=\"" + _switch.Rotation + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
 

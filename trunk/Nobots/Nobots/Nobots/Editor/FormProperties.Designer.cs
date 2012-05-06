@@ -1343,6 +1343,7 @@
             "Spikes",
             "Battery",
             "Minecart",
+            "Switch",
             "---------------",
             "Sound"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
