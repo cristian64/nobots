@@ -933,6 +933,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="glideplatform.png">
+      <Name>glideplatform</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="glideplatform2.png">
+      <Name>glideplatform2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="pulling.png">
       <Name>pulling</Name>
       <Importer>TextureImporter</Importer>

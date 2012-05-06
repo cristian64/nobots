@@ -222,6 +222,14 @@ namespace Nobots
                         stepsNumber = int.Parse(reader.Value);
                     e = new Ladder(Game, scene, stepsNumber, Vector2.Zero);
                     break;
+                case "GlidePlatform":
+                    int stepsNumber2 = 1;
+                    if (reader.MoveToAttribute("StepsNumber"))
+                        stepsNumber2 = int.Parse(reader.Value);
+                    e = new GlidePlatform(Game, scene, Vector2.Zero, stepsNumber2);
+                    if (reader.MoveToAttribute("Velocity"))
+                        ((GlidePlatform)e).Velocity = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    break;
                 case "Character":
                     e = new Character(Game, scene, Vector2.Zero);
                     scene.Camera.Target = scene.InputManager.Character = (Character)e;
@@ -359,6 +367,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((ConveyorBelt)i) + "\n";
                 else if (i as ImpulsePlatform != null)
                     xml += "        " + ElementToXml((ImpulsePlatform)i) + "\n";
+                else if (i as GlidePlatform != null)
+                    xml += "        " + ElementToXml((GlidePlatform)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -548,6 +558,12 @@ namespace Nobots
         public String ElementToXml(Ladder ladder)
         {
             String xml = "<Ladder Id=\"" + ladder.Id + "\" Position=\"" + ladder.Position.X + "," + ladder.Position.Y + "\" StepsNumber=\"" + ladder.StepsNumber + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(GlidePlatform glidePlatform)
+        {
+            String xml = "<GlidePlatform Id=\"" + glidePlatform.Id + "\" Position=\"" + glidePlatform.Position.X + "," + glidePlatform.Position.Y + "\" Rotation=\"" + glidePlatform.Rotation + "\" Active=\"" + glidePlatform.Active + "\" Velocity=\"" + glidePlatform.Velocity + "\" StepsNumber=\"" + glidePlatform.StepsNumber + "\" />";
             return xml;
         }
 

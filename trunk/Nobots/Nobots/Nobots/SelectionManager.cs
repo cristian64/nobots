@@ -205,6 +205,9 @@ namespace Nobots
                     case "Switch":
                         element = new Switch(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "GlidePlatform":
+                        element = new GlidePlatform(Game, scene, scene.Camera.ScreenToWorld(previous), 1);
+                        break;
                     case "ImpulsePlatform":
                         element = new ImpulsePlatform(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

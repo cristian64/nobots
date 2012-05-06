@@ -91,7 +91,7 @@ namespace Nobots.Elements
             float previousRotation = 0;
             if (body != null)
             {
-                previousRotation = 0;
+                previousRotation = body.Rotation;
                 body.Dispose();
             }
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
