@@ -37,6 +37,8 @@ namespace Nobots.Elements
 
             if (character.Ladder == null)
                 character.State = new FallingCharacterState(scene, character);
+            else if (character.contactsNumber > 0)
+                character.State = new IdleCharacterState(scene, character);
         }
 
         float seconds = 0;
@@ -65,7 +67,8 @@ namespace Nobots.Elements
 
         public override void Exit()
         {
-            character.LastLadder = character.Ladder;
+            if (character.contactsNumber == 0)
+                character.LastLadder = character.Ladder;
             character.body.IgnoreGravity = false;
             character.torso.IgnoreGravity = false;
         }
@@ -123,13 +126,13 @@ namespace Nobots.Elements
 
         public override void LeftAction()
         {
-            character.State = new JumpingCharacterState(scene, character);
+            character.State = new FallingCharacterState(scene, character);
             character.State.LeftAction();
         }
 
         public override void RightAction()
         {
-            character.State = new JumpingCharacterState(scene, character);
+            character.State = new FallingCharacterState(scene, character);
             character.State.RightAction();
         }
     }

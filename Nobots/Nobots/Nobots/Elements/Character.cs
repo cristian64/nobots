@@ -118,6 +118,7 @@ namespace Nobots.Elements
             torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);
 
             revoluteJoint = new RevoluteJoint(torso, body, Conversion.ToWorld(new Vector2(0, texture.Height / 2 - texture.Width / 4)), Vector2.Zero);
+            revoluteJoint.CollideConnected = false;
             scene.World.AddJoint(revoluteJoint);
 
             State = new IdleCharacterState(scene, this);
