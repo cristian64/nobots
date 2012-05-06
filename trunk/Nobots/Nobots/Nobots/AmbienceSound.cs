@@ -67,7 +67,7 @@ namespace Nobots
 
                 if (!transitionPlayed)
                 {
-                    ISound aux = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.toEnergy[rand.Next(6)], false, false,false);
+                    ISound aux = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.toEnergy[rand.Next(scene.SoundManager.toEnergy.Count)], false, false,false);
                   
                     transitionPlayed = true;
                 }
@@ -91,7 +91,7 @@ namespace Nobots
             {
 
                 if (!transitionPlayed){
-                    scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.toNormal[rand.Next(5)], false, false,false);
+                    scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.toNormal[rand.Next(scene.SoundManager.toNormal.Count)], false, false,false);
                  
                     transitionPlayed = true;
                 }

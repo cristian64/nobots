@@ -44,7 +44,7 @@ namespace Nobots.Elements
         {
         }
 
-        public void Activate()
+        public virtual void Activate()
         {
             if (ActivableElement != null)
                 ActivableElement.Active = !ActivableElement.Active;

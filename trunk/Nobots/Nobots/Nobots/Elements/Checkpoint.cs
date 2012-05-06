@@ -17,7 +17,7 @@ namespace Nobots.Elements
         Texture2D texture;
         Texture2D texture2;
         Texture2D shinyBallTexture;
-        ISound sound;
+        
 
         private bool isActive = false;
 
@@ -73,8 +73,6 @@ namespace Nobots.Elements
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
-            sound = scene.SoundManager.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f,false,true);
-            sound.Volume = 0.10f;
             body.UserData = this;
         }
 
@@ -82,9 +80,8 @@ namespace Nobots.Elements
         {
             if (!isActive)
             {
-                sound = scene.SoundManager.ISoundEngine.Play3D("Content\\sounds\\effects\\checkpoint.wav", body.Position.X, body.Position.Y, 0.0f, false, true);
-                sound.Volume = 0.10f;
-                sound.Paused = false;
+                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.checkpoint, body.Position.X, body.Position.Y, 0.0f, false, false, false);
+             
                 
                 foreach (Element i in scene.Elements)
                 {

@@ -17,7 +17,7 @@ namespace Nobots.Elements
         Texture2D texture;
         Texture2D texture2;
         float stickRotation = 0;
-        bool playSound = false;
+      
         
 
         public override float Width
@@ -92,15 +92,10 @@ namespace Nobots.Elements
 
                 if (stickRotation < 0.9f)
                 {
-                    if (playSound)
-                    {
-                        scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Lever, body.Position.X, body.Position.Y, 0.0f, false, false, false);
-                        playSound = false;
-                    }
+                   
                     stickRotation += 0.1f;
                 }
-                else
-                    playSound = true;
+                
                     
             }
             else
@@ -109,15 +104,10 @@ namespace Nobots.Elements
                 if (stickRotation > -0.9f)
                 {
 
-                    if (playSound)
-                    {
-                        scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Lever, body.Position.X, body.Position.Y, 0.0f, false, false, false);
-                        playSound = false;
-                    }
+                    
                     stickRotation -= 0.1f;
                 }
-                else
-                    playSound = true;
+                
             }
         }
 
@@ -134,6 +124,12 @@ namespace Nobots.Elements
         {
             body.Dispose();
             base.Dispose(disposing);
+        }
+
+        public override void Activate() {
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Lever, body.Position.X, body.Position.Y, 0.0f, false, false, false);   
+            base.Activate();                     
+
         }
     }
 }

@@ -19,9 +19,8 @@ namespace Nobots.Elements
         {
             get
             {
-                ISound aux = scene.SoundManager.ISoundEngine.Play2D(sounds[rand.Next(3)], false, true);
-                aux.Volume = 0.05f;
-                aux.Paused = false;
+                scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.socket[rand.Next(scene.SoundManager.socket.Count)], false, false,false);
+              
                 if (otherSocket == null)
                     foreach (Element e in scene.Elements)
                     {
@@ -44,8 +43,7 @@ namespace Nobots.Elements
         }
 
         Body body;
-        Texture2D texture;
-        private List<String> sounds = new List<String>();
+        Texture2D texture;       
         Random rand = new Random();
 
         public override Vector2 Position
@@ -93,9 +91,6 @@ namespace Nobots.Elements
             body.CollidesWith = Category.None | ElementCategory.ENERGY;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
-            sounds.Add("Content\\sounds\\effects\\travelcord1.wav");
-            sounds.Add("Content\\sounds\\effects\\travelcord2.wav");
-            sounds.Add("Content\\sounds\\effects\\travelcord3.wav");
             
 
             body.UserData = this;
@@ -116,5 +111,7 @@ namespace Nobots.Elements
             body.Dispose();
             base.Dispose(disposing);
         }
+
+        
     }
 }

@@ -14,9 +14,11 @@ namespace Nobots
         private Scene scene;
 
         public ISoundEngine ISoundEngine;
-        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox;
+        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
+        public List<ISoundSource> socket = new List<ISoundSource>();
+        public List<ISoundSource> laserBarrierShocks = new List<ISoundSource>();
         
 
         public SoundManager(Game game, Scene scene)
@@ -52,8 +54,21 @@ namespace Nobots
 
             Computer = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\computerbleep.wav");
             //Computer.DefaultVolume = 0.2f;
+
             woodenBox = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\woodencratefall.wav");
 
+            socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord1.wav"));
+            socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord2.wav"));
+            socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord3.wav"));
+
+            laserBarrierLoop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarrierloop.wav");
+
+            laserBarrierShocks.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarriershock1.wav"));
+            laserBarrierShocks.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarriershock2.wav")); 
+            laserBarrierShocks.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarriershock3.wav"));
+            laserBarrierShocks.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarriershock4.wav"));
+
+            checkpoint = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\checkpoint.wav");
 
         }
 
