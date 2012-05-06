@@ -148,6 +148,7 @@ namespace Nobots.Elements
             body.CollisionCategories = ElementCategory.FLOOR;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
+            body.UserData = this;
 
             direction = new Vector2((float)Math.Cos(body.Rotation), (float)Math.Sin(body.Rotation));
             drawingIncrement = direction * Conversion.ToWorld(texture.Width);
