@@ -64,6 +64,7 @@ namespace Nobots.Elements
         public ElectricityBox(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
+            EnergyElement = true;
             ZBuffer = -6f;
             texture = Game.Content.Load<Texture2D>("electricitybox");
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 20f);

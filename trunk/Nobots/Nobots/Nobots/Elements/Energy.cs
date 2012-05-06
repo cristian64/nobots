@@ -66,14 +66,11 @@ namespace Nobots.Elements
                     }
                 }
 
-                ElectricityBox eBox = i as ElectricityBox;
-                if (eBox != null)
+                Activator activator = i as Activator;
+                if (activator != null && activator.EnergyElement && IsTouchingElement(i))
                 {
-                    if (IsTouchingElement(i))
-                    {
-                        eBox.ActivableElement.Active = !eBox.ActivableElement.Active;
-                        break;
-                    }
+                    activator.Activate();
+                    break;
                 }
             }
         }

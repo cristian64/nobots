@@ -9,6 +9,8 @@ namespace Nobots.Elements
 {
     public class Activator : Element
     {
+        public bool EnergyElement = false;
+
         private IActivable activableElement;
         public IActivable ActivableElement
         {
@@ -40,6 +42,12 @@ namespace Nobots.Elements
 
         public Activator(Game game, Scene scene) : base(game, scene)
         {
+        }
+
+        public void Activate()
+        {
+            if (ActivableElement != null)
+                ActivableElement.Active = !ActivableElement.Active;
         }
 
         public override float Height
