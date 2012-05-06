@@ -119,6 +119,14 @@ namespace Nobots.Editor
                 numericUpDownStepsNumber.Value = (decimal)((Ladder)selection).StepsNumber;
             }
 
+            if (selection is GlidePlatform)
+            {
+                flowLayoutPanelStepsNumber.Visible = true;
+                numericUpDownStepsNumber.Value = (decimal)((GlidePlatform)selection).StepsNumber;
+                flowLayoutPanelVelocity.Visible = true;
+                numericUpDownVelocity.Value = (decimal)((GlidePlatform)selection).Velocity;
+            }
+
             if (selection is ConveyorBelt)
             {
                 flowLayoutPanelAngularSpeed.Visible = true;
@@ -190,6 +198,7 @@ namespace Nobots.Editor
             flowLayoutPanelOtherTubeId.Visible = false;
             flowLayoutPanelVolume.Visible = false;
             flowLayoutPanelAcceleration.Visible = false;
+            flowLayoutPanelVelocity.Visible = false;
             flowLayoutPanelColor.Visible = false;
         }
 
@@ -307,8 +316,10 @@ namespace Nobots.Editor
 
         private void numericUpDownStepsNumber_ValueChanged(object sender, EventArgs e)
         {
-            if (selectionEvents != null)
+            if (selectionEvents != null && selectionEvents is Ladder)
                 ((Ladder)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
+            if (selectionEvents != null && selectionEvents is GlidePlatform)
+                ((GlidePlatform)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
         }
 
         private void numericUpDownInitialPositionX_ValueChanged(object sender, EventArgs e)
@@ -443,6 +454,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((ExperimentalTube)selectionEvents).OtherTubeId = textBoxOtherTubeId.Text;
+        }
+
+        private void numericUpDownVelocity_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((GlidePlatform)selectionEvents).Velocity = (float)numericUpDownVelocity.Value;
         }
     }
 }
