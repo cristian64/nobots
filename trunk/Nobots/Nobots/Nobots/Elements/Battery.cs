@@ -16,7 +16,6 @@ namespace Nobots.Elements
          public Body body;
         Texture2D texture;
         Random random = new Random();
-        Character character;
 
         private bool isActive = true;
         public bool Active
@@ -85,18 +84,8 @@ namespace Nobots.Elements
         {
             ZBuffer = 5f;
             this.position = position;
-            texture = Game.Content.Load<Texture2D>("batteryempty");
+            texture = Game.Content.Load<Texture2D>("battery");
             createBody();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            if(character != null)
-                if (((DyingCharacterState)character.State).dead)
-                {
-                    texture = Game.Content.Load<Texture2D>("batteryempty");
-                    character = null;
-                }
         }
 
         public override void Draw(GameTime gameTime)
@@ -122,7 +111,6 @@ namespace Nobots.Elements
         {
             if (Active)
             {
-                texture = Game.Content.Load<Texture2D>("batteryfull");
                 for (int j = 0; j < 50; j++)
                 {
                     scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
@@ -131,10 +119,7 @@ namespace Nobots.Elements
                 scene.GarbageElements.Add((Energy)fixtureB.Body.UserData);
                 foreach (Element el in scene.Elements)
                     if (el is Character && !(el is Energy))
-                    {
-                        character = (Character)el;
                         ((Character)el).State = new DyingCharacterState(scene, (Character)el);
-                    }
             }
             return true;
         }
