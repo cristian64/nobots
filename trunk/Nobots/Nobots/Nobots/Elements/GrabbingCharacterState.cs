@@ -19,6 +19,7 @@ namespace Nobots.Elements
         private int rows = 2;
         private int columns = 4;
         private int framesInLastRow = 3;
+        bool isPushing = false;
 
         public GrabbingCharacterState(Scene scene, Character character)
             : base(scene, character)
@@ -35,27 +36,46 @@ namespace Nobots.Elements
         public override void Update(GameTime gameTime)
         {
             if (moving)
-                changeRunningTextures(gameTime);
+                changeGrabbingTextures(gameTime);
         }
 
         float seconds = 0;
-        private Vector2 changeRunningTextures(GameTime gameTime)
+        private Vector2 changeGrabbingTextures(GameTime gameTime)
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (seconds > 0.1f)
             {
                 seconds -= 0.1f;
-                textureXmin += texture.Width / columns;
+                if (isPushing)
+                {
+                    character.texture = texture = scene.Game.Content.Load<Texture2D>("pushing");
+                    characterWidth = texture.Width / columns;
+                    characterHeight = texture.Height / rows;
 
-                if (textureXmin == (texture.Width / columns) * framesInLastRow && textureYmin == texture.Height / rows)
-                {
-                    textureXmin = 0;
-                    textureYmin = 0;
+                    textureXmin += texture.Width / columns;
+
+                    if (textureXmin == (texture.Width / columns) * framesInLastRow && textureYmin == texture.Height / rows)
+                    {
+                        textureXmin = 0;
+                        textureYmin = 0;
+                    }
+                    else if (textureXmin >= texture.Width)
+                    {
+                        textureXmin = 0;
+                        textureYmin += texture.Height / rows;
+                    }
                 }
-                else if (textureXmin == texture.Width)
+                else
                 {
-                    textureXmin = 0;
-                    textureYmin += texture.Height / rows;
+                    character.texture = texture = scene.Game.Content.Load<Texture2D>("pulling");
+                    characterWidth = texture.Width / 5;
+                    characterHeight = texture.Height;
+                    textureYmin = 0;
+
+                    textureXmin += texture.Width / 5;
+
+                    if (textureXmin >= texture.Width)
+                        textureXmin = 0;
                 }
             }
 
@@ -113,7 +133,7 @@ namespace Nobots.Elements
             {
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = new Vector2(2, character.torso.LinearVelocity.Y);
-                character.Effect = SpriteEffects.None;
+                isPushing = character.Position.X < character.touchedBody.Position.X ? true : false;
             }
         }
 
@@ -125,7 +145,7 @@ namespace Nobots.Elements
             {
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = new Vector2(-2, character.torso.LinearVelocity.Y);
-                character.Effect = SpriteEffects.FlipHorizontally;
+                isPushing = character.Position.X > character.touchedBody.Position.X ? true : false;
             }
         }
 
