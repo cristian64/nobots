@@ -95,7 +95,16 @@ namespace Nobots.Elements
         {
             character.body.FixedRotation = false;
             if (character.lastContact != null)
-                character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X + 3, character.torso.LinearVelocity.Y);
+            {
+                if (character.lastContact.UserData is GlidePlatform)
+                {
+                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity + 3, character.torso.LinearVelocity.Y);
+                }
+                else
+                {
+                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X + 3, character.torso.LinearVelocity.Y);
+                }
+            }
             else
                 character.torso.LinearVelocity = new Vector2(3, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.None;
@@ -105,7 +114,16 @@ namespace Nobots.Elements
         {
             character.body.FixedRotation = false;
             if (character.lastContact != null)
-                character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X - 3, character.torso.LinearVelocity.Y);
+            {
+                if (character.lastContact.UserData is GlidePlatform)
+                {
+                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity - 3, character.torso.LinearVelocity.Y);
+                }
+                else
+                {
+                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X - 3, character.torso.LinearVelocity.Y);
+                }
+            }
             else
                 character.torso.LinearVelocity = new Vector2(-3, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.FlipHorizontally;
