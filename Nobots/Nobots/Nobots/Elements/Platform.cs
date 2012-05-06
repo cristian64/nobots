@@ -88,11 +88,16 @@ namespace Nobots.Elements
 
         private void createBody()
         {
-            if(body != null)
+            float previousRotation = 0;
+            if (body != null)
+            {
+                previousRotation = 0;
                 body.Dispose();
+            }
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
             body.Position = position;
             body.BodyType = BodyType.Static;
+            body.Rotation = previousRotation;
             body.CollisionCategories = ElementCategory.FLOOR;
         }
 
