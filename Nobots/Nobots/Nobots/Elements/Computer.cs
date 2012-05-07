@@ -15,6 +15,8 @@ namespace Nobots.Elements
         Body body;
         Texture2D texture;
         ISound sound;
+        Vector3D pos = new Vector3D(0f, 0f, 0f);
+        
 
         public override float Width
         {
@@ -47,8 +49,10 @@ namespace Nobots.Elements
             set
             {
                 body.Position = value;
-                sound.Stop();
-                sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Computer, body.Position.X, body.Position.Y, 0.0f, true,false,false);
+
+                pos.X = value.X;
+                pos.Y = value.Y;
+                sound.Position = pos;
                 
                 
             }
@@ -80,7 +84,7 @@ namespace Nobots.Elements
             body.ApplyAngularImpulse(0.1f);*/
             body.Friction = 100.0f;
 
-            sound = sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Computer, body.Position.X, body.Position.Y, 0.0f, true, false, false);
+            sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Computer, body.Position.X, body.Position.Y, 0.0f, true, false, false);
             
                        
 

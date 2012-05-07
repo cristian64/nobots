@@ -18,6 +18,7 @@ namespace Nobots.Elements
         float width = Conversion.ToWorld(15);
         Body body;
         ISound sound;
+        Vector3D pos = new Vector3D(0f, 0f, 0f);
         
         Random rand = new Random();
 
@@ -67,9 +68,10 @@ namespace Nobots.Elements
                 body.Position = value;
                 position = value;
 
-                body.Position = value;
-                sound.Stop();
-                sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.laserBarrierLoop, body.Position.X, body.Position.Y, 0.0f, true, false, false);
+
+                pos.X = value.X;
+                pos.Y = value.Y;
+                sound.Position = pos;
                
             }
         }
