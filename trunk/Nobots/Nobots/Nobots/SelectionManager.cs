@@ -214,6 +214,9 @@ namespace Nobots
                     case "Torch":
                         element = new Torch(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "SecurityCamera":
+                        element = new SecurityCamera(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Checkpoint":
                         element = new Checkpoint(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
