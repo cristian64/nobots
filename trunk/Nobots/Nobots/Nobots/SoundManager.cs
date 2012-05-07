@@ -14,7 +14,7 @@ namespace Nobots
         private Scene scene;
 
         public ISoundEngine ISoundEngine;
-        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint,steam,elevatorBegin,elevatorEnd;
+        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint,steam,elevatorBegin,elevatorEnd, stomp;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -82,6 +82,8 @@ namespace Nobots
             elevatorBegin = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorbegin.wav");
 
             elevatorEnd = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorend.wav");
+
+            stomp = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\stomp.wav");
 
 
 

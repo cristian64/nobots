@@ -8,6 +8,7 @@ using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -30,11 +31,14 @@ namespace Nobots.Elements
         public Vector2 InitialPosition;
         public Vector2 FinalPosition;
         public float Speed = 1f;
+        public bool playSound = true;
 
         Body body;
         Texture2D texture;
         Texture2D chainsTexture;
         Texture2D thingTexture;
+        ISound sound;
+        Vector3D pos = new Vector3D(0f, 0f, 0f);
 
         public override float Height
         {
@@ -104,6 +108,20 @@ namespace Nobots.Elements
             Vector2 targetPosition = Active ? FinalPosition : InitialPosition;
             if (targetPosition != Position)
             {
+                if (playSound)
+                {
+                    sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.elevatorBegin, Position.X, Position.Y, 0f, false, false, false);
+                    playSound = false;
+
+                }
+
+                pos.X = Position.X;
+                pos.Y = Position.Y;
+                sound.Position = pos;
+                
+
+
+
                 if (Vector2.DistanceSquared(targetPosition, Position) > Speed * Speed * gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)
                 {
                     Vector2 direction = Vector2.Normalize(targetPosition - Position);
@@ -114,6 +132,15 @@ namespace Nobots.Elements
                     body.LinearVelocity = Vector2.Zero;
                     Position = targetPosition;
                 }
+            }
+            else {
+                if (!playSound)
+                {
+                    sound.Stop();
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.elevatorEnd, Position.X, Position.Y, 0f, false, false, false);
+                    playSound = true;
+                }
+
             }
         }
 
@@ -127,6 +154,8 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
+            if (sound != null)
+                sound.Dispose();
             body.Dispose();
             base.Dispose(disposing);
         }
