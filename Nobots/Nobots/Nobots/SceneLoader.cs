@@ -237,6 +237,9 @@ namespace Nobots
                 case "Stone":
                     e = new Stone(Game, scene, Vector2.Zero);
                     break;
+                case "Torch":
+                    e = new Torch(Game, scene, Vector2.Zero);
+                    break;
                 case "ConveyorBelt":
                     float? angularSpeed = null;
                     int? linksNumber = null;
@@ -369,6 +372,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((ImpulsePlatform)i) + "\n";
                 else if (i as GlidePlatform != null)
                     xml += "        " + ElementToXml((GlidePlatform)i) + "\n";
+                else if (i as Torch != null)
+                    xml += "        " + ElementToXml((Torch)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -552,6 +557,12 @@ namespace Nobots
         public String ElementToXml(Forklift forklift)
         {
             String xml = "<Forklift Id=\"" + forklift.Id + "\" Position=\"" + forklift.Position.X + "," + forklift.Position.Y + "\" Active=\"" + forklift.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Torch torch)
+        {
+            String xml = "<Torch Id=\"" + torch.Id + "\" Position=\"" + torch.Position.X + "," + torch.Position.Y + "\" Active=\"" + torch.Active + "\" />";
             return xml;
         }
 

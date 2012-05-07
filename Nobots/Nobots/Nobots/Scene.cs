@@ -17,7 +17,6 @@ namespace Nobots
 {
     public class Scene : DrawableGameComponent
     {
-        public ISoundEngine ISoundEngine;
         public AmbienceSound AmbienceSound;
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
         public SmokePlumeParticleSystem SmokePlumeParticleSystem;
@@ -25,6 +24,7 @@ namespace Nobots
         public LaserParticleSystem LaserParticleSystem;
         public VortexParticleSystem VortexParticleSystem;
         public VortexOutParticleSystem VortexOutParticleSystem;
+        public FireParticleSystem FireParticleSystem;
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
         public SoundManager SoundManager;
@@ -53,9 +53,6 @@ namespace Nobots
         public Scene(Game game)
             : base(game)
         {
-
-            
-
             SoundManager = new SoundManager(Game, this);
             AmbienceSound = new AmbienceSound(Game, this);
             World = new World(new Vector2(0, 13));
@@ -86,6 +83,7 @@ namespace Nobots
             LaserParticleSystem = new LaserParticleSystem(Game, this);
             VortexParticleSystem = new VortexParticleSystem(Game, this);
             VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
+            FireParticleSystem = new FireParticleSystem(Game, this);
 
             SceneLoader.SceneFromXml(@"Content\levels\level1.xml", this);
         }
@@ -140,6 +138,7 @@ namespace Nobots
             LaserParticleSystem.Update(gameTime);
             VortexParticleSystem.Update(gameTime);
             VortexOutParticleSystem.Update(gameTime);
+            FireParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             InputManager.Update(gameTime);
@@ -217,9 +216,8 @@ namespace Nobots
             Camera.Target = null;
             InputManager.Character = null;
             SelectionManager.Selection = null;
-            ISoundEngine.StopAllSounds();
-            ISoundEngine.RemoveAllSoundSources();
             World.Clear();
+            //TODO: free sounds, if needed
         }
 
         int frames = 0;
@@ -315,6 +313,7 @@ namespace Nobots
             LaserParticleSystem.Draw(gameTime);
             VortexParticleSystem.Draw(gameTime);
             VortexOutParticleSystem.Draw(gameTime);
+            FireParticleSystem.Draw(gameTime);
             SpriteBatch.End();
             SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             foreach (Foreground i in Foregrounds)
