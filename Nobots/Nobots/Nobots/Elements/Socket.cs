@@ -19,14 +19,21 @@ namespace Nobots.Elements
         {
             get
             {
-                scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.socket[rand.Next(scene.SoundManager.socket.Count)], false, false,false);
+                if (playSound)
+                {
+                    scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.socket[rand.Next(scene.SoundManager.socket.Count)], false, false, false);
+                    Console.WriteLine("sockets");
+                    playSound = false;
+                }
+                
               
                 if (otherSocket == null)
                     foreach (Element e in scene.Elements)
                     {
                         if (e as Socket != null && e.Id == otherSocketId)
                         {
-                            otherSocket = (Socket)e;
+                            
+                            otherSocket = (Socket)e;                            
                             break;
                         }
                     }
@@ -38,13 +45,15 @@ namespace Nobots.Elements
         private String otherSocketId;
         public String OtherSocketId
         {
-            get { return otherSocketId; }
+            get { return otherSocketId;     
+            }
             set { otherSocketId = value; otherSocket = null; }
         }
 
         Body body;
         Texture2D texture;       
         Random rand = new Random();
+        bool playSound = true;
 
         public override Vector2 Position
         {
@@ -98,6 +107,7 @@ namespace Nobots.Elements
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
+            playSound = true;
             return true;
         }
 

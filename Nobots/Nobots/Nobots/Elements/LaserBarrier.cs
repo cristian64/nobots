@@ -36,7 +36,11 @@ namespace Nobots.Elements
                 isActive = value;
                 body.CollidesWith = Category.None;
                 if (isActive)
+                {
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerUp[3], body.Position.X, body.Position.Y, 0f,false,false,false);
                     body.CollidesWith = Category.None | ElementCategory.CHARACTER;
+                }else
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerDown[1], body.Position.X, body.Position.Y, 0f, false, false, false);
             }
         }
 
