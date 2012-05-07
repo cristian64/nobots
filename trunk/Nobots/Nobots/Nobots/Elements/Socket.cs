@@ -107,6 +107,7 @@ namespace Nobots.Elements
                 scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
                 scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
                 energy.Position = OtherSocket.Position;
+                energy.torso.Awake = energy.body.Awake = true;
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
