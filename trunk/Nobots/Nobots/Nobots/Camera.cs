@@ -20,7 +20,12 @@ namespace Nobots
         public Matrix ViewNonScaled;
         public Matrix Projection;
         public static float DefaultScale = 0.7f;
-        public float Scale = DefaultScale;
+        private float scale = DefaultScale;
+        private float resolutionScale = 1;
+        public float Scale
+        {
+            get { return scale * resolutionScale; }
+        }
         public float ScaleTarget = DefaultScale;
         public float ScaleDuration = 10;
         public Vector2 ListenerPosition;
@@ -32,23 +37,24 @@ namespace Nobots
             : base(game)
         {
             this.scene = scene;
+            Initialize();
             Position = Vector2.Zero;
             Speed = Conversion.ToWorld(100);
             Margin = Conversion.ToWorld(50);
-            Initialize();
         }
 
         MouseState previousMouseState;
         public override void Update(GameTime gameTime)
         {
-            if (Scale != ScaleTarget)
+            resolutionScale = (GraphicsDevice.Viewport.Width) / (1920.0f);
+            if (scale != ScaleTarget)
             {
                 Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
 
-                if (Scale < ScaleTarget)
-                    Scale = (float)Math.Min(ScaleTarget, Scale + gameTime.ElapsedGameTime.TotalSeconds / ScaleDuration);
+                if (scale < ScaleTarget)
+                    scale = (float)Math.Min(ScaleTarget, scale + gameTime.ElapsedGameTime.TotalSeconds / ScaleDuration);
                 else
-                    Scale = (float)Math.Max(ScaleTarget, Scale - gameTime.ElapsedGameTime.TotalSeconds / ScaleDuration);
+                    scale = (float)Math.Max(ScaleTarget, scale - gameTime.ElapsedGameTime.TotalSeconds / ScaleDuration);
 
                 if (Target == null)
                     Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
@@ -58,16 +64,16 @@ namespace Nobots
             if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue > 0)
             {
                 Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
-                Scale *= 1.1f;
-                ScaleTarget = Scale;
+                scale *= 1.1f;
+                ScaleTarget = scale;
                 if (Target == null)
                     Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
             }
             else if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue < 0)
             {
                 Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
-                Scale *= 0.9f;
-                ScaleTarget = Scale;
+                scale *= 0.9f;
+                ScaleTarget = scale;
                 if (Target == null)
                     Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
             }
