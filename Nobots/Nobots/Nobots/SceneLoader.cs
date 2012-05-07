@@ -167,6 +167,9 @@ namespace Nobots
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
                     break;
+                case "SecurityCamera":
+                    e = new SecurityCamera(Game, scene, Vector2.Zero);
+                    break;
                 case "Elevator":
                     e = new Elevator(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("InitialPosition"))
@@ -326,6 +329,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Crate)i) + "\n";
                 else if (i as Computer != null)
                     xml += "        " + ElementToXml((Computer)i) + "\n";
+                else if (i as SecurityCamera != null)
+                    xml += "        " + ElementToXml((SecurityCamera)i) + "\n";
                 else if (i as Lamp != null)
                     xml += "        " + ElementToXml((Lamp)i) + "\n";
                 else if (i as Alarm != null)
@@ -452,6 +457,12 @@ namespace Nobots
         public String ElementToXml(Crate crate)
         {
             String xml = "<Crate Id=\"" + crate.Id + "\" Position=\"" + crate.Position.X + "," + crate.Position.Y + "\" Rotation=\"" + crate.Rotation + "\" Color=\"" + crate.Color + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(SecurityCamera camera)
+        {
+            String xml = "<SecurityCamera Id=\"" + camera.Id + "\" Position=\"" + camera.Position.X + "," + camera.Position.Y + "\" Rotation=\"" + camera.Rotation + "\" />";
             return xml;
         }
 
