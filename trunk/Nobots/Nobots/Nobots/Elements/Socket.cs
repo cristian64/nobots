@@ -19,14 +19,6 @@ namespace Nobots.Elements
         {
             get
             {
-                if (playSound)
-                {
-                    scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.socket[rand.Next(scene.SoundManager.socket.Count)], false, false, false);
-                    Console.WriteLine("sockets");
-                    playSound = false;
-                }
-                
-              
                 if (otherSocket == null)
                     foreach (Element e in scene.Elements)
                     {
@@ -53,7 +45,6 @@ namespace Nobots.Elements
         Body body;
         Texture2D texture;       
         Random rand = new Random();
-        bool playSound = true;
 
         public override Vector2 Position
         {
@@ -98,22 +89,31 @@ namespace Nobots.Elements
             body.BodyType = BodyType.Static;
             body.IsSensor = true;
             body.CollidesWith = Category.None | ElementCategory.ENERGY;
-            body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-
-            
 
             body.UserData = this;
-        }
-
-        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
-        {
-            playSound = true;
-            return true;
         }
 
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+        }
+
+        public void Travel(Energy energy)
+        {
+            if (OtherSocket != null)
+            {
+                scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+                scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+                scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+                scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
+                energy.Position = OtherSocket.Position;
+                scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
+                scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
+                scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
+                scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
+
+                scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.socket[rand.Next(scene.SoundManager.socket.Count)], false, false, false);
+            }
         }
 
         protected override void Dispose(bool disposing)

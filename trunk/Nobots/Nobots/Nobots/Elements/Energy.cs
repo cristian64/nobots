@@ -12,7 +12,7 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots.Elements
 {
-    class Energy : Character
+    public class Energy : Character
     {
         Effect effect;
 
@@ -46,24 +46,10 @@ namespace Nobots.Elements
             foreach (Element i in scene.Elements)
             {
                 Socket socket = i as Socket;
-                if (socket != null)
+                if (socket != null && IsTouchingElement(i))
                 {
-                    if (IsTouchingElement(i))
-                    {
-                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
-                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
-                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
-                        scene.VortexParticleSystem.AddParticle(socket.Position, Vector2.Zero);
-                        if (socket.OtherSocket != null)
-                        {
-                            Position = socket.OtherSocket.Position;
-                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
-                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
-                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
-                            scene.VortexOutParticleSystem.AddParticle(socket.OtherSocket.Position, Vector2.Zero);
-                        }
-                        break;
-                    }
+                    socket.Travel(this);
+                    break;
                 }
 
                 Activator activator = i as Activator;
@@ -102,8 +88,9 @@ namespace Nobots.Elements
                         scene.GarbageElements.Add(this);
                         scene.InputManager.Character = character;
                         scene.Camera.Target = character;
+
+                        break;
                     }
-                    break;
                 }
             }
         }
