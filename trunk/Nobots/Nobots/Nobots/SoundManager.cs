@@ -19,6 +19,8 @@ namespace Nobots
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
         public List<ISoundSource> laserBarrierShocks = new List<ISoundSource>();
+        public List<ISoundSource> powerDown = new List<ISoundSource>();
+        public List<ISoundSource> powerUp = new List<ISoundSource>();
         
 
         public SoundManager(Game game, Scene scene)
@@ -64,6 +66,10 @@ namespace Nobots
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord2.wav"));
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord3.wav"));
 
+            foreach (ISoundSource i in socket) {
+                i.DefaultVolume = 0.1f;
+            }
+
             laserBarrierLoop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarrierloop.wav");
             //laserBarrierLoop.DefaultVolume = 0.25f;
             laserBarrierLoop.DefaultMinDistance = 0.1f;
@@ -77,13 +83,23 @@ namespace Nobots
             checkpoint = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\checkpoint.wav");
 
             steam = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\steam.wav");
-            steam.DefaultMinDistance = 0.02f;
+            steam.DefaultMinDistance = 0.05f;
 
             elevatorBegin = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorbegin.wav");
 
             elevatorEnd = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorend.wav");
 
             stomp = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\stomp.wav");
+
+            powerDown.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerdown1.wav"));
+            powerDown.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerdown2.wav"));
+            powerDown.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerdown3.wav"));
+            powerDown.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerdown4.wav"));
+
+            powerUp.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerup1.wav"));
+            powerUp.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerup2.wav"));
+            powerUp.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerup3.wav"));
+            powerUp.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerup4.wav"));
 
 
 
