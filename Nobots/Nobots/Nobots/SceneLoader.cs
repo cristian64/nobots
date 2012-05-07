@@ -130,6 +130,9 @@ namespace Nobots
                 case "Battery":
                     e = new Battery(Game, scene, Vector2.Zero);
                     break;
+                case "Crane":
+                    e = new Crane(Game, scene, Vector2.Zero);
+                    break;
                 case "Steam":
                     e = new Steam(Game, scene, Vector2.Zero);
                     break;
@@ -235,7 +238,8 @@ namespace Nobots
                     break;
                 case "Character":
                     e = new Character(Game, scene, Vector2.Zero);
-                    scene.Camera.Target = scene.InputManager.Character = (Character)e;
+                    scene.Camera.Target = e;
+                    scene.InputManager.Character = (Character)e;
                     break;
                 case "Stone":
                     e = new Stone(Game, scene, Vector2.Zero);
@@ -379,6 +383,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((GlidePlatform)i) + "\n";
                 else if (i as Torch != null)
                     xml += "        " + ElementToXml((Torch)i) + "\n";
+                else if (i as Crane != null)
+                    xml += "        " + ElementToXml((Crane)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -445,6 +451,12 @@ namespace Nobots
         public String ElementToXml(Spikes spikes)
         {
             String xml = "<Spikes Id=\"" + spikes.Id + "\" Position=\"" + spikes.Position.X + "," + spikes.Position.Y + "\" Rotation=\"" + spikes.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Crane crane)
+        {
+            String xml = "<Crane Id=\"" + crane.Id + "\" Position=\"" + crane.Position.X + "," + crane.Position.Y + "\" />";
             return xml;
         }
 

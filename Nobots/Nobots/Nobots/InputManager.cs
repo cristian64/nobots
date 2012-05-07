@@ -10,7 +10,7 @@ namespace Nobots
 {
     public class InputManager : DrawableGameComponent
     {
-        public Character Character;
+        public IControllable Character;
         Keys keyboardJump = Keys.Space;
         Keys keyboardChangeForm = Keys.Enter;
         Keys keyboardPush = Keys.LeftAlt;

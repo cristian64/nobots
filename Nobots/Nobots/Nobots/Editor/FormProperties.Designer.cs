@@ -1455,6 +1455,7 @@
             "Minecart",
             "Switch",
             "GlidePlatform",
+            "Crane",
             "CameraScale",
             "Torch",
             "SecurityCamera",

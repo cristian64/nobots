@@ -13,7 +13,7 @@ namespace Nobots
         private Scene scene;
         private ISound ambienceLabNormal;
         private ISound ambienceLabEnergy;
-        private Element previous;
+        private IControllable previous;
         private float fadeSpeed = 1;        
         private bool inTransitionToEnergy = false;
         private bool inTransitionToNormal = false;

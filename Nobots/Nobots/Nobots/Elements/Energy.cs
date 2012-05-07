@@ -73,24 +73,23 @@ namespace Nobots.Elements
         {
             foreach (Element i in scene.Elements)
             {
-                Character character = i as Character;
-                if (character != null && character != this)
+                IControllable controllable = i as IControllable;
+                if (controllable != null && controllable != this && IsTouchingElement(i))
                 {
-                    if (IsTouchingElement(i))
-                    {
-                        character.State = new IdleCharacterState(scene, character);
-                        Random random = new Random();
-                        for (int j = 0; j < 50; j++)
-                        {
-                            scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
-                            scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
-                        }
-                        scene.GarbageElements.Add(this);
-                        scene.InputManager.Character = character;
-                        scene.Camera.Target = character;
+                    if (controllable is Character)
+                        ((Character)controllable).State = new IdleCharacterState(scene, (Character)controllable);
 
-                        break;
+                    Random random = new Random();
+                    for (int j = 0; j < 50; j++)
+                    {
+                        scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                        scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                     }
+                    scene.GarbageElements.Add(this);
+                    scene.InputManager.Character = controllable;
+                    scene.Camera.Target = (Element)controllable;
+
+                    break;
                 }
             }
         }
