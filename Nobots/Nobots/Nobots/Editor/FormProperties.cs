@@ -119,6 +119,12 @@ namespace Nobots.Editor
                 numericUpDownStepsNumber.Value = (decimal)((Ladder)selection).StepsNumber;
             }
 
+            if (selection is CameraScale)
+            {
+                flowLayoutPanelScaleTarget.Visible = true;
+                numericUpDownScaleTarget.Value = (decimal)((CameraScale)selection).ScaleTarget;
+            }
+
             if (selection is GlidePlatform)
             {
                 flowLayoutPanelStepsNumber.Visible = true;
@@ -200,6 +206,7 @@ namespace Nobots.Editor
             flowLayoutPanelAcceleration.Visible = false;
             flowLayoutPanelVelocity.Visible = false;
             flowLayoutPanelColor.Visible = false;
+            flowLayoutPanelScaleTarget.Visible = false;
         }
 
         private void setInitialValues()
@@ -460,6 +467,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((GlidePlatform)selectionEvents).Velocity = (float)numericUpDownVelocity.Value;
+        }
+
+        private void numericUpDownScaleTarget_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((CameraScale)selectionEvents).ScaleTarget = (float)numericUpDownScaleTarget.Value;
         }
     }
 }

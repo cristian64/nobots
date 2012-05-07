@@ -220,6 +220,9 @@ namespace Nobots
                     case "Sound":
                         element = new Sound(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "CameraScale":
+                        element = new CameraScale(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Background":
                         background = new Background(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
