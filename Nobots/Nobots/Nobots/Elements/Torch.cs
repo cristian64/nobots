@@ -81,7 +81,7 @@ namespace Nobots.Elements
         public Torch(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 4f;
+            ZBuffer = -7f;
             texture = scene.Game.Content.Load<Texture2D>("torch");
             this.position = position;
         }
