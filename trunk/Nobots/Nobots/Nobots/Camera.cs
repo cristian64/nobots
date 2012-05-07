@@ -40,9 +40,19 @@ namespace Nobots
         {
             MouseState currentMouseState = Mouse.GetState();
             if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue > 0)
+            {
+                Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
                 Scale *= 1.1f;
+                if (Target == null)
+                    Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
+            }
             else if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue < 0)
+            {
+                Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
                 Scale *= 0.9f;
+                if (Target == null)
+                    Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
+            }
 
             if (Target != null)
             {
