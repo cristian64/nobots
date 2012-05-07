@@ -144,11 +144,17 @@ namespace Nobots.Elements
                         {
                             body.LinearVelocity = Vector2.Zero;
                             body.Position = targetPosition;
+                            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.stomp, body.Position.X, body.Position.Y + height, 0f, false, false, false);
                             isMovingDown = true;
                         }
                     }
                     else
+                    {
                         isMovingDown = true;
+                        
+
+
+                    }
                 }
             }
             else
