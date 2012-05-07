@@ -14,7 +14,7 @@ namespace Nobots
         private Scene scene;
 
         public ISoundEngine ISoundEngine;
-        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint;
+        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint,steam,elevatorBegin,elevatorEnd;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -26,6 +26,7 @@ namespace Nobots
         {
             this.scene = scene;
             ISoundEngine = new ISoundEngine();
+            
 
             // AMBIENCE SOUNDS AND TRANSITIONS
 
@@ -53,7 +54,9 @@ namespace Nobots
             //Lever.DefaultVolume = 0.15f;
 
             Computer = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\computerbleep.wav");
-            //Computer.DefaultVolume = 0.2f;
+            Computer.DefaultVolume = 0.25f;
+            Computer.DefaultMinDistance = 0.01f;
+            
 
             woodenBox = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\woodencratefall.wav");
 
@@ -62,6 +65,9 @@ namespace Nobots
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord3.wav"));
 
             laserBarrierLoop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarrierloop.wav");
+            //laserBarrierLoop.DefaultVolume = 0.25f;
+            laserBarrierLoop.DefaultMinDistance = 0.1f;
+           
 
             laserBarrierShocks.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarriershock1.wav"));
             laserBarrierShocks.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarriershock2.wav")); 
@@ -69,6 +75,15 @@ namespace Nobots
             laserBarrierShocks.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarriershock4.wav"));
 
             checkpoint = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\checkpoint.wav");
+
+            steam = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\steam.wav");
+            steam.DefaultMinDistance = 0.02f;
+
+            elevatorBegin = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorbegin.wav");
+
+            elevatorEnd = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorend.wav");
+
+
 
         }
 

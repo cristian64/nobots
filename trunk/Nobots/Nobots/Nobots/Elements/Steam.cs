@@ -10,6 +10,7 @@ using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using Nobots.ParticleSystem;
 using FarseerPhysics.Dynamics.Contacts;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -21,6 +22,8 @@ namespace Nobots.Elements
         public float Speed = 1f;
         float delay = 3f;
         Random random = new Random();
+       
+        bool playSound = true;
 
         private bool isActive = true;
         public bool Active
@@ -70,6 +73,8 @@ namespace Nobots.Elements
             set
             {
                 body.Position = value;
+
+              
             }
         }
 
@@ -107,14 +112,23 @@ namespace Nobots.Elements
                     if (seconds < delay * 2)
                         for (int i = 0; i < 8; i++)
                         {
+                            if (playSound)
+                            {
+                                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.steam, body.Position.X, body.Position.Y + (height / 2), 0f, false, false, false);
+                                playSound = false;
+                            }
                             body.CollidesWith = Category.None | ElementCategory.CHARACTER;
                             scene.SteamParticleSystem.AddParticle(Position + new Vector2(0, height / 2), Vector2.Zero);
                         }
                     else
                         seconds -= 2 * delay;
                 }
-                else if (seconds < delay && seconds > delay/5)
+                else if (seconds < delay && seconds > delay / 5)
+                {
                     body.CollidesWith = Category.None;
+                    playSound = true;
+                }
+
             }
         }
 
@@ -147,5 +161,7 @@ namespace Nobots.Elements
             body.Dispose();
             base.Dispose(disposing);
         }
+
+        
     }
 }
