@@ -211,6 +211,9 @@ namespace Nobots
                     case "ImpulsePlatform":
                         element = new ImpulsePlatform(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Torch":
+                        element = new Torch(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Checkpoint":
                         element = new Checkpoint(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
