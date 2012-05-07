@@ -19,7 +19,10 @@ namespace Nobots
         public Matrix View;
         public Matrix ViewNonScaled;
         public Matrix Projection;
-        public float Scale = 0.5f;
+        public static float DefaultScale = 0.7f;
+        public float Scale = DefaultScale;
+        public float ScaleTarget = DefaultScale;
+        public float ScaleDuration = 10;
         public Vector2 ListenerPosition;
 
         public bool Grabbing = false;
@@ -38,11 +41,25 @@ namespace Nobots
         MouseState previousMouseState;
         public override void Update(GameTime gameTime)
         {
+            if (Scale != ScaleTarget)
+            {
+                Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
+
+                if (Scale < ScaleTarget)
+                    Scale = (float)Math.Min(ScaleTarget, Scale + gameTime.ElapsedGameTime.TotalSeconds / ScaleDuration);
+                else
+                    Scale = (float)Math.Max(ScaleTarget, Scale - gameTime.ElapsedGameTime.TotalSeconds / ScaleDuration);
+
+                if (Target == null)
+                    Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
+            }
+
             MouseState currentMouseState = Mouse.GetState();
             if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue > 0)
             {
                 Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
                 Scale *= 1.1f;
+                ScaleTarget = Scale;
                 if (Target == null)
                     Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
             }
@@ -50,6 +67,7 @@ namespace Nobots
             {
                 Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
                 Scale *= 0.9f;
+                ScaleTarget = Scale;
                 if (Target == null)
                     Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
             }
@@ -57,15 +75,15 @@ namespace Nobots
             if (Target != null)
             {
                 Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
-                float distance = Vector2.Distance(centeredPosition, Position);
+                /*float distance = Vector2.Distance(centeredPosition, Position);
                 float Speed = Scale * this.Speed;
                 if (distance > Margin * Scale)
                 {
                     Speed *= 3;
-                    //Position = centeredPosition + Vector2.Normalize(Position - centeredPosition) * Margin;
+                    Position = centeredPosition + Vector2.Normalize(Position - centeredPosition) * Margin;
                 }
-                /*else
-                {*/
+                else
+                {
                     if (distance < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
                     {
                         Position = centeredPosition;
@@ -74,7 +92,7 @@ namespace Nobots
                     {
                         Position += Vector2.Normalize(centeredPosition - Position) * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                     }
-                //}
+                }*/
 
                     Position = centeredPosition;
             }

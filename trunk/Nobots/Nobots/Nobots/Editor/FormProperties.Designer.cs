@@ -108,14 +108,17 @@
             this.flowLayoutPanelOtherTubeId = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxOtherTubeId = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelVelocity = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelVelocity = new System.Windows.Forms.Label();
+            this.numericUpDownVelocity = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanelScaleTarget = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelScaleTarget = new System.Windows.Forms.Label();
+            this.numericUpDownScaleTarget = new System.Windows.Forms.NumericUpDown();
             this.checkBoxShowDebug = new System.Windows.Forms.CheckBox();
             this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanelVelocity = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelVelocity = new System.Windows.Forms.Label();
-            this.numericUpDownVelocity = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -164,6 +167,8 @@
             this.flowLayoutPanelOtherTubeId.SuspendLayout();
             this.flowLayoutPanelVelocity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocity)).BeginInit();
+            this.flowLayoutPanelScaleTarget.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScaleTarget)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -198,6 +203,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelVolume);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelOtherTubeId);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelVelocity);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelScaleTarget);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 398);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1286,6 +1292,104 @@
             this.textBoxOtherTubeId.TabIndex = 1;
             this.textBoxOtherTubeId.TextChanged += new System.EventHandler(this.textBoxOtherTubeId_TextChanged);
             // 
+            // flowLayoutPanelVelocity
+            // 
+            this.flowLayoutPanelVelocity.Controls.Add(this.labelVelocity);
+            this.flowLayoutPanelVelocity.Controls.Add(this.numericUpDownVelocity);
+            this.flowLayoutPanelVelocity.Location = new System.Drawing.Point(0, 749);
+            this.flowLayoutPanelVelocity.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelVelocity.Name = "flowLayoutPanelVelocity";
+            this.flowLayoutPanelVelocity.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelVelocity.TabIndex = 28;
+            this.flowLayoutPanelVelocity.Visible = false;
+            // 
+            // labelVelocity
+            // 
+            this.labelVelocity.Location = new System.Drawing.Point(3, 0);
+            this.labelVelocity.Name = "labelVelocity";
+            this.labelVelocity.Size = new System.Drawing.Size(75, 23);
+            this.labelVelocity.TabIndex = 2;
+            this.labelVelocity.Text = "Velocity";
+            this.labelVelocity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownVelocity
+            // 
+            this.numericUpDownVelocity.DecimalPlaces = 6;
+            this.numericUpDownVelocity.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownVelocity.Location = new System.Drawing.Point(84, 3);
+            this.numericUpDownVelocity.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numericUpDownVelocity.Minimum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            -2147483648});
+            this.numericUpDownVelocity.Name = "numericUpDownVelocity";
+            this.numericUpDownVelocity.Size = new System.Drawing.Size(158, 20);
+            this.numericUpDownVelocity.TabIndex = 1;
+            this.numericUpDownVelocity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.numericUpDownVelocity.ValueChanged += new System.EventHandler(this.numericUpDownVelocity_ValueChanged);
+            // 
+            // flowLayoutPanelScaleTarget
+            // 
+            this.flowLayoutPanelScaleTarget.Controls.Add(this.labelScaleTarget);
+            this.flowLayoutPanelScaleTarget.Controls.Add(this.numericUpDownScaleTarget);
+            this.flowLayoutPanelScaleTarget.Location = new System.Drawing.Point(0, 778);
+            this.flowLayoutPanelScaleTarget.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelScaleTarget.Name = "flowLayoutPanelScaleTarget";
+            this.flowLayoutPanelScaleTarget.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelScaleTarget.TabIndex = 29;
+            this.flowLayoutPanelScaleTarget.Visible = false;
+            // 
+            // labelScaleTarget
+            // 
+            this.labelScaleTarget.Location = new System.Drawing.Point(3, 0);
+            this.labelScaleTarget.Name = "labelScaleTarget";
+            this.labelScaleTarget.Size = new System.Drawing.Size(75, 23);
+            this.labelScaleTarget.TabIndex = 2;
+            this.labelScaleTarget.Text = "ScaleTarget";
+            this.labelScaleTarget.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownScaleTarget
+            // 
+            this.numericUpDownScaleTarget.DecimalPlaces = 6;
+            this.numericUpDownScaleTarget.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownScaleTarget.Location = new System.Drawing.Point(84, 3);
+            this.numericUpDownScaleTarget.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownScaleTarget.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownScaleTarget.Name = "numericUpDownScaleTarget";
+            this.numericUpDownScaleTarget.Size = new System.Drawing.Size(158, 20);
+            this.numericUpDownScaleTarget.TabIndex = 1;
+            this.numericUpDownScaleTarget.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDownScaleTarget.ValueChanged += new System.EventHandler(this.numericUpDownScaleTarget_ValueChanged);
+            // 
             // checkBoxShowDebug
             // 
             this.checkBoxShowDebug.AutoSize = true;
@@ -1351,6 +1455,7 @@
             "Minecart",
             "Switch",
             "GlidePlatform",
+            "CameraScale",
             "---------------",
             "Sound"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
@@ -1378,55 +1483,6 @@
             this.checkBoxShowEmblems.Text = "Show emblems";
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
-            // 
-            // flowLayoutPanelVelocity
-            // 
-            this.flowLayoutPanelVelocity.Controls.Add(this.labelVelocity);
-            this.flowLayoutPanelVelocity.Controls.Add(this.numericUpDownVelocity);
-            this.flowLayoutPanelVelocity.Location = new System.Drawing.Point(0, 749);
-            this.flowLayoutPanelVelocity.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelVelocity.Name = "flowLayoutPanelVelocity";
-            this.flowLayoutPanelVelocity.Size = new System.Drawing.Size(247, 29);
-            this.flowLayoutPanelVelocity.TabIndex = 28;
-            this.flowLayoutPanelVelocity.Visible = false;
-            // 
-            // labelVelocity
-            // 
-            this.labelVelocity.Location = new System.Drawing.Point(3, 0);
-            this.labelVelocity.Name = "labelVelocity";
-            this.labelVelocity.Size = new System.Drawing.Size(75, 23);
-            this.labelVelocity.TabIndex = 2;
-            this.labelVelocity.Text = "Velocity";
-            this.labelVelocity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // numericUpDownVelocity
-            // 
-            this.numericUpDownVelocity.DecimalPlaces = 6;
-            this.numericUpDownVelocity.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownVelocity.Location = new System.Drawing.Point(84, 3);
-            this.numericUpDownVelocity.Maximum = new decimal(new int[] {
-            -1981284353,
-            -1966660860,
-            0,
-            0});
-            this.numericUpDownVelocity.Minimum = new decimal(new int[] {
-            -1981284353,
-            -1966660860,
-            0,
-            -2147483648});
-            this.numericUpDownVelocity.Name = "numericUpDownVelocity";
-            this.numericUpDownVelocity.Size = new System.Drawing.Size(158, 20);
-            this.numericUpDownVelocity.TabIndex = 1;
-            this.numericUpDownVelocity.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            262144});
-            this.numericUpDownVelocity.ValueChanged += new System.EventHandler(this.numericUpDownVelocity_ValueChanged);
             // 
             // FormProperties
             // 
@@ -1499,6 +1555,8 @@
             this.flowLayoutPanelOtherTubeId.PerformLayout();
             this.flowLayoutPanelVelocity.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocity)).EndInit();
+            this.flowLayoutPanelScaleTarget.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScaleTarget)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1594,6 +1652,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelVelocity;
         private System.Windows.Forms.Label labelVelocity;
         private System.Windows.Forms.NumericUpDown numericUpDownVelocity;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScaleTarget;
+        private System.Windows.Forms.Label labelScaleTarget;
+        private System.Windows.Forms.NumericUpDown numericUpDownScaleTarget;
 
 
     }
