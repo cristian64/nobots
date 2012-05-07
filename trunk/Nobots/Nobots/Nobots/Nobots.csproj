@@ -114,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Elements\CameraScale.cs" />
+    <Compile Include="Elements\IControllable.cs" />
+    <Compile Include="Elements\Crane.cs" />
     <Compile Include="Elements\SecurityCamera.cs" />
     <Compile Include="Elements\Torch.cs" />
     <Compile Include="Elements\GlidePlatform.cs" />

@@ -155,7 +155,8 @@ namespace Nobots
                         break;
                     case "Character":
                         element = new Character(Game, scene, scene.Camera.ScreenToWorld(previous));
-                        scene.Camera.Target = scene.InputManager.Character = (Character)element;
+                        scene.Camera.Target = element;
+                        scene.InputManager.Character = (Character)element;
                         break;
                     case "ExperimentalTube":
                         element = new ExperimentalTube(Game, scene, scene.Camera.ScreenToWorld(previous));
@@ -210,6 +211,9 @@ namespace Nobots
                         break;
                     case "ImpulsePlatform":
                         element = new ImpulsePlatform(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
+                    case "Crane":
+                        element = new Crane(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
                     case "Torch":
                         element = new Torch(Game, scene, scene.Camera.ScreenToWorld(previous));
