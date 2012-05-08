@@ -150,7 +150,7 @@ namespace Nobots.Elements
         {
             if (fixtureB.Body == touchedBody)
             {
-                if (GraphicsDevice != null) //TODO this is fucking patch that will have to do in many places in OnSeparation...
+                if (state is GrabbingCharacterState && GraphicsDevice != null) //TODO this is fucking patch that will have to do in many places in OnSeparation...
                     State = new IdleCharacterState(scene, this);
                 touchedBody = null;
             }
