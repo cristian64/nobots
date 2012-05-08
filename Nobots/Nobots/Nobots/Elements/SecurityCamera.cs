@@ -75,15 +75,18 @@ namespace Nobots.Elements
         public override void Update(GameTime gameTime)
         {
             if (scene.Camera.Target != null)
-            {
-                if (scene.Camera.Target.Position.Y >= position.Y)
-                    Rotation = Math.Max(0.0f, (float)Math.Atan2(scene.Camera.Target.Position.Y - position.Y, scene.Camera.Target.Position.X - Position.X));
+                if (Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 150)
+                {
+                    if (scene.Camera.Target.Position.Y < position.Y)
+                        Rotation = 0f;
+                    else
+                        Rotation = Math.Max(0.0f, (float)Math.Atan2(scene.Camera.Target.Position.Y - position.Y, scene.Camera.Target.Position.X - Position.X));
 
-                if (Rotation < MathHelper.PiOver2)
-                    effect = SpriteEffects.None;
-                else
-                    effect = SpriteEffects.FlipVertically;
-            }
+                    if (Rotation < MathHelper.PiOver2)
+                        effect = SpriteEffects.None;
+                    else
+                        effect = SpriteEffects.FlipVertically;
+                }
         }
 
         public override void Draw(GameTime gameTime)
