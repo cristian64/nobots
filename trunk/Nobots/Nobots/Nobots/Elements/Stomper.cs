@@ -8,6 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework.Input;
 using FarseerPhysics.Dynamics.Contacts;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -20,6 +21,7 @@ namespace Nobots.Elements
         public float SpeedDown = 15;
         Texture2D texture;
         Texture2D texture2;
+        ISound sound;
 
         private bool isActive = true;
         public bool Active
@@ -32,6 +34,10 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
+                if (value)
+                    sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.machineloop1, body.Position.X, body.Position.Y, 0f, true, false, false);
+                else
+                    sound.Stop();
             }
         }
         
@@ -101,7 +107,7 @@ namespace Nobots.Elements
             width = Conversion.ToWorld(texture.Width);
             height = Conversion.ToWorld(texture.Height);
             createBody();
-            createBaseBody();
+            createBaseBody();            
         }
 
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)

@@ -92,6 +92,9 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
+
+                if (value)
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerUp[2], Position.X, Position.Y, 0f, false, false, false);
                 foreach (Body i in rotors)
                     i.AngularVelocity = isActive ? angularSpeed : 0;
             }
