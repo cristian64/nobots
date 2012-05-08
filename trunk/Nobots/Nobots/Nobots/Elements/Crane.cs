@@ -9,18 +9,22 @@ namespace Nobots.Elements
 {
     public class Crane : Element, IControllable
     {
-        private const float SpiderBodyRadius = 0.4f;
+        Texture2D leg;
+        Texture2D eye;
+        Texture2D chain;
+
+        private const float SpiderBodyRadius = 0.5f;
         private bool _kneeFlexed;
         private float _kneeTargetAngle = -0.4f;
         private AngleJoint _leftKneeAngleJoint;
         private AngleJoint _leftShoulderAngleJoint;
-        private Vector2 _lowerLegSize = new Vector2(1.2f, 0.2f);
+        private Vector2 _lowerLegSize = new Vector2(1.5f, 0.3f);
 
         private AngleJoint _rightKneeAngleJoint;
         private AngleJoint _rightShoulderAngleJoint;
         private bool _shoulderFlexed;
         private float _shoulderTargetAngle = -0.2f;
-        private Vector2 _upperLegSize = new Vector2(1.2f, 0.2f);
+        private Vector2 _upperLegSize = new Vector2(1.5f, 0.3f);
 
         private Body _circle;
         private Body _leftLower;
@@ -84,6 +88,8 @@ namespace Nobots.Elements
         public Crane(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
+            ZBuffer = 5;
+
             //Load bodies
             _circle = BodyFactory.CreateCircle(scene.World, SpiderBodyRadius, 0.1f, position);
             _circle.BodyType = BodyType.Kinematic;
@@ -148,6 +154,29 @@ namespace Nobots.Elements
 
             _leftShoulderAngleJoint.TargetAngle = _shoulderTargetAngle;
             _rightShoulderAngleJoint.TargetAngle = -_shoulderTargetAngle;
+
+            leg = Game.Content.Load<Texture2D>("platform");
+            eye = Game.Content.Load<Texture2D>("crane");
+            chain = Game.Content.Load<Texture2D>("crane_chain");
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (scene.InputManager.Character == this)
+            {
+                scene.ElectricityParticleSystem.AddParticle(_circle.Position, Vector2.Zero);
+            }
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            float scale = scene.Camera.Scale;
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_leftLower.Position - scene.Camera.Position), null, Color.White, _leftLower.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _lowerLegSize, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_rightLower.Position - scene.Camera.Position), null, Color.White, _rightLower.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _lowerLegSize, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_leftUpper.Position - scene.Camera.Position), null, Color.White, _leftUpper.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _upperLegSize, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_rightUpper.Position - scene.Camera.Position), null, Color.White, _rightUpper.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _upperLegSize, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(chain, scale * (Conversion.ToDisplay(_circle.Position - scene.Camera.Position) - Vector2.UnitY * chain.Height / 2.0f), null, Color.White, 0, new Vector2(chain.Width / 2.0f, chain.Height / 2.0f), scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(eye, scale * Conversion.ToDisplay(_circle.Position - scene.Camera.Position), null, Color.White, _circle.Rotation, new Vector2(eye.Width / 2.0f, eye.Height / 2.0f), scale * SpiderBodyRadius * 2, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)

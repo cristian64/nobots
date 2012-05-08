@@ -121,6 +121,7 @@
     <Compile Include="Elements\GlidePlatform.cs" />
     <Compile Include="Elements\FallingCharacterState.cs" />
     <Compile Include="Elements\Switch.cs" />
+    <Compile Include="ParticleSystems\ElectricityParticleSystem.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Elements\Activator.cs" />
     <Compile Include="Elements\Alarm.cs" />
