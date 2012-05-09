@@ -86,7 +86,7 @@ namespace Nobots.Elements
         {
             if (character.touchedBody != null)
             {
-                character.State = new GrabbingCharacterState(scene, character);
+                character.State = new GrabbingCharacterState(scene, character, character.touchedBody);
                 character.State.BActionStart();
             }
         }
