@@ -132,6 +132,14 @@ namespace Nobots
                     break;
                 case "Crane":
                     e = new Crane(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("LeftShift"))
+                        ((Crane)e).LeftShift = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    if (reader.MoveToAttribute("RightShift"))
+                        ((Crane)e).RightShift = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    if (reader.MoveToAttribute("UpShift"))
+                        ((Crane)e).UpShift = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    if (reader.MoveToAttribute("DownShift"))
+                        ((Crane)e).DownShift = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     break;
                 case "Steam":
                     e = new Steam(Game, scene, Vector2.Zero);
@@ -456,7 +464,7 @@ namespace Nobots
 
         public String ElementToXml(Crane crane)
         {
-            String xml = "<Crane Id=\"" + crane.Id + "\" Position=\"" + crane.Position.X + "," + crane.Position.Y + "\" />";
+            String xml = "<Crane Id=\"" + crane.Id + "\" Position=\"" + crane.Position.X + "," + crane.Position.Y + "\" LeftShift=\"" + crane.LeftShift + "\" RightShift=\"" + crane.RightShift + "\" UpShift=\"" + crane.UpShift + "\" DownShift=\"" + crane.DownShift + "\" />";
             return xml;
         }
 
