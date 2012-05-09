@@ -93,16 +93,17 @@ namespace Nobots.Elements
         {
             touchedBodyFriction = touchedBody.Friction;
             touchedBodyMass = touchedBody.Mass;
-            touchedBody.Friction = 0;
+            touchedBody.Friction = 1;
             touchedBody.Mass = 100;
-            sliderJoint = new SliderJoint(character.torso, touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, touchedBody.Position) + 0.3f);
-            sliderJoint.CollideConnected = true;
-            scene.World.AddJoint(sliderJoint);
         }
 
         public override void Exit()
         {
-            scene.World.RemoveJoint(sliderJoint);
+            if (sliderJoint != null)
+            {
+                scene.World.RemoveJoint(sliderJoint);
+                sliderJoint = null;
+            }
             if (touchedBody != null && !touchedBody.IsDisposed)
             {
                 touchedBody.Friction = touchedBodyFriction;
@@ -136,6 +137,23 @@ namespace Nobots.Elements
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = new Vector2(2, character.torso.LinearVelocity.Y);
                 isPushing = character.Position.X < touchedBody.Position.X ? true : false;
+                if (isPushing)
+                {
+                    if (sliderJoint != null)
+                    {
+                        scene.World.RemoveJoint(sliderJoint);
+                        sliderJoint = null;
+                    }
+                }
+                else
+                {
+                    if (sliderJoint == null)
+                    {
+                        sliderJoint = new SliderJoint(character.torso, touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, touchedBody.Position) + 0.1f);
+                        sliderJoint.CollideConnected = true;
+                        scene.World.AddJoint(sliderJoint);
+                    }
+                }
             }
         }
 
@@ -148,6 +166,23 @@ namespace Nobots.Elements
                 character.body.FixedRotation = false;
                 character.torso.LinearVelocity = new Vector2(-2, character.torso.LinearVelocity.Y);
                 isPushing = character.Position.X > touchedBody.Position.X ? true : false;
+                if (isPushing)
+                {
+                    if (sliderJoint != null)
+                    {
+                        scene.World.RemoveJoint(sliderJoint);
+                        sliderJoint = null;
+                    }
+                }
+                else
+                {
+                    if (sliderJoint == null)
+                    {
+                        sliderJoint = new SliderJoint(character.torso, touchedBody, Vector2.Zero, Vector2.Zero, 0, Vector2.Distance(character.torso.Position, touchedBody.Position) + 0.1f);
+                        sliderJoint.CollideConnected = true;
+                        scene.World.AddJoint(sliderJoint);
+                    }
+                }
             }
         }
 
