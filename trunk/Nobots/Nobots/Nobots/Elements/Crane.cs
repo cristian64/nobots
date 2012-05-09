@@ -34,6 +34,12 @@ namespace Nobots.Elements
 
         private Joint _joint1, _joint2, _joint3, _joint4;
 
+        public float LeftShift = 1;
+        public float RightShift = 1;
+        public float UpShift = 1;
+        public float DownShift = 1;
+        private Vector2 initialPosition;
+
         public override float Width
         {
             get
@@ -65,7 +71,7 @@ namespace Nobots.Elements
             set
             {
                 Vector2 difference = value - _circle.Position;
-                _circle.Position = value;
+                initialPosition = _circle.Position = value;
                 _circle.Awake = _leftLower.Awake = _leftUpper.Awake = _rightLower.Awake = _rightUpper.Awake = true;
                 _leftLower.Position += difference;
                 _leftUpper.Position += difference;
@@ -93,6 +99,7 @@ namespace Nobots.Elements
             //Load bodies
             _circle = BodyFactory.CreateCircle(scene.World, SpiderBodyRadius, 0.1f, position);
             _circle.BodyType = BodyType.Kinematic;
+            initialPosition = position;
 
             //Left upper leg
             _leftUpper = BodyFactory.CreateRectangle(scene.World, _upperLegSize.X, _upperLegSize.Y, 1000,
@@ -257,6 +264,7 @@ namespace Nobots.Elements
         {
             _circle.LinearVelocity = Vector2.Zero;
             Energy energy = new Energy(scene.Game, scene, Position);
+            energy.State = new FallingCharacterState(scene, energy);
             energy.Position = Position;
             scene.InputManager.Character = energy;
             scene.Camera.Target = energy;
@@ -283,7 +291,10 @@ namespace Nobots.Elements
 
         public void RightAction()
         {
-            _circle.LinearVelocity = Vector2.UnitX;
+            if (initialPosition.X + RightShift >= Position.X)
+                _circle.LinearVelocity = Vector2.UnitX;
+            else
+                _circle.LinearVelocity = Vector2.Zero;
         }
 
         public void RightActionStop()
@@ -297,7 +308,10 @@ namespace Nobots.Elements
 
         public void LeftAction()
         {
-            _circle.LinearVelocity = -Vector2.UnitX;
+            if (initialPosition.X - LeftShift <= Position.X)
+                _circle.LinearVelocity = -Vector2.UnitX;
+            else
+                _circle.LinearVelocity = Vector2.Zero;
         }
 
         public void LeftActionStop()
@@ -311,7 +325,10 @@ namespace Nobots.Elements
 
         public void UpAction()
         {
-            _circle.LinearVelocity = -Vector2.UnitY;
+            if (initialPosition.Y - UpShift <= Position.Y)
+                _circle.LinearVelocity = -Vector2.UnitY;
+            else
+                _circle.LinearVelocity = Vector2.Zero;
         }
 
         public void UpActionStop()
@@ -325,7 +342,10 @@ namespace Nobots.Elements
 
         public void DownAction()
         {
-            _circle.LinearVelocity = Vector2.UnitY;
+            if (initialPosition.Y + DownShift >= Position.Y)
+                _circle.LinearVelocity = Vector2.UnitY;
+            else
+                _circle.LinearVelocity = Vector2.Zero;
         }
 
         public void DownActionStop()

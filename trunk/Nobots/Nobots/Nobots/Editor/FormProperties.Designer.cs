@@ -119,6 +119,18 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelLeftShift = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelLeftShift = new System.Windows.Forms.Label();
+            this.numericUpDownLeftShift = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanelRightShift = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelRightShift = new System.Windows.Forms.Label();
+            this.numericUpDownRightShift = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanelUpShift = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelUpShift = new System.Windows.Forms.Label();
+            this.numericUpDownUpShift = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanelDownShift = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelDownShift = new System.Windows.Forms.Label();
+            this.numericUpDownDownShift = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -169,6 +181,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocity)).BeginInit();
             this.flowLayoutPanelScaleTarget.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScaleTarget)).BeginInit();
+            this.flowLayoutPanelLeftShift.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLeftShift)).BeginInit();
+            this.flowLayoutPanelRightShift.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRightShift)).BeginInit();
+            this.flowLayoutPanelUpShift.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpShift)).BeginInit();
+            this.flowLayoutPanelDownShift.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDownShift)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -204,6 +224,10 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelOtherTubeId);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelVelocity);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelScaleTarget);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelLeftShift);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelRightShift);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelUpShift);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelDownShift);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 381);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1487,6 +1511,202 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
+            // flowLayoutPanelLeftShift
+            // 
+            this.flowLayoutPanelLeftShift.Controls.Add(this.labelLeftShift);
+            this.flowLayoutPanelLeftShift.Controls.Add(this.numericUpDownLeftShift);
+            this.flowLayoutPanelLeftShift.Location = new System.Drawing.Point(0, 807);
+            this.flowLayoutPanelLeftShift.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelLeftShift.Name = "flowLayoutPanelLeftShift";
+            this.flowLayoutPanelLeftShift.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelLeftShift.TabIndex = 30;
+            this.flowLayoutPanelLeftShift.Visible = false;
+            // 
+            // labelLeftShift
+            // 
+            this.labelLeftShift.Location = new System.Drawing.Point(3, 0);
+            this.labelLeftShift.Name = "labelLeftShift";
+            this.labelLeftShift.Size = new System.Drawing.Size(56, 23);
+            this.labelLeftShift.TabIndex = 2;
+            this.labelLeftShift.Text = "LeftShift";
+            this.labelLeftShift.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownLeftShift
+            // 
+            this.numericUpDownLeftShift.DecimalPlaces = 6;
+            this.numericUpDownLeftShift.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownLeftShift.Location = new System.Drawing.Point(65, 3);
+            this.numericUpDownLeftShift.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numericUpDownLeftShift.Minimum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            -2147483648});
+            this.numericUpDownLeftShift.Name = "numericUpDownLeftShift";
+            this.numericUpDownLeftShift.Size = new System.Drawing.Size(177, 20);
+            this.numericUpDownLeftShift.TabIndex = 1;
+            this.numericUpDownLeftShift.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.numericUpDownLeftShift.ValueChanged += new System.EventHandler(this.numericUpDownLeftShift_ValueChanged);
+            // 
+            // flowLayoutPanelRightShift
+            // 
+            this.flowLayoutPanelRightShift.Controls.Add(this.labelRightShift);
+            this.flowLayoutPanelRightShift.Controls.Add(this.numericUpDownRightShift);
+            this.flowLayoutPanelRightShift.Location = new System.Drawing.Point(0, 836);
+            this.flowLayoutPanelRightShift.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelRightShift.Name = "flowLayoutPanelRightShift";
+            this.flowLayoutPanelRightShift.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelRightShift.TabIndex = 31;
+            this.flowLayoutPanelRightShift.Visible = false;
+            // 
+            // labelRightShift
+            // 
+            this.labelRightShift.Location = new System.Drawing.Point(3, 0);
+            this.labelRightShift.Name = "labelRightShift";
+            this.labelRightShift.Size = new System.Drawing.Size(56, 23);
+            this.labelRightShift.TabIndex = 2;
+            this.labelRightShift.Text = "RightShift";
+            this.labelRightShift.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownRightShift
+            // 
+            this.numericUpDownRightShift.DecimalPlaces = 6;
+            this.numericUpDownRightShift.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownRightShift.Location = new System.Drawing.Point(65, 3);
+            this.numericUpDownRightShift.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numericUpDownRightShift.Minimum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            -2147483648});
+            this.numericUpDownRightShift.Name = "numericUpDownRightShift";
+            this.numericUpDownRightShift.Size = new System.Drawing.Size(177, 20);
+            this.numericUpDownRightShift.TabIndex = 1;
+            this.numericUpDownRightShift.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.numericUpDownRightShift.ValueChanged += new System.EventHandler(this.numericUpDownRightShift_ValueChanged);
+            // 
+            // flowLayoutPanelUpShift
+            // 
+            this.flowLayoutPanelUpShift.Controls.Add(this.labelUpShift);
+            this.flowLayoutPanelUpShift.Controls.Add(this.numericUpDownUpShift);
+            this.flowLayoutPanelUpShift.Location = new System.Drawing.Point(0, 865);
+            this.flowLayoutPanelUpShift.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelUpShift.Name = "flowLayoutPanelUpShift";
+            this.flowLayoutPanelUpShift.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelUpShift.TabIndex = 32;
+            this.flowLayoutPanelUpShift.Visible = false;
+            // 
+            // labelUpShift
+            // 
+            this.labelUpShift.Location = new System.Drawing.Point(3, 0);
+            this.labelUpShift.Name = "labelUpShift";
+            this.labelUpShift.Size = new System.Drawing.Size(56, 23);
+            this.labelUpShift.TabIndex = 2;
+            this.labelUpShift.Text = "UpShift";
+            this.labelUpShift.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownUpShift
+            // 
+            this.numericUpDownUpShift.DecimalPlaces = 6;
+            this.numericUpDownUpShift.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownUpShift.Location = new System.Drawing.Point(65, 3);
+            this.numericUpDownUpShift.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numericUpDownUpShift.Minimum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            -2147483648});
+            this.numericUpDownUpShift.Name = "numericUpDownUpShift";
+            this.numericUpDownUpShift.Size = new System.Drawing.Size(177, 20);
+            this.numericUpDownUpShift.TabIndex = 1;
+            this.numericUpDownUpShift.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.numericUpDownUpShift.ValueChanged += new System.EventHandler(this.numericUpDownUpShift_ValueChanged);
+            // 
+            // flowLayoutPanelDownShift
+            // 
+            this.flowLayoutPanelDownShift.Controls.Add(this.labelDownShift);
+            this.flowLayoutPanelDownShift.Controls.Add(this.numericUpDownDownShift);
+            this.flowLayoutPanelDownShift.Location = new System.Drawing.Point(0, 894);
+            this.flowLayoutPanelDownShift.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelDownShift.Name = "flowLayoutPanelDownShift";
+            this.flowLayoutPanelDownShift.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelDownShift.TabIndex = 33;
+            this.flowLayoutPanelDownShift.Visible = false;
+            // 
+            // labelDownShift
+            // 
+            this.labelDownShift.Location = new System.Drawing.Point(3, 0);
+            this.labelDownShift.Name = "labelDownShift";
+            this.labelDownShift.Size = new System.Drawing.Size(56, 23);
+            this.labelDownShift.TabIndex = 2;
+            this.labelDownShift.Text = "DownShift";
+            this.labelDownShift.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownDownShift
+            // 
+            this.numericUpDownDownShift.DecimalPlaces = 6;
+            this.numericUpDownDownShift.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownDownShift.Location = new System.Drawing.Point(65, 3);
+            this.numericUpDownDownShift.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numericUpDownDownShift.Minimum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            -2147483648});
+            this.numericUpDownDownShift.Name = "numericUpDownDownShift";
+            this.numericUpDownDownShift.Size = new System.Drawing.Size(177, 20);
+            this.numericUpDownDownShift.TabIndex = 1;
+            this.numericUpDownDownShift.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.numericUpDownDownShift.ValueChanged += new System.EventHandler(this.numericUpDownDownShift_ValueChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1560,6 +1780,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocity)).EndInit();
             this.flowLayoutPanelScaleTarget.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScaleTarget)).EndInit();
+            this.flowLayoutPanelLeftShift.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLeftShift)).EndInit();
+            this.flowLayoutPanelRightShift.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRightShift)).EndInit();
+            this.flowLayoutPanelUpShift.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpShift)).EndInit();
+            this.flowLayoutPanelDownShift.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDownShift)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1658,6 +1886,18 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScaleTarget;
         private System.Windows.Forms.Label labelScaleTarget;
         private System.Windows.Forms.NumericUpDown numericUpDownScaleTarget;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLeftShift;
+        private System.Windows.Forms.Label labelLeftShift;
+        private System.Windows.Forms.NumericUpDown numericUpDownLeftShift;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRightShift;
+        private System.Windows.Forms.Label labelRightShift;
+        private System.Windows.Forms.NumericUpDown numericUpDownRightShift;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelUpShift;
+        private System.Windows.Forms.Label labelUpShift;
+        private System.Windows.Forms.NumericUpDown numericUpDownUpShift;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDownShift;
+        private System.Windows.Forms.Label labelDownShift;
+        private System.Windows.Forms.NumericUpDown numericUpDownDownShift;
 
 
     }

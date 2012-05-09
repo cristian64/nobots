@@ -172,6 +172,18 @@ namespace Nobots.Editor
                 flowLayoutPanelVolume.Visible = true;
                 numericUpDownVolume.Value = (decimal)((Sound)selection).Volume;
             }
+
+            if (selection is Crane)
+            {
+                flowLayoutPanelLeftShift.Visible = true;
+                numericUpDownLeftShift.Value = (decimal)((Crane)selection).LeftShift;
+                flowLayoutPanelRightShift.Visible = true;
+                numericUpDownRightShift.Value = (decimal)((Crane)selection).RightShift;
+                flowLayoutPanelUpShift.Visible = true;
+                numericUpDownUpShift.Value = (decimal)((Crane)selection).UpShift;
+                flowLayoutPanelDownShift.Visible = true;
+                numericUpDownDownShift.Value = (decimal)((Crane)selection).DownShift;
+            }
         }
 
         private void reset()
@@ -207,6 +219,10 @@ namespace Nobots.Editor
             flowLayoutPanelVelocity.Visible = false;
             flowLayoutPanelColor.Visible = false;
             flowLayoutPanelScaleTarget.Visible = false;
+            flowLayoutPanelLeftShift.Visible = false;
+            flowLayoutPanelRightShift.Visible = false;
+            flowLayoutPanelUpShift.Visible = false;
+            flowLayoutPanelDownShift.Visible = false;
         }
 
         private void setInitialValues()
@@ -473,6 +489,30 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((CameraScale)selectionEvents).ScaleTarget = (float)numericUpDownScaleTarget.Value;
+        }
+
+        private void numericUpDownLeftShift_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Crane)selectionEvents).LeftShift = (float)numericUpDownLeftShift.Value;
+        }
+
+        private void numericUpDownRightShift_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Crane)selectionEvents).RightShift = (float)numericUpDownRightShift.Value;
+        }
+
+        private void numericUpDownUpShift_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Crane)selectionEvents).UpShift = (float)numericUpDownUpShift.Value;
+        }
+
+        private void numericUpDownDownShift_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Crane)selectionEvents).DownShift = (float)numericUpDownDownShift.Value;
         }
     }
 }
