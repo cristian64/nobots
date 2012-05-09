@@ -12,9 +12,9 @@ namespace Nobots.Elements
         public IdleCharacterState(Scene scene, Character character) 
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("idle");//("girl_moving");
-            characterWidth = texture.Width / 10;// 8;
-            characterHeight = texture.Height / 2;///5;
+            texture = scene.Game.Content.Load<Texture2D>("idle");
+            characterWidth = texture.Width / 10;
+            characterHeight = texture.Height / 2;
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;

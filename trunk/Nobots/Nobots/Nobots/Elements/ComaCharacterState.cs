@@ -9,18 +9,61 @@ namespace Nobots.Elements
 {
     class ComaCharacterState : CharacterState
     {
+        int rows;
+        int columns;
+
         Vector2? energyPosition = null;
         public ComaCharacterState(Scene scene, Character character, Vector2? energyPosition = null) 
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("idle");
+            texture = scene.Game.Content.Load<Texture2D>("coma");
+            rows = 2;
+            columns = 5;
             character.texture = texture;
-            characterWidth = texture.Width / 10;
-            characterHeight = texture.Height / 2;
+            characterWidth = texture.Width / columns;
+            characterHeight = texture.Height / rows;
             textureXmin = 0;
             textureYmin = characterHeight;
 
             this.energyPosition = energyPosition;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            changeComaTextures(gameTime);
+        }
+
+        float seconds = 0;
+        float delay = 0.15f;
+        private Vector2 changeComaTextures(GameTime gameTime)
+        {
+            seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (seconds > delay)
+            {
+                seconds -= delay;
+                textureXmin += texture.Width / columns;
+
+                if (textureXmin == texture.Width && textureYmin == texture.Height / rows)
+                {
+                    textureXmin = 0;
+                    textureYmin = 0;
+                }
+                else if (textureXmin == texture.Width)
+                {
+                    textureXmin = 0;
+                    textureYmin += texture.Height / rows;
+                }
+
+                if (textureXmin == 0)
+                    delay = 2;
+                else
+                    delay = 0.15f;
+                delay -= 0.04f;
+                if (delay < 0)
+                    delay = 0;
+            }
+
+            return new Vector2(textureXmin, textureYmin);
         }
 
         public override void Exit()
