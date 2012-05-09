@@ -124,6 +124,8 @@ namespace Nobots.Elements
             State = new IdleCharacterState(scene, this);
         }
 
+        float countToFall = 0;
+
         protected void body_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             if (!fixtureB.IsSensor)
@@ -131,8 +133,6 @@ namespace Nobots.Elements
                 contactsNumber--;
                 if (fixtureB.Body == lastContact)
                     lastContact = null;
-                if (contactsNumber == 0 && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && !(state is ClimbingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
-                    State = new FallingCharacterState(scene, this);
             }
         }
 
@@ -141,6 +141,7 @@ namespace Nobots.Elements
             if (!fixtureB.IsSensor)
             {
                 contactsNumber++;
+                countToFall = 0;
                 lastContact = fixtureB.Body;
             }
             return true;
@@ -166,6 +167,12 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
+            if (contactsNumber == 0)
+            {
+                countToFall += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (countToFall > 0.1f && !(state is FallingCharacterState) && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && !(state is ClimbingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
+                    State = new FallingCharacterState(scene, this);
+            }
             updateLadder();
             State.Update(gameTime);
         }
