@@ -34,10 +34,10 @@ namespace Nobots
             // AMBIENCE SOUNDS AND TRANSITIONS
 
             AmbienceNormal = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabnormal.mp3");
-            AmbienceNormal.DefaultVolume = 0.5f;
+            AmbienceNormal.DefaultVolume = 0.3f;
 
             AmbienceEnergy = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabenergy.mp3");
-            AmbienceEnergy.DefaultVolume = 0.5f;
+            AmbienceEnergy.DefaultVolume = 0.3f;
                       
 
             toEnergy.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy1.wav"));
@@ -49,7 +49,7 @@ namespace Nobots
 
             foreach (ISoundSource i in toEnergy)
             {
-                i.DefaultVolume = 0.3f;
+                i.DefaultVolume = 0.2f;
             }
 
             toNormal.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal1.wav"));
@@ -60,7 +60,7 @@ namespace Nobots
 
             foreach (ISoundSource i in toNormal)
             {
-                i.DefaultVolume = 0.3f;
+                i.DefaultVolume = 0.2f;
             }
 
 
@@ -73,6 +73,7 @@ namespace Nobots
             
 
             woodenBox = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\woodencratefall.wav");
+            woodenBox.DefaultVolume = 0.7f;
 
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord1.wav"));
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord2.wav"));
@@ -98,7 +99,7 @@ namespace Nobots
             }
 
             checkpoint = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\checkpoint.wav");
-            checkpoint.DefaultVolume = 0.7f;
+            checkpoint.DefaultVolume = 0.5f;
 
             steam = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\steam.wav");
             steam.DefaultMinDistance = 0.05f;
