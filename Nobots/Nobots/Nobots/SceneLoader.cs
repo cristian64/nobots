@@ -548,7 +548,7 @@ namespace Nobots
 
         public String ElementToXml(Character character)
         {
-            String xml = "<Character Id=\"" + character.Id + "\" Position=\"" + character.Position.X + "," + character.Position.Y + "\" />";
+            String xml = "<Character Id=\"" + character.Id + "\" Position=\"" + character.Position.X + "," + character.Position.Y + "\" Active=\"" + character.Active + "\" />";
             return xml;
         }
 
