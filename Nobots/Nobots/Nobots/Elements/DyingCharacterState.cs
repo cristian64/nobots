@@ -48,6 +48,7 @@ namespace Nobots.Elements
                     {
                         scene.GarbageElements.Add(character);
                         Character character2 = new Character(scene.Game, scene, i.Position);
+                        character2.Active = character.Active;
                         scene.RespawnElements.Add(character2);
                         scene.Camera.Target = character2;
                         scene.InputManager.Character = character2;
