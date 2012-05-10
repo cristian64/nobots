@@ -56,7 +56,8 @@ namespace Nobots.Elements
 
         public override void YActionStart()
         {
-            character.State = new ComaCharacterState(scene, character);
+            if (character.Active)
+                character.State = new ComaCharacterState(scene, character);
         }
 
         public override void UpAction()

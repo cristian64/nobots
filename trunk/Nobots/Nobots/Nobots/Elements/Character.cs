@@ -12,7 +12,7 @@ using FarseerPhysics.Dynamics.Contacts;
 
 namespace Nobots.Elements
 {
-    public class Character : Element, IControllable
+    public class Character : Element, IControllable, IActivable
     {
         public int contactsNumber = 0;
         public Body body;
@@ -41,6 +41,20 @@ namespace Nobots.Elements
                 state = value;
                 Console.WriteLine(state.GetType().Name);
                 state.Enter();
+            }
+        }
+
+        private bool isActive = true;
+        public bool Active
+        {
+            get
+            {
+                return isActive;
+            }
+
+            set
+            {
+                isActive = value;
             }
         }
 
