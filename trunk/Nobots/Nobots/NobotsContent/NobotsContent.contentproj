@@ -926,18 +926,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="switch_off.png">
-      <Name>switch_off</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="switch_on.png">
-      <Name>switch_on</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="glideplatform.png">
       <Name>glideplatform</Name>
       <Importer>TextureImporter</Importer>
@@ -1106,6 +1094,20 @@
   <ItemGroup>
     <Compile Include="hintarrow.png">
       <Name>hintarrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="switch_off.png">
+      <Name>switch_off</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="switch_on.png">
+      <Name>switch_on</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
