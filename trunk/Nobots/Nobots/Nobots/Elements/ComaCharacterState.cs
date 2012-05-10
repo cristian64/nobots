@@ -9,13 +9,20 @@ namespace Nobots.Elements
 {
     class ComaCharacterState : CharacterState
     {
-        int rows;
-        int columns;
+        //int rows;
+        //int columns;
 
         Vector2? energyPosition = null;
         public ComaCharacterState(Scene scene, Character character, Vector2? energyPosition = null) 
             : base(scene, character)
         {
+            texture = scene.Game.Content.Load<Texture2D>("idle");
+            character.texture = texture;
+            characterWidth = texture.Width / 10;
+            characterHeight = texture.Height / 2;
+            textureXmin = 0;
+            textureYmin = characterHeight;
+            /*
             texture = scene.Game.Content.Load<Texture2D>("coma");
             rows = 2;
             columns = 5;
@@ -24,11 +31,12 @@ namespace Nobots.Elements
             characterHeight = texture.Height / rows;
             textureXmin = 0;
             textureYmin = characterHeight;
+             */
 
             this.energyPosition = energyPosition;
         }
 
-        public override void Update(GameTime gameTime)
+       /* public override void Update(GameTime gameTime)
         {
             changeComaTextures(gameTime);
         }
@@ -65,7 +73,7 @@ namespace Nobots.Elements
 
             return new Vector2(textureXmin, textureYmin);
         }
-
+        */
         public override void Exit()
         {
         }
