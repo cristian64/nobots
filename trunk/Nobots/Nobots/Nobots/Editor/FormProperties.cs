@@ -157,6 +157,8 @@ namespace Nobots.Editor
             {
                 flowLayoutPanelAcceleration.Visible = true;
                 numericUpDownAcceleration.Value = (decimal)((ImpulsePlatform)selection).Acceleration;
+                flowLayoutPanelStepsNumber.Visible = true;
+                numericUpDownStepsNumber.Value = (decimal)((ImpulsePlatform)selection).StepsNumber;
             }
 
             if (selection is Endpoint)
@@ -358,6 +360,8 @@ namespace Nobots.Editor
                 ((GlidePlatform)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
             else if (selectionEvents != null && selectionEvents is TrainTrack)
                 ((TrainTrack)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
+            else if (selectionEvents != null && selectionEvents is ImpulsePlatform)
+                ((ImpulsePlatform)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
         }
 
         private void numericUpDownInitialPositionX_ValueChanged(object sender, EventArgs e)
