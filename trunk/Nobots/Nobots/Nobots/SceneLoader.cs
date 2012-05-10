@@ -244,6 +244,12 @@ namespace Nobots
                     if (reader.MoveToAttribute("Velocity"))
                         ((GlidePlatform)e).Velocity = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     break;
+                case "TrainTrack":
+                    int stepsNumber3 = 1;
+                    if (reader.MoveToAttribute("StepsNumber"))
+                        stepsNumber3 = int.Parse(reader.Value);
+                    e = new TrainTrack(Game, scene, Vector2.Zero, stepsNumber3);
+                    break;
                 case "Character":
                     e = new Character(Game, scene, Vector2.Zero);
                     scene.Camera.Target = e;
@@ -389,6 +395,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((ImpulsePlatform)i) + "\n";
                 else if (i as GlidePlatform != null)
                     xml += "        " + ElementToXml((GlidePlatform)i) + "\n";
+                else if (i as TrainTrack != null)
+                    xml += "        " + ElementToXml((TrainTrack)i) + "\n";
                 else if (i as Torch != null)
                     xml += "        " + ElementToXml((Torch)i) + "\n";
                 else if (i as Crane != null)
@@ -606,6 +614,12 @@ namespace Nobots
         public String ElementToXml(GlidePlatform glidePlatform)
         {
             String xml = "<GlidePlatform Id=\"" + glidePlatform.Id + "\" Position=\"" + glidePlatform.Position.X + "," + glidePlatform.Position.Y + "\" Rotation=\"" + glidePlatform.Rotation + "\" Active=\"" + glidePlatform.Active + "\" Velocity=\"" + glidePlatform.Velocity + "\" StepsNumber=\"" + glidePlatform.StepsNumber + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(TrainTrack trainTrack)
+        {
+            String xml = "<TrainTrack Id=\"" + trainTrack.Id + "\" Position=\"" + trainTrack.Position.X + "," + trainTrack.Position.Y + "\" Rotation=\"" + trainTrack.Rotation + "\" StepsNumber=\"" + trainTrack.StepsNumber + "\" />";
             return xml;
         }
 

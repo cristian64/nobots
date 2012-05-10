@@ -114,11 +114,6 @@
             this.flowLayoutPanelScaleTarget = new System.Windows.Forms.FlowLayoutPanel();
             this.labelScaleTarget = new System.Windows.Forms.Label();
             this.numericUpDownScaleTarget = new System.Windows.Forms.NumericUpDown();
-            this.checkBoxShowDebug = new System.Windows.Forms.CheckBox();
-            this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
-            this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelLeftShift = new System.Windows.Forms.FlowLayoutPanel();
             this.labelLeftShift = new System.Windows.Forms.Label();
             this.numericUpDownLeftShift = new System.Windows.Forms.NumericUpDown();
@@ -131,6 +126,11 @@
             this.flowLayoutPanelDownShift = new System.Windows.Forms.FlowLayoutPanel();
             this.labelDownShift = new System.Windows.Forms.Label();
             this.numericUpDownDownShift = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxShowDebug = new System.Windows.Forms.CheckBox();
+            this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
+            this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -1414,103 +1414,6 @@
             65536});
             this.numericUpDownScaleTarget.ValueChanged += new System.EventHandler(this.numericUpDownScaleTarget_ValueChanged);
             // 
-            // checkBoxShowDebug
-            // 
-            this.checkBoxShowDebug.AutoSize = true;
-            this.checkBoxShowDebug.Location = new System.Drawing.Point(12, 12);
-            this.checkBoxShowDebug.Name = "checkBoxShowDebug";
-            this.checkBoxShowDebug.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxShowDebug.TabIndex = 1;
-            this.checkBoxShowDebug.Text = "Show debug lines";
-            this.checkBoxShowDebug.UseVisualStyleBackColor = true;
-            this.checkBoxShowDebug.CheckedChanged += new System.EventHandler(this.checkBoxShowDebug_CheckedChanged);
-            // 
-            // checkBoxPhysicsEngine
-            // 
-            this.checkBoxPhysicsEngine.AutoSize = true;
-            this.checkBoxPhysicsEngine.Location = new System.Drawing.Point(12, 58);
-            this.checkBoxPhysicsEngine.Name = "checkBoxPhysicsEngine";
-            this.checkBoxPhysicsEngine.Size = new System.Drawing.Size(138, 17);
-            this.checkBoxPhysicsEngine.TabIndex = 2;
-            this.checkBoxPhysicsEngine.Text = "Physics engine updates";
-            this.checkBoxPhysicsEngine.UseVisualStyleBackColor = true;
-            this.checkBoxPhysicsEngine.CheckedChanged += new System.EventHandler(this.checkBoxPhysicsEngine_CheckedChanged);
-            // 
-            // listBoxAvailableElements
-            // 
-            this.listBoxAvailableElements.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxAvailableElements.FormattingEnabled = true;
-            this.listBoxAvailableElements.Items.AddRange(new object[] {
-            "Checkpoint",
-            "Endpoint",
-            "---------------",
-            "Background",
-            "Foreground",
-            "---------------",
-            "Platform",
-            "Ladder",
-            "Box",
-            "Closet",
-            "PressurePlate",
-            "ElectricityBox",
-            "Elevator",
-            "Character",
-            "ExperimentalTube",
-            "Socket",
-            "LaserBarrier",
-            "Forklift",
-            "Stone",
-            "ConveyorBelt",
-            "Chandelier",
-            "Lamp",
-            "Alarm",
-            "Lever",
-            "ImpulsePlatform",
-            "Computer",
-            "Crate",
-            "MovingPlatform",
-            "Stomper",
-            "Door",
-            "Steam",
-            "Spikes",
-            "Battery",
-            "Minecart",
-            "Switch",
-            "GlidePlatform",
-            "Crane",
-            "CameraScale",
-            "Torch",
-            "SecurityCamera",
-            "---------------",
-            "Sound"});
-            this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
-            this.listBoxAvailableElements.Name = "listBoxAvailableElements";
-            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 251);
-            this.listBoxAvailableElements.TabIndex = 3;
-            this.listBoxAvailableElements.SelectedValueChanged += new System.EventHandler(this.listBoxAvailableElements_SelectedValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Select the element you want to create:";
-            // 
-            // checkBoxShowEmblems
-            // 
-            this.checkBoxShowEmblems.AutoSize = true;
-            this.checkBoxShowEmblems.Location = new System.Drawing.Point(12, 35);
-            this.checkBoxShowEmblems.Name = "checkBoxShowEmblems";
-            this.checkBoxShowEmblems.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxShowEmblems.TabIndex = 5;
-            this.checkBoxShowEmblems.Text = "Show emblems";
-            this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
-            this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
-            // 
             // flowLayoutPanelLeftShift
             // 
             this.flowLayoutPanelLeftShift.Controls.Add(this.labelLeftShift);
@@ -1706,6 +1609,104 @@
             0,
             262144});
             this.numericUpDownDownShift.ValueChanged += new System.EventHandler(this.numericUpDownDownShift_ValueChanged);
+            // 
+            // checkBoxShowDebug
+            // 
+            this.checkBoxShowDebug.AutoSize = true;
+            this.checkBoxShowDebug.Location = new System.Drawing.Point(12, 12);
+            this.checkBoxShowDebug.Name = "checkBoxShowDebug";
+            this.checkBoxShowDebug.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxShowDebug.TabIndex = 1;
+            this.checkBoxShowDebug.Text = "Show debug lines";
+            this.checkBoxShowDebug.UseVisualStyleBackColor = true;
+            this.checkBoxShowDebug.CheckedChanged += new System.EventHandler(this.checkBoxShowDebug_CheckedChanged);
+            // 
+            // checkBoxPhysicsEngine
+            // 
+            this.checkBoxPhysicsEngine.AutoSize = true;
+            this.checkBoxPhysicsEngine.Location = new System.Drawing.Point(12, 58);
+            this.checkBoxPhysicsEngine.Name = "checkBoxPhysicsEngine";
+            this.checkBoxPhysicsEngine.Size = new System.Drawing.Size(138, 17);
+            this.checkBoxPhysicsEngine.TabIndex = 2;
+            this.checkBoxPhysicsEngine.Text = "Physics engine updates";
+            this.checkBoxPhysicsEngine.UseVisualStyleBackColor = true;
+            this.checkBoxPhysicsEngine.CheckedChanged += new System.EventHandler(this.checkBoxPhysicsEngine_CheckedChanged);
+            // 
+            // listBoxAvailableElements
+            // 
+            this.listBoxAvailableElements.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxAvailableElements.FormattingEnabled = true;
+            this.listBoxAvailableElements.Items.AddRange(new object[] {
+            "Checkpoint",
+            "Endpoint",
+            "---------------",
+            "Background",
+            "Foreground",
+            "---------------",
+            "Platform",
+            "Ladder",
+            "Box",
+            "Closet",
+            "PressurePlate",
+            "ElectricityBox",
+            "Elevator",
+            "Character",
+            "ExperimentalTube",
+            "Socket",
+            "LaserBarrier",
+            "Forklift",
+            "Stone",
+            "ConveyorBelt",
+            "Chandelier",
+            "Lamp",
+            "Alarm",
+            "Lever",
+            "ImpulsePlatform",
+            "Computer",
+            "Crate",
+            "MovingPlatform",
+            "Stomper",
+            "Door",
+            "Steam",
+            "Spikes",
+            "Battery",
+            "Minecart",
+            "Switch",
+            "GlidePlatform",
+            "Crane",
+            "Torch",
+            "SecurityCamera",
+            "TrainTrack",
+            "---------------",
+            "Sound",
+            "CameraScale"});
+            this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
+            this.listBoxAvailableElements.Name = "listBoxAvailableElements";
+            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 251);
+            this.listBoxAvailableElements.TabIndex = 3;
+            this.listBoxAvailableElements.SelectedValueChanged += new System.EventHandler(this.listBoxAvailableElements_SelectedValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Select the element you want to create:";
+            // 
+            // checkBoxShowEmblems
+            // 
+            this.checkBoxShowEmblems.AutoSize = true;
+            this.checkBoxShowEmblems.Location = new System.Drawing.Point(12, 35);
+            this.checkBoxShowEmblems.Name = "checkBoxShowEmblems";
+            this.checkBoxShowEmblems.Size = new System.Drawing.Size(97, 17);
+            this.checkBoxShowEmblems.TabIndex = 5;
+            this.checkBoxShowEmblems.Text = "Show emblems";
+            this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
+            this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
             // FormProperties
             // 

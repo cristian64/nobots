@@ -209,6 +209,9 @@ namespace Nobots
                     case "GlidePlatform":
                         element = new GlidePlatform(Game, scene, scene.Camera.ScreenToWorld(previous), 1);
                         break;
+                    case "TrainTrack":
+                        element = new TrainTrack(Game, scene, scene.Camera.ScreenToWorld(previous), 1);
+                        break;
                     case "ImpulsePlatform":
                         element = new ImpulsePlatform(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
