@@ -78,7 +78,16 @@ namespace Nobots.Elements
                 if (Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 150)
                 {
                     if (scene.Camera.Target.Position.Y >= position.Y)
-                        Rotation = Math.Max(0.0f, (float)Math.Atan2(scene.Camera.Target.Position.Y - position.Y, scene.Camera.Target.Position.X - Position.X));
+                    {
+                        float rot = (float)Math.Atan2(scene.Camera.Target.Position.Y - position.Y, scene.Camera.Target.Position.X - Position.X);
+                        Console.WriteLine("Rotation, rot: " + Rotation + ", " + rot);
+                        if (Rotation != rot)
+                        {
+                            Rotation += ((rot - Rotation) >= 0 ? 1 : -1) * 0.005f;
+                            if (rot - Rotation >= -0.005f && rot - Rotation <= 0.005f)
+                                Rotation = rot;
+                        }
+                    }
 
                     if (Rotation < MathHelper.PiOver2)
                         effect = SpriteEffects.None;
