@@ -33,7 +33,7 @@ namespace Nobots.Editor
                 if (flowLayoutPanel1.Visible)
                     listBoxAvailableElements.Size = initialSize;
                 else
-                    listBoxAvailableElements.Size = new Size(initialSize.Width, initialSize.Height + flowLayoutPanel1.Size.Height);
+                    listBoxAvailableElements.Size = new Size(initialSize.Width, initialSize.Height + flowLayoutPanel1.Size.Height + 30);
 
                 reset();
                 if(selection != null)
@@ -131,6 +131,12 @@ namespace Nobots.Editor
                 numericUpDownStepsNumber.Value = (decimal)((GlidePlatform)selection).StepsNumber;
                 flowLayoutPanelVelocity.Visible = true;
                 numericUpDownVelocity.Value = (decimal)((GlidePlatform)selection).Velocity;
+            }
+
+            if (selection is TrainTrack)
+            {
+                flowLayoutPanelStepsNumber.Visible = true;
+                numericUpDownStepsNumber.Value = (decimal)((TrainTrack)selection).StepsNumber;
             }
 
             if (selection is ConveyorBelt)
@@ -252,7 +258,7 @@ namespace Nobots.Editor
             checkBoxShowEmblems.Checked = SelectionManager.ShowEmblems;
             flowLayoutPanel1.Visible = false;
             initialSize = listBoxAvailableElements.Size;
-            listBoxAvailableElements.Size = new Size(initialSize.Width, initialSize.Height + flowLayoutPanel1.Size.Height);
+            listBoxAvailableElements.Size = new Size(initialSize.Width, initialSize.Height + flowLayoutPanel1.Size.Height + 30);
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
@@ -341,8 +347,10 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null && selectionEvents is Ladder)
                 ((Ladder)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
-            if (selectionEvents != null && selectionEvents is GlidePlatform)
+            else if (selectionEvents != null && selectionEvents is GlidePlatform)
                 ((GlidePlatform)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
+            else if (selectionEvents != null && selectionEvents is TrainTrack)
+                ((TrainTrack)selectionEvents).StepsNumber = (int)numericUpDownStepsNumber.Value;
         }
 
         private void numericUpDownInitialPositionX_ValueChanged(object sender, EventArgs e)
