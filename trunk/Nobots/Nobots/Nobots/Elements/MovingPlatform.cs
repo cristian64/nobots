@@ -28,6 +28,8 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
+                if (!isActive)
+                    body.LinearVelocity = Vector2.Zero;
             }
         }
 
@@ -143,7 +145,6 @@ namespace Nobots.Elements
                 delay -= gameTime.ElapsedGameTime.TotalSeconds;
                 if (delay <= 0)
                 {
-                    body.BodyType = BodyType.Kinematic;
                     Vector2 targetPosition = isStartPosition ? finalPosition : initialPosition;
                     if (targetPosition != Position)
                     {
@@ -160,10 +161,12 @@ namespace Nobots.Elements
                             delay = 3;
                         }
                     }
+                    else
+                    {
+                        isStartPosition = !isStartPosition;
+                    }
                 }
             }
-            else
-                body.BodyType = BodyType.Static;
         }
 
         public override void Draw(GameTime gameTime)
