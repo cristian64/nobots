@@ -206,6 +206,11 @@ namespace Nobots
                     if (reader.MoveToAttribute("NextLevel"))
                         ((Endpoint)e).NextLevel = reader.Value;
                     break;
+                case "CameraScale":
+                    e = new CameraScale(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("ScaleTarget"))
+                        ((CameraScale)e).ScaleTarget = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+                    break;
                 case "Sound":
                     e = new Sound(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("SoundName"))
@@ -401,6 +406,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Torch)i) + "\n";
                 else if (i as Crane != null)
                     xml += "        " + ElementToXml((Crane)i) + "\n";
+                else if (i as CameraScale != null)
+                    xml += "        " + ElementToXml((CameraScale)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -437,6 +444,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(CameraScale cameraScale)
+        {
+            String xml = "<CameraScale Id=\"" + cameraScale.Id + "\" Position=\"" + cameraScale.Position.X + "," + cameraScale.Position.Y + "\" ScaleTarget=\"" + cameraScale.ScaleTarget + "\" />";
             return xml;
         }
 
