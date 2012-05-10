@@ -63,17 +63,17 @@
         <Socket Id="socket2" Position="139.0176,-5.927217" Rotation="0" OtherSocketId="" />
         <ElectricityBox Id="EB2" Position="136.0435,-2.974822" ActivableElementId="Ele2" />
         <ElectricityBox Id="EboxLaser" Position="110.488,-2.975743" ActivableElementId="L1" />
-        <ElectricityBox Id="Ebox" Position="116.0344,-25.40678" ActivableElementId="Comveyor1" />
+        <ElectricityBox Id="Ebox" Position="107.8345,-25.40678" ActivableElementId="Comveyor1" />
         <Socket Id="E1" Position="119.4535,-31.44649" Rotation="-3.41" OtherSocketId="E" />
         <Socket Id="D1" Position="124.3563,-30.84741" Rotation="1.12" OtherSocketId="D" />
         <Socket Id="E" Position="119.4708,-28.06036" Rotation="-3.41" OtherSocketId="E1" />
         <Socket Id="A1" Position="128.7863,-32.24696" Rotation="2.68" OtherSocketId="A" />
         <Socket Id="C" Position="130.6404,-28.412" Rotation="1" OtherSocketId="C1" />
         <Socket Id="D" Position="128.8133,-28.94759" Rotation="-3.35" OtherSocketId="D1" />
-        <Computer Id="" Position="172.5563,-2.860748" Rotation="0" />
+        <Computer Id="" Position="178.4853,-2.970748" Rotation="0" />
         <Computer Id="" Position="232.9283,-2.862441" Rotation="0" />
         <Computer Id="" Position="203.5899,-2.827527" Rotation="0" />
-        <Lever Id="Level1" Position="55.90777,8.967124" Rotation="0.0001245031" ActivableElementId="Ele1" />
+        <Lever Id="Level1" Position="55.90777,8.967124" Rotation="0.0001245029" ActivableElementId="Ele1" />
         <Checkpoint Id="" Position="57.55829,-2.689066" Rotation="0" Active="False" />
         <Checkpoint Id="" Position="113.5847,-2.10363" Rotation="0" Active="False" />
         <Checkpoint Id="" Position="136.7907,-9.924283" Rotation="0" Active="False" />
@@ -81,22 +81,19 @@
         <Endpoint Id="" Position="237.2348,-2.785291" Rotation="0" NextLevel="level1" />
         <Socket Id="goal" Position="133.0972,-24.53677" Rotation="1.12" OtherSocketId="return" />
         <Socket Id="return" Position="103.7174,-10.6559" Rotation="-1.68" OtherSocketId="goal" />
-        <Lever Id="Lever1of2" Position="122.0896,-1.88542" Rotation="1.01583E-07" ActivableElementId="Door2" />
-        <Lever Id="Lever2of2" Position="127.7259,-5.430084" Rotation="2.219864E-07" ActivableElementId="Door2" />
-        <Lever Id="LeverLB3" Position="230.7271,-2.289534" Rotation="1.362037E-07" ActivableElementId="LB3" />
+        <Lever Id="Lever1of2" Position="122.0896,-1.88542" Rotation="1.01576E-07" ActivableElementId="Door2" />
+        <Lever Id="Lever2of2" Position="127.7259,-5.430084" Rotation="2.220623E-07" ActivableElementId="Door2" />
+        <Lever Id="LeverLB3" Position="230.7271,-2.289534" Rotation="1.362664E-07" ActivableElementId="LB3" />
         <Checkpoint Id="" Position="17.91452,9.44739" Rotation="0" Active="False" />
         <Ladder Id="" Position="109.2651,-8.010702" StepsNumber="11" />
-        <Stone Id="" Position="-158.9058,5821215" Rotation="9017.4" />
-        <Stone Id="" Position="-237.5574,5821196" Rotation="8130.429" />
-        <Box Id="" Position="62.79141,-3.043267" Rotation="5.427048E-08" />
-        <Box Id="" Position="131.7787,6181303" Rotation="206.1327" />
+        <Stone Id="" Position="-158.9058,5863083" Rotation="9017.4" />
+        <Stone Id="" Position="-237.5574,5863064" Rotation="8130.429" />
+        <Box Id="" Position="62.79141,-3.043267" Rotation="5.42871E-08" />
+        <Box Id="" Position="131.7787,6223171" Rotation="206.1327" />
         <ConveyorBelt Id="Comveyor1" Position="99.86187,-30.4485" Width="6" Height="1" AngularSpeed="1" RotorsNumber="3" LinksNumber="25" LinkWidth="0.05" LinkHeight="0.25" Active="False" />
-        <ConveyorBelt Id="" Position="81.79234,-1.19" Width="24" Height="1" AngularSpeed="1" RotorsNumber="27" LinksNumber="90" LinkWidth="0.13" LinkHeight="0.25" Active="True" />
         <ConveyorBelt Id="Conveyor2" Position="105.7479,-27.70701" Width="6" Height="1" AngularSpeed="1" RotorsNumber="3" LinksNumber="25" LinkWidth="0.05" LinkHeight="0.25" Active="True" />
-        <Box Id="" Position="98.71847,-32.04301" Rotation="10.97458" />
-        <ConveyorBelt Id="" Position="156.8663,-1.24043" Width="24" Height="1" AngularSpeed="-5" RotorsNumber="28" LinksNumber="90" LinkWidth="0.13" LinkHeight="0.25" Active="True" />
-        <ConveyorBelt Id="" Position="187.8494,-1.24043" Width="24" Height="1" AngularSpeed="4" RotorsNumber="27" LinksNumber="90" LinkWidth="0.13" LinkHeight="0.25" Active="True" />
-        <Character Id="" Position="9.499143,9.113169" />
+        <Box Id="" Position="98.57126,-32.05603" Rotation="11.00339" />
+        <Character Id="" Position="9.499143,9.113169" Active="False" />
         <ExperimentalTube Id="" Position="7.565208,8.286327" Rotation="0" OtherTubeId="" Active="True" />
         <ExperimentalTube Id="Tube1" Position="103.7512,-4.16051" Rotation="0" OtherTubeId="Tube2" Active="True" />
         <ExperimentalTube Id="Tube2" Position="85.22002,-26.23551" Rotation="0" OtherTubeId="" Active="True" />
@@ -142,8 +139,8 @@
         <Platform Id="" Position="123.4449,-30.22427" Width="8.85" Height="0.3" Rotation="0" />
         <Platform Id="" Position="189.0512,3.555187" Width="100" Height="5" Rotation="0" />
         <Platform Id="" Position="183.7418,-11.43539" Width="70" Height="0.5" Rotation="0" />
-        <MovingPlatform Id="" Position="142.5,-6.349978" InitialPosition="142.5,-8" FinalPosition="142.5,-2" Active="True" />
-        <Platform Id="" Position="172.3646,-1.317417" Width="6.21" Height="1" Rotation="0" />
+        <MovingPlatform Id="" Position="142.5,-2" InitialPosition="142.5,-8" FinalPosition="142.5,-2" Active="True" />
+        <Platform Id="" Position="175.8044,-1.457417" Width="6.21" Height="1" Rotation="0" />
         <Platform Id="" Position="203.2307,-1.234253" Width="5.77" Height="1" Rotation="0" />
         <Platform Id="" Position="218.7381,-1.185991" Width="3" Height="1" Rotation="0" />
         <Platform Id="" Position="224.3306,-1.185991" Width="4" Height="1" Rotation="0" />
@@ -166,7 +163,7 @@
         <Spikes Id="" Position="61.46362,2.76237" Rotation="0" />
         <Spikes Id="" Position="62.9924,2.761403" Rotation="0" />
         <Platform Id="" Position="69.41344,-10.349" Width="1" Height="2.615" Rotation="0" />
-        <Platform Id="" Position="53.16706,-2.668081" Width="1.21" Height="6.73" Rotation="0" />
+        <Platform Id="" Position="53.16706,-2.668081" Width="1.71" Height="6.73" Rotation="0" />
         <Platform Id="" Position="99.52675,3.693161" Width="10" Height="10" Rotation="0" />
         <Platform Id="" Position="86.85433,-10.8913" Width="2.56" Height="3.7" Rotation="0" />
         <Platform Id="" Position="94.297,-11.53123" Width="5.45" Height="5" Rotation="0" />
@@ -192,6 +189,15 @@
         <Spikes Id="" Position="227.854,0.792859" Rotation="0" />
         <Spikes Id="" Position="229.4449,0.802859" Rotation="0" />
         <Platform Id="" Position="52.20132,-7.540404" Width="1" Height="4" Rotation="0" />
+        <GlidePlatform Id="" Position="82.22262,-1.727772" Rotation="0" Active="True" Velocity="5" StepsNumber="4" />
+        <GlidePlatform Id="" Position="158.6313,-1.729105" Rotation="0" Active="True" Velocity="5" StepsNumber="4" />
+        <GlidePlatform Id="" Position="189.439,-1.751328" Rotation="0" Active="True" Velocity="5" StepsNumber="3" />
+        <Battery Id="" Position="227.5117,0.8662313" Rotation="0" Active="True" />
+        <Battery Id="" Position="221.3494,0.8653405" Rotation="0" Active="True" />
+        <Battery Id="" Position="216.341,0.9140074" Rotation="0" Active="True" />
+        <Battery Id="" Position="211.2276,0.8340075" Rotation="0" Active="True" />
+        <Battery Id="" Position="206.6649,0.9208995" Rotation="0" Active="True" />
+        <Battery Id="" Position="143.3642,0.695793" Rotation="0" Active="True" />
         <Elevator Id="Ele2" Position="131.6208,-1.885012" InitialPosition="131.6208,-1.885012" FinalPosition="131.6208,-4.885012" Active="False" />
         <Elevator Id="Ele1" Position="55.59766,9.622182" InitialPosition="55.59766,-2.377818" FinalPosition="55.59766,9.622182" Active="True" />
         <LaserBarrier Id="" Position="96.24571,-25.5127" Rotation="0" Width="0.15" Height="2.9" Active="True" />
