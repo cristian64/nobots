@@ -66,7 +66,6 @@ namespace Nobots.Elements
             }
             set
             {
-                rotation = body.Rotation = value;
             }
         }
 
