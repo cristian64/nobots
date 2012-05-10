@@ -75,9 +75,9 @@ namespace Nobots
                 else if (Keyboard.GetState().IsKeyDown(Keys.Add))
                     Selection.Width = Selection.Width + speed;
                 if (Keyboard.GetState().IsKeyDown(Keys.Subtract) && Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-                    Selection.Height = Selection.Height - speed;
+                    Selection.Height = Math.Max(0.001f, Selection.Height - speed);
                 else if (Keyboard.GetState().IsKeyDown(Keys.Subtract))
-                    Selection.Width = Selection.Width - speed;
+                    Selection.Width = Math.Max(0.001f, Selection.Width - speed);
                 if (Keyboard.GetState().IsKeyDown(Keys.Delete) || Keyboard.GetState().IsKeyDown(Keys.Back))
                 {
                     if (selection is Background)

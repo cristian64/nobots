@@ -657,7 +657,7 @@ namespace Nobots
 
         public String ElementToXml(ImpulsePlatform ip)
         {
-            String xml = "<ImpulsePlatform Id=\"" + ip.Id + "\" Position=\"" + ip.Position.X + "," + ip.Position.Y + "\" Width=\"" + ip.Width + "\" Height=\"" + ip.Height + "\" Acceleration=\"" + ip.Acceleration + "\" Active=\"" + ip.Active + "\" />";
+            String xml = "<ImpulsePlatform Id=\"" + ip.Id + "\" Position=\"" + ip.Position.X + "," + ip.Position.Y + "\" Width=\"" + ip.Width + "\" Height=\"" + ip.Height + "\" Rotation=\"" + ip.Rotation + "\" Acceleration=\"" + ip.Acceleration + "\" Active=\"" + ip.Active + "\" />";
             return xml;
         }
 

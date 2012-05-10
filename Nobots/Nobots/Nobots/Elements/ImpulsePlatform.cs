@@ -18,7 +18,21 @@ namespace Nobots.Elements
         Texture2D texture3;
         List<Body> bodies;
 
-        private bool isActive = false;
+        private int stepsNumber;
+        public int StepsNumber
+        {
+            get
+            {
+                return stepsNumber;
+            }
+            set
+            {
+                stepsNumber = value;
+                createBody();
+            }
+        }
+
+        private bool isActive = true;
         public bool Active
         {
             get
@@ -36,7 +50,7 @@ namespace Nobots.Elements
         {
             get
             {
-                return Conversion.ToWorld(texture.Width);
+                return Conversion.ToWorld(texture.Width) * stepsNumber;
             }
             set
             {
@@ -53,18 +67,11 @@ namespace Nobots.Elements
             set
             {
                 height = value;
-                body2.Dispose();
-                body2 = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), height, 1);
-                body2.IsSensor = true;
-                body2.Position = body.Position - (height / 2 - Conversion.ToWorld(texture.Height) / 2) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
-                body2.BodyType = BodyType.Static;
-                body2.CollisionCategories = ElementCategory.FLOOR;
-                body2.OnCollision += new OnCollisionEventHandler(body2_OnCollision);
-                body2.OnSeparation += new OnSeparationEventHandler(body2_OnSeparation);
-                bodies = new List<Body>();
+                createBody();
             }
         }
 
+        Vector2 position;
         public override Vector2 Position
         {
             get
@@ -91,29 +98,37 @@ namespace Nobots.Elements
             }
         }
 
-        public ImpulsePlatform(Game game, Scene scene, Vector2 position)
+        public ImpulsePlatform(Game game, Scene scene, Vector2 position, int stepsNumber = 1)
             : base(game, scene)
         {
             ZBuffer = 6f;
             texture = Game.Content.Load<Texture2D>("impulseplatform");
             texture2 = Game.Content.Load<Texture2D>("impulseplatformactive");
             texture3 = Game.Content.Load<Texture2D>("impulseplatformsensor");
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 1);
+            this.stepsNumber = stepsNumber;
+            this.position = position;
+            createBody();
+        }
+
+        void createBody()
+        {
+            if (body != null)
+                body.Dispose();
+            body = BodyFactory.CreateRectangle(scene.World, Width, Conversion.ToWorld(texture.Height), 1);
             body.Position = position;
             body.BodyType = BodyType.Static;
             body.CollisionCategories = ElementCategory.FLOOR;
 
-            body2 = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), height, 1);
+            if (body2 != null)
+                body2.Dispose();
+            body2 = BodyFactory.CreateRectangle(scene.World, Width, Height, 1);
             body2.IsSensor = true;
-            body2.Position = position - new Vector2(0, height / 2 - Conversion.ToWorld(texture.Height) / 2);
             body2.Position = position - (height / 2 - Conversion.ToWorld(texture.Height) / 2) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
             body2.BodyType = BodyType.Static;
             body2.CollisionCategories = ElementCategory.FLOOR;
             body2.OnCollision += new OnCollisionEventHandler(body2_OnCollision);
             body2.OnSeparation += new OnSeparationEventHandler(body2_OnSeparation);
-
             bodies = new List<Body>();
-            Active = true;
         }
 
         void body2_OnSeparation(Fixture fixtureA, Fixture fixtureB)
