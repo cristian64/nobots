@@ -44,7 +44,7 @@ namespace Nobots.Elements
             }
         }
 
-        private bool isActive = false;
+        private bool isActive = true;
         public bool Active
         {
             get
