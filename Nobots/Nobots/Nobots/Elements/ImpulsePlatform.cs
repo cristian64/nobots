@@ -85,6 +85,7 @@ namespace Nobots.Elements
             }
         }
 
+        float rotation = 0;
         public override float Rotation
         {
             get
@@ -93,8 +94,12 @@ namespace Nobots.Elements
             }
             set
             {
-                body.Rotation = body2.Rotation = value;
+                rotation = body.Rotation = body2.Rotation = value;
                 body2.Position = body.Position - (height / 2 - Conversion.ToWorld(texture.Height) / 2) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
+
+                direction = new Vector2((float)Math.Cos(body.Rotation), (float)Math.Sin(body.Rotation));
+                drawingIncrement = direction * Conversion.ToWorld(texture.Width);
+                drawingShift = direction * (Width / 2) - drawingIncrement / 2.0f;
             }
         }
 
@@ -116,6 +121,7 @@ namespace Nobots.Elements
                 body.Dispose();
             body = BodyFactory.CreateRectangle(scene.World, Width, Conversion.ToWorld(texture.Height), 1);
             body.Position = position;
+            body.Rotation = rotation;
             body.BodyType = BodyType.Static;
             body.CollisionCategories = ElementCategory.FLOOR;
 
@@ -124,12 +130,21 @@ namespace Nobots.Elements
             body2 = BodyFactory.CreateRectangle(scene.World, Width, Height, 1);
             body2.IsSensor = true;
             body2.Position = position - (height / 2 - Conversion.ToWorld(texture.Height) / 2) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
+            body2.Rotation = rotation;
             body2.BodyType = BodyType.Static;
             body2.CollisionCategories = ElementCategory.FLOOR;
             body2.OnCollision += new OnCollisionEventHandler(body2_OnCollision);
             body2.OnSeparation += new OnSeparationEventHandler(body2_OnSeparation);
             bodies = new List<Body>();
+
+            direction = new Vector2((float)Math.Cos(body.Rotation), (float)Math.Sin(body.Rotation));
+            drawingIncrement = direction * Conversion.ToWorld(texture.Width);
+            drawingShift = direction * (Width / 2) - drawingIncrement / 2.0f;
         }
+
+        private Vector2 direction;
+        private Vector2 drawingIncrement;
+        private Vector2 drawingShift;
 
         void body2_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
@@ -166,14 +181,21 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
+            float scale = scene.Camera.Scale;
+
             if (alpha > 0)
             {
-                float scale = scene.Camera.Scale;
                 Rectangle rectangle = new Rectangle((int)Math.Round(Conversion.ToDisplay(scale * (body2.Position.X - scene.Camera.Position.X))), (int)Math.Round(Conversion.ToDisplay(scale * (body2.Position.Y - scene.Camera.Position.Y))),
-                (int)Math.Round(Conversion.ToDisplay(Width * scale)), (int)Math.Round(Conversion.ToDisplay(Height * scale)));
+                (int)Math.Round(texture.Width * stepsNumber * scale), (int)Math.Round(Conversion.ToDisplay(Height * scale)));
                 scene.SpriteBatch.Draw(texture3, rectangle, null, Color.White * alpha, body2.Rotation, new Vector2(texture3.Width / 2.0f, texture3.Height / 2.0f), SpriteEffects.None, 0);
             }
-            scene.SpriteBatch.Draw(Active ? texture2 : texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+
+            Vector2 auxiliarPosition = body.Position - drawingShift;
+            for (int i = 0; i < stepsNumber; i++)
+            {
+                scene.SpriteBatch.Draw(Active ? texture2 : texture, scene.Camera.Scale * Conversion.ToDisplay(auxiliarPosition - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+                auxiliarPosition += drawingIncrement;
+            }
         }
 
         protected override void Dispose(bool disposing)
