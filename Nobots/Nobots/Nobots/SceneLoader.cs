@@ -175,6 +175,11 @@ namespace Nobots
                     if (reader.MoveToAttribute("OtherTubeId"))
                         ((ExperimentalTube)e).OtherTubeId = reader.Value;
                     break;
+                case "Hint":
+                    e = new Hint(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("Text"))
+                        ((Hint)e).Text = reader.Value;
+                    break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
                     break;
@@ -356,6 +361,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((SecurityCamera)i) + "\n";
                 else if (i as Lamp != null)
                     xml += "        " + ElementToXml((Lamp)i) + "\n";
+                else if (i as Hint != null)
+                    xml += "        " + ElementToXml((Hint)i) + "\n";
                 else if (i as Alarm != null)
                     xml += "        " + ElementToXml((Alarm)i) + "\n";
                 else if (i as Chandelier != null)
@@ -438,6 +445,12 @@ namespace Nobots
         public String ElementToXml(Platform platform)
         {           
             String xml = "<Platform Id=\"" + platform.Id + "\" Position=\"" + platform.Position.X + "," + platform.Position.Y + "\" Width=\"" + platform.Width + "\" Height=\"" + platform.Height + "\" Rotation=\"" + platform.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Hint hint)
+        {
+            String xml = "<Hint Id=\"" + hint.Id + "\" Position=\"" + hint.Position.X + "," + hint.Position.Y + "\" Text=\"" + hint.Text + "\"/>";
             return xml;
         }
 

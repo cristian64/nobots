@@ -165,6 +165,12 @@ namespace Nobots.Editor
                 textBoxNextLevel.Text = ((Endpoint)selection).NextLevel;
             }
 
+            if (selection is Hint)
+            {
+                flowLayoutPanelText.Visible = true;
+                textBoxText.Text = ((Hint)selection).Text;
+            }
+
             if (selection is Crate)
             {
                 flowLayoutPanelColor.Visible = true;
@@ -229,6 +235,7 @@ namespace Nobots.Editor
             flowLayoutPanelRightShift.Visible = false;
             flowLayoutPanelUpShift.Visible = false;
             flowLayoutPanelDownShift.Visible = false;
+            flowLayoutPanelText.Visible = false;
         }
 
         private void setInitialValues()
@@ -521,6 +528,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((Crane)selectionEvents).DownShift = (float)numericUpDownDownShift.Value;
+        }
+
+        private void textBoxText_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((Hint)selectionEvents).Text = textBoxText.Text;
         }
     }
 }

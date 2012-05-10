@@ -256,6 +256,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="hintfont.spritefont">
+      <Name>hintfont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="levels\level1.xml">
       <Name>level1</Name>
       <Importer>XmlImporter</Importer>
@@ -1094,6 +1099,13 @@
   <ItemGroup>
     <Compile Include="traintrack.png">
       <Name>traintrack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="hintarrow.png">
+      <Name>hintarrow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

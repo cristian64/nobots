@@ -131,6 +131,9 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelText = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelText = new System.Windows.Forms.Label();
+            this.textBoxText = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -189,6 +192,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpShift)).BeginInit();
             this.flowLayoutPanelDownShift.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDownShift)).BeginInit();
+            this.flowLayoutPanelText.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -228,6 +232,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelRightShift);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelUpShift);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelDownShift);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelText);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 381);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1681,7 +1686,8 @@
             "TrainTrack",
             "---------------",
             "Sound",
-            "CameraScale"});
+            "CameraScale",
+            "Hint"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
             this.listBoxAvailableElements.Name = "listBoxAvailableElements";
             this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 251);
@@ -1707,6 +1713,35 @@
             this.checkBoxShowEmblems.Text = "Show emblems";
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
+            // 
+            // flowLayoutPanelText
+            // 
+            this.flowLayoutPanelText.Controls.Add(this.labelText);
+            this.flowLayoutPanelText.Controls.Add(this.textBoxText);
+            this.flowLayoutPanelText.Location = new System.Drawing.Point(0, 923);
+            this.flowLayoutPanelText.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelText.Name = "flowLayoutPanelText";
+            this.flowLayoutPanelText.Size = new System.Drawing.Size(247, 55);
+            this.flowLayoutPanelText.TabIndex = 34;
+            this.flowLayoutPanelText.Visible = false;
+            // 
+            // labelText
+            // 
+            this.labelText.Location = new System.Drawing.Point(3, 0);
+            this.labelText.Name = "labelText";
+            this.labelText.Size = new System.Drawing.Size(48, 23);
+            this.labelText.TabIndex = 4;
+            this.labelText.Text = "Text";
+            this.labelText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxText
+            // 
+            this.textBoxText.Location = new System.Drawing.Point(57, 3);
+            this.textBoxText.Multiline = true;
+            this.textBoxText.Name = "textBoxText";
+            this.textBoxText.Size = new System.Drawing.Size(185, 52);
+            this.textBoxText.TabIndex = 1;
+            this.textBoxText.TextChanged += new System.EventHandler(this.textBoxText_TextChanged);
             // 
             // FormProperties
             // 
@@ -1789,6 +1824,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpShift)).EndInit();
             this.flowLayoutPanelDownShift.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDownShift)).EndInit();
+            this.flowLayoutPanelText.ResumeLayout(false);
+            this.flowLayoutPanelText.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1899,6 +1936,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDownShift;
         private System.Windows.Forms.Label labelDownShift;
         private System.Windows.Forms.NumericUpDown numericUpDownDownShift;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelText;
+        private System.Windows.Forms.Label labelText;
+        private System.Windows.Forms.TextBox textBoxText;
 
 
     }
