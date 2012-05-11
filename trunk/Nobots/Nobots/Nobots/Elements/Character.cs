@@ -296,7 +296,6 @@ namespace Nobots.Elements
                 {
                     activator.Activate();
                     worked = true;
-                    break;
                 }
             }
             if (!worked)

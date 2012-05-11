@@ -56,7 +56,6 @@ namespace Nobots.Elements
                 if (activator != null && activator.EnergyElement && IsTouchingElement(i))
                 {
                     activator.Activate();
-                    break;
                 }
             }
         }

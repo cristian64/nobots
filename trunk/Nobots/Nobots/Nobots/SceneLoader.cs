@@ -121,6 +121,9 @@ namespace Nobots
                 case "Box":
                     e = new Box(Game, scene, Vector2.Zero);
                     break;
+                case "Container":
+                    e = new Container(Game, scene, Vector2.Zero);
+                    break;
                 case "Minecart":
                     e = new Minecart(Game, scene, Vector2.Zero);
                     break;
@@ -292,7 +295,10 @@ namespace Nobots
                     e = new ConveyorBelt(Game, scene, Vector2.Zero, angularSpeed, linksNumber, rotorsNumber, linkWidth, linkHeight);
                     break;
                 case "ImpulsePlatform":
-                    e = new ImpulsePlatform(Game, scene, Vector2.Zero);
+                    int stepsNumber4 = 1;
+                    if (reader.MoveToAttribute("StepsNumber"))
+                        stepsNumber4 = int.Parse(reader.Value);
+                    e = new ImpulsePlatform(Game, scene, Vector2.Zero, stepsNumber4);
                     if (reader.MoveToAttribute("Acceleration"))
                         ((ImpulsePlatform)e).Acceleration = float.Parse(reader.Value, CultureInfo.InvariantCulture);
                     break;
@@ -415,6 +421,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Crane)i) + "\n";
                 else if (i as CameraScale != null)
                     xml += "        " + ElementToXml((CameraScale)i) + "\n";
+                else if (i as Container != null)
+                    xml += "        " + ElementToXml((Container)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -457,6 +465,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Container container)
+        {
+            String xml = "<Container Id=\"" + container.Id + "\" Position=\"" + container.Position.X + "," + container.Position.Y + "\" Rotation=\"" + container.Rotation + "\" />";
             return xml;
         }
 
@@ -657,7 +671,7 @@ namespace Nobots
 
         public String ElementToXml(ImpulsePlatform ip)
         {
-            String xml = "<ImpulsePlatform Id=\"" + ip.Id + "\" Position=\"" + ip.Position.X + "," + ip.Position.Y + "\" Width=\"" + ip.Width + "\" Height=\"" + ip.Height + "\" Rotation=\"" + ip.Rotation + "\" Acceleration=\"" + ip.Acceleration + "\" Active=\"" + ip.Active + "\" />";
+            String xml = "<ImpulsePlatform Id=\"" + ip.Id + "\" Position=\"" + ip.Position.X + "," + ip.Position.Y + "\" Width=\"" + ip.Width + "\" Height=\"" + ip.Height + "\" Rotation=\"" + ip.Rotation + "\" StepsNumber=\"" + ip.StepsNumber + "\" Acceleration=\"" + ip.Acceleration + "\" Active=\"" + ip.Active + "\" />";
             return xml;
         }
 

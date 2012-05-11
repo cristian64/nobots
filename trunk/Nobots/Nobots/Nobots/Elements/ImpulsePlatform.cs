@@ -80,7 +80,7 @@ namespace Nobots.Elements
             }
             set
             {
-                body.Position = value;
+                position = body.Position = value;
                 body2.Position = value - (height / 2 - Conversion.ToWorld(texture.Height) / 2) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
             }
         }
