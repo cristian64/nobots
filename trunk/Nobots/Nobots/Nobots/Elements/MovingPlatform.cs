@@ -137,7 +137,7 @@ namespace Nobots.Elements
             createLine();
         }
 
-        double delay = 2;
+        double delay = 0;
         public override void Update(GameTime gameTime)
         {
             if (isActive)
