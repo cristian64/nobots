@@ -66,7 +66,7 @@ namespace Nobots.Elements
             lineHeight = 0.08f;
         }
 
-        public float Speed = 1f;
+        public float Speed = 2f;
         
         private float height;
         public override float Height
@@ -137,7 +137,7 @@ namespace Nobots.Elements
             createLine();
         }
 
-        double delay = 3;
+        double delay = 2;
         public override void Update(GameTime gameTime)
         {
             if (isActive)
