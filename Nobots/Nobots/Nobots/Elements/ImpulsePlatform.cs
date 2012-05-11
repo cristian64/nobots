@@ -43,6 +43,9 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
+                if (bodies != null)
+                    foreach (Body i in bodies)
+                        i.Awake = true;
             }
         }
 
