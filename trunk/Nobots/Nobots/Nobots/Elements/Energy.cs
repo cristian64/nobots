@@ -41,6 +41,18 @@ namespace Nobots.Elements
         {
         }
 
+        public override void DownActionStart()
+        {
+        }
+
+        public override void DownAction()
+        {
+        }
+
+        public override void DownActionStop()
+        {
+        }
+
         public override void BActionStart()
         {
             foreach (Element i in scene.Elements)
