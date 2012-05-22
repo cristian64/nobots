@@ -51,7 +51,7 @@ namespace Nobots.Elements
                 seconds -= delay;
                 textureXmin += texture.Width / columns;
 
-                if (textureXmin == texture.Width && textureYmin == texture.Height / rows)
+                if (textureXmin == texture.Width / columns && textureYmin == texture.Height / rows)
                 {
                     textureXmin = 0;
                     textureYmin = 0;
@@ -62,13 +62,13 @@ namespace Nobots.Elements
                     textureYmin += texture.Height / rows;
                 }
 
-              /*  if (textureXmin == 0)
+                if (textureXmin == 0 && textureYmin == 0)
                     delay = 2;
-                else*/
-                    delay = 0.1f;
-             /*   delay -= 0.04f;
-                if (delay < 0)
-                    delay = 0;*/
+                else// if (textureXmin == texture.Width / columns)
+                    delay = 0.15f;
+               //   delay -= 0.04f;
+               // if (delay < 0)
+                 //   delay = 0;
             }
 
             return new Vector2(textureXmin, textureYmin);
