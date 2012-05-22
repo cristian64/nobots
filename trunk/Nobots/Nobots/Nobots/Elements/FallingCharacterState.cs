@@ -83,13 +83,13 @@ namespace Nobots.Elements
 
         public override void RightAction()
         {
-            character.torso.LinearVelocity = new Vector2(2.5f, character.torso.LinearVelocity.Y);
+            character.torso.LinearVelocity = new Vector2(3, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.None;
         }
 
         public override void LeftAction()
         {
-            character.torso.LinearVelocity = new Vector2(-2.5f, character.torso.LinearVelocity.Y);
+            character.torso.LinearVelocity = new Vector2(-3, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.FlipHorizontally;
         }
     }
