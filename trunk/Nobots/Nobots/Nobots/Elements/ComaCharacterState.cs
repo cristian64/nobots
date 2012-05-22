@@ -63,7 +63,7 @@ namespace Nobots.Elements
                 }
 
                 if (textureXmin == 0 && textureYmin == 0)
-                    delay = 2;
+                    delay = 6;
                 else if (textureXmin == texture.Width / columns && textureYmin == 0)
                     delay = 0.18f;
                 else if (textureXmin == 0 && textureYmin == texture.Height / rows)
@@ -74,7 +74,7 @@ namespace Nobots.Elements
                 if(textureXmin == 0)
                     delay += 0.06f;
                 else
-                    delay -= 0.02f;
+                    delay -= 0.035f;
                 if (delay < 0)
                     delay = 0;
             }
