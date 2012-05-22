@@ -56,7 +56,7 @@ namespace Nobots
         {
             SoundManager = new SoundManager(Game, this);
             AmbienceSound = new AmbienceSound(Game, this);
-            World = new World(new Vector2(0, 13));
+            World = new World(new Vector2(0, 18));
             PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);            
             Transitioner = new Transitioner(Game, this);

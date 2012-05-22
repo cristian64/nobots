@@ -79,7 +79,7 @@ namespace Nobots.Elements
         {
             character.body.OnCollision += body_OnCollision;
             if (character.contactsNumber > 0 || character.Ladder != null)
-                character.torso.ApplyForce(new Vector2(0, -14000));
+                character.torso.ApplyForce(new Vector2(0, -16000));
             else
                 character.torso.Awake = character.body.Awake = true;
         }
