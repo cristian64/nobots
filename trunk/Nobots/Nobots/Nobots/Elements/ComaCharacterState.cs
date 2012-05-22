@@ -80,6 +80,9 @@ namespace Nobots.Elements
 
         public override void Enter()
         {
+            character.body.FixedRotation = true;
+            character.body.AngularVelocity = 0;
+
             Energy energy = new Energy(scene.Game, scene, energyPosition != null ? (Vector2)energyPosition : character.Position);
             energy.State = new FallingCharacterState(scene, energy);
             energy.Position = energyPosition != null ? (Vector2)energyPosition : character.Position;
