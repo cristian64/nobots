@@ -221,6 +221,9 @@ namespace Nobots
                     case "Crane":
                         element = new Crane(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "CrateGenerator":
+                        element = new CrateGenerator(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Torch":
                         element = new Torch(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

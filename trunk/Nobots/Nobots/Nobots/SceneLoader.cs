@@ -133,6 +133,9 @@ namespace Nobots
                 case "Battery":
                     e = new Battery(Game, scene, Vector2.Zero);
                     break;
+                case "CrateGenerator":
+                    e = new CrateGenerator(Game, scene, Vector2.Zero);
+                    break;
                 case "Crane":
                     e = new Crane(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("LeftShift"))
@@ -361,6 +364,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Door)i) + "\n";
                 else if (i as Crate != null)
                     xml += "        " + ElementToXml((Crate)i) + "\n";
+                else if (i as CrateGenerator != null)
+                    xml += "        " + ElementToXml((CrateGenerator)i) + "\n";
                 else if (i as Computer != null)
                     xml += "        " + ElementToXml((Computer)i) + "\n";
                 else if (i as SecurityCamera != null)
@@ -465,6 +470,12 @@ namespace Nobots
         public String ElementToXml(Box box)
         {
             String xml = "<Box Id=\"" + box.Id + "\" Position=\"" + box.Position.X + "," + box.Position.Y + "\" Rotation=\"" + box.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(CrateGenerator crateGenerator)
+        {
+            String xml = "<CrateGenerator Id=\"" + crateGenerator.Id + "\" Position=\"" + crateGenerator.Position.X + "," + crateGenerator.Position.Y + "\" Active=\"" + crateGenerator.Active + "\" />";
             return xml;
         }
 

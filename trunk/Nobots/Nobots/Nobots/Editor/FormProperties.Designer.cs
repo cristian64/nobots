@@ -1714,6 +1714,7 @@
             "SecurityCamera",
             "TrainTrack",
             "Container",
+            "CrateGenerator",
             "---------------",
             "Sound",
             "CameraScale",

@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="Elements\CameraScale.cs" />
     <Compile Include="Elements\Container.cs" />
+    <Compile Include="Elements\CrateGenerator.cs" />
     <Compile Include="Elements\Hint.cs" />
     <Compile Include="Elements\TrainTrack.cs" />
     <Compile Include="Elements\IControllable.cs" />
