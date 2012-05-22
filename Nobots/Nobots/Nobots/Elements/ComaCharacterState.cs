@@ -25,7 +25,7 @@ namespace Nobots.Elements
            */
             texture = scene.Game.Content.Load<Texture2D>("coma");
             rows = 2;
-            columns = 5;
+            columns = 7;
             character.texture = texture;
             characterWidth = texture.Width / columns;
             characterHeight = texture.Height / rows;
@@ -51,7 +51,7 @@ namespace Nobots.Elements
                 seconds -= delay;
                 textureXmin += texture.Width / columns;
 
-                if (textureXmin == texture.Width / columns && textureYmin == texture.Height / rows)
+                if (textureXmin == texture.Width && textureYmin == texture.Height / rows)
                 {
                     textureXmin = 0;
                     textureYmin = 0;
@@ -64,11 +64,19 @@ namespace Nobots.Elements
 
                 if (textureXmin == 0 && textureYmin == 0)
                     delay = 2;
-                else// if (textureXmin == texture.Width / columns)
-                    delay = 0.15f;
-               //   delay -= 0.04f;
-               // if (delay < 0)
-                 //   delay = 0;
+                else if (textureXmin == texture.Width / columns && textureYmin == 0)
+                    delay = 0.18f;
+                else if (textureXmin == 0 && textureYmin == texture.Height / rows)
+                    delay = 0.1f;
+               // else if (textureXmin == (texture.Width / columns) * (columns-1) && textureYmin == 0)
+                //    delay = 1f;
+
+                if(textureXmin == 0)
+                    delay += 0.06f;
+                else
+                    delay -= 0.02f;
+                if (delay < 0)
+                    delay = 0;
             }
 
             return new Vector2(textureXmin, textureYmin);
