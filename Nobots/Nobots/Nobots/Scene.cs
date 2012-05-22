@@ -26,6 +26,7 @@ namespace Nobots
         public VortexOutParticleSystem VortexOutParticleSystem;
         public FireParticleSystem FireParticleSystem;
         public ElectricityParticleSystem ElectricityParticleSystem;
+        public ExplosionSmokeParticleSystem ExplosionSmokeParticleSystem;
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
         public SoundManager SoundManager;
@@ -86,6 +87,7 @@ namespace Nobots
             VortexOutParticleSystem = new VortexOutParticleSystem(Game, this);
             FireParticleSystem = new FireParticleSystem(Game, this);
             ElectricityParticleSystem = new ElectricityParticleSystem(Game, this);
+            ExplosionSmokeParticleSystem = new ExplosionSmokeParticleSystem(Game, this);
 
             SceneLoader.SceneFromXml(@"Content\levels\level1.xml", this);
         }
@@ -142,6 +144,7 @@ namespace Nobots
             VortexOutParticleSystem.Update(gameTime);
             FireParticleSystem.Update(gameTime);
             ElectricityParticleSystem.Update(gameTime);
+            ExplosionSmokeParticleSystem.Update(gameTime);
             World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
             Camera.Update(gameTime);
             InputManager.Update(gameTime);
@@ -320,6 +323,7 @@ namespace Nobots
             VortexOutParticleSystem.Draw(gameTime);
             FireParticleSystem.Draw(gameTime);
             ElectricityParticleSystem.Draw(gameTime);
+            ExplosionSmokeParticleSystem.Draw(gameTime);
 
             SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             foreach (Foreground i in Foregrounds)

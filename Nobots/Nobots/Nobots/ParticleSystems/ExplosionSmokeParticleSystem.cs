@@ -33,9 +33,9 @@ namespace Nobots.ParticleSystem
         {
             settings.TextureName = "smoke";
 
-            settings.MaxParticles = 200;
+            settings.MaxParticles = 10000;
 
-            settings.Duration = TimeSpan.FromSeconds(1);
+            settings.Duration = TimeSpan.FromSeconds(0.5f);
 
             settings.MinHorizontalVelocity = 0;
             settings.MaxHorizontalVelocity = 0.7f;
@@ -43,21 +43,21 @@ namespace Nobots.ParticleSystem
             settings.MinVerticalVelocity = -0.5f;
             settings.MaxVerticalVelocity = 1;
 
-            settings.Gravity = new Vector3(0, -0.5f, 0);
+            settings.Gravity = new Vector3(0, 0.5f, 0);
 
             settings.EndVelocity = 0;
 
-            settings.MinColor = Color.LightGray;
-            settings.MaxColor = Color.White;
+            settings.MinColor = Color.Black;
+            settings.MaxColor = Color.Gray;
 
             settings.MinRotateSpeed = -1;
             settings.MaxRotateSpeed = 1;
 
-            settings.MinStartSize = 125f;
-            settings.MaxStartSize = 135;
+            settings.MinStartSize = 175f;
+            settings.MaxStartSize = 195;
 
-            settings.MinEndSize = 140f;
-            settings.MaxEndSize = 145f;
+            settings.MinEndSize = 200f;
+            settings.MaxEndSize = 225f;
         }
     }
 }
