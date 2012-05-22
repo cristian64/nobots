@@ -19,10 +19,10 @@ namespace Nobots.Elements
         public DyingCharacterState(Scene scene, Character character) 
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("dying");
-            columns = 7;
+            texture = scene.Game.Content.Load<Texture2D>("dyingGas");
+            columns = 5;
             rows = 2;
-            framesInLastRow = 5;
+            framesInLastRow = 1;
             characterWidth = texture.Width / columns;
             characterHeight = texture.Height / rows;
             character.texture = texture;
