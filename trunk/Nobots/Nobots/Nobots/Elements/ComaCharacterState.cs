@@ -62,13 +62,13 @@ namespace Nobots.Elements
                     textureYmin += texture.Height / rows;
                 }
 
-                if (textureXmin == 0)
+              /*  if (textureXmin == 0)
                     delay = 2;
-                else
-                    delay = 0.15f;
-                delay -= 0.04f;
+                else*/
+                    delay = 0.1f;
+             /*   delay -= 0.04f;
                 if (delay < 0)
-                    delay = 0;
+                    delay = 0;*/
             }
 
             return new Vector2(textureXmin, textureYmin);
