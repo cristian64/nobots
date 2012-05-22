@@ -174,7 +174,10 @@ namespace Nobots.Elements
             {
                 foreach (Body i in bodies)
                 {
-                    i.LinearVelocity = direction * Velocity;
+                    if (!i.IsDisposed) //TODO: like in impulse platform, it can be improved by checking the object is really "touching" the glideplatform (touching or very very close to it).
+                    {
+                        i.LinearVelocity = direction * Velocity;
+                    }
                 }
             }
 

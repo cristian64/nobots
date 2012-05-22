@@ -163,6 +163,12 @@ namespace Nobots.Elements
         private float alpha = 0.0f;
         public float Acceleration = 20;
 
+        public bool IsTouchingElement(Element o)
+        {
+            return Math.Abs(body2.Position.X - o.Position.X) <= 0.5 * (Width + o.Width) &&
+                   Math.Abs(body2.Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height);
+        }
+
         public override void Update(GameTime gameTime)
         {
             Vector2 direction = Vector2.Normalize(body2.Position - body.Position);
@@ -170,8 +176,11 @@ namespace Nobots.Elements
             {
                 foreach (Body i in bodies)
                 {
-                    float forceToApply = Acceleration * i.Mass / i.FixtureList.Count;
-                    i.ApplyForce(direction * forceToApply);
+                    if (!i.IsDisposed && IsTouchingElement((Element)i.UserData))
+                    {
+                        float forceToApply = Acceleration * i.Mass / i.FixtureList.Count;
+                        i.ApplyForce(direction * forceToApply);
+                    }
                 }
             }
 
