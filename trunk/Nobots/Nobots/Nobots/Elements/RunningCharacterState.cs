@@ -29,9 +29,9 @@ namespace Nobots.Elements
         private Vector2 changeRunningTextures(GameTime gameTime)
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (seconds > 0.04f)
+            if (seconds > 0.025f)
             {
-                seconds -= 0.04f;
+                seconds -= 0.025f;
                 textureXmin += texture.Width / 10;
 
                 if (textureXmin == (texture.Width / 10) * 4 && textureYmin == texture.Height / 2)
@@ -99,11 +99,11 @@ namespace Nobots.Elements
             {
                 if (character.lastContact.UserData is GlidePlatform)
                 {
-                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity + 3, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity + 5, character.torso.LinearVelocity.Y);
                 }
                 else
                 {
-                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X + 3, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X + 5, character.torso.LinearVelocity.Y);
                 }
             }
             else
@@ -118,11 +118,11 @@ namespace Nobots.Elements
             {
                 if (character.lastContact.UserData is GlidePlatform)
                 {
-                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity - 3, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity - 5, character.torso.LinearVelocity.Y);
                 }
                 else
                 {
-                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X - 3, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X - 5, character.torso.LinearVelocity.Y);
                 }
             }
             else
