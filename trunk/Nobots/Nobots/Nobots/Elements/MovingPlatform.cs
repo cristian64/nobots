@@ -125,7 +125,7 @@ namespace Nobots.Elements
         public MovingPlatform(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 5f;
+            ZBuffer = -1;
             this.position = position;
             texture = Game.Content.Load<Texture2D>("movingplatform");
             texture2 = Game.Content.Load<Texture2D>("movingplatform_line");
