@@ -37,7 +37,7 @@ namespace Nobots.Elements
             set
             {
                 if (state != null)
-                    state.Exit();
+                    state.Exit(value);
                 state = value;
                 Console.WriteLine(state.GetType().Name);
                 state.Enter();

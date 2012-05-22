@@ -65,7 +65,7 @@ namespace Nobots.Elements
             character.torso.LinearVelocity = Vector2.Zero;
         }
 
-        public override void Exit()
+        public override void Exit(CharacterState nextState)
         {
             if (character.contactsNumber == 0)
                 character.LastLadder = character.Ladder;

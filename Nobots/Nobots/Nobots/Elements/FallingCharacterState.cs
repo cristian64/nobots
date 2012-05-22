@@ -57,10 +57,15 @@ namespace Nobots.Elements
             character.body.OnCollision += body_OnCollision;
         }
 
-        public override void Exit()
+        public override void Exit(CharacterState nextState)
         {
             character.LastLadder = null;
             character.body.OnCollision -= body_OnCollision;
+
+            if (nextState is IdleCharacterState || nextState is RunningCharacterState)
+            {
+                //TODO:CHEMA: here some step should sound
+            }
         }
 
         public override void UpAction()

@@ -84,7 +84,7 @@ namespace Nobots.Elements
                 character.torso.Awake = character.body.Awake = true;
         }
 
-        public override void Exit()
+        public override void Exit(CharacterState nextState)
         {
             character.body.OnCollision -= body_OnCollision;
         }
