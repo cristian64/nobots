@@ -118,8 +118,11 @@ namespace Nobots.Elements
                 }
                 scene.GarbageElements.Add((Energy)fixtureB.Body.UserData);
                 foreach (Element el in scene.Elements)
-                    if (el is Character && !(el is Energy))
+                    if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
+                    {
                         ((Character)el).State = new DyingCharacterState(scene, (Character)el);
+                        break;
+                    }
             }
             return true;
         }
