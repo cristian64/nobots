@@ -97,7 +97,7 @@ namespace Nobots.Elements
             touchedBody.Mass = 100;
         }
 
-        public override void Exit()
+        public override void Exit(CharacterState nextState)
         {
             if (sliderJoint != null)
             {

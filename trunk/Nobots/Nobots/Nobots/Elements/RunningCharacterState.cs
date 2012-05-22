@@ -23,7 +23,13 @@ namespace Nobots.Elements
         public override void Update(GameTime gameTime)
         {
             changeRunningTextures(gameTime);
+            if (currentFrame == 3 || currentFrame == 10)
+            {
+                //TODO:CHEMA: here some step should sound
+            }
         }
+
+        int currentFrame = 0;
 
         float seconds = 0;
         private Vector2 changeRunningTextures(GameTime gameTime)
@@ -31,11 +37,13 @@ namespace Nobots.Elements
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (seconds > 0.03f)
             {
+                currentFrame++;
                 seconds -= 0.03f;
                 textureXmin += texture.Width / 10;
 
                 if (textureXmin == (texture.Width / 10) * 4 && textureYmin == texture.Height / 2)
                 {
+                    currentFrame = 0;
                     textureXmin = 0;
                     textureYmin = 0;
                 }
@@ -48,10 +56,8 @@ namespace Nobots.Elements
             return new Vector2(textureXmin, textureYmin);
         }
 
-        public override void Exit()
+        public override void Exit(CharacterState nextState)
         {
-            /*character.body.FixedRotation = true;
-            character.body.AngularVelocity = 0;*/
         }
 
         public override void YActionStart()

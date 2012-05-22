@@ -73,8 +73,8 @@ namespace Nobots.Elements
 
             return new Vector2(textureXmin, textureYmin);
         }
-        
-        public override void Exit()
+
+        public override void Exit(CharacterState nextState)
         {
         }
 
