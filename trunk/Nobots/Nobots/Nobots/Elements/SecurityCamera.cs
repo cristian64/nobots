@@ -82,16 +82,11 @@ namespace Nobots.Elements
                         float rot = (float)Math.Atan2(scene.Camera.Target.Position.Y - position.Y, scene.Camera.Target.Position.X - Position.X);
                         if (Rotation != rot)
                         {
-                            Rotation += ((rot - Rotation) >= 0 ? 1 : -1) * 0.005f;
-                            if (rot - Rotation >= -0.005f && rot - Rotation <= 0.005f)
+                            Rotation += ((rot - Rotation) >= 0 ? 1 : -1) * 0.007f;
+                            if (rot - Rotation >= -0.007f && rot - Rotation <= 0.007f)
                                 Rotation = rot;
                         }
                     }
-
-                    if (Rotation < MathHelper.PiOver2)
-                        effect = SpriteEffects.None;
-                    else
-                        effect = SpriteEffects.FlipVertically;
                 }
         }
 
