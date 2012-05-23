@@ -91,7 +91,6 @@ namespace Nobots
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            processKeyboard();
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -145,14 +144,6 @@ namespace Nobots
             Exit();*/
 
             base.Draw(gameTime);
-        }
-
-        private void processKeyboard()
-        {
-            KeyboardState keybState = Keyboard.GetState();
-
-            if (keybState.IsKeyDown(Keys.Escape))
-                this.Exit();
         }
     }
 }

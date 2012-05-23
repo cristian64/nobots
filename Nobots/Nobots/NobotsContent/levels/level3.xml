@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Scene>
+    <Backgrounds>
+        <Background Id="" Position="-37.98029,9.810887" Rotation="0" Scale="1" Speed="1,1" TextureName="panels1" />
+        <Background Id="" Position="-21.52831,10.99939" Rotation="0" Scale="1" Speed="1,1" TextureName="panels2" />
+        <Background Id="" Position="0.7090044,1.015487" Rotation="0" Scale="0.88" Speed="1,1" TextureName="panels1" />
+        <Background Id="" Position="-8.936958,8.979266" Rotation="0" Scale="0.5" Speed="1,1" TextureName="panels7" />
+        <Background Id="" Position="1.695845,9.043736" Rotation="0" Scale="1" Speed="1,1" TextureName="panels1" />
+        <Background Id="" Position="16.17606,-0.692237" Rotation="0" Scale="1" Speed="1,1" TextureName="panels6" />
+        <Background Id="" Position="17.16405,8.486649" Rotation="3.1415" Scale="0.88" Speed="1,1" TextureName="panels7" />
+        <Background Id="" Position="33.14297,-0.374589" Rotation="0" Scale="1.05" Speed="1,1" TextureName="panels2" />
+    </Backgrounds>
+    <Elements>
+        <Lever Id="" Position="-7.193387,10.6779" Rotation="4.441292E-07" ActivableElementId="ip3" />
+        <Switch Id="" Position="-17,10" Rotation="0" ActivableElementId="ip1" />
+        <Switch Id="" Position="-17,10" Rotation="0" ActivableElementId="ip2" />
+        <Endpoint Id="" Position="38.98354,3.79" Rotation="0" NextLevel="level1729" />
+        <Socket Id="" Position="-4.624239,-2.853047" Rotation="-1.57" OtherSocketId="s1" />
+        <Socket Id="s1" Position="-25.10328,8.361113" Rotation="-1.57" OtherSocketId="" />
+        <Ladder Id="" Position="11.17157,7.603984" StepsNumber="12" />
+        <Ladder Id="" Position="-5.817365,4.055219" StepsNumber="24" />
+        <CameraScale Id="" Position="-44.00734,9.627897" ScaleTarget="1" />
+        <CameraScale Id="" Position="-7.623322,9.652538" ScaleTarget="0.35" />
+        <CameraScale Id="" Position="-9.861693,9.544594" ScaleTarget="1" />
+        <Container Id="" Position="16.83664,9.006347" Rotation="0.0004201734" />
+        <Container Id="" Position="5.561976,9.001673" Rotation="2.277587E-05" />
+        <Character Id="" Position="-45.77733,10.27256" Active="True" />
+        <SecurityCamera Id="" Position="-14.11054,8.713856" Rotation="0" />
+        <Platform Id="" Position="7.589565,13.64623" Width="111.4594" Height="5" Rotation="0" />
+        <Platform Id="" Position="-6.684109,0.3977979" Width="0.601" Height="15" Rotation="0" />
+        <Platform Id="" Position="23.5056,-6.017422" Width="60.60016" Height="1" Rotation="0" />
+        <Platform Id="" Position="-27.54643,6.397113" Width="41.6701" Height="3" Rotation="0" />
+        <Platform Id="" Position="-46.49232,9.314056" Width="1" Height="4.540009" Rotation="0" />
+        <Platform Id="" Position="-3.597124,-3.511529" Width="5.860042" Height="0.5200005" Rotation="0" />
+        <Platform Id="" Position="44.55612,3.163285" Width="5.79" Height="20" Rotation="0" />
+        <Platform Id="" Position="32.03702,8.306058" Width="19.85" Height="7.2" Rotation="0" />
+        <ImpulsePlatform Id="ip1" Position="3.559999,-3.5" Width="8.549999" Height="2" Rotation="3.1415" StepsNumber="3" Acceleration="-20" Active="False" />
+        <ImpulsePlatform Id="ip2" Position="14.97185,-5.8" Width="14.25" Height="2" Rotation="3.1415" StepsNumber="5" Acceleration="-20" Active="False" />
+        <ImpulsePlatform Id="ip3" Position="7.861915,11.41746" Width="28.5" Height="16" Rotation="0" StepsNumber="10" Acceleration="25" Active="False" />
+    </Elements>
+    <Foregrounds>
+    </Foregrounds>
+</Scene>
