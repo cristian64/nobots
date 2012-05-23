@@ -127,6 +127,9 @@ namespace Nobots
                 case "Minecart":
                     e = new Minecart(Game, scene, Vector2.Zero);
                     break;
+                case "Drop":
+                    e = new Drop(Game, scene, Vector2.Zero);
+                    break;
                 case "Stomper":
                     e = new Stomper(Game, scene, Vector2.Zero);
                     break;
@@ -356,6 +359,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Stomper)i) + "\n";
                 else if (i as Minecart != null)
                     xml += "        " + ElementToXml((Minecart)i) + "\n";
+                else if (i as Drop != null)
+                    xml += "        " + ElementToXml((Drop)i) + "\n";
                 else if (i as Battery != null)
                     xml += "        " + ElementToXml((Battery)i) + "\n";
                 else if (i as Spikes != null)
@@ -691,6 +696,12 @@ namespace Nobots
         public String ElementToXml(LaserBarrier laserBarrier)
         {
             String xml = "<LaserBarrier Id=\"" + laserBarrier.Id + "\" Position=\"" + laserBarrier.Position.X + "," + laserBarrier.Position.Y + "\" Rotation=\"" + laserBarrier.Rotation + "\" Width=\"" + laserBarrier.Width + "\" Height=\"" + laserBarrier.Height + "\" Active=\"" + laserBarrier.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Drop drop)
+        {
+            String xml = "<Drop Id=\"" + drop.Id + "\" Position=\"" + drop.Position.X + "," + drop.Position.Y + "\" Rotation=\"" + drop.Rotation + "\" Width=\"" + drop.Width + "\" Height=\"" + drop.Height + "\" />";
             return xml;
         }
 

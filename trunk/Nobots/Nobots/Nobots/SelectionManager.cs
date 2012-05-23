@@ -132,6 +132,9 @@ namespace Nobots
                     case "Minecart":
                         element = new Minecart(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Drop":
+                        element = new Drop(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Battery":
                         element = new Battery(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
