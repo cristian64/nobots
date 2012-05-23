@@ -12,6 +12,8 @@ using FarseerPhysics;
 using Nobots.Elements;
 using FarseerPhysics.DebugViews;
 using IrrKlang;
+using Nobots;
+using Nobots.Menus;
 
 namespace Nobots
 {
@@ -29,6 +31,7 @@ namespace Nobots
         public ExplosionSmokeParticleSystem ExplosionSmokeParticleSystem;
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
+        public Menu Menu;
         public SoundManager SoundManager;
         public SelectionManager SelectionManager;
         public Transitioner Transitioner;
@@ -55,6 +58,7 @@ namespace Nobots
         public Scene(Game game)
             : base(game)
         {
+            Menu = new Menu(Game, this);
             SoundManager = new SoundManager(Game, this);
             AmbienceSound = new AmbienceSound(Game, this);
             World = new World(new Vector2(0, 18));
@@ -129,37 +133,41 @@ namespace Nobots
 
             SelectionManager.Update(gameTime);
 
-            foreach (Element i in GarbageElements)
+            Menu.Update(gameTime);
+            if (!Menu.Enabled)
             {
-                Elements.Remove(i);
-                i.Dispose();
+                foreach (Element i in GarbageElements)
+                {
+                    Elements.Remove(i);
+                    i.Dispose();
+                }
+                GarbageElements.Clear();
+
+                PlasmaExplosionParticleSystem.Update(gameTime);
+                SmokePlumeParticleSystem.Update(gameTime);
+                SteamParticleSystem.Update(gameTime);
+                LaserParticleSystem.Update(gameTime);
+                VortexParticleSystem.Update(gameTime);
+                VortexOutParticleSystem.Update(gameTime);
+                FireParticleSystem.Update(gameTime);
+                ElectricityParticleSystem.Update(gameTime);
+                ExplosionSmokeParticleSystem.Update(gameTime);
+                World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
+                Camera.Update(gameTime);
+                InputManager.Update(gameTime);
+                SoundManager.Update(gameTime);
+                AmbienceSound.Update(gameTime);
+                foreach (Background i in Backgrounds)
+                    i.Update(gameTime);
+                foreach (Element i in Elements)
+                    i.Update(gameTime);
+                foreach (Foreground i in Foregrounds)
+                    i.Update(gameTime);
+
+                foreach (Element i in RespawnElements)
+                    Elements.Add(i);
+                RespawnElements.Clear();
             }
-            GarbageElements.Clear();
-
-            PlasmaExplosionParticleSystem.Update(gameTime);
-            SmokePlumeParticleSystem.Update(gameTime);
-            SteamParticleSystem.Update(gameTime);
-            LaserParticleSystem.Update(gameTime);
-            VortexParticleSystem.Update(gameTime);
-            VortexOutParticleSystem.Update(gameTime);
-            FireParticleSystem.Update(gameTime);
-            ElectricityParticleSystem.Update(gameTime);
-            ExplosionSmokeParticleSystem.Update(gameTime);
-            World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
-            Camera.Update(gameTime);
-            InputManager.Update(gameTime);
-            SoundManager.Update(gameTime);
-            AmbienceSound.Update(gameTime);
-            foreach (Background i in Backgrounds)
-                i.Update(gameTime);
-            foreach (Element i in Elements)
-                i.Update(gameTime);
-            foreach (Foreground i in Foregrounds)
-                i.Update(gameTime);
-
-            foreach (Element i in RespawnElements)
-                Elements.Add(i);
-            RespawnElements.Clear();
 
             SceneLoader.Update(gameTime, this);
 
@@ -303,6 +311,8 @@ namespace Nobots
                 SpriteBatch.DrawString(debugfont, fps.ToString().Substring(0, Math.Min(5, fps.ToString().Length)), Vector2.One * 10, Color.White);
                 SpriteBatch.End();
             }
+
+            Menu.Draw(gameTime);
         }
 
         public void drawScene(GameTime gameTime)

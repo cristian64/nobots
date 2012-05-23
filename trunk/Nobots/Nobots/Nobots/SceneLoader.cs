@@ -15,16 +15,26 @@ namespace Nobots
 {
     public class SceneLoader : DrawableGameComponent
     {
+        public List<String> Levels;
+        public String LastLevel;
+
         public SceneLoader(Game game)
             : base(game)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US"); 
+            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+
+            LastLevel = "";
+            Levels = new List<String>();
+            foreach (string i in Directory.GetFiles(@"Content\levels\", "*.xml"))
+                Levels.Add(Path.GetFileNameWithoutExtension(i));
         }
 
         #region FromXml
 
         public void SceneFromXml(String filename, Scene scene)
         {
+            LastLevel = System.IO.Path.GetFileNameWithoutExtension(filename);
+
             XmlTextReader reader = new XmlTextReader(filename);
             while (reader.Read())
             {
