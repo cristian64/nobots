@@ -134,6 +134,9 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelCratesNumber = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelCratesNumber = new System.Windows.Forms.Label();
+            this.numericUpDownCratesNumber = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -193,6 +196,8 @@
             this.flowLayoutPanelDownShift.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDownShift)).BeginInit();
             this.flowLayoutPanelText.SuspendLayout();
+            this.flowLayoutPanelCratesNumber.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCratesNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -233,6 +238,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelUpShift);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelDownShift);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelText);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelCratesNumber);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 381);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1745,6 +1751,44 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
+            // flowLayoutPanelCratesNumber
+            // 
+            this.flowLayoutPanelCratesNumber.Controls.Add(this.labelCratesNumber);
+            this.flowLayoutPanelCratesNumber.Controls.Add(this.numericUpDownCratesNumber);
+            this.flowLayoutPanelCratesNumber.Location = new System.Drawing.Point(0, 978);
+            this.flowLayoutPanelCratesNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelCratesNumber.Name = "flowLayoutPanelCratesNumber";
+            this.flowLayoutPanelCratesNumber.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelCratesNumber.TabIndex = 35;
+            this.flowLayoutPanelCratesNumber.Visible = false;
+            // 
+            // labelCratesNumber
+            // 
+            this.labelCratesNumber.Location = new System.Drawing.Point(3, 0);
+            this.labelCratesNumber.Name = "labelCratesNumber";
+            this.labelCratesNumber.Size = new System.Drawing.Size(94, 23);
+            this.labelCratesNumber.TabIndex = 2;
+            this.labelCratesNumber.Text = "CratesNumber";
+            this.labelCratesNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownCratesNumber
+            // 
+            this.numericUpDownCratesNumber.Location = new System.Drawing.Point(103, 3);
+            this.numericUpDownCratesNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCratesNumber.Name = "numericUpDownCratesNumber";
+            this.numericUpDownCratesNumber.Size = new System.Drawing.Size(139, 20);
+            this.numericUpDownCratesNumber.TabIndex = 1;
+            this.numericUpDownCratesNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCratesNumber.ValueChanged += new System.EventHandler(this.numericUpDownCratesNumber_ValueChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1828,6 +1872,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDownShift)).EndInit();
             this.flowLayoutPanelText.ResumeLayout(false);
             this.flowLayoutPanelText.PerformLayout();
+            this.flowLayoutPanelCratesNumber.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCratesNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1941,6 +1987,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelText;
         private System.Windows.Forms.Label labelText;
         private System.Windows.Forms.TextBox textBoxText;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCratesNumber;
+        private System.Windows.Forms.Label labelCratesNumber;
+        private System.Windows.Forms.NumericUpDown numericUpDownCratesNumber;
 
 
     }

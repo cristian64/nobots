@@ -78,11 +78,9 @@ namespace Nobots.Elements
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
             body.Friction = 1000.0f;
+            body.SleepingAllowed = false;
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
-
-          
-            
 
             body.UserData = this;
         }
