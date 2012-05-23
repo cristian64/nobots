@@ -87,7 +87,7 @@ namespace Nobots.Menus
                     }
                     else
                     {
-                        Text += " ·";
+                        Text += "· ";
                     }
                 }
             }
