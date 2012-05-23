@@ -15,6 +15,11 @@ namespace Nobots.Elements
     {
         Body body;
         Texture2D texture;
+        Texture2D texture2;
+        Texture2D texture3;
+        Texture2D texture4;
+        int rotation = 0;
+        int targetRotation = 0;
         int collisionsNumber = 0;
 
         public override float Width
@@ -57,11 +62,10 @@ namespace Nobots.Elements
         {
             get
             {
-                return body.Rotation;
+                return 0;
             }
             set
             {
-                body.Rotation = value;
             }
         }
 
@@ -70,6 +74,9 @@ namespace Nobots.Elements
         {
             ZBuffer = -7f;
             texture = Game.Content.Load<Texture2D>("weight");
+            texture2 = Game.Content.Load<Texture2D>("weight2");
+            texture3 = Game.Content.Load<Texture2D>("weight3");
+            texture4 = Game.Content.Load<Texture2D>("weight4");
             Height = Conversion.ToWorld(17f);
             Vertices vertices = new Vertices(4);
             vertices.Add(new Vector2(-Conversion.ToWorld(texture.Width) / 2 + 0.4f, -height / 2));
@@ -87,23 +94,39 @@ namespace Nobots.Elements
         {
             if (ActivableElement != null && collisionsNumber == 1)
                 ActivableElement.Active = false;
+            if (collisionsNumber == 1)
+                targetRotation = 0;
             collisionsNumber--;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            if(ActivableElement != null && collisionsNumber == 0)
+            if (ActivableElement != null && collisionsNumber == 0)
                 ActivableElement.Active = true;
+            if (collisionsNumber == 0)
+                targetRotation = 500;
             collisionsNumber++;
 
             return true;
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            if (targetRotation > rotation)
+                rotation += 25;
+            else if (targetRotation < rotation)
+                rotation -= 25;
+        }
+
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;
-            texture = (collisionsNumber == 0) ? Game.Content.Load<Texture2D>("weight") : Game.Content.Load<Texture2D>("weight2");
-            scene.SpriteBatch.Draw(texture, scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) - (Vector2.UnitY * (texture.Height - 17) / 2.0f)), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) - (Vector2.UnitY * (texture.Height - 17) / 2.0f)), null, Color.White, 0, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scale, SpriteEffects.None, 0);
+            if (rotation > 0)
+                scene.SpriteBatch.Draw(texture2, scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) - (Vector2.UnitY * (texture.Height - 17) / 2.0f)), null, Color.White * (rotation / 500.0f), 0, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture3, scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) - Vector2.UnitY * 230), null, Color.White, rotation / 100.0f, new Vector2(texture3.Width / 2.0f, texture3.Height / 2.0f), scale, SpriteEffects.None, 0);
+            if (rotation > 0)
+                scene.SpriteBatch.Draw(texture4, scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) - Vector2.UnitY * 230), null, Color.White, rotation / 100.0f, new Vector2(texture3.Width / 2.0f, texture3.Height / 2.0f), scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)
