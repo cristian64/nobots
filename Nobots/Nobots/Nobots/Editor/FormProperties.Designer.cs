@@ -1721,6 +1721,7 @@
             "TrainTrack",
             "Container",
             "CrateGenerator",
+            "Drop",
             "---------------",
             "Sound",
             "CameraScale",
