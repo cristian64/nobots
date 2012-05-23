@@ -71,7 +71,6 @@ namespace Nobots.Menus
         public LoadLevelOption(Scene scene) :
             base("Load Level", scene)
         {
-            Refresh(false);
         }
 
         public override void Refresh(bool selected)
