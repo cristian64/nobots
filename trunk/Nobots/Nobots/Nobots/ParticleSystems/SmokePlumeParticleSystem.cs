@@ -40,22 +40,22 @@ namespace Nobots.ParticleSystem
             settings.MinHorizontalVelocity = 0;
             settings.MaxHorizontalVelocity = 0.1f;
 
-            settings.MinVerticalVelocity = -0.5f;
-            settings.MaxVerticalVelocity = -0.2f;
+            settings.MinVerticalVelocity = -0.6f;
+            settings.MaxVerticalVelocity = -0.3f;
 
             // Create a wind effect by tilting the gravity vector sideways.
-            settings.Gravity = Vector3.Zero;
+            settings.Gravity = new Vector3(0.2f, -0.7f, 0);
 
             settings.EndVelocity = 0.75f;
 
             settings.MinRotateSpeed = -1;
             settings.MaxRotateSpeed = 1;
 
-            settings.MinStartSize = 15f;
-            settings.MaxStartSize = 50f;
+            settings.MinStartSize = 4;
+            settings.MaxStartSize = 6;
 
-            settings.MinEndSize = 100f;
-            settings.MaxEndSize = 110;
+            settings.MinEndSize = 35;
+            settings.MaxEndSize = 75;
         }
     }
 }
