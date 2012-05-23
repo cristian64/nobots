@@ -113,6 +113,7 @@ namespace Nobots.Elements
             body.UserData = this;
             body.CollisionCategories = ElementCategory.CHARACTER;
             body.CollidesWith = Category.All & ~ElementCategory.ENERGY;
+            body.SleepingAllowed = false;
 
 
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
@@ -127,6 +128,7 @@ namespace Nobots.Elements
             torso.UserData = this;
             torso.CollisionCategories = ElementCategory.CHARACTER;
             torso.CollidesWith = Category.All & ~ElementCategory.ENERGY;
+            torso.SleepingAllowed = false;
 
             torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
             torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);
