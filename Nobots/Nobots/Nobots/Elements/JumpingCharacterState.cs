@@ -95,7 +95,7 @@ namespace Nobots.Elements
         {
             character.body.OnCollision += body_OnCollision;
             if (character.contactsNumber > 0 || character.Ladder != null)
-                character.torso.ApplyForce(new Vector2(0, -15000f));
+                character.torso.ApplyForce(new Vector2(0, -16000f));
             else
                 character.torso.Awake = character.body.Awake = true;
         }
@@ -111,7 +111,7 @@ namespace Nobots.Elements
         {
             if (!maxSpeedRight)
             {
-                character.torso.ApplyLinearImpulse(new Vector2(5f, 0));
+                character.torso.ApplyLinearImpulse(new Vector2(10f, 0));
                 character.Effect = SpriteEffects.None;
             }
         }
@@ -120,7 +120,7 @@ namespace Nobots.Elements
         {
             if (!maxSpeedLeft)
             {
-                character.torso.ApplyLinearImpulse(new Vector2(-5f, 0));
+                character.torso.ApplyLinearImpulse(new Vector2(-10f, 0));
                 character.Effect = SpriteEffects.FlipHorizontally;
             }
         }
