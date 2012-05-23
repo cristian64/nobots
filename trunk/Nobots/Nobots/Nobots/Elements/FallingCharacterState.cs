@@ -13,10 +13,14 @@ namespace Nobots.Elements
     {
         int rows = 1;
         int columns = 3;
+        bool maxSpeedRight = false;
+        bool maxSpeedLeft = false;
 
         public FallingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
+
+           
             texture = scene.Game.Content.Load<Texture2D>("falling");
             characterWidth = texture.Width / columns;
             characterHeight = texture.Height / rows;
@@ -28,6 +32,18 @@ namespace Nobots.Elements
         public override void Update(GameTime gameTime)
         {
             changeRunningTextures(gameTime);
+
+            if (character.body.LinearVelocity.X > 4f)
+            {
+                maxSpeedRight = true;
+            }
+            else if (character.body.LinearVelocity.X < -4f)
+                maxSpeedLeft = true;
+            else
+            {
+                maxSpeedLeft = false;
+                maxSpeedRight = false;
+            }
         }
 
         float seconds = 0;
@@ -88,14 +104,20 @@ namespace Nobots.Elements
 
         public override void RightAction()
         {
-            character.torso.LinearVelocity = new Vector2(3, character.torso.LinearVelocity.Y);
-            character.Effect = SpriteEffects.None;
+            if (!maxSpeedRight)
+            {
+                character.torso.ApplyLinearImpulse(new Vector2(5f, 0));
+                character.Effect = SpriteEffects.None;
+            }
         }
 
         public override void LeftAction()
         {
-            character.torso.LinearVelocity = new Vector2(-3, character.torso.LinearVelocity.Y);
-            character.Effect = SpriteEffects.FlipHorizontally;
+            if (!maxSpeedLeft)
+            {
+                character.torso.ApplyLinearImpulse(new Vector2(-5f, 0));
+                character.Effect = SpriteEffects.FlipHorizontally;
+            }
         }
     }
 }

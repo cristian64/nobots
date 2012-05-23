@@ -12,6 +12,10 @@ namespace Nobots.Elements
     class JumpingCharacterState : CharacterState
     {
         bool isJumping = false;
+        bool maxSpeedRight = false;
+        bool maxSpeedLeft = false;
+        bool initialJump = true;
+
         public JumpingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
@@ -28,6 +32,18 @@ namespace Nobots.Elements
             if (character.body.LinearVelocity.Y > 0)
                 character.State = new FallingCharacterState(scene, character);
             changeJumpingTextures(gameTime);
+
+            if (character.body.LinearVelocity.X > 4f)
+            {
+                maxSpeedRight = true;                
+            }
+            else if (character.body.LinearVelocity.X < -4f)
+                maxSpeedLeft = true;
+            else {
+                maxSpeedLeft = false;
+                maxSpeedRight = false;
+            }
+                
         }
 
         float seconds = 0;
@@ -79,10 +95,12 @@ namespace Nobots.Elements
         {
             character.body.OnCollision += body_OnCollision;
             if (character.contactsNumber > 0 || character.Ladder != null)
-                character.torso.ApplyForce(new Vector2(0, -16000));
+                character.torso.ApplyForce(new Vector2(0, -15000f));
             else
                 character.torso.Awake = character.body.Awake = true;
         }
+
+        
 
         public override void Exit(CharacterState nextState)
         {
@@ -91,14 +109,20 @@ namespace Nobots.Elements
 
         public override void RightAction()
         {
-            character.torso.LinearVelocity = new Vector2(3, character.torso.LinearVelocity.Y);
-            character.Effect = SpriteEffects.None;
+            if (!maxSpeedRight)
+            {
+                character.torso.ApplyLinearImpulse(new Vector2(5f, 0));
+                character.Effect = SpriteEffects.None;
+            }
         }
 
         public override void LeftAction()
         {
-            character.torso.LinearVelocity = new Vector2(-3, character.torso.LinearVelocity.Y);
-            character.Effect = SpriteEffects.FlipHorizontally;
+            if (!maxSpeedLeft)
+            {
+                character.torso.ApplyLinearImpulse(new Vector2(-5f, 0));
+                character.Effect = SpriteEffects.FlipHorizontally;
+            }
         }
 
         public override void UpAction()
