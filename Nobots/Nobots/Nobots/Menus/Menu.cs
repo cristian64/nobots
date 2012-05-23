@@ -17,10 +17,10 @@ namespace Nobots.Menus
         SpriteFont menufont;
         int selectedIndex;
 
-        Keys keyboardAAction = Keys.Space;
-        Keys keyboardYAction = Keys.Enter;
-        Keys keyboardBAction = Keys.LeftAlt;
-        Keys keyboardXAction = Keys.LeftControl;
+        Keys keyboardAAction = Keys.Enter;
+        Keys keyboardYAction = Keys.Y;
+        Keys keyboardBAction = Keys.Back;
+        Keys keyboardXAction = Keys.X;
 
         Scene scene;
         public Menu(Game game, Scene scene)
@@ -77,7 +77,9 @@ namespace Nobots.Menus
             KeyboardState currentKeyboardState = Keyboard.GetState();
             GamePadState currentGamepadState = GamePad.GetState(PlayerIndex.One);
 
-            if (currentKeyboardState.IsKeyDown(Keys.Escape) && previousKeyboardState.IsKeyUp(Keys.Escape))
+            if ((currentKeyboardState.IsKeyDown(Keys.Escape) && previousKeyboardState.IsKeyUp(Keys.Escape)) ||
+                (currentGamepadState.Buttons.Start == ButtonState.Pressed && previosGamepadState.Buttons.Start == ButtonState.Released) ||
+                (currentGamepadState.Buttons.BigButton == ButtonState.Pressed && previosGamepadState.Buttons.BigButton == ButtonState.Released))
             {
                 Enabled = !Enabled;
                 if (!Enabled)
@@ -90,6 +92,18 @@ namespace Nobots.Menus
             {
                 if (Game.IsActive && System.Windows.Forms.Form.ActiveForm != null && System.Windows.Forms.Form.ActiveForm.Text.Equals(Game.Window.Title))
                 {
+                    if (currentGamepadState.Buttons.BigButton == ButtonState.Pressed && previosGamepadState.Buttons.BigButton == ButtonState.Released)
+                    {
+                        BigButtonActionStart();
+                    }
+                    if (currentGamepadState.Buttons.Start == ButtonState.Pressed && previosGamepadState.Buttons.Start == ButtonState.Released)
+                    {
+                        StartActionStart();
+                    }
+                    if (currentGamepadState.Buttons.Back == ButtonState.Pressed && previosGamepadState.Buttons.Back == ButtonState.Released)
+                    {
+                        BackActionStart();
+                    }
                     if ((currentGamepadState.Buttons.A == ButtonState.Pressed && previosGamepadState.Buttons.A == ButtonState.Released) ||
                         (currentKeyboardState.IsKeyDown(keyboardAAction) && previousKeyboardState.IsKeyUp(keyboardAAction)))
                     {
@@ -134,6 +148,18 @@ namespace Nobots.Menus
                     {
                         DownActionStart();
                     }
+                    if (currentGamepadState.Buttons.BigButton == ButtonState.Released && previosGamepadState.Buttons.BigButton == ButtonState.Pressed)
+                    {
+                        BigButtonActionStop();
+                    }
+                    if (currentGamepadState.Buttons.Start == ButtonState.Released && previosGamepadState.Buttons.Start == ButtonState.Pressed)
+                    {
+                        StartActionStop();
+                    }
+                    if (currentGamepadState.Buttons.Back == ButtonState.Released && previosGamepadState.Buttons.Back == ButtonState.Pressed)
+                    {
+                        BackActionStop();
+                    }
                     if ((currentGamepadState.Buttons.A == ButtonState.Released && previosGamepadState.Buttons.A == ButtonState.Pressed) ||
                         (currentKeyboardState.IsKeyUp(keyboardAAction) && previousKeyboardState.IsKeyDown(keyboardAAction)))
                     {
@@ -177,6 +203,18 @@ namespace Nobots.Menus
                         (currentKeyboardState.IsKeyUp(Keys.Down) && previousKeyboardState.IsKeyDown(Keys.Down)))
                     {
                         DownActionStop();
+                    }
+                    if (currentGamepadState.Buttons.BigButton == ButtonState.Pressed)
+                    {
+                        BigButtonAction();
+                    }
+                    if (currentGamepadState.Buttons.Start == ButtonState.Pressed)
+                    {
+                        StartAction();
+                    }
+                    if (currentGamepadState.Buttons.Back == ButtonState.Pressed)
+                    {
+                        BackAction();
                     }
                     if ((currentGamepadState.Buttons.A == ButtonState.Pressed) ||
                         (currentKeyboardState.IsKeyDown(keyboardAAction)))
@@ -229,9 +267,50 @@ namespace Nobots.Menus
             previosGamepadState = currentGamepadState;
         }
 
+        void BigButtonActionStart()
+        {
+        }
+
+        void BigButtonAction()
+        {
+        }
+
+        void BigButtonActionStop()
+        {
+            Enabled = false;
+            scene.Transitioner.AlphaTarget = 0;
+        }
+
+        void StartActionStart()
+        {
+        }
+
+        void StartAction()
+        {
+        }
+
+        void StartActionStop()
+        {
+            Enabled = false;
+            scene.Transitioner.AlphaTarget = 0;
+        }
+
+        void BackActionStart()
+        {
+        }
+
+        void BackAction()
+        {
+        }
+
+        void BackActionStop()
+        {
+            Enabled = false;
+            scene.Transitioner.AlphaTarget = 0;
+        }
+
         void AActionStart()
         {
-
         }
 
         void AAction()
@@ -253,6 +332,8 @@ namespace Nobots.Menus
 
         void BActionStop()
         {
+            Enabled = false;
+            scene.Transitioner.AlphaTarget = 0;
         }
 
         void XActionStart()
