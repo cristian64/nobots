@@ -33,7 +33,9 @@ namespace Nobots
         public InputManager InputManager;
         public Menu Menu;
         public SoundManager SoundManager;
+#if !FINAL_RELEASE
         public SelectionManager SelectionManager;
+#endif
         public Transitioner Transitioner;
         public SceneLoader SceneLoader;
         public Camera Camera;
@@ -65,7 +67,9 @@ namespace Nobots
             PhysicsDebug = new DebugViewXNA(World);
             InputManager = new InputManager(Game);            
             Transitioner = new Transitioner(Game, this);
+#if !FINAL_RELEASE
             SelectionManager = new SelectionManager(Game, this);
+#endif
             SceneLoader = new SceneLoader(Game);
             Camera = new Camera(Game, this);
             GarbageElements = new SortedList<Element>();
@@ -130,9 +134,9 @@ namespace Nobots
                 renderTarget1 = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.None);
                 renderTarget2 = new RenderTarget2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.None);
             }
-
+#if !FINAL_RELEASE
             SelectionManager.Update(gameTime);
-
+#endif
             Menu.Update(gameTime);
             if (!Menu.Enabled)
             {
@@ -173,6 +177,7 @@ namespace Nobots
 
             if (cleanAndLoad && !Transitioner.InTransition)
             {
+                Camera.ResetScale();
                 Clean();
                 Load(levelName, characterPosition);
                 cleanAndLoad = false;
@@ -229,7 +234,9 @@ namespace Nobots
             GarbageElements.Clear();
             Camera.Target = null;
             InputManager.Character = null;
+#if !FINAL_RELEASE
             SelectionManager.Selection = null;
+#endif
             World.Clear();
             //TODO: free sounds, if needed
         }
@@ -290,6 +297,7 @@ namespace Nobots
 
             Transitioner.Draw(gameTime);
 
+#if !FINAL_RELEASE
             SelectionManager.Draw(gameTime);
             PhysicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             if (PhysicsDebug.Enabled)
@@ -311,6 +319,7 @@ namespace Nobots
                 SpriteBatch.DrawString(debugfont, fps.ToString().Substring(0, Math.Min(5, fps.ToString().Length)), Vector2.One * 10, Color.White);
                 SpriteBatch.End();
             }
+#endif
 
             Menu.Draw(gameTime);
         }
