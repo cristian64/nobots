@@ -119,6 +119,12 @@ namespace Nobots.Editor
                 numericUpDownStepsNumber.Value = (decimal)((Ladder)selection).StepsNumber;
             }
 
+            if (selection is CrateGenerator)
+            {
+                flowLayoutPanelCratesNumber.Visible = true;
+                numericUpDownCratesNumber.Value = (decimal)((CrateGenerator)selection).CratesNumber;
+            }
+
             if (selection is CameraScale)
             {
                 flowLayoutPanelScaleTarget.Visible = true;
@@ -238,6 +244,7 @@ namespace Nobots.Editor
             flowLayoutPanelUpShift.Visible = false;
             flowLayoutPanelDownShift.Visible = false;
             flowLayoutPanelText.Visible = false;
+            flowLayoutPanelCratesNumber.Visible = false;
         }
 
         private void setInitialValues()
@@ -538,6 +545,12 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((Hint)selectionEvents).Text = textBoxText.Text;
+        }
+
+        private void numericUpDownCratesNumber_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents != null)
+                ((CrateGenerator)selectionEvents).CratesNumber = (int)numericUpDownCratesNumber.Value;
         }
     }
 }

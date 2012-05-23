@@ -19,7 +19,8 @@ namespace Nobots.Elements
 
         String crateId = "";
 
-        float counter = 0;
+        public int CratesNumber = 1;
+        float delayCounter = 0;
         private bool isActive = false;
         public bool Active
         {
@@ -31,13 +32,18 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
-                if (isActive && counter <= 0)
+                if (isActive && delayCounter <= 0)
                 {
-                    counter = 1;
+                    delayCounter = 1;
+
+                    int cratesCount = 0;
+                    foreach (Element i in scene.Elements)
+                        if (i.Id == crateId)
+                            cratesCount++;
 
                     foreach (Element i in scene.Elements)
                     {
-                        if (i.Id == crateId)
+                        if (i.Id == crateId && cratesCount-- >= CratesNumber)
                         {
                             for (int j = 0; j < 150; j++)
                             {
@@ -127,7 +133,7 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
-            counter -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            delayCounter -= (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public override void Draw(GameTime gameTime)

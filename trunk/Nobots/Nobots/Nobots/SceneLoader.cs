@@ -135,6 +135,8 @@ namespace Nobots
                     break;
                 case "CrateGenerator":
                     e = new CrateGenerator(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("CratesNumber"))
+                        ((CrateGenerator)e).CratesNumber = int.Parse(reader.Value);
                     break;
                 case "Crane":
                     e = new Crane(Game, scene, Vector2.Zero);
@@ -475,7 +477,7 @@ namespace Nobots
 
         public String ElementToXml(CrateGenerator crateGenerator)
         {
-            String xml = "<CrateGenerator Id=\"" + crateGenerator.Id + "\" Position=\"" + crateGenerator.Position.X + "," + crateGenerator.Position.Y + "\" Active=\"" + crateGenerator.Active + "\" />";
+            String xml = "<CrateGenerator Id=\"" + crateGenerator.Id + "\" Position=\"" + crateGenerator.Position.X + "," + crateGenerator.Position.Y + "\" Active=\"" + crateGenerator.Active + "\" CratesNumber=\"" + crateGenerator.CratesNumber + "\" />";
             return xml;
         }
 

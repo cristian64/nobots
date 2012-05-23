@@ -73,6 +73,7 @@ namespace Nobots.Elements
             body.Friction = 5;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.UserData = this;
+            body.SleepingAllowed = false;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
