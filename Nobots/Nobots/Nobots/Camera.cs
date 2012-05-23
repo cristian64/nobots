@@ -30,6 +30,11 @@ namespace Nobots
         public float ScaleDuration = 10;
         public Vector2 ListenerPosition;
 
+        public void ResetScale()
+        {
+            scale = ScaleTarget = DefaultScale;
+        }
+
         public bool Grabbing = false;
         public Vector2 GrabbingPosition = Vector2.Zero;
 
@@ -46,6 +51,8 @@ namespace Nobots
         MouseState previousMouseState;
         public override void Update(GameTime gameTime)
         {
+            MouseState currentMouseState = Mouse.GetState();
+
             resolutionScale = (GraphicsDevice.Viewport.Width) / (1920.0f);
             if (scale != ScaleTarget)
             {
@@ -60,7 +67,7 @@ namespace Nobots
                     Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
             }
 
-            MouseState currentMouseState = Mouse.GetState();
+#if !FINAL_RELEASE
             if (currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue > 0)
             {
                 Vector2 screenPosition = ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
@@ -77,6 +84,7 @@ namespace Nobots
                 if (Target == null)
                     Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
             }
+#endif
 
             if (Target != null)
             {
@@ -102,6 +110,7 @@ namespace Nobots
 
                     Position = centeredPosition;
             }
+#if !FINAL_RELEASE
             else
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
@@ -133,6 +142,7 @@ namespace Nobots
                 Position.X -= currentPosition.X - previousPosition.X;
                 Position.Y -= currentPosition.Y - previousPosition.Y;
             }
+#endif
 
             ViewNonScaled = Matrix.CreateLookAt(new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 1), new Vector3(Conversion.ToDisplay(Position.X), Conversion.ToDisplay(Position.Y), 0), new Vector3(0, 1, 0));
             View = Matrix.CreateScale(Conversion.DisplayUnitsToWorldUnitsRatio) * ViewNonScaled;

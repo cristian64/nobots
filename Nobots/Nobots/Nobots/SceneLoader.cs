@@ -33,50 +33,57 @@ namespace Nobots
 
         public void SceneFromXml(String filename, Scene scene)
         {
-            LastLevel = System.IO.Path.GetFileNameWithoutExtension(filename);
-
-            XmlTextReader reader = new XmlTextReader(filename);
-            while (reader.Read())
+            try
             {
-                // Once we find the Backgrounds tag, we start a particular loop for all of them.
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "Backgrounds")
+                XmlTextReader reader = new XmlTextReader(filename);
+                while (reader.Read())
                 {
-                    // We'll stay in this local loop until we find the end of the Backgrounds tag.
-                    while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Backgrounds"))
+                    // Once we find the Backgrounds tag, we start a particular loop for all of them.
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "Backgrounds")
                     {
-                        if (reader.NodeType == XmlNodeType.Element)
-                            scene.Backgrounds.Add(BackgroundFromXml(reader, scene));
-                    }
-                }
-
-                // Once we find the Foregrounds tag, we start a particular loop for all of them.
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "Foregrounds")
-                {
-                    // We'll stay in this local loop until we find the end of the Foregrouds tag.
-                    while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Foregrounds"))
-                    {
-                        if (reader.NodeType == XmlNodeType.Element)
-                            scene.Foregrounds.Add(ForegroundFromXml(reader, scene));
-                    }
-                }
-
-                // Once we find the Elements tag, we start a particular loop for all of them.
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "Elements")
-                {
-                    // We'll stay in this local loop until we find the end of the Elements tag.
-                    while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Elements"))
-                    {
-                        if (reader.NodeType == XmlNodeType.Element)
+                        // We'll stay in this local loop until we find the end of the Backgrounds tag.
+                        while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Backgrounds"))
                         {
-                            Element e = ElementFromXml(reader, scene);
-                            if (e != null)
-                                scene.Elements.Add(e);
+                            if (reader.NodeType == XmlNodeType.Element)
+                                scene.Backgrounds.Add(BackgroundFromXml(reader, scene));
+                        }
+                    }
+
+                    // Once we find the Foregrounds tag, we start a particular loop for all of them.
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "Foregrounds")
+                    {
+                        // We'll stay in this local loop until we find the end of the Foregrouds tag.
+                        while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Foregrounds"))
+                        {
+                            if (reader.NodeType == XmlNodeType.Element)
+                                scene.Foregrounds.Add(ForegroundFromXml(reader, scene));
+                        }
+                    }
+
+                    // Once we find the Elements tag, we start a particular loop for all of them.
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "Elements")
+                    {
+                        // We'll stay in this local loop until we find the end of the Elements tag.
+                        while (reader.Read() && (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Elements"))
+                        {
+                            if (reader.NodeType == XmlNodeType.Element)
+                            {
+                                Element e = ElementFromXml(reader, scene);
+                                if (e != null)
+                                    scene.Elements.Add(e);
+                            }
                         }
                     }
                 }
-            }
 
-            reader.Close();
+                reader.Close();
+
+                LastLevel = System.IO.Path.GetFileNameWithoutExtension(filename);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace + " " + e.Message);
+            }
         }
 
         public Vector2 PositionFromString(string xml)
