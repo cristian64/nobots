@@ -89,7 +89,7 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
-            if (ActivableElement != null && ActivableElement.Active)
+            if (ActivableElement == null || !ActivableElement.Active)
                 particleEmitter.Update(gameTime, new Vector3(body.Position.X - 0.25f, body.Position.Y - 0.2f, 0));
         }
 
