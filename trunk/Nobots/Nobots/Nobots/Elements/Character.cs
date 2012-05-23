@@ -166,6 +166,7 @@ namespace Nobots.Elements
             if (fixtureB.Body == touchedBody)
             {
                 touchedBody = null;
+                Console.WriteLine("untouched!");
             }
         }
 
@@ -173,6 +174,7 @@ namespace Nobots.Elements
         {
             if (touchedBody == null && (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null))
             {
+                Console.WriteLine("changed touched body!");
                 touchedBody = fixtureB.Body;
             }
 
@@ -288,18 +290,16 @@ namespace Nobots.Elements
 
         public virtual void BActionStart()
         {
-            bool worked = false;
             foreach (Element i in scene.Elements)
             {
                 Activator activator = i as Activator;
                 if (activator != null && !activator.EnergyElement && IsTouchingElement(i))
                 {
                     activator.Activate();
-                    worked = true;
                 }
             }
-            if (!worked)
-                State.BActionStart();
+
+            State.BActionStart();
         }
 
         public virtual void BAction()
