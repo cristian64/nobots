@@ -86,7 +86,7 @@ namespace Nobots.Elements
 
         public override void UpAction()
         {
-            if (character.Ladder != null && character.Ladder != character.LastLadder)
+            if (character.Ladder != null)
             {
                 character.State = new ClimbingCharacterState(scene, character);
                 character.State.UpAction();
@@ -95,7 +95,7 @@ namespace Nobots.Elements
 
         public override void DownAction()
         {
-            if (character.Ladder != null && character.Ladder != character.LastLadder)
+            if (character.Ladder != null)
             {
                 character.State = new ClimbingCharacterState(scene, character);
                 character.State.DownAction();
