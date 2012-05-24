@@ -27,7 +27,7 @@ namespace Nobots
             get { return scale * resolutionScale; }
         }
         public float ScaleTarget = DefaultScale;
-        public float ScaleDuration = 10;
+        public float ScaleDuration = 5;
         public Vector2 ListenerPosition;
 
         public void ResetScale()

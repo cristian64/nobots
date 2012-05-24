@@ -13,20 +13,20 @@
     <Elements>
         <Alarm Id="" Position="-14.57498,8.351833" Rotation="0" Active="True" />
         <Alarm Id="" Position="36.1044,2.703788" Rotation="0" Active="False" />
-        <Lever Id="" Position="-7.193387,10.6779" Rotation="4.241695E-07" ActivableElementId="ip3" />
+        <Lever Id="" Position="-7.193387,10.6779" Rotation="4.010606E-07" ActivableElementId="ip3" />
         <Switch Id="" Position="-17,10" Rotation="0" ActivableElementId="ip1" />
         <Switch Id="" Position="-17,10" Rotation="0" ActivableElementId="ip2" />
         <Endpoint Id="" Position="40.67326,4.760017" Rotation="0" NextLevel="level1729" />
         <Socket Id="" Position="-4.624239,-2.853047" Rotation="-1.57" OtherSocketId="s1" />
         <Socket Id="s1" Position="-25.10328,8.361113" Rotation="-1.57" OtherSocketId="s2" />
         <Socket Id="s2" Position="25.2975,2.70202" Rotation="-1.57" OtherSocketId="s1" />
-        <Ladder Id="" Position="11.17157,7.603984" StepsNumber="12" />
+        <Ladder Id="" Position="11.51158,7.613984" StepsNumber="12" />
         <Ladder Id="" Position="-5.817365,4.055219" StepsNumber="24" />
         <CameraScale Id="" Position="-44.00734,9.627897" ScaleTarget="1" />
         <CameraScale Id="" Position="-7.623322,9.652538" ScaleTarget="0.35" />
         <CameraScale Id="" Position="-9.861693,9.544594" ScaleTarget="1" />
-        <Container Id="" Position="17.022,9.000438" Rotation="-1.054043E-05" />
-        <Container Id="" Position="6.998597,9.000415" Rotation="-0.0002068351" />
+        <Container Id="" Position="17.0218,9.002468" Rotation="8.067038E-08" />
+        <Container Id="" Position="6.998598,9.002468" Rotation="1.041751E-07" />
         <Character Id="" Position="-45.77733,10.27124" Active="True" />
         <CameraScale Id="" Position="-25.12738,10.34285" ScaleTarget="1" />
         <CameraScale Id="" Position="25.05082,4.330137" ScaleTarget="0.35" />
