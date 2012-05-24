@@ -103,7 +103,7 @@ namespace Nobots.Elements
         public GlidePlatform(Game game, Scene scene, Vector2 position, int stepsNumber)
             : base(game, scene)
         {
-            ZBuffer = 5f;
+            ZBuffer = 6f;
             this.position = position;
             this.stepsNumber = stepsNumber;
             texture = Game.Content.Load<Texture2D>("glideplatform");
