@@ -179,7 +179,7 @@ namespace Nobots
             {
                 Camera.ResetScale();
                 Clean();
-                Load(levelName, characterPosition);
+                Load(levelName, characterPosition, characterActive);
                 cleanAndLoad = false;
                 levelName = "";
                 characterPosition = null;
@@ -193,16 +193,18 @@ namespace Nobots
         private bool cleanAndLoad = false;
         private String levelName = "";
         private Vector2? characterPosition = null;
+        private bool? characterActive = null;
 
-        public void CleanAndLoad(String levelName, Vector2? characterPosition = null)
+        public void CleanAndLoad(String levelName, Vector2? characterPosition = null, bool? characterActive = null)
         {
             cleanAndLoad = true;
             this.levelName = levelName;
             this.characterPosition = characterPosition;
+            this.characterActive = characterActive;
             Transitioner.AlphaTarget = 1;
         }
 
-        public void Load(String levelName, Vector2? characterPosition = null)
+        public void Load(String levelName, Vector2? characterPosition = null, bool? characterActive = null)
         {
             SceneLoader.SceneFromXml(@"Content\levels\" + levelName + ".xml", this);
             if (characterPosition != null)
@@ -210,7 +212,10 @@ namespace Nobots
                 foreach (Element i in Elements)
                 {
                     if (i is Character)
+                    {
                         i.Position = (Vector2)characterPosition;
+                        ((Character)i).Active = (bool)characterActive;
+                    }
                 }
             }
             levelName = "";

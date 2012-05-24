@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Nobots.Elements;
 
 namespace Nobots.Menus
 {
@@ -47,6 +49,37 @@ namespace Nobots.Menus
         public override void AActionStop()
         {
             scene.Game.Exit();
+        }
+    }
+
+    public class LastCheckpointOption : Option
+    {
+        public LastCheckpointOption(Scene scene) :
+            base("Last Checkpoint", scene)
+        {
+        }
+
+        public override void AActionStop()
+        {
+            Vector2? checkpointPosition = null;
+            bool? characterActive = null;
+            foreach (Element i in scene.Elements)
+            {
+                if (i is Checkpoint && ((Checkpoint)i).Active)
+                {
+                    checkpointPosition = i.Position;
+                }
+
+                if (i is Character)
+                {
+                    characterActive = ((Character)i).Active;
+                }
+            }
+            if (checkpointPosition != null)
+                scene.CleanAndLoad(scene.SceneLoader.LastLevel, checkpointPosition, characterActive);
+            else
+                scene.CleanAndLoad(scene.SceneLoader.LastLevel);
+            scene.Menu.Enabled = false;
         }
     }
 

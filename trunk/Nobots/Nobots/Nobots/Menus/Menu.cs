@@ -35,13 +35,15 @@ namespace Nobots.Menus
 
             options = new List<Option>();
             Option option1 = new ResumeOption(scene);
-            Option option2 = new RestartLevelOption(scene);
-            Option option3 = new LoadLevelOption(scene);
-            Option option4 = new ExitOption(scene);
+            Option option2 = new LastCheckpointOption(scene);
+            Option option3 = new RestartLevelOption(scene);
+            Option option4 = new LoadLevelOption(scene);
+            Option option5 = new ExitOption(scene);
             options.Add(option1);
             options.Add(option2);
             options.Add(option3);
             options.Add(option4);
+            options.Add(option5);
 
             selectedIndex = 0;
         }

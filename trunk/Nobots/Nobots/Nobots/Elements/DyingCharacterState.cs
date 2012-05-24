@@ -42,7 +42,7 @@ namespace Nobots.Elements
                 // reload everything in the scene
                 // move the character to that checkpoint position
 
-                foreach (Element i in scene.Elements)
+                /*foreach (Element i in scene.Elements)
                 {
                     if (i is Checkpoint && ((Checkpoint)i).Active)
                     {
@@ -54,7 +54,22 @@ namespace Nobots.Elements
                         scene.InputManager.Character = character2;
                         break;
                     }
+                }*/
+
+                Vector2? checkpointPosition = null;
+                foreach (Element i in scene.Elements)
+                {
+                    if (i is Checkpoint && ((Checkpoint)i).Active)
+                    {
+                        checkpointPosition = i.Position;
+                        break;
+                    }
                 }
+
+                if (checkpointPosition != null)
+                    scene.CleanAndLoad(scene.SceneLoader.LastLevel, checkpointPosition, character.Active);
+                else
+                    scene.CleanAndLoad(scene.SceneLoader.LastLevel);
 
                 dead = true;
             }
