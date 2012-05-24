@@ -553,7 +553,7 @@ namespace Nobots
 
         public String ElementToXml(Door door)
         {
-            String xml = "<Door Id=\"" + door.Id + "\" Position=\"" + door.Position.X + "," + door.Position.Y + "\" Rotation=\"" + door.Rotation + "\" Active=\"" + door.Active + "\" />"; ;
+            String xml = "<Door Id=\"" + door.Id + "\" Position=\"" + door.Position.X + "," + door.Position.Y + "\" Width=\"" + door.Width + "\" Height=\"" + door.Height + "\" Rotation=\"" + door.Rotation + "\" Active=\"" + door.Active + "\" />"; ;
             return xml;
         }
 
