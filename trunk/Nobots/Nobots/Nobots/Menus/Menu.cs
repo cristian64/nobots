@@ -279,6 +279,7 @@ namespace Nobots.Menus
         {
             Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
         }
 
         void StartActionStart()
@@ -293,6 +294,7 @@ namespace Nobots.Menus
         {
             Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
         }
 
         void BackActionStart()
@@ -307,6 +309,7 @@ namespace Nobots.Menus
         {
             Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
         }
 
         void AActionStart()
@@ -320,6 +323,7 @@ namespace Nobots.Menus
         void AActionStop()
         {
             options[selectedIndex].AActionStop();
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
         }
 
         void BActionStart()
@@ -334,6 +338,7 @@ namespace Nobots.Menus
         {
             Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
         }
 
         void XActionStart()
@@ -371,6 +376,7 @@ namespace Nobots.Menus
         void RightActionStop()
         {
             options[selectedIndex].RightActionStop();
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
 
         void LeftActionStart()
@@ -384,6 +390,7 @@ namespace Nobots.Menus
         void LeftActionStop()
         {
             options[selectedIndex].LeftActionStop();
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
 
         void UpActionStart()
@@ -399,6 +406,7 @@ namespace Nobots.Menus
             options[selectedIndex].Refresh(false);
             selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : options.Count - 1;
             options[selectedIndex].Refresh(true);
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
 
         void DownActionStart()
@@ -414,6 +422,7 @@ namespace Nobots.Menus
             options[selectedIndex].Refresh(false);
             selectedIndex = (selectedIndex + 1) % options.Count;
             options[selectedIndex].Refresh(true);
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
     }
 }

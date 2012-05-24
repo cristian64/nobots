@@ -82,8 +82,9 @@ namespace Nobots.Elements
 
             if (velocity > 1f)
             {
-                sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.woodenBox, body.Position.X, body.Position.Y, 0.0f,false,false,false);
-                sound.Volume = velocity * 0.5f * scene.SoundManager.woodenBox.DefaultVolume;
+                
+                sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Container, body.Position.X, body.Position.Y, 0.0f,false,false,false);
+                sound.Volume = velocity * 0.5f * scene.SoundManager.Container.DefaultVolume;
             }
             return true;
         }
