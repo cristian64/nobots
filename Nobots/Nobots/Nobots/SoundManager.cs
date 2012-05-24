@@ -15,7 +15,7 @@ namespace Nobots
 
         public ISoundEngine ISoundEngine;
         public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint,steam,elevatorBegin,elevatorEnd, stomp
-            ,machineloop1, Nav, Select, Container, SwitchOn, SwitchOff, Death;
+            ,machineloop1, Nav, Select, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -133,6 +133,11 @@ namespace Nobots
             SwitchOn = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch1.wav");
 
             SwitchOff = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch2.wav");
+
+            Weight = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\weight.wav");
+
+            ImpulsePlatform = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\impulseplatform.wav");
+            ImpulsePlatform.DefaultMinDistance = 0.5f;
 
             //Character
             Death = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\death.wav");

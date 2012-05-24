@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -17,6 +18,7 @@ namespace Nobots.Elements
         Texture2D texture2;
         Texture2D texture3;
         List<Body> bodies;
+        ISound sound;
 
         private int stepsNumber;
         public int StepsNumber
@@ -43,6 +45,19 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
+
+                if (value)
+                {
+                    sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.ImpulsePlatform, body.Position.X, body.Position.Y, 0f, true, false, false);
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerUp[3], body.Position.X, body.Position.Y, 0f, false, false, false);
+                }
+                else
+                    if (sound != null)
+                    {
+                        scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerDown[3], body.Position.X, body.Position.Y, 0f, false, false, false);
+                        sound.Stop();
+                    }
+
                 if (bodies != null)
                     foreach (Body i in bodies)
                         i.Awake = true;
@@ -216,6 +231,7 @@ namespace Nobots.Elements
             body2.Dispose();
             bodies.Clear();
             base.Dispose(disposing);
+            
         }
     }
 }
