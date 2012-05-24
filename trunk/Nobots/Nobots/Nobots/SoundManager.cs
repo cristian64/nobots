@@ -23,6 +23,7 @@ namespace Nobots
         public List<ISoundSource> powerDown = new List<ISoundSource>();
         public List<ISoundSource> powerUp = new List<ISoundSource>();
         public List<ISoundSource> steps = new List<ISoundSource>();
+        public List<ISoundSource> drops = new List<ISoundSource>();
         
 
         public SoundManager(Game game, Scene scene)
@@ -138,6 +139,16 @@ namespace Nobots
 
             ImpulsePlatform = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\impulseplatform.wav");
             ImpulsePlatform.DefaultMinDistance = 0.5f;
+
+            drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-01.wav"));
+            drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-02.wav"));
+            drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-03.wav"));
+            drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-04.wav"));
+
+            foreach (ISoundSource i in drops)
+            {
+                i.DefaultVolume = 0.2f;
+            }
 
             //Character
             Death = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\death.wav");

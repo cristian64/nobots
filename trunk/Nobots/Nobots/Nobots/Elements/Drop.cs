@@ -91,11 +91,13 @@ namespace Nobots.Elements
                     speed = 0.6f * seconds;
                     dropPosition += new Vector2(0, speed > 0.4f ? 0.4f : speed);
                     delay = 0;
+                    
                 }
                 else
                 {
                     dropPosition = position - new Vector2(0, height / 2);
                     delay = random.Next(4) + 4*(float)random.NextDouble() + 1;
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.drops[random.Next(scene.SoundManager.drops.Count)], dropPosition.X, dropPosition.Y, 0.0f, false, false, false);
                 }
 
                 canDraw = delay > 0 ? false : true;
