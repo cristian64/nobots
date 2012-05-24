@@ -9,6 +9,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using IrrKlang;
+using FarseerPhysics.Dynamics.Joints;
 
 namespace Nobots.Elements
 {
@@ -34,6 +35,8 @@ namespace Nobots.Elements
         public bool playSound = true;
 
         Body body;
+        Body sensor;
+        RevoluteJoint joint;
         Texture2D texture;
         Texture2D chainsTexture;
         Texture2D thingTexture;
@@ -99,8 +102,39 @@ namespace Nobots.Elements
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
 
+            sensor = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width - 50), Conversion.ToWorld(texture.Height - 40), 150f);
+            sensor.Position = position;
+            sensor.BodyType = BodyType.Dynamic;
+            sensor.IsSensor = true;
+            sensor.OnCollision += new OnCollisionEventHandler(sensor_OnCollision);
+            sensor.CollisionCategories = ElementCategory.FLOOR;
+
+            joint = new RevoluteJoint(body, sensor, Vector2.Zero, Vector2.Zero);
+            joint.CollideConnected = false;
+            scene.World.AddJoint(joint);
+
             InitialPosition = body.Position;
             FinalPosition = body.Position - Vector2.UnitY * 3;
+        }
+
+        bool sensor_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
+        {
+            if(fixtureB.Body.UserData is Energy)
+            {
+                scene.GarbageElements.Add((Energy)fixtureB.Body.UserData);
+                foreach (Element el in scene.Elements)
+                    if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
+                    {
+                        ((Character)el).State = new DyingCharacterState(scene, (Character)el);
+                        break;
+                    }
+            }
+            else if (fixtureB.Body.UserData is Character)
+            {
+                Character c = (Character)fixtureB.Body.UserData;
+                c.State = new DyingCharacterState(scene, c);
+            }
+            return true;
         }
 
         public override void Update(GameTime gameTime)
@@ -157,6 +191,8 @@ namespace Nobots.Elements
             if (sound != null)
                 sound.Dispose();
             body.Dispose();
+            sensor.Dispose();
+            scene.World.RemoveJoint(joint);
             base.Dispose(disposing);
         }
     }
