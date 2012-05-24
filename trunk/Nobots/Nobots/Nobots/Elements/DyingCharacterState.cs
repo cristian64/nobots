@@ -22,7 +22,7 @@ namespace Nobots.Elements
             texture = scene.Game.Content.Load<Texture2D>("dyingGas");
             columns = 5;
             rows = 2;
-            framesInLastRow = 1;
+            framesInLastRow = 4;
             characterWidth = texture.Width / columns;
             characterHeight = texture.Height / rows;
             character.texture = texture;
@@ -35,7 +35,7 @@ namespace Nobots.Elements
             totalSeconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (animating)
                 changeIdleTextures(gameTime);
-            if (totalSeconds > 5 && !dead)
+            if (totalSeconds > 3 && !dead)
             {
                 //TODO: this should be a method in Scene
                 //save the last checkpoint position in a Vector2
