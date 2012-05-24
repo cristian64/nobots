@@ -167,19 +167,13 @@ namespace Nobots.Elements
         protected void torso_OnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
             if (fixtureB.Body == touchedBody)
-            {
                 touchedBody = null;
-                Console.WriteLine("untouched!");
-            }
         }
 
         protected bool torso_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (touchedBody == null && (fixtureB.Body.UserData as IPullable != null || fixtureB.Body.UserData as IPushable != null))
-            {
-                Console.WriteLine("changed touched body!");
                 touchedBody = fixtureB.Body;
-            }
 
             return true;
         }
@@ -198,7 +192,7 @@ namespace Nobots.Elements
             prevVelocity = velocity;
             velocity = body.LinearVelocity;
 
-            if (Math.Abs(prevVelocity.Y - velocity.Y) > 20 && !(this is Energy))
+            if (Math.Abs(prevVelocity.Y - velocity.Y) > 20 && !(this is Energy) && !(state is ClimbingCharacterState) && !(state is DyingCharacterState))
                 State = new DyingCharacterState(scene, this);
 
             updateLadder();
