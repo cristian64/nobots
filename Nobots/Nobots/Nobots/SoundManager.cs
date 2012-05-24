@@ -15,7 +15,7 @@ namespace Nobots
 
         public ISoundEngine ISoundEngine;
         public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint,steam,elevatorBegin,elevatorEnd, stomp
-            ,machineloop1;
+            ,machineloop1, Nav, Select, Container, SwitchOn, SwitchOff;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -64,6 +64,8 @@ namespace Nobots
             }
 
 
+            //OBJECTS
+
             Lever = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\lever.wav");
             Lever.DefaultVolume = 0.7f;
 
@@ -109,6 +111,7 @@ namespace Nobots
             elevatorEnd = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorend.wav");
 
             stomp = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\stomp.wav");
+            stomp.DefaultMinDistance = 0.5f;
 
             powerDown.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerdown1.wav"));
             powerDown.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerdown2.wav"));
@@ -122,6 +125,19 @@ namespace Nobots
 
             machineloop1 = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\machine1loop.wav");
             machineloop1.DefaultMinDistance = 0.1f;
+
+            Container = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\metalimpact1.wav");
+            Container.DefaultMinDistance = 5f;
+
+            SwitchOn = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch1.wav");
+
+            SwitchOff = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch2.wav");
+            
+
+            //INTERFACE
+
+            Nav = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\choose.wav");
+            Select = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\select.wav");
 
 
 
