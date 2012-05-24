@@ -7,12 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework.Input;
+using FarseerPhysics.Dynamics.Joints;
 
 namespace Nobots.Elements
 {
     public class MovingPlatform : Element, IActivable
     {
         public Body body;
+        Body sensor;
+        RevoluteJoint joint;
         Texture2D texture;
         Texture2D texture2;
         bool isStartPosition = true;
@@ -132,9 +135,30 @@ namespace Nobots.Elements
             width = Conversion.ToWorld(texture.Width);
             height = Conversion.ToWorld(texture.Height);
             createBody();
+
             initialPosition = body.Position;
             finalPosition = body.Position - Vector2.UnitY * 3 + Vector2.UnitX * 5;
             createLine();
+        }
+
+        bool sensor_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
+        {
+            if (fixtureB.Body.UserData is Energy)
+            {
+                scene.GarbageElements.Add((Energy)fixtureB.Body.UserData);
+                foreach (Element el in scene.Elements)
+                    if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
+                    {
+                        ((Character)el).State = new DyingCharacterState(scene, (Character)el);
+                        break;
+                    }
+            }
+            else if (fixtureB.Body.UserData is Character)
+            {
+                Character c = (Character)fixtureB.Body.UserData;
+                c.State = new DyingCharacterState(scene, c);
+            }
+            return true;
         }
 
         double delay = 0;
@@ -186,11 +210,28 @@ namespace Nobots.Elements
             body.Position = position;
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
+
+            if (sensor != null)
+                sensor.Dispose();
+            sensor = BodyFactory.CreateRectangle(scene.World, Width - 0.5f, Height - 0.4f, 150f);
+            sensor.Position = position;
+            sensor.BodyType = BodyType.Dynamic;
+            sensor.IsSensor = true;
+            sensor.OnCollision += new OnCollisionEventHandler(sensor_OnCollision);
+            sensor.CollisionCategories = ElementCategory.FLOOR;
+
+            if (scene.World.JointList.Contains(joint))
+                scene.World.RemoveJoint(joint);
+            joint = new RevoluteJoint(body, sensor, Vector2.Zero, Vector2.Zero);
+            joint.CollideConnected = false;
+            scene.World.AddJoint(joint);
         }
 
         protected override void Dispose(bool disposing)
         {
             body.Dispose();
+            sensor.Dispose();
+            scene.World.RemoveJoint(joint);
             base.Dispose(disposing);
         }
     }
