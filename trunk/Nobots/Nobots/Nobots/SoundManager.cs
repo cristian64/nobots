@@ -160,7 +160,10 @@ namespace Nobots
             //INTERFACE
 
             Nav = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\choose.wav");
+            Nav.DefaultVolume = 0.3f;
+
             Select = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\select.wav");
+            Select.DefaultVolume = 0.3f;
 
 
 
