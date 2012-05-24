@@ -12,7 +12,7 @@ namespace Nobots.Elements
         public RunningCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("running");//("girl_moving");
+            texture = scene.Game.Content.Load<Texture2D>(character is Energy ? "runningEnergy" : "running");
             characterWidth = texture.Width / 10;// 8;
             characterHeight = texture.Height / 2;///5;
             character.texture = texture;
