@@ -198,8 +198,9 @@ namespace Nobots.Elements
             prevVelocity = velocity;
             velocity = body.LinearVelocity;
 
-            if (Math.Abs(prevVelocity.Y - velocity.Y) > 25f)
+            if (Math.Abs(prevVelocity.Y - velocity.Y) > 20 && !(this is Energy))
                 State = new DyingCharacterState(scene, this);
+
             updateLadder();
             State.Update(gameTime);
         }
