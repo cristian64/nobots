@@ -1223,6 +1223,10 @@
             "Blue",
             "Orange",
             "Pink",
+            "Purple",
+            "Green",
+            "White",
+            "Black",
             "Red"});
             this.comboBoxColor.Location = new System.Drawing.Point(48, 3);
             this.comboBoxColor.Name = "comboBoxColor";
