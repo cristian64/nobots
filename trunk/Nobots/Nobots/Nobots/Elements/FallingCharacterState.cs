@@ -21,7 +21,7 @@ namespace Nobots.Elements
         {
 
            
-            texture = scene.Game.Content.Load<Texture2D>("falling");
+            texture = scene.Game.Content.Load<Texture2D>(character is Energy ? "fallingEnergy" : "falling");
             characterWidth = texture.Width / columns;
             characterHeight = texture.Height / rows;
             character.texture = texture;
