@@ -8,6 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Common;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -21,6 +22,7 @@ namespace Nobots.Elements
         int rotation = 0;
         int targetRotation = 0;
         int collisionsNumber = 0;
+        ISound aux;
 
         public override float Width
         {
@@ -102,7 +104,10 @@ namespace Nobots.Elements
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (ActivableElement != null && collisionsNumber == 0)
+            {
                 ActivableElement.Active = true;
+                
+            }
             if (collisionsNumber == 0)
                 targetRotation = 500;
             collisionsNumber++;
@@ -116,6 +121,9 @@ namespace Nobots.Elements
                 rotation += 25;
             else if (targetRotation < rotation)
                 rotation -= 25;
+
+            if(rotation == 250)
+                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Weight, body.Position.X, body.Position.Y, 0f, false, false, false);
         }
 
         public override void Draw(GameTime gameTime)

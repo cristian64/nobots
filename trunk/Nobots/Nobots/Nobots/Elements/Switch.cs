@@ -101,10 +101,11 @@ namespace Nobots.Elements
         {
             base.Activate();
 
-            if(ActivableElement.Active)
-            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.SwitchOff, body.Position.X, body.Position.Y, 0f, false, false, false);
-            else
-                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.SwitchOn, body.Position.X, body.Position.Y, 0f, false, false, false);
+            if(ActivableElement != null)
+                if(ActivableElement.Active)
+                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.SwitchOff, body.Position.X, body.Position.Y, 0f, false, false, false);
+                 else
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.SwitchOn, body.Position.X, body.Position.Y, 0f, false, false, false);
         }
     }
 }
