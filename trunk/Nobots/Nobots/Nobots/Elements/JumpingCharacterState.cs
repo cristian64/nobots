@@ -19,7 +19,7 @@ namespace Nobots.Elements
         public JumpingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
-            texture = scene.Game.Content.Load<Texture2D>("jumpingStart");
+            texture = scene.Game.Content.Load<Texture2D>(character is Energy ? "jumpingStartEnergy" : "jumpingStart");
             characterWidth = texture.Width / 5;
             characterHeight = texture.Height;
             character.texture = texture;
@@ -63,7 +63,7 @@ namespace Nobots.Elements
                     isJumping = true;
                     textureXmin = 0;
                     textureYmin = 0;
-                    texture = scene.Game.Content.Load<Texture2D>("jumpingAir");
+                    texture = scene.Game.Content.Load<Texture2D>(character is Energy ? "jumpingAirEnergy" : "jumpingAir");
                     character.texture = texture;
                 }
             }
