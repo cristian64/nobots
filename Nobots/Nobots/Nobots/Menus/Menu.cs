@@ -13,6 +13,7 @@ namespace Nobots.Menus
     {
         List<Option> options;
 
+        Texture2D logo;
         SpriteFont menuoptionfont;
         SpriteFont menufont;
         int selectedIndex;
@@ -32,6 +33,7 @@ namespace Nobots.Menus
 
             menuoptionfont = Game.Content.Load<SpriteFont>("menuoption");
             menufont = Game.Content.Load<SpriteFont>("menu");
+            logo = Game.Content.Load<Texture2D>("icons/logo");
 
             options = new List<Option>();
             Option option1 = new ResumeOption(scene);
@@ -59,9 +61,9 @@ namespace Nobots.Menus
             {
                 scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-                scene.SpriteBatch.DrawString(menufont, "MENU", new Vector2(50, 100), Color.White);
+                scene.SpriteBatch.Draw(logo, new Vector2(90, 90), null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
 
-                Vector2 position = new Vector2(70, 200);
+                Vector2 position = new Vector2(140, 200);
                 for (int i = 0; i < options.Count; i++)
                 {
                     Option option = options[i];
@@ -87,7 +89,7 @@ namespace Nobots.Menus
                 if (!Enabled)
                     scene.Transitioner.AlphaTarget = 0;
                 else
-                    scene.Transitioner.AlphaTarget = 0.8f;
+                    scene.Transitioner.AlphaTarget = 0.9f;
             }
 
             if (Enabled)

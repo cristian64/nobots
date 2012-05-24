@@ -1454,6 +1454,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="icons\logo.png">
+      <Name>logo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="sounds\effects\drop-01.wav">
       <Name>drop-01</Name>
       <Importer>WavImporter</Importer>
