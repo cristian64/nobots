@@ -12,9 +12,7 @@ namespace Nobots.Elements
 {
     public class Drop : Element
     {
-        Body body;
         Texture2D texture;
-        ISound sound;
 
         public override float Width
         {
@@ -37,7 +35,6 @@ namespace Nobots.Elements
             set
             {
                 height = value;
-               // createBody();
             }
         }
 
@@ -73,17 +70,6 @@ namespace Nobots.Elements
             height = 6;
             dropPosition = position - new Vector2(0, height / 2);
             texture = Game.Content.Load<Texture2D>("drop");
-            //createBody();
-        }
-
-        private void createBody()
-        {
-            if (body != null)
-                body.Dispose();
-            body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Height, 100f);
-            body.Position = position;
-            body.BodyType = BodyType.Static;
-            body.UserData = this;
         }
 
         Vector2 dropPosition;
@@ -91,6 +77,7 @@ namespace Nobots.Elements
         float seconds = 0;
         bool canDraw = true;
         float speed;
+        Random random = new Random();
         public override void Update(GameTime gameTime)
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -102,13 +89,12 @@ namespace Nobots.Elements
                 {
                     speed = 0.6f * seconds;
                     dropPosition += new Vector2(0, speed > 0.4f ? 0.4f : speed);
-                    Console.WriteLine("Speed: " + 0.6f * seconds);
                     delay = 0;
                 }
                 else
                 {
                     dropPosition = position - new Vector2(0, height / 2);
-                    delay = 4;
+                    delay = random.Next(4) + 1;
                 }
 
                 canDraw = delay > 0 ? false : true;
