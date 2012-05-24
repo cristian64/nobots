@@ -20,23 +20,34 @@
         <Socket Id="B2" Position="3.587823,-26.26923" Rotation="-3.14" OtherSocketId="B1" />
         <ElectricityBox Id="EB2" Position="5.985534,-19.85239" ActivableElementId="MP3" />
         <ElectricityBox Id="EB1" Position="7.709695,-19.89158" ActivableElementId="MP2" />
-        <Lever Id="Lever1" Position="31.99629,5.404244" Rotation="2.182441E-07" ActivableElementId="Ele1" />
+        <Lever Id="Lever1" Position="31.99629,5.404244" Rotation="2.174097E-07" ActivableElementId="Ele1" />
         <Checkpoint Id="" Position="28.13076,-64.20348" Rotation="0" Active="False" />
         <Checkpoint Id="" Position="30.52812,-38.90895" Rotation="0" Active="False" />
         <Checkpoint Id="" Position="15.31493,-13.62907" Rotation="0" Active="False" />
-        <Endpoint Id="" Position="4.389021,-74.26919" Rotation="0" NextLevel="level1" />
+        <Endpoint Id="" Position="4.389021,-74.26919" Rotation="0" NextLevel="level3" />
         <Ladder Id="" Position="21.31254,0.2648638" StepsNumber="21" />
         <Ladder Id="" Position="32.72983,-35.87512" StepsNumber="16" />
         <Ladder Id="" Position="31.61164,-60.93966" StepsNumber="16" />
-        <Box Id="" Position="18.13797,4.854244" Rotation="1.410649E-07" />
-        <SecurityCamera Id="" Position="7.755186,-2.312801" Rotation="1.736573" />
+        <MovingPlatform Id="" Position="11.98054,3.468793" Width="2" Height="0.5" Rotation="0" InitialPosition="11.98054,5.382126" FinalPosition="11.98054,1.402126" Active="True" />
+        <MovingPlatform Id="MP1" Position="11.60762,-10.21704" Width="2" Height="0.5" Rotation="0" InitialPosition="11.60762,-4.500344" FinalPosition="11.60762,-12.50034" Active="False" />
+        <MovingPlatform Id="MP3" Position="20.77745,-14.21538" Width="2" Height="0.5" Rotation="0" InitialPosition="20.94245,-14.05038" FinalPosition="15.94245,-19.05038" Active="False" />
+        <MovingPlatform Id="MP2" Position="13.40663,-20.46043" Width="2" Height="0.5" Rotation="0" InitialPosition="13.40663,-19.06045" FinalPosition="13.40663,-25.06045" Active="False" />
+        <MovingPlatform Id="" Position="20.89594,-28.24587" Width="2" Height="0.5" Rotation="0" InitialPosition="16.09539,-24.45592" FinalPosition="23.69539,-30.45592" Active="True" />
+        <MovingPlatform Id="" Position="27.77266,-42.54974" Width="2" Height="0.5" Rotation="0" InitialPosition="27.77266,-38.58306" FinalPosition="27.77266,-43.58306" Active="True" />
+        <MovingPlatform Id="" Position="18.9468,-50.07268" Width="2" Height="0.5" Rotation="0" InitialPosition="18.9468,-46.10606" FinalPosition="18.9468,-51.106" Active="True" />
+        <MovingPlatform Id="" Position="24.32716,-45.04332" Width="2" Height="0.5" Rotation="0" InitialPosition="24.32716,-49.01" FinalPosition="24.32716,-44.01" Active="True" />
+        <MovingPlatform Id="" Position="14.1309,-51.75938" Width="2" Height="0.5" Rotation="0" InitialPosition="14.1309,-55.72606" FinalPosition="14.1309,-50.72606" Active="True" />
+        <MovingPlatform Id="" Position="17.91916,-1.029643" Width="2" Height="0.5" Rotation="0" InitialPosition="17.91916,-4.113694" FinalPosition="17.91916,0.703694" Active="True" />
+        <MovingPlatform Id="" Position="23.69198,-55.93094" Width="2" Height="0.5" Rotation="0" InitialPosition="16.69198,-55.93094" FinalPosition="23.69198,-55.93094" Active="True" />
+        <Box Id="" Position="18.13797,4.854244" Rotation="2.884137E-07" />
+        <SecurityCamera Id="" Position="7.755186,-2.312801" Rotation="1.736585" />
         <SecurityCamera Id="" Position="15.80505,-11.00925" Rotation="1.241064" />
         <SecurityCamera Id="" Position="6.763401,-23.44617" Rotation="0.7573392" />
         <SecurityCamera Id="" Position="34.45464,-36.22215" Rotation="2.788285" />
         <SecurityCamera Id="" Position="33.47054,-61.67049" Rotation="2.82474" />
         <SecurityCamera Id="" Position="29.30511,-2.303876" Rotation="3.011795" />
         <SecurityCamera Id="" Position="24.43484,-76.6871" Rotation="2.553222" />
-        <Character Id="" Position="6.53247,4.995194" Active="True" />
+        <Character Id="" Position="6.53247,4.994248" Active="True" />
         <Chandelier Id="" Position="29.35579,-7.977718" Rotation="0" />
         <Platform Id="" Position="10.05914,11.15317" Width="1000" Height="1" Rotation="0" />
         <Platform Id="" Position="11.57508,6.369242" Width="50" Height="1" Rotation="0" />
@@ -44,21 +55,15 @@
         <Platform Id="" Position="-1.719156,-43.55835" Width="10" Height="100" Rotation="0" />
         <Platform Id="" Position="9.80149,-3.613893" Width="14" Height="1" Rotation="0" />
         <Platform Id="" Position="31.09647,-3.591799" Width="10" Height="1" Rotation="0" />
-        <MovingPlatform Id="" Position="11.98054,2.268792" InitialPosition="11.98054,5.382126" FinalPosition="11.98054,1.402126" Active="True" />
         <Platform Id="" Position="17.18564,1.369198" Width="7.06" Height="1" Rotation="0" />
         <Platform Id="" Position="24.41854,-12.30402" Width="22" Height="1" Rotation="0" />
-        <MovingPlatform Id="MP1" Position="11.60762,-10.21704" InitialPosition="11.60762,-4.500344" FinalPosition="11.60762,-12.50034" Active="False" />
         <Platform Id="" Position="19.85054,-1.37804" Width="1.7" Height="5.45" Rotation="0" />
-        <MovingPlatform Id="MP3" Position="20.77745,-14.21538" InitialPosition="20.94245,-14.05038" FinalPosition="15.94245,-19.05038" Active="False" />
-        <MovingPlatform Id="MP2" Position="13.40663,-20.46043" InitialPosition="13.40663,-19.06045" FinalPosition="13.40663,-25.06045" Active="False" />
         <Platform Id="" Position="7.064657,-17.85969" Width="8" Height="1" Rotation="0" />
         <Platform Id="" Position="7.078703,-24.71863" Width="8" Height="1" Rotation="0" />
         <Platform Id="" Position="10.55975,-21.44793" Width="1" Height="7" Rotation="0" />
-        <MovingPlatform Id="" Position="18.47623,-26.3355" InitialPosition="16.09539,-24.45592" FinalPosition="23.69539,-30.45592" Active="True" />
         <Platform Id="" Position="30.34667,-21.68498" Width="10" Height="19" Rotation="0" />
         <Platform Id="" Position="17.53707,-37.48586" Width="29" Height="1" Rotation="0" />
         <Platform Id="" Position="34.46338,-37.50425" Width="2.09" Height="1" Rotation="0" />
-        <MovingPlatform Id="" Position="27.77266,-41.83309" InitialPosition="27.77266,-38.58306" FinalPosition="27.77266,-43.58306" Active="True" />
         <Spikes Id="" Position="13.04746,-38.23038" Rotation="0" />
         <Spikes Id="" Position="14.67325,-38.22877" Rotation="0" />
         <Spikes Id="" Position="16.26067,-38.21877" Rotation="0" />
@@ -68,9 +73,6 @@
         <Spikes Id="" Position="22.65018,-38.22796" Rotation="0" />
         <Spikes Id="" Position="24.20841,-38.23796" Rotation="0" />
         <Spikes Id="" Position="25.81154,-38.25473" Rotation="0" />
-        <MovingPlatform Id="" Position="18.9468,-49.33936" InitialPosition="18.9468,-46.10606" FinalPosition="18.9468,-51.106" Active="True" />
-        <MovingPlatform Id="" Position="24.32716,-45.75997" InitialPosition="24.32716,-49.01" FinalPosition="24.32716,-44.01" Active="True" />
-        <MovingPlatform Id="" Position="14.1309,-52.47603" InitialPosition="14.1309,-55.72606" FinalPosition="14.1309,-50.72606" Active="True" />
         <Platform Id="" Position="30.24264,-54.46338" Width="11" Height="5" Rotation="0" />
         <Platform Id="" Position="16.99282,-62.97025" Width="28" Height="1" Rotation="0" />
         <Platform Id="" Position="7.857077,-68.27255" Width="10" Height="10" Rotation="0" />
@@ -78,9 +80,7 @@
         <Platform Id="" Position="14.14916,3.651116" Width="1" Height="5" Rotation="0" />
         <Platform Id="" Position="22.40262,-3.59205" Width="1" Height="1" Rotation="0" />
         <Platform Id="" Position="6.616252,-10.76144" Width="7" Height="13.3" Rotation="0" />
-        <MovingPlatform Id="" Position="17.91916,-4.113694" InitialPosition="17.91916,-4.113694" FinalPosition="17.91916,0.703694" Active="True" />
         <Platform Id="" Position="33.79612,-62.93712" Width="3" Height="1" Rotation="0" />
-        <MovingPlatform Id="" Position="22.642,-55.93094" InitialPosition="16.69198,-55.93094" FinalPosition="23.69198,-55.93094" Active="True" />
         <Platform Id="" Position="30.36638,-79.61796" Width="10" Height="15.72" Rotation="0" />
         <Platform Id="" Position="24.28615,-19.26817" Width="3" Height="13" Rotation="0" />
         <Platform Id="" Position="7.030262,-50.35127" Width="10" Height="25" Rotation="0" />
