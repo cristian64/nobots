@@ -152,6 +152,7 @@ namespace Nobots.Elements
             }
         }
 
+
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (!fixtureB.IsSensor)
@@ -183,6 +184,8 @@ namespace Nobots.Elements
             return true;
         }
 
+        Vector2 velocity = Vector2.Zero;
+        Vector2 prevVelocity = Vector2.Zero;
         public override void Update(GameTime gameTime)
         {
             if (contactsNumber == 0)
@@ -191,6 +194,12 @@ namespace Nobots.Elements
                 if (countToFall > 0.1f && !(state is FallingCharacterState) && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && !(state is ClimbingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
                     State = new FallingCharacterState(scene, this);
             }
+
+            prevVelocity = velocity;
+            velocity = body.LinearVelocity;
+
+            if (Math.Abs(prevVelocity.Y - velocity.Y) > 25f)
+                State = new DyingCharacterState(scene, this);
             updateLadder();
             State.Update(gameTime);
         }
