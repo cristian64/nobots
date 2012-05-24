@@ -69,11 +69,24 @@ namespace Nobots.Elements
             set { color = value; texture = Game.Content.Load<Texture2D>("crate_" + color.ToLower()); }
         }
 
+        static Random random = new Random();
+
         public Crate(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
             ZBuffer = 0f;
             texture = Game.Content.Load<Texture2D>("crate_blue");
+            switch (random.Next(8))
+            {
+                case 0: Color = "pink"; break;
+                case 1: Color = "green"; break;
+                case 2: Color = "orange"; break;
+                case 3: Color = "purple"; break;
+                case 4: Color = "blue"; break;
+                case 5: Color = "red"; break;
+                case 6: Color = "white"; break;
+                case 7: Color = "black"; break;
+            }
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 90f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;

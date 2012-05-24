@@ -15,7 +15,9 @@ namespace Nobots.Elements
     {
         Body body;
         Texture2D texture;
-        Random random = new Random();
+        Texture2D crateTexture;
+        SpriteFont crateFont;
+        static Random random = new Random();
 
         String crateId = "";
 
@@ -57,13 +59,6 @@ namespace Nobots.Elements
                     Crate crate = new Crate(Game, scene, body.Position - new Vector2(0, 1.7f));
                     crate.Id = crateId;
                     crate.Rotation = (float)random.NextDouble();
-                    switch (random.Next(4))
-                    {
-                        case 0: crate.Color = "pink"; break;
-                        case 1: crate.Color = "orange"; break;
-                        case 2: crate.Color = "blue"; break;
-                        case 3: crate.Color = "red"; break;
-                    }
                     scene.RespawnElements.Add(crate);
                 }
             }
@@ -120,6 +115,8 @@ namespace Nobots.Elements
             crateId = random.Next(int.MaxValue).ToString() + " (random id)";
             ZBuffer = 1f;
             texture = Game.Content.Load<Texture2D>("crategenerator");
+            crateTexture = Game.Content.Load<Texture2D>("crate_white");
+            crateFont = Game.Content.Load<SpriteFont>("cratefont");
 
             body = BodyFactory.CreateEdge(scene.World, new Vector2(-Width / 2, -Height / 2), new Vector2(Width / 2, -Height / 2));
             FixtureFactory.AttachEdge(new Vector2(-Width / 2, -Height / 2), new Vector2(-Width / 2, Height / 2), body);
@@ -139,6 +136,8 @@ namespace Nobots.Elements
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(crateTexture, scene.Camera.Scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) + new Vector2(60, -20)), null, Color.White, 0, new Vector2(crateTexture.Width / 2.0f, crateTexture.Height / 2.0f), scene.Camera.Scale * 0.2f, SpriteEffects.None, 0);
+            scene.SpriteBatch.DrawString(crateFont, CratesNumber.ToString(), scene.Camera.Scale * (Conversion.ToDisplay(body.Position - scene.Camera.Position) + new Vector2(85, -40)), Color.LightGray, 0, Vector2.Zero, scene.Camera.Scale, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)
