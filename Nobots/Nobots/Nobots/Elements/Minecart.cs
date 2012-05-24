@@ -130,12 +130,14 @@ namespace Nobots.Elements
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
             body.Mass = 1000;
+            body.UserData = this;
 
             //creating the left wheel
             leftWheel = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(textureWheel.Height/2), 200);
             leftWheel.Position = Position + new Vector2(-Width / 3, Height / 2);
             leftWheel.BodyType = BodyType.Dynamic;
             leftWheel.Friction = 1;
+            leftWheel.UserData = this;
             leftWheel.CollidesWith = Category.All & ~ElementCategory.CHARACTER & ~ElementCategory.ENERGY;
 
             leftJoint = new LineJoint(body, leftWheel, leftWheel.Position, new Vector2(0.8f, 0.6f));
@@ -150,7 +152,7 @@ namespace Nobots.Elements
             rightWheel.Position = Position + new Vector2(Width / 3, Height / 2);
             rightWheel.BodyType = BodyType.Dynamic;
             rightWheel.Friction = 1;
-            Console.WriteLine(rightWheel.Mass);
+            rightWheel.UserData = this;
             rightWheel.CollidesWith = Category.All & ~ElementCategory.CHARACTER & ~ElementCategory.ENERGY;
 
             rightJoint = new LineJoint(body, rightWheel, rightWheel.Position, new Vector2(0.8f, 0.6f));
