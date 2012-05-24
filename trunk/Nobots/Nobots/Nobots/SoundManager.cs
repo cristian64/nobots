@@ -15,13 +15,14 @@ namespace Nobots
 
         public ISoundEngine ISoundEngine;
         public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint,steam,elevatorBegin,elevatorEnd, stomp
-            ,machineloop1, Nav, Select, Container, SwitchOn, SwitchOff;
+            ,machineloop1, Nav, Select, Container, SwitchOn, SwitchOff, Death;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
         public List<ISoundSource> laserBarrierShocks = new List<ISoundSource>();
         public List<ISoundSource> powerDown = new List<ISoundSource>();
         public List<ISoundSource> powerUp = new List<ISoundSource>();
+        public List<ISoundSource> steps = new List<ISoundSource>();
         
 
         public SoundManager(Game game, Scene scene)
@@ -132,7 +133,29 @@ namespace Nobots
             SwitchOn = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch1.wav");
 
             SwitchOff = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch2.wav");
-            
+
+            //Character
+            Death = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\death.wav");
+            Death.DefaultVolume = 0.3f;
+
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-01.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-02.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-03.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-04.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-05.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-06.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-07.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-08.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-09.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-10.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-11.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-12.wav"));
+            steps.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step-13.wav"));
+
+            foreach (ISoundSource i in steps)
+            {
+                i.DefaultVolume = 0.1f;
+            }
 
             //INTERFACE
 

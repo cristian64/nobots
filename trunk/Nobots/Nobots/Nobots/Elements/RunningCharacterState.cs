@@ -9,9 +9,11 @@ namespace Nobots.Elements
 {
     public class RunningCharacterState : CharacterState
     {
+        Random rand = new Random();
         public RunningCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
+            
             texture = scene.Game.Content.Load<Texture2D>(character is Energy ? "runningEnergy" : "running");
             characterWidth = texture.Width / 10;// 8;
             characterHeight = texture.Height / 2;///5;
@@ -23,9 +25,12 @@ namespace Nobots.Elements
         public override void Update(GameTime gameTime)
         {
             changeRunningTextures(gameTime);
-            if (currentFrame == 3 || currentFrame == 10)
+            if ((currentFrame == 3 || currentFrame == 10) && !(character is Energy))
             {
                 //TODO:CHEMA: here some step should sound
+                
+                scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.steps[rand.Next(scene.SoundManager.steps.Count)], false, false, false);
+                
             }
         }
 
