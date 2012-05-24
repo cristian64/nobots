@@ -70,14 +70,15 @@ namespace Nobots.Elements
             height = 6;
             dropPosition = position - new Vector2(0, height / 2);
             texture = Game.Content.Load<Texture2D>("drop");
+            delay = (float)random.NextDouble() * 5;
         }
 
         Vector2 dropPosition;
-        float delay = 0;
+        float delay;
         float seconds = 0;
         bool canDraw = true;
         float speed;
-        Random random = new Random();
+        static Random random = new Random();
         public override void Update(GameTime gameTime)
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -94,7 +95,7 @@ namespace Nobots.Elements
                 else
                 {
                     dropPosition = position - new Vector2(0, height / 2);
-                    delay = random.Next(4) + 1;
+                    delay = random.Next(4) + 4*(float)random.NextDouble() + 1;
                 }
 
                 canDraw = delay > 0 ? false : true;
