@@ -4,6 +4,8 @@ using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using FarseerPhysics.Common;
+using FarseerPhysics.Collision.Shapes;
 
 namespace Nobots.Elements
 {
@@ -31,8 +33,15 @@ namespace Nobots.Elements
         private Body _leftUpper;
         private Body _rightLower;
         private Body _rightUpper;
+        private Body _sensor;
+
+        private Fixture _topSensorFixture;
+        private Fixture _bottomSensorFixture;
+        private Fixture _rightSensorFixture;
+        private Fixture _leftSensorFixture;
 
         private Joint _joint1, _joint2, _joint3, _joint4;
+        private RevoluteJoint _sensorJoint;
 
         public float LeftShift = 1;
         public float RightShift = 1;
@@ -107,6 +116,7 @@ namespace Nobots.Elements
                                                     new Vector2(_upperLegSize.X / 2f, 0f));
             _leftUpper.BodyType = BodyType.Dynamic;
             _leftUpper.Friction = float.MaxValue;
+            _leftUpper.CollisionCategories = ElementCategory.LEG;
 
             //Left lower leg
             _leftLower = BodyFactory.CreateRectangle(scene.World, _lowerLegSize.X, _lowerLegSize.Y, 1000,
@@ -115,6 +125,7 @@ namespace Nobots.Elements
                                                     new Vector2(_lowerLegSize.X / 2f, 0f));
             _leftLower.BodyType = BodyType.Dynamic;
             _leftLower.Friction = float.MaxValue;
+            _leftLower.CollisionCategories = ElementCategory.LEG;
 
             //Right upper leg
             _rightUpper = BodyFactory.CreateRectangle(scene.World, _upperLegSize.X, _upperLegSize.Y, 1000,
@@ -122,6 +133,7 @@ namespace Nobots.Elements
                                                      new Vector2(_upperLegSize.X / 2f, 0f));
             _rightUpper.BodyType = BodyType.Dynamic;
             _rightUpper.Friction = float.MaxValue;
+            _rightUpper.CollisionCategories = ElementCategory.LEG;
 
             //Right lower leg
             _rightLower = BodyFactory.CreateRectangle(scene.World, _lowerLegSize.X, _lowerLegSize.Y, 1000,
@@ -130,6 +142,10 @@ namespace Nobots.Elements
                                                      new Vector2(_lowerLegSize.X / 2f, 0f));
             _rightLower.BodyType = BodyType.Dynamic;
             _rightLower.Friction = float.MaxValue;
+            _rightLower.CollisionCategories = ElementCategory.LEG;
+
+            //Sensor body on the eye
+            createSensor();
 
             //Create joints
             _joint1 = JointFactory.CreateRevoluteJoint(scene.World, _circle, _leftUpper, new Vector2(_upperLegSize.X / 2f, 0f));
@@ -165,6 +181,98 @@ namespace Nobots.Elements
             leg = Game.Content.Load<Texture2D>("platform");
             eye = Game.Content.Load<Texture2D>("crane");
             chain = Game.Content.Load<Texture2D>("crane_chain");
+
+            _sensorJoint = new RevoluteJoint(_circle, _sensor, Conversion.ToWorld(new Vector2(-eye.Width / 2, -eye.Height / 2)), Vector2.Zero);
+            _sensorJoint.CollideConnected = false;
+            scene.World.AddJoint(_sensorJoint);
+        }
+
+        private void createSensor()
+        {
+            _sensor = new Body(scene.World);
+            
+            //adding the left fixture
+            Vertices vertices = new Vertices(4);
+            vertices.Add(new Vector2(0, 0.57f));
+            vertices.Add(new Vector2(0, 0.41f));
+            vertices.Add(new Vector2(0.06f, 0.41f));
+            vertices.Add(new Vector2(0.06f, 0.57f));
+            PolygonShape p = new PolygonShape(vertices, 100);
+            _leftSensorFixture = new Fixture(_sensor, p);
+
+            //adding the top fixture
+            vertices.Clear();
+            vertices.Add(new Vector2(0.41f, 0));
+            vertices.Add(new Vector2(0.57f, 0));
+            vertices.Add(new Vector2(0.57f, 0.06f));
+            vertices.Add(new Vector2(0.41f, 0.06f));
+            p = new PolygonShape(vertices, 100);
+            _topSensorFixture = new Fixture(_sensor, p);
+
+            //adding the right fixture
+            vertices.Clear();
+            vertices.Add(new Vector2(1, 0.41f));
+            vertices.Add(new Vector2(1, 0.57f));
+            vertices.Add(new Vector2(0.94f, 0.57f));
+            vertices.Add(new Vector2(0.94f, 0.41f));
+            p = new PolygonShape(vertices, 100);
+            _rightSensorFixture = new Fixture(_sensor, p);
+
+            //adding the bottom fixture
+            vertices.Clear();
+            vertices.Add(new Vector2(0.57f, 1));
+            vertices.Add(new Vector2(0.41f, 1));
+            vertices.Add(new Vector2(0.41f, 0.94f));
+            vertices.Add(new Vector2(0.57f, 0.94f));
+            p = new PolygonShape(vertices, 100);
+            _bottomSensorFixture = new Fixture(_sensor, p);
+
+            //adding the middle fixture
+            vertices.Clear();
+            vertices.Add(new Vector2(0.4f, 0.4f));
+            vertices.Add(new Vector2(0.6f, 0.4f));
+            vertices.Add(new Vector2(0.6f, 0.6f));
+            vertices.Add(new Vector2(0.4f, 0.6f));
+            p = new PolygonShape(vertices, 100);
+            Fixture middle = new Fixture(_sensor, p);
+
+            _sensor.Position = Position;
+            _sensor.BodyType = BodyType.Dynamic;
+            _sensor.FixedRotation = true;
+            _sensor.CollidesWith = Category.None | ElementCategory.FLOOR;
+            _sensor.OnCollision += new OnCollisionEventHandler(_sensor_OnCollision);
+            _sensor.OnSeparation += new OnSeparationEventHandler(_sensor_OnSeparation);
+            _sensor.UserData = this;
+        }
+
+        void _sensor_OnSeparation(Fixture fixtureA, Fixture fixtureB)
+        {
+            if (fixtureA == _topSensorFixture)
+                canGoUp = true;
+            else if (fixtureA == _bottomSensorFixture)
+                canGoDown = true;
+            else if (fixtureA == _leftSensorFixture)
+                canGoLeft = true;
+            else if (fixtureA == _rightSensorFixture)
+                canGoRight = true;
+        }
+
+        bool canGoUp = true;
+        bool canGoDown = true;
+        bool canGoLeft = true;
+        bool canGoRight = true;
+        bool _sensor_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
+        {
+            if (fixtureA == _topSensorFixture)
+                canGoUp = false;
+            else if (fixtureA == _bottomSensorFixture)
+                canGoDown = false;
+            else if (fixtureA == _leftSensorFixture)
+                canGoLeft = false;
+            else if (fixtureA == _rightSensorFixture)
+                canGoRight = false;
+
+            return true;
         }
 
         public override void Update(GameTime gameTime)
@@ -193,6 +301,7 @@ namespace Nobots.Elements
             _leftUpper.Dispose();
             _rightLower.Dispose();
             _rightUpper.Dispose();
+            _sensor.Dispose();
 
             scene.World.RemoveJoint(_leftKneeAngleJoint);
             scene.World.RemoveJoint(_leftShoulderAngleJoint);
@@ -203,6 +312,7 @@ namespace Nobots.Elements
             scene.World.RemoveJoint(_joint2);
             scene.World.RemoveJoint(_joint3);
             scene.World.RemoveJoint(_joint4);
+            scene.World.RemoveJoint(_sensorJoint);
             base.Dispose(disposing);
         }
 
@@ -291,8 +401,8 @@ namespace Nobots.Elements
 
         public void RightAction()
         {
-            if (initialPosition.X + RightShift >= Position.X)
-                _circle.LinearVelocity = Vector2.UnitX;
+            if (initialPosition.X + RightShift >= Position.X && canGoRight)
+                _circle.LinearVelocity = Vector2.UnitX*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -308,8 +418,8 @@ namespace Nobots.Elements
 
         public void LeftAction()
         {
-            if (initialPosition.X - LeftShift <= Position.X)
-                _circle.LinearVelocity = -Vector2.UnitX;
+            if (initialPosition.X - LeftShift <= Position.X && canGoLeft)
+                _circle.LinearVelocity = -Vector2.UnitX*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -325,8 +435,8 @@ namespace Nobots.Elements
 
         public void UpAction()
         {
-            if (initialPosition.Y - UpShift <= Position.Y)
-                _circle.LinearVelocity = -Vector2.UnitY;
+            if (initialPosition.Y - UpShift <= Position.Y && canGoUp)
+                _circle.LinearVelocity = -Vector2.UnitY*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -342,8 +452,8 @@ namespace Nobots.Elements
 
         public void DownAction()
         {
-            if (initialPosition.Y + DownShift >= Position.Y)
-                _circle.LinearVelocity = Vector2.UnitY;
+            if (initialPosition.Y + DownShift >= Position.Y && canGoDown)
+                _circle.LinearVelocity = Vector2.UnitY*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
