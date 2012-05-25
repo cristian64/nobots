@@ -135,10 +135,7 @@ namespace Nobots.Elements
         {
             if (Active && fixtureB.Body.UserData as Character != null)
             {
-                //((Character)fixtureB.Body.UserData).body.ApplyLinearImpulse(Vector2.UnitX * -300);
-                //TODO: change character state to "dying..."
-                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.laserBarrierShocks[rand.Next(scene.SoundManager.laserBarrierShocks.Count)], body.Position.X, body.Position.Y, 0.0f, false, false,false);
-               
+                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.laserBarrierShocks[rand.Next(scene.SoundManager.laserBarrierShocks.Count)], body.Position.X, body.Position.Y, 0.0f, false, false,false);  
             }
             return true;
         }
