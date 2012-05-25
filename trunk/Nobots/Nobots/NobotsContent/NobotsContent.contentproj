@@ -578,79 +578,79 @@
     <None Include="sounds\music\ambiencelabenergy.mp3">
       <Name>ambiencelabenergy</Name>
       <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\ambiencelabnormal.mp3">
       <Name>ambiencelabnormal</Name>
       <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\energytoreal1.wav">
       <Name>energytoreal1</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\energytoreal2.wav">
       <Name>energytoreal2</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\energytoreal3.wav">
       <Name>energytoreal3</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\energytoreal4.wav">
       <Name>energytoreal4</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\energytoreal5.wav">
       <Name>energytoreal5</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\realtoenergy1.wav">
       <Name>realtoenergy1</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\realtoenergy2.wav">
       <Name>realtoenergy2</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\realtoenergy3.wav">
       <Name>realtoenergy3</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\realtoenergy4.wav">
       <Name>realtoenergy4</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\realtoenergy5.wav">
       <Name>realtoenergy5</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\music\realtoenergy6.wav">
       <Name>realtoenergy6</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -787,12 +787,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\lever.wav">
+    <None Include="sounds\effects\lever.wav">
       <Name>lever</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dying.png">
@@ -802,18 +802,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\checkpoint.wav">
+    <None Include="sounds\effects\checkpoint.wav">
       <Name>checkpoint</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\computerbleep.wav">
+    </None>
+    <None Include="sounds\effects\computerbleep.wav">
       <Name>computerbleep</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="spikes.png">
@@ -906,20 +906,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\steam.wav">
+    <None Include="sounds\effects\steam.wav">
       <Name>steam</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\stomp.wav">
+    <None Include="sounds\effects\stomp.wav">
       <Name>stomp</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="torch.png">
@@ -929,30 +929,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\powerup1.wav">
+    <None Include="sounds\effects\powerup1.wav">
       <Name>powerup1</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\powerup2.wav">
+    </None>
+    <None Include="sounds\effects\powerup2.wav">
       <Name>powerup2</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\powerup3.wav">
+    </None>
+    <None Include="sounds\effects\powerup3.wav">
       <Name>powerup3</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\powerup4.wav">
+    </None>
+    <None Include="sounds\effects\powerup4.wav">
       <Name>powerup4</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="securitycamera_base.png">
@@ -990,12 +990,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\machine1loop.wav">
+    <None Include="sounds\effects\machine1loop.wav">
       <Name>machine1loop</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="coma.png">
@@ -1318,140 +1318,140 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\choose.wav">
+    <None Include="sounds\effects\choose.wav">
       <Name>choose</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\metalimpact1.wav">
+    </None>
+    <None Include="sounds\effects\metalimpact1.wav">
       <Name>metalimpact1</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\select.wav">
+    </None>
+    <None Include="sounds\effects\select.wav">
       <Name>select</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\switch1.wav">
+    </None>
+    <None Include="sounds\effects\switch1.wav">
       <Name>switch1</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\switch2.wav">
+    </None>
+    <None Include="sounds\effects\switch2.wav">
       <Name>switch2</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\death.wav">
+    <None Include="sounds\effects\death.wav">
       <Name>death</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\step-01.wav">
+    <None Include="sounds\effects\step-01.wav">
       <Name>step-01</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-02.wav">
+    </None>
+    <None Include="sounds\effects\step-02.wav">
       <Name>step-02</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-03.wav">
+    </None>
+    <None Include="sounds\effects\step-03.wav">
       <Name>step-03</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-04.wav">
+    </None>
+    <None Include="sounds\effects\step-04.wav">
       <Name>step-04</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-05.wav">
+    </None>
+    <None Include="sounds\effects\step-05.wav">
       <Name>step-05</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-06.wav">
+    </None>
+    <None Include="sounds\effects\step-06.wav">
       <Name>step-06</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-07.wav">
+    </None>
+    <None Include="sounds\effects\step-07.wav">
       <Name>step-07</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-08.wav">
+    </None>
+    <None Include="sounds\effects\step-08.wav">
       <Name>step-08</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-09.wav">
+    </None>
+    <None Include="sounds\effects\step-09.wav">
       <Name>step-09</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-10.wav">
+    </None>
+    <None Include="sounds\effects\step-10.wav">
       <Name>step-10</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-11.wav">
+    </None>
+    <None Include="sounds\effects\step-11.wav">
       <Name>step-11</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-12.wav">
+    </None>
+    <None Include="sounds\effects\step-12.wav">
       <Name>step-12</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\step-13.wav">
+    </None>
+    <None Include="sounds\effects\step-13.wav">
       <Name>step-13</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\weight.wav">
+    <None Include="sounds\effects\weight.wav">
       <Name>weight</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\impulseplatform.wav">
+    <None Include="sounds\effects\impulseplatform.wav">
       <Name>impulseplatform</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="icons\logo.png">
@@ -1461,30 +1461,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sounds\effects\drop-01.wav">
+    <None Include="sounds\effects\drop-01.wav">
       <Name>drop-01</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\drop-02.wav">
+    </None>
+    <None Include="sounds\effects\drop-02.wav">
       <Name>drop-02</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\drop-03.wav">
+    </None>
+    <None Include="sounds\effects\drop-03.wav">
       <Name>drop-03</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="sounds\effects\drop-04.wav">
+    </None>
+    <None Include="sounds\effects\drop-04.wav">
       <Name>drop-04</Name>
       <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="levels\level6.xml">
