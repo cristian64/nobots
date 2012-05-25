@@ -14,7 +14,7 @@ namespace Nobots
         private ISound ambienceLabNormal;
         private ISound ambienceLabEnergy;
         private IControllable previous;
-        private float fadeSpeed = 1;        
+        private float fadeSpeed = 0.1f;        
         private bool inTransitionToEnergy = false;
         private bool inTransitionToNormal = false;
         private bool transitionPlayed = false;        
