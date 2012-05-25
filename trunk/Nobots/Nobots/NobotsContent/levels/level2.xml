@@ -53,7 +53,7 @@
         <MovingPlatform Id="M2" Position="155.7856,-9.89976" Width="4" Height="0.5" Rotation="0" InitialPosition="152,-9.89976" FinalPosition="160.19,-9.89976" Active="False" />
         <MovingPlatform Id="M1" Position="161.8986,-14.81674" Width="8" Height="0.5" Rotation="0" InitialPosition="161.8986,-14.81674" FinalPosition="161.8986,-14.81674" Active="False" />
         <Box Id="" Position="18.13797,4.864244" Rotation="1.301763E-07" />
-        <SecurityCamera Id="" Position="7.755186,-2.312801" Rotation="1.736366" />
+        <SecurityCamera Id="" Position="7.755186,-2.312801" Rotation="1.736372" />
         <SecurityCamera Id="" Position="15.80505,-11.00925" Rotation="1.241064" />
         <SecurityCamera Id="" Position="6.763401,-23.44617" Rotation="2.221095" />
         <SecurityCamera Id="" Position="34.45464,-36.22215" Rotation="2.788285" />
@@ -113,7 +113,7 @@
         <Platform Id="" Position="149.0662,-7.61772" Width="0.5" Height="5" Rotation="0" />
         <Platform Id="" Position="151.3215,-9.89976" Width="5" Height="0.5" Rotation="0" />
         <Platform Id="" Position="161.7711,-9.89976" Width="8" Height="0.5" Rotation="0" />
-        <Platform Id="" Position="165.9025,-11.3177" Width="0.5" Height="15" Rotation="0" />
+        <Platform Id="" Position="165.9025,-16.26775" Width="0.5" Height="21.80002" Rotation="0" />
         <Platform Id="" Position="161.9163,-12.59888" Width="7.95" Height="0.5" Rotation="0" />
         <Platform Id="" Position="158.1768,-15.20556" Width="0.5" Height="5" Rotation="0" />
         <Elevator Id="Ele1" Position="24.5048,6.10641" InitialPosition="24.5048,-4.10641" FinalPosition="24.5048,6.10641" Active="True" />
