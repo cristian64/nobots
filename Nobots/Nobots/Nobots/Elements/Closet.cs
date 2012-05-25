@@ -87,7 +87,7 @@ namespace Nobots.Elements
             
             float velocity = body.LinearVelocity.Length();
 
-            if (velocity > 1f)
+            if (velocity > 1f && !fixtureB.CollisionCategories.HasFlag(ElementCategory.LEG))
             {
                 sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.woodenBox, body.Position.X, body.Position.Y, 0.0f, false, false, false);
                 sound.Volume = velocity * 0.5f * scene.SoundManager.woodenBox.DefaultVolume;
