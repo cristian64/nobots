@@ -79,9 +79,9 @@ namespace Nobots.Menus
             KeyboardState currentKeyboardState = Keyboard.GetState();
             GamePadState currentGamepadState = GamePad.GetState(PlayerIndex.One);
 
-            if ((currentKeyboardState.IsKeyDown(Keys.Escape) && previousKeyboardState.IsKeyUp(Keys.Escape)) ||
-                (currentGamepadState.Buttons.Start == ButtonState.Pressed && previosGamepadState.Buttons.Start == ButtonState.Released) ||
-                (currentGamepadState.Buttons.BigButton == ButtonState.Pressed && previosGamepadState.Buttons.BigButton == ButtonState.Released))
+            if ((currentKeyboardState.IsKeyUp(Keys.Escape) && previousKeyboardState.IsKeyDown(Keys.Escape)) ||
+                (currentGamepadState.Buttons.Start == ButtonState.Released && previosGamepadState.Buttons.Start == ButtonState.Pressed) ||
+                (currentGamepadState.Buttons.BigButton == ButtonState.Released && previosGamepadState.Buttons.BigButton == ButtonState.Pressed))
             {
                 Enabled = !Enabled;
                 if (!Enabled)
