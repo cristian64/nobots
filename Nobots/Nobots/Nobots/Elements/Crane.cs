@@ -86,6 +86,7 @@ namespace Nobots.Elements
                 _leftUpper.Position += difference;
                 _rightLower.Position += difference;
                 _rightUpper.Position += difference;
+                _sensor.Position += difference;
             }
         }
 
