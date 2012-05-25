@@ -189,5 +189,12 @@ namespace Nobots
         public override void Update(GameTime gameTime)
         {
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            ISoundEngine.StopAllSounds();
+            ISoundEngine.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

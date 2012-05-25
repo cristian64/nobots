@@ -18,7 +18,7 @@ namespace Nobots
         private bool inTransitionToEnergy = false;
         private bool inTransitionToNormal = false;
         private bool transitionPlayed = false;        
-        Random rand = new Random();
+        static Random rand = new Random();
 
         
 

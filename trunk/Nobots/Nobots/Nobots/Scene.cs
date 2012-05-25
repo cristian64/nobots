@@ -243,7 +243,8 @@ namespace Nobots
             SelectionManager.Selection = null;
 #endif
             World.Clear();
-            //TODO: free sounds, if needed
+            SoundManager.Dispose();
+            SoundManager = new SoundManager(Game, this);
         }
 
         int frames = 0;

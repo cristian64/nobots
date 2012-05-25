@@ -26,11 +26,8 @@ namespace Nobots.Elements
         {
             changeRunningTextures(gameTime);
             if ((currentFrame == 3 || currentFrame == 10) && !(character is Energy))
-            {
-                //TODO:CHEMA: here some step should sound
-                
+            {                
                 scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.steps[rand.Next(scene.SoundManager.steps.Count)], false, false, false);
-                
             }
         }
 
