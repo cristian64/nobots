@@ -84,7 +84,7 @@ namespace Nobots
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord3.wav"));
 
             foreach (ISoundSource i in socket) {
-                i.DefaultVolume = 0.2f;
+                i.DefaultVolume = 0.1f;
             }
 
             laserBarrierLoop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarrierloop.wav");
@@ -103,7 +103,7 @@ namespace Nobots
             }
 
             checkpoint = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\checkpoint.wav");
-            checkpoint.DefaultVolume = 0.5f;
+            checkpoint.DefaultVolume = 0.3f;
 
             steam = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\steam.wav");
             steam.DefaultMinDistance = 0.05f;
@@ -148,6 +148,7 @@ namespace Nobots
             foreach (ISoundSource i in drops)
             {
                 i.DefaultVolume = 0.2f;
+                i.DefaultMinDistance = 0.2f;
             }
 
             //Character
