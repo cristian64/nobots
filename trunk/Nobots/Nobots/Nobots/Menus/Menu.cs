@@ -92,6 +92,7 @@ namespace Nobots.Menus
                 options[selectedIndex].Refresh(false);
                 selectedIndex = 0;
                 options[selectedIndex].Refresh(true);
+                scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
             }
 
             if (Enabled)
@@ -283,9 +284,6 @@ namespace Nobots.Menus
 
         void BigButtonActionStop()
         {
-            Enabled = false;
-            scene.Transitioner.AlphaTarget = 0;
-            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
         }
 
         void StartActionStart()
@@ -298,9 +296,6 @@ namespace Nobots.Menus
 
         void StartActionStop()
         {
-            Enabled = false;
-            scene.Transitioner.AlphaTarget = 0;
-            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
         }
 
         void BackActionStart()
