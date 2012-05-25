@@ -119,7 +119,7 @@ namespace Nobots.Elements
             body.Position = position;
             body.BodyType = BodyType.Static;
             body.Rotation = previousRotation;
-            body.Friction = 0;
+            body.Friction = 0.3f;
             body.CollisionCategories = ElementCategory.FLOOR;
             body.UserData = this;
 

@@ -25,6 +25,7 @@ namespace Nobots
             graphics = new GraphicsDeviceManager(this);
             graphics.PreparingDeviceSettings += preparingDeviceSettings;
             Content.RootDirectory = "Content";
+            Window.Title = "Synergy";
 
 #if !FINAL_RELEASE
             IsMouseVisible = true;
