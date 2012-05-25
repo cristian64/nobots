@@ -20,8 +20,10 @@ namespace Nobots
         private bool transitionPlayed = false;        
         static Random rand = new Random();
 
-        
-
+        ISoundEngine iSoundEngine;
+        ISoundSource AmbienceNormal, AmbienceEnergy;
+        List<ISoundSource> toEnergy = new List<ISoundSource>();
+        List<ISoundSource> toNormal = new List<ISoundSource>();
 
 
 
@@ -30,13 +32,46 @@ namespace Nobots
         {
             this.scene = scene;
 
+            iSoundEngine = new ISoundEngine();
 
-            ambienceLabNormal = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.AmbienceNormal, true, false, false);
+            // AMBIENCE SOUNDS AND TRANSITIONS
+
+            AmbienceNormal = iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabnormal.mp3");
+            AmbienceNormal.DefaultVolume = 0.3f;
+
+            AmbienceEnergy = iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabenergy.mp3");
+            AmbienceEnergy.DefaultVolume = 0.3f;
+
+
+            toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy1.wav"));
+            toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy2.wav"));
+            toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy3.wav"));
+            toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy4.wav"));
+            toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy5.wav"));
+            toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy6.wav"));
+
+            foreach (ISoundSource i in toEnergy)
+            {
+                i.DefaultVolume = 0.1f;
+            }
+
+            toNormal.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal1.wav"));
+            toNormal.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal2.wav"));
+            toNormal.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal3.wav"));
+            toNormal.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal4.wav"));
+            toNormal.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal5.wav"));
+
+            foreach (ISoundSource i in toNormal)
+            {
+                i.DefaultVolume = 0.1f;
+            }
+
+            ambienceLabNormal = iSoundEngine.Play2D(AmbienceNormal, true, false, false);
 
            
 
 
-            ambienceLabEnergy = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.AmbienceEnergy, true, true, false);            
+            ambienceLabEnergy = iSoundEngine.Play2D(AmbienceEnergy, true, true, false);            
             ambienceLabEnergy.Volume = 0;
 
             
@@ -67,13 +102,13 @@ namespace Nobots
 
                 if (!transitionPlayed)
                 {
-                    ISound aux = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.toEnergy[rand.Next(scene.SoundManager.toEnergy.Count)], false, false,false);
+                    ISound aux = iSoundEngine.Play2D(toEnergy[rand.Next(toEnergy.Count)], false, false,false);
                   
                     transitionPlayed = true;
                 }
 
                 ambienceLabEnergy.Paused = false;
-                ambienceLabEnergy.Volume = Math.Min(scene.SoundManager.AmbienceEnergy.DefaultVolume, ambienceLabEnergy.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                ambienceLabEnergy.Volume = Math.Min(AmbienceEnergy.DefaultVolume, ambienceLabEnergy.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 ambienceLabNormal.Volume = Math.Max(0, ambienceLabNormal.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
                 if (ambienceLabNormal.Volume == 0)
@@ -91,14 +126,14 @@ namespace Nobots
             {
 
                 if (!transitionPlayed){
-                    scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.toNormal[rand.Next(scene.SoundManager.toNormal.Count)], false, false,false);
+                    iSoundEngine.Play2D(toNormal[rand.Next(toNormal.Count)], false, false,false);
                  
                     transitionPlayed = true;
                 }
 
                 ambienceLabNormal.Paused = false;
                 ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
-                ambienceLabNormal.Volume = Math.Min(scene.SoundManager.AmbienceNormal.DefaultVolume, ambienceLabNormal.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                ambienceLabNormal.Volume = Math.Min(AmbienceNormal.DefaultVolume, ambienceLabNormal.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
                 if (ambienceLabEnergy.Volume == 0)
                 {
