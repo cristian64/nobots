@@ -12,21 +12,21 @@
     </Backgrounds>
     <Elements>
         <Alarm Id="" Position="-14.57498,8.351833" Rotation="0" Active="True" />
-        <Alarm Id="" Position="36.1044,2.703788" Rotation="0" Active="False" />
-        <Lever Id="" Position="-7.193387,10.6779" Rotation="4.010606E-07" ActivableElementId="ip3" />
+        <Alarm Id="" Position="36.1044,2.703788" Rotation="0" Active="True" />
+        <Lever Id="" Position="-7.193387,10.6779" Rotation="3.952293E-07" ActivableElementId="ip3" />
         <Switch Id="" Position="-17,10" Rotation="0" ActivableElementId="ip1" />
         <Switch Id="" Position="-17,10" Rotation="0" ActivableElementId="ip2" />
         <Endpoint Id="" Position="40.67326,4.760017" Rotation="0" NextLevel="level6" />
         <Socket Id="" Position="-4.624239,-2.853047" Rotation="-1.57" OtherSocketId="s1" />
         <Socket Id="s1" Position="-25.10328,8.361113" Rotation="-1.57" OtherSocketId="s2" />
         <Socket Id="s2" Position="25.2975,2.70202" Rotation="-1.57" OtherSocketId="s1" />
-        <Ladder Id="" Position="11.51158,7.613984" StepsNumber="12" />
+        <Ladder Id="" Position="13.49163,7.613984" StepsNumber="12" />
         <Ladder Id="" Position="-5.817365,4.055219" StepsNumber="24" />
         <CameraScale Id="" Position="-44.00734,9.627897" ScaleTarget="1" />
-        <CameraScale Id="" Position="-7.623322,9.652538" ScaleTarget="0.35" />
-        <CameraScale Id="" Position="-9.861693,9.544594" ScaleTarget="1" />
-        <Container Id="" Position="17.0218,9.002468" Rotation="8.067038E-08" />
-        <Container Id="" Position="6.998598,9.002468" Rotation="1.041751E-07" />
+        <CameraScale Id="" Position="-17.02332,9.652538" ScaleTarget="0.35" />
+        <CameraScale Id="" Position="-19.07169,9.644596" ScaleTarget="1" />
+        <Container Id="" Position="18.99167,9.000574" Rotation="-8.607772E-06" />
+        <Container Id="" Position="8.969013,9.000723" Rotation="-0.0002136609" />
         <Character Id="" Position="-45.77733,10.27124" Active="True" />
         <CameraScale Id="" Position="-25.12738,10.34285" ScaleTarget="1" />
         <CameraScale Id="" Position="25.05082,4.330137" ScaleTarget="0.35" />
@@ -38,11 +38,11 @@
         <Platform Id="" Position="-46.49232,9.314056" Width="1" Height="4.540009" Rotation="0" />
         <Platform Id="" Position="-3.597124,-3.511529" Width="5.860042" Height="0.5200005" Rotation="0" />
         <Platform Id="" Position="44.55612,3.163285" Width="5.79" Height="20" Rotation="0" />
-        <Platform Id="" Position="32.03702,8.716067" Width="20.05" Height="5.94" Rotation="0" />
-        <Platform Id="" Position="8.454544,-5.413093" Width="1.601" Height="3.969977" Rotation="0" />
+        <Platform Id="" Position="34.00669,8.716067" Width="20.05" Height="5.94" Rotation="0" />
+        <Platform Id="" Position="9.054558,-5.413093" Width="2.740999" Height="3.969977" Rotation="0" />
         <Platform Id="" Position="33.32664,-1.970684" Width="17.39999" Height="8.400996" Rotation="0" />
-        <ImpulsePlatform Id="ip1" Position="3.559999,-3.5" Width="11.4" Height="2" Rotation="3.1415" StepsNumber="4" Acceleration="-20" Active="False" />
-        <ImpulsePlatform Id="ip2" Position="16.41188,-5.8" Width="14.25" Height="2" Rotation="3.1415" StepsNumber="5" Acceleration="-20" Active="False" />
+        <ImpulsePlatform Id="ip1" Position="4.730015,-3.53" Width="11.4" Height="2" Rotation="3.1415" StepsNumber="4" Acceleration="-20" Active="False" />
+        <ImpulsePlatform Id="ip2" Position="17.52191,-5.8" Width="14.25" Height="2" Rotation="3.1415" StepsNumber="5" Acceleration="-20" Active="False" />
         <ImpulsePlatform Id="ip3" Position="7.861915,11.41746" Width="28.5" Height="16" Rotation="0" StepsNumber="10" Acceleration="25" Active="False" />
     </Elements>
     <Foregrounds>
