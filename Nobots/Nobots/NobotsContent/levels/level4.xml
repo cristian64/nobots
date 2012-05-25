@@ -120,7 +120,7 @@
         <ElectricityBox Id="Ebox4" Position="1469.095,220.853" ActivableElementId="Door2" />
         <ElectricityBox Id="" Position="2941.116,1677.435" ActivableElementId="" />
         <ElectricityBox Id="Ebox3" Position="1485.236,214.5627" ActivableElementId="Door3" />
-        <Lever Id="L1" Position="1476.022,240.5907" Rotation="1.869366E-05" ActivableElementId="IP1" />
+        <Lever Id="L1" Position="1476.022,240.5907" Rotation="1.083221E-05" ActivableElementId="IP1" />
         <Switch Id="" Position="1469.244,239.8952" Rotation="0" ActivableElementId="IP2" />
         <Socket Id="Socket1" Position="1472.375,235.4818" Rotation="-1.57" OtherSocketId="Socket2" />
         <Socket Id="Socket2" Position="1480.858,226.1122" Rotation="-1.56" OtherSocketId="Socket1" />
@@ -133,10 +133,12 @@
         <MovingPlatform Id="Mplat2" Position="1419.842,204.5305" Width="2" Height="0.5" Rotation="0" InitialPosition="1419.842,204.5305" FinalPosition="1424.842,204.5305" Active="False" />
         <MovingPlatform Id="Mplat3" Position="1439.314,206.3102" Width="2" Height="0.5" Rotation="0" InitialPosition="1439.314,206.3102" FinalPosition="1444.314,203.3102" Active="False" />
         <MovingPlatform Id="Mplat4" Position="1450.731,206.5354" Width="2" Height="0.5" Rotation="0" InitialPosition="1450.731,206.5354" FinalPosition="1455.731,206.5354" Active="False" />
-        <MovingPlatform Id="" Position="1447.816,227.095" Width="2" Height="0.5" Rotation="0" InitialPosition="1447.816,222.394" FinalPosition="1447.816,240.394" Active="True" />
+        <MovingPlatform Id="" Position="1447.816,237.5601" Width="2" Height="0.5" Rotation="0" InitialPosition="1447.816,222.394" FinalPosition="1447.816,240.394" Active="True" />
+        <MovingPlatform Id="" Position="1457.864,214.8304" Width="2" Height="0.5" Rotation="0" InitialPosition="1457.864,210.8973" FinalPosition="1457.864,215.8973" Active="True" />
+        <MovingPlatform Id="" Position="1454.477,221.5284" Width="2" Height="0.5" Rotation="0" InitialPosition="1454.477,214.9952" FinalPosition="1454.477,221.9952" Active="True" />
         <CameraScale Id="" Position="1417.676,216.5768" ScaleTarget="0.37" />
-        <Container Id="" Position="1492.698,238.3767" Rotation="1.657253E-06" />
-        <Container Id="" Position="1504.353,238.3767" Rotation="1.657275E-06" />
+        <Container Id="" Position="1492.698,238.3767" Rotation="1.192736E-06" />
+        <Container Id="" Position="1504.353,238.3767" Rotation="1.425129E-06" />
         <CameraScale Id="" Position="1473.747,204.4838" ScaleTarget="0.3" />
         <SecurityCamera Id="" Position="1469.473,202.3234" Rotation="0" />
         <SecurityCamera Id="" Position="1484.744,217.6327" Rotation="0" />
@@ -150,10 +152,10 @@
         <Steam Id="steam7" Position="394.2064,46.73904" Rotation="0" />
         <Door Id="door2" Position="-72.27783,-81.378" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="door1" Position="-88.36148,-96.66116" Width="0.52" Height="3.46" Rotation="0" Active="False" />
-        <Door Id="d2" Position="67.14032,-88.90282" Width="0.52" Height="3.46" Rotation="0" Active="True" />
-        <Door Id="d2" Position="243.7579,-39.68814" Width="0.52" Height="3.46" Rotation="0" Active="True" />
+        <Door Id="d2" Position="67.14032,-95.83762" Width="0.52" Height="3.46" Rotation="0" Active="True" />
+        <Door Id="d2" Position="243.7579,-46.62136" Width="0.52" Height="3.46" Rotation="0" Active="True" />
         <Door Id="door4" Position="1421.412,216.0046" Width="0.52" Height="3.46" Rotation="0" Active="False" />
-        <Door Id="door5" Position="1435.755,221.0683" Width="0.52" Height="3.46" Rotation="0" Active="False" />
+        <Door Id="door5" Position="1435.755,221.2203" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="Door3" Position="1469.186,213.7706" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="Door2" Position="1480.287,213.525" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="Door1" Position="1464.516,224.1783" Width="0.52" Height="3.46" Rotation="0" Active="False" />
@@ -206,7 +208,6 @@
         <Platform Id="" Position="1508.144,221.8933" Width="30" Height="1" Rotation="0" />
         <Platform Id="" Position="1493.628,223.5346" Width="1" Height="4" Rotation="0" />
         <Platform Id="" Position="1465.161,229.074" Width="24" Height="12" Rotation="0" />
-        <Platform Id="" Position="1459.778,212.7928" Width="3" Height="1" Rotation="-1.03" />
         <Platform Id="" Position="1402.238,215.6138" Width="1" Height="5" Rotation="0" />
         <Battery Id="" Position="1412.869,215.8233" Rotation="0" Active="True" />
         <Platform Id="" Position="1421.559,205.7057" Width="1" Height="4" Rotation="0" />

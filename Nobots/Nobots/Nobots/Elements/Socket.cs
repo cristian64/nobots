@@ -43,7 +43,8 @@ namespace Nobots.Elements
         }
 
         Body body;
-        Texture2D texture;       
+        Texture2D texture;
+        Texture2D texture2;
         Random rand = new Random();
 
         public override Vector2 Position
@@ -84,6 +85,7 @@ namespace Nobots.Elements
         {
             ZBuffer = -6f;
             texture = Game.Content.Load<Texture2D>("wires_end");
+            texture2 = Game.Content.Load<Texture2D>("wires_end2");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 20f);
             body.Position = position;
             body.BodyType = BodyType.Static;
@@ -95,7 +97,10 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+            if (scene.InputManager.Character is Energy)
+                scene.SpriteBatch.Draw(texture2, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture2.Width / 2.0f, texture2.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+            else
+                scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
         }
 
         public void Travel(Energy energy)
