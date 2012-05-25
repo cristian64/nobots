@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Nobots.Elements;
+using System.Diagnostics;
 
 namespace Nobots.Menus
 {
@@ -36,6 +37,20 @@ namespace Nobots.Menus
         {
             scene.Menu.Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
+        }
+    }
+
+    public class EditorOption : Option
+    {
+        public EditorOption(Scene scene) :
+            base("Open Editor", scene)
+        {
+        }
+
+        public override void AActionStop()
+        {
+            Process.Start("Synergy (editor).exe");
+            scene.Game.Exit();
         }
     }
 
