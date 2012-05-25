@@ -113,6 +113,7 @@ namespace Nobots.Elements
             }
         }
 
+        float rotation;
         public override float Rotation
         {
             get
@@ -122,6 +123,8 @@ namespace Nobots.Elements
             set
             {
                 body.Rotation = value;
+                sensor.Rotation = value;
+                rotation = value;
             }
         }
 
@@ -208,6 +211,7 @@ namespace Nobots.Elements
                 body.Dispose();
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
             body.Position = position;
+            body.Rotation = rotation;
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
 
@@ -217,6 +221,7 @@ namespace Nobots.Elements
             sensor.Position = position;
             sensor.BodyType = BodyType.Dynamic;
             sensor.IsSensor = true;
+            sensor.Rotation = rotation;
             sensor.OnCollision += new OnCollisionEventHandler(sensor_OnCollision);
             sensor.CollisionCategories = ElementCategory.FLOOR;
 

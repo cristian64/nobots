@@ -21,10 +21,10 @@
         <Checkpoint Id="" Position="23.38034,-18.84025" Rotation="0" Active="False" />
         <Socket Id="s1" Position="44.7929,-26.97391" Rotation="0.48" OtherSocketId="" />
         <Socket Id="" Position="27.1941,8.568445" Rotation="-5.04" OtherSocketId="s1" />
-        <Lever Id="" Position="39.85247,8.476053" Rotation="3.325508E-06" ActivableElementId="crategenerator" />
+        <Lever Id="" Position="39.85247,8.476053" Rotation="3.340153E-06" ActivableElementId="crategenerator" />
         <ElectricityBox Id="" Position="56.54278,4.853364" ActivableElementId="elevator1" />
         <Ladder Id="" Position="25.60545,-6.517333" StepsNumber="51" />
-        <MovingPlatform Id="" Position="54.6,13.36422" Width="13.19999" Height="1.4" Rotation="1.57" InitialPosition="54.6,13.36422" FinalPosition="55,13.36422" Active="True" />
+        <MovingPlatform Id="" Position="55,13.36422" Width="13.19999" Height="1.4" Rotation="1.57" InitialPosition="54.6,13.36422" FinalPosition="55,13.36422" Active="True" />
         <CameraScale Id="" Position="-10.75958,-20.00237" ScaleTarget="1.1" />
         <CameraScale Id="" Position="25.61274,-13.91646" ScaleTarget="0.6" />
         <CameraScale Id="" Position="25.63887,-16.38398" ScaleTarget="1.1" />
@@ -32,18 +32,15 @@
         <CameraScale Id="" Position="19.58755,7.209962" ScaleTarget="0.6" />
         <Drop Id="" Position="32.78477,5.797792" Rotation="0" Width="0.08" Height="6.359999" />
         <Drop Id="" Position="38.36685,5.797792" Rotation="0" Width="0.08" Height="6.359999" />
-        <Crate Id="" Position="12.51919,8.349366" Rotation="2.289825E-07" Color="Pink" />
+        <Crate Id="" Position="12.51919,8.349366" Rotation="3.297226E-07" Color="Pink" />
         <Character Id="" Position="-13.26336,-18.69272" Active="True" />
-        <Crate Id="" Position="36.21476,-20.89061" Rotation="1.11741E-06" Color="Red" />
-        <Crate Id="" Position="19.69399,8.082576" Rotation="8.492772E-07" Color="purple" />
+        <Crate Id="" Position="36.21476,-20.89061" Rotation="7.55547E-07" Color="Red" />
+        <Crate Id="" Position="19.69399,8.082576" Rotation="8.653921E-07" Color="purple" />
         <CameraScale Id="" Position="39.61438,7.684924" ScaleTarget="0.45" />
         <CameraScale Id="" Position="37.99623,7.653193" ScaleTarget="0.6" />
-        <CameraScale Id="" Position="53.33843,5.311467" ScaleTarget="0.45" />
+        <CameraScale Id="" Position="52.58855,6.141486" ScaleTarget="0.45" />
         <CameraScale Id="" Position="55.16679,5.272827" ScaleTarget="0.8" />
-        <Crate Id="" Position="1.354463,-18.67774" Rotation="1.58045E-07" Color="green" />
-        <CameraScale Id="" Position="52.16142,3.750201" ScaleTarget="0.45" />
-        <CameraScale Id="" Position="50.81904,2.190898" ScaleTarget="0.45" />
-        <CameraScale Id="" Position="49.10709,1.000939" ScaleTarget="0.45" />
+        <Crate Id="" Position="1.354463,-18.67774" Rotation="3.303577E-07" Color="green" />
         <CrateGenerator Id="crategenerator" Position="45.99986,0.5059009" Active="False" CratesNumber="2" />
         <Platform Id="" Position="14.95649,7.261016" Width="1.030006" Height="7.999997" Rotation="0" />
         <Platform Id="" Position="-19.216,-0.3516397" Width="19.491" Height="34.63005" Rotation="0" />
@@ -69,6 +66,7 @@
         <Platform Id="" Position="-8.726966,16.26727" Width="23.60002" Height="21.60101" Rotation="0.41" />
         <Platform Id="" Position="16.95934,-3.399324" Width="16.29999" Height="5.999999" Rotation="0" />
         <Platform Id="+" Position="4.270477,-5.726973" Width="14.59999" Height="5.400999" Rotation="-2.79" />
+        <Platform Id="" Position="49.27526,-4.174966" Width="3.400001" Height="20.55104" Rotation="0" />
         <GlidePlatform Id="" Position="-3.179182,6.696158" Rotation="0.41" Active="True" Velocity="6" StepsNumber="2" />
         <GlidePlatform Id="" Position="2.225334,-3.057465" Rotation="-2.79" Active="True" Velocity="5" StepsNumber="2" />
         <GlidePlatform Id="" Position="48.32782,9.884321" Rotation="0" Active="True" Velocity="4" StepsNumber="1" />
