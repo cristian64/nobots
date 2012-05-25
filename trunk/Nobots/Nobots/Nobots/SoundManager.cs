@@ -147,8 +147,8 @@ namespace Nobots
 
             foreach (ISoundSource i in drops)
             {
-                i.DefaultVolume = 0.5f;
-                i.DefaultMinDistance = 0.2f;
+                i.DefaultVolume = 0.2f;
+                i.DefaultMinDistance = 0.1f;
             }
 
             //Character
