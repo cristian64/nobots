@@ -51,7 +51,7 @@ namespace Nobots
 
             foreach (ISoundSource i in toEnergy)
             {
-                i.DefaultVolume = 0.2f;
+                i.DefaultVolume = 0.1f;
             }
 
             toNormal.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal1.wav"));
@@ -62,7 +62,7 @@ namespace Nobots
 
             foreach (ISoundSource i in toNormal)
             {
-                i.DefaultVolume = 0.2f;
+                i.DefaultVolume = 0.1f;
             }
 
 
