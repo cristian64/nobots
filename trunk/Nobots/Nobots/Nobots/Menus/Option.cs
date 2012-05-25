@@ -136,12 +136,14 @@ namespace Nobots.Menus
         {
             selectedIndex = (selectedIndex + 1) % scene.SceneLoader.Levels.Count;
             Refresh(true);
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
 
         public override void LeftActionStop()
         {
             selectedIndex = (selectedIndex + scene.SceneLoader.Levels.Count - 1) % scene.SceneLoader.Levels.Count;
             Refresh(true);
+            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
     }
 }

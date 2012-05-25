@@ -90,6 +90,10 @@ namespace Nobots.Menus
                     scene.Transitioner.AlphaTarget = 0;
                 else
                     scene.Transitioner.AlphaTarget = 0.9f;
+
+                options[selectedIndex].Refresh(false);
+                selectedIndex = 0;
+                options[selectedIndex].Refresh(true);
             }
 
             if (Enabled)
@@ -380,7 +384,6 @@ namespace Nobots.Menus
         void RightActionStop()
         {
             options[selectedIndex].RightActionStop();
-            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
 
         void LeftActionStart()
@@ -394,7 +397,6 @@ namespace Nobots.Menus
         void LeftActionStop()
         {
             options[selectedIndex].LeftActionStop();
-            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Nav, false, false, false);
         }
 
         void UpActionStart()

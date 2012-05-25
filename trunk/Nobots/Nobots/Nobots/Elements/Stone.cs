@@ -63,11 +63,24 @@ namespace Nobots.Elements
             }
         }
 
+        static Random random = new Random();
+
         public Stone(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 0f;
-            texture = Game.Content.Load<Texture2D>("stone");
+            ZBuffer = 0.5f;
+            switch (random.Next(9))
+            {
+                case 0: texture = Game.Content.Load<Texture2D>("stone"); break;
+                case 1: texture = Game.Content.Load<Texture2D>("stone2"); break;
+                case 2: texture = Game.Content.Load<Texture2D>("stone3"); break;
+                case 3: texture = Game.Content.Load<Texture2D>("stone4"); break;
+                case 4: texture = Game.Content.Load<Texture2D>("stone5"); break;
+                case 5: texture = Game.Content.Load<Texture2D>("stone6"); break;
+                case 6: texture = Game.Content.Load<Texture2D>("stone7"); break;
+                case 7: texture = Game.Content.Load<Texture2D>("stone8"); break;
+                case 8: texture = Game.Content.Load<Texture2D>("stone9"); break;
+            }
 
             //Create an array to hold the data from the texture
             uint[] data = new uint[texture.Width * texture.Height];
@@ -104,7 +117,7 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale * 1.05f, SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)
