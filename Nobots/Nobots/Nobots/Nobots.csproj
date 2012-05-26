@@ -145,6 +145,7 @@
     <Compile Include="Elements\FallingCharacterState.cs" />
     <Compile Include="Elements\Switch.cs" />
     <Compile Include="Menus\Option.cs" />
+    <Compile Include="ParticleSystems\LightningParticleSystem.cs" />
     <Compile Include="ParticleSystems\ElectricityParticleSystem.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Elements\Activator.cs" />
