@@ -159,7 +159,8 @@ namespace Nobots.Elements
             else if (fixtureB.Body.UserData is Character)
             {
                 Character c = (Character)fixtureB.Body.UserData;
-                c.State = new DyingCharacterState(scene, c);
+                if(!(c.State is DyingCharacterState))
+                    c.State = new DyingCharacterState(scene, c);
             }
             return true;
         }
