@@ -90,14 +90,10 @@ namespace Nobots
                 float speedX = distanceX * distanceX;
                 float speedY = distanceY * distanceY;
 
-                if (distanceX < speedX * (float)gameTime.ElapsedGameTime.TotalSeconds)
-                    Position.X = centeredPosition.X;
-                else
+                if (distanceX >= 0.8f)
                     Position += Vector2.UnitX * (Vector2.Normalize(centeredPosition - Position) * speedX * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
-                if (distanceY < speedY * (float)gameTime.ElapsedGameTime.TotalSeconds)
-                    Position.Y = centeredPosition.Y;
-                else
+                if (distanceY >= 0.8f)
                     Position += Vector2.UnitY * (Vector2.Normalize(centeredPosition - Position) * speedY * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
                 //Position = centeredPosition;
