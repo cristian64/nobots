@@ -124,13 +124,13 @@ namespace Nobots.Elements
             character.State = new JumpingCharacterState(scene, character);
         }
 
-        public override void LeftAction()
+        public override void LeftActionStart()
         {
             character.State = new FallingCharacterState(scene, character);
             character.State.LeftAction();
         }
 
-        public override void RightAction()
+        public override void RightActionStart()
         {
             character.State = new FallingCharacterState(scene, character);
             character.State.RightAction();
