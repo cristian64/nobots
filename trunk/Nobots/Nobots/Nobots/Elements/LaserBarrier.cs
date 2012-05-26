@@ -14,12 +14,12 @@ namespace Nobots.Elements
 {
     public class LaserBarrier : Element, IActivable
     {
-        float height = Conversion.ToWorld(550);
+        float height = Conversion.ToWorld(400);
         float width = Conversion.ToWorld(15);
         Body body;
         ISound sound;
         Vector3D pos = new Vector3D(0f, 0f, 0f);
-        
+        Vector2 velocity;
         Random rand = new Random();
 
         private bool isActive = true;
@@ -91,6 +91,7 @@ namespace Nobots.Elements
             {
                 body.Rotation = value;
                 rotation = value;
+                velocity = new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
             }
         }
 
@@ -123,6 +124,8 @@ namespace Nobots.Elements
             body.UserData = this;
             body.CollidesWith = Category.None | ElementCategory.CHARACTER;
 
+            velocity = new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
+
             sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.laserBarrierLoop, body.Position.X, body.Position.Y, 0.0f, true, false,false);
            
         }
@@ -144,26 +147,20 @@ namespace Nobots.Elements
         {
             if (Active)
             {
-                Vector2 velocity = new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
-                //velocity = (velocity / 2) * height;
-                scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
-                scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
-                scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 2) * height);
-                scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 2) * height);
+                scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 1.5f) * height);
+                scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 1.5f) * height);
+                scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), (velocity / 1.5f) * height);
+                scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), -(velocity / 1.5f) * height);
+            }
+            else
+            {
+                scene.LaserParticleSystem.AddParticle(Position - velocity * (Height / 2), Vector2.Zero);
+                scene.LaserParticleSystem.AddParticle(Position + velocity * (Height / 2), Vector2.Zero);
             }
         }
 
         public override void Draw(GameTime gameTime)
         {
-            /*
-            scene.SpriteBatch.Draw(emitterTexture, new Rectangle((int)Conversion.ToDisplay(body.Position.X - scene.Camera.Position.X), 
-                (int)Conversion.ToDisplay(body.Position.Y - scene.Camera.Position.Y) - laserTexture.Height/4 - emitterTexture.Height/2,
-                emitterTexture.Width/2, emitterTexture.Height), null, Color.White, body.Rotation, new Vector2(emitterTexture.Width / 2, emitterTexture.Height / 2), SpriteEffects.None, 0);
-
-            scene.SpriteBatch.Draw(laserTexture, new Rectangle((int)Conversion.ToDisplay(body.Position.X - scene.Camera.Position.X),
-                (int)Conversion.ToDisplay(body.Position.Y - scene.Camera.Position.Y), laserTexture.Width / 4, laserTexture.Height/2), 
-                null, Color.White, body.Rotation, new Vector2(laserTexture.Width / 2, laserTexture.Height / 2), SpriteEffects.None, 0);
-            */
         }
 
         protected override void Dispose(bool disposing)
