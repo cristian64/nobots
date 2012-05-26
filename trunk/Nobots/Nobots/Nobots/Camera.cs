@@ -12,8 +12,6 @@ namespace Nobots
     {
         private Scene scene;
 
-        public float Margin;
-        public float Speed;
         public Element Target;
         public Vector2 Position;
         public Matrix View;
@@ -44,8 +42,6 @@ namespace Nobots
             this.scene = scene;
             Initialize();
             Position = Vector2.Zero;
-            Speed = Conversion.ToWorld(100);
-            Margin = Conversion.ToWorld(50);
         }
 
         MouseState previousMouseState;
@@ -63,8 +59,7 @@ namespace Nobots
                 else
                     scale = (float)Math.Max(ScaleTarget, scale - gameTime.ElapsedGameTime.TotalSeconds / ScaleDuration);
 
-                if (Target == null)
-                    Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
+                Position += screenPosition - ScreenToWorld(GraphicsDevice.Viewport.Width / 2, (int)(GraphicsDevice.Viewport.Height / 1.5f));
             }
 
 #if !FINAL_RELEASE
@@ -89,26 +84,23 @@ namespace Nobots
             if (Target != null)
             {
                 Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
-                /*float distance = Vector2.Distance(centeredPosition, Position);
-                float Speed = Scale * this.Speed;
-                if (distance > Margin * Scale)
-                {
-                    Speed *= 3;
-                    Position = centeredPosition + Vector2.Normalize(Position - centeredPosition) * Margin;
-                }
-                else
-                {
-                    if (distance < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
-                    {
-                        Position = centeredPosition;
-                    }
-                    else
-                    {
-                        Position += Vector2.Normalize(centeredPosition - Position) * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    }
-                }*/
 
-                    Position = centeredPosition;
+                float distanceX = (float)Math.Abs(centeredPosition.X - Position.X);
+                float distanceY = (float)Math.Abs(centeredPosition.Y - Position.Y);
+                float speedX = distanceX * distanceX;
+                float speedY = distanceY * distanceY;
+
+                if (distanceX < speedX * (float)gameTime.ElapsedGameTime.TotalSeconds)
+                    Position.X = centeredPosition.X;
+                else
+                    Position += Vector2.UnitX * (Vector2.Normalize(centeredPosition - Position) * speedX * (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+                if (distanceY < speedY * (float)gameTime.ElapsedGameTime.TotalSeconds)
+                    Position.Y = centeredPosition.Y;
+                else
+                    Position += Vector2.UnitY * (Vector2.Normalize(centeredPosition - Position) * speedY * (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+                //Position = centeredPosition;
             }
 #if !FINAL_RELEASE
             else
