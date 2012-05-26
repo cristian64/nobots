@@ -82,10 +82,32 @@ namespace Nobots.Elements
         public Battery(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 5f;
+            ZBuffer = -6f;
             this.position = position;
             texture = Game.Content.Load<Texture2D>("battery");
             createBody();
+        }
+
+        static float delay = 0.10f;
+        float counter = delay;
+        public override void Update(GameTime gameTime)
+        {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (scene.Camera.Target != null && Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 25)
+            {
+                //TODO:CHEMA: play sound if it's not
+                counter -= elapsed;
+                if (counter < 0)
+                {
+                    scene.LightningParticleSystem.AddParticle(Position - new Vector2(0.25f, -0.15f), scene.Camera.Target.Position);
+                    counter = delay;
+                }
+            }
+            else
+            {
+                //TODO:CHEMA stop sound if it's playing
+            }
         }
 
         public override void Draw(GameTime gameTime)
@@ -111,12 +133,13 @@ namespace Nobots.Elements
         {
             if (Active)
             {
+                Energy energy = (Energy)fixtureB.Body.UserData;
                 for (int j = 0; j < 50; j++)
                 {
-                    scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
-                    scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                    scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                    scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                 }
-                scene.GarbageElements.Add((Energy)fixtureB.Body.UserData);
+                scene.GarbageElements.Add(energy);
                 foreach (Element el in scene.Elements)
                     if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
                     {

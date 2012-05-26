@@ -29,6 +29,7 @@ namespace Nobots
         public FireParticleSystem FireParticleSystem;
         public ElectricityParticleSystem ElectricityParticleSystem;
         public ExplosionSmokeParticleSystem ExplosionSmokeParticleSystem;
+        public LightningParticleSystem LightningParticleSystem;
         public SpriteBatch SpriteBatch;
         public InputManager InputManager;
         public Menu Menu;
@@ -96,6 +97,7 @@ namespace Nobots
             FireParticleSystem = new FireParticleSystem(Game, this);
             ElectricityParticleSystem = new ElectricityParticleSystem(Game, this);
             ExplosionSmokeParticleSystem = new ExplosionSmokeParticleSystem(Game, this);
+            LightningParticleSystem = new LightningParticleSystem(Game, this);
 
             SceneLoader.SceneFromXml(@"Content\levels\level1.xml", this);
         }
@@ -156,6 +158,7 @@ namespace Nobots
                 FireParticleSystem.Update(gameTime);
                 ElectricityParticleSystem.Update(gameTime);
                 ExplosionSmokeParticleSystem.Update(gameTime);
+                LightningParticleSystem.Update(gameTime);
                 World.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
                 Camera.Update(gameTime);
                 InputManager.Update(gameTime);
@@ -340,6 +343,7 @@ namespace Nobots
                 i.Draw(gameTime);
             SpriteBatch.End();
 
+            LightningParticleSystem.Draw(gameTime);
             PlasmaExplosionParticleSystem.Draw(gameTime);
             SmokePlumeParticleSystem.Draw(gameTime);
             SteamParticleSystem.Draw(gameTime);
