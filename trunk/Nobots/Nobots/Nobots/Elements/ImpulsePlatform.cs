@@ -213,7 +213,7 @@ namespace Nobots.Elements
             if (alpha > 0)
             {
                 Rectangle rectangle = new Rectangle((int)Math.Round(Conversion.ToDisplay(scale * (body2.Position.X - scene.Camera.Position.X))), (int)Math.Round(Conversion.ToDisplay(scale * (body2.Position.Y - scene.Camera.Position.Y))),
-                (int)Math.Round(texture.Width * stepsNumber * scale), (int)Math.Round(Conversion.ToDisplay(Height * scale)));
+                (int)Math.Round(texture.Width * stepsNumber * scale), (int)Math.Round(Conversion.ToDisplay(Height * scale) - texture.Height * scale));
                 scene.SpriteBatch.Draw(texture3, rectangle, null, Color.White * alpha, body2.Rotation, new Vector2(texture3.Width / 2.0f, texture3.Height / 2.0f), SpriteEffects.None, 0);
             }
 
