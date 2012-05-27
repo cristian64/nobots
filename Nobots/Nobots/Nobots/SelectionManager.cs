@@ -88,6 +88,12 @@ namespace Nobots
                     selection.Dispose();
                     Selection = null;
                 }
+
+                if (Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.D) ||
+                    Keyboard.GetState().IsKeyDown(Keys.Add) || Keyboard.GetState().IsKeyDown(Keys.Subtract))
+                {
+                    form.Selection = selection;
+                }
             }
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && previous.LeftButton == ButtonState.Released && IsMouseInWindow(Mouse.GetState()))
