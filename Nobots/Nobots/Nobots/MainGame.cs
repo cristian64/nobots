@@ -19,6 +19,7 @@ namespace Nobots
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        SplashLogo splashLogo;
 
         public MainGame()
         {
@@ -53,13 +54,10 @@ namespace Nobots
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             Components.Add(new Scene(this));
 
             base.Initialize();
         }
-
-        Texture2D texturilla = null;
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -70,19 +68,10 @@ namespace Nobots
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            texturilla = Content.Load<Texture2D>("socket");
-
-            // TODO: use this.Content to load your game content here
+            splashLogo = new SplashLogo(this, spriteBatch);
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
-        }
+        bool splash = true;
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -91,13 +80,18 @@ namespace Nobots
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-
-            base.Update(gameTime);
+            if (splash)
+            {
+                if (splashLogo.Enabled)
+                    splashLogo.Update(gameTime);
+                else
+                    splash = false;
+            }
+            else
+            {
+                base.Update(gameTime);
+            }
         }
-
-        Stopwatch sw = new Stopwatch();
-
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -105,45 +99,67 @@ namespace Nobots
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.LightGray);
+            if (splash)
+            {
+                GraphicsDevice.Clear(Color.Black);
+                if (splashLogo.Enabled)
+                    splashLogo.Draw(gameTime);
+            }
+            else
+            {
+                base.Draw(gameTime);
+            }
+        }
+    }
 
-            // TODO: Add your drawing code here
+    class SplashLogo : DrawableGameComponent
+    {
+        SpriteBatch spriteBatch;
+        Texture2D logo;
 
+        public SplashLogo(Game game, SpriteBatch spriteBatch)
+            : base(game)
+        {
+            Initialize();
+            this.spriteBatch = spriteBatch;
+            logo = Game.Content.Load<Texture2D>("icons\\logo");
+        }
 
-            /*
+        float alpha = 0;
+        float alphaTarget = 0;
+        float initialDelay = 1;
+        static float duration = 5;
+        float counter = duration;
+        float transitionDuration = 1;
 
-            sw.Start();
+        public override void Update(GameTime gameTime)
+        {
+            if (alpha != alphaTarget)
+            {
+                if (alpha < alphaTarget)
+                    alpha = (float)Math.Min(1, alpha + gameTime.ElapsedGameTime.TotalSeconds / transitionDuration);
+                else
+                    alpha = (float)Math.Max(0, alpha - gameTime.ElapsedGameTime.TotalSeconds / transitionDuration);
+            }
+
+            if (counter < duration - initialDelay)
+                alphaTarget = 1;
+
+            counter -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (counter < transitionDuration)
+                alphaTarget = 0;
+
+            if (alpha == 0 && counter < 0)
+                Enabled = false;
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            Vector2 position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            for (int i = 0; i < 500000; i++)
-            {
-                spriteBatch.Draw(texturilla, Vector2.Zero, Color.White);
-            }
+            spriteBatch.Draw(logo, position, null, Color.White * alpha, 0, new Vector2(logo.Width / 2.0f, logo.Height / 2.0f), 0.4f, SpriteEffects.None, 0);
             spriteBatch.End();
-            sw.Stop();
-            Console.WriteLine(sw.Elapsed);
-
-
-
-
-
-            sw.Start();
-            for (int i = 0; i < 500000; i++)
-            {
-                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-                spriteBatch.Draw(texturilla, Vector2.Zero, Color.White);
-                spriteBatch.End();
-            }
-            sw.Stop();
-            Console.WriteLine(sw.Elapsed);
-
-
-
-
-
-
-            Exit();*/
-
-            base.Draw(gameTime);
         }
     }
 }
