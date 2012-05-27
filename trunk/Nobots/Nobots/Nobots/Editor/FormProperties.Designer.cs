@@ -48,7 +48,6 @@
             this.numericUpDownRotation = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanelTextureName = new System.Windows.Forms.FlowLayoutPanel();
             this.labelTextureName = new System.Windows.Forms.Label();
-            this.textBoxTextureName = new System.Windows.Forms.TextBox();
             this.flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
             this.labelScale = new System.Windows.Forms.Label();
             this.numericUpDownScale = new System.Windows.Forms.NumericUpDown();
@@ -129,14 +128,15 @@
             this.flowLayoutPanelText = new System.Windows.Forms.FlowLayoutPanel();
             this.labelText = new System.Windows.Forms.Label();
             this.textBoxText = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelCratesNumber = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelCratesNumber = new System.Windows.Forms.Label();
+            this.numericUpDownCratesNumber = new System.Windows.Forms.NumericUpDown();
             this.checkBoxShowDebug = new System.Windows.Forms.CheckBox();
             this.checkBoxPhysicsEngine = new System.Windows.Forms.CheckBox();
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanelCratesNumber = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelCratesNumber = new System.Windows.Forms.Label();
-            this.numericUpDownCratesNumber = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxTextureName = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -494,7 +494,7 @@
             // flowLayoutPanelTextureName
             // 
             this.flowLayoutPanelTextureName.Controls.Add(this.labelTextureName);
-            this.flowLayoutPanelTextureName.Controls.Add(this.textBoxTextureName);
+            this.flowLayoutPanelTextureName.Controls.Add(this.comboBoxTextureName);
             this.flowLayoutPanelTextureName.Location = new System.Drawing.Point(0, 169);
             this.flowLayoutPanelTextureName.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelTextureName.Name = "flowLayoutPanelTextureName";
@@ -510,14 +510,6 @@
             this.labelTextureName.TabIndex = 4;
             this.labelTextureName.Text = "TextureName";
             this.labelTextureName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxTextureName
-            // 
-            this.textBoxTextureName.Location = new System.Drawing.Point(82, 3);
-            this.textBoxTextureName.Name = "textBoxTextureName";
-            this.textBoxTextureName.Size = new System.Drawing.Size(160, 20);
-            this.textBoxTextureName.TabIndex = 1;
-            this.textBoxTextureName.TextChanged += new System.EventHandler(this.textBoxTextureName_TextChanged);
             // 
             // flowLayoutPanelScale
             // 
@@ -1654,6 +1646,44 @@
             this.textBoxText.TabIndex = 1;
             this.textBoxText.TextChanged += new System.EventHandler(this.textBoxText_TextChanged);
             // 
+            // flowLayoutPanelCratesNumber
+            // 
+            this.flowLayoutPanelCratesNumber.Controls.Add(this.labelCratesNumber);
+            this.flowLayoutPanelCratesNumber.Controls.Add(this.numericUpDownCratesNumber);
+            this.flowLayoutPanelCratesNumber.Location = new System.Drawing.Point(0, 978);
+            this.flowLayoutPanelCratesNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelCratesNumber.Name = "flowLayoutPanelCratesNumber";
+            this.flowLayoutPanelCratesNumber.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelCratesNumber.TabIndex = 35;
+            this.flowLayoutPanelCratesNumber.Visible = false;
+            // 
+            // labelCratesNumber
+            // 
+            this.labelCratesNumber.Location = new System.Drawing.Point(3, 0);
+            this.labelCratesNumber.Name = "labelCratesNumber";
+            this.labelCratesNumber.Size = new System.Drawing.Size(94, 23);
+            this.labelCratesNumber.TabIndex = 2;
+            this.labelCratesNumber.Text = "CratesNumber";
+            this.labelCratesNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownCratesNumber
+            // 
+            this.numericUpDownCratesNumber.Location = new System.Drawing.Point(103, 3);
+            this.numericUpDownCratesNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCratesNumber.Name = "numericUpDownCratesNumber";
+            this.numericUpDownCratesNumber.Size = new System.Drawing.Size(139, 20);
+            this.numericUpDownCratesNumber.TabIndex = 1;
+            this.numericUpDownCratesNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCratesNumber.ValueChanged += new System.EventHandler(this.numericUpDownCratesNumber_ValueChanged);
+            // 
             // checkBoxShowDebug
             // 
             this.checkBoxShowDebug.AutoSize = true;
@@ -1756,43 +1786,14 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
-            // flowLayoutPanelCratesNumber
+            // comboBoxTextureName
             // 
-            this.flowLayoutPanelCratesNumber.Controls.Add(this.labelCratesNumber);
-            this.flowLayoutPanelCratesNumber.Controls.Add(this.numericUpDownCratesNumber);
-            this.flowLayoutPanelCratesNumber.Location = new System.Drawing.Point(0, 978);
-            this.flowLayoutPanelCratesNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelCratesNumber.Name = "flowLayoutPanelCratesNumber";
-            this.flowLayoutPanelCratesNumber.Size = new System.Drawing.Size(247, 29);
-            this.flowLayoutPanelCratesNumber.TabIndex = 35;
-            this.flowLayoutPanelCratesNumber.Visible = false;
-            // 
-            // labelCratesNumber
-            // 
-            this.labelCratesNumber.Location = new System.Drawing.Point(3, 0);
-            this.labelCratesNumber.Name = "labelCratesNumber";
-            this.labelCratesNumber.Size = new System.Drawing.Size(94, 23);
-            this.labelCratesNumber.TabIndex = 2;
-            this.labelCratesNumber.Text = "CratesNumber";
-            this.labelCratesNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // numericUpDownCratesNumber
-            // 
-            this.numericUpDownCratesNumber.Location = new System.Drawing.Point(103, 3);
-            this.numericUpDownCratesNumber.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownCratesNumber.Name = "numericUpDownCratesNumber";
-            this.numericUpDownCratesNumber.Size = new System.Drawing.Size(139, 20);
-            this.numericUpDownCratesNumber.TabIndex = 1;
-            this.numericUpDownCratesNumber.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownCratesNumber.ValueChanged += new System.EventHandler(this.numericUpDownCratesNumber_ValueChanged);
+            this.comboBoxTextureName.FormattingEnabled = true;
+            this.comboBoxTextureName.Location = new System.Drawing.Point(84, 3);
+            this.comboBoxTextureName.Name = "comboBoxTextureName";
+            this.comboBoxTextureName.Size = new System.Drawing.Size(158, 21);
+            this.comboBoxTextureName.TabIndex = 5;
+            this.comboBoxTextureName.TextChanged += new System.EventHandler(this.comboBoxTextureName_TextChanged);
             // 
             // FormProperties
             // 
@@ -1822,7 +1823,6 @@
             this.flowLayoutPanelRotation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRotation)).EndInit();
             this.flowLayoutPanelTextureName.ResumeLayout(false);
-            this.flowLayoutPanelTextureName.PerformLayout();
             this.flowLayoutPanelScale.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScale)).EndInit();
             this.flowLayoutPanelSpeed.ResumeLayout(false);
@@ -1907,7 +1907,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownSpeedX;
         private System.Windows.Forms.Label labelSpeed;
         private System.Windows.Forms.Label labelTextureName;
-        private System.Windows.Forms.TextBox textBoxTextureName;
         private System.Windows.Forms.CheckBox checkBoxActive;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelActivableElementId;
         private System.Windows.Forms.Label labelActivableElementId;
@@ -1995,6 +1994,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCratesNumber;
         private System.Windows.Forms.Label labelCratesNumber;
         private System.Windows.Forms.NumericUpDown numericUpDownCratesNumber;
+        private System.Windows.Forms.ComboBox comboBoxTextureName;
 
 
     }

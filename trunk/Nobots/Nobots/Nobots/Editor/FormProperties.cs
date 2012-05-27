@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Nobots.Elements;
+using System.IO;
 
 namespace Nobots.Editor
 {
@@ -50,7 +51,7 @@ namespace Nobots.Editor
             if (selection is Background)
             {
                 flowLayoutPanelTextureName.Visible = true;
-                textBoxTextureName.Text = ((Background)selection).TextureName;
+                comboBoxTextureName.Text = ((Background)selection).TextureName;
                 flowLayoutPanelScale.Visible = true;
                 numericUpDownScale.Value = (decimal)((Background)selection).Scale;
                 flowLayoutPanelSpeed.Visible = true;
@@ -61,7 +62,7 @@ namespace Nobots.Editor
             if (selection is Foreground)
             {
                 flowLayoutPanelTextureName.Visible = true;
-                textBoxTextureName.Text = ((Foreground)selection).TextureName;
+                comboBoxTextureName.Text = ((Foreground)selection).TextureName;
                 flowLayoutPanelScale.Visible = true;
                 numericUpDownScale.Value = (decimal)((Foreground)selection).Scale;
                 flowLayoutPanelSpeed.Visible = true;
@@ -275,6 +276,9 @@ namespace Nobots.Editor
             flowLayoutPanel1.Visible = false;
             initialSize = listBoxAvailableElements.Size;
             listBoxAvailableElements.Size = new Size(initialSize.Width, initialSize.Height + flowLayoutPanel1.Size.Height + 30);
+
+            foreach (string i in Directory.GetFiles(@"Content\backgrounds\"))
+                comboBoxTextureName.Items.Add(Path.GetFileNameWithoutExtension(i));
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
@@ -311,14 +315,6 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 selectionEvents.Rotation = (float)numericUpDownRotation.Value;
-        }
-
-        private void textBoxTextureName_TextChanged(object sender, EventArgs e)
-        {
-            if (selectionEvents as Background != null)
-                ((Background)selectionEvents).TextureName = textBoxTextureName.Text;
-            if (selectionEvents as Foreground != null)
-                ((Foreground)selectionEvents).TextureName = textBoxTextureName.Text;
         }
 
         private void numericUpDownSpeedX_ValueChanged(object sender, EventArgs e)
@@ -551,6 +547,14 @@ namespace Nobots.Editor
         {
             if (selectionEvents != null)
                 ((CrateGenerator)selectionEvents).CratesNumber = (int)numericUpDownCratesNumber.Value;
+        }
+
+        private void comboBoxTextureName_TextChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents as Background != null)
+                ((Background)selectionEvents).TextureName = comboBoxTextureName.Text;
+            if (selectionEvents as Foreground != null)
+                ((Foreground)selectionEvents).TextureName = comboBoxTextureName.Text;
         }
     }
 }
