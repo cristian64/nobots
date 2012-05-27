@@ -36,6 +36,14 @@ namespace Nobots
         public bool Grabbing = false;
         public Vector2 GrabbingPosition = Vector2.Zero;
 
+        float goingRight = 0, goingUp = 0, goingLeft = 0, goingDown = 0;
+        Vector2 previousVelocity = Vector2.Zero;
+        float increment = 0.2f;
+        float maxshift = 7;
+        static float delay = 0.1f;
+        float counter = delay;
+        float threshold = 2;
+
         public Camera(Game game, Scene scene)
             : base(game)
         {
@@ -84,6 +92,46 @@ namespace Nobots
             if (Target != null)
             {
                 Vector2 centeredPosition = Target.Position - new Vector2(Conversion.ToWorld(GraphicsDevice.Viewport.Width / 2 / Scale), Conversion.ToWorld(GraphicsDevice.Viewport.Height / 1.5f / Scale));
+
+                // To make the camera go ahead of the character, so that the player can see better where he/she is heading to
+                if (Target is Character)
+                {
+                    counter -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (counter < 0)
+                    {
+                        Vector2 velocity = ((Character)Target).torso.LinearVelocity;
+
+                        if (previousVelocity.X > threshold && velocity.X > threshold)
+                            goingRight += increment;
+                        else
+                            goingRight -= increment;
+                        if (previousVelocity.X < -threshold && velocity.X < -threshold)
+                            goingLeft += increment;
+                        else
+                            goingLeft -= increment;
+                        if (previousVelocity.Y > threshold && velocity.Y > threshold)
+                            goingDown += increment * 2;
+                        else
+                            goingDown -= increment;
+                        if (previousVelocity.Y < -threshold && velocity.Y < -threshold)
+                            goingUp += increment;
+                        else
+                            goingUp -= increment;
+
+                        goingRight = Math.Min(maxshift, Math.Max(0, goingRight));
+                        goingLeft = Math.Min(maxshift, Math.Max(0, goingLeft));
+                        goingUp = Math.Min(maxshift, Math.Max(0, goingUp));
+                        goingDown = Math.Min(maxshift, Math.Max(0, goingDown));
+
+                        previousVelocity = velocity;
+                        counter += delay;
+                    }
+
+                    centeredPosition += Vector2.UnitX * goingRight;
+                    centeredPosition -= Vector2.UnitX * goingLeft;
+                    centeredPosition += Vector2.UnitY * goingDown;
+                    centeredPosition -= Vector2.UnitY * goingUp;
+                }
 
                 float distanceX = (float)Math.Abs(centeredPosition.X - Position.X);
                 float distanceY = (float)Math.Abs(centeredPosition.Y - Position.Y);
