@@ -48,6 +48,7 @@
             this.numericUpDownRotation = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanelTextureName = new System.Windows.Forms.FlowLayoutPanel();
             this.labelTextureName = new System.Windows.Forms.Label();
+            this.comboBoxTextureName = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
             this.labelScale = new System.Windows.Forms.Label();
             this.numericUpDownScale = new System.Windows.Forms.NumericUpDown();
@@ -136,7 +137,6 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
-            this.comboBoxTextureName = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -510,6 +510,15 @@
             this.labelTextureName.TabIndex = 4;
             this.labelTextureName.Text = "TextureName";
             this.labelTextureName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxTextureName
+            // 
+            this.comboBoxTextureName.FormattingEnabled = true;
+            this.comboBoxTextureName.Location = new System.Drawing.Point(82, 3);
+            this.comboBoxTextureName.Name = "comboBoxTextureName";
+            this.comboBoxTextureName.Size = new System.Drawing.Size(158, 21);
+            this.comboBoxTextureName.TabIndex = 5;
+            this.comboBoxTextureName.TextChanged += new System.EventHandler(this.comboBoxTextureName_TextChanged);
             // 
             // flowLayoutPanelScale
             // 
@@ -1756,6 +1765,7 @@
             "Container",
             "CrateGenerator",
             "Drop",
+            "CircularSaw",
             "---------------",
             "Sound",
             "CameraScale",
@@ -1785,15 +1795,6 @@
             this.checkBoxShowEmblems.Text = "Show emblems";
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
-            // 
-            // comboBoxTextureName
-            // 
-            this.comboBoxTextureName.FormattingEnabled = true;
-            this.comboBoxTextureName.Location = new System.Drawing.Point(84, 3);
-            this.comboBoxTextureName.Name = "comboBoxTextureName";
-            this.comboBoxTextureName.Size = new System.Drawing.Size(158, 21);
-            this.comboBoxTextureName.TabIndex = 5;
-            this.comboBoxTextureName.TextChanged += new System.EventHandler(this.comboBoxTextureName_TextChanged);
             // 
             // FormProperties
             // 

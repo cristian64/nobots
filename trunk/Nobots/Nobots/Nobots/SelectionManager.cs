@@ -156,6 +156,9 @@ namespace Nobots
                     case "Door":
                         element = new Door(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "CircularSaw":
+                        element = new CircularSaw(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "ElectricityBox":
                         element = new ElectricityBox(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

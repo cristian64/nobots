@@ -130,6 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elements\CircularSaw.cs" />
     <Compile Include="Menus\Menu.cs" />
     <Compile Include="Elements\CameraScale.cs" />
     <Compile Include="Elements\Container.cs" />
