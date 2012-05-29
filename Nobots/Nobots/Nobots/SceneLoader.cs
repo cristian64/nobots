@@ -228,6 +228,13 @@ namespace Nobots
                     if (reader.MoveToAttribute("FinalPosition"))
                         ((MovingPlatform)e).FinalPosition = PositionFromString(reader.Value);
                     break;
+                case "CircularSaw":
+                    e = new CircularSaw(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("InitialPosition"))
+                        ((CircularSaw)e).InitialPosition = PositionFromString(reader.Value);
+                    if (reader.MoveToAttribute("FinalPosition"))
+                        ((CircularSaw)e).FinalPosition = PositionFromString(reader.Value);
+                    break;
                 case "LaserBarrier":
                     e = new LaserBarrier(Game, scene, Vector2.Zero);
                     break;
@@ -452,6 +459,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((CameraScale)i) + "\n";
                 else if (i as Container != null)
                     xml += "        " + ElementToXml((Container)i) + "\n";
+                else if (i as CircularSaw != null)
+                    xml += "        " + ElementToXml((CircularSaw)i) + "\n";
                 else
                     throw new NotImplementedException(i.GetType().Name + " is still pendent to be converted into XML");
             }
@@ -665,6 +674,12 @@ namespace Nobots
         public String ElementToXml(MovingPlatform movingPlatform)
         {
             String xml = "<MovingPlatform Id=\"" + movingPlatform.Id + "\" Position=\"" + movingPlatform.Position.X + "," + movingPlatform.Position.Y + "\" Width=\"" + movingPlatform.Width + "\" Height=\"" + movingPlatform.Height + "\" Rotation=\"" + movingPlatform.Rotation + "\" InitialPosition=\"" + movingPlatform.InitialPosition.X + "," + movingPlatform.InitialPosition.Y + "\" FinalPosition=\"" + movingPlatform.FinalPosition.X + "," + movingPlatform.FinalPosition.Y + "\" Active=\"" + movingPlatform.Active + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(CircularSaw circularSaw)
+        {
+            String xml = "<CircularSaw Id=\"" + circularSaw.Id + "\" Position=\"" + circularSaw.Position.X + "," + circularSaw.Position.Y + "\" InitialPosition=\"" + circularSaw.InitialPosition.X + "," + circularSaw.InitialPosition.Y + "\" FinalPosition=\"" + circularSaw.FinalPosition.X + "," + circularSaw.FinalPosition.Y + "\" Active=\"" + circularSaw.Active + "\" />";
             return xml;
         }
 
