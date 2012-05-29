@@ -10,7 +10,7 @@ using IrrKlang;
 
 namespace Nobots.Elements
 {
-    public class Crate : Element, IPullable, IPushable
+    public class Crate : Element, IPullable, IPushable, IBreakable
     {
         Body body;
         Texture2D texture;
@@ -116,6 +116,16 @@ namespace Nobots.Elements
         public override void Draw(GameTime gameTime)
         {
             scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Microsoft.Xna.Framework.Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
+        }
+
+        public void Break()
+        {
+            for (int j = 0; j < 150; j++)
+            {
+                Vector2 increment = new Vector2((float)scene.Random.NextDouble() - 0.5f, (float)scene.Random.NextDouble() - 0.5f);
+                scene.ExplosionSmokeParticleSystem.AddParticle(Position + increment, Vector2.Zero);
+            }
+            scene.GarbageElements.Add(this);
         }
 
         protected override void Dispose(bool disposing)

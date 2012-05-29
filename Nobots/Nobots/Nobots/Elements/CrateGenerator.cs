@@ -47,12 +47,7 @@ namespace Nobots.Elements
                     {
                         if (i.Id == crateId && cratesCount-- >= CratesNumber)
                         {
-                            for (int j = 0; j < 150; j++)
-                            {
-                                Vector2 increment = new Vector2((float)random.NextDouble() - 0.5f, (float)random.NextDouble() - 0.5f);
-                                scene.ExplosionSmokeParticleSystem.AddParticle(i.Position + increment, Vector2.Zero);
-                            }
-                            scene.GarbageElements.Add(i);
+                            ((Crate)i).Break();
                         }
                     }
 

@@ -14,7 +14,6 @@ namespace Nobots.Elements
         bool isJumping = false;
         bool maxSpeedRight = false;
         bool maxSpeedLeft = false;
-        bool initialJump = true;
 
         public JumpingCharacterState(Scene scene, Character character)
             : base(scene, character)

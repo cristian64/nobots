@@ -22,7 +22,6 @@ namespace Nobots.Elements
         int rotation = 0;
         int targetRotation = 0;
         int collisionsNumber = 0;
-        ISound aux;
 
         public override float Width
         {

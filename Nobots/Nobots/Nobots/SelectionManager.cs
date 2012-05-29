@@ -287,7 +287,7 @@ namespace Nobots
                 foreach (Foreground i in scene.Foregrounds)
                     scene.SpriteBatch.Draw(foregroundEmblem, scene.Camera.Scale * Conversion.ToDisplay(i.Position - scene.Camera.Position), null, Color.White, 0, new Vector2(backgroundEmblem.Width / 2, backgroundEmblem.Height / 2), 1.0f, SpriteEffects.None, 0);
 
-                if (selection != null && !(selection is Energy && !scene.World.BodyList.Contains(((Energy)selection).body)))
+                if (selection != null)
                 {
                     String selectionName = selection.GetType().Name;
                     Vector2 selectionPosition = scene.Camera.WorldToScreen(selection.Position) - font.MeasureString(selectionName) / 2 + new Vector2(0, -20);

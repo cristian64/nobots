@@ -19,6 +19,7 @@ namespace Nobots
 {
     public class Scene : DrawableGameComponent
     {
+        public Random Random = new Random();
         public AmbienceSound AmbienceSound;
         public PlasmaExplosionParticleSystem PlasmaExplosionParticleSystem;
         public SmokePlumeParticleSystem SmokePlumeParticleSystem;
