@@ -102,6 +102,16 @@ namespace Nobots.Editor
                 numericUpDownFinalPositionY.Value = (decimal)((MovingPlatform)selection).FinalPosition.Y;
             }
 
+            if (selection is CircularSaw)
+            {
+                flowLayoutPanelInitialPosition.Visible = true;
+                flowLayoutPanelFinalPosition.Visible = true;
+                numericUpDownInitialPositionX.Value = (decimal)((CircularSaw)selection).InitialPosition.X;
+                numericUpDownInitialPositionY.Value = (decimal)((CircularSaw)selection).InitialPosition.Y;
+                numericUpDownFinalPositionX.Value = (decimal)((CircularSaw)selection).FinalPosition.X;
+                numericUpDownFinalPositionY.Value = (decimal)((CircularSaw)selection).FinalPosition.Y;
+            }
+
             if (selection is Socket)
             {
                 flowLayoutPanelOtherSocketId.Visible = true;
@@ -375,6 +385,9 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.InitialPosition = new Vector2((float)numericUpDownInitialPositionX.Value, movingPlatform.InitialPosition.Y);
+            CircularSaw circularSaw = selectionEvents as CircularSaw;
+            if (circularSaw != null)
+                circularSaw.InitialPosition = new Vector2((float)numericUpDownInitialPositionX.Value, circularSaw.InitialPosition.Y);
         }
 
         private void numericUpDownInitialPositionY_ValueChanged(object sender, EventArgs e)
@@ -385,6 +398,9 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.InitialPosition = new Vector2(movingPlatform.InitialPosition.X, (float)numericUpDownInitialPositionY.Value);
+            CircularSaw circularSaw = selectionEvents as CircularSaw;
+            if (circularSaw != null)
+                circularSaw.InitialPosition = new Vector2(circularSaw.InitialPosition.X, (float)numericUpDownInitialPositionY.Value);
         }
 
         private void numericUpDownFinalPositionX_ValueChanged(object sender, EventArgs e)
@@ -395,6 +411,9 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.FinalPosition = new Vector2((float)numericUpDownFinalPositionX.Value, movingPlatform.FinalPosition.Y);
+            CircularSaw circularSaw = selectionEvents as CircularSaw;
+            if (circularSaw != null)
+                circularSaw.FinalPosition = new Vector2((float)numericUpDownFinalPositionX.Value, circularSaw.FinalPosition.Y);
         }
 
         private void numericUpDownFinalPositionY_ValueChanged(object sender, EventArgs e)
@@ -405,6 +424,9 @@ namespace Nobots.Editor
             MovingPlatform movingPlatform = selectionEvents as MovingPlatform;
             if (movingPlatform != null)
                 movingPlatform.FinalPosition = new Vector2(movingPlatform.FinalPosition.X, (float)numericUpDownFinalPositionY.Value);
+            CircularSaw circularSaw = selectionEvents as CircularSaw;
+            if (circularSaw != null)
+                circularSaw.FinalPosition = new Vector2(circularSaw.FinalPosition.X, (float)numericUpDownFinalPositionY.Value);
         }
 
         private void checkBoxShowDebug_CheckedChanged(object sender, EventArgs e)
