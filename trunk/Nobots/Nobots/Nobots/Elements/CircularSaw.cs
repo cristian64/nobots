@@ -14,14 +14,12 @@ namespace Nobots.Elements
     public class CircularSaw : Element, IActivable
     {
         public Body body;
-        Body sensor;
-        RevoluteJoint joint;
         Texture2D texture;
         Texture2D texture2;
         bool isStartPosition = true;
 
         float angularVelocityTarget = 0;
-        const float maxAngularVelocity = 2;
+        const float maxAngularVelocity = 3;
         const float startSpeed = 10;
         const float pulloverSpeed = 2;
 
@@ -139,11 +137,11 @@ namespace Nobots.Elements
             createBody();
 
             initialPosition = body.Position;
-            finalPosition = body.Position - Vector2.UnitY * 3 + Vector2.UnitX * 5;
+            finalPosition = body.Position - Vector2.UnitY * 0 + Vector2.UnitX * 5;
             createLine();
         }
 
-        bool sensor_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
+        bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
             if (fixtureB.Body.UserData is Energy)
             {
@@ -160,6 +158,10 @@ namespace Nobots.Elements
                 Character c = (Character)fixtureB.Body.UserData;
                 if(!(c.State is DyingCharacterState))
                     c.State = new DyingCharacterState(scene, c);
+            }
+            else if (fixtureB.Body.UserData is IBreakable)
+            {
+                ((IBreakable)fixtureB.Body.UserData).Break();
             }
             return true;
         }
@@ -219,34 +221,16 @@ namespace Nobots.Elements
         {
             if(body != null)
                 body.Dispose();
-            //body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
             body = BodyFactory.CreateCircle(scene.World, Height / 2.0f, 1.0f);
             body.Position = position;
+            body.IsSensor = true;
             body.BodyType = BodyType.Kinematic;
-            body.CollisionCategories = ElementCategory.FLOOR;
-
-            if (sensor != null)
-                sensor.Dispose();
-            //sensor = BodyFactory.CreateRectangle(scene.World, Width - 0.5f, Height - 0.4f, 150f);
-            sensor = BodyFactory.CreateCircle(scene.World, Height / 2.0f - 0.4f, 1.0f);
-            sensor.Position = position;
-            sensor.BodyType = BodyType.Dynamic;
-            sensor.IsSensor = true;
-            sensor.OnCollision += new OnCollisionEventHandler(sensor_OnCollision);
-            sensor.CollisionCategories = ElementCategory.FLOOR;
-
-            if (scene.World.JointList.Contains(joint))
-                scene.World.RemoveJoint(joint);
-            joint = new RevoluteJoint(body, sensor, Vector2.Zero, Vector2.Zero);
-            joint.CollideConnected = false;
-            scene.World.AddJoint(joint);
+            body.OnCollision += body_OnCollision;
         }
 
         protected override void Dispose(bool disposing)
         {
             body.Dispose();
-            sensor.Dispose();
-            scene.World.RemoveJoint(joint);
             base.Dispose(disposing);
         }
     }

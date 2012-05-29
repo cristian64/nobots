@@ -47,5 +47,18 @@ namespace Nobots.Elements
             this.scene = scene;
             Initialize();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (scene.Camera.Target == this)
+                scene.Camera.Target = null;
+            if (scene.InputManager.Character == this)
+                scene.InputManager.Character = null;
+#if !FINAL_RELEASE
+            if (scene.SelectionManager.Selection == this)
+                scene.SelectionManager.Selection = null;
+#endif
+            base.Dispose(disposing);
+        }
     }
 }
