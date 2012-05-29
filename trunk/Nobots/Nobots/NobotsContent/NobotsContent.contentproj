@@ -124,13 +124,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="girl_moving.png">
-      <Name>girl_moving</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="backgrounds\tree.png">
       <Name>tree</Name>
       <Importer>TextureImporter</Importer>
@@ -152,29 +145,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="socket.png">
-      <Name>socket</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="stone.png">
       <Name>stone</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="button.png">
-      <Name>button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="forklift.png">
-      <Name>forklift</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
