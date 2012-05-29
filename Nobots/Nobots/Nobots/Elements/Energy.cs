@@ -26,7 +26,7 @@ namespace Nobots.Elements
             body.CollidesWith = Category.All & ~ElementCategory.CHARACTER;
             torso.CollidesWith = Category.All & ~ElementCategory.CHARACTER;
 
-            effect = Game.Content.Load<Effect>("energy");
+            effect = Game.Content.Load<Effect>("effects\\energy");
         }
 
         public override void UpActionStart()

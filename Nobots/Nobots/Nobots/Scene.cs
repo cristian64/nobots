@@ -112,9 +112,9 @@ namespace Nobots
             PhysicsDebug.AppendFlags(DebugViewFlags.PolygonPoints);
             PhysicsDebug.AppendFlags(DebugViewFlags.CenterOfMass);
 
-            bloomExtractEffect = Game.Content.Load<Effect>("BloomExtract");
-            bloomCombineEffect = Game.Content.Load<Effect>("BloomCombine");
-            gaussianBlurEffect = Game.Content.Load<Effect>("GaussianBlur");
+            bloomExtractEffect = Game.Content.Load<Effect>("effects\\BloomExtract");
+            bloomCombineEffect = Game.Content.Load<Effect>("effects\\BloomCombine");
+            gaussianBlurEffect = Game.Content.Load<Effect>("effects\\GaussianBlur");
 
             GraphicsDevice.SamplerStates[1] = SamplerState.LinearClamp;
 
@@ -124,7 +124,7 @@ namespace Nobots
 
             blank = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             blank.SetData(new[] { Color.White });
-            debugfont = Game.Content.Load<SpriteFont>("debugfont");
+            debugfont = Game.Content.Load<SpriteFont>("fonts\\debugfont");
 
             base.LoadContent();
         }

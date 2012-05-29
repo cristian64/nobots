@@ -31,8 +31,8 @@ namespace Nobots.Menus
             Initialize();
             Enabled = false;
 
-            menuoptionfont = Game.Content.Load<SpriteFont>("menuoption");
-            menufont = Game.Content.Load<SpriteFont>("menu");
+            menuoptionfont = Game.Content.Load<SpriteFont>("fonts\\menuoption");
+            menufont = Game.Content.Load<SpriteFont>("fonts\\menu");
             logo = Game.Content.Load<Texture2D>("icons/logo");
 
             options = new List<Option>();

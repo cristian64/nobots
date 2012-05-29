@@ -86,7 +86,7 @@ namespace Nobots.Elements
             : base(game, scene)
         {
             ZBuffer = 50;
-            hintfont = Game.Content.Load<SpriteFont>("hintfont");
+            hintfont = Game.Content.Load<SpriteFont>("fonts\\hintfont");
             Text = "Write your comments here";
             this.position = position;
             //blank = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
