@@ -14,8 +14,8 @@ namespace Nobots
         private Scene scene;
 
         public ISoundEngine ISoundEngine;
-        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop,checkpoint,steam,elevatorBegin,elevatorEnd, stomp
-            ,machineloop1, Nav, Select, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform;
+        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop, checkpoint, steam, elevatorBegin, elevatorEnd, stomp
+            , machineloop1, Nav, Select, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -139,6 +139,9 @@ namespace Nobots
 
             ImpulsePlatform = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\impulseplatform.wav");
             ImpulsePlatform.DefaultMinDistance = 0.5f;
+
+            CircularSaw = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\circularsaw.ogg");
+            CircularSawStop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\circularsaw_stop.ogg");
 
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-01.wav"));
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-02.wav"));

@@ -8,6 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework.Input;
 using FarseerPhysics.Dynamics.Joints;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -17,6 +18,7 @@ namespace Nobots.Elements
         Texture2D texture;
         Texture2D texture2;
         bool isStartPosition = true;
+        ISound sound;
 
         float angularVelocityTarget = 0;
         const float maxAngularVelocity = 3;
@@ -33,6 +35,8 @@ namespace Nobots.Elements
 
             set
             {
+                if (isActive == true && value == false)
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.CircularSawStop, body.Position.X, body.Position.Y, 0.0f, false, false, false);
                 isActive = value;
                 if (!isActive)
                     body.LinearVelocity = Vector2.Zero;
@@ -139,6 +143,10 @@ namespace Nobots.Elements
             initialPosition = body.Position;
             finalPosition = body.Position - Vector2.UnitY * 0 + Vector2.UnitX * 5;
             createLine();
+
+            sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.CircularSaw, body.Position.X, body.Position.Y, 0.0f, true, true, false);
+            sound.Volume = 0;
+            sound.Paused = false;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
@@ -195,6 +203,8 @@ namespace Nobots.Elements
                         isStartPosition = !isStartPosition;
                     }
                 }
+
+                sound.Position = new Vector3D(body.Position.X, body.Position.Y, 0.0f);
             }
 
             if (angularVelocityTarget != body.AngularVelocity)
@@ -204,6 +214,7 @@ namespace Nobots.Elements
                 else
                     body.AngularVelocity = Math.Min(maxAngularVelocity, body.AngularVelocity + startSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
+                sound.Volume = (body.AngularVelocity / maxAngularVelocity) * (body.AngularVelocity / maxAngularVelocity);
                 //TODO:CHEMA adjust volume of the sound according to (body.AngularVelocity / maxAngularVelocity). it will give you something between 0 and 1
                 // you can play the sound in the constructor with volume 0 (and looped), and then only modify the volume according to the speed of the disk
             }
