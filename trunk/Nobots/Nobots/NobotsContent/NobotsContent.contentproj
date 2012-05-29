@@ -276,6 +276,10 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <None Include="sounds\effects\circularsaw.ogg">
+      <Name>circularsaw</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="levels\level1.xml">
       <Name>level1</Name>
       <Importer>XmlImporter</Importer>
@@ -467,6 +471,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="sounds\effects\circularsaw_stop.ogg">
+      <Name>circularsaw_stop</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="sounds\effects\electricbarrierloop.wav">
       <Name>electricbarrierloop</Name>
       <Importer>WavImporter</Importer>
