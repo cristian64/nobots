@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Windows.Forms;
 
 namespace Nobots.Elements
 {
@@ -56,6 +57,12 @@ namespace Nobots.Elements
                     }
                 }*/
 
+                dead = true;
+
+#if !FINAL_RELEASE
+                MessageBox.Show("This is the Editor mode. After dying the level is no longer restarted not to lose pendent changes on the level.", "Warning!", MessageBoxButtons.OK);
+#else
+
                 Vector2? checkpointPosition = null;
                 foreach (Element i in scene.Elements)
                 {
@@ -70,8 +77,7 @@ namespace Nobots.Elements
                     scene.CleanAndLoad(scene.SceneLoader.LastLevel, checkpointPosition, character.Active);
                 else
                     scene.CleanAndLoad(scene.SceneLoader.LastLevel);
-
-                dead = true;
+#endif
             }
         }
         float seconds = 0;

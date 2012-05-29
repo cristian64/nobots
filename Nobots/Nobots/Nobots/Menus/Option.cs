@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Nobots.Elements;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Nobots.Menus
 {
@@ -76,6 +77,12 @@ namespace Nobots.Menus
 
         public override void AActionStop()
         {
+            scene.Menu.Enabled = false;
+
+#if !FINAL_RELEASE
+            if (MessageBox.Show("This is the Editor mode. Last checkpoint may be not available if the current level was loaded from a external source by Ctrl+O. Are you sure you want to continue and lose every not saved change?", "Warning!", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+#endif
             Vector2? checkpointPosition = null;
             bool? characterActive = null;
             foreach (Element i in scene.Elements)
@@ -94,7 +101,6 @@ namespace Nobots.Menus
                 scene.CleanAndLoad(scene.SceneLoader.LastLevel, checkpointPosition, characterActive);
             else
                 scene.CleanAndLoad(scene.SceneLoader.LastLevel);
-            scene.Menu.Enabled = false;
         }
     }
 
@@ -107,8 +113,12 @@ namespace Nobots.Menus
 
         public override void AActionStop()
         {
-            scene.CleanAndLoad(scene.SceneLoader.LastLevel);
             scene.Menu.Enabled = false;
+#if !FINAL_RELEASE
+            if (MessageBox.Show("This is the Editor mode. Restarting the level may not work if the current level was loaded from a external source by Ctrl+O. Are you sure you want to continue and lose every not saved change?", "Warning!", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+#endif
+            scene.CleanAndLoad(scene.SceneLoader.LastLevel);
         }
     }
 
