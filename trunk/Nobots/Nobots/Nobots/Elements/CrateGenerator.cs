@@ -111,7 +111,7 @@ namespace Nobots.Elements
             ZBuffer = 1f;
             texture = Game.Content.Load<Texture2D>("crategenerator");
             crateTexture = Game.Content.Load<Texture2D>("crate_white");
-            crateFont = Game.Content.Load<SpriteFont>("cratefont");
+            crateFont = Game.Content.Load<SpriteFont>("fonts\\cratefont");
 
             body = BodyFactory.CreateEdge(scene.World, new Vector2(-Width / 2, -Height / 2), new Vector2(Width / 2, -Height / 2));
             FixtureFactory.AttachEdge(new Vector2(-Width / 2, -Height / 2), new Vector2(-Width / 2, Height / 2), body);

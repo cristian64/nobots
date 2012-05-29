@@ -39,7 +39,7 @@ namespace Nobots
         {
             this.scene = scene;
 
-            font = Game.Content.Load<SpriteFont>("debugfont");
+            font = Game.Content.Load<SpriteFont>("fonts\\debugfont");
             elementEmblem = Game.Content.Load<Texture2D>("icons\\elementemblem");
             selectionEmblem = Game.Content.Load<Texture2D>("icons\\selectionemblem");
             backgroundEmblem = Game.Content.Load<Texture2D>("icons\\backgroundemblem");
