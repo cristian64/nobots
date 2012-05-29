@@ -215,8 +215,6 @@ namespace Nobots.Elements
                     body.AngularVelocity = Math.Min(maxAngularVelocity, body.AngularVelocity + startSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
                 sound.Volume = (body.AngularVelocity / maxAngularVelocity) * (body.AngularVelocity / maxAngularVelocity);
-                //TODO:CHEMA adjust volume of the sound according to (body.AngularVelocity / maxAngularVelocity). it will give you something between 0 and 1
-                // you can play the sound in the constructor with volume 0 (and looped), and then only modify the volume according to the speed of the disk
             }
         }
 
