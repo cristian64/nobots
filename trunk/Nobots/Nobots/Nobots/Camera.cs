@@ -39,7 +39,7 @@ namespace Nobots
         float goingRight = 0, goingUp = 0, goingLeft = 0, goingDown = 0;
         Vector2 previousVelocity = Vector2.Zero;
         float increment = 0.2f;
-        float maxshift = 7;
+        float maxshift = 6;
         static float delay = 0.1f;
         float counter = delay;
         float threshold = 2;
