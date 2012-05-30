@@ -135,8 +135,8 @@ namespace Nobots
 
                 float distanceX = (float)Math.Abs(centeredPosition.X - Position.X);
                 float distanceY = (float)Math.Abs(centeredPosition.Y - Position.Y);
-                float speedX = distanceX * distanceX;
-                float speedY = distanceY * distanceY;
+                float speedX = Math.Min(81, distanceX * distanceX);
+                float speedY = Math.Min(81, distanceY * distanceY);
 
                 if (distanceX >= 0.8f)
                     Position += Vector2.UnitX * (Vector2.Normalize(centeredPosition - Position) * speedX * (float)gameTime.ElapsedGameTime.TotalSeconds);
