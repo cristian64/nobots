@@ -104,19 +104,19 @@ namespace Nobots
                         if (previousVelocity.X > threshold && velocity.X > threshold)
                             goingRight += increment;
                         else
-                            goingRight -= increment;
+                            goingRight -= increment / 2;
                         if (previousVelocity.X < -threshold && velocity.X < -threshold)
                             goingLeft += increment;
                         else
-                            goingLeft -= increment;
+                            goingLeft -= increment / 2;
                         if (previousVelocity.Y > threshold && velocity.Y > threshold)
                             goingDown += increment * 2;
                         else
-                            goingDown -= increment;
+                            goingDown -= increment / 2;
                         if (previousVelocity.Y < -threshold && velocity.Y < -threshold)
                             goingUp += increment;
                         else
-                            goingUp -= increment;
+                            goingUp -= increment / 2;
 
                         goingRight = Math.Min(maxshift, Math.Max(0, goingRight));
                         goingLeft = Math.Min(maxshift, Math.Max(0, goingLeft));
