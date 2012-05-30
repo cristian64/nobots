@@ -106,6 +106,10 @@ namespace Nobots
                 e.Scale = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             if (reader.MoveToAttribute("Speed"))
                 e.Speed = PositionFromString(reader.Value);
+            if (reader.MoveToAttribute("Width"))
+                e.Width = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute("Height"))
+                e.Height = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             return e;
         }
 
@@ -478,13 +482,13 @@ namespace Nobots
 
         public String ElementToXml(Background background)
         {
-            String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\" Rotation=\"" + background.Rotation + "\" Scale=\"" + background.Scale + "\" Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" />";
+            String xml = "<Background Id=\"" + background.Id + "\" Position=\"" + background.Position.X + "," + background.Position.Y + "\" Rotation=\"" + background.Rotation + "\" Scale=\"" + background.Scale + "\" Speed=\"" + background.Speed.X + "," + background.Speed.Y + "\" TextureName=\"" + background.TextureName + "\" Width=\"" + background.Width + "\" Height=\"" + background.Height + "\" />";
             return xml;
         }
 
         public String ElementToXml(Foreground foreground)
         {
-            String xml = "<Foreground Id=\"" + foreground.Id + "\" Position=\"" + foreground.Position.X + "," + foreground.Position.Y + "\" Rotation=\"" + foreground.Rotation + "\" Scale=\"" + foreground.Scale + "\" Speed=\"" + foreground.Speed.X + "," + foreground.Speed.Y + "\" TextureName=\"" + foreground.TextureName + "\" />";
+            String xml = "<Foreground Id=\"" + foreground.Id + "\" Position=\"" + foreground.Position.X + "," + foreground.Position.Y + "\" Rotation=\"" + foreground.Rotation + "\" Scale=\"" + foreground.Scale + "\" Speed=\"" + foreground.Speed.X + "," + foreground.Speed.Y + "\" TextureName=\"" + foreground.TextureName + "\" Width=\"" + foreground.Width + "\" Height=\"" + foreground.Height + "\" />";
             return xml;
         }
 
