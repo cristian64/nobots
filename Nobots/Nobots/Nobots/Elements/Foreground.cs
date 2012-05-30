@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Nobots.Elements
 {
-    public class Foreround : Element
+    public class Foreground : Element
     {
         public float Scale = 1;
 
