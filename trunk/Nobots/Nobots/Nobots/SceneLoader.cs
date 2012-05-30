@@ -128,6 +128,10 @@ namespace Nobots
                 e.Scale = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             if (reader.MoveToAttribute("Speed"))
                 e.Speed = PositionFromString(reader.Value);
+            if (reader.MoveToAttribute("Width"))
+                e.Width = float.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute("Height"))
+                e.Height = float.Parse(reader.Value, CultureInfo.InvariantCulture);
             return e;
         }
 
