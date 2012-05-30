@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Nobots.Elements
 {
-    public class Foreground : Element
+    public class Foreround : Element
     {
         public float Scale = 1;
 
@@ -29,6 +29,8 @@ namespace Nobots.Elements
                 {
                     Texture = notexture;
                 }
+                width = Conversion.ToWorld(Texture.Width);
+                height = Conversion.ToWorld(Texture.Height);
             }
         }
 
@@ -37,25 +39,29 @@ namespace Nobots.Elements
         public Vector2 Speed = Vector2.One;
         private Vector2 position;
 
+        float width;
         public override float Width
         {
             get
             {
-                return Conversion.ToWorld(Texture.Width);
+                return width;
             }
             set
             {
+                width = value;
             }
         }
 
+        float height;
         public override float Height
         {
             get
             {
-                return Conversion.ToWorld(Texture.Height);
+                return height;
             }
             set
             {
+                height = value;
             }
         }
 
@@ -88,13 +94,15 @@ namespace Nobots.Elements
             : base(game, scene)
         {
             Texture = notexture = Game.Content.Load<Texture2D>("notexture");
+            width = Conversion.ToWorld(Texture.Width);
+            height = Conversion.ToWorld(Texture.Height);
             Speed = Vector2.One;
             this.position = position;
         }
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - scene.Camera.Position + (Position - scene.Camera.Position) * (Speed - Vector2.One)), null, Color.White, rotation, new Vector2(Texture.Width / 2.0f, Texture.Height / 2.0f), scene.Camera.Scale * Scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - scene.Camera.Position + (Position - scene.Camera.Position) * (Speed - Vector2.One)), null, Color.White, rotation, new Vector2(Texture.Width / 2.0f, Texture.Height / 2.0f), scene.Camera.Scale * Scale * new Vector2(width / Conversion.ToWorld(Texture.Width), height / Conversion.ToWorld(Texture.Height)), SpriteEffects.None, 0);
         }
 
         protected override void Dispose(bool disposing)
