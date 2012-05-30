@@ -48,6 +48,7 @@ namespace Nobots.Elements
         public float UpShift = 1;
         public float DownShift = 1;
         private Vector2 initialPosition;
+        private Vector2 homePosition;
 
         public override float Width
         {
@@ -105,6 +106,7 @@ namespace Nobots.Elements
             : base(game, scene)
         {
             ZBuffer = 5;
+            homePosition = Vector2.Zero;
 
             //Load bodies
             _circle = BodyFactory.CreateCircle(scene.World, SpiderBodyRadius, 0.1f, position);
@@ -281,6 +283,27 @@ namespace Nobots.Elements
             if (scene.InputManager.Character == this)
             {
                 scene.ElectricityParticleSystem.AddParticle(_circle.Position, Vector2.Zero);
+                if (homePosition == Vector2.Zero)
+                    homePosition = Position;
+            }
+            //move to the initial position from XML
+            if (_circle.Enabled == false)
+            {
+                if (Position != homePosition)
+                {
+                    Vector2 direction = new Vector2(homePosition.X - Position.X, homePosition.Y - Position.Y);
+                    direction.Normalize();
+                    direction /= 5;
+                    Position += direction;
+
+                    if (Vector2.DistanceSquared(Position, homePosition) < 0.15f)
+                        Position = homePosition;
+                }
+                else
+                {
+                    _circle.Enabled = _leftLower.Enabled = _leftUpper.Enabled = _rightLower.Enabled = _rightUpper.Enabled = _sensor.Enabled = true;
+                    canGoUp = canGoDown = canGoRight = canGoLeft = true;
+                }
             }
         }
 
@@ -386,6 +409,9 @@ namespace Nobots.Elements
                 scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                 scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
             }
+            //disable the bodies
+            _circle.Enabled = _leftLower.Enabled = _leftUpper.Enabled = _rightLower.Enabled = _rightUpper.Enabled = _sensor.Enabled = false;
+
         }
 
         public void YAction()
