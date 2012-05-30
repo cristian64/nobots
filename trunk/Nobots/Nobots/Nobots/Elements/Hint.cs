@@ -99,7 +99,7 @@ namespace Nobots.Elements
         {
             if (scene.Camera.Target != null)
             {
-                if (Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 50)
+                if (Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 81)
                     alpha += alpha >= 1 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
                 else
                     alpha -= alpha <= 0 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
