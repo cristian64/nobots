@@ -190,6 +190,12 @@ namespace Nobots.Editor
                 textBoxText.Text = ((Hint)selection).Text;
             }
 
+            if (selection is StoryTelling)
+            {
+                flowLayoutPanelText.Visible = true;
+                textBoxText.Text = ((StoryTelling)selection).Text;
+            }
+
             if (selection is Crate)
             {
                 flowLayoutPanelColor.Visible = true;
@@ -561,8 +567,10 @@ namespace Nobots.Editor
 
         private void textBoxText_TextChanged(object sender, EventArgs e)
         {
-            if (selectionEvents != null)
+            if (selectionEvents != null && selectionEvents is Hint)
                 ((Hint)selectionEvents).Text = textBoxText.Text;
+            else if (selectionEvents != null && selectionEvents is StoryTelling)
+                ((StoryTelling)selectionEvents).Text = textBoxText.Text;
         }
 
         private void numericUpDownCratesNumber_ValueChanged(object sender, EventArgs e)

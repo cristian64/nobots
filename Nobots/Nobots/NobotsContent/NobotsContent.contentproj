@@ -248,6 +248,11 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="fonts\storytelling.spritefont">
+      <Name>storytelling</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="sounds\effects\circularsaw.ogg">
       <Name>circularsaw</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

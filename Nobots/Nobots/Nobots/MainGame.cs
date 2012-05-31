@@ -82,6 +82,9 @@ namespace Nobots
         {
             if (splash)
             {
+                if (Keyboard.GetState().GetPressedKeys().Count() > 0)
+                    splash = false;
+
                 if (splashLogo.Enabled)
                     splashLogo.Update(gameTime);
                 else

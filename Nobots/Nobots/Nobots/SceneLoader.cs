@@ -211,6 +211,11 @@ namespace Nobots
                     if (reader.MoveToAttribute("OtherTubeId"))
                         ((ExperimentalTube)e).OtherTubeId = reader.Value;
                     break;
+                case "StoryTelling":
+                    e = new StoryTelling(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("Text"))
+                        ((StoryTelling)e).Text = reader.Value;
+                    break;
                 case "Hint":
                     e = new Hint(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("Text"))
@@ -504,7 +509,13 @@ namespace Nobots
 
         public String ElementToXml(Hint hint)
         {
-            String xml = "<Hint Id=\"" + hint.Id + "\" Position=\"" + hint.Position.X + "," + hint.Position.Y + "\" Text=\"" + hint.Text + "\"/>";
+            String xml = "<Hint Id=\"" + hint.Id + "\" Position=\"" + hint.Position.X + "," + hint.Position.Y + "\" Text=\"" + hint.Text + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(StoryTelling st)
+        {
+            String xml = "<StoryTelling Id=\"" + st.Id + "\" Position=\"" + st.Position.X + "," + st.Position.Y + "\" Text=\"" + st.Text + "\" Active=\"" + st.Active + "\" />";
             return xml;
         }
 
