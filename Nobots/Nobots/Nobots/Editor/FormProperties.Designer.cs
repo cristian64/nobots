@@ -743,6 +743,11 @@
             // numericUpDownStepsNumber
             // 
             this.numericUpDownStepsNumber.Location = new System.Drawing.Point(84, 3);
+            this.numericUpDownStepsNumber.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDownStepsNumber.Minimum = new decimal(new int[] {
             1,
             0,
