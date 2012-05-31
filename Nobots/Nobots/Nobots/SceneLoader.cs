@@ -673,7 +673,7 @@ namespace Nobots
         public String ElementToXml(ElectricityBox eBox)
         {
             Element e = eBox.ActivableElement as Element;
-            String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" Rotation=\"" + closet.Rotation + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
+            String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" Rotation=\"" + eBox.Rotation + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
 
