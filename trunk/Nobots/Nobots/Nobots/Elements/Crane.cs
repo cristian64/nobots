@@ -285,19 +285,23 @@ namespace Nobots.Elements
                 scene.ElectricityParticleSystem.AddParticle(_circle.Position, Vector2.Zero);
                 if (homePosition == Vector2.Zero)
                     homePosition = Position;
+
+                if (_circle.Enabled == false)
+                    _circle.Enabled = _leftLower.Enabled = _leftUpper.Enabled = _rightLower.Enabled = _rightUpper.Enabled = _sensor.Enabled = true;
             }
             //move to the initial position from XML
             if (_circle.Enabled == false)
             {
                 if (Position != homePosition)
                 {
-                    Vector2 direction = new Vector2(homePosition.X - Position.X, homePosition.Y - Position.Y);
-                    direction.Normalize();
-                    direction /= 5;
-                    Position += direction;
-
-                    if (Vector2.DistanceSquared(Position, homePosition) < 0.15f)
+                    if (Vector2.DistanceSquared(Position, homePosition) <= (float)gameTime.ElapsedGameTime.TotalSeconds * (float)gameTime.ElapsedGameTime.TotalSeconds)
                         Position = homePosition;
+                    else
+                    {
+                        Vector2 direction = new Vector2(homePosition.X - Position.X, homePosition.Y - Position.Y);
+                        direction.Normalize();
+                        Position += direction * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    }
                 }
                 else
                 {
@@ -396,6 +400,9 @@ namespace Nobots.Elements
 
         public void YActionStart()
         {
+            if (_kneeFlexed)
+                BActionStart();
+
             _circle.LinearVelocity = Vector2.Zero;
             Energy energy = new Energy(scene.Game, scene, Position);
             energy.State = new FallingCharacterState(scene, energy);
@@ -429,7 +436,7 @@ namespace Nobots.Elements
         public void RightAction()
         {
             if (initialPosition.X + RightShift >= Position.X && canGoRight)
-                _circle.LinearVelocity = Vector2.UnitX*2;
+                _circle.LinearVelocity = Vector2.UnitX*3;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -446,7 +453,7 @@ namespace Nobots.Elements
         public void LeftAction()
         {
             if (initialPosition.X - LeftShift <= Position.X && canGoLeft)
-                _circle.LinearVelocity = -Vector2.UnitX*2;
+                _circle.LinearVelocity = -Vector2.UnitX*3;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -463,7 +470,7 @@ namespace Nobots.Elements
         public void UpAction()
         {
             if (initialPosition.Y - UpShift <= Position.Y && canGoUp)
-                _circle.LinearVelocity = -Vector2.UnitY*2;
+                _circle.LinearVelocity = -Vector2.UnitY*3;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -480,7 +487,7 @@ namespace Nobots.Elements
         public void DownAction()
         {
             if (initialPosition.Y + DownShift >= Position.Y && canGoDown)
-                _circle.LinearVelocity = Vector2.UnitY*2;
+                _circle.LinearVelocity = Vector2.UnitY*3;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
