@@ -127,12 +127,14 @@ namespace Nobots.Elements
         public override void LeftActionStart()
         {
             character.State = new FallingCharacterState(scene, character);
+            character.torso.ApplyLinearImpulse(new Vector2(-70, -150));
             character.State.LeftAction();
         }
 
         public override void RightActionStart()
         {
             character.State = new FallingCharacterState(scene, character);
+            character.torso.ApplyLinearImpulse(new Vector2(70, -150));
             character.State.RightAction();
         }
     }
