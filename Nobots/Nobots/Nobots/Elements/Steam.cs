@@ -95,7 +95,7 @@ namespace Nobots.Elements
             ZBuffer = 4f;
             this.position = position;
             height = 2.5f;
-            width = 0.8f;
+            width = 0.3f;
             createBody();
             InitialPosition = body.Position;
             FinalPosition = body.Position - new Vector2(0, Height);
@@ -110,6 +110,7 @@ namespace Nobots.Elements
                 if (seconds > delay)
                 {
                     if (seconds < delay * 2)
+                    {
                         for (int i = 0; i < 8; i++)
                         {
                             if (playSound)
@@ -117,11 +118,15 @@ namespace Nobots.Elements
                                 scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.steam, body.Position.X, body.Position.Y + (height / 2), 0f, false, false, false);
                                 playSound = false;
                             }
-                            body.CollidesWith = Category.None | ElementCategory.CHARACTER;
                             scene.SteamParticleSystem.AddParticle(Position + new Vector2(0, height / 2), Vector2.Zero);
                         }
+                        body.CollidesWith = Category.None | ElementCategory.CHARACTER;
+                    }
                     else
+                    {
+                        body.CollidesWith = Category.None;
                         seconds -= 2 * delay;
+                    }
                 }
                 else if (seconds < delay && seconds > delay / 5)
                 {
