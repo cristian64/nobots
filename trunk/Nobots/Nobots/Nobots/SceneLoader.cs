@@ -277,6 +277,9 @@ namespace Nobots
                 case "ElectricityBox":
                     e = new ElectricityBox(Game, scene, Vector2.Zero);
                     break;
+                case "Writings":
+                    e = new Writings(Game, scene, Vector2.Zero);
+                    break;
                 case "Lever":
                     e = new Lever(Game, scene, Vector2.Zero);
                     break;
@@ -418,6 +421,10 @@ namespace Nobots
                     xml += "        " + ElementToXml((Lamp)i) + "\n";
                 else if (i as Hint != null)
                     xml += "        " + ElementToXml((Hint)i) + "\n";
+                else if (i as StoryTelling != null)
+                    xml += "        " + ElementToXml((StoryTelling)i) + "\n";
+                else if (i as Writings != null)
+                    xml += "        " + ElementToXml((Writings)i) + "\n";
                 else if (i as Alarm != null)
                     xml += "        " + ElementToXml((Alarm)i) + "\n";
                 else if (i as Chandelier != null)
@@ -666,7 +673,14 @@ namespace Nobots
         public String ElementToXml(ElectricityBox eBox)
         {
             Element e = eBox.ActivableElement as Element;
-            String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
+            String xml = "<ElectricityBox Id=\"" + eBox.Id + "\" Position=\"" + eBox.Position.X + "," + eBox.Position.Y + "\" Rotation=\"" + closet.Rotation + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Writings writings)
+        {
+            Element e = writings.ActivableElement as Element;
+            String xml = "<Writings Id=\"" + writings.Id + "\" Position=\"" + writings.Position.X + "," + writings.Position.Y + "\" Rotation=\"" + writings.Rotation + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
 
