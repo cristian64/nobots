@@ -105,7 +105,7 @@ namespace Nobots.Elements
         public StoryTelling(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 50;
+            ZBuffer = -50;
             hintfont = Game.Content.Load<SpriteFont>("fonts\\storytelling");
             Text = "LOREM IPSUM\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna\naliqua. Ut enim ad minim veniam, quis nostrud exercitation\nullamco laboris nisi ut aliquip ex ea commodo consequat.\nDuis aute irure dolor in reprehenderit in voluptate\nvelit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident, sunt in\nculpa qui officia deserunt mollit anim id est laborum.";
             this.position = position;
