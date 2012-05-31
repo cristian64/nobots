@@ -184,6 +184,7 @@ namespace Nobots.Elements
             leg = Game.Content.Load<Texture2D>("platform");
             eye = Game.Content.Load<Texture2D>("crane");
             chain = Game.Content.Load<Texture2D>("crane_chain");
+            _circle.UserData = _leftLower.UserData = _leftUpper.UserData = _rightLower.UserData = _rightUpper.UserData = this;
 
             _sensorJoint = new RevoluteJoint(_circle, _sensor, Conversion.ToWorld(new Vector2(-eye.Width / 2, -eye.Height / 2)), Vector2.Zero);
             _sensorJoint.CollideConnected = false;
