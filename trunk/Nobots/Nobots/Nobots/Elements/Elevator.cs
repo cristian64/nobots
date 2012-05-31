@@ -101,6 +101,7 @@ namespace Nobots.Elements
             body.Position = position;
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
+            body.UserData = this;
 
             sensor = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width - 50), Conversion.ToWorld(texture.Height - 40), 150f);
             sensor.Position = position;
@@ -108,6 +109,7 @@ namespace Nobots.Elements
             sensor.IsSensor = true;
             sensor.OnCollision += new OnCollisionEventHandler(sensor_OnCollision);
             sensor.CollisionCategories = ElementCategory.FLOOR;
+            sensor.UserData = this;
 
             joint = new RevoluteJoint(body, sensor, Vector2.Zero, Vector2.Zero);
             joint.CollideConnected = false;

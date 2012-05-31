@@ -215,6 +215,7 @@ namespace Nobots.Elements
             body.Rotation = rotation;
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
+            body.UserData = this;
 
             if (sensor != null)
                 sensor.Dispose();
@@ -225,6 +226,7 @@ namespace Nobots.Elements
             sensor.Rotation = rotation;
             sensor.OnCollision += new OnCollisionEventHandler(sensor_OnCollision);
             sensor.CollisionCategories = ElementCategory.FLOOR;
+            sensor.UserData = this;
 
             if (scene.World.JointList.Contains(joint))
                 scene.World.RemoveJoint(joint);
