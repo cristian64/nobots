@@ -785,6 +785,11 @@ namespace Nobots
                     {
                         scene.Clean();
                         SceneFromXml(openFileDialog1.FileName, scene);
+                        Vector2 characterPosition = Vector2.Zero;
+                        foreach (Element i in scene.Elements)
+                            if (i is Character)
+                                characterPosition = i.Position;
+                        scene.Camera.Position = characterPosition;
                     }
                 }
                 else if (keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) && keybState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.N))
