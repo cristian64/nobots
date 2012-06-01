@@ -150,7 +150,6 @@ namespace Nobots.Elements
             body2.Position = position - (height / 2 - Conversion.ToWorld(texture.Height) / 2) * new Vector2((float)Math.Cos(body.Rotation + MathHelper.PiOver2), (float)Math.Sin(body.Rotation + MathHelper.PiOver2));
             body2.Rotation = rotation;
             body2.BodyType = BodyType.Static;
-            body2.CollisionCategories = ElementCategory.FLOOR;
             body2.OnCollision += new OnCollisionEventHandler(body2_OnCollision);
             body2.OnSeparation += new OnSeparationEventHandler(body2_OnSeparation);
             bodies = new List<Body>();
