@@ -219,7 +219,7 @@ namespace Nobots.Elements
 
             if (sensor != null)
                 sensor.Dispose();
-            sensor = BodyFactory.CreateRectangle(scene.World, Width - 0.5f, Height - 0.4f, 150f);
+            sensor = BodyFactory.CreateRectangle(scene.World, Math.Max(0.01f, Width - 0.2f), Math.Max(0.01f, Height - 0.2f), 150f);
             sensor.Position = position;
             sensor.BodyType = BodyType.Dynamic;
             sensor.IsSensor = true;
