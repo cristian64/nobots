@@ -179,8 +179,10 @@ namespace Nobots.Elements
 
         public bool IsTouchingElement(Element o)
         {
-            return Math.Abs(body2.Position.X - o.Position.X) <= 0.5 * (Width + o.Width) &&
-                   Math.Abs(body2.Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height);
+            float radius = Math.Max(Width, Height);
+            float oRadius = Math.Max(o.Width, o.Height);
+            return Math.Abs(body2.Position.X - o.Position.X) <= 0.5 * (radius + oRadius) &&
+                   Math.Abs(body2.Position.Y - o.Position.Y) <= 0.5 * (radius + oRadius);
         }
 
         public override void Update(GameTime gameTime)
