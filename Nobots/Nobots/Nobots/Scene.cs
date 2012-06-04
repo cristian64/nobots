@@ -100,7 +100,15 @@ namespace Nobots
             ExplosionSmokeParticleSystem = new ExplosionSmokeParticleSystem(Game, this);
             LightningParticleSystem = new LightningParticleSystem(Game, this);
 
-            SceneLoader.SceneFromXml(@"Content\levels\level1.xml", this);
+            try
+            {
+                string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
+                CleanAndLoad(text);
+            }
+            catch (Exception)
+            {
+                CleanAndLoad("level1");
+            }
         }
 
         protected override void LoadContent()

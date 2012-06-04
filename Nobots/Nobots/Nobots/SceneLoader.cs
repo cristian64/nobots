@@ -79,6 +79,7 @@ namespace Nobots
                 reader.Close();
 
                 LastLevel = System.IO.Path.GetFileNameWithoutExtension(filename);
+                System.IO.File.WriteAllText(@"Content\levels\lastlevel", LastLevel);
             }
             catch (Exception e)
             {
