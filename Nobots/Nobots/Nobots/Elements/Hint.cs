@@ -14,7 +14,7 @@ namespace Nobots.Elements
     {
         SpriteFont hintfont;
         //Texture2D blank;
-        Texture2D arrow;
+        //Texture2D arrow;
 
         private String text = "";
         public String Text
@@ -91,7 +91,7 @@ namespace Nobots.Elements
             this.position = position;
             //blank = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             //blank.SetData(new[] { Color.White });
-            arrow = Game.Content.Load<Texture2D>("hintarrow");
+           // arrow = Game.Content.Load<Texture2D>("hintarrow");
         }
 
         float alpha = 0;
@@ -107,7 +107,7 @@ namespace Nobots.Elements
                 if (alpha > 0)
                 { 
                     //scene.SpriteBatch.Draw(blank, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - new Vector2((width + margin) / 2, height + margin / 2), null, Color.White, 0, Vector2.Zero, new Vector2(width, height), SpriteEffects.None, 0);
-                    scene.SpriteBatch.Draw(arrow, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), null, Color.White * alpha, 0, new Vector2(arrow.Width, arrow.Height), 1, SpriteEffects.None, 0);
+                    /*scene.SpriteBatch.Draw(arrow, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), null, Color.White * alpha, 0, new Vector2(arrow.Width, arrow.Height), 1, SpriteEffects.None, 0);
 
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) + Vector2.UnitX, Color.Black * alpha, 0, new Vector2(width / 2, height + arrow.Height), 1, SpriteEffects.None, 0);
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitX, Color.Black * alpha, 0, new Vector2(width / 2, height + arrow.Height), 1, SpriteEffects.None, 0);
@@ -115,6 +115,14 @@ namespace Nobots.Elements
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height + arrow.Height), 1, SpriteEffects.None, 0);
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height + arrow.Height), 1, SpriteEffects.None, 0);
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), Color.Yellow * alpha, 0, new Vector2(width / 2, height + arrow.Height), 1, SpriteEffects.None, 0);
+                    */
+                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) + Vector2.UnitX, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
+                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitX, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
+                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) + Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
+                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
+                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
+                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), Color.Yellow * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
+
                 }
             }
         }
