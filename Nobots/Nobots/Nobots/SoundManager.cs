@@ -35,10 +35,10 @@ namespace Nobots
 
             // AMBIENCE SOUNDS AND TRANSITIONS
 
-            AmbienceNormal = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabnormal.mp3");
+            AmbienceNormal = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabnormal.ogg");
             AmbienceNormal.DefaultVolume = 0.3f;
 
-            AmbienceEnergy = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabenergy.mp3");
+            AmbienceEnergy = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabenergy.ogg");
             AmbienceEnergy.DefaultVolume = 0.3f;
                       
 
