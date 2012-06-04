@@ -118,7 +118,7 @@ namespace Nobots
     class SplashLogo : DrawableGameComponent
     {
         SpriteBatch spriteBatch;
-        Texture2D logo;
+        Texture2D logo, icon;
 
         public SplashLogo(Game game, SpriteBatch spriteBatch)
             : base(game)
@@ -126,6 +126,7 @@ namespace Nobots
             Initialize();
             this.spriteBatch = spriteBatch;
             logo = Game.Content.Load<Texture2D>("icons\\logo");
+            icon = Game.Content.Load<Texture2D>("icons\\icon");
         }
 
         float alpha = 0;
@@ -156,12 +157,16 @@ namespace Nobots
                 Enabled = false;
         }
 
+        float logoScale = 0.4f;
+        float iconScale = 0.2f;
+
         public override void Draw(GameTime gameTime)
         {
             Vector2 position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            spriteBatch.Draw(logo, position, null, Color.White * alpha, 0, new Vector2(logo.Width / 2.0f, logo.Height / 2.0f), 0.4f, SpriteEffects.None, 0);
+            spriteBatch.Draw(logo, position + new Vector2(0, logoScale * logo.Height / 2.0f + iconScale * icon.Height / 2.0f + 50) / 2, null, Color.White * alpha, 0, new Vector2(logo.Width / 2.0f, logo.Height / 2.0f), logoScale, SpriteEffects.None, 0);
+            spriteBatch.Draw(icon, position - new Vector2(0, logoScale * logo.Height / 2.0f + iconScale * icon.Height / 2.0f + 50) / 2, null, Color.White * alpha, 0, new Vector2(icon.Width / 2.0f, icon.Height / 2.0f), iconScale, SpriteEffects.None, 0);
             spriteBatch.End();
         }
     }

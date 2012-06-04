@@ -27,6 +27,28 @@ namespace Nobots.Menus
         public virtual void LeftActionStop() { }
     }
 
+    public class StartGameOption : Option
+    {
+        public StartGameOption(Scene scene) :
+            base("Start New Game", scene)
+        {
+        }
+
+        public override void AActionStop()
+        {
+            scene.Menu.Enabled = false;
+            scene.CleanAndLoad("level1");
+        }
+    }
+
+    public class ControlsOption : Option
+    {
+        public ControlsOption(Scene scene) :
+            base("Controls", scene)
+        {
+        }
+    }
+
     public class ResumeOption : Option
     {
         public ResumeOption(Scene scene) :

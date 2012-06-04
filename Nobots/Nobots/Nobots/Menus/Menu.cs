@@ -14,6 +14,7 @@ namespace Nobots.Menus
         List<Option> options;
 
         Texture2D logo;
+        Texture2D controls;
         SpriteFont menuoptionfont;
         SpriteFont menufont;
         int selectedIndex;
@@ -34,12 +35,15 @@ namespace Nobots.Menus
             menuoptionfont = Game.Content.Load<SpriteFont>("fonts\\menuoption");
             menufont = Game.Content.Load<SpriteFont>("fonts\\menu");
             logo = Game.Content.Load<Texture2D>("icons/logo");
+            controls = Game.Content.Load<Texture2D>("icons/icon");
 
             options = new List<Option>();
             options.Add(new ResumeOption(scene));
             options.Add(new LastCheckpointOption(scene));
             options.Add(new RestartLevelOption(scene));
+            //options.Add(new StartGameOption(scene));
             options.Add(new LoadLevelOption(scene));
+            options.Add(new ControlsOption(scene));
 #if FINAL_RELEASE
             options.Add(new EditorOption(scene));
 #endif
@@ -68,6 +72,12 @@ namespace Nobots.Menus
                     scene.SpriteBatch.DrawString(menuoptionfont, option.Text, position, selectedIndex == i ? Color.White : Color.Gray);
                     position += new Vector2(0, menuoptionfont.MeasureString(option.Text).Y + 0);
                 }
+
+                if (options[selectedIndex] is ControlsOption)
+                {
+                    scene.SpriteBatch.Draw(controls, new Vector2(90, 90) * 4, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+                }
+
                 scene.SpriteBatch.End();
             }
         }
