@@ -35,7 +35,7 @@ namespace Nobots.Menus
             menuoptionfont = Game.Content.Load<SpriteFont>("fonts\\menuoption");
             menufont = Game.Content.Load<SpriteFont>("fonts\\menu");
             logo = Game.Content.Load<Texture2D>("icons/logo");
-            controls = Game.Content.Load<Texture2D>("icons/icon");
+            controls = Game.Content.Load<Texture2D>("icons/controls");
 
             options = new List<Option>();
             options.Add(new ResumeOption(scene));
@@ -74,9 +74,7 @@ namespace Nobots.Menus
                 }
 
                 if (options[selectedIndex] is ControlsOption)
-                {
-                    scene.SpriteBatch.Draw(controls, new Vector2(90, 90) * 4, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
-                }
+                    scene.SpriteBatch.Draw(controls, new Vector2(GraphicsDevice.Viewport.Width - controls.Width, GraphicsDevice.Viewport.Height - controls.Height), null, Color.White, 0, Vector2.Zero, 0.8f, SpriteEffects.None, 0);
 
                 scene.SpriteBatch.End();
             }
