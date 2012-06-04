@@ -560,17 +560,15 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="sounds\music\ambiencelabenergy.mp3">
+    <None Include="sounds\music\ambiencelabenergy.ogg">
       <Name>ambiencelabenergy</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Processor>PassThroughProcessor</Processor>
     </None>
-    <None Include="sounds\music\ambiencelabnormal.mp3">
+    <None Include="sounds\music\ambiencelabnormal.ogg">
       <Name>ambiencelabnormal</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Processor>PassThroughProcessor</Processor>
     </None>
     <None Include="sounds\music\energytoreal1.wav">
       <Name>energytoreal1</Name>
