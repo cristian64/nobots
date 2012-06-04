@@ -12,7 +12,7 @@ namespace Nobots
     {
         public IControllable Character;
         Keys keyboardJump = Keys.Space;
-        Keys keyboardChangeForm = Keys.Enter;
+        Keys keyboardChangeForm = Keys.LeftControl;
         Keys keyboardPush = Keys.LeftAlt;
         Keys keyboardAction = Keys.LeftControl;
 

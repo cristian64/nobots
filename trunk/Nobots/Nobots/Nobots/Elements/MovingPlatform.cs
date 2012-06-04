@@ -152,12 +152,14 @@ namespace Nobots.Elements
                 foreach (Element el in scene.Elements)
                     if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
                     {
+                        Console.WriteLine("Dying from the Energy");
                         ((Character)el).State = new DyingCharacterState(scene, (Character)el);
                         break;
                     }
             }
             else if (fixtureB.Body.UserData is Character)
             {
+                Console.WriteLine("Dying from the Character");
                 Character c = (Character)fixtureB.Body.UserData;
                 if(!(c.State is DyingCharacterState))
                     c.State = new DyingCharacterState(scene, c);
@@ -219,7 +221,7 @@ namespace Nobots.Elements
 
             if (sensor != null)
                 sensor.Dispose();
-            sensor = BodyFactory.CreateRectangle(scene.World, Math.Max(0.01f, Width - 0.2f), Math.Max(0.01f, Height - 0.2f), 150f);
+            sensor = BodyFactory.CreateRectangle(scene.World, Math.Max(0.01f, Width - 0.3f), Math.Max(0.01f, Height - 0.3f), 150f);
             sensor.Position = position;
             sensor.BodyType = BodyType.Dynamic;
             sensor.IsSensor = true;
