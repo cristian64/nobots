@@ -63,7 +63,7 @@ namespace Nobots.Elements
                 int characterCount = 0;
                 foreach (Element i in scene.Elements)
                 {
-                    if (i is Character && !(i is Energy) && !(((Character)i).State is DyingCharacterState))
+                    if (i is Character && !(i is Energy) && ((Character)i).State is ComaCharacterState)
                         characterCount++;
                 }
 
