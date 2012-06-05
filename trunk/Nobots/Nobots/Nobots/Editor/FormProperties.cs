@@ -183,6 +183,7 @@ namespace Nobots.Editor
                 flowLayoutPanelNextLevel.Visible = true;
                 textBoxNextLevel.Text = ((Endpoint)selection).NextLevel;
                 flowLayoutPanelAlsoEnergy.Visible = true;
+                checkBoxAlsoEnergy.Checked = ((Endpoint)selection).AlsoEnergy;
             }
 
             if (selection is Hint)
