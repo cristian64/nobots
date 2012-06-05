@@ -20,6 +20,7 @@ namespace Nobots
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SplashLogo splashLogo;
+        SplashCredits splashCredits;
 
         public MainGame()
         {
@@ -69,6 +70,7 @@ namespace Nobots
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             splashLogo = new SplashLogo(this, spriteBatch);
+            splashCredits = new SplashCredits(this, spriteBatch);
         }
 
         bool splash = true;
@@ -87,6 +89,8 @@ namespace Nobots
 
                 if (splashLogo.Enabled)
                     splashLogo.Update(gameTime);
+                else if (splashCredits.Enabled)
+                    splashCredits.Update(gameTime);
                 else
                     splash = false;
             }
@@ -107,6 +111,8 @@ namespace Nobots
                 GraphicsDevice.Clear(Color.Black);
                 if (splashLogo.Enabled)
                     splashLogo.Draw(gameTime);
+                else if (splashCredits.Enabled)
+                    splashCredits.Draw(gameTime);
             }
             else
             {
@@ -167,6 +173,60 @@ namespace Nobots
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             spriteBatch.Draw(logo, position + new Vector2(0, logoScale * logo.Height / 2.0f + iconScale * icon.Height / 2.0f + 50) / 2, null, Color.White * alpha, 0, new Vector2(logo.Width / 2.0f, logo.Height / 2.0f), logoScale, SpriteEffects.None, 0);
             spriteBatch.Draw(icon, position - new Vector2(0, logoScale * logo.Height / 2.0f + iconScale * icon.Height / 2.0f + 50) / 2, null, Color.White * alpha, 0, new Vector2(icon.Width / 2.0f, icon.Height / 2.0f), iconScale, SpriteEffects.None, 0);
+            spriteBatch.End();
+        }
+    }
+
+    class SplashCredits : DrawableGameComponent
+    {
+        SpriteBatch spriteBatch;
+        Texture2D credits;
+
+        public SplashCredits(Game game, SpriteBatch spriteBatch)
+            : base(game)
+        {
+            Initialize();
+            this.spriteBatch = spriteBatch;
+            credits = Game.Content.Load<Texture2D>("icons\\credits");
+        }
+
+        float alpha = 0;
+        float alphaTarget = 0;
+        float initialDelay = 1;
+        static float duration = 5;
+        float counter = duration;
+        float transitionDuration = 1;
+
+        public override void Update(GameTime gameTime)
+        {
+            if (alpha != alphaTarget)
+            {
+                if (alpha < alphaTarget)
+                    alpha = (float)Math.Min(1, alpha + gameTime.ElapsedGameTime.TotalSeconds / transitionDuration);
+                else
+                    alpha = (float)Math.Max(0, alpha - gameTime.ElapsedGameTime.TotalSeconds / transitionDuration);
+            }
+
+            if (counter < duration - initialDelay)
+                alphaTarget = 1;
+
+            counter -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (counter < transitionDuration)
+                alphaTarget = 0;
+
+            if (alpha == 0 && counter < 0)
+                Enabled = false;
+        }
+
+        float logoScale = 0.4f;
+        float iconScale = 0.2f;
+
+        public override void Draw(GameTime gameTime)
+        {
+            Vector2 position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            spriteBatch.Draw(credits, position, null, Color.White * alpha, 0, new Vector2(credits.Width / 2.0f, credits.Height / 2.0f), 1, SpriteEffects.None, 0);
             spriteBatch.End();
         }
     }
