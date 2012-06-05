@@ -191,10 +191,12 @@ namespace Nobots
         }
 
         float fadeInDuration = 2;
+        float fadeInDelay = 2;
 
         public override void Update(GameTime gameTime)
         {
-            if (ISoundEngine.SoundVolume < 1)
+            fadeInDelay -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (fadeInDelay <= 0 && ISoundEngine.SoundVolume < 1)
                 ISoundEngine.SoundVolume = Math.Min(1, ISoundEngine.SoundVolume + (float)gameTime.ElapsedGameTime.TotalSeconds / fadeInDuration);
         }
 
