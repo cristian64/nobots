@@ -185,7 +185,9 @@ namespace Nobots
                 RespawnElements.Clear();
             }
 
+#if !FINAL_RELEASE
             SceneLoader.Update(gameTime, this);
+#endif
 
             if (cleanAndLoad && !Transitioner.InTransition)
             {
@@ -224,14 +226,17 @@ namespace Nobots
                 if (i is Character)
                     character = (Character)i;
 
-            if (characterPosition != null)
+            if (character != null)
             {
-                character.Position = (Vector2)characterPosition;
-                character.Active = (bool)characterActive;
-            }
-            else
-            {
-                characterPosition = character.Position;
+                if (characterPosition != null)
+                {
+                    character.Position = (Vector2)characterPosition;
+                    character.Active = (bool)characterActive;
+                }
+                else
+                {
+                    characterPosition = character.Position;
+                }
             }
 
             if (characterPosition != null)
