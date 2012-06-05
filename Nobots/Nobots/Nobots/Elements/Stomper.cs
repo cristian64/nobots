@@ -37,7 +37,8 @@ namespace Nobots.Elements
                 if (value)
                     sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.machineloop1, body.Position.X, body.Position.Y, 0f, true, false, false);
                 else
-                    sound.Stop();
+                    if (sound != null)
+                        sound.Stop();
             }
         }
         
