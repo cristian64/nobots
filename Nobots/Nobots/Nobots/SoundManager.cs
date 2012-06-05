@@ -31,6 +31,7 @@ namespace Nobots
         {
             this.scene = scene;
             ISoundEngine = new ISoundEngine();
+            ISoundEngine.SoundVolume = 0;
             
 
             // AMBIENCE SOUNDS AND TRANSITIONS
@@ -189,8 +190,12 @@ namespace Nobots
 
         }
 
+        float fadeInDuration = 2;
+
         public override void Update(GameTime gameTime)
         {
+            if (ISoundEngine.SoundVolume < 1)
+                ISoundEngine.SoundVolume = Math.Min(1, ISoundEngine.SoundVolume + (float)gameTime.ElapsedGameTime.TotalSeconds / fadeInDuration);
         }
 
         protected override void Dispose(bool disposing)
