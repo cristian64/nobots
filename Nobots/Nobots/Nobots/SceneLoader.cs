@@ -259,6 +259,8 @@ namespace Nobots
                     e = new Endpoint(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("NextLevel"))
                         ((Endpoint)e).NextLevel = reader.Value;
+                    if (reader.MoveToAttribute("AlsoEnergy"))
+                        ((Endpoint)e).AlsoEnergy = Boolean.Parse(reader.Value);
                     break;
                 case "CameraScale":
                     e = new CameraScale(Game, scene, Vector2.Zero);
@@ -631,7 +633,7 @@ namespace Nobots
 
         public String ElementToXml(Endpoint endpoint)
         {
-            String xml = "<Endpoint Id=\"" + endpoint.Id + "\" Position=\"" + endpoint.Position.X + "," + endpoint.Position.Y + "\" Rotation=\"" + endpoint.Rotation + "\" NextLevel=\"" + endpoint.NextLevel + "\" />";
+            String xml = "<Endpoint Id=\"" + endpoint.Id + "\" Position=\"" + endpoint.Position.X + "," + endpoint.Position.Y + "\" Rotation=\"" + endpoint.Rotation + "\" NextLevel=\"" + endpoint.NextLevel + "\" AlsoEnergy=\"" + endpoint.AlsoEnergy + "\" />";
             return xml;
         }
 

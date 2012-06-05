@@ -25,7 +25,6 @@ namespace Nobots.Elements
                 if (body != null)
                     body.CollidesWith = (alsoEnergy == true) ? ElementCategory.CHARACTER | ElementCategory.ENERGY : ElementCategory.CHARACTER;
             }
-
         }
 
         public String NextLevel = "";
