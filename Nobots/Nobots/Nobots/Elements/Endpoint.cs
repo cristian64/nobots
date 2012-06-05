@@ -15,6 +15,19 @@ namespace Nobots.Elements
         Body body;
         Texture2D texture;
 
+        private bool alsoEnergy = false;
+        public bool AlsoEnergy
+        {
+            get { return alsoEnergy; }
+            set
+            {
+                alsoEnergy = value;
+                if (body != null)
+                    body.CollidesWith = (alsoEnergy == true) ? ElementCategory.CHARACTER | ElementCategory.ENERGY : ElementCategory.CHARACTER;
+            }
+
+        }
+
         public String NextLevel = "";
 
         public override float Width
@@ -55,6 +68,7 @@ namespace Nobots.Elements
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
             body.UserData = this;
+            AlsoEnergy = true;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
