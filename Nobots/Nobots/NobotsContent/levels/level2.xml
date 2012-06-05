@@ -149,16 +149,16 @@
         <Ladder Id="" Position="55.61438,-33.87834" StepsNumber="19" />
         <MovingPlatform Id="stones" Position="36.71889,-15.55706" Width="10" Height="0.5" Rotation="0" InitialPosition="36.71889,-15.55706" FinalPosition="25.41,-15.55706" Active="False" />
         <MovingPlatform Id="lowerbox" Position="27.31517,46.4602" Width="3.8" Height="0.5" Rotation="0" InitialPosition="27.31517,46.4602" FinalPosition="33.30518,46.4602" Active="False" />
-        <Container Id="" Position="98.99415,19.33284" Rotation="1.575224E-07" />
+        <Container Id="" Position="98.99415,19.33284" Rotation="1.57536E-07" />
         <SecurityCamera Id="" Position="26.57947,5.59548" Rotation="0.7056627" />
         <SecurityCamera Id="" Position="48.98615,8.843611" Rotation="0.3828357" />
         <CameraScale Id="" Position="21.42835,11.15806" ScaleTarget="0.4" />
         <CameraScale Id="" Position="44.916,16.08237" ScaleTarget="0.7" />
-        <Box Id="" Position="55.46865,6309234" Rotation="0" />
+        <Box Id="" Position="55.46865,6315190" Rotation="0" />
         <CameraScale Id="" Position="8.270152,40.75821" ScaleTarget="0.3" />
         <CameraScale Id="" Position="4.99103,40.72156" ScaleTarget="0.5" />
         <CameraScale Id="" Position="30.34035,11.22325" ScaleTarget="0.4" />
-        <Box Id="" Position="4.433501,11.43106" Rotation="0.001663424" />
+        <Box Id="" Position="4.433501,11.43106" Rotation="0.001663423" />
         <CameraScale Id="" Position="6.641676,11.28895" ScaleTarget="0.7" />
         <CameraScale Id="" Position="6.619715,9.853219" ScaleTarget="0.7" />
         <CameraScale Id="" Position="21.43428,9.637616" ScaleTarget="0.4" />
@@ -169,15 +169,15 @@
         <CameraScale Id="" Position="51.78688,-0.4476345" ScaleTarget="0.8" />
         <CameraScale Id="" Position="61.17827,-28.97707" ScaleTarget="0.7" />
         <CameraScale Id="" Position="48.60406,-45.12346" ScaleTarget="0.3" />
-        <Crate Id="" Position="36.51735,-16.66866" Rotation="-0.0001163494" Color="purple" />
-        <Crate Id="" Position="38.58583,-16.66714" Rotation="7.526374E-05" Color="orange" />
-        <Crate Id="" Position="40.40874,-16.66706" Rotation="7.876381E-07" Color="green" />
-        <Crate Id="" Position="38.89765,-18.37227" Rotation="0.0002420524" Color="pink" />
-        <Crate Id="" Position="37.15702,-18.37593" Rotation="-0.001624099" Color="white" />
-        <Crate Id="" Position="35.3012,-18.37828" Rotation="0.001310488" Color="red" />
-        <Crate Id="" Position="32.80552,-16.66705" Rotation="8.349635E-07" Color="white" />
-        <Crate Id="" Position="34.77765,-16.67065" Rotation="0.0003727153" Color="pink" />
-        <Crate Id="" Position="40.63548,-18.37208" Rotation="3.718751E-05" Color="blue" />
+        <Crate Id="" Position="36.51741,-16.66864" Rotation="-9.147348E-05" Color="purple" />
+        <Crate Id="" Position="38.58583,-16.66714" Rotation="7.524423E-05" Color="orange" />
+        <Crate Id="" Position="40.40878,-16.66705" Rotation="2.477367E-06" Color="green" />
+        <Crate Id="" Position="38.89776,-18.37226" Rotation="0.0002333333" Color="pink" />
+        <Crate Id="" Position="37.15711,-18.3759" Rotation="-0.001598261" Color="white" />
+        <Crate Id="" Position="35.30127,-18.37828" Rotation="0.001323281" Color="red" />
+        <Crate Id="" Position="32.80552,-16.66705" Rotation="8.263312E-07" Color="white" />
+        <Crate Id="" Position="34.77769,-16.67065" Rotation="0.0003854147" Color="pink" />
+        <Crate Id="" Position="40.6356,-18.37204" Rotation="5.766226E-06" Color="blue" />
         <CameraScale Id="" Position="78.34171,-34.28641" ScaleTarget="0.9" />
         <CameraScale Id="" Position="79.78067,-34.29547" ScaleTarget="0.9" />
         <CameraScale Id="" Position="81.2451,-34.29515" ScaleTarget="0.9" />
@@ -202,38 +202,38 @@
         <CameraScale Id="" Position="68.92427,-41.14642" ScaleTarget="0.7" />
         <CameraScale Id="" Position="67.52886,-41.13617" ScaleTarget="0.7" />
         <CameraScale Id="" Position="66.12157,-41.12576" ScaleTarget="0.7" />
-        <Stone Id="" Position="57.9874,23.71354" Rotation="2.024572" />
-        <Stone Id="" Position="59.85139,23.88388" Rotation="-7.806161" />
-        <Stone Id="" Position="61.82687,24.0585" Rotation="-0.1634462" />
-        <Stone Id="" Position="63.86553,24.00713" Rotation="4.620316" />
-        <Stone Id="" Position="60.69305,22.04022" Rotation="4.698107" />
-        <Stone Id="" Position="56.19758,23.87617" Rotation="-1.207868" />
-        <Stone Id="" Position="62.6471,22.52597" Rotation="10.02803" />
-        <Stone Id="" Position="56.18478,22.08799" Rotation="8.037553" />
-        <Stone Id="" Position="59.00605,21.85105" Rotation="0.553121" />
-        <Stone Id="" Position="66.18088,16.09847" Rotation="-0.2523759" />
-        <Stone Id="" Position="67.42229,15.01639" Rotation="0.4883385" />
-        <Stone Id="" Position="73.41393,16.29907" Rotation="4.272308" />
-        <Stone Id="" Position="69.5303,16.20745" Rotation="0.01402587" />
-        <Stone Id="" Position="71.51736,15.76764" Rotation="5.74672" />
-        <Stone Id="" Position="72.86804,14.29924" Rotation="0.3419316" />
-        <Stone Id="" Position="64.60429,22.04605" Rotation="0.950583" />
-        <Stone Id="" Position="64.46107,20.12332" Rotation="0.608364" />
-        <Stone Id="" Position="62.69327,20.6032" Rotation="0.439469" />
-        <Stone Id="" Position="61.15942,19.35599" Rotation="-0.5034031" />
-        <Stone Id="" Position="57.42716,20.91454" Rotation="-0.8229584" />
-        <Stone Id="" Position="58.85672,19.58313" Rotation="-1.731552" />
-        <Stone Id="" Position="70.72235,13.92362" Rotation="-1.120237" />
-        <Stone Id="" Position="68.87909,13.94031" Rotation="-0.9593419" />
-        <Stone Id="" Position="66.22378,13.71241" Rotation="-0.6880228" />
-        <Stone Id="" Position="71.90437,12.31902" Rotation="0.9442557" />
-        <Stone Id="" Position="66.50446,11.78741" Rotation="-1.36199" />
-        <Stone Id="" Position="70.28013,11.51925" Rotation="0.3526426" />
-        <Stone Id="" Position="68.40982,12.33839" Rotation="-0.06846121" />
-        <Stone Id="" Position="63.67348,18.62444" Rotation="-0.577419" />
+        <Stone Id="" Position="58.1113,23.91015" Rotation="1.768213" />
+        <Stone Id="" Position="60.05618,23.74261" Rotation="-7.709299" />
+        <Stone Id="" Position="61.82556,24.09455" Rotation="0.01260144" />
+        <Stone Id="" Position="63.87865,24.02964" Rotation="4.656892" />
+        <Stone Id="" Position="60.95824,21.92812" Rotation="4.50614" />
+        <Stone Id="" Position="56.37157,23.80538" Rotation="-1.385084" />
+        <Stone Id="" Position="62.67048,22.66938" Rotation="10.13927" />
+        <Stone Id="" Position="56.20969,22.20186" Rotation="8.179851" />
+        <Stone Id="" Position="58.73929,22.14232" Rotation="0.2776527" />
+        <Stone Id="" Position="66.20808,16.12535" Rotation="-0.2613464" />
+        <Stone Id="" Position="67.62971,15.15644" Rotation="0.6646125" />
+        <Stone Id="" Position="73.53033,16.1892" Rotation="4.939122" />
+        <Stone Id="" Position="69.48518,16.37748" Rotation="0.04391034" />
+        <Stone Id="" Position="71.56315,15.92522" Rotation="5.652565" />
+        <Stone Id="" Position="73.20458,14.35118" Rotation="0.3694787" />
+        <Stone Id="" Position="64.46291,21.86929" Rotation="0.6910658" />
+        <Stone Id="" Position="64.52829,20.01116" Rotation="0.514385" />
+        <Stone Id="" Position="62.67652,20.51143" Rotation="0.4188184" />
+        <Stone Id="" Position="61.40898,19.2272" Rotation="0.0816495" />
+        <Stone Id="" Position="57.91404,20.61101" Rotation="-0.4611813" />
+        <Stone Id="" Position="59.60062,19.6733" Rotation="-2.349102" />
+        <Stone Id="" Position="70.57098,14.30978" Rotation="-1.680328" />
+        <Stone Id="" Position="69.02176,14.50264" Rotation="-1.068516" />
+        <Stone Id="" Position="66.15892,14.07492" Rotation="-0.7213997" />
+        <Stone Id="" Position="72.05527,12.61928" Rotation="0.6132045" />
+        <Stone Id="" Position="66.40322,11.86428" Rotation="-1.195657" />
+        <Stone Id="" Position="69.85317,12.19198" Rotation="1.340783" />
+        <Stone Id="" Position="68.03588,12.77595" Rotation="-0.08688708" />
+        <Stone Id="" Position="63.40427,18.54918" Rotation="-0.729688" />
         <CrateGenerator Id="crate2" Position="0.9134114,42.28501" Active="False" CratesNumber="2" />
         <CrateGenerator Id="crate1" Position="13.35183,5.25703" Active="False" CratesNumber="1" />
-        <Minecart Id="" Position="61.19973,-35.1196" Rotation="-7.747061E-05" Active="True" />
+        <Minecart Id="" Position="61.1983,-35.1196" Rotation="-7.747061E-05" Active="True" />
         <Door Id="door1" Position="11.13668,10.27093" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Steam Id="" Position="95.95453,20.86976" Rotation="0" />
         <Steam Id="" Position="99.02415,20.84235" Rotation="0" />
@@ -289,7 +289,7 @@
         <Platform Id="" Position="25.17063,48.7804" Width="0.5" Height="5.13" Rotation="0" />
         <Platform Id="" Position="-0.850688,45.53615" Width="0.32" Height="8" Rotation="0" />
         <Platform Id="" Position="11.98367,36.56111" Width="4" Height="0.5" Rotation="0" />
-        <Platform Id="" Position="4.585174,33.79301" Width="11.51" Height="6.03" Rotation="0" />
+        <Platform Id="" Position="4.585174,33.76302" Width="11.51" Height="6.12" Rotation="0" />
         <Platform Id="" Position="13.72166,38.78017" Width="0.5" Height="6" Rotation="0" />
         <Platform Id="" Position="22.49741,37.53249" Width="7" Height="0.1" Rotation="0" />
         <Platform Id="" Position="29.45057,41.86376" Width="0.5" Height="18.5" Rotation="0" />
