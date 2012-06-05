@@ -57,6 +57,7 @@ namespace Nobots.Editor
                 flowLayoutPanelSpeed.Visible = true;
                 numericUpDownSpeedX.Value = (decimal)((Background)selection).Speed.X;
                 numericUpDownSpeedY.Value = (decimal)((Background)selection).Speed.Y;
+                flowLayoutPanelBring.Visible = true;
             }
 
             if (selection is Foreground)
@@ -68,6 +69,7 @@ namespace Nobots.Editor
                 flowLayoutPanelSpeed.Visible = true;
                 numericUpDownSpeedX.Value = (decimal)((Foreground)selection).Speed.X;
                 numericUpDownSpeedY.Value = (decimal)((Foreground)selection).Speed.Y;
+                flowLayoutPanelBring.Visible = true;
             }
 
             if (selection is IActivable)
@@ -265,6 +267,7 @@ namespace Nobots.Editor
             flowLayoutPanelDownShift.Visible = false;
             flowLayoutPanelText.Visible = false;
             flowLayoutPanelCratesNumber.Visible = false;
+            flowLayoutPanelBring.Visible = false;
         }
 
         private void setInitialValues()
@@ -612,6 +615,34 @@ namespace Nobots.Editor
                 "LeftShift + LeftCtrl + [+]/[-]  -  Change the height of the selected object faster.\n";
 
             MessageBox.Show(header + message);
+        }
+
+        private void buttonSendToBack_Click(object sender, EventArgs e)
+        {
+            if (selectionEvents as Background != null)
+            {
+                scene.Backgrounds.Remove((Background)selectionEvents);
+                scene.Backgrounds.Insert(0, (Background)selectionEvents);
+            }
+            if (selectionEvents as Foreground != null)
+            {
+                scene.Foregrounds.Remove((Foreground)selectionEvents);
+                scene.Foregrounds.Insert(0, (Foreground)selectionEvents);
+            }
+        }
+
+        private void buttonBringToFront_Click(object sender, EventArgs e)
+        {
+            if (selectionEvents as Background != null)
+            {
+                scene.Backgrounds.Remove((Background)selectionEvents);
+                scene.Backgrounds.Add((Background)selectionEvents);
+            }
+            if (selectionEvents as Foreground != null)
+            {
+                scene.Foregrounds.Remove((Foreground)selectionEvents);
+                scene.Foregrounds.Add((Foreground)selectionEvents);
+            }
         }
     }
 }
