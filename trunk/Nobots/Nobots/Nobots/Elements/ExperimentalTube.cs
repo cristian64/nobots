@@ -89,7 +89,7 @@ namespace Nobots.Elements
                     {
                         if (i.Id == OtherTubeId)
                         {
-                            ((Character)fixtureB.Body.UserData).State = new ComaCharacterState(scene, (Character)fixtureB.Body.UserData, i.Position);
+                            ((Character)fixtureB.Body.UserData).State = new ComaCharacterState(scene, (Character)fixtureB.Body.UserData, true, i.Position);
                             ((Character)fixtureB.Body.UserData).Active = true;
                             isActive = false;
                             break;

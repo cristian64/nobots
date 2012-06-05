@@ -59,25 +59,34 @@ namespace Nobots.Elements
 
                 dead = true;
 
-#if !FINAL_RELEASE
-                MessageBox.Show("This is the Editor mode. After dying the level is no longer restarted not to lose pendent changes on the level.", "Warning!", MessageBoxButtons.OK);
-#else
-
-                Vector2? checkpointPosition = null;
+                int characterCount = 0;
                 foreach (Element i in scene.Elements)
                 {
-                    if (i is Checkpoint && ((Checkpoint)i).Active)
-                    {
-                        checkpointPosition = i.Position;
-                        break;
-                    }
+                    if (i is Character && !(i is Energy) && !(((Character)i).State is DyingCharacterState))
+                        characterCount++;
                 }
 
-                if (checkpointPosition != null)
-                    scene.CleanAndLoad(scene.SceneLoader.LastLevel, checkpointPosition, character.Active);
-                else
-                    scene.CleanAndLoad(scene.SceneLoader.LastLevel);
+                if (characterCount == 0 || scene.InputManager.Character == character)
+                {
+#if !FINAL_RELEASE
+                    MessageBox.Show("This is the Editor mode. After dying the level is no longer restarted not to lose pendent changes on the level.", "Warning!", MessageBoxButtons.OK);
+#else
+                    Vector2? checkpointPosition = null;
+                    foreach (Element i in scene.Elements)
+                    {
+                        if (i is Checkpoint && ((Checkpoint)i).Active)
+                        {
+                            checkpointPosition = i.Position;
+                            break;
+                        }
+                    }
+
+                    if (checkpointPosition != null)
+                        scene.CleanAndLoad(scene.SceneLoader.LastLevel, checkpointPosition, character.Active);
+                    else
+                        scene.CleanAndLoad(scene.SceneLoader.LastLevel);
 #endif
+                }
             }
         }
         float seconds = 0;
