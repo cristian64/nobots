@@ -2,7 +2,7 @@
 <Scene>
     <Backgrounds>
         <Background Id="" Position="-46.80622,-33.27766" Rotation="0" Scale="5" Speed="0.3,1" TextureName="background6" Width="40" Height="10.8" />
-        <Background Id="" Position="-116.9993,-34.40006" Rotation="0" Scale="5" Speed="0.1,1" TextureName="sun" Width="3.56" Height="3.5" />
+        <Background Id="" Position="7.299862,-18.21" Rotation="0" Scale="1" Speed="0.1,1" TextureName="sun" Width="3.56" Height="3.5" />
         <Background Id="" Position="-131.8899,-7.208454" Rotation="0" Scale="1" Speed="0.95,1" TextureName="flowers_blue" Width="0.72" Height="0.96" />
         <Background Id="" Position="-136.9035,-9.822536" Rotation="0" Scale="1" Speed="1,1" TextureName="tree_small_green" Width="4.93" Height="6.45" />
         <Background Id="" Position="-95.70251,-11.51127" Rotation="0" Scale="1" Speed="0.9,1" TextureName="tree_big_blue" Width="7.28" Height="9.179999" />
@@ -23,7 +23,7 @@
         <Ladder Id="" Position="-53.42901,-10.75359" StepsNumber="9" />
         <Ladder Id="" Position="62.08371,-13.10699" StepsNumber="14" />
         <ExperimentalTube Id="" Position="144.7698,-7.925097" Rotation="0" OtherTubeId="" Active="False" />
-        <Energy Id="" Position="-156.7019,-7.713138" Active="True" />
+        <Energy Id="" Position="-156.3901,-7.713138" Active="True" />
         <Platform Id="" Position="-115.3367,-6.338144" Width="96.79955" Height="1" Rotation="0" />
         <Platform Id="" Position="-195.5013,-34.13952" Width="73.07004" Height="64.32117" Rotation="-0.05" />
         <Platform Id="" Position="-109.956,-6.69594" Width="18.6" Height="1" Rotation="-0.04" />
