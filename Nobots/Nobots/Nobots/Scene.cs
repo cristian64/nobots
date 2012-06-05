@@ -219,20 +219,19 @@ namespace Nobots
         public void Load(String levelName, Vector2? characterPosition = null, bool? characterActive = null)
         {
             SceneLoader.SceneFromXml(@"Content\levels\" + levelName + ".xml", this);
+            Character character = null;
             foreach (Element i in Elements)
-            {
                 if (i is Character)
-                {
-                    if (characterPosition != null)
-                    {
-                        i.Position = (Vector2)characterPosition;
-                        ((Character)i).Active = (bool)characterActive;
-                    }
-                    else
-                    {
-                        characterPosition = i.Position;
-                    }
-                }
+                    character = (Character)i;
+
+            if (characterPosition != null)
+            {
+                character.Position = (Vector2)characterPosition;
+                character.Active = (bool)characterActive;
+            }
+            else
+            {
+                characterPosition = character.Position;
             }
 
             if (characterPosition != null)
