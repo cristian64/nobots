@@ -137,6 +137,8 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelAlsoEnergy = new System.Windows.Forms.FlowLayoutPanel();
+            this.checkBoxAlsoEnergy = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -198,6 +200,7 @@
             this.flowLayoutPanelText.SuspendLayout();
             this.flowLayoutPanelCratesNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCratesNumber)).BeginInit();
+            this.flowLayoutPanelAlsoEnergy.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -239,6 +242,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelDownShift);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelText);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelCratesNumber);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAlsoEnergy);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 381);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1803,6 +1807,28 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
+            // flowLayoutPanelAlsoEnergy
+            // 
+            this.flowLayoutPanelAlsoEnergy.Controls.Add(this.checkBoxAlsoEnergy);
+            this.flowLayoutPanelAlsoEnergy.Location = new System.Drawing.Point(0, 1007);
+            this.flowLayoutPanelAlsoEnergy.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelAlsoEnergy.Name = "flowLayoutPanelAlsoEnergy";
+            this.flowLayoutPanelAlsoEnergy.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelAlsoEnergy.TabIndex = 36;
+            this.flowLayoutPanelAlsoEnergy.Visible = false;
+            // 
+            // checkBoxAlsoEnergy
+            // 
+            this.checkBoxAlsoEnergy.AutoSize = true;
+            this.checkBoxAlsoEnergy.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxAlsoEnergy.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxAlsoEnergy.Name = "checkBoxAlsoEnergy";
+            this.checkBoxAlsoEnergy.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxAlsoEnergy.TabIndex = 7;
+            this.checkBoxAlsoEnergy.Text = "Also Energy";
+            this.checkBoxAlsoEnergy.UseVisualStyleBackColor = true;
+            this.checkBoxAlsoEnergy.CheckedChanged += new System.EventHandler(this.checkBoxAlsoEnergy_CheckedChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1887,6 +1913,8 @@
             this.flowLayoutPanelText.PerformLayout();
             this.flowLayoutPanelCratesNumber.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCratesNumber)).EndInit();
+            this.flowLayoutPanelAlsoEnergy.ResumeLayout(false);
+            this.flowLayoutPanelAlsoEnergy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2003,6 +2031,8 @@
         private System.Windows.Forms.Label labelCratesNumber;
         private System.Windows.Forms.NumericUpDown numericUpDownCratesNumber;
         private System.Windows.Forms.ComboBox comboBoxTextureName;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlsoEnergy;
+        private System.Windows.Forms.CheckBox checkBoxAlsoEnergy;
 
 
     }
