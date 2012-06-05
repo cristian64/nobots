@@ -25,8 +25,6 @@ namespace Nobots
         List<ISoundSource> toEnergy = new List<ISoundSource>();
         List<ISoundSource> toNormal = new List<ISoundSource>();
 
-
-
         public AmbienceSound(Game game, Scene scene)
             : base(game)
         {
@@ -41,7 +39,6 @@ namespace Nobots
 
             AmbienceEnergy = iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabenergy.ogg");
             AmbienceEnergy.DefaultVolume = 0.3f;
-
 
             toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy1.wav"));
             toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy2.wav"));
@@ -67,14 +64,26 @@ namespace Nobots
             }
 
             ambienceLabNormal = iSoundEngine.Play2D(AmbienceNormal, true, false, false);
-
-           
-
-
             ambienceLabEnergy = iSoundEngine.Play2D(AmbienceEnergy, true, true, false);            
             ambienceLabEnergy.Volume = 0;
+        }
 
-            
+        float fadeOutDuration = 2;
+        bool isFadingOut = false;
+        public void FadeOut(float fadeOutDuration = 2)
+        {
+            this.fadeOutDuration = fadeOutDuration;
+            isFadingOut = true;
+            inTransitionToEnergy = inTransitionToNormal = false;
+        }
+
+        float fadeInDuration = 2;
+        bool isFadingIn = false;
+        public void FadeIn(float fadeInDuration = 2)
+        {
+            this.fadeInDuration = fadeInDuration;
+            isFadingIn = true;
+            inTransitionToEnergy = inTransitionToNormal = false;
         }
 
         public override void Update(GameTime gameTime)
@@ -99,11 +108,9 @@ namespace Nobots
             // Process sound effect according to the transitions.
             if (inTransitionToEnergy)
             {
-
                 if (!transitionPlayed)
                 {
                     ISound aux = iSoundEngine.Play2D(toEnergy[rand.Next(toEnergy.Count)], false, false,false);
-                  
                     transitionPlayed = true;
                 }
 
@@ -113,10 +120,6 @@ namespace Nobots
 
                 if (ambienceLabNormal.Volume == 0)
                 {
-
-                    
-                    
-
                     ambienceLabNormal.Paused = true;
                     inTransitionToEnergy = false;
                 }
@@ -124,10 +127,9 @@ namespace Nobots
 
             if (inTransitionToNormal)
             {
-
-                if (!transitionPlayed){
+                if (!transitionPlayed)
+                {
                     iSoundEngine.Play2D(toNormal[rand.Next(toNormal.Count)], false, false,false);
-                 
                     transitionPlayed = true;
                 }
 
@@ -137,11 +139,27 @@ namespace Nobots
 
                 if (ambienceLabEnergy.Volume == 0)
                 {
-                                 
-
                     ambienceLabEnergy.Paused = true;
                     inTransitionToNormal = false;
                 }
+            }
+
+            if (isFadingOut)
+            {
+                ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
+                ambienceLabNormal.Volume = Math.Max(0, ambienceLabNormal.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
+
+                if (ambienceLabEnergy.Volume == 0 && ambienceLabNormal.Volume == 0)
+                    isFadingOut = false;
+            }
+
+            if (isFadingIn)
+            {
+                ambienceLabEnergy.Volume = Math.Min(1, ambienceLabEnergy.Volume + (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
+                ambienceLabNormal.Volume = Math.Min(1, ambienceLabNormal.Volume + (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
+
+                if (ambienceLabEnergy.Volume == 1 && ambienceLabNormal.Volume == 1)
+                    isFadingIn = false;
             }
         }
     }
