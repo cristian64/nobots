@@ -13,7 +13,8 @@ namespace Nobots.Elements
         float totalSeconds = 0;
         int columns = 0;
         int rows = 0;
-        int framesInLastRow = 0;
+        int totalFrames = 0;
+        int currentFrame = 0;
         bool dead = false;
         bool animating = true;
 
@@ -22,10 +23,10 @@ namespace Nobots.Elements
         {
             texture = scene.Game.Content.Load<Texture2D>("dyingGas");
             columns = 5;
-            rows = 2;
-            framesInLastRow = 4;
-            characterWidth = texture.Width / columns;
-            characterHeight = texture.Height / rows;
+            rows = 4;
+            totalFrames = 16;
+            characterWidth = (int)(texture.Width / columns);
+            characterHeight = (int)(texture.Height / rows);
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;
@@ -94,20 +95,17 @@ namespace Nobots.Elements
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
        
-            if (seconds > 0.04f)
+            if (seconds > 0.03f)
             {
-                seconds -= 0.04f;
-                textureXmin += texture.Width / columns;
+                seconds -= 0.03f;
+                currentFrame = currentFrame % totalFrames;
+                textureXmin = (currentFrame % columns) * characterWidth;
+                textureYmin = (currentFrame / columns) * characterHeight;
+                currentFrame++;
 
-                if (textureXmin == (texture.Width / columns) * framesInLastRow && textureYmin == texture.Height / rows)
-                {
+                //because the animatino is not looped
+                if (currentFrame >= totalFrames)
                     animating = false;
-                }
-                else if (textureXmin == texture.Width)
-                {
-                    textureXmin = 0;
-                    textureYmin += texture.Height / rows;
-                }
             }
 
             return new Vector2(textureXmin, textureYmin);
