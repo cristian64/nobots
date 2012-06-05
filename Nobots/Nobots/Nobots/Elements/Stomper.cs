@@ -114,9 +114,8 @@ namespace Nobots.Elements
         {
             if (!fixtureB.IsSensor)
             {
-                
                 isMovingDown = false;
-                if (fixtureB.Body.UserData is Character && body.LinearVelocity.Y > 0)
+                if (fixtureB.Body.UserData is Character && !(fixtureB.Body.UserData is Energy) && body.LinearVelocity.Y > 0)
                 {
                     if (!(((Character)fixtureB.Body.UserData).State is DyingCharacterState))
                     {
@@ -149,23 +148,17 @@ namespace Nobots.Elements
                         {
                             Vector2 direction = Vector2.Normalize(targetPosition - body.Position);
                             body.LinearVelocity = SpeedUp * direction;
-                            
                         }
                         else
                         {
                             body.LinearVelocity = Vector2.Zero;
                             body.Position = targetPosition;
-                            
                             isMovingDown = true;
                         }
                     }
                     else
                     {
-                        
                         isMovingDown = true;
-                        
-
-
                     }
                 }
             }
@@ -190,7 +183,7 @@ namespace Nobots.Elements
             body.Position = position + new Vector2(0, 0);
             body.BodyType = BodyType.Kinematic;
             body.UserData = this;
-            body.CollidesWith = ElementCategory.FLOOR | ElementCategory.CHARACTER;
+            body.CollidesWith = Category.All;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
         }
 
