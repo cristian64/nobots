@@ -146,8 +146,8 @@ namespace Nobots
 
             if (isFadingOut)
             {
-                ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
-                ambienceLabNormal.Volume = Math.Max(0, ambienceLabNormal.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
+                ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds / fadeOutDuration);
+                ambienceLabNormal.Volume = Math.Max(0, ambienceLabNormal.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds / fadeOutDuration);
 
                 if (ambienceLabEnergy.Volume == 0 && ambienceLabNormal.Volume == 0)
                     isFadingOut = false;
@@ -155,10 +155,10 @@ namespace Nobots
 
             if (isFadingIn)
             {
-                ambienceLabEnergy.Volume = Math.Min(1, ambienceLabEnergy.Volume + (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
-                ambienceLabNormal.Volume = Math.Min(1, ambienceLabNormal.Volume + (float)gameTime.ElapsedGameTime.TotalSeconds) / fadeOutDuration;
+                ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds / fadeInDuration);
+                ambienceLabNormal.Volume = Math.Min(1, ambienceLabNormal.Volume + (float)gameTime.ElapsedGameTime.TotalSeconds / fadeInDuration);
 
-                if (ambienceLabEnergy.Volume == 1 && ambienceLabNormal.Volume == 1)
+                if (ambienceLabEnergy.Volume == 0 && ambienceLabNormal.Volume == 1)
                     isFadingIn = false;
             }
         }
