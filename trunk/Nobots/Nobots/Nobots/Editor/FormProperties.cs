@@ -595,5 +595,23 @@ namespace Nobots.Editor
             if (selectionEvents as Endpoint != null)
                 ((Endpoint)selectionEvents).AlsoEnergy = checkBoxAlsoEnergy.Checked;
         }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            string header = "How to work with the Editor:\n\n";
+            string message = "Ctrl + O  -  Open an xml file with a level.\n" +
+                "LeftCtrl + S  -  Save your currently built level to xml.\n" +
+                "LeftCtrl + N  -  Clean the currently built level.\n" +
+                "Left mouse click  -  Select an element.\n" +
+                "Right mouse click  -  Add a selected element from the list to the level.\n" +
+                "W/A/S/D  -  Move the selected element up/left/down/right.\n" +
+                "LeftShift + W/A/S/D  -  Move the selected element faster.\n" +
+                "[+]/[-]  -  Change the width of the selected object (if possible).\n" +
+                "LeftShift + [+]/[-]  -  Change the width of the selected object faster.\n" +
+                "LeftCtrl + [+]/[-]  -  Change the height of the selected object.\n" +
+                "LeftShift + LeftCtrl + [+]/[-]  -  Change the height of the selected object faster.\n";
+
+            MessageBox.Show(header + message);
+        }
     }
 }

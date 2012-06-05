@@ -139,6 +139,7 @@
             this.listBoxAvailableElements = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -1829,11 +1830,22 @@
             this.checkBoxShowEmblems.UseVisualStyleBackColor = true;
             this.checkBoxShowEmblems.CheckedChanged += new System.EventHandler(this.checkBoxShowEmblems_CheckedChanged);
             // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Location = new System.Drawing.Point(202, 12);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(75, 23);
+            this.buttonHelp.TabIndex = 6;
+            this.buttonHelp.Text = "Help";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 750);
+            this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.checkBoxShowEmblems);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxAvailableElements);
@@ -2033,6 +2045,7 @@
         private System.Windows.Forms.ComboBox comboBoxTextureName;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlsoEnergy;
         private System.Windows.Forms.CheckBox checkBoxAlsoEnergy;
+        private System.Windows.Forms.Button buttonHelp;
 
 
     }
