@@ -114,6 +114,7 @@ namespace Nobots.Elements
                 energy.Position = OtherSocket.Position;
                 energy.torso.Awake = energy.body.Awake = true;
                 energy.contactsNumber = 0;
+                energy.State = new FallingCharacterState(scene, energy);
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);

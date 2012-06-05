@@ -12,8 +12,9 @@ namespace Nobots.Elements
         int rows;
         int columns;
 
+        bool createEnergy = true;
         Vector2? energyPosition = null;
-        public ComaCharacterState(Scene scene, Character character, Vector2? energyPosition = null) 
+        public ComaCharacterState(Scene scene, Character character, bool createEnergy = true, Vector2? energyPosition = null) 
             : base(scene, character)
         { /*
             texture = scene.Game.Content.Load<Texture2D>("idle");
@@ -34,6 +35,7 @@ namespace Nobots.Elements
              
 
             this.energyPosition = energyPosition;
+            this.createEnergy = createEnergy;
         }
 
         public override void Update(GameTime gameTime)
@@ -91,17 +93,20 @@ namespace Nobots.Elements
             character.body.FixedRotation = true;
             character.body.AngularVelocity = 0;
 
-            Energy energy = new Energy(scene.Game, scene, energyPosition != null ? (Vector2)energyPosition : character.Position);
-            energy.State = new FallingCharacterState(scene, energy);
-            energy.Position = energyPosition != null ? (Vector2)energyPosition : character.Position;
-            scene.InputManager.Character = energy;
-            scene.Camera.Target = energy;
-            scene.RespawnElements.Add(energy);
-            Random random = new Random();
-            for (int j = 0; j < 50; j++)
+            if (createEnergy)
             {
-                scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
-                scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                Energy energy = new Energy(scene.Game, scene, energyPosition != null ? (Vector2)energyPosition : character.Position);
+                energy.State = new FallingCharacterState(scene, energy);
+                energy.Position = energyPosition != null ? (Vector2)energyPosition : character.Position;
+                scene.InputManager.Character = energy;
+                scene.Camera.Target = energy;
+                scene.RespawnElements.Add(energy);
+                Random random = new Random();
+                for (int j = 0; j < 50; j++)
+                {
+                    scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                    scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                }
             }
         }
     }
