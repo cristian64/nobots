@@ -2,7 +2,6 @@
 <Scene>
     <Backgrounds>
         <Background Id="" Position="-46.80622,-33.27766" Rotation="0" Scale="5" Speed="0.3,1" TextureName="background6" Width="40" Height="10.8" />
-        <Background Id="" Position="1842.102,1985.973" Rotation="0" Scale="1" Speed="1,1" TextureName="" Width="5.12" Height="5.12" />
         <Background Id="" Position="-116.9993,-34.40006" Rotation="0" Scale="5" Speed="0.1,1" TextureName="sun" Width="3.56" Height="3.5" />
         <Background Id="" Position="-131.8899,-7.208454" Rotation="0" Scale="1" Speed="0.95,1" TextureName="flowers_blue" Width="0.72" Height="0.96" />
         <Background Id="" Position="-136.9035,-9.822536" Rotation="0" Scale="1" Speed="1,1" TextureName="tree_small_green" Width="4.93" Height="6.45" />
@@ -16,15 +15,15 @@
         <Background Id="" Position="88.52422,-11.64302" Rotation="0" Scale="0.7" Speed="0.9,1" TextureName="tree_big_blue" Width="7.28" Height="9.179999" />
         <Background Id="" Position="112.4732,-8.336784" Rotation="0" Scale="1.5" Speed="0.9,1" TextureName="flowers_yellow" Width="0.72" Height="0.96" />
         <Background Id="" Position="120.7868,-8.025912" Rotation="0" Scale="2" Speed="1,1" TextureName="flowers_red" Width="0.72" Height="0.96" />
-        <Background Id="" Position="69.1062,-15.33742" Rotation="0" Scale="1.5" Speed="1,1" TextureName="flowers_red" Width="0.72" Height="0.96" />
+        <Background Id="" Position="69.1062,-14.4274" Rotation="0" Scale="1.5" Speed="1,1" TextureName="flowers_red" Width="0.72" Height="0.96" />
         <Background Id="" Position="73.9138,-12.64483" Rotation="0" Scale="1.3" Speed="1,1" TextureName="flowers_yellow" Width="0.72" Height="0.96" />
     </Backgrounds>
     <Elements>
-        <Endpoint Id="" Position="140.1539,-8.442007" Rotation="0" NextLevel="level1" />
+        <Endpoint Id="" Position="145.253,-8.002007" Rotation="0" NextLevel="level1" AlsoEnergy="True" />
         <Ladder Id="" Position="-53.42901,-10.75359" StepsNumber="9" />
         <Ladder Id="" Position="62.08371,-13.10699" StepsNumber="14" />
-        <Character Id="" Position="-156.0644,-7.713138" Active="True" />
-        <ExperimentalTube Id="" Position="140.1623,-8.725116" Rotation="0" OtherTubeId="" Active="True" />
+        <ExperimentalTube Id="" Position="144.7698,-7.925097" Rotation="0" OtherTubeId="" Active="False" />
+        <Energy Id="" Position="-156.7019,-7.713138" Active="True" />
         <Platform Id="" Position="-115.3367,-6.338144" Width="96.79955" Height="1" Rotation="0" />
         <Platform Id="" Position="-195.5013,-34.13952" Width="73.07004" Height="64.32117" Rotation="-0.05" />
         <Platform Id="" Position="-109.956,-6.69594" Width="18.6" Height="1" Rotation="-0.04" />
@@ -39,8 +38,17 @@
         <Platform Id="" Position="158.2415,-2.29924" Width="30" Height="10" Rotation="-0.04" />
         <Platform Id="" Position="166.1221,-21.71762" Width="41.15008" Height="33.60006" Rotation="-0.1" />
         <Platform Id="" Position="144.4738,-15.84189" Width="12.79999" Height="2.800001" Rotation="-0.13" />
-        <Platform Id="" Position="66.81558,-14.89619" Width="8.399997" Height="0.2500012" Rotation="0.1" />
+        <Platform Id="" Position="66.81558,-14.0462" Width="8.399997" Height="0.2500012" Rotation="0.1" />
         <Platform Id="" Position="75.25741,-12.14473" Width="5.999999" Height="0.2200006" Rotation="-0.06" />
+        <Hint Id="" Position="-32.75086,-10.84277" Text="Karolina Baltyn (programmer)" />
+        <Hint Id="" Position="-22.06814,-11.37902" Text="Patricia Snel (graphical artist)" />
+        <Hint Id="" Position="-11.98296,-12.00159" Text="Chema Valle Rodriguez (sound engineer)" />
+        <Hint Id="" Position="-1.427919,-12.75121" Text="Gabriel van Vemde (level designer)" />
+        <Hint Id="" Position="8.800547,-13.23751" Text="Jose Luis Lopez (character designer)" />
+        <Hint Id="" Position="18.45147,-13.48025" Text="Emile Stupin (producer)" />
+        <Hint Id="" Position="28.43377,-13.9076" Text="Martin McGuinness (level designer)" />
+        <Hint Id="" Position="37.81239,-13.98197" Text="Dean Ryan (level designer)" />
+        <Hint Id="" Position="50.71219,-14.76461" Text="Cristian Aguilera (programmer)" />
     </Elements>
     <Foregrounds>
         <Foreground Id="" Position="-148.2123,-6.644217" Rotation="0" Scale="1" Speed="1,1" TextureName="grass" Width="19.2" Height="1.37" />
@@ -54,7 +62,6 @@
         <Foreground Id="" Position="-127.9555,-7.126487" Rotation="0" Scale="1.2" Speed="1.03,1" TextureName="flowers_blue" Width="0.72" Height="0.96" />
         <Foreground Id="" Position="-125.7586,-7.135661" Rotation="0" Scale="1.4" Speed="1.03,1" TextureName="flowers_yellow" Width="0.72" Height="0.96" />
         <Foreground Id="" Position="-129.1016,-6.646165" Rotation="0" Scale="1" Speed="1,1" TextureName="grass" Width="19.2" Height="1.37" />
-        <Foreground Id="" Position="4245.855,4456.76" Rotation="0" Scale="1" Speed="1,1" TextureName="" Width="5.12" Height="5.12" />
         <Foreground Id="" Position="-164.5076,-14.19463" Rotation="0" Scale="3" Speed="1,1" TextureName="logo" Width="2.56" Height="2.56" />
         <Foreground Id="" Position="-55.17126,-10.28342" Rotation="0" Scale="1" Speed="1,1" TextureName="platform_300x100_grass" Width="3" Height="1" />
         <Foreground Id="" Position="-50.54696,-11.37515" Rotation="0" Scale="1" Speed="1,1" TextureName="platform_500x100_grass" Width="5" Height="1" />
@@ -77,8 +84,8 @@
         <Foreground Id="" Position="96.76078,-16.78008" Rotation="0" Scale="3" Speed="1.5,1" TextureName="tree_small_green" Width="4.93" Height="6.45" />
         <Foreground Id="" Position="116.6939,-8.339757" Rotation="0" Scale="2.5" Speed="1.1,1" TextureName="flowers_blue" Width="0.72" Height="0.96" />
         <Foreground Id="" Position="115.9409,-7.496401" Rotation="0.03" Scale="1" Speed="1,1" TextureName="grass" Width="24.4" Height="1.37" />
-        <Foreground Id="" Position="64.87431,-15.01678" Rotation="0.1" Scale="1" Speed="1,1" TextureName="platform_500x100_grass" Width="5" Height="1" />
-        <Foreground Id="" Position="68.84401,-14.61169" Rotation="0.1" Scale="1" Speed="1,1" TextureName="platform_500x100_grass" Width="5" Height="1" />
+        <Foreground Id="" Position="64.87431,-14.07676" Rotation="0.1" Scale="1" Speed="1,1" TextureName="platform_500x100_grass" Width="5" Height="1" />
+        <Foreground Id="" Position="68.84401,-13.69167" Rotation="0.1" Scale="1" Speed="1,1" TextureName="platform_500x100_grass" Width="5" Height="1" />
         <Foreground Id="" Position="74.47034,-11.93048" Rotation="-0.06" Scale="1" Speed="1,1" TextureName="platform_500x100_grass" Width="5" Height="1" />
         <Foreground Id="" Position="77.10645,-12.11935" Rotation="-0.06" Scale="1" Speed="1,1" TextureName="platform_300x100_grass" Width="3" Height="1" />
         <Foreground Id="" Position="79.67132,-12.59933" Rotation="0" Scale="1" Speed="1.1,1" TextureName="tree_big_orange" Width="7.35" Height="9.08" />
