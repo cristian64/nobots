@@ -15,7 +15,7 @@ namespace Nobots.Elements
         Body body;
         Texture2D texture;
 
-        private bool alsoEnergy = false;
+        private bool alsoEnergy;
         public bool AlsoEnergy
         {
             get { return alsoEnergy; }
@@ -68,7 +68,7 @@ namespace Nobots.Elements
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
 
             body.UserData = this;
-            AlsoEnergy = true;
+            AlsoEnergy = false;
         }
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)

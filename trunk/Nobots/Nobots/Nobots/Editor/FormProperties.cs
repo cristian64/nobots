@@ -18,7 +18,7 @@ namespace Nobots.Editor
         public Game Game;
         private Scene scene;
 
-        // This variable is used for disable events while reseting and initializing controls.
+        // This variable is used to disable events while reseting and initializing controls.
         private Element selectionEvents;
 
         private Element selection;
@@ -182,6 +182,7 @@ namespace Nobots.Editor
             {
                 flowLayoutPanelNextLevel.Visible = true;
                 textBoxNextLevel.Text = ((Endpoint)selection).NextLevel;
+                flowLayoutPanelAlsoEnergy.Visible = true;
             }
 
             if (selection is Hint)
@@ -249,6 +250,7 @@ namespace Nobots.Editor
             flowLayoutPanelAngularSpeed.Visible = false;
             flowLayoutPanelTextureName.Visible = false;
             flowLayoutPanelNextLevel.Visible = false;
+            flowLayoutPanelAlsoEnergy.Visible = false;
             flowLayoutPanelSoundName.Visible = false;
             flowLayoutPanelOtherTubeId.Visible = false;
             flowLayoutPanelVolume.Visible = false;
@@ -585,6 +587,12 @@ namespace Nobots.Editor
                 ((Background)selectionEvents).TextureName = comboBoxTextureName.Text;
             if (selectionEvents as Foreground != null)
                 ((Foreground)selectionEvents).TextureName = comboBoxTextureName.Text;
+        }
+
+        private void checkBoxAlsoEnergy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents as Endpoint != null)
+                ((Endpoint)selectionEvents).AlsoEnergy = checkBoxAlsoEnergy.Checked;
         }
     }
 }
