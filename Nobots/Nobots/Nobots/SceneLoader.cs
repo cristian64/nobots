@@ -79,7 +79,10 @@ namespace Nobots
                 reader.Close();
 
                 LastLevel = System.IO.Path.GetFileNameWithoutExtension(filename);
-                System.IO.File.WriteAllText(@"Content\levels\lastlevel", LastLevel);
+                if (Levels.Contains(LastLevel))
+                    System.IO.File.WriteAllText(@"Content\levels\lastlevel", LastLevel);
+                else
+                    System.IO.File.WriteAllText(@"Content\levels\lastlevel", "level1");
             }
             catch (Exception e)
             {
@@ -138,6 +141,7 @@ namespace Nobots
 
         public Element ElementFromXml(XmlTextReader reader, Scene scene)
         {
+            bool thereIsEnergy = false;
             Element e = null;
             switch (reader.Name)
             {
@@ -314,6 +318,15 @@ namespace Nobots
                         stepsNumber3 = int.Parse(reader.Value);
                     e = new TrainTrack(Game, scene, Vector2.Zero, stepsNumber3);
                     break;
+                case "Energy":
+                    if (!thereIsEnergy)
+                    {
+                        e = new Energy(Game, scene, Vector2.Zero);
+                        scene.Camera.Target = e;
+                        scene.InputManager.Character = (Energy)e;
+                        thereIsEnergy = true;
+                    }
+                    break;
                 case "Character":
                     e = new Character(Game, scene, Vector2.Zero);
                     scene.Camera.Target = e;
@@ -373,6 +386,16 @@ namespace Nobots
 
             if (e is Nobots.Elements.Activator && reader.MoveToAttribute("ActivableElementId"))
                 ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
+
+            if (thereIsEnergy)
+                foreach (Element ele in scene.Elements)
+                    if (ele is Energy)
+                    {
+                        scene.Camera.Target = ele;
+                        scene.InputManager.Character = (Energy)ele;
+                    }
+                    else if (ele is Character)
+                        ((Character)ele).State = new ComaCharacterState(scene, (Character)ele, false);
 
             return e;
         }
@@ -462,6 +485,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Endpoint)i) + "\n";
                 else if (i as Sound != null)
                     xml += "        " + ElementToXml((Sound)i) + "\n";
+                else if (i as Energy != null)
+                    xml += "        " + ElementToXml((Energy)i) + "\n";
                 else if (i as Character != null)
                     xml += "        " + ElementToXml((Character)i) + "\n";
                 else if (i as Forklift != null)
@@ -664,6 +689,12 @@ namespace Nobots
         public String ElementToXml(Closet closet)
         {
             String xml = "<Closet Id=\"" + closet.Id + "\" Position=\"" + closet.Position.X + "," + closet.Position.Y + "\" Rotation=\"" + closet.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Energy energy)
+        {
+            String xml = "<Energy Id=\"" + energy.Id + "\" Position=\"" + energy.Position.X + "," + energy.Position.Y + "\" Active=\"" + energy.Active + "\" />";
             return xml;
         }
 
