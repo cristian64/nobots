@@ -38,9 +38,17 @@ namespace Nobots
                 else
                 {
                     if (alpha < AlphaTarget)
+                    {
                         alpha = (float)Math.Min(1, alpha + gameTime.ElapsedGameTime.TotalSeconds / duration);
+                        if (alpha > AlphaTarget)
+                            alpha = AlphaTarget;
+                    }
                     else
+                    {
                         alpha = (float)Math.Max(0, alpha - gameTime.ElapsedGameTime.TotalSeconds / duration);
+                        if (alpha < AlphaTarget)
+                            alpha = AlphaTarget;
+                    }
                 }
             }
         }
