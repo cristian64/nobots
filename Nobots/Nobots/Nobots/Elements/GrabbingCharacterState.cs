@@ -128,6 +128,7 @@ namespace Nobots.Elements
             character.State = new IdleCharacterState(scene, character);
         }
 
+        private float speed = 3;
         public override void RightAction()
         {
             moving = true;
@@ -135,7 +136,7 @@ namespace Nobots.Elements
                 (touchedBody.UserData is IPullable && character.Position.X > touchedBody.Position.X)))
             {
                 character.body.FixedRotation = false;
-                character.torso.LinearVelocity = new Vector2(2, character.torso.LinearVelocity.Y);
+                character.torso.LinearVelocity = new Vector2(speed, character.torso.LinearVelocity.Y);
                 isPushing = character.Position.X < touchedBody.Position.X ? true : false;
                 if (isPushing)
                 {
@@ -164,7 +165,7 @@ namespace Nobots.Elements
                 (touchedBody.UserData is IPullable && character.Position.X < touchedBody.Position.X)))
             {
                 character.body.FixedRotation = false;
-                character.torso.LinearVelocity = new Vector2(-2, character.torso.LinearVelocity.Y);
+                character.torso.LinearVelocity = new Vector2(-speed, character.torso.LinearVelocity.Y);
                 isPushing = character.Position.X > touchedBody.Position.X ? true : false;
                 if (isPushing)
                 {
