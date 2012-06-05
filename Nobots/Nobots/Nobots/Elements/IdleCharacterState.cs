@@ -9,12 +9,19 @@ namespace Nobots.Elements
 {
     public class IdleCharacterState : CharacterState
     {
+        int columns = 0;
+        int rows = 0;
+        int totalFrames = 0;
+        int currentFrame = 0;
         public IdleCharacterState(Scene scene, Character character) 
             : base(scene, character)
         {
+            columns = 10;
+            rows = 2;
+            totalFrames = 15;
             texture = scene.Game.Content.Load<Texture2D>(character is Energy ? "idleEnergy" : "idle");
-            characterWidth = texture.Width / 10;
-            characterHeight = texture.Height / 2;
+            characterWidth = texture.Width / columns;
+            characterHeight = texture.Height / rows;
             character.texture = texture;
             textureXmin = 0;
             textureYmin = 0;
@@ -30,26 +37,16 @@ namespace Nobots.Elements
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
        
-            if (seconds > 0.04f)
+            if (seconds > 0.03f)
             {
-                seconds -= 0.04f;
-                textureXmin += texture.Width / 10;
+                seconds -= 0.03f;
+                currentFrame = currentFrame % totalFrames;
+                textureXmin = (currentFrame % columns) * characterWidth;
+                textureYmin = (currentFrame / columns) * characterHeight;
+                currentFrame++;
 
-                if (textureXmin == (texture.Width / 10) * 5 && textureYmin == texture.Height / 2)
-                {
-                    textureXmin = 0;
-                    textureYmin = 0;
-                }
-                else if (textureXmin == texture.Width)
-                {
-                    textureXmin = 0;
-                    textureYmin += texture.Height / 2;
-                }
-            }
-            if (textureYmin == 0 && textureXmin == texture.Width / 10)
-            {
-                seconds -= 4f; ;
-                textureXmin = (texture.Width / 10 * 2);
+                if (currentFrame == totalFrames)
+                    seconds -= 3;
             }
 
             return new Vector2(textureXmin, textureYmin);
