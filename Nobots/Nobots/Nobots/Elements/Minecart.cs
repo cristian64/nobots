@@ -126,7 +126,7 @@ namespace Nobots.Elements
 
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
-            body.CollidesWith = Category.All & ~ElementCategory.ENERGY;
+            body.CollidesWith = Category.All;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
             body.Mass = 1000;
