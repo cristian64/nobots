@@ -140,6 +140,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
             this.buttonHelp = new System.Windows.Forms.Button();
+            this.flowLayoutPanelBring = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonSendToBack = new System.Windows.Forms.Button();
+            this.buttonBringToFront = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -202,6 +205,7 @@
             this.flowLayoutPanelCratesNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCratesNumber)).BeginInit();
             this.flowLayoutPanelAlsoEnergy.SuspendLayout();
+            this.flowLayoutPanelBring.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -244,6 +248,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelText);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelCratesNumber);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAlsoEnergy);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelBring);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 381);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1840,6 +1845,37 @@
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
+            // flowLayoutPanelBring
+            // 
+            this.flowLayoutPanelBring.Controls.Add(this.buttonSendToBack);
+            this.flowLayoutPanelBring.Controls.Add(this.buttonBringToFront);
+            this.flowLayoutPanelBring.Location = new System.Drawing.Point(0, 1036);
+            this.flowLayoutPanelBring.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelBring.Name = "flowLayoutPanelBring";
+            this.flowLayoutPanelBring.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelBring.TabIndex = 37;
+            this.flowLayoutPanelBring.Visible = false;
+            // 
+            // buttonSendToBack
+            // 
+            this.buttonSendToBack.Location = new System.Drawing.Point(3, 3);
+            this.buttonSendToBack.Name = "buttonSendToBack";
+            this.buttonSendToBack.Size = new System.Drawing.Size(94, 23);
+            this.buttonSendToBack.TabIndex = 0;
+            this.buttonSendToBack.Text = "Send to Back";
+            this.buttonSendToBack.UseVisualStyleBackColor = true;
+            this.buttonSendToBack.Click += new System.EventHandler(this.buttonSendToBack_Click);
+            // 
+            // buttonBringToFront
+            // 
+            this.buttonBringToFront.Location = new System.Drawing.Point(103, 3);
+            this.buttonBringToFront.Name = "buttonBringToFront";
+            this.buttonBringToFront.Size = new System.Drawing.Size(101, 23);
+            this.buttonBringToFront.TabIndex = 1;
+            this.buttonBringToFront.Text = "Bring to Front";
+            this.buttonBringToFront.UseVisualStyleBackColor = true;
+            this.buttonBringToFront.Click += new System.EventHandler(this.buttonBringToFront_Click);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1927,6 +1963,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCratesNumber)).EndInit();
             this.flowLayoutPanelAlsoEnergy.ResumeLayout(false);
             this.flowLayoutPanelAlsoEnergy.PerformLayout();
+            this.flowLayoutPanelBring.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2046,6 +2083,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlsoEnergy;
         private System.Windows.Forms.CheckBox checkBoxAlsoEnergy;
         private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBring;
+        private System.Windows.Forms.Button buttonSendToBack;
+        private System.Windows.Forms.Button buttonBringToFront;
 
 
     }
