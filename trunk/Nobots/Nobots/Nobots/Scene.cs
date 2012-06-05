@@ -235,7 +235,8 @@ namespace Nobots
                 }
             }
 
-            Camera.Position = (Vector2)characterPosition;
+            if (characterPosition != null)
+                Camera.Position = (Vector2)characterPosition;
 
             this.levelName = "";
             this.characterPosition = null;
