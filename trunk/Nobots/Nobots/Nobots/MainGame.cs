@@ -218,9 +218,6 @@ namespace Nobots
                 Enabled = false;
         }
 
-        float logoScale = 0.4f;
-        float iconScale = 0.2f;
-
         public override void Draw(GameTime gameTime)
         {
             Vector2 position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
