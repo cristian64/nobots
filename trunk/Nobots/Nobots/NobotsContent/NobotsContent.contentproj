@@ -232,6 +232,7 @@
       <Name>hintfont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="fonts\menuoption.spritefont">
       <Name>menuoption</Name>
@@ -252,6 +253,7 @@
       <Name>storytelling</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <None Include="sounds\effects\circularsaw.ogg">
       <Name>circularsaw</Name>
@@ -1462,6 +1464,7 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
