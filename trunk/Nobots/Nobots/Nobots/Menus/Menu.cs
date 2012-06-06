@@ -30,7 +30,9 @@ namespace Nobots.Menus
         {
             this.scene = scene;
             Initialize();
+#if !FINAL_RELEASE
             Enabled = false;
+#endif
 
             menuoptionfont = Game.Content.Load<SpriteFont>("fonts\\menuoption");
             menufont = Game.Content.Load<SpriteFont>("fonts\\menu");
@@ -39,9 +41,6 @@ namespace Nobots.Menus
 
             options = new List<Option>();
             options.Add(new ResumeOption(scene));
-            options.Add(new LastCheckpointOption(scene));
-            options.Add(new RestartLevelOption(scene));
-            //options.Add(new StartGameOption(scene));
             options.Add(new LoadLevelOption(scene));
             options.Add(new ControlsOption(scene));
 #if FINAL_RELEASE
@@ -91,6 +90,16 @@ namespace Nobots.Menus
                 (currentGamepadState.Buttons.Start == ButtonState.Released && previosGamepadState.Buttons.Start == ButtonState.Pressed) ||
                 (currentGamepadState.Buttons.BigButton == ButtonState.Released && previosGamepadState.Buttons.BigButton == ButtonState.Pressed))
             {
+                // IF it's enable but there are not levels loaded, forbid the menu to disappear by ending the method here.
+#if FINAL_RELEASE
+                if (Enabled && scene.Elements.Count + scene.Backgrounds.Count + scene.Backgrounds.Count == 0)
+                {
+                    previousKeyboardState = currentKeyboardState;
+                    previosGamepadState = currentGamepadState;
+                    return;
+                }
+#endif
+
                 Enabled = !Enabled;
                 if (!Enabled)
                     scene.Transitioner.AlphaTarget = 0;
@@ -101,6 +110,15 @@ namespace Nobots.Menus
                 selectedIndex = 0;
                 options[selectedIndex].Refresh(true);
                 scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Select, false, false, false);
+
+                // Check if there is no restart option but there is indeed a level loaded.
+                bool thereIsRestart = false;
+                foreach (Option i in options)
+                    if (i is RestartLevelOption)
+                        thereIsRestart = true;
+                if (!thereIsRestart && scene.SceneLoader.LastLevel != "")
+                    options.Insert(1, new RestartLevelOption(scene));
+                    //options.Insert(1, new LastCheckpointOption(scene));
             }
 
             if (Enabled)
