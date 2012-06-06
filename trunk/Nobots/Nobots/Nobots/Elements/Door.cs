@@ -99,8 +99,7 @@ namespace Nobots.Elements
             width = Conversion.ToWorld(texture.Width);
             height = Conversion.ToWorld(texture.Height/2);
             createBody();
-            InitialPosition = body.Position;
-            FinalPosition = body.Position - new Vector2(0, Height);
+            Position = position;
         }
 
         public override void Update(GameTime gameTime)
@@ -110,14 +109,20 @@ namespace Nobots.Elements
                 if (body.Position.Y > FinalPosition.Y)
                     body.LinearVelocity = Speed * (-Vector2.UnitY);
                 else
+                {
                     body.LinearVelocity = Vector2.Zero;
+                    body.Position = FinalPosition;
+                }
             } 
             else
             {
                 if (body.Position.Y < InitialPosition.Y)
                     body.LinearVelocity = 10 * Speed * Vector2.UnitY;
                 else
+                {
                     body.LinearVelocity = Vector2.Zero;
+                    body.Position = InitialPosition;
+                }
             }
         }
 
