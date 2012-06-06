@@ -26,7 +26,6 @@ namespace Nobots.Elements
             {
                 return isActive;
             }
-
             set
             {
                 isActive = value;
@@ -43,7 +42,7 @@ namespace Nobots.Elements
             set
             {
                 height = value;
-                FinalPosition = body.Position - new Vector2(0, Height);
+                updatePositions();
                 createBody();
             }
         }
@@ -72,12 +71,12 @@ namespace Nobots.Elements
             set
             {
                 body.Position = value;
-                InitialPosition = value;
-                FinalPosition = value - new Vector2(0, Height);
                 position = value;
+                updatePositions();
             }
         }
 
+        float rotation = 0;
         public override float Rotation
         {
             get
@@ -86,7 +85,7 @@ namespace Nobots.Elements
             }
             set
             {
-                body.Rotation = value;
+                body.Rotation = rotation = value;
             }
         }
 
@@ -124,7 +123,14 @@ namespace Nobots.Elements
                     body.Position = InitialPosition;
                 }
             }
+
+            if (firstUpdate)
+            {
+                updatePositions();
+                firstUpdate = false;
+            }
         }
+        bool firstUpdate = true;
 
         public override void Draw(GameTime gameTime)
         {
@@ -133,12 +139,27 @@ namespace Nobots.Elements
                 (int)Math.Round(Conversion.ToDisplay(Width * scale)), (int)Math.Round(Conversion.ToDisplay(Height * scale))), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), SpriteEffects.None, 0);
         }
 
+        void updatePositions()
+        {
+            if (!isActive)
+            {
+                InitialPosition = body.Position;
+                FinalPosition = body.Position - new Vector2(0, height);
+            }
+            else
+            {
+                FinalPosition = body.Position;
+                InitialPosition = body.Position + new Vector2(0, height);
+            }
+        }
+
         private void createBody()
         {
             if(body != null)
                 body.Dispose();
             body = BodyFactory.CreateRectangle(scene.World, Width, Height, 1.0f);
             body.Position = position;
+            body.Rotation = rotation;
             body.Friction = 0;
             body.BodyType = BodyType.Kinematic;
             body.CollisionCategories = ElementCategory.FLOOR;
