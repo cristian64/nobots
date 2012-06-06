@@ -100,6 +100,7 @@ namespace Nobots
             ExplosionSmokeParticleSystem = new ExplosionSmokeParticleSystem(Game, this);
             LightningParticleSystem = new LightningParticleSystem(Game, this);
 
+#if !FINAL_RELEASE
             try
             {
                 string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
@@ -109,6 +110,7 @@ namespace Nobots
             {
                 CleanAndLoad("level1");
             }
+#endif
         }
 
         protected override void LoadContent()

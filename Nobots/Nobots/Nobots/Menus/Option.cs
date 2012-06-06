@@ -27,20 +27,6 @@ namespace Nobots.Menus
         public virtual void LeftActionStop() { }
     }
 
-    public class StartGameOption : Option
-    {
-        public StartGameOption(Scene scene) :
-            base("Start New Game", scene)
-        {
-        }
-
-        public override void AActionStop()
-        {
-            scene.Menu.Enabled = false;
-            scene.CleanAndLoad("level1");
-        }
-    }
-
     public class ControlsOption : Option
     {
         public ControlsOption(Scene scene) :
@@ -54,12 +40,53 @@ namespace Nobots.Menus
         public ResumeOption(Scene scene) :
             base("Resume", scene)
         {
+            bool resuming = false;
+            try
+            {
+                string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
+                if (text != "" || scene.SceneLoader.LastLevel != "")
+                    resuming = true;
+            }
+            catch (Exception)
+            {
+            }
+
+            Text = resuming ? "Resume" : "Start New Game";
+        }
+
+        public override void Refresh(bool selected)
+        {
+            bool resuming = false;
+            try
+            {
+                string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
+                if (text != "" || scene.SceneLoader.LastLevel != "")
+                    resuming = true;
+            }
+            catch (Exception)
+            {
+            }
+
+            Text = resuming ? "Resume" : "Start New Game";
         }
 
         public override void AActionStop()
         {
             scene.Menu.Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
+
+            if (scene.Elements.Count + scene.Backgrounds.Count + scene.Backgrounds.Count == 0)
+            {
+                try
+                {
+                    string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
+                    scene.CleanAndLoad(text);
+                }
+                catch (Exception)
+                {
+                    scene.CleanAndLoad("level1");
+                }
+            }
         }
     }
 
