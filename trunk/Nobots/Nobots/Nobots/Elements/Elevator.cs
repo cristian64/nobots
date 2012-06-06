@@ -128,6 +128,7 @@ namespace Nobots.Elements
                     if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
                     {
                         ((Character)el).State = new DyingCharacterState(scene, (Character)el);
+                        scene.InputManager.Character = (Character)el;
                         break;
                     }
             }

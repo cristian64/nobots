@@ -67,7 +67,7 @@ namespace Nobots.Elements
                         characterCount++;
                 }
 
-                if (characterCount == 0 || scene.InputManager.Character == character)
+                if ((characterCount == 0 && scene.InputManager.Character is Energy) || scene.InputManager.Character == character)
                 {
 #if !FINAL_RELEASE
                     MessageBox.Show("This is the Editor mode. After dying the level is no longer restarted not to lose pendent changes on the level.", "Warning!", MessageBoxButtons.OK);
