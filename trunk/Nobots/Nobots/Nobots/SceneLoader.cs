@@ -73,6 +73,31 @@ namespace Nobots
                                     scene.Elements.Add(e);
                             }
                         }
+
+                        if (thereIsEnergy)
+                        {
+                            foreach (Element ele in scene.Elements)
+                                if (ele is Energy)
+                                {
+                                    scene.Camera.Target = ele;
+                                    scene.InputManager.Character = (Energy)ele;
+                                }
+                                else if (ele is Character)
+                                    ((Character)ele).State = new ComaCharacterState(scene, (Character)ele, false);
+                        }
+                        else
+                        {
+                            Character previous = null;
+                            foreach (Element ele in scene.Elements)
+                            {
+                                if (ele is Character)
+                                {
+                                    if (previous != null)
+                                        ((Character)previous).State = new ComaCharacterState(scene, (Character)previous, false);
+                                    previous = (Character)ele;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -139,9 +164,10 @@ namespace Nobots
             return e;
         }
 
+        bool thereIsEnergy = false;
         public Element ElementFromXml(XmlTextReader reader, Scene scene)
         {
-            bool thereIsEnergy = false;
+            thereIsEnergy = false;
             Element e = null;
             switch (reader.Name)
             {
@@ -386,16 +412,6 @@ namespace Nobots
 
             if (e is Nobots.Elements.Activator && reader.MoveToAttribute("ActivableElementId"))
                 ((Nobots.Elements.Activator)e).ActivableElementId = reader.Value;
-
-            if (thereIsEnergy)
-                foreach (Element ele in scene.Elements)
-                    if (ele is Energy)
-                    {
-                        scene.Camera.Target = ele;
-                        scene.InputManager.Character = (Energy)ele;
-                    }
-                    else if (ele is Character)
-                        ((Character)ele).State = new ComaCharacterState(scene, (Character)ele, false);
 
             return e;
         }

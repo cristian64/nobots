@@ -220,27 +220,17 @@ namespace Nobots
 
         public void Load(String levelName, Vector2? characterPosition = null, bool? characterActive = null)
         {
+            Camera.Target = null;
             SceneLoader.SceneFromXml(@"Content\levels\" + levelName + ".xml", this);
-            Character character = null;
-            foreach (Element i in Elements)
-                if (i is Character)
-                    character = (Character)i;
-
-            if (character != null)
+            if (Camera.Target != null)
             {
                 if (characterPosition != null)
                 {
-                    character.Position = (Vector2)characterPosition;
-                    character.Active = (bool)characterActive;
+                    Camera.Target.Position = (Vector2)characterPosition;
+                    ((Character)Camera.Target).Active = (bool)characterActive;
                 }
-                else
-                {
-                    characterPosition = character.Position;
-                }
+                Camera.Position = Camera.Target.Position;
             }
-
-            if (characterPosition != null)
-                Camera.Position = (Vector2)characterPosition;
 
             this.levelName = "";
             this.characterPosition = null;
@@ -347,7 +337,7 @@ namespace Nobots
                 SpriteBatch.End();
 
                 SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-                SpriteBatch.DrawString(debugfont, fps.ToString().Substring(0, Math.Min(5, fps.ToString().Length)), Vector2.One * 10, Color.White);
+                SpriteBatch.DrawString(debugfont, "FPS: " + fps.ToString().Substring(0, Math.Min(5, fps.ToString().Length)) + "\nCameraScale: " + Camera.ScaleTarget.ToString().Substring(0, Math.Min(4, Camera.ScaleTarget.ToString().Length)), Vector2.One * 10, Color.White);
                 SpriteBatch.End();
             }
 #endif

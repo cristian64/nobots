@@ -29,6 +29,33 @@ namespace Nobots.Elements
             effect = Game.Content.Load<Effect>("effects\\energy");
         }
 
+        static Random random = new Random();
+
+        public void Die()
+        {
+            for (int j = 0; j < 50; j++)
+            {
+                scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+            }
+            scene.GarbageElements.Add(this);
+
+            bool foundComa = false;
+            foreach (Element el in scene.Elements)
+                if (el is Character && !(el is Energy) && ((Character)el).State is ComaCharacterState)
+                {
+                    ((Character)el).State = new DyingCharacterState(scene, (Character)el);
+                    scene.InputManager.Character = (Character)el;
+                    foundComa = true;
+                    break;
+                }
+
+            if (!foundComa)
+            {
+                //TODO: should die here the energy after some time too
+            }
+        }
+
         public override void UpActionStart()
         {
         }
