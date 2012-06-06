@@ -47,9 +47,7 @@ namespace Nobots.Menus
                 if (text != "" || scene.SceneLoader.LastLevel != "")
                     resuming = true;
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception) { }
 
             Text = resuming ? "Resume" : "Start New Game";
         }
@@ -63,9 +61,7 @@ namespace Nobots.Menus
                 if (text != "" || scene.SceneLoader.LastLevel != "")
                     resuming = true;
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception) { }
 
             Text = resuming ? "Resume" : "Start New Game";
         }
@@ -181,12 +177,26 @@ namespace Nobots.Menus
         }
 
         bool firstTime = true;
-
         public override void Refresh(bool selected)
         {
+            if (!selected)
+            {
+                if (scene.SceneLoader.LastLevel != "")
+                {
+                    selectedIndex = scene.SceneLoader.Levels.IndexOf(scene.SceneLoader.LastLevel);
+                    if (selectedIndex < 0)
+                        selectedIndex = 0;
+                }
+            }
+
             if (firstTime)
             {
-                selectedIndex = scene.SceneLoader.Levels.IndexOf(scene.SceneLoader.LastLevel);
+                try
+                {
+                    string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
+                    selectedIndex = scene.SceneLoader.Levels.IndexOf(text);
+                }
+                catch (Exception) { }
                 if (selectedIndex < 0)
                     selectedIndex = 0;
                 firstTime = false;
