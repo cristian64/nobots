@@ -152,14 +152,13 @@ namespace Nobots.Elements
                 foreach (Element el in scene.Elements)
                     if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
                     {
-                        Console.WriteLine("Dying from the Energy");
                         ((Character)el).State = new DyingCharacterState(scene, (Character)el);
+                        scene.InputManager.Character = (Character)el;
                         break;
                     }
             }
             else if (fixtureB.Body.UserData is Character)
             {
-                Console.WriteLine("Dying from the Character");
                 Character c = (Character)fixtureB.Body.UserData;
                 if(!(c.State is DyingCharacterState))
                     c.State = new DyingCharacterState(scene, c);
