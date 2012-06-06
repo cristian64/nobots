@@ -13,16 +13,18 @@
         <Background Id="" Position="42.79469,6.595844" Rotation="0" Scale="0.7" Speed="1,1" TextureName="sign_danger" Width="1.6" Height="1.55" />
         <Background Id="" Position="36.20394,1.035794" Rotation="0" Scale="1" Speed="1,1" TextureName="pipes" Width="10.53" Height="3.33" />
         <Background Id="" Position="64.44145,-2.634544" Rotation="0" Scale="1" Speed="1,1" TextureName="emergency_exit_metal" Width="2.69" Height="4.64" />
-        <Background Id="" Position="62.12558,-3.386882" Rotation="0" Scale="1" Speed="1,1" TextureName="exitsign_1" Width="1.28" Height="0.63" />
+        <Background Id="" Position="61.95561,-2.896883" Rotation="0" Scale="0.7" Speed="1,1" TextureName="exitsign_1" Width="1.28" Height="0.63" />
         <Background Id="" Position="64.40227,-5.650762" Rotation="0" Scale="1" Speed="1,1" TextureName="lamp_emergency_metal" Width="0.98" Height="0.52" />
         <Background Id="" Position="-125.095,-13.68734" Rotation="0" Scale="1" Speed="1,1" TextureName="panels1" Width="16.2" Height="9.76" />
         <Background Id="" Position="-157.9811,-13.68734" Rotation="3.14159" Scale="1" Speed="1,1" TextureName="panels3" Width="16.25" Height="9.76" />
         <Background Id="" Position="-141.5261,-13.68734" Rotation="0" Scale="1" Speed="1,1" TextureName="panels6" Width="16.8" Height="9.76" />
         <Background Id="" Position="-125.4271,-23.43452" Rotation="0" Scale="1" Speed="1,1" TextureName="panels2" Width="16.8" Height="9.76" />
-        <Background Id="" Position="-142.2279,-23.42583" Rotation="0" Scale="1" Speed="1,1" TextureName="panels7" Width="16.8" Height="9.76" />
-        <Background Id="" Position="-158.3573,-23.42583" Rotation="0" Scale="1" Speed="1,1" TextureName="mine1" Width="15.47" Height="9.76" />
+        <Background Id="" Position="-142.2279,-23.42583" Rotation="0" Scale="1" Speed="1,1" TextureName="panels2" Width="16.8" Height="9.76" />
+        <Background Id="" Position="-158.3573,-23.42583" Rotation="0" Scale="1" Speed="1,1" TextureName="mine8" Width="15.47" Height="9.76" />
         <Background Id="" Position="-127.5231,-23.23391" Rotation="0.24" Scale="1" Speed="1,1" TextureName="pipes" Width="10.53" Height="3.33" />
         <Background Id="" Position="-153.0614,-13.68734" Rotation="0" Scale="1" Speed="1,1" TextureName="panels4" Width="6.42" Height="9.76" />
+        <Background Id="" Position="-116.1242,-10.75786" Rotation="0" Scale="0.7" Speed="1,1" TextureName="exitsign_1" Width="1.28" Height="0.63" />
+        <Background Id="" Position="-41.49617,-15.85776" Rotation="0" Scale="0.7" Speed="1,1" TextureName="exitsign_1" Width="1.28" Height="0.63" />
     </Backgrounds>
     <Elements>
         <Alarm Id="" Position="-85.57498,-11.64817" Rotation="0" Active="True" />
@@ -34,7 +36,7 @@
         <Torch Id="" Position="12.98471,-14.99215" Active="True" />
         <Torch Id="" Position="17.8378,-14.99215" Active="True" />
         <PressurePlate Id="" Position="-164.7543,-15.85808" ActivableElementId="door_to_go" />
-        <Lever Id="" Position="-79.28362,-9.3221" Rotation="4.313686E-07" ActivableElementId="ip3" />
+        <Lever Id="" Position="-79.28362,-9.3221" Rotation="4.30178E-07" ActivableElementId="ip3" />
         <Switch Id="" Position="-88,-10" Rotation="0" ActivableElementId="ip1" />
         <Switch Id="" Position="-88,-10" Rotation="0" ActivableElementId="ip2" />
         <Socket Id="s1" Position="-96.10328,-11.63889" Rotation="-1.57" OtherSocketId="s2" />
@@ -45,31 +47,30 @@
         <Checkpoint Id="" Position="23.70035,-14.19024" Rotation="0" Active="False" />
         <Socket Id="s3" Position="18.47282,-26.79389" Rotation="4.22" OtherSocketId="" />
         <Socket Id="s4" Position="27.1941,8.568445" Rotation="-5.04" OtherSocketId="s3" />
-        <Lever Id="" Position="39.85247,8.476053" Rotation="3.145748E-06" ActivableElementId="crategenerator" />
+        <Lever Id="" Position="36.46263,8.476053" Rotation="3.147936E-06" ActivableElementId="crategenerator" />
         <ElectricityBox Id="" Position="56.54278,4.853364" Rotation="0" ActivableElementId="elevator1" />
         <Checkpoint Id="" Position="-37.3238,-15.25083" Rotation="0" Active="False" />
-        <Lever Id="" Position="-43.70023,-14.71893" Rotation="5.662105E-07" ActivableElementId="door1" />
+        <Lever Id="" Position="-43.70023,-14.71893" Rotation="5.723099E-07" ActivableElementId="door1" />
         <ElectricityBox Id="" Position="8.523773,-15.13987" Rotation="0" ActivableElementId="ip7" />
-        <Switch Id="" Position="-150.534,-17.33762" Rotation="0" ActivableElementId="glide_to_death" />
         <Socket Id="soc2" Position="-138.4623,-24.74346" Rotation="-1.66" OtherSocketId="soc1" />
         <Socket Id="soc1" Position="-165.6159,-10.93371" Rotation="3.1415" OtherSocketId="soc2" />
         <Checkpoint Id="" Position="-106.2181,-9.85721" Rotation="0" Active="False" />
-        <ElectricityBox Id="" Position="-132.1945,-12.17329" Rotation="0" ActivableElementId="door_over_spikes" />
         <Socket Id="soc3" Position="-117.4704,-17.99301" Rotation="-0.28" OtherSocketId="soc2" />
+        <Lever Id="" Position="-129.4196,-10.8435" Rotation="0" ActivableElementId="door_over_spikes" />
         <Ladder Id="" Position="-57.50837,-12.38602" StepsNumber="12" />
         <Ladder Id="" Position="-77.95761,-16.06478" StepsNumber="24" />
         <Ladder Id="" Position="25.60545,-3.497335" StepsNumber="41" />
-        <Ladder Id="" Position="-148.9703,-14.04085" StepsNumber="16" />
-        <Ladder Id="" Position="-144.1432,-19.01272" StepsNumber="9" />
+        <Ladder Id="" Position="-155.9703,-13.63084" StepsNumber="16" />
+        <Ladder Id="" Position="-150.1127,-19.01272" StepsNumber="9" />
         <MovingPlatform Id="" Position="55,13.36422" Width="13.19999" Height="1.4" Rotation="1.57" InitialPosition="54.6,13.36422" FinalPosition="55,13.36422" Active="True" />
-        <CircularSaw Id="" Position="5.40412,-12" InitialPosition="5.40412,-12" FinalPosition="5.40412,-11" Active="True" />
-        <CircularSaw Id="" Position="11.70615,-12" InitialPosition="11.70615,-12" FinalPosition="11.70615,-11" Active="True" />
-        <CircularSaw Id="" Position="8.557703,-11" InitialPosition="8.557703,-11" FinalPosition="8.557703,-12" Active="True" />
+        <CircularSaw Id="" Position="5.40412,-11.46667" InitialPosition="5.40412,-12" FinalPosition="5.40412,-11" Active="True" />
+        <CircularSaw Id="" Position="11.70615,-11.46667" InitialPosition="11.70615,-12" FinalPosition="11.70615,-11" Active="True" />
+        <CircularSaw Id="" Position="8.557703,-11.53333" InitialPosition="8.557703,-11" FinalPosition="8.557703,-12" Active="True" />
         <CameraScale Id="" Position="-104.6275,-10.3721" ScaleTarget="1" />
         <CameraScale Id="" Position="-88.02332,-10.34746" ScaleTarget="0.45" />
         <CameraScale Id="" Position="-90.47178,-10.3554" ScaleTarget="1" />
         <Container Id="" Position="-52.03315,-10.99754" Rotation="-8.166555E-08" />
-        <Container Id="" Position="-62.01804,-10.99753" Rotation="1.13015E-07" />
+        <Container Id="" Position="-62.01804,-10.99753" Rotation="1.129532E-07" />
         <CameraScale Id="" Position="-96.12738,-9.65715" ScaleTarget="1" />
         <CameraScale Id="" Position="-45.94918,-15.66986" ScaleTarget="0.45" />
         <CameraScale Id="" Position="-43.52868,-15.66986" ScaleTarget="0.7" />
@@ -79,21 +80,24 @@
         <CameraScale Id="" Position="19.03753,7.239963" ScaleTarget="0.6" />
         <Drop Id="" Position="32.78477,5.797792" Rotation="0" Width="0.08" Height="6.359999" />
         <Drop Id="" Position="38.36685,5.797792" Rotation="0" Width="0.08" Height="6.359999" />
-        <Crate Id="" Position="12.51919,8.349366" Rotation="3.297285E-07" Color="Pink" />
-        <Crate Id="" Position="34.49384,8.082576" Rotation="3.306124E-07" Color="purple" />
-        <CameraScale Id="" Position="39.86434,7.684924" ScaleTarget="0.45" />
-        <CameraScale Id="" Position="37.36634,7.653193" ScaleTarget="0.6" />
+        <Crate Id="" Position="12.51919,8.349366" Rotation="3.29701E-07" Color="Pink" />
+        <CameraScale Id="" Position="37.75432,7.684924" ScaleTarget="0.45" />
+        <CameraScale Id="" Position="34.48648,7.653193" ScaleTarget="0.6" />
         <CameraScale Id="" Position="52.58855,6.141486" ScaleTarget="0.45" />
         <CameraScale Id="" Position="55.16679,5.272827" ScaleTarget="0.8" />
-        <Crate Id="" Position="35.13241,-18.8281" Rotation="0.9407967" Color="Red" />
-        <Crate Id="" Position="52.8693,14.16199" Rotation="4.603925E-08" Color="Green" />
+        <Crate Id="" Position="35.13233,-18.82804" Rotation="0.9407967" Color="Red" />
+        <Crate Id="" Position="52.8693,14.16199" Rotation="4.603467E-08" Color="Green" />
         <CameraScale Id="" Position="-118.4661,-10.80856" ScaleTarget="0.7" />
         <CameraScale Id="" Position="-114.6534,-10.63253" ScaleTarget="1" />
         <Drop Id="" Position="-131.2163,-21.02432" Rotation="0" Width="0.08" Height="2.86" />
         <Drop Id="" Position="-123.0097,-20.13129" Rotation="0" Width="0.08" Height="1.1" />
-        <Character Id="" Position="-148.0928,-17.32471" Active="True" />
-        <Character Id="" Position="-153.1288,-9.964031" Active="True" />
-        <CrateGenerator Id="crategenerator" Position="45.99986,0.5059009" Active="False" CratesNumber="1" />
+        <Character Id="" Position="-155.2003,-17.45946" Active="True" />
+        <Character Id="" Position="-153.4618,-9.960649" Active="True" />
+        <CameraScale Id="" Position="-153.1632,-14.1238" ScaleTarget="0.55" />
+        <CameraScale Id="" Position="-152.1759,-11.24122" ScaleTarget="0.55" />
+        <CameraScale Id="" Position="-158.0478,-13.83229" ScaleTarget="0.7" />
+        <CameraScale Id="" Position="-158.2032,-10.95816" ScaleTarget="0.7" />
+        <CrateGenerator Id="crategenerator" Position="45.99986,0.5059009" Active="False" CratesNumber="2" />
         <Chandelier Id="" Position="-148.1397,-24.16321" Rotation="0" />
         <Door Id="door1" Position="-40,-16.01625" Width="0.52" Height="3.55" Rotation="0" Active="False" />
         <Door Id="door_over_spikes" Position="-118.73,-19.33152" Width="0.55" Height="3.3" Rotation="1.57" Active="True" />
@@ -138,14 +142,14 @@
         <Platform Id="" Position="-114.6104,-14.43445" Width="7.399997" Height="3" Rotation="-0.31" />
         <Platform Id="" Position="-117.3147,-13.68905" Width="5.999999" Height="2" Rotation="0.05" />
         <Platform Id="" Position="-116.569,-22.57556" Width="1" Height="15.19999" Rotation="0" />
-        <Platform Id="" Position="-131.9955,-19.33152" Width="23.24" Height="0.55" Rotation="0" />
-        <Platform Id="" Position="-148.4041,-16.03152" Width="0.1" Height="0.55" Rotation="0" />
+        <Platform Id="" Position="-134.9958,-19.33152" Width="29.24" Height="0.55" Rotation="0" />
+        <Platform Id="" Position="-155.4041,-16.03152" Width="0.1" Height="0.55" Rotation="0" />
         <Platform Id="" Position="-166.5361,-18.81956" Width="1" Height="22.00001" Rotation="0" />
         <Platform Id="" Position="-118.8486,-12.82692" Width="2.84" Height="1" Rotation="0.34" />
         <Platform Id="" Position="-152.06,-7.015" Width="34.43006" Height="4.001" Rotation="-0.08" />
         <Platform Id="" Position="-130.7691,-8.784192" Width="8.599997" Height="3.200001" Rotation="0" />
         <Platform Id="" Position="-118.9921,-8.028195" Width="15.38999" Height="3.200001" Rotation="0.1" />
-        <Platform Id="" Position="-149.5161,-16.03152" Width="0.1" Height="0.55" Rotation="0" />
+        <Platform Id="" Position="-156.5161,-16.03152" Width="0.1" Height="0.55" Rotation="0" />
         <Spikes Id="" Position="-165.2549,-16.01727" Rotation="0" />
         <Spikes Id="" Position="-164.3108,-16.01449" Rotation="0" />
         <Platform Id="" Position="-163.8584,-15.58174" Width="4.4" Height="0.4" Rotation="0" />
@@ -162,8 +166,8 @@
         <ImpulsePlatform Id="impulse1" Position="2.304181,-3.612234" Width="14.25" Height="7" Rotation="-2.79" StepsNumber="5" Acceleration="-30" Active="False" />
         <Elevator Id="elevator1" Position="59.2,6" InitialPosition="59.2,6" FinalPosition="59.2,-1" Active="False" />
         <ImpulsePlatform Id="ip7" Position="-13.09448,-12.86854" Width="5.7" Height="7" Rotation="0" StepsNumber="2" Acceleration="120" Active="True" />
-        <GlidePlatform Id="" Position="-134.3763,-16.03152" Rotation="0" Active="True" Velocity="5" StepsNumber="4" />
-        <GlidePlatform Id="glide_to_death" Position="-156.5212,-16.03152" Rotation="0" Active="False" Velocity="-3" StepsNumber="2" />
+        <GlidePlatform Id="" Position="-137.8763,-16.03152" Rotation="0" Active="True" Velocity="4" StepsNumber="5" />
+        <GlidePlatform Id="glide_to_death" Position="-160.0212,-16.03152" Rotation="0" Active="True" Velocity="-2" StepsNumber="1" />
     </Elements>
     <Foregrounds>
         <Foreground Id="" Position="-16.61413,-21.44189" Rotation="0" Scale="4" Speed="5,0.2" TextureName="blue_pipe" Width="15.2" Height="10.34" />
