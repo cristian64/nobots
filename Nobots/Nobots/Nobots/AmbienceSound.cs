@@ -38,7 +38,7 @@ namespace Nobots
             AmbienceNormal.DefaultVolume = 0.3f;
 
             AmbienceEnergy = iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabenergy.ogg");
-            AmbienceEnergy.DefaultVolume = 0.3f;
+            AmbienceEnergy.DefaultVolume = 0.05f;
 
             toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy1.wav"));
             toEnergy.Add(iSoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy2.wav"));
@@ -66,6 +66,7 @@ namespace Nobots
             ambienceLabNormal = iSoundEngine.Play2D(AmbienceNormal, true, false, false);
             ambienceLabEnergy = iSoundEngine.Play2D(AmbienceEnergy, true, true, false);            
             ambienceLabEnergy.Volume = 0;
+            
         }
 
         float fadeOutDuration = 2;
@@ -114,14 +115,16 @@ namespace Nobots
                     transitionPlayed = true;
                 }
 
+                Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
                 ambienceLabEnergy.Paused = false;
                 ambienceLabEnergy.Volume = Math.Min(AmbienceEnergy.DefaultVolume, ambienceLabEnergy.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 ambienceLabNormal.Volume = Math.Max(0, ambienceLabNormal.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
-                if (ambienceLabNormal.Volume == 0)
+                if (ambienceLabNormal.Volume == 0 && ambienceLabEnergy.Volume == AmbienceEnergy.DefaultVolume)
                 {
                     ambienceLabNormal.Paused = true;
                     inTransitionToEnergy = false;
+                    Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
                 }
             }
 
@@ -132,15 +135,17 @@ namespace Nobots
                     iSoundEngine.Play2D(toNormal[rand.Next(toNormal.Count)], false, false,false);
                     transitionPlayed = true;
                 }
-
+                Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
                 ambienceLabNormal.Paused = false;
-                ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 ambienceLabNormal.Volume = Math.Min(AmbienceNormal.DefaultVolume, ambienceLabNormal.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                
 
-                if (ambienceLabEnergy.Volume == 0)
+                if (ambienceLabEnergy.Volume == 0 && ambienceLabNormal.Volume == AmbienceNormal.DefaultVolume)
                 {
                     ambienceLabEnergy.Paused = true;
                     inTransitionToNormal = false;
+                    Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
                 }
             }
 
@@ -156,9 +161,9 @@ namespace Nobots
             if (isFadingIn)
             {
                 ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - (float)gameTime.ElapsedGameTime.TotalSeconds / fadeInDuration);
-                ambienceLabNormal.Volume = Math.Min(1, ambienceLabNormal.Volume + (float)gameTime.ElapsedGameTime.TotalSeconds / fadeInDuration);
+                ambienceLabNormal.Volume = Math.Min(AmbienceNormal.DefaultVolume, ambienceLabNormal.Volume + (float)gameTime.ElapsedGameTime.TotalSeconds / fadeInDuration);
 
-                if (ambienceLabEnergy.Volume == 0 && ambienceLabNormal.Volume == 1)
+                if (ambienceLabEnergy.Volume == 0 && ambienceLabNormal.Volume == AmbienceNormal.DefaultVolume)
                     isFadingIn = false;
             }
         }

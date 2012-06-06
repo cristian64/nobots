@@ -31,40 +31,7 @@ namespace Nobots
         {
             this.scene = scene;
             ISoundEngine = new ISoundEngine();
-            ISoundEngine.SoundVolume = 0;
-            
-
-            // AMBIENCE SOUNDS AND TRANSITIONS
-
-            AmbienceNormal = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabnormal.ogg");
-            AmbienceNormal.DefaultVolume = 0.3f;
-
-            AmbienceEnergy = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\ambiencelabenergy.ogg");
-            AmbienceEnergy.DefaultVolume = 0.3f;
-                      
-
-            toEnergy.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy1.wav"));
-            toEnergy.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy2.wav"));
-            toEnergy.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy3.wav"));
-            toEnergy.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy4.wav"));
-            toEnergy.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy5.wav"));
-            toEnergy.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\realtoenergy6.wav"));
-
-            foreach (ISoundSource i in toEnergy)
-            {
-                i.DefaultVolume = 0.1f;
-            }
-
-            toNormal.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal1.wav"));
-            toNormal.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal2.wav"));
-            toNormal.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal3.wav"));
-            toNormal.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal4.wav"));
-            toNormal.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\energytoreal5.wav"));
-
-            foreach (ISoundSource i in toNormal)
-            {
-                i.DefaultVolume = 0.1f;
-            }
+            ISoundEngine.SoundVolume = 0;      
 
 
             //OBJECTS
@@ -151,8 +118,8 @@ namespace Nobots
 
             foreach (ISoundSource i in drops)
             {
-                i.DefaultVolume = 0.2f;
-                i.DefaultMinDistance = 0.1f;
+                i.DefaultVolume = 0.3f;
+                i.DefaultMinDistance = 0.3f;
             }
 
             //Character

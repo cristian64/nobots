@@ -97,7 +97,7 @@ namespace Nobots.Elements
                 {
                     dropPosition = position - new Vector2(0, height / 2);
                     delay = random.Next(4) + 4*(float)random.NextDouble() + 1;
-                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.drops[random.Next(scene.SoundManager.drops.Count)], dropPosition.X, dropPosition.Y, 0.0f, false, false, false);
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.drops[random.Next(scene.SoundManager.drops.Count)], dropPosition.X, position.Y + (height / 2), 0.0f, false, false, false);
                 }
 
                 canDraw = delay > 0 ? false : true;
