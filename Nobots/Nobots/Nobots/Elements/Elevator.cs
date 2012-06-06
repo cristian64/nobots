@@ -123,14 +123,7 @@ namespace Nobots.Elements
         {
             if(fixtureB.Body.UserData is Energy)
             {
-                scene.GarbageElements.Add((Energy)fixtureB.Body.UserData);
-                foreach (Element el in scene.Elements)
-                    if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
-                    {
-                        ((Character)el).State = new DyingCharacterState(scene, (Character)el);
-                        scene.InputManager.Character = (Character)el;
-                        break;
-                    }
+                ((Energy)fixtureB.Body.UserData).Die();
             }
             else if (fixtureB.Body.UserData is Character)
             {

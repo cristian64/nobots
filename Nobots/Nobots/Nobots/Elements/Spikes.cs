@@ -98,19 +98,7 @@ namespace Nobots.Elements
             if (fixtureB.Body.UserData is Energy)
             {
                 Energy energy = (Energy)fixtureB.Body.UserData;
-                for (int j = 0; j < 50; j++)
-                {
-                    scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
-                    scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
-                }
-                scene.GarbageElements.Add(energy);
-                foreach (Element el in scene.Elements)
-                    if (el is Character && !(el is Energy) && !(((Character)el).State is DyingCharacterState))
-                    {
-                        ((Character)el).State = new DyingCharacterState(scene, (Character)el);
-                        scene.InputManager.Character = (Character)el;
-                        break;
-                    }
+                energy.Die();
             }
             else
             {
