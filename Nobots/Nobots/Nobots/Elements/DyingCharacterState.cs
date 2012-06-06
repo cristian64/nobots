@@ -10,6 +10,7 @@ namespace Nobots.Elements
 {
     class DyingCharacterState : CharacterState
     {
+        static Random random = new Random();
         float totalSeconds = 0;
         int columns = 0;
         int rows = 0;
@@ -39,25 +40,6 @@ namespace Nobots.Elements
                 changeIdleTextures(gameTime);
             if (totalSeconds > 3 && !dead)
             {
-                //TODO: this should be a method in Scene
-                //save the last checkpoint position in a Vector2
-                // reload everything in the scene
-                // move the character to that checkpoint position
-
-                /*foreach (Element i in scene.Elements)
-                {
-                    if (i is Checkpoint && ((Checkpoint)i).Active)
-                    {
-                        scene.GarbageElements.Add(character);
-                        Character character2 = new Character(scene.Game, scene, i.Position);
-                        character2.Active = character.Active;
-                        scene.RespawnElements.Add(character2);
-                        scene.Camera.Target = character2;
-                        scene.InputManager.Character = character2;
-                        break;
-                    }
-                }*/
-
                 dead = true;
 
                 int characterCount = 0;
@@ -67,7 +49,7 @@ namespace Nobots.Elements
                         characterCount++;
                 }
 
-                if ((characterCount == 0 && scene.InputManager.Character is Energy) || scene.InputManager.Character == character)
+                if ((characterCount == 0 && (scene.InputManager.Character is Energy || scene.InputManager.Character is Crane || scene.InputManager.Character == null)) || scene.InputManager.Character == character)
                 {
 #if !FINAL_RELEASE
                     MessageBox.Show("This is the Editor mode. After dying the level is no longer restarted not to lose pendent changes on the level.", "Warning!", MessageBoxButtons.OK);
@@ -119,6 +101,32 @@ namespace Nobots.Elements
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.LinearVelocity = Vector2.UnitY * character.body.LinearVelocity;
             scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Death, character.Position.X, character.Position.Y, 0, false, false, false);
+
+            int characterCount = 0;
+            foreach (Element i in scene.Elements)
+            {
+                if (i is Character && !(i is Energy) && ((Character)i).State is ComaCharacterState)
+                    characterCount++;
+            }
+
+            if (characterCount == 0 && (scene.InputManager.Character is Energy || scene.InputManager.Character is Crane))
+            {
+                if (scene.InputManager.Character is Crane)
+                {
+                    scene.InputManager.Character = null;
+                }
+                else if (scene.InputManager.Character is Energy)
+                {
+                    Energy energy = (Energy)scene.InputManager.Character;
+                    for (int j = 0; j < 50; j++)
+                    {
+                        scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                        scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
+                    }
+                    scene.GarbageElements.Add((Element)scene.InputManager.Character);
+                    scene.InputManager.Character = null;
+                }
+            }
         }
 
         public override void YActionStart()
