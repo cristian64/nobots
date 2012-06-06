@@ -153,8 +153,18 @@ namespace Nobots.Menus
         {
         }
 
+        bool firstTime = true;
+
         public override void Refresh(bool selected)
         {
+            if (firstTime)
+            {
+                selectedIndex = scene.SceneLoader.Levels.IndexOf(scene.SceneLoader.LastLevel);
+                if (selectedIndex < 0)
+                    selectedIndex = 0;
+                firstTime = false;
+            }
+
             Text = "Load Level";
             if (selected)
             {

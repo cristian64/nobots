@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Windows.Forms;
+using FarseerPhysics.Dynamics;
 
 namespace Nobots.Elements
 {
@@ -97,6 +98,8 @@ namespace Nobots.Elements
         {
             character.torso.IsSensor = true;
             character.body.FixedRotation = true;
+            character.body.Friction = 1;
+            character.torso.CollidesWith = Category.None;
             character.body.AngularVelocity = 0;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.LinearVelocity = Vector2.UnitY * character.body.LinearVelocity;
