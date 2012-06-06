@@ -82,11 +82,13 @@ namespace Nobots
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+#if !FINAL_RELEASE
+            if (Keyboard.GetState().GetPressedKeys().Count() > 0)
+                splash = false;
+#endif
+
             if (splash)
             {
-                if (Keyboard.GetState().GetPressedKeys().Count() > 0)
-                    splash = false;
-
                 if (splashLogo.Enabled)
                     splashLogo.Update(gameTime);
                 else if (splashCredits.Enabled)
@@ -144,6 +146,11 @@ namespace Nobots
 
         public override void Update(GameTime gameTime)
         {
+#if FINAL_RELEASE
+            if (Keyboard.GetState().GetPressedKeys().Count() > 0)
+                counter = 0;
+#endif
+
             if (alpha != alphaTarget)
             {
                 if (alpha < alphaTarget)
@@ -193,12 +200,17 @@ namespace Nobots
         float alpha = 0;
         float alphaTarget = 0;
         float initialDelay = 1;
-        static float duration = 5;
+        static float duration = 7;
         float counter = duration;
         float transitionDuration = 1;
 
         public override void Update(GameTime gameTime)
         {
+#if FINAL_RELEASE
+            if (Keyboard.GetState().GetPressedKeys().Count() > 0)
+                counter = 0;
+#endif
+
             if (alpha != alphaTarget)
             {
                 if (alpha < alphaTarget)
