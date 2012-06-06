@@ -118,7 +118,7 @@ namespace Nobots.Elements
             character.body.AngularVelocity = 0;
             character.torso.LinearVelocity = Vector2.UnitY * character.torso.LinearVelocity;
             character.body.LinearVelocity = Vector2.UnitY * character.body.LinearVelocity;
-            scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Death, false, false, false);
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Death, character.Position.X, character.Position.Y, 0, false, false, false);
         }
 
         public override void YActionStart()
