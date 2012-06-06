@@ -162,7 +162,7 @@
         <ImpulsePlatform Id="impulse1" Position="2.304181,-3.612234" Width="14.25" Height="7" Rotation="-2.79" StepsNumber="5" Acceleration="-30" Active="False" />
         <Elevator Id="elevator1" Position="59.2,6" InitialPosition="59.2,6" FinalPosition="59.2,-1" Active="False" />
         <ImpulsePlatform Id="ip7" Position="-13.09448,-12.86854" Width="5.7" Height="7" Rotation="0" StepsNumber="2" Acceleration="120" Active="True" />
-        <GlidePlatform Id="" Position="-134.3763,-16.03152" Rotation="0" Active="True" Velocity="6" StepsNumber="4" />
+        <GlidePlatform Id="" Position="-134.3763,-16.03152" Rotation="0" Active="True" Velocity="5" StepsNumber="4" />
         <GlidePlatform Id="glide_to_death" Position="-156.5212,-16.03152" Rotation="0" Active="False" Velocity="-3" StepsNumber="2" />
     </Elements>
     <Foregrounds>

@@ -106,7 +106,8 @@ namespace Nobots.Elements
             character.body.FixedRotation = false;
             if (character.lastContact != null)
             {
-                if (character.lastContact.UserData is GlidePlatform)
+                GlidePlatform glidePlatform = character.lastContact.UserData as GlidePlatform;
+                if (glidePlatform != null && glidePlatform.Active)
                 {
                     character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity + runningSpeed, character.torso.LinearVelocity.Y);
                 }
@@ -125,7 +126,8 @@ namespace Nobots.Elements
             character.body.FixedRotation = false;
             if (character.lastContact != null)
             {
-                if (character.lastContact.UserData is GlidePlatform)
+                GlidePlatform glidePlatform = character.lastContact.UserData as GlidePlatform;
+                if (glidePlatform != null && glidePlatform.Active)
                 {
                     character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity - runningSpeed, character.torso.LinearVelocity.Y);
                 }
