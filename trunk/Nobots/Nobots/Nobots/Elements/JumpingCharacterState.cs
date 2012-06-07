@@ -101,7 +101,7 @@ namespace Nobots.Elements
                 if (!(character is Energy))
                 {
                     ISound sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Grunt, character.Position.X, character.Position.Y, 0, false, true, false);
-                    sound.Volume = Math.Max(0, (float)random.NextDouble() - 0.5f);
+                    sound.Volume = Math.Max(0.1f, (float)random.NextDouble() - 0.5f);
                     sound.Paused = false;
                 }
             }

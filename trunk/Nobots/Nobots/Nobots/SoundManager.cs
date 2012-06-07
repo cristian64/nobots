@@ -51,7 +51,7 @@ namespace Nobots
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord3.wav"));
 
             foreach (ISoundSource i in socket) {
-                i.DefaultVolume = 0.1f;
+                i.DefaultVolume = 0.2f;
             }
 
             laserBarrierLoop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\electricbarrierloop.wav");
@@ -117,13 +117,18 @@ namespace Nobots
             CraneClose = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane_close.wav");
 
             Sparks = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\sparks.ogg");
+            Sparks.DefaultMinDistance = 0.5f;
 
             Door = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\door.ogg");
 
             EnergyIn = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\energy_in.ogg");
+            EnergyIn.DefaultVolume = 0.6f;
+
             EnergyOut = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\energy_out.ogg");
+            EnergyOut.DefaultVolume = 0.6f;
 
             Torch = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\torch.ogg");
+            Torch.DefaultMinDistance = 0.5f;
 
             Grunt = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\grunt.ogg");
             StepFall = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step_fall.wav");
