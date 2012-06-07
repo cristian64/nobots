@@ -256,6 +256,8 @@ namespace Nobots
                     e = new ImageHint(Game, scene, Vector2.Zero);
                     if (reader.MoveToAttribute("Scale"))
                         ((ImageHint)e).Scale = float.Parse(reader.Value);
+                    if (reader.MoveToAttribute("TextureName"))
+                        ((ImageHint)e).TextureName = reader.Value;
                     break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
