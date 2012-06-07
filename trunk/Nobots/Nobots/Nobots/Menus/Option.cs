@@ -95,8 +95,21 @@ namespace Nobots.Menus
 
         public override void AActionStop()
         {
-            Process.Start("Synergy (editor).exe");
-            scene.Game.Exit();
+            try
+            {
+                Process.Start("Synergy (editor).exe");
+                scene.Game.Exit();
+            }
+            catch (Exception)
+            {
+                Text = "Open Editor  (ERROR: \"Synergy (editor).exe\" not found)";
+            }
+        }
+
+        public override void Refresh(bool selected)
+        {
+            if (!selected)
+                Text = "Open Editor";
         }
     }
 
@@ -205,16 +218,16 @@ namespace Nobots.Menus
             Text = "Load Level";
             if (selected)
             {
-                Text += "     ";
+                Text += "       ";
                 for (int i = 0; i < scene.SceneLoader.Levels.Count; i++)
                 {
                     if (selectedIndex == i)
                     {
-                        Text += (i + 1).ToString() + " ";
+                        Text += (i + 1).ToString() + "  ";
                     }
                     else
                     {
-                        Text += "· ";
+                        Text += "•  ";
                     }
                 }
             }
