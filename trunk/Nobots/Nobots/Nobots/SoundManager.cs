@@ -31,8 +31,7 @@ namespace Nobots
         {
             this.scene = scene;
             ISoundEngine = new ISoundEngine();
-            ISoundEngine.SoundVolume = 0;      
-
+            ISoundEngine.SoundVolume = 0;
 
             //OBJECTS
 
