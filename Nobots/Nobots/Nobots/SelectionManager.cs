@@ -262,6 +262,9 @@ namespace Nobots
                     case "Hint":
                         element = new Hint(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "ImageHint":
+                        element = new ImageHint(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "StoryTelling":
                         element = new StoryTelling(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

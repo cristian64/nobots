@@ -84,6 +84,14 @@ namespace Nobots.Editor
                 textBoxActivableElementId.Text = ((Nobots.Elements.Activator)selection).ActivableElementId;
             }
 
+            if (selection is ImageHint)
+            {
+                flowLayoutPanelTextureName.Visible = true;
+                comboBoxTextureName.Text = ((ImageHint)selection).TextureName;
+                flowLayoutPanelScale.Visible = true;
+                numericUpDownScale.Value = (decimal)((ImageHint)selection).Scale;
+            }
+
             if (selection is Elevator)
             {
                 flowLayoutPanelInitialPosition.Visible = true;
@@ -527,6 +535,8 @@ namespace Nobots.Editor
                 ((Background)selectionEvents).Scale = (float)numericUpDownScale.Value;
             if (selectionEvents as Foreground != null)
                 ((Foreground)selectionEvents).Scale = (float)numericUpDownScale.Value;
+            if (selectionEvents as ImageHint != null)
+                ((ImageHint)selectionEvents).Scale = (float)numericUpDownScale.Value;
         }
 
         private void textBoxOtherTubeId_TextChanged(object sender, EventArgs e)
@@ -591,6 +601,8 @@ namespace Nobots.Editor
                 ((Background)selectionEvents).TextureName = comboBoxTextureName.Text;
             if (selectionEvents as Foreground != null)
                 ((Foreground)selectionEvents).TextureName = comboBoxTextureName.Text;
+            if (selectionEvents as ImageHint != null)
+                ((ImageHint)selectionEvents).TextureName = comboBoxTextureName.Text;
         }
 
         private void checkBoxAlsoEnergy_CheckedChanged(object sender, EventArgs e)
