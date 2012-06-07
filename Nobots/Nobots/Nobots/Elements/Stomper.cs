@@ -34,11 +34,7 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
-                if (value)
-                    sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.machineloop1, body.Position.X, body.Position.Y, 0f, true, false, false);
-                else
-                    if (sound != null)
-                        sound.Stop();
+                sound.Paused = !value;
             }
         }
         
@@ -108,14 +104,16 @@ namespace Nobots.Elements
             width = Conversion.ToWorld(texture.Width);
             height = Conversion.ToWorld(texture.Height);
             createBody();
-            createBaseBody();            
+            createBaseBody();
+            sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.machineloop1, body.Position.X, body.Position.Y, 0f, true, false, false);
         }
 
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             if (!fixtureB.IsSensor)
             {
-                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.stomp, body.Position.X, body.Position.Y + (height * 0.5f), 0f, false, false, false);
+                if (isMovingDown)
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.stomp, body.Position.X, body.Position.Y + (height * 0.5f), 0f, false, false, false);
                 isMovingDown = false;
                 if (fixtureB.Body.UserData is Character && !(fixtureB.Body.UserData is Energy) && body.LinearVelocity.Y > 0)
                 {
@@ -202,7 +200,11 @@ namespace Nobots.Elements
         protected override void Dispose(bool disposing)
         {
             body.Dispose();
-            sound.Dispose();
+            if (sound != null)
+            {
+                sound.Stop();
+                sound.Dispose();
+            }
             stomperBase.Dispose();
             base.Dispose(disposing);
         }
