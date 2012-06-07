@@ -98,9 +98,12 @@ namespace Nobots.Elements
             if (character.contactsNumber > 0 || character.Ladder != null)
             {
                 character.torso.ApplyForce(new Vector2(0, -16000f));
-                ISound sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Grunt, character.Position.X, character.Position.Y, 0, false, true, false);
-                sound.Volume = (float)random.NextDouble();
-                sound.Paused = false;
+                if (!(character is Energy))
+                {
+                    ISound sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Grunt, character.Position.X, character.Position.Y, 0, false, true, false);
+                    sound.Volume = Math.Max(0, (float)random.NextDouble() - 0.5f);
+                    sound.Paused = false;
+                }
             }
             else
                 character.torso.Awake = character.body.Awake = true;
