@@ -15,7 +15,7 @@ namespace Nobots
 
         public ISoundEngine ISoundEngine;
         public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop, checkpoint, steam, elevatorBegin, elevatorEnd, stomp
-            , machineloop1, Nav, Select, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop;
+            , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -144,17 +144,6 @@ namespace Nobots
             {
                 i.DefaultVolume = 0.1f;
             }
-
-            //INTERFACE
-
-            Nav = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\choose.wav");
-            Nav.DefaultVolume = 0.3f;
-
-            Select = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\select.wav");
-            Select.DefaultVolume = 0.3f;
-
-
-
         }
 
         float fadeInDuration = 2;
