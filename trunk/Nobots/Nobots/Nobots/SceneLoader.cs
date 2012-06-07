@@ -252,6 +252,11 @@ namespace Nobots
                     if (reader.MoveToAttribute("Text"))
                         ((Hint)e).Text = reader.Value;
                     break;
+                case "ImageHint":
+                    e = new ImageHint(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("Scale"))
+                        ((ImageHint)e).Scale = float.Parse(reader.Value);
+                    break;
                 case "Forklift":
                     e = new Forklift(Game, scene, Vector2.Zero);
                     break;
@@ -460,6 +465,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Lamp)i) + "\n";
                 else if (i as Hint != null)
                     xml += "        " + ElementToXml((Hint)i) + "\n";
+                else if (i as ImageHint != null)
+                    xml += "        " + ElementToXml((ImageHint)i) + "\n";
                 else if (i as StoryTelling != null)
                     xml += "        " + ElementToXml((StoryTelling)i) + "\n";
                 else if (i as Writings != null)
@@ -546,6 +553,12 @@ namespace Nobots
         public String ElementToXml(Foreground foreground)
         {
             String xml = "<Foreground Id=\"" + foreground.Id + "\" Position=\"" + foreground.Position.X + "," + foreground.Position.Y + "\" Rotation=\"" + foreground.Rotation + "\" Scale=\"" + foreground.Scale + "\" Speed=\"" + foreground.Speed.X + "," + foreground.Speed.Y + "\" TextureName=\"" + foreground.TextureName + "\" Width=\"" + foreground.Width + "\" Height=\"" + foreground.Height + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(ImageHint imgHint)
+        {
+            String xml = "<ImageHint Id=\"" + imgHint.Id + "\" Position=\"" + imgHint.Position.X + "," + imgHint.Position.Y + "\" Rotation=\"" + imgHint.Rotation + "\" Scale=\"" + imgHint.Scale + "\" TextureName=\"" + imgHint.TextureName + "\" Width=\"" + imgHint.Width + "\" Height=\"" + imgHint.Height + "\" />";
             return xml;
         }
 

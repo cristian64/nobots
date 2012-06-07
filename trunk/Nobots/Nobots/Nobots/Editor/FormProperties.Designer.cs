@@ -250,7 +250,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAlsoEnergy);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelBring);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 381);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 373);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(276, 357);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -1839,11 +1839,12 @@
             "Sound",
             "CameraScale",
             "Hint",
+            "ImageHint",
             "StoryTelling",
             "Writings"});
             this.listBoxAvailableElements.Location = new System.Drawing.Point(12, 110);
             this.listBoxAvailableElements.Name = "listBoxAvailableElements";
-            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 251);
+            this.listBoxAvailableElements.Size = new System.Drawing.Size(265, 238);
             this.listBoxAvailableElements.TabIndex = 3;
             this.listBoxAvailableElements.SelectedValueChanged += new System.EventHandler(this.listBoxAvailableElements_SelectedValueChanged);
             // 
@@ -1881,7 +1882,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 750);
+            this.ClientSize = new System.Drawing.Size(289, 742);
             this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.checkBoxShowEmblems);
             this.Controls.Add(this.label1);
