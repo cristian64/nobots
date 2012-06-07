@@ -15,7 +15,7 @@ namespace Nobots
 
         public ISoundEngine ISoundEngine;
         public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop, checkpoint, steam, elevatorBegin, elevatorEnd, stomp
-            , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop, Crane, CraneStart, CraneClose, Sparks;
+            , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop, Crane, CraneStart, CraneClose, Sparks, Door;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -73,7 +73,7 @@ namespace Nobots
             checkpoint.DefaultVolume = 0.3f;
 
             steam = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\steam.wav");
-            steam.DefaultMinDistance = 0.05f;
+            steam.DefaultMinDistance = 0.25f;
 
             elevatorBegin = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorbegin.wav");
 
@@ -108,13 +108,17 @@ namespace Nobots
             ImpulsePlatform.DefaultMinDistance = 0.5f;
 
             CircularSaw = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\circularsaw.ogg");
+            CircularSaw.DefaultMinDistance = 0.5f;
             CircularSawStop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\circularsaw_stop.ogg");
+            CircularSawStop.DefaultMinDistance = 0.5f;
 
             Crane = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane.wav");
             CraneStart = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane_start.wav");
             CraneClose = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane_close.wav");
 
             Sparks = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\sparks.ogg");
+
+            Door = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\door.ogg");
 
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-01.wav"));
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-02.wav"));

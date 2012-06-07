@@ -255,6 +255,10 @@
       <Processor>FontDescriptionProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
+    <None Include="sounds\effects\door.ogg">
+      <Name>door</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="sounds\effects\circularsaw.ogg">
       <Name>circularsaw</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

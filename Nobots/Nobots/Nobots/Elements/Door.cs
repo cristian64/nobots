@@ -19,6 +19,8 @@ namespace Nobots.Elements
         public Vector2 FinalPosition;
         public float Speed = 1f;
 
+        bool playSound = false;
+
         private bool isActive = false;
         public bool Active
         {
@@ -28,6 +30,8 @@ namespace Nobots.Elements
             }
             set
             {
+                if (isActive != value)
+                    playSound = true;
                 isActive = value;
             }
         }
@@ -119,6 +123,11 @@ namespace Nobots.Elements
                     body.LinearVelocity = 10 * Speed * Vector2.UnitY;
                 else
                 {
+                    if (playSound)
+                    {
+                        scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Door, body.Position.X, body.Position.Y, 0.0f, false, false, false);
+                        playSound = false;
+                    }
                     body.LinearVelocity = Vector2.Zero;
                     body.Position = InitialPosition;
                 }
