@@ -65,7 +65,7 @@ namespace Nobots.Elements
         public Container(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 0f;
+            ZBuffer = 2f;
             texture = Game.Content.Load<Texture2D>("container");
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 5000f);
             body.Position = position;
