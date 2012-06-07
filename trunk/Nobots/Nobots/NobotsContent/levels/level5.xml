@@ -60,7 +60,10 @@
         <ImageHint Id="" Position="47.5919,-13.16505" Rotation="0" Scale="1" TextureName="hint_credits_dean" Width="4.03" Height="0.32" Active="False" />
         <ImageHint Id="" Position="53.83665,-13.31681" Rotation="0" Scale="1" TextureName="hint_credits_cristian" Width="4.6" Height="0.32" Active="False" />
         <ImageHint Id="" Position="57.73116,-13.39347" Rotation="0" Scale="1" TextureName="hint_credits_cristian" Width="4.6" Height="0.32" Active="False" />
-        <ImageHint Id="" Position="118.3109,-9.283327" Rotation="0" Scale="1" TextureName="end" Width="6.42" Height="3.64" Active="True" />
+        <ImageHint Id="" Position="118.3109,-9.283327" Rotation="0" Scale="0.8" TextureName="end" Width="6.42" Height="3.64" Active="False" />
+        <ImageHint Id="" Position="113.1549,-9.510128" Rotation="0" Scale="0.8" TextureName="end" Width="6.42" Height="3.64" Active="False" />
+        <ImageHint Id="" Position="107.4286,-9.580684" Rotation="0" Scale="0.8" TextureName="end" Width="6.42" Height="3.64" Active="False" />
+        <ImageHint Id="" Position="123.2563,-9.255133" Rotation="0" Scale="0.8" TextureName="end" Width="6.42" Height="3.64" Active="False" />
     </Elements>
     <Foregrounds>
         <Foreground Id="" Position="-148.2123,-6.644217" Rotation="0" Scale="1" Speed="1,1" TextureName="grass" Width="19.2" Height="1.37" />
