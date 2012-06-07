@@ -115,6 +115,7 @@ namespace Nobots.Elements
         {
             if (!fixtureB.IsSensor)
             {
+                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.stomp, body.Position.X, body.Position.Y + (height * 0.5f), 0f, false, false, false);
                 isMovingDown = false;
                 if (fixtureB.Body.UserData is Character && !(fixtureB.Body.UserData is Energy) && body.LinearVelocity.Y > 0)
                 {
