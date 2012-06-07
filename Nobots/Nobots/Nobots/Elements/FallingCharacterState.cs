@@ -19,8 +19,6 @@ namespace Nobots.Elements
         public FallingCharacterState(Scene scene, Character character)
             : base(scene, character)
         {
-
-           
             texture = scene.Game.Content.Load<Texture2D>(character is Energy ? "fallingEnergy" : "falling");
             characterWidth = texture.Width / columns;
             characterHeight = texture.Height / rows;
