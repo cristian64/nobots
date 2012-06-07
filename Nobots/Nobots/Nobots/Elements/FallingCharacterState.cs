@@ -78,7 +78,8 @@ namespace Nobots.Elements
 
             if (nextState is IdleCharacterState || nextState is RunningCharacterState)
             {
-                //TODO:CHEMA: here some step should sound
+                //TODO: scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.StepFall, character.Position.X, character.Position.Y, 0, false, false, false);
+                //right now it's too annoying
             }
         }
 
