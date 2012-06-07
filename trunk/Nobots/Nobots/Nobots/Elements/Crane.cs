@@ -471,7 +471,7 @@ namespace Nobots.Elements
         public void RightAction()
         {
             if (initialPosition.X + RightShift >= Position.X && canGoRight)
-                _circle.LinearVelocity = Vector2.UnitX*3;
+                _circle.LinearVelocity = Vector2.UnitX*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -489,7 +489,7 @@ namespace Nobots.Elements
         public void LeftAction()
         {
             if (initialPosition.X - LeftShift <= Position.X && canGoLeft)
-                _circle.LinearVelocity = -Vector2.UnitX*3;
+                _circle.LinearVelocity = -Vector2.UnitX*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -507,7 +507,7 @@ namespace Nobots.Elements
         public void UpAction()
         {
             if (initialPosition.Y - UpShift <= Position.Y && canGoUp)
-                _circle.LinearVelocity = -Vector2.UnitY*3;
+                _circle.LinearVelocity = -Vector2.UnitY*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
@@ -525,7 +525,7 @@ namespace Nobots.Elements
         public void DownAction()
         {
             if (initialPosition.Y + DownShift >= Position.Y && canGoDown)
-                _circle.LinearVelocity = Vector2.UnitY*3;
+                _circle.LinearVelocity = Vector2.UnitY*2;
             else
                 _circle.LinearVelocity = Vector2.Zero;
         }
