@@ -92,7 +92,7 @@ namespace Nobots.Elements
         public Minecart(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 1f;
+            ZBuffer = 2f;
             texture = Game.Content.Load<Texture2D>("minecart");
             textureWheel = Game.Content.Load<Texture2D>("minecartwheel");
             body = new Body(scene.World);
