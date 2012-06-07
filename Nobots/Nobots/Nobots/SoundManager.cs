@@ -128,7 +128,7 @@ namespace Nobots
             EnergyOut.DefaultVolume = 0.6f;
 
             Torch = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\torch.ogg");
-            Torch.DefaultMinDistance = 0.5f;
+            Torch.DefaultMinDistance = 0.2f;
 
             Grunt = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\grunt.ogg");
             StepFall = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step_fall.wav");
