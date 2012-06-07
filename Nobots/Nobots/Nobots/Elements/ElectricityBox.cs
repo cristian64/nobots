@@ -24,11 +24,11 @@ namespace Nobots.Elements
             {
                 if (ActivableElement.Active)
                 {
-                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerUp[3], body.Position.X, body.Position.Y, 0f, false, false, false);
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerUp[2], body.Position.X, body.Position.Y, 0f, false, false, false);
                 }
                 else
                 {
-                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerDown[1], body.Position.X, body.Position.Y, 0f, false, false, false);
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.powerDown[2], body.Position.X, body.Position.Y, 0f, false, false, false);
                 }
             }
         }

@@ -500,6 +500,14 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="sounds\effects\energy_in.ogg">
+      <Name>energy_in</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sounds\effects\energy_out.ogg">
+      <Name>energy_out</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="sounds\effects\powerdown1.wav">
       <Name>powerdown1</Name>
       <Importer>WavImporter</Importer>
@@ -526,6 +534,10 @@
     </None>
     <None Include="sounds\effects\sparks.ogg">
       <Name>sparks</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sounds\effects\torch.ogg">
+      <Name>torch</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="sounds\effects\travelcord1.wav">

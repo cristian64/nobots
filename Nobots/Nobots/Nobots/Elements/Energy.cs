@@ -38,6 +38,7 @@ namespace Nobots.Elements
                 scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                 scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
             }
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.EnergyIn, Position.X, Position.Y, 0, false, false, false);
             scene.GarbageElements.Add(this);
 
             bool foundComa = false;
@@ -123,6 +124,7 @@ namespace Nobots.Elements
                         scene.PlasmaExplosionParticleSystem.AddParticle(Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                         scene.PlasmaExplosionParticleSystem.AddParticle(Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                     }
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.EnergyIn, Position.X, Position.Y, 0, false, false, false);
                     scene.GarbageElements.Add(this);
                     scene.InputManager.Target = controllable;
                     scene.Camera.Target = (Element)controllable;

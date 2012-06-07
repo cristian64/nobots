@@ -450,6 +450,7 @@ namespace Nobots.Elements
                 scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                 scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
             }
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.EnergyOut, energy.Position.X, energy.Position.Y, 0, false, false, false);
             //disable the bodies
             _circle.Enabled = _leftLower.Enabled = _leftUpper.Enabled = _rightLower.Enabled = _rightUpper.Enabled = _sensor.Enabled = false;
         }
