@@ -44,15 +44,28 @@ namespace Nobots.Menus
             options.Add(new LoadLevelOption(scene));
             options.Add(new ControlsOption(scene));
 #if FINAL_RELEASE
-            options.Add(new EditorOption(scene));
+            if (System.IO.File.Exists("Synergy (editor).exe"))
+                options.Add(new EditorOption(scene));
 #endif
             options.Add(new ExitOption(scene));
 
             selectedIndex = 0;
+
+            this.EnabledChanged += new EventHandler<EventArgs>(Menu_EnabledChanged);
         }
+
+        void Menu_EnabledChanged(object sender, EventArgs e)
+        {
+            if (!Enabled)
+                alpha = 0;
+        }
+
+        float alpha = 0;
 
         public override void Update(GameTime gameTime)
         {
+            if (Enabled && alpha < 1)
+                alpha = Math.Min(1, alpha + (float)gameTime.ElapsedGameTime.TotalSeconds);
             processKeyboard();
         }
 
@@ -62,18 +75,18 @@ namespace Nobots.Menus
             {
                 scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-                scene.SpriteBatch.Draw(logo, new Vector2(90, 90), null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+                scene.SpriteBatch.Draw(logo, new Vector2(90, 90), null, Color.White * alpha, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
 
                 Vector2 position = new Vector2(140, 230);
                 for (int i = 0; i < options.Count; i++)
                 {
                     Option option = options[i];
-                    scene.SpriteBatch.DrawString(menuoptionfont, option.Text, position, selectedIndex == i ? Color.White : Color.Gray);
+                    scene.SpriteBatch.DrawString(menuoptionfont, option.Text, position, (selectedIndex == i ? Color.White : Color.Gray)  * alpha);
                     position += new Vector2(0, menuoptionfont.MeasureString(option.Text).Y + 0);
                 }
 
                 if (options[selectedIndex] is ControlsOption)
-                    scene.SpriteBatch.Draw(controls, new Vector2(GraphicsDevice.Viewport.Width / 1.5f, GraphicsDevice.Viewport.Height / 2.0f), null, Color.White, 0, new Vector2(controls.Width / 2.0f, controls.Height / 2.0f), 1, SpriteEffects.None, 0);
+                    scene.SpriteBatch.Draw(controls, new Vector2(GraphicsDevice.Viewport.Width / 1.5f, GraphicsDevice.Viewport.Height / 2.0f), null, Color.White * alpha, 0, new Vector2(controls.Width / 2.0f, controls.Height / 2.0f), 1, SpriteEffects.None, 0);
 
                 scene.SpriteBatch.End();
             }
