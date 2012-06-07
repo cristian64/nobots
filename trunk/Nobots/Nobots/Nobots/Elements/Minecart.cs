@@ -99,8 +99,8 @@ namespace Nobots.Elements
             
             //adding the floor of the cart
             Vertices vertices = new Vertices(4);
-            vertices.Add(new Vector2(0.46f - Conversion.ToWorld(texture.Width / 2), 1.25f - Conversion.ToWorld(texture.Height / 2)));
-            vertices.Add(new Vector2(2.04f - Conversion.ToWorld(texture.Width / 2), 1.25f - Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(0.46f - Conversion.ToWorld(texture.Width / 2), 1.13f - Conversion.ToWorld(texture.Height / 2)));
+            vertices.Add(new Vector2(2.04f - Conversion.ToWorld(texture.Width / 2), 1.13f - Conversion.ToWorld(texture.Height / 2)));
             vertices.Add(new Vector2(2.24f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
             vertices.Add(new Vector2(0.26f - Conversion.ToWorld(texture.Width / 2), 1.4f - Conversion.ToWorld(texture.Height / 2)));
             PolygonShape p = new PolygonShape(vertices, 100);
