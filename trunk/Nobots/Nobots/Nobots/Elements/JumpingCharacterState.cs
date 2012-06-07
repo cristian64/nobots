@@ -6,11 +6,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Contacts;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
     class JumpingCharacterState : CharacterState
     {
+        static Random random = new Random();
         bool isJumping = false;
         bool maxSpeedRight = false;
         bool maxSpeedLeft = false;
@@ -94,7 +96,12 @@ namespace Nobots.Elements
         {
             character.body.OnCollision += body_OnCollision;
             if (character.contactsNumber > 0 || character.Ladder != null)
+            {
                 character.torso.ApplyForce(new Vector2(0, -16000f));
+                ISound sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Grunt, character.Position.X, character.Position.Y, 0, false, true, false);
+                sound.Volume = (float)random.NextDouble();
+                sound.Paused = false;
+            }
             else
                 character.torso.Awake = character.body.Awake = true;
         }

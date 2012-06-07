@@ -15,7 +15,7 @@ namespace Nobots
 
         public ISoundEngine ISoundEngine;
         public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop, checkpoint, steam, elevatorBegin, elevatorEnd, stomp
-            , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop, Crane, CraneStart, CraneClose, Sparks, Door, EnergyIn, EnergyOut, Torch;
+            , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop, Crane, CraneStart, CraneClose, Sparks, Door, EnergyIn, EnergyOut, Torch, Grunt, StepFall;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -124,6 +124,9 @@ namespace Nobots
             EnergyOut = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\energy_out.ogg");
 
             Torch = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\torch.ogg");
+
+            Grunt = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\grunt.ogg");
+            StepFall = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step_fall.wav");
 
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-01.wav"));
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-02.wav"));
