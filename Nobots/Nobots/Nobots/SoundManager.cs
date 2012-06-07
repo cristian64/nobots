@@ -45,7 +45,7 @@ namespace Nobots
             
 
             woodenBox = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\woodencratefall.wav");
-            woodenBox.DefaultVolume = 0.7f;
+            woodenBox.DefaultVolume = 0.4f;
 
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord1.wav"));
             socket.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\travelcord2.wav"));
