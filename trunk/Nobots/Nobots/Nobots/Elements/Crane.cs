@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using FarseerPhysics.Common;
 using FarseerPhysics.Collision.Shapes;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -42,6 +43,8 @@ namespace Nobots.Elements
 
         private Joint _joint1, _joint2, _joint3, _joint4;
         private RevoluteJoint _sensorJoint;
+
+        ISound craneSound;
 
         public float LeftShift = 1;
         public float RightShift = 1;
@@ -105,6 +108,8 @@ namespace Nobots.Elements
         public Crane(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
+            craneSound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Crane, 0, 0, 0, true, true, false);
+
             ZBuffer = 5;
             homePosition = Vector2.Zero;
 
@@ -295,6 +300,10 @@ namespace Nobots.Elements
             {
                 if (Position != homePosition)
                 {
+                    if (craneSound.Paused)
+                        craneSound.Paused = false;
+                    craneSound.Position = new Vector3D(Position.X, Position.Y, 0);
+
                     if (Vector2.DistanceSquared(Position, homePosition) <= (float)gameTime.ElapsedGameTime.TotalSeconds * (float)gameTime.ElapsedGameTime.TotalSeconds)
                         Position = homePosition;
                     else
@@ -308,6 +317,20 @@ namespace Nobots.Elements
                 {
                     _circle.Enabled = _leftLower.Enabled = _leftUpper.Enabled = _rightLower.Enabled = _rightUpper.Enabled = _sensor.Enabled = true;
                     canGoUp = canGoDown = canGoRight = canGoLeft = true;
+                }
+            }
+            else
+            {
+                if (_circle.LinearVelocity.X != 0 || _circle.LinearVelocity.Y != 0)
+                {
+                    if (craneSound.Paused)
+                        craneSound.Paused = false;
+                    craneSound.Position = new Vector3D(Position.X, Position.Y, 0);
+                }
+                else
+                {
+                    if (!craneSound.Paused)
+                        craneSound.Paused = true;
                 }
             }
         }
@@ -342,6 +365,14 @@ namespace Nobots.Elements
             scene.World.RemoveJoint(_joint3);
             scene.World.RemoveJoint(_joint4);
             scene.World.RemoveJoint(_sensorJoint);
+
+            if (craneSound != null)
+            {
+                craneSound.Stop();
+                craneSound.Dispose();
+            }
+
+
             base.Dispose(disposing);
         }
 
@@ -377,6 +408,8 @@ namespace Nobots.Elements
 
             _leftShoulderAngleJoint.TargetAngle = _shoulderTargetAngle;
             _rightShoulderAngleJoint.TargetAngle = -_shoulderTargetAngle;
+
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.CraneClose, Position.X, Position.Y, 0, false, false, false);
         }
 
         public void BAction()
@@ -419,7 +452,6 @@ namespace Nobots.Elements
             }
             //disable the bodies
             _circle.Enabled = _leftLower.Enabled = _leftUpper.Enabled = _rightLower.Enabled = _rightUpper.Enabled = _sensor.Enabled = false;
-
         }
 
         public void YAction()
@@ -432,6 +464,7 @@ namespace Nobots.Elements
 
         public void RightActionStart()
         {
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.CraneStart, Position.X, Position.Y, 0, false, false, false);
         }
 
         public void RightAction()
@@ -449,6 +482,7 @@ namespace Nobots.Elements
 
         public void LeftActionStart()
         {
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.CraneStart, Position.X, Position.Y, 0, false, false, false);
         }
 
         public void LeftAction()
@@ -466,6 +500,7 @@ namespace Nobots.Elements
 
         public void UpActionStart()
         {
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.CraneStart, Position.X, Position.Y, 0, false, false, false);
         }
 
         public void UpAction()
@@ -483,6 +518,7 @@ namespace Nobots.Elements
 
         public void DownActionStart()
         {
+            scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.CraneStart, Position.X, Position.Y, 0, false, false, false);
         }
 
         public void DownAction()
