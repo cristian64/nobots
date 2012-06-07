@@ -98,21 +98,21 @@ namespace Nobots
         public override void Update(GameTime gameTime)
         {
             // Check when the player change the state.
-            if (scene.InputManager.Character is Energy && !(previous is Energy))
+            if (scene.InputManager.Target is Energy && !(previous is Energy))
             {
                 inTransitionToEnergy = true;
                 transitionPlayed = false;
                 inTransitionToNormal = false;
                 Console.WriteLine("Normal -> Energy");
             }
-            else if (!(scene.InputManager.Character is Energy) && previous is Energy)
+            else if (!(scene.InputManager.Target is Energy) && previous is Energy)
             {
                 inTransitionToEnergy = false;
                 transitionPlayed = false;
                 inTransitionToNormal = true;
                 Console.WriteLine("Energy -> Normal");
             }
-            previous = scene.InputManager.Character;
+            previous = scene.InputManager.Target;
 
             // Process sound effect according to the transitions.
             if (inTransitionToEnergy)

@@ -73,6 +73,7 @@ namespace Nobots.Elements
             }
             set
             {
+                sensor.Position += value - body.Position;
                 body.Position = value;
             }
         }

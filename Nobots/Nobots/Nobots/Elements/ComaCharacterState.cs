@@ -98,7 +98,7 @@ namespace Nobots.Elements
                 Energy energy = new Energy(scene.Game, scene, energyPosition != null ? (Vector2)energyPosition : character.Position);
                 energy.State = new FallingCharacterState(scene, energy);
                 energy.Position = energyPosition != null ? (Vector2)energyPosition : character.Position;
-                scene.InputManager.Character = energy;
+                scene.InputManager.Target = energy;
                 scene.Camera.Target = energy;
                 scene.RespawnElements.Add(energy);
                 Random random = new Random();

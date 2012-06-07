@@ -281,7 +281,7 @@ namespace Nobots.Elements
 
         public override void Update(GameTime gameTime)
         {
-            if (scene.InputManager.Character == this)
+            if (scene.InputManager.Target == this)
             {
                 scene.ElectricityParticleSystem.AddParticle(_circle.Position, Vector2.Zero);
                 if (homePosition == Vector2.Zero)
@@ -408,7 +408,7 @@ namespace Nobots.Elements
             Energy energy = new Energy(scene.Game, scene, Position);
             energy.State = new FallingCharacterState(scene, energy);
             energy.Position = Position;
-            scene.InputManager.Character = energy;
+            scene.InputManager.Target = energy;
             scene.Camera.Target = energy;
             scene.RespawnElements.Add(energy);
             Random random = new Random();

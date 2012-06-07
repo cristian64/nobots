@@ -162,10 +162,10 @@
         <ImpulsePlatform Id="impulse2" Position="8.759726,9.484362" Width="11.4" Height="10" Rotation="0" StepsNumber="4" Acceleration="25" Active="False" />
         <ImpulsePlatform Id="impulse1" Position="2.304181,-3.612234" Width="14.25" Height="7" Rotation="-2.79" StepsNumber="5" Acceleration="-30" Active="False" />
         <Elevator Id="elevator1" Position="59.2,6" InitialPosition="59.2,6" FinalPosition="59.2,-1" Active="False" />
-        <ImpulsePlatform Id="ip7" Position="-13.09448,-12.86854" Width="5.7" Height="7" Rotation="0" StepsNumber="2" Acceleration="120" Active="True" />
+        <ImpulsePlatform Id="ip7" Position="-13.09448,-12.88854" Width="5.7" Height="7" Rotation="0" StepsNumber="2" Acceleration="120" Active="True" />
         <GlidePlatform Id="" Position="-137.8763,-15.53152" Rotation="0" Active="True" Velocity="4" StepsNumber="5" />
         <GlidePlatform Id="glide_to_death" Position="-160.0212,-12.03152" Rotation="0" Active="True" Velocity="-2" StepsNumber="1" />
-        <ImpulsePlatform Id="impulse_over_spikes" Position="-119.3,-21.35902" Width="5.7" Height="6.6" Rotation="3.2815" StepsNumber="2" Acceleration="-20" Active="False" />
+        <ImpulsePlatform Id="impulse_over_spikes" Position="-119.32,-21.35902" Width="5.7" Height="6.6" Rotation="3.2815" StepsNumber="2" Acceleration="-20" Active="False" />
         <GlidePlatform Id="" Position="-120.0298,-20.95341" Rotation="3.2815" Active="True" Velocity="5" StepsNumber="1" />
     </Elements>
     <Foregrounds>

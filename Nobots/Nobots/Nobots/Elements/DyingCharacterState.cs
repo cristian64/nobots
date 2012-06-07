@@ -50,7 +50,7 @@ namespace Nobots.Elements
                         characterCount++;
                 }
 
-                if ((characterCount == 0 && (scene.InputManager.Character is Energy || scene.InputManager.Character is Crane || scene.InputManager.Character == null)) || scene.InputManager.Character == character)
+                if ((characterCount == 0 && (scene.InputManager.Target is Energy || scene.InputManager.Target is Crane || scene.InputManager.Target == null)) || scene.InputManager.Target == character)
                 {
 #if !FINAL_RELEASE
                     MessageBox.Show("This is the Editor mode. After dying the level is no longer restarted not to lose pendent changes on the level.", "Warning!", MessageBoxButtons.OK);
@@ -112,22 +112,22 @@ namespace Nobots.Elements
                     characterCount++;
             }
 
-            if (characterCount == 0 && (scene.InputManager.Character is Energy || scene.InputManager.Character is Crane))
+            if (characterCount == 0 && (scene.InputManager.Target is Energy || scene.InputManager.Target is Crane))
             {
-                if (scene.InputManager.Character is Crane)
+                if (scene.InputManager.Target is Crane)
                 {
-                    scene.InputManager.Character = null;
+                    scene.InputManager.Target = null;
                 }
-                else if (scene.InputManager.Character is Energy)
+                else if (scene.InputManager.Target is Energy)
                 {
-                    Energy energy = (Energy)scene.InputManager.Character;
+                    Energy energy = (Energy)scene.InputManager.Target;
                     for (int j = 0; j < 50; j++)
                     {
                         scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position - Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                         scene.PlasmaExplosionParticleSystem.AddParticle(energy.Position + Vector2.UnitY * (float)random.NextDouble() / 2, Vector2.Zero);
                     }
-                    scene.GarbageElements.Add((Element)scene.InputManager.Character);
-                    scene.InputManager.Character = null;
+                    scene.GarbageElements.Add((Element)scene.InputManager.Target);
+                    scene.InputManager.Target = null;
                 }
             }
         }

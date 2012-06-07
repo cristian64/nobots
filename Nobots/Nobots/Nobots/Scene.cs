@@ -255,7 +255,7 @@ namespace Nobots
             RespawnElements.Clear();
             GarbageElements.Clear();
             Camera.Target = null;
-            InputManager.Character = null;
+            InputManager.Target = null;
 #if !FINAL_RELEASE
             SelectionManager.Selection = null;
 #endif
@@ -279,7 +279,7 @@ namespace Nobots
                 frames = 0;
             }
 
-            if (InputManager.Character as Energy != null)
+            if (InputManager.Target as Energy != null)
             {
                 // Draw scene in a render target.
                 GraphicsDevice.SetRenderTarget(sceneTarget);

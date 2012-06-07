@@ -80,7 +80,7 @@ namespace Nobots
                                 if (ele is Energy)
                                 {
                                     scene.Camera.Target = ele;
-                                    scene.InputManager.Character = (Energy)ele;
+                                    scene.InputManager.Target = (Energy)ele;
                                 }
                                 else if (ele is Character)
                                     ((Character)ele).State = new ComaCharacterState(scene, (Character)ele, false);
@@ -90,7 +90,7 @@ namespace Nobots
                             Character previous = null;
                             foreach (Element ele in scene.Elements)
                             {
-                                if (ele is Character)
+                                if (ele is Character && !(ele is Energy))
                                 {
                                     if (previous != null)
                                         ((Character)previous).State = new ComaCharacterState(scene, (Character)previous, false);
@@ -345,18 +345,15 @@ namespace Nobots
                     e = new TrainTrack(Game, scene, Vector2.Zero, stepsNumber3);
                     break;
                 case "Energy":
-                    if (!thereIsEnergy)
-                    {
-                        e = new Energy(Game, scene, Vector2.Zero);
-                        scene.Camera.Target = e;
-                        scene.InputManager.Character = (Energy)e;
-                        thereIsEnergy = true;
-                    }
+                    e = new Energy(Game, scene, Vector2.Zero);
+                    scene.Camera.Target = e;
+                    scene.InputManager.Target = (Energy)e;
+                    thereIsEnergy = true;
                     break;
                 case "Character":
                     e = new Character(Game, scene, Vector2.Zero);
                     scene.Camera.Target = e;
-                    scene.InputManager.Character = (Character)e;
+                    scene.InputManager.Target = (Character)e;
                     break;
                 case "Stone":
                     e = new Stone(Game, scene, Vector2.Zero);

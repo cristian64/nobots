@@ -97,7 +97,7 @@ namespace Nobots.Elements
 
         public override void Draw(GameTime gameTime)
         {
-            if (scene.InputManager.Character is Energy)
+            if (scene.InputManager.Target is Energy)
                 scene.SpriteBatch.Draw(texture2, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture2.Width / 2.0f, texture2.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
             else
                 scene.SpriteBatch.Draw(texture, scene.Camera.Scale * Conversion.ToDisplay(body.Position - scene.Camera.Position), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), scene.Camera.Scale, SpriteEffects.None, 0);
@@ -111,10 +111,13 @@ namespace Nobots.Elements
                 scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
                 scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
                 scene.VortexParticleSystem.AddParticle(Position, Vector2.Zero);
-                energy.Position = OtherSocket.Position;
-                energy.torso.Awake = energy.body.Awake = true;
-                energy.contactsNumber = 0;
-                energy.State = new FallingCharacterState(scene, energy);
+
+                Energy newEnergy = new Energy(Game, scene, OtherSocket.Position);
+                scene.RespawnElements.Add(newEnergy);
+                scene.Camera.Target = newEnergy;
+                scene.InputManager.Target = newEnergy;
+                scene.GarbageElements.Add(energy);
+
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
                 scene.VortexOutParticleSystem.AddParticle(OtherSocket.Position, Vector2.Zero);
