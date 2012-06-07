@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Nobots.Elements
 {
-    public class ImageHint : Element
+    public class ImageHint : Element, IActivable
     {
         public float Scale = 1;
         private Texture2D notexture;
@@ -37,6 +37,18 @@ namespace Nobots.Elements
             }
         }
 
+        private bool isActive = true;
+        public bool Active
+        {
+            get
+            {
+                return isActive;
+            }
+            set
+            {
+                isActive = value;
+            }
+        }
 
         float width;
         public override float Width
@@ -114,7 +126,8 @@ namespace Nobots.Elements
                     alpha -= alpha <= 0 ? 0 : ((float)gameTime.ElapsedGameTime.TotalSeconds * 4);
                 if (alpha > 0)
                 {
-                    scene.SpriteBatch.Draw(blank, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.Black * alpha * 0.3f);
+                    if (isActive)
+                        scene.SpriteBatch.Draw(blank, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.Black * alpha * 0.3f);
                     scene.SpriteBatch.Draw(Texture, new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 3), null, Color.White * alpha, rotation, new Vector2(Texture.Width / 2.0f, Texture.Height / 2.0f), Scale * new Vector2(width / Conversion.ToWorld(Texture.Width), height / Conversion.ToWorld(Texture.Height)), SpriteEffects.None, 0);
                 }
             }

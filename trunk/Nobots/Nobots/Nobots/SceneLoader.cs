@@ -560,7 +560,7 @@ namespace Nobots
 
         public String ElementToXml(ImageHint imgHint)
         {
-            String xml = "<ImageHint Id=\"" + imgHint.Id + "\" Position=\"" + imgHint.Position.X + "," + imgHint.Position.Y + "\" Rotation=\"" + imgHint.Rotation + "\" Scale=\"" + imgHint.Scale + "\" TextureName=\"" + imgHint.TextureName + "\" Width=\"" + imgHint.Width + "\" Height=\"" + imgHint.Height + "\" />";
+            String xml = "<ImageHint Id=\"" + imgHint.Id + "\" Position=\"" + imgHint.Position.X + "," + imgHint.Position.Y + "\" Rotation=\"" + imgHint.Rotation + "\" Scale=\"" + imgHint.Scale + "\" TextureName=\"" + imgHint.TextureName + "\" Width=\"" + imgHint.Width + "\" Height=\"" + imgHint.Height + "\" Active=\"" + imgHint.Active + "\" />";
             return xml;
         }
 
