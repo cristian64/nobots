@@ -204,7 +204,7 @@
         <GlidePlatform Id="GPOne" Position="1459.723,233.8377" Rotation="0" Active="True" Velocity="5" StepsNumber="4" />
         <GlidePlatform Id="Moveman" Position="1409.198,362.0203" Rotation="0" Active="False" Velocity="6" StepsNumber="3" />
         <GlidePlatform Id="glideattheend" Position="1408.632,368.8787" Rotation="0" Active="False" Velocity="6" StepsNumber="3" />
-        <ImpulsePlatform Id="impulselet" Position="1364.066,209.2701" Width="14.25" Height="3" Rotation="-3.261592" StepsNumber="5" Acceleration="-20" Active="True" />
+        <ImpulsePlatform Id="impulselet" Position="1364.066,209.2701" Width="14.25" Height="3" Rotation="-3.261592" StepsNumber="5" Acceleration="-50" Active="True" />
         <Hint Id="" Position="1465.619,204.1236" Text="Oh God! Which Wire......?
 " />
     </Elements>
