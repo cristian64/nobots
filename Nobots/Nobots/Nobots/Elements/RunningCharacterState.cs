@@ -91,6 +91,12 @@ namespace Nobots.Elements
             character.State = new JumpingCharacterState(scene, character);
         }
 
+        public override void UpActionStart()
+        {
+            if (character.Ladder == null)
+                character.State = new JumpingCharacterState(scene, character);
+        }
+
         public override void BActionStart()
         {
             if (character.touchedBody != null)

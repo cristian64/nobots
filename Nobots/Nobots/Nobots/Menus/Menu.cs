@@ -62,10 +62,6 @@ namespace Nobots.Menus
             {
                 scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-
-                if (options[selectedIndex] is ControlsOption)
-                    scene.SpriteBatch.Draw(controls, new Vector2(GraphicsDevice.Viewport.Width - controls.Width - 100, GraphicsDevice.Viewport.Height - controls.Height - 150), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
-
                 scene.SpriteBatch.Draw(logo, new Vector2(90, 90), null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
 
                 Vector2 position = new Vector2(140, 230);
@@ -75,6 +71,9 @@ namespace Nobots.Menus
                     scene.SpriteBatch.DrawString(menuoptionfont, option.Text, position, selectedIndex == i ? Color.White : Color.Gray);
                     position += new Vector2(0, menuoptionfont.MeasureString(option.Text).Y + 0);
                 }
+
+                if (options[selectedIndex] is ControlsOption)
+                    scene.SpriteBatch.Draw(controls, new Vector2(GraphicsDevice.Viewport.Width / 1.5f, GraphicsDevice.Viewport.Height / 2.0f), null, Color.White, 0, new Vector2(controls.Width / 2.0f, controls.Height / 2.0f), 1, SpriteEffects.None, 0);
 
                 scene.SpriteBatch.End();
             }
