@@ -52,8 +52,8 @@ namespace Nobots.Elements
         {
             if (scene.Camera.Target == this)
                 scene.Camera.Target = null;
-            if (scene.InputManager.Character == this)
-                scene.InputManager.Character = null;
+            if (scene.InputManager.Target == this)
+                scene.InputManager.Target = null;
 #if !FINAL_RELEASE
             if (scene.SelectionManager.Selection == this)
                 scene.SelectionManager.Selection = null;
