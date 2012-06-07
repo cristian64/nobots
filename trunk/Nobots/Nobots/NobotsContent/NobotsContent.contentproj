@@ -520,6 +520,10 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="sounds\effects\sparks.ogg">
+      <Name>sparks</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="sounds\effects\travelcord1.wav">
       <Name>travelcord1</Name>
       <Importer>WavImporter</Importer>

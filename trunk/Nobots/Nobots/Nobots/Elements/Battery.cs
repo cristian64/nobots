@@ -8,6 +8,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework.Input;
 using FarseerPhysics.Dynamics.Contacts;
+using IrrKlang;
 
 namespace Nobots.Elements
 {
@@ -15,7 +16,8 @@ namespace Nobots.Elements
     {
          public Body body;
         Texture2D texture;
-        Random random = new Random();
+        static Random random = new Random();
+        ISound sound;
 
         private bool isActive = true;
         public bool Active
@@ -86,6 +88,8 @@ namespace Nobots.Elements
             this.position = position;
             texture = Game.Content.Load<Texture2D>("battery");
             createBody();
+
+            sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Sparks, 0, 0, 0, true, true, false);
         }
 
         static float delay = 0.10f;
@@ -96,7 +100,11 @@ namespace Nobots.Elements
 
             if (scene.Camera.Target != null && Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 25)
             {
-                //TODO:CHEMA: play sound if it's not
+                if (sound.Paused)
+                {
+                    sound.Paused = false;
+                    sound.Position = new Vector3D(Position.X, Position.Y, 0);
+                }
                 counter -= elapsed;
                 if (counter < 0)
                 {
@@ -106,7 +114,8 @@ namespace Nobots.Elements
             }
             else
             {
-                //TODO:CHEMA stop sound if it's playing
+                if (!sound.Paused)
+                    sound.Paused = true;
             }
         }
 
@@ -142,6 +151,11 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
+            if (sound != null)
+            {
+                sound.Stop();
+                sound.Dispose();
+            }
             body.Dispose();
             base.Dispose(disposing);
         }
