@@ -17,6 +17,7 @@ namespace Nobots.Elements
     public class Torch : Element, IActivable
     {
         Texture2D texture;
+        ISound sound;
 
         private bool isActive = true;
         public bool Active
@@ -29,6 +30,7 @@ namespace Nobots.Elements
             set
             {
                 isActive = value;
+                sound.Paused = !value;
             }
         }
         
@@ -64,6 +66,7 @@ namespace Nobots.Elements
             set
             {
                 position = value;
+                sound.Position = new Vector3D(position.X, position.Y, 0);
             }
         }
 
@@ -84,6 +87,8 @@ namespace Nobots.Elements
             ZBuffer = -7f;
             texture = scene.Game.Content.Load<Texture2D>("torch");
             this.position = position;
+
+            sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Torch, position.X, position.Y, 0, true, false, false);
         }
 
         public override void Update(GameTime gameTime)
@@ -104,6 +109,11 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
+            if (sound != null)
+            {
+                sound.Stop();
+                sound.Dispose();
+            }
             base.Dispose(disposing);
         }
     }
