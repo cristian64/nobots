@@ -109,9 +109,9 @@ namespace Nobots.Elements
             if (scene.Camera.Target != null)
             {
                 if (Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 4)
-                    alpha += alpha >= 1 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    alpha += alpha >= 1 ? 0 : ((float)gameTime.ElapsedGameTime.TotalSeconds * 4);
                 else
-                    alpha -= alpha <= 0 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    alpha -= alpha <= 0 ? 0 : ((float)gameTime.ElapsedGameTime.TotalSeconds * 4);
                 if (alpha > 0)
                 {
                     scene.SpriteBatch.Draw(blank, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.Black * alpha * 0.3f);

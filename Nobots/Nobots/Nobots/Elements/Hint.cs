@@ -121,7 +121,7 @@ namespace Nobots.Elements
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) + Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
                     scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - Vector2.UnitY, Color.Black * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
-                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), Color.Yellow * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
+                    scene.SpriteBatch.DrawString(hintfont, Text, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position), Color.White * alpha, 0, new Vector2(width / 2, height), 1, SpriteEffects.None, 0);
 
                 }
             }
