@@ -130,8 +130,10 @@ namespace Nobots.Menus
                     if (i is RestartLevelOption)
                         thereIsRestart = true;
                 if (!thereIsRestart && scene.SceneLoader.LastLevel != "")
+                {
                     options.Insert(1, new RestartLevelOption(scene));
-                    //options.Insert(1, new LastCheckpointOption(scene));
+                    options.Insert(1, new LastCheckpointOption(scene));
+                }
             }
 
             if (Enabled)

@@ -12,6 +12,7 @@ namespace Nobots.Elements
         public float Scale = 1;
         private Texture2D notexture;
         public Texture2D Texture;
+        Texture2D blank;
 
         private String textureName;
         public String TextureName
@@ -97,6 +98,9 @@ namespace Nobots.Elements
             width = Conversion.ToWorld(Texture.Width);
             height = Conversion.ToWorld(Texture.Height);
             this.position = position;
+
+            blank = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            blank.SetData(new[] { Color.White });
         }
 
         float alpha = 0;
@@ -104,12 +108,15 @@ namespace Nobots.Elements
         {
             if (scene.Camera.Target != null)
             {
-                if (Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 30)
+                if (Vector2.DistanceSquared(scene.Camera.Target.Position, Position) < 4)
                     alpha += alpha >= 1 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
                 else
                     alpha -= alpha <= 0 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (alpha > 0)
-                    scene.SpriteBatch.Draw(Texture, scene.Camera.Scale * Conversion.ToDisplay(Position - scene.Camera.Position), null, Color.White * alpha, rotation, new Vector2(Texture.Width / 2.0f, Texture.Height / 2.0f), scene.Camera.Scale * Scale * new Vector2(width / Conversion.ToWorld(Texture.Width), height / Conversion.ToWorld(Texture.Height)), SpriteEffects.None, 0);
+                {
+                    scene.SpriteBatch.Draw(blank, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.Black * alpha * 0.3f);
+                    scene.SpriteBatch.Draw(Texture, new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 3), null, Color.White * alpha, rotation, new Vector2(Texture.Width / 2.0f, Texture.Height / 2.0f), Scale * new Vector2(width / Conversion.ToWorld(Texture.Width), height / Conversion.ToWorld(Texture.Height)), SpriteEffects.None, 0);
+                }
             }
         }
 
