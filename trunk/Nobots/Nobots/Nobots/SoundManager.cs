@@ -113,11 +113,15 @@ namespace Nobots
             CircularSawStop.DefaultMinDistance = 0.5f;
 
             Crane = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane.wav");
+            Crane.DefaultVolume = 0.3f;
             CraneStart = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane_start.wav");
+            CraneStart.DefaultVolume = 0.3f;
             CraneClose = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane_close.wav");
+            CraneClose.DefaultVolume = 0.3f;
 
             Sparks = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\sparks.ogg");
-            Sparks.DefaultMinDistance = 0.5f;
+            Sparks.DefaultMinDistance = 0.3f;
+            Sparks.DefaultVolume = 0.5f;
 
             Door = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\door.ogg");
 
