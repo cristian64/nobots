@@ -123,7 +123,7 @@ namespace Nobots
                     transitionPlayed = true;
                 }
 
-                Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
+                
                 ambienceLabEnergy.Paused = false;
                 ambienceLabEnergy.Volume = Math.Min(AmbienceEnergy.DefaultVolume, ambienceLabEnergy.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 ambienceLabNormal.Volume = Math.Max(0, ambienceLabNormal.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -132,7 +132,7 @@ namespace Nobots
                 {
                     ambienceLabNormal.Paused = true;
                     inTransitionToEnergy = false;
-                    Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
+                    
                 }
             }
 
@@ -143,7 +143,7 @@ namespace Nobots
                     ISoundEngine.Play2D(toNormal[rand.Next(toNormal.Count)], false, false,false);
                     transitionPlayed = true;
                 }
-                Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
+                
                 ambienceLabNormal.Paused = false;
                 ambienceLabNormal.Volume = Math.Min(AmbienceNormal.DefaultVolume, ambienceLabNormal.Volume + fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 ambienceLabEnergy.Volume = Math.Max(0, ambienceLabEnergy.Volume - fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -153,7 +153,7 @@ namespace Nobots
                 {
                     ambienceLabEnergy.Paused = true;
                     inTransitionToNormal = false;
-                    Console.WriteLine("energvol" + ambienceLabEnergy.Volume + "normalvol" + ambienceLabNormal.Volume + "enerdef" + AmbienceEnergy.DefaultVolume + "normaldef" + AmbienceNormal.DefaultVolume);
+                    
                 }
             }
 
