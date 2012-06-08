@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Elements\CircularSaw.cs" />
+    <Compile Include="Elements\Radio.cs" />
     <Compile Include="Elements\ImageHint.cs" />
     <Compile Include="Elements\Writings.cs" />
     <Compile Include="Elements\StoryTelling.cs" />

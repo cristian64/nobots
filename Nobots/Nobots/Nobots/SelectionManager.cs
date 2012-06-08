@@ -220,6 +220,9 @@ namespace Nobots
                     case "ConveyorBelt":
                         element = new ConveyorBelt(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;
+                    case "Radio":
+                        element = new Radio(Game, scene, scene.Camera.ScreenToWorld(previous));
+                        break;
                     case "Lever":
                         element = new Lever(Game, scene, scene.Camera.ScreenToWorld(previous));
                         break;

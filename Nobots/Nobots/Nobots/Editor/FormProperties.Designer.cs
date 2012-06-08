@@ -1835,6 +1835,7 @@
             "CrateGenerator",
             "Drop",
             "CircularSaw",
+            "Radio",
             "---------------",
             "Sound",
             "CameraScale",

@@ -14,7 +14,7 @@ namespace Nobots
         private Scene scene;
 
         public ISoundEngine ISoundEngine;
-        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop, checkpoint, steam, elevatorBegin, elevatorEnd, stomp
+        public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop, checkpoint, steam, elevatorBegin, elevatorEnd, stomp, Credits
             , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop, Crane, CraneStart, CraneClose, Sparks, Door, EnergyIn, EnergyOut, Torch, Grunt, StepFall;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
@@ -137,6 +137,8 @@ namespace Nobots
 
             Grunt = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\grunt.ogg");
             StepFall = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step_fall.wav");
+
+            Credits = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\synergycredits.ogg");
 
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-01.wav"));
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-02.wav"));

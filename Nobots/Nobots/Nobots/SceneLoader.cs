@@ -180,6 +180,9 @@ namespace Nobots
                 case "Container":
                     e = new Container(Game, scene, Vector2.Zero);
                     break;
+                case "Radio":
+                    e = new Radio(Game, scene, Vector2.Zero);
+                    break;
                 case "Minecart":
                     e = new Minecart(Game, scene, Vector2.Zero);
                     break;
@@ -507,6 +510,8 @@ namespace Nobots
                     xml += "        " + ElementToXml((Endpoint)i) + "\n";
                 else if (i as Sound != null)
                     xml += "        " + ElementToXml((Sound)i) + "\n";
+                else if (i as Radio != null)
+                    xml += "        " + ElementToXml((Radio)i) + "\n";
                 else if (i as Energy != null)
                     xml += "        " + ElementToXml((Energy)i) + "\n";
                 else if (i as Character != null)
@@ -597,6 +602,12 @@ namespace Nobots
         public String ElementToXml(Container container)
         {
             String xml = "<Container Id=\"" + container.Id + "\" Position=\"" + container.Position.X + "," + container.Position.Y + "\" Rotation=\"" + container.Rotation + "\" />";
+            return xml;
+        }
+
+        public String ElementToXml(Radio radio)
+        {
+            String xml = "<Radio Id=\"" + radio.Id + "\" Position=\"" + radio.Position.X + "," + radio.Position.Y + "\" Rotation=\"" + radio.Rotation + "\" Rotation=\"" + radio.Active + "\" />";
             return xml;
         }
 
