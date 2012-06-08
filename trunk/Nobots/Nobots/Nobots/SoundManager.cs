@@ -70,10 +70,11 @@ namespace Nobots
             }
 
             checkpoint = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\checkpoint.wav");
-            checkpoint.DefaultVolume = 0.3f;
+            checkpoint.DefaultVolume = 0.2f;
 
             steam = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\steam.wav");
-            steam.DefaultMinDistance = 0.25f;
+            steam.DefaultVolume = 0.3f;
+            steam.DefaultMinDistance = 0.2f;
 
             elevatorBegin = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\elevatorbegin.wav");
 
