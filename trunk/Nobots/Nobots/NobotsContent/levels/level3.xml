@@ -37,8 +37,8 @@
         <Torch Id="" Position="17.8378,-14.99215" Active="True" />
         <PressurePlate Id="" Position="-164.9344,-11.84808" ActivableElementId="door_to_go" />
         <Lever Id="" Position="-79.28362,-9.3221" Rotation="4.075066E-07" ActivableElementId="ip3" />
-        <Switch Id="" Position="-85.59999,-10" Rotation="0" ActivableElementId="ip1" />
-        <Switch Id="" Position="-85.59999,-10" Rotation="0" ActivableElementId="ip2" />
+        <Switch Id="" Position="-81.80005,-10.4" Rotation="0" ActivableElementId="ip1" />
+        <Switch Id="" Position="-81.80005,-10.4" Rotation="0" ActivableElementId="ip2" />
         <Socket Id="s1" Position="-96.10328,-11.63889" Rotation="-1.57" OtherSocketId="s2" />
         <Socket Id="s2" Position="-45.7025,-17.29798" Rotation="-1.57" OtherSocketId="s1" />
         <Switch Id="" Position="16.22693,7.7" Rotation="0" ActivableElementId="impulse2" />

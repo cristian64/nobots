@@ -73,17 +73,15 @@
         <Endpoint Id="" Position="176.206,-2.645291" Rotation="0" NextLevel="level2" AlsoEnergy="False" />
         <Socket Id="goal" Position="133.0972,-24.57677" Rotation="1.12" OtherSocketId="return" />
         <Socket Id="return" Position="103.7174,-10.6559" Rotation="-1.68" OtherSocketId="goal" />
-        <Lever Id="Lever1of2" Position="122.0896,1439871" Rotation="1.002167E-07" ActivableElementId="Door2" />
-        <Lever Id="Lever2of2" Position="127.7259,-5.430084" Rotation="2.20364E-07" ActivableElementId="Door2" />
+        <Lever Id="Lever2of2" Position="127.7259,-5.430084" Rotation="2.200933E-07" ActivableElementId="Door2" />
         <Checkpoint Id="" Position="28.76455,9.44739" Rotation="0" Active="False" />
-        <Lever Id="DoorToEnergy" Position="94.67303,-1.726832" Rotation="1.917921E-08" ActivableElementId="DoorEnergy" />
-        <Lever Id="Lever1of2" Position="122.585,-1.726832" Rotation="1.918465E-08" ActivableElementId="Door2" />
-        <Lever Id="Start1" Position="19.00027,9.975005" Rotation="6.209437E-07" ActivableElementId="StartDoor" />
+        <Lever Id="DoorToEnergy" Position="94.67303,-1.726832" Rotation="1.920789E-08" ActivableElementId="DoorEnergy" />
+        <Lever Id="Lever1of2" Position="122.585,-1.726832" Rotation="1.921551E-08" ActivableElementId="Door2" />
+        <Lever Id="Start1" Position="19.00027,9.975005" Rotation="6.209453E-07" ActivableElementId="StartDoor" />
         <Switch Id="Switchie2" Position="55.61644,8.568027" Rotation="0" ActivableElementId="Doorstart" />
         <Switch Id="Switchie1" Position="55.61692,8.572339" Rotation="0" ActivableElementId="Ele1" />
         <Ladder Id="" Position="109.2651,-8.010702" StepsNumber="11" />
-        <MovingPlatform Id="" Position="142.5,-2.200006" Width="3" Height="0.5" Rotation="0" InitialPosition="142.5,-8" FinalPosition="142.5,0.5" Active="True" />
-        <Box Id="" Position="131.7787,7795177" Rotation="206.1327" />
+        <MovingPlatform Id="" Position="142.5,0.5" Width="3" Height="0.5" Rotation="0" InitialPosition="142.5,-8" FinalPosition="142.5,0.5" Active="True" />
         <Character Id="" Position="7.553493,8.636339" Active="False" />
         <SecurityCamera Id="" Position="15.67818,1.49834" Rotation="2.420752" />
         <SecurityCamera Id="" Position="43.22943,1.485854" Rotation="1.607574" />
@@ -94,8 +92,8 @@
         <CameraScale Id="" Position="103.8313,-9.656343" ScaleTarget="0.7" />
         <CameraScale Id="" Position="9.019636,8.528461" ScaleTarget="0.7" />
         <ConveyorBelt Id="conveyor1" Position="100.103,-30.17073" Width="6" Height="1" AngularSpeed="1.42" RotorsNumber="3" LinksNumber="25" LinkWidth="0.15" LinkHeight="0.25" Active="False" />
-        <Box Id="" Position="98.7962,-31.99158" Rotation="3.145829" />
-        <Crate Id="" Position="61.46619,-2.136532" Rotation="-7.54775E-06" Color="red" />
+        <Box Id="" Position="98.75283,-31.97708" Rotation="3.154083" />
+        <Crate Id="" Position="61.46619,-2.136532" Rotation="-7.550834E-06" Color="red" />
         <ExperimentalTube Id="" Position="7.565208,8.286327" Rotation="0" OtherTubeId="" Active="True" />
         <ExperimentalTube Id="Tube1" Position="102.691,-4.030507" Rotation="0" OtherTubeId="Tube2" Active="True" />
         <ExperimentalTube Id="Tube2" Position="85.22002,-26.23551" Rotation="0" OtherTubeId="" Active="True" />
@@ -108,7 +106,7 @@
         <Steam Id="" Position="41.54257,8.018551" Rotation="0" />
         <Steam Id="" Position="44.60266,8.026641" Rotation="0" />
         <Steam Id="" Position="47.62242,8.028552" Rotation="0" />
-        <Door Id="Door4" Position="118.7838,-28.95934" Width="0.52" Height="3.46" Rotation="0" Active="True" />
+        <Door Id="Door4" Position="118.7838,-25.49934" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="DoorEnergy" Position="97.20634,-2.951425" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="StartDoor" Position="21.71547,8.861257" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="Doorstart" Position="53.93829,5.350506" Width="0.52" Height="3.46" Rotation="0" Active="True" />
