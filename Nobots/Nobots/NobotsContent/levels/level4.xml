@@ -106,13 +106,13 @@
         <CameraScale Id="" Position="1471.758,253.9614" ScaleTarget="1.4" />
         <Box Id="" Position="1403.258,367.5888" Rotation="6.834003E-06" />
         <Box Id="" Position="1412.384,367.5888" Rotation="6.834361E-06" />
-        <Character Id="" Position="1356.807,217.0804" Active="True" />
         <Box Id="" Position="1369.928,209.9102" Rotation="1.45" />
         <Character Id="" Position="1480.865,242.7931" Active="True" />
         <Character Id="" Position="1478.947,242.7931" Active="True" />
         <Character Id="" Position="1477.093,242.7931" Active="True" />
         <Character Id="" Position="1484.049,242.7931" Active="True" />
         <Character Id="" Position="1487.015,242.7931" Active="True" />
+        <Character Id="" Position="1356.79,216.9604" Active="True" />
         <ExperimentalTube Id="" Position="1486.108,252.3718" Rotation="0" OtherTubeId="" Active="True" />
         <Door Id="door4" Position="1421.412,215.5448" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="door5" Position="1433.755,220.8808" Width="0.52" Height="3.46" Rotation="0" Active="False" />

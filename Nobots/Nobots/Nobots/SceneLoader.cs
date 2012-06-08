@@ -607,7 +607,7 @@ namespace Nobots
 
         public String ElementToXml(Radio radio)
         {
-            String xml = "<Radio Id=\"" + radio.Id + "\" Position=\"" + radio.Position.X + "," + radio.Position.Y + "\" Rotation=\"" + radio.Rotation + "\" Rotation=\"" + radio.Active + "\" />";
+            String xml = "<Radio Id=\"" + radio.Id + "\" Position=\"" + radio.Position.X + "," + radio.Position.Y + "\" Rotation=\"" + radio.Rotation + "\" Active=\"" + radio.Active + "\" />";
             return xml;
         }
 
