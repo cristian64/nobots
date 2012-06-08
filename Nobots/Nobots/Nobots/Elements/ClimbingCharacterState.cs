@@ -73,6 +73,9 @@ namespace Nobots.Elements
             character.torso.IgnoreGravity = false;
         }
 
+        bool firstTime = true;
+
+
         public override void UpAction()
         {
             if (character.IsLadderInRangeToGoUp(character.Ladder))
@@ -86,6 +89,14 @@ namespace Nobots.Elements
                 moving = false;
                 character.torso.LinearVelocity = new Vector2(0, 0);
                 character.body.LinearVelocity = new Vector2(0, 0);
+            }
+
+            if (firstTime)
+            {
+                character.body.Enabled = false;
+                character.body.Enabled = true;
+                character.contactsNumber = 0;
+                firstTime = false;
             }
         }
 
