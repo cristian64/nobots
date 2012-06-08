@@ -16,6 +16,8 @@ namespace Nobots.Elements
         Texture2D texture;
         ISound ost;
 
+        bool wasFadeOut = false;
+
         private bool isActive = false;
         public bool Active
         {
@@ -26,22 +28,26 @@ namespace Nobots.Elements
 
             set
             {
-                isActive = value;
                 if (ost != null)
                 {
                     ost.Stop();
                     ost.Dispose();
                     ost = null;
                 }
+
+                isActive = value;
+
                 if (isActive)
                 {
                     ost = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Credits, false, false, false);
                     scene.AmbienceSound.FadeOut(10);
+                    wasFadeOut = true;
                 }
                 else
                 {
                     ost = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Credits, body.Position.X, body.Position.Y, 0.0f, false, false, false);
-                    scene.AmbienceSound.FadeIn(10);
+                    if (wasFadeOut)
+                        scene.AmbienceSound.FadeIn(10);
                 }
             }
         }
@@ -111,7 +117,8 @@ namespace Nobots.Elements
         {
             if (!isActive)
             {
-                ost.Position = new Vector3D(body.Position.X, body.Position.Y, 0);
+                if (ost != null)
+                    ost.Position = new Vector3D(body.Position.X, body.Position.Y, 0);
             }
         }
 
@@ -132,7 +139,7 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
-            if (isActive)
+            if (wasFadeOut)
             {
                 scene.AmbienceSound.FadeIn(10);
             }
