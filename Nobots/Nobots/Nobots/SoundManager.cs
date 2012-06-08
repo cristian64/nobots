@@ -109,9 +109,9 @@ namespace Nobots
             ImpulsePlatform.DefaultMinDistance = 0.5f;
 
             CircularSaw = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\circularsaw.ogg");
-            CircularSaw.DefaultMinDistance = 0.5f;
+            CircularSaw.DefaultMinDistance = 0.2f;
             CircularSawStop = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\circularsaw_stop.ogg");
-            CircularSawStop.DefaultMinDistance = 0.5f;
+            CircularSawStop.DefaultMinDistance = 0.2f;
 
             Crane = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\crane.wav");
             Crane.DefaultVolume = 0.3f;
@@ -139,6 +139,7 @@ namespace Nobots
             StepFall = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\step_fall.wav");
 
             Credits = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\music\\synergycredits.ogg");
+            Credits.DefaultMinDistance = 0.5f;
 
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-01.wav"));
             drops.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\drop-02.wav"));
