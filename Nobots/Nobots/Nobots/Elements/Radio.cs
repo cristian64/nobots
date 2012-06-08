@@ -33,13 +33,15 @@ namespace Nobots.Elements
                     ost.Dispose();
                     ost = null;
                 }
-                if (!isActive)
+                if (isActive)
                 {
-                    ost = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Credits, body.Position.X, body.Position.Y, 0.0f, false, false, false);
+                    ost = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Credits, false, false, false);
+                    scene.AmbienceSound.FadeOut(10);
                 }
                 else
                 {
-                    ost = scene.SoundManager.ISoundEngine.Play2D(scene.SoundManager.Credits, false, false, false);
+                    ost = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Credits, body.Position.X, body.Position.Y, 0.0f, false, false, false);
+                    scene.AmbienceSound.FadeIn(10);
                 }
             }
         }
@@ -130,6 +132,11 @@ namespace Nobots.Elements
 
         protected override void Dispose(bool disposing)
         {
+            if (isActive)
+            {
+                scene.AmbienceSound.FadeIn(10);
+            }
+
             if (ost != null)
             {
                 ost.Stop();
