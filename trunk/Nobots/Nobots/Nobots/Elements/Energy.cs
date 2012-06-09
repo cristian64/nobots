@@ -59,6 +59,8 @@ namespace Nobots.Elements
 
         public override void UpActionStart()
         {
+            if (Ladder == null)
+                State = new JumpingCharacterState(scene, this);
         }
 
         public override void UpAction()
