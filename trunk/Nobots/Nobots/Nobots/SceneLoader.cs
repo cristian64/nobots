@@ -111,7 +111,7 @@ namespace Nobots
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.StackTrace + " " + e.Message);
+                MessageBox.Show(e.Message + "\n\n" + e.StackTrace, "Error while loading the level", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
