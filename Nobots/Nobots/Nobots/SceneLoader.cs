@@ -219,6 +219,10 @@ namespace Nobots
                     break;
                 case "Door":
                     e = new Door(Game, scene, Vector2.Zero);
+                    Door door = (Door)e;
+                    if (reader.MoveToAttribute("Active"))
+                        door.Active = reader.Value == "True";
+                    door.UpdatePositions();
                     break;
                 case "Crate":
                     e = new Crate(Game, scene, Vector2.Zero);

@@ -50,7 +50,7 @@
         <Lever Id="" Position="-43.50023,-14.71893" Rotation="6.31894E-07" ActivableElementId="door1" />
         <ElectricityBox Id="" Position="3.743751,-15.13987" Rotation="0" ActivableElementId="ip7" />
         <Socket Id="soc2" Position="-125.6919,-21.04345" Rotation="-1.53" OtherSocketId="soc1" />
-        <Socket Id="soc1" Position="-162.5549,-10.52371" Rotation="2.47" OtherSocketId="soc2" />
+        <Socket Id="soc1" Position="-163.2145,-10.1637" Rotation="2.47" OtherSocketId="soc2" />
         <Checkpoint Id="" Position="-111.2082,-10.19722" Rotation="0" Active="False" ActivableElementId="hidden_door_1" />
         <Lever Id="" Position="-131.559,-9.319097" Rotation="7.585961E-07" ActivableElementId="impulse_above_spikes" />
         <Battery Id="" Position="22.62826,-14.4654" Rotation="0" Active="True" />
@@ -188,7 +188,7 @@
         <ImpulsePlatform Id="ip1" Position="-66.26999,-23.53" Width="11.4" Height="2" Rotation="3.141593" StepsNumber="4" Acceleration="-20" Active="False" />
         <ImpulsePlatform Id="ip2" Position="-53.47809,-25.8" Width="14.25" Height="2" Rotation="3.141593" StepsNumber="5" Acceleration="-20" Active="False" />
         <ImpulsePlatform Id="ip3" Position="-63.13808,-8.58254" Width="28.5" Height="16" Rotation="0" StepsNumber="10" Acceleration="25" Active="False" />
-        <GlidePlatform Id="" Position="-3.179182,6.696158" Rotation="0.41" Active="True" Velocity="7" StepsNumber="2" />
+        <GlidePlatform Id="" Position="-3.179182,6.696158" Rotation="0.41" Active="True" Velocity="6" StepsNumber="2" />
         <GlidePlatform Id="" Position="2.225334,-3.057465" Rotation="-2.79" Active="True" Velocity="5" StepsNumber="2" />
         <GlidePlatform Id="" Position="48.32782,9.884321" Rotation="0" Active="True" Velocity="4" StepsNumber="1" />
         <GlidePlatform Id="" Position="12.2053,-0.6632389" Rotation="3.141592" Active="True" Velocity="5" StepsNumber="1" />

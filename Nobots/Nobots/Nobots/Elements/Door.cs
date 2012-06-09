@@ -46,7 +46,7 @@ namespace Nobots.Elements
             set
             {
                 height = value;
-                updatePositions();
+                UpdatePositions();
                 createBody();
             }
         }
@@ -76,7 +76,7 @@ namespace Nobots.Elements
             {
                 body.Position = value;
                 position = value;
-                updatePositions();
+                UpdatePositions();
             }
         }
 
@@ -103,6 +103,7 @@ namespace Nobots.Elements
             height = Conversion.ToWorld(texture.Height/2);
             createBody();
             Position = position;
+            UpdatePositions();
         }
 
         public override void Update(GameTime gameTime)
@@ -132,14 +133,7 @@ namespace Nobots.Elements
                     body.Position = InitialPosition;
                 }
             }
-
-            if (firstUpdate)
-            {
-                updatePositions();
-                firstUpdate = false;
-            }
         }
-        bool firstUpdate = true;
 
         public override void Draw(GameTime gameTime)
         {
@@ -148,7 +142,7 @@ namespace Nobots.Elements
                 (int)Math.Round(Conversion.ToDisplay(Width * scale)), (int)Math.Round(Conversion.ToDisplay(Height * scale))), null, Color.White, body.Rotation, new Vector2(texture.Width / 2.0f, texture.Height / 2.0f), SpriteEffects.None, 0);
         }
 
-        void updatePositions()
+        public void UpdatePositions()
         {
             if (!isActive)
             {
