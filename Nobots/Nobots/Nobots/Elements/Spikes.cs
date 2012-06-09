@@ -67,7 +67,7 @@ namespace Nobots.Elements
         public Spikes(Game game, Scene scene, Vector2 position)
             : base(game, scene)
         {
-            ZBuffer = 5f;
+            ZBuffer = 4f;
             this.position = position;
             texture = Game.Content.Load<Texture2D>("spikes");
             createBody();
