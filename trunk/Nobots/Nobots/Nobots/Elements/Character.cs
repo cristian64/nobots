@@ -82,8 +82,9 @@ namespace Nobots.Elements
             }
             set
             {
+                Vector2 previous = torso.Position;
                 torso.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2;
-                body.Position = value - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2 + Vector2.UnitY * Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2.0f) / 2.0f;
+                body.Position += torso.Position - previous;
             }
         }
 

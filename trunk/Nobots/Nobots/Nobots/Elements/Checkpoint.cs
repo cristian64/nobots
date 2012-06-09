@@ -11,13 +11,16 @@ using IrrKlang;
 
 namespace Nobots.Elements
 {
-    public class Checkpoint : Element, IActivable
+    public class Checkpoint : Activator, IActivable
     {
         Body body;
         Texture2D texture;
         Texture2D texture2;
         Texture2D shinyBallTexture;
         
+        public override void Activate()
+        {
+        }
 
         private bool isActive = false;
 
@@ -30,6 +33,8 @@ namespace Nobots.Elements
 
             set
             {
+                if (value && !isActive && ActivableElement != null)
+                    ActivableElement.Active = !ActivableElement.Active;
                 isActive = value;
             }
         }
@@ -80,16 +85,19 @@ namespace Nobots.Elements
         {
             if (!isActive)
             {
-                scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.checkpoint, body.Position.X, body.Position.Y, 0.0f, false, false, false);
-             
-                
-                foreach (Element i in scene.Elements)
+                Character character = (Character)fixtureB.Body.UserData;
+                if (character == scene.InputManager.Target && !(character.State is ComaCharacterState) && !(character.State is DyingCharacterState))
                 {
-                    Checkpoint checkpoint = i as Checkpoint;
-                    if (checkpoint != null)
-                        checkpoint.Active = false;
+                    scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.checkpoint, body.Position.X, body.Position.Y, 0.0f, false, false, false);
+
+                    foreach (Element i in scene.Elements)
+                    {
+                        Checkpoint checkpoint = i as Checkpoint;
+                        if (checkpoint != null)
+                            checkpoint.Active = false;
+                    }
+                    Active = true;
                 }
-                Active = true;
             }
 
             return true;

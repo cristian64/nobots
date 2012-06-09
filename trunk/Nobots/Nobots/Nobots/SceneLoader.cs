@@ -691,7 +691,8 @@ namespace Nobots
 
         public String ElementToXml(Checkpoint checkpoint)
         {
-            String xml = "<Checkpoint Id=\"" + checkpoint.Id + "\" Position=\"" + checkpoint.Position.X + "," + checkpoint.Position.Y + "\" Rotation=\"" + checkpoint.Rotation + "\" Active=\"" + checkpoint.Active + "\" />";
+            Element e = checkpoint.ActivableElement as Element;
+            String xml = "<Checkpoint Id=\"" + checkpoint.Id + "\" Position=\"" + checkpoint.Position.X + "," + checkpoint.Position.Y + "\" Rotation=\"" + checkpoint.Rotation + "\" Active=\"" + checkpoint.Active + "\" ActivableElementId=\"" + (e != null ? e.Id : "") + "\" />";
             return xml;
         }
 
