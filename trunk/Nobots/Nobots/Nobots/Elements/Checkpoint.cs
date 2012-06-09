@@ -34,7 +34,9 @@ namespace Nobots.Elements
             set
             {
                 if (value && !isActive && ActivableElement != null)
+                {
                     ActivableElement.Active = !ActivableElement.Active;
+                }
                 isActive = value;
             }
         }
