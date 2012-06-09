@@ -15,7 +15,7 @@ namespace Nobots
 
         public ISoundEngine ISoundEngine;
         public ISoundSource Lever, Computer, AmbienceNormal, AmbienceEnergy, woodenBox, laserBarrierLoop, checkpoint, steam, elevatorBegin, elevatorEnd, stomp, Credits
-            , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop, Crane, CraneStart, CraneClose, Sparks, Door, EnergyIn, EnergyOut, Torch, Grunt, StepFall;
+            , machineloop1, Container, SwitchOn, SwitchOff, Death, Weight, ImpulsePlatform, CircularSaw, CircularSawStop, Crane, CraneStart, CraneClose, Sparks, Door, EnergyIn, EnergyOut, Torch, Grunt, StepFall, ElecBoxOn, ElecBoxOff;
         public List<ISoundSource> toEnergy = new List<ISoundSource>();
         public List<ISoundSource> toNormal = new List<ISoundSource>();
         public List<ISoundSource> socket = new List<ISoundSource>();
@@ -93,6 +93,12 @@ namespace Nobots
             powerUp.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerup3.wav"));
             powerUp.Add(ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\powerup4.wav"));
 
+            ElecBoxOn = ISoundEngine.AddSoundSourceAlias(powerUp[3], "ElecBoxOn");
+            ElecBoxOn.DefaultVolume = 0.2f;
+
+            ElecBoxOff = ISoundEngine.AddSoundSourceAlias(powerDown[3], "ElecBoxOff");
+            ElecBoxOff.DefaultVolume = 0.2f;
+
             machineloop1 = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\machine1loop.wav");
             machineloop1.DefaultMinDistance = 0.1f;
 
@@ -100,10 +106,13 @@ namespace Nobots
             Container.DefaultMinDistance = 5f;
 
             SwitchOn = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch1.wav");
+            SwitchOn.DefaultVolume = 0.7f;
 
             SwitchOff = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\switch2.wav");
+            SwitchOff.DefaultVolume = 0.7f;
 
             Weight = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\weight.wav");
+            Weight.DefaultVolume = 0.5f;
 
             ImpulsePlatform = ISoundEngine.AddSoundSourceFromFile("Content\\sounds\\effects\\impulseplatform.wav");
             ImpulsePlatform.DefaultMinDistance = 0.5f;
