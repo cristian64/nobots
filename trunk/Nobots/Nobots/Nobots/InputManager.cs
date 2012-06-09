@@ -28,7 +28,7 @@ namespace Nobots
                 processKeyboard();
         }
 
-        float threshold = 0.10f;
+        float threshold = 0.30f;
         protected KeyboardState previousKeyboardState;
         protected GamePadState previosGamepadState;
         protected void processKeyboard()
@@ -88,7 +88,8 @@ namespace Nobots
                     Console.WriteLine("RightActionStart");
 #endif
                 }
-                if ((currentGamepadState.DPad.Up == ButtonState.Pressed && previosGamepadState.DPad.Up == ButtonState.Released) ||                    
+                if ((currentGamepadState.DPad.Up == ButtonState.Pressed && previosGamepadState.DPad.Up == ButtonState.Released) ||
+                    (currentGamepadState.ThumbSticks.Left.Y > threshold && (previosGamepadState.ThumbSticks.Left.Y <= threshold)) ||
                     (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)))
                 {
                     Target.UpActionStart();
