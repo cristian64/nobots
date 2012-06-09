@@ -115,7 +115,9 @@ namespace Nobots.Elements
             foreach (Element i in scene.Elements)
             {
                 IControllable controllable = i as IControllable;
-                if (controllable != null && controllable != this && IsTouchingElement(i))
+                if (controllable != null && controllable != this && IsTouchingElement(i) && 
+                    ((controllable is Character && ((Character)controllable).State is ComaCharacterState) ||
+                    !(controllable is Character)))
                 {
                     if (controllable is Character)
                         ((Character)controllable).State = new IdleCharacterState(scene, (Character)controllable);
