@@ -28,7 +28,8 @@ namespace Nobots
                 processKeyboard();
         }
 
-        float threshold = 0.30f;
+        float hThreshold = 0.10f;
+        float vThreshold = 0.5f;
         protected KeyboardState previousKeyboardState;
         protected GamePadState previosGamepadState;
         protected void processKeyboard()
@@ -71,7 +72,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Left == ButtonState.Pressed && previosGamepadState.DPad.Left == ButtonState.Released) ||
-                    (currentGamepadState.ThumbSticks.Left.X < -threshold && (previosGamepadState.ThumbSticks.Left.X >= -threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.X < -hThreshold && (previosGamepadState.ThumbSticks.Left.X >= -hThreshold)) ||
                     (currentKeyboardState.IsKeyDown(Keys.Left) && previousKeyboardState.IsKeyUp(Keys.Left)))
                 {
                     Target.LeftActionStart();
@@ -80,7 +81,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Right == ButtonState.Pressed && previosGamepadState.DPad.Right == ButtonState.Released) ||
-                    (currentGamepadState.ThumbSticks.Left.X > threshold && (previosGamepadState.ThumbSticks.Left.X <= threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.X > hThreshold && (previosGamepadState.ThumbSticks.Left.X <= hThreshold)) ||
                     (currentKeyboardState.IsKeyDown(Keys.Right) && previousKeyboardState.IsKeyUp(Keys.Right)))
                 {
                     Target.RightActionStart();
@@ -89,7 +90,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Up == ButtonState.Pressed && previosGamepadState.DPad.Up == ButtonState.Released) ||
-                    (currentGamepadState.ThumbSticks.Left.Y > threshold && (previosGamepadState.ThumbSticks.Left.Y <= threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.Y > vThreshold && (previosGamepadState.ThumbSticks.Left.Y <= vThreshold)) ||
                     (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)))
                 {
                     Target.UpActionStart();
@@ -98,7 +99,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Down == ButtonState.Pressed && previosGamepadState.DPad.Down == ButtonState.Released) ||
-                    (currentGamepadState.ThumbSticks.Left.Y < -threshold && (previosGamepadState.ThumbSticks.Left.Y >= -threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.Y < -vThreshold && (previosGamepadState.ThumbSticks.Left.Y >= -vThreshold)) ||
                     (currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)))
                 {
                     Target.DownActionStart();
@@ -139,7 +140,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Left == ButtonState.Released && previosGamepadState.DPad.Left == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.X > -threshold && (previosGamepadState.ThumbSticks.Left.X < -threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.X > -hThreshold && (previosGamepadState.ThumbSticks.Left.X < -hThreshold)) ||
                     (currentKeyboardState.IsKeyUp(Keys.Left) && previousKeyboardState.IsKeyDown(Keys.Left)))
                 {
                     Target.LeftActionStop();
@@ -148,7 +149,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Right == ButtonState.Released && previosGamepadState.DPad.Right == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.X < threshold && (previosGamepadState.ThumbSticks.Left.X > threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.X < hThreshold && (previosGamepadState.ThumbSticks.Left.X > hThreshold)) ||
                     (currentKeyboardState.IsKeyUp(Keys.Right) && previousKeyboardState.IsKeyDown(Keys.Right)))
                 {
                     Target.RightActionStop();
@@ -157,7 +158,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Up == ButtonState.Released && previosGamepadState.DPad.Up == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.Y < threshold && (previosGamepadState.ThumbSticks.Left.Y > threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.Y < vThreshold && (previosGamepadState.ThumbSticks.Left.Y > vThreshold)) ||
                     (currentKeyboardState.IsKeyUp(Keys.Up) && previousKeyboardState.IsKeyDown(Keys.Up)))
                 {
                     Target.UpActionStop();
@@ -166,7 +167,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Down == ButtonState.Released && previosGamepadState.DPad.Down == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.Y > -threshold && (previosGamepadState.ThumbSticks.Left.Y < -threshold)) ||
+                    (currentGamepadState.ThumbSticks.Left.Y > -vThreshold && (previosGamepadState.ThumbSticks.Left.Y < -vThreshold)) ||
                     (currentKeyboardState.IsKeyUp(Keys.Down) && previousKeyboardState.IsKeyDown(Keys.Down)))
                 {
                     Target.DownActionStop();
@@ -207,7 +208,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Left == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.X < -threshold) ||
+                    (currentGamepadState.ThumbSticks.Left.X < -hThreshold) ||
                     (currentKeyboardState.IsKeyDown(Keys.Left)))
                 {
                     Target.LeftAction();
@@ -216,7 +217,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Right == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.X > threshold) ||
+                    (currentGamepadState.ThumbSticks.Left.X > hThreshold) ||
                     (currentKeyboardState.IsKeyDown(Keys.Right)))
                 {
                     Target.RightAction();
@@ -225,7 +226,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Up == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.Y > threshold) ||
+                    (currentGamepadState.ThumbSticks.Left.Y > vThreshold) ||
                     (currentKeyboardState.IsKeyDown(Keys.Up)))
                 {
                     Target.UpAction();
@@ -234,7 +235,7 @@ namespace Nobots
 #endif
                 }
                 if ((currentGamepadState.DPad.Down == ButtonState.Pressed) ||
-                    (currentGamepadState.ThumbSticks.Left.Y < -threshold) ||
+                    (currentGamepadState.ThumbSticks.Left.Y < -vThreshold) ||
                     (currentKeyboardState.IsKeyDown(Keys.Down)))
                 {
                     Target.DownAction();
