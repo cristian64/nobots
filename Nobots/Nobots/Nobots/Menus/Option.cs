@@ -189,45 +189,52 @@ namespace Nobots.Menus
         {
         }
 
+        bool showingList = false;
+
         bool firstTime = true;
         public override void Refresh(bool selected)
         {
-            if (!selected)
+            Text = "Load Level";
+
+            if (showingList)
             {
-                if (scene.SceneLoader.LastLevel != "")
+                if (!selected)
                 {
-                    selectedIndex = scene.SceneLoader.Levels.IndexOf(scene.SceneLoader.LastLevel);
+                    showingList = false;
+                    if (scene.SceneLoader.LastLevel != "")
+                    {
+                        selectedIndex = scene.SceneLoader.Levels.IndexOf(scene.SceneLoader.LastLevel);
+                        if (selectedIndex < 0)
+                            selectedIndex = 0;
+                    }
+                }
+
+                if (firstTime)
+                {
+                    try
+                    {
+                        string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
+                        selectedIndex = scene.SceneLoader.Levels.IndexOf(text);
+                    }
+                    catch (Exception) { }
                     if (selectedIndex < 0)
                         selectedIndex = 0;
+                    firstTime = false;
                 }
-            }
 
-            if (firstTime)
-            {
-                try
+                if (selected)
                 {
-                    string text = System.IO.File.ReadAllText(@"Content\levels\lastlevel");
-                    selectedIndex = scene.SceneLoader.Levels.IndexOf(text);
-                }
-                catch (Exception) { }
-                if (selectedIndex < 0)
-                    selectedIndex = 0;
-                firstTime = false;
-            }
-
-            Text = "Load Level";
-            if (selected)
-            {
-                Text += "       ";
-                for (int i = 0; i < scene.SceneLoader.Levels.Count; i++)
-                {
-                    if (selectedIndex == i)
+                    Text += "       ";
+                    for (int i = 0; i < scene.SceneLoader.Levels.Count; i++)
                     {
-                        Text += (i + 1).ToString() + "  ";
-                    }
-                    else
-                    {
-                        Text += "•  ";
+                        if (selectedIndex == i)
+                        {
+                            Text += (i + 1).ToString() + "  ";
+                        }
+                        else
+                        {
+                            Text += "●  ";
+                        }
                     }
                 }
             }
@@ -235,8 +242,16 @@ namespace Nobots.Menus
 
         public override void AActionStop()
         {
-            scene.CleanAndLoad(scene.SceneLoader.Levels[selectedIndex]);
-            scene.Menu.Enabled = false;
+            if (showingList)
+            {
+                scene.CleanAndLoad(scene.SceneLoader.Levels[selectedIndex]);
+                scene.Menu.Enabled = false;
+            }
+            else
+            {
+                showingList = true;
+                Refresh(true);
+            }
         }
 
         public override void RightActionStop()
