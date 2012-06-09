@@ -103,14 +103,18 @@ namespace Nobots
                 inTransitionToEnergy = true;
                 transitionPlayed = false;
                 inTransitionToNormal = false;
+#if !FINAL_RELEASE
                 Console.WriteLine("Normal -> Energy");
+#endif
             }
             else if (!(scene.InputManager.Target is Energy) && previous is Energy)
             {
                 inTransitionToEnergy = false;
                 transitionPlayed = false;
                 inTransitionToNormal = true;
+#if !FINAL_RELEASE
                 Console.WriteLine("Energy -> Normal");
+#endif
             }
             previous = scene.InputManager.Target;
 

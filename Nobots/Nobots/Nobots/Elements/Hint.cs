@@ -103,7 +103,6 @@ namespace Nobots.Elements
                     alpha += alpha >= 1 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
                 else
                     alpha -= alpha <= 0 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds;
-               // Console.WriteLine(alpha);
                 if (alpha > 0)
                 { 
                     //scene.SpriteBatch.Draw(blank, scene.Camera.Scale * Conversion.ToDisplay(position - scene.Camera.Position) - new Vector2((width + margin) / 2, height + margin / 2), null, Color.White, 0, Vector2.Zero, new Vector2(width, height), SpriteEffects.None, 0);
