@@ -92,61 +92,14 @@
         <Door Id="hidden_door_3" Position="9.783062,-9.627621" Width="1" Height="7" Rotation="0" Active="False" />
         <Door Id="hidden_door_2" Position="-39.3544,-19.56625" Width="0.52" Height="3.55" Rotation="0" Active="True" />
         <Door Id="hidden_door_1" Position="-114.3165,-14.38579" Width="0.52" Height="3.68" Rotation="0" Active="True" />
-        <Platform Id="" Position="-65.32041,-6.35377" Width="111.4594" Height="5" Rotation="0" />
-        <Platform Id="" Position="-79.25445,-20.01221" Width="1.601" Height="15" Rotation="0" />
-        <Platform Id="" Position="-47.4944,-26.01742" Width="60.60016" Height="1" Rotation="0" />
-        <Platform Id="" Position="-98.19636,-14.0129" Width="37.67009" Height="3" Rotation="0" />
-        <Platform Id="" Position="-75.58733,-23.51153" Width="11.26004" Height="0.5200005" Rotation="0" />
-        <Platform Id="" Position="-36.99331,-11.28393" Width="20.05" Height="5.94" Rotation="0" />
-        <Platform Id="" Position="-61.94544,-25.41309" Width="2.740999" Height="3.969977" Rotation="0" />
-        <Platform Id="" Position="-28.27331,-25.9807" Width="36.20006" Height="16.40099" Rotation="0" />
-        <Platform Id="" Position="14.95649,8.091028" Width="1.030006" Height="7.999997" Rotation="0" />
-        <Platform Id="" Position="-19.54601,4.142" Width="20.191" Height="34.63005" Rotation="0" />
-        <Platform Id="" Position="24.33848,15.63155" Width="55.00013" Height="12.00099" Rotation="0" />
-        <Platform Id="" Position="53.7318,18.32199" Width="27.60003" Height="6.599998" Rotation="0" />
         <Spikes Id="" Position="52.07562,10.68415" Rotation="1.57" />
         <Spikes Id="" Position="52.08195,12.28022" Rotation="1.57" />
         <Spikes Id="" Position="52.08277,13.85653" Rotation="1.57" />
         <Spikes Id="" Position="53.11777,14.75336" Rotation="0" />
-        <Platform Id="" Position="60.95813,13.36422" Width="13.19999" Height="13.19999" Rotation="0" />
-        <Platform Id="" Position="63.44012,3.236177" Width="5.199999" Height="7.199998" Rotation="0" />
-        <Platform Id="" Position="77.17094,-4.918962" Width="22.43001" Height="54.01013" Rotation="0" />
-        <Platform Id="" Position="37.2984,-5.390619" Width="22.40001" Height="10" Rotation="0" />
-        <Platform Id="" Position="5.709601,-9.172726" Width="38.80008" Height="8" Rotation="0" />
-        <Platform Id="" Position="43.21378,-16.23661" Width="20.83" Height="13.86999" Rotation="-0.63" />
-        <Platform Id="" Position="58.51986,-19.84594" Width="30.44004" Height="10.59999" Rotation="0.57" />
-        <Platform Id="" Position="54.97035,-37.81647" Width="15.59999" Height="22.41002" Rotation="1.34" />
-        <Platform Id="" Position="68.52493,-33.54197" Width="31.40005" Height="25.20002" Rotation="0" />
-        <Platform Id="" Position="29.96801,9.442572" Width="29.80004" Height="1" Rotation="0" />
-        <Platform Id="" Position="15.51523,9.358476" Width="0.7999998" Height="10.39999" Rotation="-0.09" />
-        <Platform Id="" Position="14.9585,4.087" Width="0.74" Height="0.71" Rotation="0.77" />
-        <Platform Id="" Position="-8.726966,16.26727" Width="23.60002" Height="21.60101" Rotation="0.41" />
-        <Platform Id="" Position="16.95934,-3.399324" Width="16.29999" Height="5.999999" Rotation="0" />
-        <Platform Id="+" Position="4.270477,-5.726973" Width="14.59999" Height="5.400999" Rotation="-2.79" />
-        <Platform Id="" Position="49.27526,-3.804961" Width="3.400001" Height="20.55104" Rotation="0" />
-        <Platform Id="" Position="-21.0315,-13.163" Width="12" Height="1.31" Rotation="0.073" />
-        <Platform Id="" Position="14.70698,-32.65968" Width="56.60014" Height="12.59" Rotation="-0.32" />
-        <Platform Id="" Position="-145.0944,-6.35377" Width="48.15011" Height="5" Rotation="0" />
         <Spikes Id="" Position="-117.9908,-14.30197" Rotation="0.05" />
         <Spikes Id="" Position="-119.4093,-14.38461" Rotation="0.05" />
-        <Platform Id="" Position="-114.4604,-13.96444" Width="7.399997" Height="2" Rotation="-0.31" />
-        <Platform Id="" Position="-117.6248,-13.36904" Width="5.4" Height="1.360001" Rotation="0.05" />
-        <Platform Id="" Position="-116.569,-21.62554" Width="1" Height="15.19999" Rotation="0" />
-        <Platform Id="" Position="-134.9958,-18.1015" Width="29.24" Height="0.55" Rotation="0" />
-        <Platform Id="" Position="-166.5766,-18.81956" Width="1" Height="22.00001" Rotation="0" />
-        <Platform Id="" Position="-118.8486,-12.82692" Width="2.84" Height="1" Rotation="0.34" />
-        <Platform Id="" Position="-119.8508,-6.504988" Width="34.43006" Height="4.001" Rotation="-0.08" />
-        <Platform Id="" Position="-98.55996,-8.27418" Width="8.599997" Height="3.200001" Rotation="0" />
-        <Platform Id="" Position="-86.7631,-7.514" Width="15.38999" Height="3.200001" Rotation="0.1" />
         <Spikes Id="" Position="-165.2754,-15.53732" Rotation="0" />
         <Spikes Id="" Position="-164.6509,-15.52729" Rotation="0" />
-        <Platform Id="" Position="-165.4181,-15.10179" Width="6.38" Height="0.4" Rotation="0" />
-        <Platform Id="" Position="-162.2828,-14.24002" Width="2" Height="0.5500001" Rotation="-0.39" />
-        <Platform Id="" Position="-127.6744,-27.01" Width="23.88002" Height="10.40099" Rotation="0.14" />
-        <Platform Id="" Position="-141.3526,-27.59501" Width="4.4" Height="7.199997" Rotation="-0.82" />
-        <Platform Id="" Position="-174.9462,-16.55801" Width="15" Height="30" Rotation="0" />
-        <Platform Id="" Position="14.369,5.162101" Width="1.2" Height="1.8" Rotation="0.66" />
-        <Platform Id="" Position="14.582,7.152103" Width="1" Height="4" Rotation="-0.4" />
         <Spikes Id="" Position="-118.56,-11.92987" Rotation="3.48159" />
         <Spikes Id="" Position="-119.694,-12.33" Rotation="3.48159" />
         <Spikes Id="" Position="-121.2743,-14.09498" Rotation="3.141592" />
@@ -171,14 +124,64 @@
         <Spikes Id="" Position="-151.306,-14.09498" Rotation="3.141592" />
         <Spikes Id="" Position="-152.8837,-14.09498" Rotation="3.141592" />
         <Spikes Id="" Position="-154.4627,-14.09498" Rotation="3.141592" />
-        <Platform Id="" Position="-164.9111,-11.86536" Width="4" Height="6.200037" Rotation="0" />
-        <Platform Id="" Position="-163.2602,-11.76581" Width="5.999999" Height="0.45" Rotation="-1.42" />
         <Spikes Id="" Position="-157.5681,-14.09498" Rotation="3.141592" />
         <Spikes Id="" Position="-159.1521,-14.09498" Rotation="3.141592" />
-        <Spikes Id="" Position="-161.9558,-13.82357" Rotation="-3.531592" />
+        <Spikes Id="" Position="-161.6759,-14.09498" Rotation="3.141592" />
         <Spikes Id="" Position="-156.0441,-14.09498" Rotation="3.141592" />
-        <Platform Id="" Position="-156.1527,-15.53152" Width="1.46" Height="0.55" Rotation="0" />
         <Spikes Id="" Position="-160.0923,-14.09498" Rotation="3.141592" />
+        <Spikes Id="" Position="-116.8825,-11.85367" Rotation="2.83" />
+        <Spikes Id="" Position="-115.9257,-12.21728" Rotation="2.83" />
+        <Spikes Id="" Position="-163.2584,-14.09498" Rotation="3.141592" />
+        <Platform Id="" Position="-65.32041,-6.35377" Width="111.4594" Height="5" Rotation="0" />
+        <Platform Id="" Position="-79.25445,-20.01221" Width="1.601" Height="15" Rotation="0" />
+        <Platform Id="" Position="-47.4944,-26.01742" Width="60.60016" Height="1" Rotation="0" />
+        <Platform Id="" Position="-98.19636,-14.0129" Width="37.67009" Height="3" Rotation="0" />
+        <Platform Id="" Position="-75.58733,-23.51153" Width="11.26004" Height="0.5200005" Rotation="0" />
+        <Platform Id="" Position="-36.99331,-11.28393" Width="20.05" Height="5.94" Rotation="0" />
+        <Platform Id="" Position="-61.94544,-25.41309" Width="2.740999" Height="3.969977" Rotation="0" />
+        <Platform Id="" Position="-28.27331,-25.9807" Width="36.20006" Height="16.40099" Rotation="0" />
+        <Platform Id="" Position="14.95649,8.091028" Width="1.030006" Height="7.999997" Rotation="0" />
+        <Platform Id="" Position="-19.54601,4.142" Width="20.191" Height="34.63005" Rotation="0" />
+        <Platform Id="" Position="24.33848,15.63155" Width="55.00013" Height="12.00099" Rotation="0" />
+        <Platform Id="" Position="53.7318,18.32199" Width="27.60003" Height="6.599998" Rotation="0" />
+        <Platform Id="" Position="60.95813,13.36422" Width="13.19999" Height="13.19999" Rotation="0" />
+        <Platform Id="" Position="63.44012,3.236177" Width="5.199999" Height="7.199998" Rotation="0" />
+        <Platform Id="" Position="77.17094,-4.918962" Width="22.43001" Height="54.01013" Rotation="0" />
+        <Platform Id="" Position="37.2984,-5.390619" Width="22.40001" Height="10" Rotation="0" />
+        <Platform Id="" Position="5.709601,-9.172726" Width="38.80008" Height="8" Rotation="0" />
+        <Platform Id="" Position="43.21378,-16.23661" Width="20.83" Height="13.86999" Rotation="-0.63" />
+        <Platform Id="" Position="58.51986,-19.84594" Width="30.44004" Height="10.59999" Rotation="0.57" />
+        <Platform Id="" Position="54.97035,-37.81647" Width="15.59999" Height="22.41002" Rotation="1.34" />
+        <Platform Id="" Position="68.52493,-33.54197" Width="31.40005" Height="25.20002" Rotation="0" />
+        <Platform Id="" Position="29.96801,9.442572" Width="29.80004" Height="1" Rotation="0" />
+        <Platform Id="" Position="15.51523,9.358476" Width="0.7999998" Height="10.39999" Rotation="-0.09" />
+        <Platform Id="" Position="14.9585,4.087" Width="0.74" Height="0.71" Rotation="0.77" />
+        <Platform Id="" Position="-8.726966,16.26727" Width="23.60002" Height="21.60101" Rotation="0.41" />
+        <Platform Id="" Position="16.95934,-3.399324" Width="16.29999" Height="5.999999" Rotation="0" />
+        <Platform Id="+" Position="4.270477,-5.726973" Width="14.59999" Height="5.400999" Rotation="-2.79" />
+        <Platform Id="" Position="49.27526,-3.804961" Width="3.400001" Height="20.55104" Rotation="0" />
+        <Platform Id="" Position="-21.0315,-13.163" Width="12" Height="1.31" Rotation="0.073" />
+        <Platform Id="" Position="14.70698,-32.65968" Width="56.60014" Height="12.59" Rotation="-0.32" />
+        <Platform Id="" Position="-145.0944,-6.35377" Width="48.15011" Height="5" Rotation="0" />
+        <Platform Id="" Position="-114.4604,-13.96444" Width="7.399997" Height="2" Rotation="-0.31" />
+        <Platform Id="" Position="-117.6248,-13.36904" Width="5.4" Height="1.360001" Rotation="0.05" />
+        <Platform Id="" Position="-116.569,-21.62554" Width="1" Height="15.19999" Rotation="0" />
+        <Platform Id="" Position="-134.9958,-18.1015" Width="29.24" Height="0.55" Rotation="0" />
+        <Platform Id="" Position="-166.5766,-18.81956" Width="1" Height="22.00001" Rotation="0" />
+        <Platform Id="" Position="-118.8486,-12.82692" Width="2.84" Height="1" Rotation="0.34" />
+        <Platform Id="" Position="-119.8508,-6.504988" Width="34.43006" Height="4.001" Rotation="-0.08" />
+        <Platform Id="" Position="-98.55996,-8.27418" Width="8.599997" Height="3.200001" Rotation="0" />
+        <Platform Id="" Position="-86.7631,-7.514" Width="15.38999" Height="3.200001" Rotation="0.1" />
+        <Platform Id="" Position="-165.4181,-15.10179" Width="6.38" Height="0.4" Rotation="0" />
+        <Platform Id="" Position="-163.9119,-14.43002" Width="2.8" Height="0.9599997" Rotation="-0.39" />
+        <Platform Id="" Position="-127.6744,-27.01" Width="23.88002" Height="10.40099" Rotation="0.14" />
+        <Platform Id="" Position="-141.3526,-27.59501" Width="4.4" Height="7.199997" Rotation="-0.82" />
+        <Platform Id="" Position="-174.9462,-16.55801" Width="15" Height="30" Rotation="0" />
+        <Platform Id="" Position="14.369,5.162101" Width="1.2" Height="1.8" Rotation="0.66" />
+        <Platform Id="" Position="14.582,7.152103" Width="1" Height="4" Rotation="-0.4" />
+        <Platform Id="" Position="-165.6207,-11.86536" Width="4" Height="6.200037" Rotation="0" />
+        <Platform Id="" Position="-163.9598,-11.76581" Width="5.999999" Height="0.45" Rotation="-1.42" />
+        <Platform Id="" Position="-156.1527,-15.53152" Width="1.46" Height="0.55" Rotation="0" />
         <Platform Id="" Position="-141.7916,-14.81256" Width="42.63" Height="0.9499999" Rotation="0" />
         <Platform Id="" Position="47.24836,-10.61148" Width="1" Height="1" Rotation="0" />
         <Platform Id="" Position="-116.8414,-16.35505" Width="1" Height="5.799999" Rotation="0.18" />
@@ -198,7 +201,7 @@
         <ImpulsePlatform Id="impulse_above_spikes" Position="-119.8501,-21.44902" Width="5.7" Height="4.5" Rotation="3.2815" StepsNumber="2" Acceleration="-25" Active="False" />
         <GlidePlatform Id="" Position="-120.5699,-21.03341" Rotation="3.2815" Active="True" Velocity="5" StepsNumber="1" />
         <GlidePlatform Id="" Position="-151.957,-15.53152" Rotation="0" Active="True" Velocity="1" StepsNumber="1" />
-        <ImpulsePlatform Id="impulse_to_death" Position="-140.0987,-8.579102" Width="45.6" Height="5.66" Rotation="0" StepsNumber="16" Acceleration="20" Active="False" />
+        <ImpulsePlatform Id="impulse_to_death" Position="-139.4091,-8.579102" Width="48.45" Height="5.66" Rotation="0" StepsNumber="17" Acceleration="20" Active="False" />
         <GlidePlatform Id="" Position="0.644707,-13.1186" Rotation="0" Active="True" Velocity="3" StepsNumber="3" />
         <GlidePlatform Id="" Position="29.6018,-10.12437" Rotation="0" Active="True" Velocity="-3" StepsNumber="1" />
         <GlidePlatform Id="" Position="18.11471,-13.1186" Rotation="0" Active="True" Velocity="5" StepsNumber="2" />
