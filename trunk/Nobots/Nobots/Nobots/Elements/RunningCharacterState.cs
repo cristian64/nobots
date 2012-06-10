@@ -36,11 +36,13 @@ namespace Nobots.Elements
         float seconds = 0;
         private Vector2 changeRunningTextures(GameTime gameTime)
         {
+            float delay = 0.03f / (lastRunningSpeed / runningSpeed);
+
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (seconds > 0.03f)
+            if (seconds > delay)
             {
                 currentFrame++;
-                seconds -= 0.03f;
+                seconds -= delay;
                 textureXmin += texture.Width / 10;
 
                 if (textureXmin == (texture.Width / 10) * 4 && textureYmin == texture.Height / 2)
@@ -106,44 +108,53 @@ namespace Nobots.Elements
             }
         }
 
+        float lastRunningSpeed = 4.3f;
         float runningSpeed = 4.3f;
         public override void RightAction()
         {
+            lastRunningSpeed = (character.body.LinearVelocity.Y < -1) ? (-1 * character.body.LinearVelocity.Y) : runningSpeed;
             character.body.FixedRotation = false;
             if (character.lastContact != null)
             {
+                float velocityDifference = character.body.LinearVelocity.Y - character.lastContact.LinearVelocity.Y;
+                lastRunningSpeed = (velocityDifference < -1) ? (-1 * velocityDifference) : runningSpeed;
+
                 GlidePlatform glidePlatform = character.lastContact.UserData as GlidePlatform;
                 if (glidePlatform != null && glidePlatform.Active)
                 {
-                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity + runningSpeed, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity + lastRunningSpeed, character.torso.LinearVelocity.Y);
                 }
                 else
                 {
-                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X + runningSpeed, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X + lastRunningSpeed, character.torso.LinearVelocity.Y);
                 }
             }
             else
-                character.torso.LinearVelocity = new Vector2(runningSpeed, character.torso.LinearVelocity.Y);
+                character.torso.LinearVelocity = new Vector2(lastRunningSpeed, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.None;
         }
 
         public override void LeftAction()
         {
+            lastRunningSpeed = (character.body.LinearVelocity.Y < -1) ? (-1 * character.body.LinearVelocity.Y) : runningSpeed;
             character.body.FixedRotation = false;
             if (character.lastContact != null)
             {
+                float velocityDifference = character.body.LinearVelocity.Y - character.lastContact.LinearVelocity.Y;
+                lastRunningSpeed = (velocityDifference < -1) ? (-1 * velocityDifference) : runningSpeed;
+
                 GlidePlatform glidePlatform = character.lastContact.UserData as GlidePlatform;
                 if (glidePlatform != null && glidePlatform.Active)
                 {
-                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity - runningSpeed, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(((GlidePlatform)character.lastContact.UserData).Velocity - lastRunningSpeed, character.torso.LinearVelocity.Y);
                 }
                 else
                 {
-                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X - runningSpeed, character.torso.LinearVelocity.Y);
+                    character.torso.LinearVelocity = new Vector2(character.lastContact.LinearVelocity.X - lastRunningSpeed, character.torso.LinearVelocity.Y);
                 }
             }
             else
-                character.torso.LinearVelocity = new Vector2(-runningSpeed, character.torso.LinearVelocity.Y);
+                character.torso.LinearVelocity = new Vector2(-lastRunningSpeed, character.torso.LinearVelocity.Y);
             character.Effect = SpriteEffects.FlipHorizontally;
         }
 
