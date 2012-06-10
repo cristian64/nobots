@@ -37,7 +37,11 @@ namespace Nobots
             KeyboardState currentKeyboardState = Keyboard.GetState();
             GamePadState currentGamepadState = GamePad.GetState(PlayerIndex.One);
 
+#if FINAL_RELEASE
+            if (Game.IsActive)
+#else
             if (Game.IsActive && System.Windows.Forms.Form.ActiveForm != null && System.Windows.Forms.Form.ActiveForm.Text.Equals(Game.Window.Title))
+#endif
             {
                 if ((currentGamepadState.Buttons.A == ButtonState.Pressed && previosGamepadState.Buttons.A == ButtonState.Released) ||
                     (currentKeyboardState.IsKeyDown(keyboardA) && previousKeyboardState.IsKeyUp(keyboardA)))

@@ -61,6 +61,9 @@ namespace Nobots
                 if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
                     speed = Conversion.ToWorld(20);
 
+                if (Keyboard.GetState().IsKeyDown(Keys.OemBackslash))
+                    speed = Conversion.ToWorld(0.02f);
+
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
                     Selection.Position = Selection.Position - Vector2.UnitY * speed;
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
