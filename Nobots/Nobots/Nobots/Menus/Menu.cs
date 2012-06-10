@@ -92,8 +92,8 @@ namespace Nobots.Menus
             }
         }
 
-        float hThreshold = 0.10f;
-        float vThreshold = 0.5f;
+        float hThreshold = 0.05f;
+        float vThreshold = 0.05f;
         protected KeyboardState previousKeyboardState;
         protected GamePadState previosGamepadState;
         protected void processKeyboard()
@@ -140,7 +140,11 @@ namespace Nobots.Menus
 
             if (Enabled)
             {
+#if FINAL_RELEASE
+                if (Game.IsActive)
+#else
                 if (Game.IsActive && System.Windows.Forms.Form.ActiveForm != null && System.Windows.Forms.Form.ActiveForm.Text.Equals(Game.Window.Title))
+#endif
                 {
                     if (currentGamepadState.Buttons.BigButton == ButtonState.Pressed && previosGamepadState.Buttons.BigButton == ButtonState.Released)
                     {
@@ -411,6 +415,7 @@ namespace Nobots.Menus
 
         void RightActionStart()
         {
+            options[selectedIndex].RightActionStop();
         }
 
         void RightAction()
@@ -419,11 +424,11 @@ namespace Nobots.Menus
 
         void RightActionStop()
         {
-            options[selectedIndex].RightActionStop();
         }
 
         void LeftActionStart()
         {
+            options[selectedIndex].LeftActionStop();
         }
 
         void LeftAction()
@@ -432,11 +437,14 @@ namespace Nobots.Menus
 
         void LeftActionStop()
         {
-            options[selectedIndex].LeftActionStop();
         }
 
         void UpActionStart()
         {
+            options[selectedIndex].Refresh(false);
+            selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : options.Count - 1;
+            options[selectedIndex].Refresh(true);
+            scene.AmbienceSound.ISoundEngine.Play2D(scene.AmbienceSound.Nav, false, false, false);
         }
 
         void UpAction()
@@ -445,14 +453,14 @@ namespace Nobots.Menus
 
         void UpActionStop()
         {
-            options[selectedIndex].Refresh(false);
-            selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : options.Count - 1;
-            options[selectedIndex].Refresh(true);
-            scene.AmbienceSound.ISoundEngine.Play2D(scene.AmbienceSound.Nav, false, false, false);
         }
 
         void DownActionStart()
         {
+            options[selectedIndex].Refresh(false);
+            selectedIndex = (selectedIndex + 1) % options.Count;
+            options[selectedIndex].Refresh(true);
+            scene.AmbienceSound.ISoundEngine.Play2D(scene.AmbienceSound.Nav, false, false, false);
         }
 
         void DownAction()
@@ -461,10 +469,6 @@ namespace Nobots.Menus
 
         void DownActionStop()
         {
-            options[selectedIndex].Refresh(false);
-            selectedIndex = (selectedIndex + 1) % options.Count;
-            options[selectedIndex].Refresh(true);
-            scene.AmbienceSound.ISoundEngine.Play2D(scene.AmbienceSound.Nav, false, false, false);
         }
     }
 }

@@ -59,7 +59,7 @@
         <Ladder Id="" Position="25.60545,-1.597336" StepsNumber="35" />
         <Ladder Id="" Position="-150.1427,-17.90271" StepsNumber="8" />
         <MovingPlatform Id="" Position="54.6,13.36422" Width="13.19999" Height="1.4" Rotation="1.57" InitialPosition="54.6,13.36422" FinalPosition="55,13.36422" Active="True" />
-        <CircularSaw Id="" Position="3.814932,-12.49999" InitialPosition="3.814932,-13" FinalPosition="3.814932,-11" Active="True" />
+        <CircularSaw Id="" Position="3.814932,-12.5" InitialPosition="3.814932,-12.5" FinalPosition="3.814932,-11" Active="True" />
         <CameraScale Id="" Position="-86.22335,-10.74746" ScaleTarget="0.4" />
         <CameraScale Id="" Position="-45.87919,-16.01987" ScaleTarget="0.4" />
         <CameraScale Id="" Position="-43.52868,-15.66986" ScaleTarget="0.7" />
@@ -76,7 +76,7 @@
         <CameraScale Id="" Position="55.16679,5.272827" ScaleTarget="0.8" />
         <Crate Id="" Position="34.54877,-19.58685" Rotation="0.9407964" Color="Red" />
         <Crate Id="" Position="52.8693,14.16199" Rotation="5.221936E-08" Color="Green" />
-        <CameraScale Id="" Position="-88.68651,-10.78855" ScaleTarget="0.6" />
+        <CameraScale Id="" Position="-88.68651,-10.78855" ScaleTarget="0.5" />
         <Drop Id="" Position="-134.7363,-19.8343" Rotation="0" Width="0.08" Height="2.96" />
         <Drop Id="" Position="-129.0196,-19.18126" Rotation="0" Width="0.08" Height="1.65" />
         <CameraScale Id="" Position="-154.3529,-10.43593" ScaleTarget="0.5" />
@@ -89,7 +89,7 @@
         <Container Id="" Position="-62.27803,-10.99753" Rotation="1.135488E-07" />
         <Door Id="door1" Position="-40,-16.01625" Width="0.52" Height="3.55" Rotation="0" Active="False" />
         <Door Id="door_to_go" Position="-114.9297,-10.70571" Width="0.52" Height="3.68" Rotation="0" Active="False" />
-        <Door Id="hidden_door_3" Position="9.783062,-9.627621" Width="1" Height="7" Rotation="0" Active="False" />
+        <Door Id="hidden_door_3" Position="11.6331,-9.817625" Width="1" Height="7" Rotation="0" Active="False" />
         <Door Id="hidden_door_2" Position="-39.3544,-19.56625" Width="0.52" Height="3.55" Rotation="0" Active="True" />
         <Door Id="hidden_door_1" Position="-114.3165,-14.38579" Width="0.52" Height="3.68" Rotation="0" Active="True" />
         <Spikes Id="" Position="52.07562,10.68415" Rotation="1.57" />
