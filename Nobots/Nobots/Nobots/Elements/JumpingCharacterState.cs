@@ -98,7 +98,7 @@ namespace Nobots.Elements
             if (character.contactsNumber > 0 || character.Ladder != null)
             {
                 character.torso.LinearVelocity = new Vector2(character.torso.LinearVelocity.X, 0);
-                character.torso.ApplyLinearImpulse(new Vector2(0, -265f));
+                character.torso.ApplyLinearImpulse(new Vector2(0, -285f));
                 if (!(character is Energy))
                 {
                     ISound sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Grunt, character.Position.X, character.Position.Y, 0, false, true, false);

@@ -187,7 +187,7 @@ namespace Nobots.Elements
             if (contactsNumber == 0)
             {
                 countToFall += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (countToFall > 0.1f && !(state is FallingCharacterState) && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && !(state is ClimbingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
+                if (countToFall > 0.13f && !(state is FallingCharacterState) && !(state is JumpingCharacterState) && !(state is ComaCharacterState) && !(state is DyingCharacterState) && !(state is ClimbingCharacterState) && GraphicsDevice != null) //TODO: same thing in onseparation with GraphicsDevice, since it's creating a new object after being disposed.
                     State = new FallingCharacterState(scene, this);
             }
 
