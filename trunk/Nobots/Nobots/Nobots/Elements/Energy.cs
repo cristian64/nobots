@@ -85,21 +85,27 @@ namespace Nobots.Elements
 
         public override void BActionStart()
         {
+            bool worked = false;
             foreach (Element i in scene.Elements)
             {
                 Socket socket = i as Socket;
                 if (socket != null && IsTouchingElement(i))
                 {
                     socket.Travel(this);
+                    worked = true;
                     break;
                 }
 
                 Activator activator = i as Activator;
                 if (activator != null && activator.EnergyElement && IsTouchingElement(i))
                 {
+                    worked = true;
                     activator.Activate();
                 }
             }
+
+            if (!worked)
+                YActionStart();
         }
 
         public override void BAction()
