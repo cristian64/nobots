@@ -37,7 +37,7 @@
         <Torch Id="" Position="1467.482,238.6833" Active="True" />
         <PressurePlate Id="" Position="1415.31,368.6179" ActivableElementId="doorend2" />
         <PressurePlate Id="" Position="1406.716,368.595" ActivableElementId="doorend1" />
-        <Checkpoint Id="" Position="1409.694,216.3868" Rotation="0" Active="False" />
+        <Checkpoint Id="" Position="1409.694,216.3868" Rotation="0" Active="False" ActivableElementId="DoorCP1" />
         <Socket Id="Socket1" Position="1418.618,215.1056" Rotation="-1.62" OtherSocketId="Socket2" />
         <Socket Id="Socket2" Position="1421.427,221.5902" Rotation="3.15" OtherSocketId="Socket2" />
         <ElectricityBox Id="Ebox1" Position="1424.228,221.0584" Rotation="0" ActivableElementId="door4" />
@@ -70,7 +70,7 @@
         <ElectricityBox Id="Ebox4" Position="1469.095,220.853" Rotation="0" ActivableElementId="Door2" />
         <ElectricityBox Id="" Position="2941.116,1677.435" Rotation="0" ActivableElementId="" />
         <ElectricityBox Id="Ebox3" Position="1485.236,214.5627" Rotation="0" ActivableElementId="Door3" />
-        <Checkpoint Id="" Position="1453.212,221.4726" Rotation="0" Active="False" />
+        <Checkpoint Id="" Position="1453.212,221.4726" Rotation="0" Active="False" ActivableElementId="" />
         <Battery Id="" Position="1412.869,215.8732" Rotation="0" Active="True" />
         <Socket Id="END1" Position="1472.016,239.0818" Rotation="0" OtherSocketId="END2" />
         <Socket Id="SOne" Position="1446.2,232.1405" Rotation="3.14" OtherSocketId="STwo" />
@@ -89,30 +89,30 @@
         <MovingPlatform Id="Doorman" Position="1450.405,224.4747" Width="3.7" Height="0.5" Rotation="-1.575" InitialPosition="1450.405,225.6416" FinalPosition="1450.405,220.8316" Active="False" />
         <CameraScale Id="" Position="1417.676,216.5768" ScaleTarget="0.35" />
         <CameraScale Id="" Position="1473.747,204.4838" ScaleTarget="0.3" />
-        <SecurityCamera Id="" Position="1469.473,203.4528" Rotation="0.2359574" />
+        <SecurityCamera Id="" Position="1469.473,203.4528" Rotation="2.346118" />
         <SecurityCamera Id="" Position="1484.744,217.6327" Rotation="1.027255" />
         <CameraScale Id="" Position="1451.548,221.6534" ScaleTarget="0.5" />
-        <Box Id="" Position="1412.306,360.7302" Rotation="3.435973E-06" />
-        <Box Id="" Position="1402.89,360.7304" Rotation="6.834536E-06" />
-        <Character Id="" Position="1484.949,242.7931" Active="True" />
-        <Character Id="" Position="1483.285,242.7931" Active="True" />
-        <Character Id="" Position="1477.822,242.7931" Active="True" />
-        <Character Id="" Position="1475.212,242.793" Active="True" />
-        <Character Id="" Position="1473.903,242.7937" Active="True" />
-        <Character Id="" Position="1476.345,242.7933" Active="True" />
-        <Character Id="" Position="1479.928,242.7931" Active="True" />
-        <Character Id="" Position="1481.93,242.7929" Active="True" />
-        <Character Id="" Position="1485.889,242.7927" Active="True" />
+        <Box Id="" Position="1412.306,360.7302" Rotation="3.338167E-06" />
+        <Box Id="" Position="1402.89,360.7304" Rotation="6.73958E-06" />
+        <Character Id="" Position="1484.949,242.8387" Active="True" />
+        <Character Id="" Position="1483.285,242.8387" Active="True" />
+        <Character Id="" Position="1477.822,242.8387" Active="True" />
+        <Character Id="" Position="1475.212,242.8387" Active="True" />
+        <Character Id="" Position="1473.906,242.8387" Active="True" />
+        <Character Id="" Position="1476.345,242.8387" Active="True" />
+        <Character Id="" Position="1479.928,242.8387" Active="True" />
+        <Character Id="" Position="1481.93,242.8387" Active="True" />
+        <Character Id="" Position="1485.889,242.8387" Active="True" />
         <CameraScale Id="" Position="1471.758,253.9614" ScaleTarget="1.4" />
-        <Box Id="" Position="1403.258,367.5888" Rotation="6.834003E-06" />
-        <Box Id="" Position="1412.384,367.5888" Rotation="6.834361E-06" />
-        <Box Id="" Position="1369.928,209.9102" Rotation="1.45" />
-        <Character Id="" Position="1480.865,242.7931" Active="True" />
-        <Character Id="" Position="1478.947,242.7931" Active="True" />
-        <Character Id="" Position="1477.093,242.7931" Active="True" />
-        <Character Id="" Position="1484.049,242.7931" Active="True" />
-        <Character Id="" Position="1487.015,242.7931" Active="True" />
-        <Character Id="" Position="1356.79,216.9604" Active="True" />
+        <Box Id="" Position="1403.258,367.5888" Rotation="6.83436E-06" />
+        <Box Id="" Position="1412.384,367.5888" Rotation="6.834168E-06" />
+        <Box Id="" Position="1369.91,209.8759" Rotation="1.452459" />
+        <Character Id="" Position="1480.865,242.8387" Active="True" />
+        <Character Id="" Position="1478.947,242.8387" Active="True" />
+        <Character Id="" Position="1477.093,242.8387" Active="True" />
+        <Character Id="" Position="1484.049,242.8387" Active="True" />
+        <Character Id="" Position="1487.015,242.8387" Active="True" />
+        <Character Id="" Position="1358.639,217.1254" Active="True" />
         <ExperimentalTube Id="" Position="1486.108,252.3718" Rotation="0" OtherTubeId="" Active="True" />
         <Door Id="door4" Position="1421.412,215.5448" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="door5" Position="1433.755,220.8808" Width="0.52" Height="3.46" Rotation="0" Active="False" />
@@ -120,6 +120,36 @@
         <Door Id="Door2" Position="1480.287,213.525" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="doorend1" Position="1450.915,232.0746" Width="0.52" Height="3.46" Rotation="0" Active="False" />
         <Door Id="doorend2" Position="1462.93,239.0564" Width="0.52" Height="3.46" Rotation="0" Active="False" />
+        <Spikes Id="" Position="1426.546,217.8606" Rotation="0" />
+        <Spikes Id="" Position="1428.028,217.8226" Rotation="0" />
+        <Spikes Id="" Position="1429.585,217.8226" Rotation="0" />
+        <Spikes Id="" Position="1431.147,217.8406" Rotation="0" />
+        <Spikes Id="" Position="1432.671,217.8606" Rotation="0" />
+        <Spikes Id="" Position="1434.26,217.8606" Rotation="0" />
+        <Spikes Id="" Position="1435.779,217.8826" Rotation="0" />
+        <Spikes Id="" Position="1437.411,217.8446" Rotation="0" />
+        <Spikes Id="" Position="1439.006,217.8546" Rotation="0" />
+        <Spikes Id="" Position="1440.59,217.8226" Rotation="0" />
+        <Spikes Id="" Position="1442.121,217.8606" Rotation="0" />
+        <Spikes Id="" Position="1443.693,217.8386" Rotation="0" />
+        <Spikes Id="" Position="1445.236,217.8626" Rotation="0" />
+        <Spikes Id="" Position="1446.718,217.8606" Rotation="0" />
+        <Spikes Id="" Position="1421.488,212.4979" Rotation="1.59" />
+        <Spikes Id="" Position="1421.476,210.9865" Rotation="1.58" />
+        <Spikes Id="" Position="1421.475,209.5384" Rotation="1.59" />
+        <Spikes Id="" Position="1421.516,207.9354" Rotation="1.59" />
+        <Spikes Id="" Position="1421.545,206.4333" Rotation="1.59" />
+        <Spikes Id="" Position="1421.557,204.8353" Rotation="1.59" />
+        <Spikes Id="" Position="1474.646,243.4289" Rotation="0" />
+        <Spikes Id="" Position="1476.266,243.4289" Rotation="0" />
+        <Spikes Id="" Position="1477.886,243.4289" Rotation="0" />
+        <Spikes Id="" Position="1479.456,243.4289" Rotation="0" />
+        <Spikes Id="" Position="1481.079,243.4239" Rotation="0" />
+        <Spikes Id="" Position="1482.679,243.4438" Rotation="0" />
+        <Spikes Id="" Position="1484.269,243.4438" Rotation="0" />
+        <Spikes Id="" Position="1485.879,243.4339" Rotation="0" />
+        <Spikes Id="" Position="1486.589,243.4439" Rotation="0" />
+        <Door Id="DoorCP1" Position="1406.63,210.6698" Width="0.52" Height="4.96" Rotation="0" Active="True" />
         <Platform Id="" Position="867.5625,9773.645" Width="50000.08" Height="1" Rotation="0" />
         <Platform Id="" Position="3646.5,84590.41" Width="5000000" Height="1" Rotation="0" />
         <Platform Id="" Position="867.5625,9773.645" Width="50000.08" Height="1" Rotation="0" />
@@ -149,26 +179,6 @@
         <Platform Id="" Position="1408.138,217.6459" Width="1" Height="1" Rotation="0" />
         <Platform Id="" Position="1415.152,217.8597" Width="14" Height="1" Rotation="0" />
         <Platform Id="" Position="1453.128,211.9294" Width="7" Height="1" Rotation="0" />
-        <Spikes Id="" Position="1426.546,217.8606" Rotation="0" />
-        <Spikes Id="" Position="1428.028,217.8226" Rotation="0" />
-        <Spikes Id="" Position="1429.585,217.8226" Rotation="0" />
-        <Spikes Id="" Position="1431.147,217.8406" Rotation="0" />
-        <Spikes Id="" Position="1432.671,217.8606" Rotation="0" />
-        <Spikes Id="" Position="1434.26,217.8606" Rotation="0" />
-        <Spikes Id="" Position="1435.779,217.8826" Rotation="0" />
-        <Spikes Id="" Position="1437.411,217.8446" Rotation="0" />
-        <Spikes Id="" Position="1439.006,217.8546" Rotation="0" />
-        <Spikes Id="" Position="1440.59,217.8226" Rotation="0" />
-        <Spikes Id="" Position="1442.121,217.8606" Rotation="0" />
-        <Spikes Id="" Position="1443.693,217.8386" Rotation="0" />
-        <Spikes Id="" Position="1445.236,217.8626" Rotation="0" />
-        <Spikes Id="" Position="1446.718,217.8606" Rotation="0" />
-        <Spikes Id="" Position="1421.488,212.4979" Rotation="1.59" />
-        <Spikes Id="" Position="1421.476,210.9865" Rotation="1.58" />
-        <Spikes Id="" Position="1421.475,209.5384" Rotation="1.59" />
-        <Spikes Id="" Position="1421.516,207.9354" Rotation="1.59" />
-        <Spikes Id="" Position="1421.545,206.4333" Rotation="1.59" />
-        <Spikes Id="" Position="1421.557,204.8353" Rotation="1.59" />
         <Platform Id="" Position="1424.568,206.0751" Width="0.1" Height="0.6" Rotation="0" />
         <Platform Id="" Position="1443.638,203.9137" Width="0.1" Height="0.4" Rotation="0" />
         <Platform Id="" Position="1397.507,312.3792" Width="150" Height="0.98" Rotation="0" />
@@ -179,15 +189,6 @@
         <Platform Id="" Position="1408.375,360.3782" Width="1" Height="5" Rotation="0" />
         <Platform Id="" Position="1408.371,366.9518" Width="1" Height="5" Rotation="0" />
         <Platform Id="" Position="1479.612,245.6685" Width="20" Height="4" Rotation="0" />
-        <Spikes Id="" Position="1474.646,243.4289" Rotation="0" />
-        <Spikes Id="" Position="1476.266,243.4289" Rotation="0" />
-        <Spikes Id="" Position="1477.886,243.4289" Rotation="0" />
-        <Spikes Id="" Position="1479.456,243.4289" Rotation="0" />
-        <Spikes Id="" Position="1481.079,243.4239" Rotation="0" />
-        <Spikes Id="" Position="1482.679,243.4438" Rotation="0" />
-        <Spikes Id="" Position="1484.269,243.4438" Rotation="0" />
-        <Spikes Id="" Position="1485.879,243.4339" Rotation="0" />
-        <Spikes Id="" Position="1486.589,243.4439" Rotation="0" />
         <Platform Id="" Position="1479.632,255.3816" Width="20" Height="1" Rotation="0" />
         <Platform Id="" Position="1468.332,250.5417" Width="5" Height="10" Rotation="0" />
         <Platform Id="" Position="1489.141,251.0418" Width="1" Height="10" Rotation="0" />
@@ -213,8 +214,6 @@
         <GlidePlatform Id="Moveman" Position="1409.198,362.0203" Rotation="0" Active="False" Velocity="6" StepsNumber="3" />
         <GlidePlatform Id="glideattheend" Position="1408.632,368.8787" Rotation="0" Active="False" Velocity="6" StepsNumber="3" />
         <ImpulsePlatform Id="impulselet" Position="1364.066,209.2701" Width="14.25" Height="3" Rotation="-3.261592" StepsNumber="5" Acceleration="-50" Active="True" />
-        <Hint Id="" Position="1465.619,204.1236" Text="Oh God! Which Wire......?
-" />
     </Elements>
     <Foregrounds>
     </Foregrounds>

@@ -112,12 +112,12 @@ namespace Nobots.Elements
         float runningSpeed = 4.3f;
         public override void RightAction()
         {
-            lastRunningSpeed = (character.body.LinearVelocity.Y < -1) ? (-1 * character.body.LinearVelocity.Y) : runningSpeed;
+            lastRunningSpeed = (character.body.LinearVelocity.Y < -1) ? runningSpeed / (-1 * character.body.LinearVelocity.Y) : runningSpeed;
             character.body.FixedRotation = false;
             if (character.lastContact != null)
             {
                 float velocityDifference = character.body.LinearVelocity.Y - character.lastContact.LinearVelocity.Y;
-                lastRunningSpeed = (velocityDifference < -1) ? (-1 * velocityDifference) : runningSpeed;
+                lastRunningSpeed = (velocityDifference < -1) ? runningSpeed / (-1 * velocityDifference) : runningSpeed;
 
                 GlidePlatform glidePlatform = character.lastContact.UserData as GlidePlatform;
                 if (glidePlatform != null && glidePlatform.Active)
@@ -136,12 +136,12 @@ namespace Nobots.Elements
 
         public override void LeftAction()
         {
-            lastRunningSpeed = (character.body.LinearVelocity.Y < -1) ? (-1 * character.body.LinearVelocity.Y) : runningSpeed;
+            lastRunningSpeed = (character.body.LinearVelocity.Y < -1) ? runningSpeed / (-1 * character.body.LinearVelocity.Y) : runningSpeed;
             character.body.FixedRotation = false;
             if (character.lastContact != null)
             {
                 float velocityDifference = character.body.LinearVelocity.Y - character.lastContact.LinearVelocity.Y;
-                lastRunningSpeed = (velocityDifference < -1) ? (-1 * velocityDifference) : runningSpeed;
+                lastRunningSpeed = (velocityDifference < -1) ? runningSpeed / (-1 * velocityDifference) : runningSpeed;
 
                 GlidePlatform glidePlatform = character.lastContact.UserData as GlidePlatform;
                 if (glidePlatform != null && glidePlatform.Active)
