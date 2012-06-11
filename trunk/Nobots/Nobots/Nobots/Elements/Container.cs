@@ -70,7 +70,8 @@ namespace Nobots.Elements
             body = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height), 5000f);
             body.Position = position;
             body.BodyType = BodyType.Dynamic;
-            body.Friction = 5;
+            body.Friction = 0.5f;
+            body.FixedRotation = true;
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.UserData = this;
             body.SleepingAllowed = false;
