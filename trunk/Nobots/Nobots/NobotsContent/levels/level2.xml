@@ -373,7 +373,7 @@
         <Platform Id="" Position="51.1616,-32.43499" Width="0.5" Height="2.71" Rotation="0" />
         <Platform Id="" Position="11.95823,50.08437" Width="35.59003" Height="1.15" Rotation="0" />
         <Platform Id="" Position="77.08494,-34.27256" Width="1" Height="1" Rotation="0" />
-        <Crane Id="" Position="59.85892,-46.73142" LeftShift="1" RightShift="29" UpShift="1" DownShift="61" />
+        <Crane Id="" Position="59.85892,-46.73142" LeftShift="1" RightShift="29" UpShift="1" DownShift="54" />
         <Platform Id="" Position="86.98806,-43.23484" Width="5" Height="10" Rotation="0" />
         <Platform Id="" Position="65.37687,13.69289" Width="0.0001" Height="7" Rotation="0" />
         <Platform Id="" Position="73.00774,12.51151" Width="0.0001" Height="10" Rotation="-0.39" />
@@ -403,7 +403,6 @@
         <ImpulsePlatform Id="impulse_to_pressure" Position="16.84793,30.68192" Width="5.7" Height="5.3" Rotation="3.141592" StepsNumber="2" Acceleration="100" Active="False" />
         <LaserBarrier Id="" Position="65.71963,-1.167135" Rotation="0" Width="0.15" Height="2.47" Active="True" />
         <ImageHint Id="" Position="22.78046,12.54819" Rotation="0" Scale="1" TextureName="hint_crane" Width="8.92" Height="0.32" Active="True" />
-        <ImageHint Id="" Position="56.30091,11.44051" Rotation="0" Scale="1" TextureName="hint_battery" Width="9.599999" Height="0.32" Active="True" />
     </Elements>
     <Foregrounds>
     </Foregrounds>
