@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework.Input;
+using RotatedRectangleCollisions;
 
 namespace Nobots.Elements
 {
@@ -164,7 +165,8 @@ namespace Nobots.Elements
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
-            bodies.Add(fixtureB.Body);
+            if (!bodies.Contains(fixtureB.Body))
+                bodies.Add(fixtureB.Body);
             return true;
         }
 
@@ -172,9 +174,11 @@ namespace Nobots.Elements
         {
             if (Active)
             {
+                RotatedRectangle rotatedRectangle = new RotatedRectangle(new RectangleF(body.Position, Width + 0.05f, Height + 0.05f), body.Rotation);
                 foreach (Body i in bodies)
                 {
-                    if (!i.IsDisposed) //TODO: like in impulse platform, it can be improved by checking the object is really "touching" the glideplatform (touching or very very close to it).
+                    Element element = ((Element)i.UserData);
+                    if (!i.IsDisposed && rotatedRectangle.Intersects(new RectangleF(element.Position, element.Width, element.Height), element.Rotation))
                     {
                         i.LinearVelocity = direction * Velocity;
                     }

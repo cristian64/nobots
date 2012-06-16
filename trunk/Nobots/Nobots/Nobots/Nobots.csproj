@@ -157,6 +157,7 @@
     <Compile Include="Menus\Option.cs" />
     <Compile Include="ParticleSystems\LightningParticleSystem.cs" />
     <Compile Include="ParticleSystems\ElectricityParticleSystem.cs" />
+    <Compile Include="RotatedRectangle.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Elements\Activator.cs" />
     <Compile Include="Elements\Alarm.cs" />
