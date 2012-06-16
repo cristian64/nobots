@@ -146,12 +146,11 @@ namespace Nobots.Elements
         {
             if (!fixtureB.IsSensor)
             {
-                contactsNumber--;
+                contactsNumber = Math.Max(0, contactsNumber - 1);
                 if (fixtureB.Body == lastContact)
                     lastContact = null;
             }
         }
-
 
         protected bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
@@ -202,7 +201,7 @@ namespace Nobots.Elements
         public bool IsTouchingElement(Element o)
         {
             return Math.Abs(Position.X - o.Position.X) <= 0.5 * (Width + o.Width + 0.1f) && //+0.1f to provide a margin
-                   Math.Abs(Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height + 0.1f);
+                Math.Abs(Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height + 0.1f);
         }
 
         protected void updateLadder()

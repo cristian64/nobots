@@ -93,8 +93,6 @@ namespace Nobots.Elements
 
             if (firstTime)
             {
-                character.body.Enabled = false;
-                character.body.Enabled = true;
                 character.contactsNumber = 0;
                 firstTime = false;
             }

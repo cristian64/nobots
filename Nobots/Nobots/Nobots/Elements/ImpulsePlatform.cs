@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using IrrKlang;
+using RotatedRectangleCollisions;
 
 namespace Nobots.Elements
 {
@@ -170,29 +171,24 @@ namespace Nobots.Elements
 
         bool body2_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
-            bodies.Add(fixtureB.Body);
+            if (!bodies.Contains(fixtureB.Body))
+                bodies.Add(fixtureB.Body);
             return true;
         }
 
         private float alpha = 0.0f;
         public float Acceleration = 20;
 
-        public bool IsTouchingElement(Element o)
-        {
-            float radius = Math.Max(Width, Height);
-            float oRadius = Math.Max(o.Width, o.Height);
-            return Math.Abs(body2.Position.X - o.Position.X) <= 0.5 * (radius + oRadius) &&
-                   Math.Abs(body2.Position.Y - o.Position.Y) <= 0.5 * (radius + oRadius);
-        }
-
         public override void Update(GameTime gameTime)
         {
             Vector2 direction = Vector2.Normalize(body2.Position - body.Position);
             if (Active)
             {
+                RotatedRectangle rotatedRectangle = new RotatedRectangle(new RectangleF(body2.Position, Width, Height), body2.Rotation);
                 foreach (Body i in bodies)
                 {
-                    if (!i.IsDisposed && IsTouchingElement((Element)i.UserData))
+                    Element element = ((Element)i.UserData);
+                    if (!i.IsDisposed && rotatedRectangle.Intersects(new RectangleF(element.Position, element.Width, element.Height), element.Rotation))
                     {
                         float forceToApply = Acceleration * i.Mass / i.FixtureList.Count;
                         i.ApplyForce(direction * forceToApply);
