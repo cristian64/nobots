@@ -143,6 +143,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowEmblems = new System.Windows.Forms.CheckBox();
             this.buttonHelp = new System.Windows.Forms.Button();
+            this.flowLayoutPanelFixedRotation = new System.Windows.Forms.FlowLayoutPanel();
+            this.checkBoxFixedRotation = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelId.SuspendLayout();
             this.flowLayoutPanelPosition.SuspendLayout();
@@ -206,6 +208,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCratesNumber)).BeginInit();
             this.flowLayoutPanelAlsoEnergy.SuspendLayout();
             this.flowLayoutPanelBring.SuspendLayout();
+            this.flowLayoutPanelFixedRotation.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -249,8 +252,9 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelCratesNumber);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelAlsoEnergy);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelBring);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanelFixedRotation);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 373);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 381);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(276, 357);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -1879,11 +1883,33 @@
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
+            // flowLayoutPanelFixedRotation
+            // 
+            this.flowLayoutPanelFixedRotation.Controls.Add(this.checkBoxFixedRotation);
+            this.flowLayoutPanelFixedRotation.Location = new System.Drawing.Point(0, 1065);
+            this.flowLayoutPanelFixedRotation.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelFixedRotation.Name = "flowLayoutPanelFixedRotation";
+            this.flowLayoutPanelFixedRotation.Size = new System.Drawing.Size(247, 29);
+            this.flowLayoutPanelFixedRotation.TabIndex = 38;
+            this.flowLayoutPanelFixedRotation.Visible = false;
+            // 
+            // checkBoxFixedRotation
+            // 
+            this.checkBoxFixedRotation.AutoSize = true;
+            this.checkBoxFixedRotation.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxFixedRotation.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxFixedRotation.Name = "checkBoxFixedRotation";
+            this.checkBoxFixedRotation.Size = new System.Drawing.Size(91, 17);
+            this.checkBoxFixedRotation.TabIndex = 7;
+            this.checkBoxFixedRotation.Text = "FixedRotation";
+            this.checkBoxFixedRotation.UseVisualStyleBackColor = true;
+            this.checkBoxFixedRotation.CheckedChanged += new System.EventHandler(this.checkBoxFixedRotation_CheckedChanged);
+            // 
             // FormProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 742);
+            this.ClientSize = new System.Drawing.Size(289, 750);
             this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.checkBoxShowEmblems);
             this.Controls.Add(this.label1);
@@ -1967,6 +1993,8 @@
             this.flowLayoutPanelAlsoEnergy.ResumeLayout(false);
             this.flowLayoutPanelAlsoEnergy.PerformLayout();
             this.flowLayoutPanelBring.ResumeLayout(false);
+            this.flowLayoutPanelFixedRotation.ResumeLayout(false);
+            this.flowLayoutPanelFixedRotation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2089,6 +2117,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBring;
         private System.Windows.Forms.Button buttonSendToBack;
         private System.Windows.Forms.Button buttonBringToFront;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFixedRotation;
+        private System.Windows.Forms.CheckBox checkBoxFixedRotation;
 
 
     }

@@ -122,6 +122,12 @@ namespace Nobots.Editor
                 numericUpDownFinalPositionY.Value = (decimal)((CircularSaw)selection).FinalPosition.Y;
             }
 
+            if (selection is Nobots.Elements.Container)
+            {
+                flowLayoutPanelFixedRotation.Visible = true;
+                checkBoxFixedRotation.Checked = ((Nobots.Elements.Container)selection).FixedRotation;
+            }
+
             if (selection is Socket)
             {
                 flowLayoutPanelOtherSocketId.Visible = true;
@@ -256,6 +262,7 @@ namespace Nobots.Editor
             flowLayoutPanelStepsNumber.Visible = false;
             flowLayoutPanelLinksNumber.Visible = false;
             flowLayoutPanelRotorsNumber.Visible = false;
+            flowLayoutPanelFixedRotation.Visible = false;
             flowLayoutPanelLinkWidth.Visible = false;
             flowLayoutPanelLinkHeight.Visible = false;
             flowLayoutPanelAngularSpeed.Visible = false;
@@ -655,6 +662,12 @@ namespace Nobots.Editor
                 scene.Foregrounds.Remove((Foreground)selectionEvents);
                 scene.Foregrounds.Add((Foreground)selectionEvents);
             }
+        }
+
+        private void checkBoxFixedRotation_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selectionEvents as Nobots.Elements.Container != null)
+                ((Nobots.Elements.Container)selectionEvents).FixedRotation = checkBoxFixedRotation.Checked;
         }
     }
 }
