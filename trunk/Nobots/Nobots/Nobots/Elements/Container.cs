@@ -16,6 +16,15 @@ namespace Nobots.Elements
         Texture2D texture;
         ISound sound;
 
+        public bool FixedRotation
+        {
+            get { return body.FixedRotation; }
+            set
+            {
+                body.FixedRotation = value;
+            }
+        }
+
         public override float Width
         {
             get

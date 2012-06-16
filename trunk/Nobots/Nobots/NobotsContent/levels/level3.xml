@@ -85,8 +85,8 @@
         <Character Id="" Position="-153.1452,-9.749445" Active="True" />
         <CrateGenerator Id="crategenerator" Position="45.99986,0.5059009" Active="False" CratesNumber="2" />
         <Chandelier Id="" Position="-146.7596,-24.26322" Rotation="0" />
-        <Container Id="" Position="-52.05317,-10.99754" Rotation="-1.007311E-07" />
-        <Container Id="" Position="-62.27803,-10.99753" Rotation="1.135488E-07" />
+        <Container Id="" Position="-52.05317,-10.99754" Rotation="-1.007311E-07" FixedRotation="true" />
+        <Container Id="" Position="-62.27803,-10.99753" Rotation="1.135488E-07" FixedRotation="true" />
         <Door Id="door1" Position="-40,-16.01625" Width="0.52" Height="3.55" Rotation="0" Active="False" />
         <Door Id="door_to_go" Position="-114.9297,-10.70571" Width="0.52" Height="3.68" Rotation="0" Active="False" />
         <Door Id="hidden_door_3" Position="11.6331,-9.817625" Width="1" Height="7" Rotation="0" Active="False" />

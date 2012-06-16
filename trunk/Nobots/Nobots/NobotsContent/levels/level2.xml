@@ -238,7 +238,7 @@
         <Stone Id="" Position="62.48079,18.96961" Rotation="-1.812542" />
         <CrateGenerator Id="crate2" Position="0.9134114,42.28501" Active="False" CratesNumber="1" />
         <CrateGenerator Id="crate1" Position="18.55184,5.25703" Active="False" CratesNumber="1" />
-        <Container Id="" Position="98.99414,19.33284" Rotation="1.572952E-07" />
+        <Container Id="" Position="98.99414,19.33284" Rotation="1.572952E-07" FixedRotation="true" />
         <Minecart Id="" Position="60.84602,-35.12961" Rotation="-6.543592E-05" Active="True" />
         <Minecart Id="" Position="81.72214,16.13193" Rotation="-6.847483E-05" Active="True" />
         <Door Id="door1" Position="11.13668,10.27093" Width="0.52" Height="3.46" Rotation="0" Active="False" />

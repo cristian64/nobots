@@ -179,6 +179,8 @@ namespace Nobots
                     break;
                 case "Container":
                     e = new Container(Game, scene, Vector2.Zero);
+                    if (reader.MoveToAttribute("FixedRotation"))
+                        ((Container)e).FixedRotation = bool.Parse(reader.Value);
                     break;
                 case "Radio":
                     e = new Radio(Game, scene, Vector2.Zero);
@@ -605,7 +607,7 @@ namespace Nobots
 
         public String ElementToXml(Container container)
         {
-            String xml = "<Container Id=\"" + container.Id + "\" Position=\"" + container.Position.X + "," + container.Position.Y + "\" Rotation=\"" + container.Rotation + "\" />";
+            String xml = "<Container Id=\"" + container.Id + "\" Position=\"" + container.Position.X + "," + container.Position.Y + "\" Rotation=\"" + container.Rotation + "\" FixedRotation=\"" + container.FixedRotation + "\" />";
             return xml;
         }
 
