@@ -92,11 +92,10 @@ namespace Nobots.Elements
         {
             get
             {
-                return body.Rotation;
+                return 0;
             }
             set
             {
-                body.Rotation = value;
             }
         }
 
@@ -106,11 +105,11 @@ namespace Nobots.Elements
             texture = Game.Content.Load<Texture2D>("girl");
             ZBuffer = 0f;
 
-            width = Conversion.ToWorld(texture.Width);
-            height = Conversion.ToWorld(texture.Height);
+            width = Conversion.ToWorld(56);
+            height = Conversion.ToWorld(165);
 
-            body = BodyFactory.CreateCircle(scene.World, Conversion.ToWorld(texture.Width / 2f), 40);
-            body.Position = position - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2 + Vector2.UnitY * Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2.0f) / 2.0f;
+            body = BodyFactory.CreateCircle(scene.World, (width / 2f), 25); //25 to get mass 6.xxx
+            body.Position = position - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2 + Vector2.UnitY * (height - width + width / 2.0f) / 2.0f;
             body.BodyType = BodyType.Dynamic;
             body.Friction = float.MaxValue;
             body.UserData = this;
@@ -118,11 +117,10 @@ namespace Nobots.Elements
             body.CollidesWith = Category.All & ~ElementCategory.ENERGY;
             body.SleepingAllowed = false;
 
-
             body.OnCollision += new OnCollisionEventHandler(body_OnCollision);
             body.OnSeparation += new OnSeparationEventHandler(body_OnSeparation);
 
-            torso = BodyFactory.CreateRectangle(scene.World, Conversion.ToWorld(texture.Width), Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2.0f), 40);
+            torso = BodyFactory.CreateRectangle(scene.World, (width), (height - width + width / 2.0f), 33); //33 to get mass 25.xxx
             torso.Position = position - Vector2.UnitY * body.FixtureList[0].Shape.Radius / 2;
             torso.BodyType = BodyType.Dynamic;
             torso.FixedRotation = true;
@@ -135,7 +133,7 @@ namespace Nobots.Elements
             torso.OnCollision += new OnCollisionEventHandler(torso_OnCollision);
             torso.OnSeparation += new OnSeparationEventHandler(torso_OnSeparation);
 
-            revoluteJoint = new RevoluteJoint(torso, body, new Vector2(0, Conversion.ToWorld(texture.Height - texture.Width + texture.Width / 2.0f) / 2.0f), Vector2.Zero);
+            revoluteJoint = new RevoluteJoint(torso, body, new Vector2(0, (height - width + width / 2.0f) / 2.0f), Vector2.Zero);
             revoluteJoint.CollideConnected = false;
             scene.World.AddJoint(revoluteJoint);
 
@@ -203,8 +201,8 @@ namespace Nobots.Elements
 
         public bool IsTouchingElement(Element o)
         {
-            return Math.Abs(Position.X - o.Position.X) <= 0.5 * (Width + o.Width) &&
-                   Math.Abs(Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height);
+            return Math.Abs(Position.X - o.Position.X) <= 0.5 * (Width + o.Width + 0.1f) && //+0.1f to provide a margin
+                   Math.Abs(Position.Y - o.Position.Y) <= 0.5 * (Height + o.Height + 0.1f);
         }
 
         protected void updateLadder()
