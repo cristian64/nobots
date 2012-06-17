@@ -186,7 +186,7 @@ namespace Nobots.Elements
             _leftShoulderAngleJoint.TargetAngle = _shoulderTargetAngle;
             _rightShoulderAngleJoint.TargetAngle = -_shoulderTargetAngle;
 
-            leg = Game.Content.Load<Texture2D>("platform");
+            leg = Game.Content.Load<Texture2D>("leg");
             eye = Game.Content.Load<Texture2D>("crane");
             chain = Game.Content.Load<Texture2D>("crane_chain");
             _circle.UserData = _leftLower.UserData = _leftUpper.UserData = _rightLower.UserData = _rightUpper.UserData = this;
@@ -338,10 +338,10 @@ namespace Nobots.Elements
         public override void Draw(GameTime gameTime)
         {
             float scale = scene.Camera.Scale;
-            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_leftLower.Position - scene.Camera.Position), null, Color.White, _leftLower.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _lowerLegSize, SpriteEffects.None, 0);
-            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_rightLower.Position - scene.Camera.Position), null, Color.White, _rightLower.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _lowerLegSize, SpriteEffects.None, 0);
-            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_leftUpper.Position - scene.Camera.Position), null, Color.White, _leftUpper.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _upperLegSize, SpriteEffects.None, 0);
-            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_rightUpper.Position - scene.Camera.Position), null, Color.White, _rightUpper.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale * _upperLegSize, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_leftLower.Position - scene.Camera.Position), null, Color.White, _leftLower.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_rightLower.Position - scene.Camera.Position), null, Color.White, _rightLower.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_leftUpper.Position - scene.Camera.Position), null, Color.White, _leftUpper.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale, SpriteEffects.None, 0);
+            scene.SpriteBatch.Draw(leg, scale * Conversion.ToDisplay(_rightUpper.Position - scene.Camera.Position), null, Color.White, _rightUpper.Rotation, new Vector2(leg.Width / 2.0f, leg.Height / 2.0f), scale, SpriteEffects.None, 0);
             scene.SpriteBatch.Draw(chain, scale * (Conversion.ToDisplay(_circle.Position - scene.Camera.Position) - Vector2.UnitY * chain.Height / 2.0f), null, Color.White, 0, new Vector2(chain.Width / 2.0f, chain.Height / 2.0f), scale, SpriteEffects.None, 0);
             scene.SpriteBatch.Draw(eye, scale * Conversion.ToDisplay(_circle.Position - scene.Camera.Position), null, Color.White, _circle.Rotation, new Vector2(eye.Width / 2.0f, eye.Height / 2.0f), scale * SpiderBodyRadius * 2, SpriteEffects.None, 0);
         }

@@ -29,7 +29,7 @@ namespace Nobots
         }
 
         float hThreshold = 0.10f;
-        float vThreshold = 0.5f;
+        float vThreshold = 0.9f;
         protected KeyboardState previousKeyboardState;
         protected GamePadState previosGamepadState;
         protected void processKeyboard()

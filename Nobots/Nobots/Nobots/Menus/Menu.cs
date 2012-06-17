@@ -355,6 +355,12 @@ namespace Nobots.Menus
 
         void BackActionStop()
         {
+            // If it's enable but there are not levels loaded, forbid the menu to disappear by ending the method here.
+#if FINAL_RELEASE
+            if (Enabled && scene.Elements.Count + scene.Backgrounds.Count + scene.Backgrounds.Count == 0)
+                return;
+#endif
+
             Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
             scene.AmbienceSound.ISoundEngine.Play2D(scene.AmbienceSound.Select, false, false, false);
@@ -384,6 +390,12 @@ namespace Nobots.Menus
 
         void BActionStop()
         {
+            // If it's enable but there are not levels loaded, forbid the menu to disappear by ending the method here.
+#if FINAL_RELEASE
+            if (Enabled && scene.Elements.Count + scene.Backgrounds.Count + scene.Backgrounds.Count == 0)
+                return;
+#endif
+		
             Enabled = false;
             scene.Transitioner.AlphaTarget = 0;
             scene.AmbienceSound.ISoundEngine.Play2D(scene.AmbienceSound.Select, false, false, false);
