@@ -88,13 +88,15 @@ namespace Nobots.Elements
 
         bool body_OnCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
-            float velocity = body.LinearVelocity.Length();
-
-            if (velocity > 1f)
+            if (!fixtureB.IsSensor)
             {
-                
-                sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Container, body.Position.X, body.Position.Y, 0.0f,false,false,false);
-                sound.Volume = velocity * 0.5f * scene.SoundManager.Container.DefaultVolume;
+                float velocity = body.LinearVelocity.Length();
+
+                if (velocity > 1f)
+                {
+                    sound = scene.SoundManager.ISoundEngine.Play3D(scene.SoundManager.Container, body.Position.X, body.Position.Y, 0.0f, false, false, false);
+                    sound.Volume = velocity * 0.5f * scene.SoundManager.Container.DefaultVolume;
+                }
             }
             return true;
         }
