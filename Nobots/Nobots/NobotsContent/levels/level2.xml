@@ -387,7 +387,7 @@
         <Platform Id="" Position="49.86273,10.39939" Width="0.4" Height="5.04" Rotation="0" />
         <Platform Id="" Position="83.94846,11.39115" Width="13.19999" Height="1" Rotation="0" />
         <Platform Id="" Position="77.85024,10.63706" Width="1" Height="1" Rotation="0" />
-        <ImpulsePlatform Id="impulse1" Position="99.05399,21.74783" Width="11.4" Height="7" Rotation="0" StepsNumber="4" Acceleration="69" Active="False" />
+        <ImpulsePlatform Id="impulse1" Position="99.05399,21.74783" Width="11.4" Height="7.2" Rotation="0" StepsNumber="4" Acceleration="69" Active="False" />
         <GlidePlatform Id="" Position="2.819962,49.25299" Rotation="0" Active="True" Velocity="2.5" StepsNumber="1" />
         <GlidePlatform Id="" Position="22.02333,35.98337" Rotation="-3.602" Active="True" Velocity="10" StepsNumber="1" />
         <ImpulsePlatform Id="impulse2" Position="24.00196,49.27299" Width="8.549999" Height="13.7" Rotation="0" StepsNumber="3" Acceleration="70" Active="False" />
