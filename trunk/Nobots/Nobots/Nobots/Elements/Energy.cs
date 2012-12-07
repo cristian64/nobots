@@ -152,7 +152,7 @@ namespace Nobots.Elements
                 new Rectangle(State.textureXmin, State.textureYmin, State.characterWidth, State.characterHeight),
                 Color.White, 0.0f, new Vector2(State.characterWidth / 2.0f, State.characterHeight / 2.0f), scene.Camera.Scale, Effect, 0);
             scene.SpriteBatch.End();
-            scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            scene.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
         }
     }
 }

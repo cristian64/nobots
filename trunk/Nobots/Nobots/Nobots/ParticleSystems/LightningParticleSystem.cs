@@ -68,7 +68,7 @@ namespace Nobots.ParticleSystem
 
         public override void Draw(GameTime gameTime)
         {
-            scene.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
+            scene.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive);
             float scale = scene.Camera.Scale;
             foreach (LightningParticle i in particles)
             {
