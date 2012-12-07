@@ -325,7 +325,7 @@ namespace Nobots
             PhysicsDebug.RenderDebugData(ref Camera.Projection, ref Camera.View);
             if (PhysicsDebug.Enabled)
             {
-                SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
                 foreach (Element i in Elements)
                 {
                     if (i is Stone || i is Lamp || i is Alarm || i is Sound || i is Torch || i is Drop || i is SecurityCamera) // TODO: ADD watedrops or things without physics body
@@ -350,7 +350,7 @@ namespace Nobots
         public void drawScene(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             foreach (Background i in Backgrounds)
                 i.Draw(gameTime);
             foreach (Element i in Elements)
@@ -368,7 +368,7 @@ namespace Nobots
             ElectricityParticleSystem.Draw(gameTime);
             ExplosionSmokeParticleSystem.Draw(gameTime);
 
-            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             foreach (Foreground i in Foregrounds)
                 i.Draw(gameTime);
             SpriteBatch.End();
