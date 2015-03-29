@@ -1,0 +1,1 @@
+Synergy is a platform game programmed in C#, using the XNA Framework 4.0.
